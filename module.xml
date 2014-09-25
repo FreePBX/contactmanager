@@ -1,0 +1,25 @@
+<module>
+	<rawname>contactmanager</rawname>
+	<repo>standard</repo>
+	<name>Contact Manager</name>
+	<version>12.0.0</version>
+	<publisher>Schmooze Com Inc</publisher>
+	<license>GPLv3+</license>
+	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
+	<changelog>
+		*12.0.0* First release.
+	</changelog>
+	<depends>
+		<version>12.0.0</version>
+	</depends>
+	<category>Admin</category>
+	<description>
+		Contact Manager
+	</description>
+	<menuitems>
+		<contactmanager needsenginedb="yes">Contact Manager</contactmanager>
+	</menuitems>
+	<supported>
+		<version>12.0</version>
+	</supported>
+</module>
