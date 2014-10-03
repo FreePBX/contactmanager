@@ -10,7 +10,7 @@ if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'showgroup') {
 }
 
 if (!$newgroup) {
-	$html.= form_hidden('type', $group['type']);
+	$html.= form_hidden('grouptype', $group['type']);
 }
 
 $html.= heading($newgroup ? _("Add Group") : _("Edit Group"));
@@ -27,16 +27,16 @@ if (!$newgroup) {
 $table = new CI_Table;
 
 if ($newgroup) {
-	$types = array(
+	$grouptypes = array(
 		'internal' => _('Internal'),
 		'external' => _('External'),
 	);
 	$label = fpbx_label(_('Type'), _('Type of group'));
-	$table->add_row($label, form_dropdown('type', $types, $newgroup ? 'internal' : $group['type'], $newgroup ? '' : 'disabled'));
+	$table->add_row($label, form_dropdown('grouptype', $grouptypes, 'internal'));
 }
 
 $label = fpbx_label(_('Name'), _('Name of group'));
-$table->add_row($label, form_input('name', $group['name']));
+$table->add_row($label, form_input('groupname', $group['name']));
 
 $html.= $table->generate();
 
@@ -62,7 +62,7 @@ if (!$newgroup) {
 		$html.= '<tr><th>User</th></tr>';
 		break;
 	case 'external':
-		$html.= '<tr><th>Number</th><th>First Name</th><th>Last Name</th></tr>';
+		$html.= '<tr><th>Numbers</th><th>First Name</th><th>Last Name</th></tr>';
 		break;
 	}
 	$count = 0;
@@ -74,9 +74,19 @@ if (!$newgroup) {
 			$html.= '<td>' . form_dropdown('user[' . $count . ']', $userlist, $entry['user']) . '</td>';
 			break;
 		case 'external':
-			$html.= '<td>' . form_input('number[' . $count . ']', $entry['number']) . '</td>';
-			$html.= '<td>' . form_input('fname[' . $count . ']', $entry['fname']) . '</td>';
-			$html.= '<td>' . form_input('lname[' . $count . ']', $entry['lname']) . '</td>';
+			$html.= '<td>';
+			$html.= '<span id="numbers_' . $count . '">';
+			$numcount = 0;
+			foreach ($entry['numbers'] as $number) {
+				$html.= form_input('number[' . $count . '][' . $numcount . ']', $number['number']);
+				$html.= br(1);
+
+				$numcount++;
+			}
+			$html.= '</span>';
+			$html.= '</td>';
+			$html.= '<td style="vertical-align:top">' . form_input('fname[' . $count . ']', $entry['fname']) . '</td>';
+			$html.= '<td style="vertical-align:top">' . form_input('lname[' . $count . ']', $entry['lname']) . '</td>';
 			break;
 		}
 
@@ -103,7 +113,7 @@ $(document).ready(function() {
 });
 
 function addEntry() {
-	lastid = $("#entries tr[id*=\"entry_\"]:last-child").attr("id");
+	lastid = $("#entries tr[id^=\"entry_\"]:last-child").attr("id");
 	if (lastid) {
 		index = lastid.substr(6); /* Everything after "entry_" */
 		index++;
@@ -130,9 +140,9 @@ case 'internal':
 	break;
 case 'external':
 	$html.= '
-	row+= "<td><input type=\"text\" name=\"number[" + index + "]\" value=\"\"/></td>";
-	row+= "<td><input type=\"text\" name=\"fname[" + index + "]\" value=\"\"/></td>";
-	row+= "<td><input type=\"text\" name=\"lname[" + index + "]\" value=\"\"/></td>";
+	row+= "<td><input type=\"text\" name=\"number[" + index + "][0]\" value=\"\"/></td>";
+	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"fname[" + index + "]\" value=\"\"/></td>";
+	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"lname[" + index + "]\" value=\"\"/></td>";
 	';
 	break;
 }

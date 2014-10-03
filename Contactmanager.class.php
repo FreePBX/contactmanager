@@ -35,9 +35,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		}
 		if (isset($_POST['submit'])) {
 			$group = !empty($_POST['group']) ? $_POST['group'] : '';
-			$name = !empty($_POST['name']) ? $_POST['name'] : '';
-			$type = !empty($_POST['type']) ? $_POST['type'] : '';
-			switch ($type) {
+			$groupname = !empty($_POST['groupname']) ? $_POST['groupname'] : '';
+			$grouptype = !empty($_POST['grouptype']) ? $_POST['grouptype'] : '';
+			switch ($grouptype) {
 			case 'internal':
 				foreach($_POST['user'] as $index => $value) {
 					if (!$value) {
@@ -74,14 +74,15 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				break;
 			}
 
-			if ($name) {
+			if ($groupname) {
 				if ($group) {
-					$ret = $this->updateGroup($group, $name);
+					$ret = $this->updateGroup($group, $groupname);
 					if ($ret['status']) {
-						$ret = $this->updateGroupEntries($group, $entries);
+						$this->deleteEntriesByGroupID($group);
+						$ret = $this->addEntriesByGroupID($group, $entries);
 					}
 				} else {
-					$ret = $this->addGroup($name, $type);
+					$ret = $this->addGroup($groupname, $grouptype);
 				}
 				$this->message = array(
 					'message' => $ret['message'],
@@ -150,7 +151,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 * @return array
 	 */
 	public function getGroupByID($id) {
-		$sql = "SELECT * FROM contactmanager_groups WHERE id = :id";
+		$sql = "SELECT * FROM contactmanager_groups WHERE `id` = :id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $id));
 		$group = $sth->fetch(PDO::FETCH_ASSOC);
@@ -202,6 +203,34 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		return array("status" => true, "type" => "success", "message" => _("Group successfully updated"), "id" => $id);
 	}
 
+	public function getEntryByID($id) {
+		$fields = array(
+			'e.id',
+			'e.groupid',
+			'e.user',
+			'COALESCE(e.fname, u.fname) as fname',
+			'COALESCE(e.lname, u.lname) as lname',
+		);
+		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e 
+			LEFT JOIN freepbx_users as u ON (e.user = u.id) WHERE e.id = :id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':id' => $id));
+		$entry = $sth->fetch(PDO::FETCH_ASSOC);
+
+		$numbers = $this->getNumbersByEntryID($id);
+		if ($numbers) {
+			foreach ($numbers as $number) {
+				$entry['numbers'][$number['id']] = array(
+					'number' => $number['number'],
+					'type' => $number['type'],
+					'flags' => $number['flags'] ? explode('|', $number['flags']) : array(),
+				);
+			}
+		}
+
+		return $entry;
+	}
+
 	public function getEntriesByGroupID($groupid) {
 		$fields = array(
 			'e.id',
@@ -211,39 +240,42 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			'COALESCE(e.lname, u.lname) as lname',
 		);
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e 
-			LEFT JOIN freepbx_users as u ON (e.user = u.id) WHERE groupid = :groupid";
+			LEFT JOIN freepbx_users as u ON (e.user = u.id) WHERE `groupid` = :groupid ORDER BY e.id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
 		$entries = $sth->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
 
-		$fields = array(
-			'n.id',
-			'n.entryid',
-			'n.number',
-			'n.type',
-			'n.flags',
-		);
-		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_numbers as n 
-			LEFT JOIN contactmanager_group_entries as e ON (n.entryid = e.id) WHERE groupid = :groupid";
-		$sth = $this->db->prepare($sql);
-		$sth->execute(array(':groupid' => $groupid));
-		$numbers = $sth->fetchAll(PDO::FETCH_ASSOC);
-
-		foreach ($numbers as $number) {
-			$entries[$number['entryid']]['number'][$number['id']] = array(
-				'number' => $number['number'],
-				'type' => $number['type'],
-				'flags' => $number['flags'] ? explode('|', $number['flags']) : array(),
-			);
+		$numbers = $this->getNumbersByGroupID($groupid);
+		if ($numbers) {
+			foreach ($numbers as $number) {
+				$entries[$number['entryid']]['numbers'][$number['id']] = array(
+					'number' => $number['number'],
+					'type' => $number['type'],
+					'flags' => $number['flags'] ? explode('|', $number['flags']) : array(),
+				);
+			}
 		}
 
 		return $entries;
 	}
 
+	public function deleteEntryByID($id) {
+		$ret = $this->deleteNumbersByEntryID($id);
+		if (!$ret['status']) {
+			return $ret;
+		}
+
+		$sql = "DELETE FROM contactmanager_group_entries WHERE `id` = :id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':id' => $id));
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry successfully deleted"));
+	}
+
 	public function deleteEntriesByGroupID($groupid) {
-		$group = $this->getGroupByID($groupid);
-		if (!$group) {
-			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
+		$ret = $this->deleteNumbersByGroupID($groupid);
+		if (!$ret['status']) {
+			return $ret;
 		}
 
 		$sql = "DELETE FROM contactmanager_group_entries WHERE `groupid` = :groupid";
@@ -252,17 +284,126 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 		return array("status" => true, "type" => "success", "message" => _("Group entries successfully deleted"));
 	}
-	public function updateGroupEntries($groupid, $entries) {
-		$sql = "DELETE FROM contactmanager_group_entries WHERE `groupid` = :groupid";
+
+	public function addEntryByGroupID($groupid, $entry) {
+		$group = $this->getGroupByID($groupid);
+		if (!$group) {
+			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
+		}
+
+		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `fname`, `lname`) VALUES (:groupid, :user, :fname, :lname)";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':groupid' => $groupid, ':user' => $entry['user'], ':fname' => $entry['fname'], ':lname' => $entry['lname']));
+
+		$id = $this->db->lastInsertId();
+
+		$this->addNumbersByEntryID($id, $entry['numbers']);
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry successfully added"), "id" => $id);
+	}
+
+	public function addEntriesByGroupID($groupid, $entries) {
+		$group = $this->getGroupByID($groupid);
+		if (!$group) {
+			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
+		}
+
+		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `fname`, `lname`) VALUES (:groupid, :user, :fname, :lname)";
+		$sth = $this->db->prepare($sql);
+		foreach ($entries as $entry) {
+			$sth->execute(array(':groupid' => $groupid, ':user' => $entry['user'], ':fname' => $entry['fname'], ':lname' => $entry['lname']));
+
+			$id = $this->db->lastInsertId();
+			$this->addNumbersByEntryID($id, $entry['numbers']);
+		}
+
+		return array("status" => true, "type" => "success", "message" => _("Group entries successfully added"));
+	}
+
+	public function getNumbersByEntryID($entryid) {
+		$fields = array(
+			'id',
+			'entryid',
+			'number',
+			'type',
+			'flags',
+		);
+		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_numbers WHERE `entryid` = :entryid ORDER BY id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':entryid' => $entryid));
+		$numbers = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+		return $numbers;
+	}
+
+	public function getNumbersByGroupID($groupid) {
+		$fields = array(
+			'n.id',
+			'n.entryid',
+			'n.number',
+			'n.type',
+			'n.flags',
+		);
+		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_numbers as n 
+			LEFT JOIN contactmanager_group_entries as e ON (n.entryid = e.id) WHERE `groupid` = :groupid ORDER BY e.id, n.id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':groupid' => $groupid));
+		$numbers = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+		return $numbers;
+	}
+
+	public function deleteNumberByID($id) {
+		$sql = "DELETE FROM contactmanager_entry_numbers WHERE `id` = :id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':id' => $id));
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry number successfully deleted"));
+	}
+
+	public function deleteNumbersByEntryID($entryid) {
+		$sql = "DELETE FROM contactmanager_entry_numbers WHERE `entryid` = :entryid";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':entryid' => $entryid));
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry numbers successfully deleted"));
+	}
+
+	public function deleteNumbersByGroupID($groupid) {
+		$sql = "DELETE n FROM contactmanager_entry_numbers as n 
+			LEFT JOIN contactmanager_group_entries as e ON (n.entryid = e.id) WHERE `groupid` = :groupid";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
 
-		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `number`, `fname`, `lname`) VALUES (:groupid, :user, :number, :fname, :lname)";
-		foreach ($entries as $entry) {
-			$sth = $this->db->prepare($sql);
-			$sth->execute(array(':groupid' => $groupid, ':user' => $entry['user'], ':number' => $entry['number'], ':fname' => $entry['fname'], ':lname' => $entry['lname']));
+		return array("status" => true, "type" => "success", "message" => _("Group entry numbers successfully deleted"));
+	}
+
+	public function addNumberByEntryID($entryid, $number) {
+		$entry = $this->getEntryByID($entryid);
+		if (!$entry) {
+			return array("status" => false, "type" => "danger", "message" => _("Group entry does not exist"));
 		}
 
-		return array("status" => true, "type" => "success", "message" => _("Group entries successfully updated"));
+		$sql = "INSERT INTO contactmanager_entry_numbers (entryid, number, type, flags) VALUES (:entryid, :number, :type, :flags)";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':entryid' => $entryid, ':number' => $number['number'], ':type' => $number['type'], ':flags' => implode('|', $number['flags'])));
+
+		$id = $this->db->lastInsertId();
+		return array("status" => true, "type" => "success", "message" => _("Group entry number successfully added"), "id" => $id);
+	}
+
+	public function addNumbersByEntryID($entryid, $numbers) {
+		$entry = $this->getEntryByID($entryid);
+		if (!$entry) {
+			return array("status" => false, "type" => "danger", "message" => _("Group entry does not exist"));
+		}
+
+		$sql = "INSERT INTO contactmanager_entry_numbers (entryid, number, type, flags) VALUES (:entryid, :number, :type, :flags)";
+		$sth = $this->db->prepare($sql);
+		foreach ($numbers as $number) {
+			$sth->execute(array(':entryid' => $entryid, ':number' => $number['number'], ':type' => $number['type'], ':flags' => implode('|', $number['flags'])));
+		}
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry numbers successfully added"));
 	}
 }
