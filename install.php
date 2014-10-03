@@ -14,9 +14,17 @@ $sql[] = 'CREATE TABLE IF NOT EXISTS `contactmanager_group_entries` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
  `groupid` int(11) NOT NULL,
  `user` int(11) NOT NULL,
- `number` varchar(100) default NULL,
  `fname` varchar(100) default NULL,
  `lname` varchar(100) default NULL,
+ PRIMARY KEY (`id`)
+);';
+
+$sql[] = 'CREATE TABLE IF NOT EXISTS `contactmanager_entry_numbers` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `entryid` int(11) NOT NULL,
+ `number` varchar(100) default NULL,
+ `type` varchar(100),
+ `flags` varchar(100),
  PRIMARY KEY (`id`)
 );';
 

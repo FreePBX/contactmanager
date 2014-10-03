@@ -46,7 +46,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 					$entries[] = array(
 						'user' => $value,
-						'number' => NULL,
+						'numbers' => array(),
 						'fname' => NULL,
 						'lname' => NULL,
 					);
@@ -60,7 +60,13 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 					$entries[] = array(
 						'user' => -1,
-						'number' => $value,
+						'numbers' => array(
+							array(
+								'number' => $value,
+								'type' => 'other',
+								'flags' => array(),
+							)
+						),
 						'fname' => $_POST['fname'][$index],
 						'lname' => $_POST['lname'][$index],
 					);
@@ -201,15 +207,36 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			'e.id',
 			'e.groupid',
 			'e.user',
-			'COALESCE(e.number, u.default_extension) as number',
 			'COALESCE(e.fname, u.fname) as fname',
 			'COALESCE(e.lname, u.lname) as lname',
 		);
-		$sql = "SELECT " . implode(', ', $fields) . " from contactmanager_group_entries as e 
+		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e 
 			LEFT JOIN freepbx_users as u ON (e.user = u.id) WHERE groupid = :groupid";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
-		$entries = $sth->fetchAll(PDO::FETCH_ASSOC);
+		$entries = $sth->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
+
+		$fields = array(
+			'n.id',
+			'n.entryid',
+			'n.number',
+			'n.type',
+			'n.flags',
+		);
+		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_numbers as n 
+			LEFT JOIN contactmanager_group_entries as e ON (n.entryid = e.id) WHERE groupid = :groupid";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':groupid' => $groupid));
+		$numbers = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+		foreach ($numbers as $number) {
+			$entries[$number['entryid']]['number'][$number['id']] = array(
+				'number' => $number['number'],
+				'type' => $number['type'],
+				'flags' => $number['flags'] ? explode('|', $number['flags']) : array(),
+			);
+		}
+
 		return $entries;
 	}
 
