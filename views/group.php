@@ -140,7 +140,11 @@ case 'internal':
 	break;
 case 'external':
 	$html.= '
-	row+= "<td><input type=\"text\" name=\"number[" + index + "][0]\" value=\"\"/></td>";
+	row+= "<td>";
+	row+= "<span id=\"numbers_" + index + "\">";
+	row+= "<input type=\"text\" name=\"number[" + index + "][0]\" value=\"\"/>";
+	row+= "</span>";
+	row+= "</td>";
 	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"fname[" + index + "]\" value=\"\"/></td>";
 	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"lname[" + index + "]\" value=\"\"/></td>";
 	';
@@ -154,8 +158,15 @@ $html.= '
 
 	$("#entries").append(row);
 }
+
 function delEntry(index) {
 	$("#entry_" + index).remove();
+}
+
+function addNumber(entry) {
+}
+
+function delNumber(entry, index) {
 }
 </script>';
 

@@ -39,7 +39,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			$grouptype = !empty($_POST['grouptype']) ? $_POST['grouptype'] : '';
 			switch ($grouptype) {
 			case 'internal':
-				foreach($_POST['user'] as $index => $value) {
+				foreach ($_POST['user'] as $index => $value) {
 					if (!$value) {
 						continue;
 					}
@@ -53,20 +53,19 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				}
 				break;
 			case 'external':
-				foreach($_POST['number'] as $index => $value) {
+				foreach ($_POST['number'] as $index => $value) {
 					if (!$value) {
 						continue;
 					}
 
+					$numbers = array();
+					foreach ($value as $numindex => $number) {
+						$numbers[$numindex]['number'] = $number;
+						$numbers[$numindex]['type'] = 'other'; /* $_POST['type'][$index][$numindex] */;
+					}
 					$entries[] = array(
 						'user' => -1,
-						'numbers' => array(
-							array(
-								'number' => $value,
-								'type' => 'other',
-								'flags' => array(),
-							)
-						),
+						'numbers' => $numbers,
 						'fname' => $_POST['fname'][$index],
 						'lname' => $_POST['lname'][$index],
 					);
