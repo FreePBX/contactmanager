@@ -46,28 +46,31 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 					$entries[] = array(
 						'user' => $value,
-						'numbers' => array(),
-						'fname' => NULL,
-						'lname' => NULL,
 					);
 				}
 				break;
 			case 'external':
 				foreach ($_POST['number'] as $index => $value) {
-					if (!$value) {
+					$numbers = array();
+					foreach ($value as $numindex => $number) {
+						if (!$number) {
+							continue;
+						}
+						$numbers[$numindex]['number'] = $number;
+						$numbers[$numindex]['type'] = $_POST['numbertype'][$index][$numindex];
+					}
+
+					if (count($numbers) < 1) {
 						continue;
 					}
 
-					$numbers = array();
-					foreach ($value as $numindex => $number) {
-						$numbers[$numindex]['number'] = $number;
-						$numbers[$numindex]['type'] = 'other'; /* $_POST['type'][$index][$numindex] */;
-					}
 					$entries[] = array(
 						'user' => -1,
 						'numbers' => $numbers,
-						'fname' => $_POST['fname'][$index],
-						'lname' => $_POST['lname'][$index],
+						'fname' => $_POST['fname'][$index] ? $_POST['fname'][$index] : NULL,
+						'lname' => $_POST['lname'][$index] ? $_POST['lname'][$index] : NULL,
+						'title' => $_POST['title'][$index] ? $_POST['title'][$index] : NULL,
+						'company' => $_POST['company'][$index] ? $_POST['company'][$index] : NULL,
 					);
 				}
 				break;
@@ -181,7 +184,11 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		}
 		$sql = "INSERT INTO contactmanager_groups (`name`, `owner`, `type`) VALUES (:name, :owner, :type)";
 		$sth = $this->db->prepare($sql);
-		$sth->execute(array(':name' => $name, ':owner' => $owner, ':type' => $type));
+		$sth->execute(array(
+			':name' => $name,
+			':owner' => $owner,
+			':type' => $type,
+		));
 
 		$id = $this->db->lastInsertId();
 		return array("status" => true, "type" => "success", "message" => _("Group successfully added"), "id" => $id);
@@ -197,7 +204,11 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		}
 		$sql = "UPDATE contactmanager_groups SET `name` = :name, `owner` = :owner WHERE `id` = :id";
 		$sth = $this->db->prepare($sql);
-		$sth->execute(array(':name' => $name, ':owner' => $owner, ':id' => $id));
+		$sth->execute(array(
+			':name' => $name,
+			':owner' => $owner,
+			':id' => $id,
+		));
 
 		return array("status" => true, "type" => "success", "message" => _("Group successfully updated"), "id" => $id);
 	}
@@ -209,6 +220,8 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			'e.user',
 			'COALESCE(e.fname, u.fname) as fname',
 			'COALESCE(e.lname, u.lname) as lname',
+			'COALESCE(e.title, u.title) as title',
+			'e.company',
 		);
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e 
 			LEFT JOIN freepbx_users as u ON (e.user = u.id) WHERE e.id = :id";
@@ -237,6 +250,8 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			'e.user',
 			'COALESCE(e.fname, u.fname) as fname',
 			'COALESCE(e.lname, u.lname) as lname',
+			'COALESCE(e.title, u.title) as title',
+			'e.company',
 		);
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e 
 			LEFT JOIN freepbx_users as u ON (e.user = u.id) WHERE `groupid` = :groupid ORDER BY e.id";
@@ -290,9 +305,16 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
 		}
 
-		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `fname`, `lname`) VALUES (:groupid, :user, :fname, :lname)";
+		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `fname`, `lname`, `title`, `company`) VALUES (:groupid, :user, :fname, :lname, :title, :company)";
 		$sth = $this->db->prepare($sql);
-		$sth->execute(array(':groupid' => $groupid, ':user' => $entry['user'], ':fname' => $entry['fname'], ':lname' => $entry['lname']));
+		$sth->execute(array(
+			':groupid' => $groupid,
+			':user' => $entry['user'],
+			':fname' => $entry['fname'],
+			':lname' => $entry['lname'],
+			':title' => $entry['title'],
+			':company' => $entry['company'],
+		));
 
 		$id = $this->db->lastInsertId();
 
@@ -307,10 +329,17 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
 		}
 
-		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `fname`, `lname`) VALUES (:groupid, :user, :fname, :lname)";
+		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `fname`, `lname`, `title`, `company`) VALUES (:groupid, :user, :fname, :lname, :title, :company)";
 		$sth = $this->db->prepare($sql);
 		foreach ($entries as $entry) {
-			$sth->execute(array(':groupid' => $groupid, ':user' => $entry['user'], ':fname' => $entry['fname'], ':lname' => $entry['lname']));
+			$sth->execute(array(
+				':groupid' => $groupid,
+				':user' => $entry['user'],
+				':fname' => $entry['fname'],
+				':lname' => $entry['lname'],
+				':title' => $entry['title'],
+				':company' => $entry['company'],
+			));
 
 			$id = $this->db->lastInsertId();
 			$this->addNumbersByEntryID($id, $entry['numbers']);
@@ -385,7 +414,12 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 		$sql = "INSERT INTO contactmanager_entry_numbers (entryid, number, type, flags) VALUES (:entryid, :number, :type, :flags)";
 		$sth = $this->db->prepare($sql);
-		$sth->execute(array(':entryid' => $entryid, ':number' => $number['number'], ':type' => $number['type'], ':flags' => implode('|', $number['flags'])));
+		$sth->execute(array(
+			':entryid' => $entryid,
+			':number' => $number['number'],
+			':type' => $number['type'],
+			':flags' => implode('|', $number['flags']),
+		));
 
 		$id = $this->db->lastInsertId();
 		return array("status" => true, "type" => "success", "message" => _("Group entry number successfully added"), "id" => $id);
@@ -400,7 +434,12 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$sql = "INSERT INTO contactmanager_entry_numbers (entryid, number, type, flags) VALUES (:entryid, :number, :type, :flags)";
 		$sth = $this->db->prepare($sql);
 		foreach ($numbers as $number) {
-			$sth->execute(array(':entryid' => $entryid, ':number' => $number['number'], ':type' => $number['type'], ':flags' => implode('|', $number['flags'])));
+			$sth->execute(array(
+				':entryid' => $entryid,
+				':number' => $number['number'],
+				':type' => $number['type'],
+				':flags' => implode('|', $number['flags']),
+			));
 		}
 
 		return array("status" => true, "type" => "success", "message" => _("Group entry numbers successfully added"));

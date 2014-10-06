@@ -59,12 +59,28 @@ if (!$newgroup) {
 	$html.= '<table id="entries">';
 	switch ($group['type']) {
 	case 'internal':
-		$html.= '<tr><th>User</th></tr>';
+		$html.= '<tr>';
+		$html.= '<th>User</th>';
+		$html.= '</tr>';
 		break;
 	case 'external':
-		$html.= '<tr><th>Numbers</th><th>First Name</th><th>Last Name</th></tr>';
+		$html.= '<tr>';
+		$html.= '<th>Numbers</th>';
+		$html.= '<th>First Name</th>';
+		$html.= '<th>Last Name</th>';
+		$html.= '<th>Title</th>';
+		$html.= '<th>Company</th>';
+		$html.= '</tr>';
 		break;
 	}
+
+	$numbertypes = array(
+		'work' => _('Work'),
+		'home' => _('Home'),
+		'cell' => _('Cell'),
+		'other' => _('Other'),
+	);
+
 	$count = 0;
 	foreach ($entries as $entry) {
 		$html.= '<tr id="entry_' . $count . '">';
@@ -79,6 +95,7 @@ if (!$newgroup) {
 			$numcount = 0;
 			foreach ($entry['numbers'] as $number) {
 				$html.= form_input('number[' . $count . '][' . $numcount . ']', $number['number']);
+				$html.= form_dropdown('numbertype[' . $count . '][' . $numcount . ']', $numbertypes, $number['type']);
 				$html.= br(1);
 
 				$numcount++;
@@ -87,6 +104,8 @@ if (!$newgroup) {
 			$html.= '</td>';
 			$html.= '<td style="vertical-align:top">' . form_input('fname[' . $count . ']', $entry['fname']) . '</td>';
 			$html.= '<td style="vertical-align:top">' . form_input('lname[' . $count . ']', $entry['lname']) . '</td>';
+			$html.= '<td style="vertical-align:top">' . form_input('title[' . $count . ']', $entry['title']) . '</td>';
+			$html.= '<td style="vertical-align:top">' . form_input('company[' . $count . ']', $entry['company']) . '</td>';
 			break;
 		}
 
@@ -143,10 +162,21 @@ case 'external':
 	row+= "<td>";
 	row+= "<span id=\"numbers_" + index + "\">";
 	row+= "<input type=\"text\" name=\"number[" + index + "][0]\" value=\"\"/>";
+	row+= "<select name=\"numbertype[" + index + "][0]\">"
+	';
+	foreach ($numbertypes as $id => $type) {
+		$html.= '
+		row+= "<option value=\"' . $id . '\">' . $type . '</option>"
+		';
+	}
+	$html.= '
+	row+= "</select>";
 	row+= "</span>";
 	row+= "</td>";
 	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"fname[" + index + "]\" value=\"\"/></td>";
 	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"lname[" + index + "]\" value=\"\"/></td>";
+	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"title[" + index + "]\" value=\"\"/></td>";
+	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"company[" + index + "]\" value=\"\"/></td>";
 	';
 	break;
 }

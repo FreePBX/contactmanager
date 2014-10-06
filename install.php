@@ -16,6 +16,8 @@ $sql[] = 'CREATE TABLE IF NOT EXISTS `contactmanager_group_entries` (
  `user` int(11) NOT NULL,
  `fname` varchar(100) default NULL,
  `lname` varchar(100) default NULL,
+ `title` varchar(100) default NULL,
+ `company` varchar(100) default NULL,
  PRIMARY KEY (`id`)
 );';
 
@@ -33,6 +35,22 @@ foreach ($sql as $statement){
 	if (DB::IsError($check)){
 		die_freepbx("Can not execute $statement : " . $check->getMessage() .  "\n");
 	}
+}
+
+outn(_("checking for title field.."));
+$sql = "SELECT `title` FROM contactmanager_group_entries";
+$check = $db->getRow($sql, DB_FETCHMODE_ASSOC);
+if(DB::IsError($check)) {
+	// add new field
+	$sql = "ALTER TABLE contactmanager_group_entries ADD `title` varchar(100), ADD `company` varchar(100)";
+	$result = $db->query($sql);
+	if(DB::IsError($result)) {
+		out(_("ERROR failed to update title field"));
+	} else {
+		out(_("OK"));
+	}
+} else {
+	out(_("already exists"));
 }
 
 ?>
