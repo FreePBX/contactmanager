@@ -37,22 +37,10 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			$group = !empty($_POST['group']) ? $_POST['group'] : '';
 			$groupname = !empty($_POST['groupname']) ? $_POST['groupname'] : '';
 			$grouptype = !empty($_POST['grouptype']) ? $_POST['grouptype'] : '';
-			switch ($grouptype) {
-			case 'internal':
-				foreach ($_POST['user'] as $index => $value) {
-					if (!$value) {
-						continue;
-					}
 
-					$entries[] = array(
-						'user' => $value,
-					);
-				}
-				break;
-			case 'external':
-				foreach ($_POST['number'] as $index => $value) {
+			foreach ($_POST['entry'] as $index => $value) {
 					$numbers = array();
-					foreach ($value as $numindex => $number) {
+					foreach ($_POST['number'][$index] as $numindex => $number) {
 						if (!$number) {
 							continue;
 						}
@@ -60,20 +48,14 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 						$numbers[$numindex]['type'] = $_POST['numbertype'][$index][$numindex];
 					}
 
-					if (count($numbers) < 1) {
-						continue;
-					}
-
 					$entries[] = array(
-						'user' => -1,
+						'user' => $_POST['user'][$index] ? $_POST['user'][$index] : -1,
 						'numbers' => $numbers,
 						'fname' => $_POST['fname'][$index] ? $_POST['fname'][$index] : NULL,
 						'lname' => $_POST['lname'][$index] ? $_POST['lname'][$index] : NULL,
 						'title' => $_POST['title'][$index] ? $_POST['title'][$index] : NULL,
 						'company' => $_POST['company'][$index] ? $_POST['company'][$index] : NULL,
 					);
-				}
-				break;
 			}
 
 			if ($groupname) {
@@ -218,9 +200,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			'e.id',
 			'e.groupid',
 			'e.user',
-			'COALESCE(e.fname, u.fname) as fname',
-			'COALESCE(e.lname, u.lname) as lname',
-			'COALESCE(e.title, u.title) as title',
+			'e.fname',
+			'e.lname',
+			'e.title',
 			'e.company',
 		);
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e 
@@ -248,9 +230,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			'e.id',
 			'e.groupid',
 			'e.user',
-			'COALESCE(e.fname, u.fname) as fname',
-			'COALESCE(e.lname, u.lname) as lname',
-			'COALESCE(e.title, u.title) as title',
+			'e.fname',
+			'e.lname',
+			'e.title',
 			'e.company',
 		);
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e 

@@ -50,29 +50,27 @@ if (!$newgroup) {
 		} else if ($user['fname'] && $user['lname']) {
 			$desc = $user['fname'] . ' ' . $user['lname'] . ' (' . $user['username'] . ')';
 		} else {
-			$desc = '(' . $user['username'] . ')';
+			$desc = 'Ext. ' . $user['default_extension'] . ' (' . $user['username'] . ')';
 		}
 
 		$userlist[$user['id']] = $desc;
 	}
 
 	$html.= '<table id="entries">';
+	$html.= '<tr>';
 	switch ($group['type']) {
 	case 'internal':
-		$html.= '<tr>';
 		$html.= '<th>User</th>';
-		$html.= '</tr>';
 		break;
 	case 'external':
-		$html.= '<tr>';
 		$html.= '<th>Numbers</th>';
-		$html.= '<th>First Name</th>';
-		$html.= '<th>Last Name</th>';
-		$html.= '<th>Title</th>';
-		$html.= '<th>Company</th>';
-		$html.= '</tr>';
 		break;
 	}
+	$html.= '<th>First Name</th>';
+	$html.= '<th>Last Name</th>';
+	$html.= '<th>Title</th>';
+	$html.= '<th>Company</th>';
+	$html.= '</tr>';
 
 	$numbertypes = array(
 		'work' => _('Work'),
@@ -87,10 +85,16 @@ if (!$newgroup) {
 
 		switch ($group['type']) {
 		case 'internal':
-			$html.= '<td>' . form_dropdown('user[' . $count . ']', $userlist, $entry['user']) . '</td>';
+			$html.= '<td>';
+			$html.= form_hidden('entry[' . $count . ']', '');
+
+			$html.= form_dropdown('user[' . $count . ']', $userlist, $entry['user']);
+			$html.= '</td>';
 			break;
 		case 'external':
 			$html.= '<td>';
+			$html.= form_hidden('entry[' . $count . ']', '');
+
 			$html.= '<span id="numbers_' . $count . '">';
 			$numcount = 0;
 			foreach ($entry['numbers'] as $number) {
@@ -102,12 +106,13 @@ if (!$newgroup) {
 			}
 			$html.= '</span>';
 			$html.= '</td>';
-			$html.= '<td style="vertical-align:top">' . form_input('fname[' . $count . ']', $entry['fname']) . '</td>';
-			$html.= '<td style="vertical-align:top">' . form_input('lname[' . $count . ']', $entry['lname']) . '</td>';
-			$html.= '<td style="vertical-align:top">' . form_input('title[' . $count . ']', $entry['title']) . '</td>';
-			$html.= '<td style="vertical-align:top">' . form_input('company[' . $count . ']', $entry['company']) . '</td>';
 			break;
 		}
+
+		$html.= '<td style="vertical-align:top">' . form_input('fname[' . $count . ']', $entry['fname']) . '</td>';
+		$html.= '<td style="vertical-align:top">' . form_input('lname[' . $count . ']', $entry['lname']) . '</td>';
+		$html.= '<td style="vertical-align:top">' . form_input('title[' . $count . ']', $entry['title']) . '</td>';
+		$html.= '<td style="vertical-align:top">' . form_input('company[' . $count . ']', $entry['company']) . '</td>';
 
 		$html.= '<td><img src="images/core_add.png" style="cursor:pointer" alt="' . _("insert") . '" title="' . _("Click here to insert a new entry") . '" onclick="addEntry()">';
 		$html.= '<td><img src="images/trash.png" style="cursor:pointer" alt="' . _("remove") . '" title="' . _("Click here to remove this entry") . '" onclick="delEntry(' . $count . ')">';
@@ -146,20 +151,26 @@ function addEntry() {
 switch ($group['type']) {
 case 'internal':
 	$html.= '
-	row+= "<td><select name=\"user[" + index + "]\">"
+	row+= "<td>";
+	row+= "<input type=\"hidden\" name=\"entry[" + index + "]\"/>";
+
+	row+= "<select name=\"user[" + index + "]\">";
 	';
 	foreach ($userlist as $id => $user) {
 		$html.= '
-		row+= "<option value=\"' . $id . '\">' . $user . '</option>"
+		row+= "<option value=\"' . $id . '\">' . $user . '</option>";
 		';
 	}
 	$html.= '
-	row+= "</select></td>";
+	row+= "</select>";
+	row+= "</td>";
 	';
 	break;
 case 'external':
 	$html.= '
 	row+= "<td>";
+	row+= "<input type=\"hidden\" name=\"entry[" + index + "]\"/>";
+
 	row+= "<span id=\"numbers_" + index + "\">";
 	row+= "<input type=\"text\" name=\"number[" + index + "][0]\" value=\"\"/>";
 	row+= "<select name=\"numbertype[" + index + "][0]\">"
@@ -173,15 +184,16 @@ case 'external':
 	row+= "</select>";
 	row+= "</span>";
 	row+= "</td>";
-	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"fname[" + index + "]\" value=\"\"/></td>";
-	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"lname[" + index + "]\" value=\"\"/></td>";
-	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"title[" + index + "]\" value=\"\"/></td>";
-	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"company[" + index + "]\" value=\"\"/></td>";
 	';
 	break;
 }
 
 $html.= '
+	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"fname[" + index + "]\" value=\"\"/></td>";
+	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"lname[" + index + "]\" value=\"\"/></td>";
+	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"title[" + index + "]\" value=\"\"/></td>";
+	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"company[" + index + "]\" value=\"\"/></td>";
+
 	row+= "<td><img src=\"images/core_add.png\" style=\"cursor:pointer\" alt=\"' . _("insert") . '\" title=\"' . _("Click here to insert a new entry") . '\" onclick=\"addEntry()\">";
 	row+= "<td><img src=\"images/trash.png\" style=\"cursor:pointer\" alt=\"' . _("remove") . '\" title=\"' . _("Click here to remove this entry") . '\" onclick=\"delEntry(" + index + ")\">";
 	row+= "</tr>";
