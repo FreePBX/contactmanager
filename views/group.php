@@ -49,8 +49,10 @@ if (!$newgroup) {
 			$desc = $user['description'] . ' (' . $user['username'] . ')';
 		} else if ($user['fname'] && $user['lname']) {
 			$desc = $user['fname'] . ' ' . $user['lname'] . ' (' . $user['username'] . ')';
-		} else {
+		} else if ($user['default_extension'] && $user['default_extension'] != 'none') {
 			$desc = 'Ext. ' . $user['default_extension'] . ' (' . $user['username'] . ')';
+		} else {
+			$desc = '(' . $user['username'] . ')';
 		}
 
 		$userlist[$user['id']] = $desc;
