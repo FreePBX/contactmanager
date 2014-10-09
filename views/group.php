@@ -3,30 +3,24 @@ $html = '';
 $html.= form_open($_SERVER['REQUEST_URI']);
 $html.= form_hidden('group', $group['id']);
 
-if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'showgroup') {
-	$newgroup = false;
-} else {
-	$newgroup = true;
-}
-
-if (!$newgroup) {
+if (!$group) {
 	$html.= form_hidden('grouptype', $group['type']);
 }
 
-$html.= heading($newgroup ? _("Add Group") : _("Edit Group"));
+$html.= heading($group ? _("Edit Group") : _("Add Group"));
 
 if (!empty($message)) {
 	$html.= '<div class="alert alert-' . $message['type'] . '">' . $message['message'] . '</div>';
 }
 
-if (!$newgroup) {
-	$html.= '<p><a href="config.php?display=contactmanager&action=delgroup&group=' . $group['id'] . '"><span>
-			<img width="16" height="16" border="0" src="images/core_delete.png">' . sprintf(_('Delete Group: %s'), $group['name']) . '</span></a></p>';
+if ($group) {
+	$html.= '<p><a href="config.php?display=contactmanager&action=delgroup&group=' . $group['id'] . '">
+		<i class="fa fa-trash-o fa-fw"></i>' . sprintf(_('Delete Group: %s'), $group['name']) . '</a></p>';
 }
 
 $table = new CI_Table;
 
-if ($newgroup) {
+if (!$group) {
 	$grouptypes = array(
 		'internal' => _('Internal'),
 		'external' => _('External'),
@@ -40,26 +34,23 @@ $table->add_row($label, form_input('groupname', $group['name']));
 
 $html.= $table->generate();
 
-$html.= br(2);
-
-if (!$newgroup) {
-	$userlist[''] = '';
+if ($group) {
 	foreach ($users as $user) {
-		if ($user['description']) {
-			$desc = $user['description'] . ' (' . $user['username'] . ')';
-		} else if ($user['fname'] && $user['lname']) {
-			$desc = $user['fname'] . ' ' . $user['lname'] . ' (' . $user['username'] . ')';
+		if ($user['fname'] && $user['lname']) {
+			$desc = $user['fname'] . ' ' . $user['lname'];
 		} else if ($user['default_extension'] && $user['default_extension'] != 'none') {
-			$desc = 'Ext. ' . $user['default_extension'] . ' (' . $user['username'] . ')';
-		} else {
-			$desc = '(' . $user['username'] . ')';
+			$desc = 'Ext. ' . $user['default_extension'];
+		} else if ($user['description']) {
+			$desc = $user['description'];
 		}
 
-		$userlist[$user['id']] = $desc;
+		$userlist[$user['id']] = ($desc ? $desc . ' ' : '') . '(' . $user['username'] . ')';
 	}
 
 	$html.= '<table id="entries">';
 	$html.= '<tr>';
+	$html.= '<th></th>';
+	$html.= '<th>Name</th>';
 	switch ($group['type']) {
 	case 'internal':
 		$html.= '<th>User</th>';
@@ -68,10 +59,6 @@ if (!$newgroup) {
 		$html.= '<th>Numbers</th>';
 		break;
 	}
-	$html.= '<th>First Name</th>';
-	$html.= '<th>Last Name</th>';
-	$html.= '<th>Title</th>';
-	$html.= '<th>Company</th>';
 	$html.= '</tr>';
 
 	$numbertypes = array(
@@ -82,26 +69,28 @@ if (!$newgroup) {
 	);
 
 	$count = 0;
-	foreach ($entries as $entry) {
-		$html.= '<tr id="entry_' . $count . '">';
+	foreach ($entries as $id => $entry) {
+		$html.= '<tr>';
+
+		$html.= '<td>';
+		$html.= '<a href="config.php?display=contactmanager&action=showentry&group=' . $group['id'] . '&entry=' . $id . '"><i class="fa fa-edit fa-fw"></i></a>';
+		$html.= '<a href="config.php?display=contactmanager&action=delentry&group=' . $group['id'] . '&entry=' . $id . '"><i class="fa fa-ban fa-fw"></i></a>';
+		$html.= '</td>';
+
+		$html.= '<td>' . $entry['fname'] . ' ' . $entry['lname'] . '</td>';
 
 		switch ($group['type']) {
 		case 'internal':
 			$html.= '<td>';
-			$html.= form_hidden('entry[' . $count . ']', '');
-
-			$html.= form_dropdown('user[' . $count . ']', $userlist, $entry['user']);
+			$html.= $userlist[$entry['user']];
 			$html.= '</td>';
 			break;
 		case 'external':
 			$html.= '<td>';
-			$html.= form_hidden('entry[' . $count . ']', '');
-
 			$html.= '<span id="numbers_' . $count . '">';
 			$numcount = 0;
 			foreach ($entry['numbers'] as $number) {
-				$html.= form_input('number[' . $count . '][' . $numcount . ']', $number['number']);
-				$html.= form_dropdown('numbertype[' . $count . '][' . $numcount . ']', $numbertypes, $number['type']);
+				$html.= $number['number'] . ' (' . $numbertypes[$number['type']] . ')';
 				$html.= br(1);
 
 				$numcount++;
@@ -111,108 +100,17 @@ if (!$newgroup) {
 			break;
 		}
 
-		$html.= '<td style="vertical-align:top">' . form_input('fname[' . $count . ']', $entry['fname']) . '</td>';
-		$html.= '<td style="vertical-align:top">' . form_input('lname[' . $count . ']', $entry['lname']) . '</td>';
-		$html.= '<td style="vertical-align:top">' . form_input('title[' . $count . ']', $entry['title']) . '</td>';
-		$html.= '<td style="vertical-align:top">' . form_input('company[' . $count . ']', $entry['company']) . '</td>';
-
-		$html.= '<td><img src="images/core_add.png" style="cursor:pointer" alt="' . _("insert") . '" title="' . _("Click here to insert a new entry") . '" onclick="addEntry()">';
-		$html.= '<td><img src="images/trash.png" style="cursor:pointer" alt="' . _("remove") . '" title="' . _("Click here to remove this entry") . '" onclick="delEntry(' . $count . ')">';
 		$html.= '</tr>';
 
 		$count++;
 	}
 	$html.= '</table>';
 
-	$html.= form_button('entry-add', _('Add Entry'));
+	$html.= '<a href="config.php?display=contactmanager&action=addentry&group=' . $group['id'] . '"><i class="fa fa-plus fa-fw"></i>Add Entry</a>';
 }
 
 $html.= br(2);
-
-$html.= form_submit('submit', _('Submit'));
-
-$html.= '<script language="javascript">
-$(document).ready(function() {
-	$("button[name=entry-add]").click(function() {
-		addEntry();
-	});
-});
-
-function addEntry() {
-	lastid = $("#entries tr[id^=\"entry_\"]:last-child").attr("id");
-	if (lastid) {
-		index = lastid.substr(6); /* Everything after "entry_" */
-		index++;
-	} else {
-		index = 0;
-	}
-
-	row = "<tr id=\"entry_" + index + "\">";
-';
-
-switch ($group['type']) {
-case 'internal':
-	$html.= '
-	row+= "<td>";
-	row+= "<input type=\"hidden\" name=\"entry[" + index + "]\"/>";
-
-	row+= "<select name=\"user[" + index + "]\">";
-	';
-	foreach ($userlist as $id => $user) {
-		$html.= '
-		row+= "<option value=\"' . $id . '\">' . $user . '</option>";
-		';
-	}
-	$html.= '
-	row+= "</select>";
-	row+= "</td>";
-	';
-	break;
-case 'external':
-	$html.= '
-	row+= "<td>";
-	row+= "<input type=\"hidden\" name=\"entry[" + index + "]\"/>";
-
-	row+= "<span id=\"numbers_" + index + "\">";
-	row+= "<input type=\"text\" name=\"number[" + index + "][0]\" value=\"\"/>";
-	row+= "<select name=\"numbertype[" + index + "][0]\">"
-	';
-	foreach ($numbertypes as $id => $type) {
-		$html.= '
-		row+= "<option value=\"' . $id . '\">' . $type . '</option>"
-		';
-	}
-	$html.= '
-	row+= "</select>";
-	row+= "</span>";
-	row+= "</td>";
-	';
-	break;
-}
-
-$html.= '
-	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"fname[" + index + "]\" value=\"\"/></td>";
-	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"lname[" + index + "]\" value=\"\"/></td>";
-	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"title[" + index + "]\" value=\"\"/></td>";
-	row+= "<td style=\"vertical-align:top\"><input type=\"text\" name=\"company[" + index + "]\" value=\"\"/></td>";
-
-	row+= "<td><img src=\"images/core_add.png\" style=\"cursor:pointer\" alt=\"' . _("insert") . '\" title=\"' . _("Click here to insert a new entry") . '\" onclick=\"addEntry()\">";
-	row+= "<td><img src=\"images/trash.png\" style=\"cursor:pointer\" alt=\"' . _("remove") . '\" title=\"' . _("Click here to remove this entry") . '\" onclick=\"delEntry(" + index + ")\">";
-	row+= "</tr>";
-
-	$("#entries").append(row);
-}
-
-function delEntry(index) {
-	$("#entry_" + index).remove();
-}
-
-function addNumber(entry) {
-}
-
-function delNumber(entry, index) {
-}
-</script>';
+$html.= form_submit('editgroup', _('Submit'));
 
 $html.= form_close();
 

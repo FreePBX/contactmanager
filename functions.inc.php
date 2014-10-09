@@ -1,9 +1,7 @@
 <?php
 
-function contactmanager_group_add($name, $type) {
-}
+$dir = dirname(__FILE__);
 
-function contactmanager_entry_add($groupid, $type, $userid) {
-}
+require_once($dir . '/functions.inc/userman_hooks.php');
 
 ?>

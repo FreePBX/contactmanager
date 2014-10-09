@@ -25,49 +25,37 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	}
 
 	public function doConfigPageInit($display) {
-		if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'delgroup') {
-			$ret = $this->deleteGroupByID($_REQUEST['group']);
-			$this->message = array(
-				'message' => $ret['message'],
-				'type' => $ret['type']
-			);
-			return true;
+		if (isset($_REQUEST['action'])) {
+			switch ($_REQUEST['action']) {
+			case "delgroup":
+				$ret = $this->deleteGroupByID($_REQUEST['group']);
+				$this->message = array(
+					'message' => $ret['message'],
+					'type' => $ret['type']
+				);
+				return true;
+			case "delentry":
+				$ret = $this->deleteEntryByID($_REQUEST['entry']);
+				$this->message = array(
+					'message' => $ret['message'],
+					'type' => $ret['type']
+				);
+				return true;
+			}
 		}
-		if (isset($_POST['submit'])) {
+
+		if (isset($_POST['editgroup'])) {
 			$group = !empty($_POST['group']) ? $_POST['group'] : '';
 			$groupname = !empty($_POST['groupname']) ? $_POST['groupname'] : '';
 			$grouptype = !empty($_POST['grouptype']) ? $_POST['grouptype'] : '';
 
-			foreach ($_POST['entry'] as $index => $value) {
-					$numbers = array();
-					foreach ($_POST['number'][$index] as $numindex => $number) {
-						if (!$number) {
-							continue;
-						}
-						$numbers[$numindex]['number'] = $number;
-						$numbers[$numindex]['type'] = $_POST['numbertype'][$index][$numindex];
-					}
-
-					$entries[] = array(
-						'user' => $_POST['user'][$index] ? $_POST['user'][$index] : -1,
-						'numbers' => $numbers,
-						'fname' => $_POST['fname'][$index] ? $_POST['fname'][$index] : NULL,
-						'lname' => $_POST['lname'][$index] ? $_POST['lname'][$index] : NULL,
-						'title' => $_POST['title'][$index] ? $_POST['title'][$index] : NULL,
-						'company' => $_POST['company'][$index] ? $_POST['company'][$index] : NULL,
-					);
-			}
-
 			if ($groupname) {
 				if ($group) {
 					$ret = $this->updateGroup($group, $groupname);
-					if ($ret['status']) {
-						$this->deleteEntriesByGroupID($group);
-						$ret = $this->addEntriesByGroupID($group, $entries);
-					}
 				} else {
 					$ret = $this->addGroup($groupname, $grouptype);
 				}
+
 				$this->message = array(
 					'message' => $ret['message'],
 					'type' => $ret['type']
@@ -81,6 +69,72 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				return false;
 			}
 		}
+
+		if (isset($_POST['editentry'])) {
+			$group = !empty($_POST['group']) ? $_POST['group'] : '';
+			$grouptype = !empty($_POST['grouptype']) ? $_POST['grouptype'] : '';
+
+			if (!$group) {
+				$this->message = array(
+					'message' => _('Group can not be empty'),
+					'type' => 'danger'
+				);
+				return false;
+			}
+
+			$numbers = array();
+			foreach ($_POST['number'] as $index => $number) {
+				if (!$number) {
+					continue;
+				}
+				$numbers[$index]['number'] = $number;
+				$numbers[$index]['type'] = $_POST['numbertype'][$index];
+			}
+
+			$entry = array(
+				'id' => $_POST['entry'] ? $_POST['entry'] : '',
+				'groupid' => $group,
+				'user' => $_POST['user'] ? $_POST['user'] : -1,
+				'numbers' => $numbers,
+				'fname' => $_POST['fname'] ? $_POST['fname'] : NULL,
+				'lname' => $_POST['lname'] ? $_POST['lname'] : NULL,
+				'title' => $_POST['title'] ? $_POST['title'] : NULL,
+				'company' => $_POST['company'] ? $_POST['company'] : NULL,
+			);
+
+			switch ($grouptype) {
+			case "internal":
+				if ($entry['user'] == -1) {
+					$this->message = array(
+						'message' => _('An entry must have a user.'),
+						'type' => 'danger'
+					);
+					return false;
+				}
+				break;
+			case "external":
+				if (count($entry['numbers']) < 1) {
+					$this->message = array(
+						'message' => _('An entry must have numbers.'),
+						'type' => 'danger'
+					);
+					return false;
+				}
+				break;
+			}
+
+			if ($entry['id']) {
+				$ret = $this->updateEntry($entry['id'], $entry);
+			} else {
+				$ret = $this->addEntryByGroupID($group, $entry);
+			}
+
+			$this->message = array(
+				'message' => $ret['message'],
+				'type' => $ret['type']
+			);
+			return true;
+		}
 	}
 
 	public function myShowPage() {
@@ -89,20 +143,36 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$users = $userman->getAllUsers();
 
 		$action = !empty($_REQUEST['action']) ? $_REQUEST['action'] : '';
-		$html = '';
+		if ($action == "delentry") {
+			$action = "showgroup";
+		}
 
+		$html = '';
 		$html .= load_view(dirname(__FILE__).'/views/rnav.php', array("groups" => $groups));
+
 		switch($action) {
 		case "showgroup":
 		case "addgroup":
 			if ($action == "showgroup" && !empty($_REQUEST['group'])) {
 				$group = $this->getGroupByID($_REQUEST['group']);
 				$entries = $this->getEntriesByGroupID($_REQUEST['group']);
-			} else {
-				$group = array();
 			}
 
 			$html .= load_view(dirname(__FILE__).'/views/group.php', array("group" => $group, "entries" => $entries, "users" => $users, "message" => $this->message));
+			break;
+		case "showentry":
+		case "addentry":
+			if (!empty($_REQUEST['group'])) {
+				$group = $this->getGroupByID($_REQUEST['group']);
+
+				if ($action == "showentry" && !empty($_REQUEST['entry'])) {
+					$entry = $this->getEntryByID($_REQUEST['entry']);
+				} else {
+					$entry = array();
+				}
+
+				$html .= load_view(dirname(__FILE__).'/views/entry.php', array("group" => $group, "entry" => $entry, "users" => $users, "message" => $this->message));
+			}
 			break;
 		default:
 			$html .= load_view(dirname(__FILE__).'/views/main.php', array("message" => $this->message));
@@ -328,6 +398,34 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		}
 
 		return array("status" => true, "type" => "success", "message" => _("Group entries successfully added"));
+	}
+
+	public function updateEntry($id, $entry) {
+		$group = $this->getGroupByID($entry['groupid']);
+		if (!$group) {
+			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
+		}
+
+		if (!$this->getEntryByID($id)) {
+			return array("status" => false, "type" => "danger", "message" => _("Group entry does not exist"));
+		}
+
+		$sql = "UPDATE contactmanager_group_entries SET `groupid` = :groupid, `user` = :user, `fname` = :fname, `lname` = :lname, `title` = :title, `company` = :company WHERE `id` = :id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(
+			':groupid' => $entry['groupid'],
+			':user' => $entry['user'],
+			':fname' => $entry['fname'],
+			':lname' => $entry['lname'],
+			':title' => $entry['title'],
+			':company' => $entry['company'],
+			':id' => $id,
+		));
+
+		$ret = $this->deleteNumbersByEntryID($id);
+		$this->addNumbersByEntryID($id, $entry['numbers']);
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry successfully updated"), "id" => $id);
 	}
 
 	public function getNumbersByEntryID($entryid) {
