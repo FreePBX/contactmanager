@@ -89,6 +89,12 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				}
 				$numbers[$index]['number'] = $number;
 				$numbers[$index]['type'] = $_POST['numbertype'][$index];
+				if ($_POST['sms'][$index]) {
+					$numbers[$index]['flags'][] = 'sms';
+				}
+				if ($_POST['fax'][$index]) {
+					$numbers[$index]['flags'][] = 'fax';
+				}
 			}
 
 			$entry = array(
