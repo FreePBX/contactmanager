@@ -24,6 +24,7 @@ if (!$group) {
 	$grouptypes = array(
 		'internal' => _('Internal'),
 		'external' => _('External'),
+		'userman' => _('User Manager'),
 	);
 	$label = fpbx_label(_('Type'), _('Type of group'));
 	$table->add_row($label, form_dropdown('grouptype', $grouptypes, 'internal'));
@@ -49,14 +50,19 @@ if ($group) {
 
 	$html.= '<table id="entries">';
 	$html.= '<tr>';
-	$html.= '<th></th>';
-	$html.= '<th>Name</th>';
 	switch ($group['type']) {
 	case 'internal':
+		$html.= '<th></th>';
+		$html.= '<th>Name</th>';
 		$html.= '<th>User</th>';
 		break;
 	case 'external':
+		$html.= '<th></th>';
+		$html.= '<th>Name</th>';
 		$html.= '<th>Numbers</th>';
+		break;
+	case 'userman':
+		$html.= '<th>User</th>';
 		break;
 	}
 	$html.= '</tr>';
@@ -72,20 +78,27 @@ if ($group) {
 	foreach ($entries as $id => $entry) {
 		$html.= '<tr>';
 
-		$html.= '<td>';
-		$html.= '<a href="config.php?display=contactmanager&action=showentry&group=' . $group['id'] . '&entry=' . $id . '"><i class="fa fa-edit fa-fw"></i></a>';
-		$html.= '<a href="config.php?display=contactmanager&action=delentry&group=' . $group['id'] . '&entry=' . $id . '"><i class="fa fa-ban fa-fw"></i></a>';
-		$html.= '</td>';
-
-		$html.= '<td>' . $entry['fname'] . ' ' . $entry['lname'] . '</td>';
-
 		switch ($group['type']) {
 		case 'internal':
+			$html.= '<td>';
+			$html.= '<a href="config.php?display=contactmanager&action=showentry&group=' . $group['id'] . '&entry=' . $id . '"><i class="fa fa-edit fa-fw"></i></a>';
+			$html.= '<a href="config.php?display=contactmanager&action=delentry&group=' . $group['id'] . '&entry=' . $id . '"><i class="fa fa-ban fa-fw"></i></a>';
+			$html.= '</td>';
+
+			$html.= '<td>' . $entry['fname'] . ' ' . $entry['lname'] . '</td>';
+
 			$html.= '<td>';
 			$html.= $userlist[$entry['user']];
 			$html.= '</td>';
 			break;
 		case 'external':
+			$html.= '<td>';
+			$html.= '<a href="config.php?display=contactmanager&action=showentry&group=' . $group['id'] . '&entry=' . $id . '"><i class="fa fa-edit fa-fw"></i></a>';
+			$html.= '<a href="config.php?display=contactmanager&action=delentry&group=' . $group['id'] . '&entry=' . $id . '"><i class="fa fa-ban fa-fw"></i></a>';
+			$html.= '</td>';
+
+			$html.= '<td>' . $entry['fname'] . ' ' . $entry['lname'] . '</td>';
+
 			$html.= '<td>';
 			$html.= '<span id="numbers_' . $count . '">';
 			$numcount = 0;
@@ -98,6 +111,11 @@ if ($group) {
 			$html.= '</span>';
 			$html.= '</td>';
 			break;
+		case 'userman':
+			$html.= '<td>';
+			$html.= $userlist[$entry['user']];
+			$html.= '</td>';
+			break;
 		}
 
 		$html.= '</tr>';
@@ -106,7 +124,12 @@ if ($group) {
 	}
 	$html.= '</table>';
 
-	$html.= '<a href="config.php?display=contactmanager&action=addentry&group=' . $group['id'] . '"><i class="fa fa-plus fa-fw"></i>Add Entry</a>';
+	switch ($group['type']) {
+	case 'internal':
+	case 'external':
+		$html.= '<a href="config.php?display=contactmanager&action=addentry&group=' . $group['id'] . '"><i class="fa fa-plus fa-fw"></i>Add Entry</a>';
+		break;
+	}
 }
 
 $html.= br(2);

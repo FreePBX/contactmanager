@@ -154,7 +154,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		}
 
 		$html = '';
-		$html .= load_view(dirname(__FILE__).'/views/rnav.php', array("groups" => $groups));
+		$html .= load_view(dirname(__FILE__).'/views/rnav.php', array("groups" => $groups, "group" => $_REQUEST['group']));
 
 		switch($action) {
 		case "showgroup":
@@ -186,6 +186,37 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		}
 
 		return $html;
+	}
+
+	public function usermanDelUser($id, $display, $data) {
+		$groups = $this->getGroups();
+		foreach ($groups as $group) {
+			if ($group['owner'] == $id) {
+				/* Remove groups owned by user. */
+				$this->deleteGroupByID($group['id']);
+				continue;
+			}
+
+			/* Remove user from all groups they're in. */
+			$entries = $this->getEntriesByGroupID($group['id']);
+			foreach ($entries as $entry) {
+				if ($entry['user'] == $id) {
+					$this->deleteEntryByID($entry['id']);
+				}
+			}
+		}
+	}
+
+	public function usermanAddUser($id, $display, $data) {
+		$groups = $this->getGroups();
+		foreach ($groups as $group) {
+			if ($group['type'] == 'userman') {
+				$this->addEntryByGroupID($group['id'], array('user' => $id));
+			}
+		}
+	}
+
+	public function usermanUpdateUser($id, $display, $data) {
 	}
 
 	/**
@@ -249,6 +280,16 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		));
 
 		$id = $this->db->lastInsertId();
+
+		if ($type == 'userman') {
+			$userman = setup_userman();
+			$users = $userman->getAllUsers();
+
+			foreach ($users as $user) {
+				$this->addEntryByGroupID($id, array('user' => $user['id']));
+			}
+		}
+
 		return array("status" => true, "type" => "success", "message" => _("Group successfully added"), "id" => $id);
 	}
 
