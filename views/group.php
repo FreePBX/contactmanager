@@ -113,7 +113,7 @@ if ($group) {
 			break;
 		case 'userman':
 			$html.= '<td>';
-			$html.= $userlist[$entry['user']];
+			$html.= '<a href="config.php?display=userman&action=showuser&user=' . $entry['user'] . '">' . $userlist[$entry['user']] . '</a>';
 			$html.= '</td>';
 			break;
 		}
