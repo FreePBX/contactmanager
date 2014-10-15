@@ -62,6 +62,7 @@ if ($group) {
 		$html.= '<th>Numbers</th>';
 		break;
 	case 'userman':
+		$html.= '<th></th>';
 		$html.= '<th>User</th>';
 		break;
 	}
@@ -113,7 +114,11 @@ if ($group) {
 			break;
 		case 'userman':
 			$html.= '<td>';
-			$html.= '<a href="config.php?display=userman&action=showuser&user=' . $entry['user'] . '">' . $userlist[$entry['user']] . '</a>';
+			$html.= '<a href="config.php?display=userman&action=showuser&user=' . $entry['user'] . '"><i class="fa fa-edit fa-fw"></i></a>';
+			$html.= '</td>';
+
+			$html.= '<td>';
+			$html.= $userlist[$entry['user']];
 			$html.= '</td>';
 			break;
 		}
