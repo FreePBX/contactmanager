@@ -1,33 +1,33 @@
 <module>
-	<rawname>contactmanager</rawname>
-	<repo>standard</repo>
-	<name>Contact Manager</name>
-	<version>12.0.0alpha2</version>
-	<publisher>Schmooze Com Inc</publisher>
-	<license>GPLv3+</license>
-	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
-	<changelog>
-		*12.0.0* First release.
-	</changelog>
-	<category>Admin</category>
-	<description>
-		Contact Manager
-	</description>
-	<menuitems>
-		<contactmanager needsenginedb="yes">Contact Manager</contactmanager>
-	</menuitems>
-	<depends>
-		<version>12.0.0</version>
-		<module>userman ge 12.0.5</module>
-	</depends>
-	<supported>
-		<version>12.0</version>
-	</supported>
-	<hooks>
-		<userman namespace="FreePBX\modules" class="Userman">
-			<method class="Contactmanager" callingMethod="delUser">usermanDelUser</method>
-			<method class="Contactmanager" callingMethod="addUser">usermanAddUser</method>
-			<method class="Contactmanager" callingMethod="updateUser">usermanUpdateUser</method>
-		</userman>
-	</hooks>
+		<rawname>contactmanager</rawname>
+		<repo>standard</repo>
+		<name>Contact Manager</name>
+		<version>12.0.0alpha2</version>
+		<publisher>Schmooze Com Inc</publisher>
+		<license>GPLv3+</license>
+		<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
+		<changelog>
+				*12.0.0* First release.
+		</changelog>
+		<category>Admin</category>
+		<description>
+				Contact Manager
+		</description>
+		<menuitems>
+				<contactmanager needsenginedb="yes">Contact Manager</contactmanager>
+		</menuitems>
+		<depends>
+				<version>12.0.0</version>
+				<module>userman ge 12.0.9</module>
+		</depends>
+		<supported>
+				<version>12.0</version>
+		</supported>
+		<hooks>
+				<userman namespace="FreePBX\modules" class="Userman">
+						<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="delUser">usermanDelUser</method>
+						<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="addUser">usermanAddUser</method>
+						<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="updateUser">usermanUpdateUser</method>
+				</userman>
+		</hooks>
 </module>

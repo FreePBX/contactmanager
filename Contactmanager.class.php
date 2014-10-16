@@ -3,12 +3,15 @@
 //	License for all code of this FreePBX module can be found in the license file inside the module directory
 //	Copyright 2014 Schmooze Com Inc.
 //
-
-class Contactmanager extends FreePBX_Helpers implements BMO {
+namespace FreePBX\modules;
+class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	private $message = '';
+	private $lookupCache = array();
+	private $contactsCache = array();
 
 	public function __construct($freepbx = null) {
 		$this->db = $freepbx->Database;
+		$this->freepbx = $freepbx;
 	}
 
 	public function install() {
@@ -230,7 +233,18 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$sql = "SELECT * FROM contactmanager_groups ORDER BY id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute();
-		return $sth->fetchAll(PDO::FETCH_ASSOC);
+		return $sth->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	/**
+	 * Get all groups by owner
+	 * @param {int} $owner The owner ID
+	 */
+	public function getGroupsbyOwner($owner) {
+		$sql = "SELECT * FROM contactmanager_groups WHERE `owner` = :id OR `owner` = -1 ORDER BY id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':id' => $owner));
+		return $sth->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
 	/**
@@ -245,7 +259,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$sql = "SELECT * FROM contactmanager_groups WHERE `id` = :id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $id));
-		$group = $sth->fetch(PDO::FETCH_ASSOC);
+		$group = $sth->fetch(\PDO::FETCH_ASSOC);
 		return $group;
 	}
 
@@ -322,11 +336,11 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			'e.title',
 			'e.company',
 		);
-		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e 
+		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e
 			LEFT JOIN freepbx_users as u ON (e.user = u.id) WHERE e.id = :id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $id));
-		$entry = $sth->fetch(PDO::FETCH_ASSOC);
+		$entry = $sth->fetch(\PDO::FETCH_ASSOC);
 
 		$numbers = $this->getNumbersByEntryID($id);
 		if ($numbers) {
@@ -352,11 +366,11 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			'e.title',
 			'e.company',
 		);
-		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e 
+		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e
 			LEFT JOIN freepbx_users as u ON (e.user = u.id) WHERE `groupid` = :groupid ORDER BY e.id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
-		$entries = $sth->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
+		$entries = $sth->fetchAll(\PDO::FETCH_ASSOC | \PDO::FETCH_UNIQUE);
 
 		$numbers = $this->getNumbersByGroupID($groupid);
 		if ($numbers) {
@@ -486,7 +500,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_numbers WHERE `entryid` = :entryid ORDER BY id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':entryid' => $entryid));
-		$numbers = $sth->fetchAll(PDO::FETCH_ASSOC);
+		$numbers = $sth->fetchAll(\PDO::FETCH_ASSOC);
 
 		return $numbers;
 	}
@@ -499,11 +513,11 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			'n.type',
 			'n.flags',
 		);
-		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_numbers as n 
+		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_numbers as n
 			LEFT JOIN contactmanager_group_entries as e ON (n.entryid = e.id) WHERE `groupid` = :groupid ORDER BY e.id, n.id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
-		$numbers = $sth->fetchAll(PDO::FETCH_ASSOC);
+		$numbers = $sth->fetchAll(\PDO::FETCH_ASSOC);
 
 		return $numbers;
 	}
@@ -525,7 +539,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	}
 
 	public function deleteNumbersByGroupID($groupid) {
-		$sql = "DELETE n FROM contactmanager_entry_numbers as n 
+		$sql = "DELETE n FROM contactmanager_entry_numbers as n
 			LEFT JOIN contactmanager_group_entries as e ON (n.entryid = e.id) WHERE `groupid` = :groupid";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
@@ -553,6 +567,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	}
 
 	public function addNumbersByEntryID($entryid, $numbers) {
+		if(empty($numbers)) {
+			return array("status" => true, "type" => "success", "message" => _("No Numbers to add"));
+		}
 		$entry = $this->getEntryByID($entryid);
 		if (!$entry) {
 			return array("status" => false, "type" => "danger", "message" => _("Group entry does not exist"));
@@ -570,5 +587,47 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		}
 
 		return array("status" => true, "type" => "success", "message" => _("Group entry numbers successfully added"));
+	}
+
+	public function getContactsByUserID($id) {
+		if(!empty($this->contactsCache)) {
+			return $this->contactsCache;
+		}
+		$groups = $this->getGroupsByOwner($id);
+		$contacts = array();
+		foreach($groups as $group) {
+			switch($group['type']) {
+				case "userman":
+					$entries = $this->freepbx->Userman->getAllContactInfo();
+					foreach($entries as &$entry) {
+						$entry['type'] = "userman";
+					}
+					$contacts = array_merge($contacts, $entries);
+				case "external":
+				break;
+				case "internal":
+				break;
+			}
+		}
+		$this->contactsCache = $contacts;
+		return $this->contactsCache;
+	}
+
+	public function lookupByUserID($id, $search) {
+		if(!empty($this->contactsCache[$search])) {
+			return $this->contactsCache[$search];
+		}
+		$contacts = $this->getContactsByUserID($id);
+		$iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($contacts));
+		foreach($iterator as $key => $value) {
+			$value = trim($value);
+			if(!empty($value) && preg_match('/' . $search . '/',$value)) {
+				$k = $iterator->getSubIterator(0)->key();
+				$this->contactsCache[$search] = $contacts[$k];
+				return $this->contactsCache[$search];
+				break;
+			}
+		}
+		return false;
 	}
 }
