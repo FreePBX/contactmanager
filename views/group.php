@@ -37,7 +37,10 @@ $html.= $table->generate();
 
 if ($group) {
 	foreach ($users as $user) {
-		if ($user['fname'] && $user['lname']) {
+		$desc = NULL;
+		if ($user['displayname']) {
+			$desc = $user['displayname'];
+		} else if ($user['fname'] && $user['lname']) {
 			$desc = $user['fname'] . ' ' . $user['lname'];
 		} else if ($user['default_extension'] && $user['default_extension'] != 'none') {
 			$desc = 'Ext. ' . $user['default_extension'];
