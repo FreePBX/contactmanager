@@ -11,16 +11,35 @@ if (!empty($message)) {
 	$html.= '<div class="alert alert-' . $message['type'] . '">' . $message['message'] . '</div>';
 }
 
+$userlist[''] = '';
+foreach ($users as $u) {
+	if ($entry['user'] == $u['id']) {
+		$user = $u;
+	}
+
+	if ($u['displayname']) {
+		$desc = $u['displayname'];
+	} else if ($u['fname'] && $u['lname']) {
+		$desc = $u['fname'] . ' ' . $u['lname'];
+	} else if ($u['default_extension'] && $u['default_extension'] != 'none') {
+		$desc = 'Ext. ' . $u['default_extension'];
+	} else if ($u['description']) {
+		$desc = $u['description'];
+	}
+
+	$userlist[$u['id']] = ($desc ? $desc . ' ' : '') . '(' . $u['username'] . ')';
+}
+
 $table = new CI_Table;
 
-$label = fpbx_label(_('First Name'), _('First Name'));
-$table->add_row($label, form_input('fname', $entry['fname']));
+$label = fpbx_label(_('First Name'), _('First Name (overrides First Name from User Manager)'));
+$table->add_row($label, form_input('fname', $entry['fname'], ($user ? 'placeholder="' . $user['fname'] . '"' : '')));
 
-$label = fpbx_label(_('Last Name'), _('Last Name'));
-$table->add_row($label, form_input('lname', $entry['lname']));
+$label = fpbx_label(_('Last Name'), _('Last Name (overrides Last Name from User Manager)'));
+$table->add_row($label, form_input('lname', $entry['lname'], ($user ? 'placeholder="' . $user['lname'] . '"' : '')));
 
-$label = fpbx_label(_('Title'), _('Title'));
-$table->add_row($label, form_input('title', $entry['title']));
+$label = fpbx_label(_('Title'), _('Title  (overrides Title from User Manager)'));
+$table->add_row($label, form_input('title', $entry['title'], ($user ? 'placeholder="' . $user['title'] . '"' : '')));
 
 $label = fpbx_label(_('Company'), _('Company'));
 $table->add_row($label, form_input('company', $entry['company']));
@@ -29,19 +48,6 @@ $extrahtml = '';
 
 switch ($group['type']) {
 case "internal":
-	$userlist[''] = '';
-	foreach ($users as $user) {
-		if ($user['fname'] && $user['lname']) {
-			$desc = $user['fname'] . ' ' . $user['lname'];
-		} else if ($user['default_extension'] && $user['default_extension'] != 'none') {
-			$desc = 'Ext. ' . $user['default_extension'];
-		} else if ($user['description']) {
-			$desc = $user['description'];
-		}
-
-		$userlist[$user['id']] = ($desc ? $desc . ' ' : '') . '(' . $user['username'] . ')';
-	}
-
 	$label = fpbx_label(_('User'), _('A user from the User Management module'));
 	$table->add_row($label, form_dropdown('user', $userlist, $entry['user']));
 

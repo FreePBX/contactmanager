@@ -202,9 +202,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 			/* Remove user from all groups they're in. */
 			$entries = $this->getEntriesByGroupID($group['id']);
-			foreach ($entries as $entry) {
+			foreach ($entries as $entryid => $entry) {
 				if ($entry['user'] == $id) {
-					$this->deleteEntryByID($entry['id']);
+					$this->deleteEntryByID($entryid);
 				}
 			}
 		}
