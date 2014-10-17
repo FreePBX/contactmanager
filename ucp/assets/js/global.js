@@ -28,7 +28,7 @@ var ContactmanagerC = UCPMC.extend({
 			obj = this.contacts[key];
 			for (prop in obj) {
 				if (obj.hasOwnProperty(prop)){
-					if (val !== null) {
+					if (obj[prop] !== null) {
 						val = obj[prop].trim();
 						if (val !== "" && pattern.test(val)) {
 							return obj;
