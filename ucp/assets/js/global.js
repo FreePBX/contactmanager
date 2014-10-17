@@ -17,7 +17,13 @@ var ContactmanagerC = UCPMC.extend({
 	hide: function(event) {
 
 	},
-	lookup: function(search) {
+	/**
+	 * Lookup a contact from the directory
+	 * @param  {string} search The string to look for
+	 * @param  {object} regExp The regular expression object (make sure /g is on the end)
+	 * @return {string} replaced value
+	 */
+	lookup: function(search, regExp) {
 		var contact = {},
 				key = null,
 				obj = null,
@@ -29,7 +35,11 @@ var ContactmanagerC = UCPMC.extend({
 			for (prop in obj) {
 				if (obj.hasOwnProperty(prop)){
 					if (obj[prop] !== null) {
-						val = obj[prop].trim();
+						val = obj[prop];
+						if (typeof regExp !== "undefined") {
+							val = val.replace(regExp, "");
+						}
+						val = val.trim();
 						if (val !== "" && pattern.test(val)) {
 							return obj;
 						}

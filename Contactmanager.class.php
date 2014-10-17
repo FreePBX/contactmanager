@@ -613,13 +613,20 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		return $this->contactsCache;
 	}
 
-	public function lookupByUserID($id, $search) {
+	/**
+	 * Lookup a contact in the global and local directorie
+	 * @param {int} $id     The userman user id
+	 * @param {string} $search search string
+	 * @param {string} $regexp Regular Expression pattern to replace
+	 */
+	public function lookupByUserID($id, $search, $regexp = null) {
 		if(!empty($this->contactsCache[$search])) {
 			return $this->contactsCache[$search];
 		}
 		$contacts = $this->getContactsByUserID($id);
 		$iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($contacts));
 		foreach($iterator as $key => $value) {
+			$value = !empty($regexp) ? preg_replace($regexp,'',$value) : $value;
 			$value = trim($value);
 			if(!empty($value) && preg_match('/' . $search . '/',$value)) {
 				$k = $iterator->getSubIterator(0)->key();
