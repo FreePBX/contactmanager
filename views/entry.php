@@ -32,6 +32,9 @@ foreach ($users as $u) {
 
 $table = new CI_Table;
 
+$label = fpbx_label(_('Display Name'), _('Display Name (overrides Display Name from User Manager)'));
+$table->add_row($label, form_input('displayname', $entry['displayname'], ($user ? 'placeholder="' . $user['displayname'] . '"' : '')));
+
 $label = fpbx_label(_('First Name'), _('First Name (overrides First Name from User Manager)'));
 $table->add_row($label, form_input('fname', $entry['fname'], ($user ? 'placeholder="' . $user['fname'] . '"' : '')));
 

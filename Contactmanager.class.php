@@ -105,6 +105,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				'groupid' => $group,
 				'user' => $_POST['user'] ? $_POST['user'] : -1,
 				'numbers' => $numbers,
+				'displayname' => $_POST['displayname'] ? $_POST['displayname'] : NULL,
 				'fname' => $_POST['fname'] ? $_POST['fname'] : NULL,
 				'lname' => $_POST['lname'] ? $_POST['lname'] : NULL,
 				'title' => $_POST['title'] ? $_POST['title'] : NULL,
@@ -331,6 +332,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			'e.id',
 			'e.groupid',
 			'e.user',
+			'e.displayname',
 			'e.fname',
 			'e.lname',
 			'e.title',
@@ -361,6 +363,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			'e.id',
 			'e.groupid',
 			'e.user',
+			'e.displayname',
 			'e.fname',
 			'e.lname',
 			'e.title',
@@ -418,11 +421,12 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
 		}
 
-		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `fname`, `lname`, `title`, `company`) VALUES (:groupid, :user, :fname, :lname, :title, :company)";
+		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `displayname`, `fname`, `lname`, `title`, `company`) VALUES (:groupid, :user, :displayname, :fname, :lname, :title, :company)";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(
 			':groupid' => $groupid,
 			':user' => $entry['user'],
+			':displayname' => $entry['displayname'],
 			':fname' => $entry['fname'],
 			':lname' => $entry['lname'],
 			':title' => $entry['title'],
@@ -442,12 +446,13 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
 		}
 
-		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `fname`, `lname`, `title`, `company`) VALUES (:groupid, :user, :fname, :lname, :title, :company)";
+		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `displayname`, `fname`, `lname`, `title`, `company`) VALUES (:groupid, :user, :displayname, :fname, :lname, :title, :company)";
 		$sth = $this->db->prepare($sql);
 		foreach ($entries as $entry) {
 			$sth->execute(array(
 				':groupid' => $groupid,
 				':user' => $entry['user'],
+				':displayname' => $entry['displayname'],
 				':fname' => $entry['fname'],
 				':lname' => $entry['lname'],
 				':title' => $entry['title'],
@@ -471,11 +476,12 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			return array("status" => false, "type" => "danger", "message" => _("Group entry does not exist"));
 		}
 
-		$sql = "UPDATE contactmanager_group_entries SET `groupid` = :groupid, `user` = :user, `fname` = :fname, `lname` = :lname, `title` = :title, `company` = :company WHERE `id` = :id";
+		$sql = "UPDATE contactmanager_group_entries SET `groupid` = :groupid, `user` = :user, `displayname` = :displayname, `fname` = :fname, `lname` = :lname, `title` = :title, `company` = :company WHERE `id` = :id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(
 			':groupid' => $entry['groupid'],
 			':user' => $entry['user'],
+			':displayname' => $entry['displayname'],
 			':fname' => $entry['fname'],
 			':lname' => $entry['lname'],
 			':title' => $entry['title'],

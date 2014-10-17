@@ -89,7 +89,7 @@ if ($group) {
 			$html.= '<a href="config.php?display=contactmanager&action=delentry&group=' . $group['id'] . '&entry=' . $id . '"><i class="fa fa-ban fa-fw"></i></a>';
 			$html.= '</td>';
 
-			$html.= '<td>' . $entry['fname'] . ' ' . $entry['lname'] . '</td>';
+			$html.= '<td>' . ($entry['displayname'] ? $entry['displayname'] : $entry['fname'] . ' ' . $entry['lname']) . '</td>';
 
 			$html.= '<td>';
 			$html.= $userlist[$entry['user']];
@@ -101,7 +101,7 @@ if ($group) {
 			$html.= '<a href="config.php?display=contactmanager&action=delentry&group=' . $group['id'] . '&entry=' . $id . '"><i class="fa fa-ban fa-fw"></i></a>';
 			$html.= '</td>';
 
-			$html.= '<td>' . $entry['fname'] . ' ' . $entry['lname'] . '</td>';
+			$html.= '<td>' . ($entry['displayname'] ? $entry['displayname'] : $entry['fname'] . ' ' . $entry['lname']) . '</td>';
 
 			$html.= '<td>';
 			$html.= '<span id="numbers_' . $count . '">';

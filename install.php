@@ -14,6 +14,7 @@ $sql[] = 'CREATE TABLE IF NOT EXISTS `contactmanager_group_entries` (
  `id` int(11) NOT NULL AUTO_INCREMENT,
  `groupid` int(11) NOT NULL,
  `user` int(11) NOT NULL,
+ `displayname` varchar(100) default NULL,
  `fname` varchar(100) default NULL,
  `lname` varchar(100) default NULL,
  `title` varchar(100) default NULL,
@@ -46,6 +47,22 @@ if(DB::IsError($check)) {
 	$result = $db->query($sql);
 	if(DB::IsError($result)) {
 		out(_("ERROR failed to update title field"));
+	} else {
+		out(_("OK"));
+	}
+} else {
+	out(_("already exists"));
+}
+
+outn(_("checking for displayname field.."));
+$sql = "SELECT `displayname` FROM contactmanager_group_entries";
+$check = $db->getRow($sql, DB_FETCHMODE_ASSOC);
+if(DB::IsError($check)) {
+	// add new field
+	$sql = "ALTER TABLE contactmanager_group_entries ADD `displayname` varchar(100)";
+	$result = $db->query($sql);
+	if(DB::IsError($result)) {
+		out(_("ERROR failed to update displayname field"));
 	} else {
 		out(_("OK"));
 	}
