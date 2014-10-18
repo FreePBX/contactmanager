@@ -605,10 +605,21 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			switch($group['type']) {
 				case "userman":
 					$entries = $this->freepbx->Userman->getAllContactInfo();
-					foreach($entries as &$entry) {
+					$final = array();
+					foreach($entries as $entry) {
 						$entry['type'] = "userman";
+						//standardize all phone numbers, digits only
+						$entry['numbers'] = array(
+							'cell' => preg_replace('/\D/','',$entry['cell']),
+							'work' => preg_replace('/\D/','',$entry['work']),
+							'home' => preg_replace('/\D/','',$entry['home']),
+						);
+						unset($entry['cell']);
+						unset($entry['work']);
+						unset($entry['home']);
+						$final[] = $entry;
 					}
-					$contacts = array_merge($contacts, $entries);
+					$contacts = array_merge($contacts, $final);
 				case "external":
 				break;
 				case "internal":
@@ -620,7 +631,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	}
 
 	/**
-	 * Lookup a contact in the global and local directorie
+	 * Lookup a contact in the global and local directory
 	 * @param {int} $id     The userman user id
 	 * @param {string} $search search string
 	 * @param {string} $regexp Regular Expression pattern to replace
