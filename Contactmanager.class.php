@@ -620,7 +620,19 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						$final[] = $entry;
 					}
 					$contacts = array_merge($contacts, $final);
+				break;
 				case "external":
+					$entries = $this->getEntriesByGroupID($group['id']);
+					foreach($entries as &$entry) {
+						$numbers = array();
+						foreach($entry['numbers'] as $number) {
+							$numbers[$number['type']] = preg_replace("/\D/","",$number['number']);
+						}
+						unset($entry['numbers']);
+						$entry['numbers'] = $numbers;
+						$entry['type'] = "external";
+					}
+					$contacts = array_merge($contacts, $entries);
 				break;
 				case "internal":
 				break;

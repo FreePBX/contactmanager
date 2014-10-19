@@ -24,9 +24,14 @@ var ContactmanagerC = UCPMC.extend({
 	 * @return {string} replaced value
 	 */
 	lookup: function(search, regExp) {
-		var o = this.recursiveObjectSearch(search, this.contacts);
+		var o = this.recursiveObjectSearch(search, this.contacts), contact;
 		if (o !== false) {
-			return this.contacts[o[0]];
+			contact = this.contacts[o[0]];
+			if (contact !== false) {
+				contact.ignore = o[0];
+				contact.key = o[o.length - 1];
+			}
+			return contact;
 		}
 		return false;
 	},
