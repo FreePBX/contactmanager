@@ -23,6 +23,33 @@ class Contactmanager extends Modules{
 	}
 
 	/**
+	* Generate the display in UCP
+	*/
+	function getDisplay() {
+		$view = !empty($_REQUEST['view']) ? $_REQUEST['view'] : '';
+		switch($view) {
+			default:
+				$mainDisplay = "Stuff!";
+				$displayvars['activeList'] = "mycontacts";
+			break;
+		}
+		$html = $this->load_view(__DIR__.'/views/nav.php',$displayvars);
+		$html .= $mainDisplay;
+		return $html;
+	}
+
+	/**
+	* Setup Menu Items for display in UCP
+	*/
+	public function getMenuItems() {
+		$menu = array(
+			"rawname" => "contactmanager",
+			"name" => _("Contacts")
+		);
+		return $menu;
+	}
+
+	/**
 	* Send settings to UCP upon initalization
 	*/
 	function getStaticSettings() {

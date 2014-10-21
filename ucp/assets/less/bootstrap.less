@@ -1,29 +1,52 @@
-#nav-bar-background #top-dashboard-nav-right .nav-btns #nav-btn-xmpp {
-	left: -3px;
-	top: -2px;
-	.sf-xmpp-logo {
-		font-size: 125%;
+#module-page-contactmanager {
+	.separator-list {
+			height: 15px;
 	}
-	i {
-		color: red;
+	.contact-group-list {
+			background-color: aliceblue;
 	}
-}
-
-.message-box[data-module='Xmpp'] .title-bar {
-	.type i {
-		top: 3px;
+	.contact-group.active {
+			background-color: #428bca;
+			border-radius: 2px;
+			a {
+					color: #ffffff;
+			}
+			a:hover {
+					text-decoration: none;
+					background-color: #428bca;
+					color: #ffffff;
+			}
 	}
-	.name {
-		left: 47px;
-		width: 123px;
+	.contact-group-inner {
+			i {
+			font-size: 120%;
+			color: #999999;
+			float: right;
+			margin-top: 1px;
+			}
+			.badge {
+				font-size: 80%;
+				float: right;
+			}
 	}
-}
-
-#xmpp-menu {
-	.contact {
-		i {
-			padding-right: 3px;
-			color: black;
+	.contact-group.sub {
+		margin-left: 15px;
+		background-color: rgb(252, 253, 255);
+		.contact-group-inner {
+			font-size: 85%;
 		}
+	}
+	.contact-group {
+			a {
+					position: relative;
+					display: block;
+					padding: 3px 8px;
+					border-radius: 2px;
+			}
+			a:hover {
+					text-decoration: none;
+					background-color: #eeeeee;
+					color: #2a6496;
+			}
 	}
 }
