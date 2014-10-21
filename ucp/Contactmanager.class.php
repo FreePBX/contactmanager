@@ -30,9 +30,11 @@ class Contactmanager extends Modules{
 		switch($view) {
 			default:
 				$mainDisplay = "Stuff!";
+				$displayvars['groups'] = $this->cm->getGroupsByOwner($this->user['id']);
 				$displayvars['activeList'] = "mycontacts";
 			break;
 		}
+		dbug($displayvars);
 		$html = $this->load_view(__DIR__.'/views/nav.php',$displayvars);
 		$html .= $mainDisplay;
 		return $html;
