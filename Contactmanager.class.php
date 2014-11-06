@@ -185,6 +185,58 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		return $html;
 	}
 
+	public function getActionBar($request) {
+		$buttons = array();
+
+		switch ($request['display']) {
+		case 'contactmanager':
+			switch($request['action']) {
+			case 'delentry':
+			case 'showgroup':
+				$buttons['delete'] = array(
+					'name' => 'delete',
+					'id' => 'delete',
+					'value' => _('Delete')
+				);
+			/* Fall through */
+			case 'addgroup':
+				$buttons['reset'] = array(
+					'name' => 'reset',
+					'id' => 'reset',
+					'value' => _('Reset')
+				);
+				$buttons['submit'] = array(
+					'name' => 'submit',
+					'id' => 'submit',
+					'value' => _('Submit')
+				);
+				break;
+			case 'showentry':
+				$buttons['delete'] = array(
+					'name' => 'delete',
+					'id' => 'delete',
+					'value' => _('Delete')
+				);
+			/* Fall through */
+			case 'addentry':
+				$buttons['reset'] = array(
+					'name' => 'reset',
+					'id' => 'reset',
+					'value' => _('Reset')
+				);
+				$buttons['submit'] = array(
+					'name' => 'submit',
+					'id' => 'submit',
+					'value' => _('Submit')
+				);
+				break;
+			}
+			break;
+		}
+
+		return $buttons;
+	}
+
 	public function usermanDelUser($id, $display, $data) {
 		$groups = $this->getGroups();
 		foreach ($groups as $group) {

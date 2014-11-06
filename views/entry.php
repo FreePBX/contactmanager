@@ -1,6 +1,6 @@
 <?php
 $html = '';
-$html.= form_open($_SERVER['REQUEST_URI']);
+$html.= form_open('', 'name="entry" method="post" class="fpbx-submit" data-fpbx-delete="config.php?display=contactmanager&group=' . $group['id'] . '&entry=' . $entry['id'] . '&action=delentry"');
 $html.= form_hidden('group', $group['id']);
 $html.= form_hidden('grouptype', $group['type']);
 $html.= form_hidden('entry', $entry['id']);
@@ -55,7 +55,7 @@ case "internal":
 	$table->add_row($label, form_dropdown('user', $userlist, $entry['user']));
 
 	$extrahtml.= '<script language="javascript">
-		$("form").submit(function(event) {
+		$("form[name=\"entry\"]").submit(function(event) {
 			if ($("select[name=user]").val() == "") {
 				alert("An entry must have a user.");
 				event.preventDefault();
@@ -106,7 +106,7 @@ case "external":
 	$extrahtml.= br(2);
 
 	$extrahtml.= '<script language="javascript">
-		$("form").submit(function(event) {
+		$("form[name=\"entry\"]").submit(function(event) {
 			$numbers = $("#numbers input[name^=\"number[\"]");
 			if ($numbers.size() < 1) {
 				alert("An entry must have a number.");
@@ -169,7 +169,6 @@ $html.= $table->generate();
 $html.= $extrahtml;
 
 $html.= br(2);
-$html.= form_submit('submit', _('Submit'));
 
 $html.= form_close();
 

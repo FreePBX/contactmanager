@@ -1,6 +1,6 @@
 <?php
 $html = '';
-$html.= form_open($_SERVER['REQUEST_URI']);
+$html.= form_open('', 'name="group" class="fpbx-submit" data-fpbx-delete="config.php?display=contactmanager&group=' . $group['id'] . '&action=delgroup"');
 $html.= form_hidden('group', $group['id']);
 
 if (!$group) {
@@ -11,11 +11,6 @@ $html.= heading($group ? _("Edit Group") : _("Add Group"));
 
 if (!empty($message)) {
 	$html.= '<div class="alert alert-' . $message['type'] . '">' . $message['message'] . '</div>';
-}
-
-if ($group) {
-	$html.= '<p><a href="config.php?display=contactmanager&action=delgroup&group=' . $group['id'] . '">
-		<i class="fa fa-trash-o fa-fw"></i>' . sprintf(_('Delete Group: %s'), $group['name']) . '</a></p>';
 }
 
 $table = new CI_Table;
@@ -141,12 +136,11 @@ if ($group) {
 }
 
 $html.= br(2);
-$html.= form_submit('submit', _('Submit'));
 
 $html.= form_close();
 
 $html.= '<script language="javascript">
-	$("form").submit(function(event) {
+	$("form[name=\"group\"]").submit(function(event) {
 		if ($("input[name=groupname]").val() == "") {
 			alert("Group name cannot be blank.");
 			event.preventDefault();
