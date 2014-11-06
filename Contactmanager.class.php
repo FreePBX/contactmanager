@@ -47,16 +47,88 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			}
 		}
 
-		if (isset($_POST['editgroup'])) {
+		if (isset($_POST['group'])) {
 			$group = !empty($_POST['group']) ? $_POST['group'] : '';
-			$groupname = !empty($_POST['groupname']) ? $_POST['groupname'] : '';
-			$grouptype = !empty($_POST['grouptype']) ? $_POST['grouptype'] : '';
 
-			if ($groupname) {
-				if ($group) {
-					$ret = $this->updateGroup($group, $groupname);
+			if (!isset($_POST['entry'])) {
+				$entry = !empty($_POST['entry']) ? $_POST['entry'] : '';
+				$grouptype = !empty($_POST['grouptype']) ? $_POST['grouptype'] : '';
+				$groupname = !empty($_POST['groupname']) ? $_POST['groupname'] : '';
+
+				if ($groupname) {
+					if ($group) {
+						$ret = $this->updateGroup($group, $groupname);
+					} else {
+						$ret = $this->addGroup($groupname, $grouptype);
+					}
+
+					$this->message = array(
+						'message' => $ret['message'],
+						'type' => $ret['type']
+					);
+					return true;
 				} else {
-					$ret = $this->addGroup($groupname, $grouptype);
+					$this->message = array(
+						'message' => _('Group name can not be blank'),
+						'type' => 'danger'
+					);
+					return false;
+				}
+			} else {
+				$grouptype = !empty($_POST['grouptype']) ? $_POST['grouptype'] : '';
+
+				$numbers = array();
+				foreach ($_POST['number'] as $index => $number) {
+					if (!$number) {
+						continue;
+					}
+					$numbers[$index]['number'] = $number;
+					$numbers[$index]['type'] = $_POST['numbertype'][$index];
+					if ($_POST['sms'][$index]) {
+						$numbers[$index]['flags'][] = 'sms';
+					}
+					if ($_POST['fax'][$index]) {
+						$numbers[$index]['flags'][] = 'fax';
+					}
+				}
+
+				$entry = array(
+					'id' => $_POST['entry'] ? $_POST['entry'] : '',
+					'groupid' => $group,
+					'user' => $_POST['user'] ? $_POST['user'] : -1,
+					'numbers' => $numbers,
+					'displayname' => $_POST['displayname'] ? $_POST['displayname'] : NULL,
+					'fname' => $_POST['fname'] ? $_POST['fname'] : NULL,
+					'lname' => $_POST['lname'] ? $_POST['lname'] : NULL,
+					'title' => $_POST['title'] ? $_POST['title'] : NULL,
+					'company' => $_POST['company'] ? $_POST['company'] : NULL,
+				);
+
+				switch ($grouptype) {
+				case "internal":
+					if ($entry['user'] == -1) {
+						$this->message = array(
+							'message' => _('An entry must have a user.'),
+							'type' => 'danger'
+						);
+						return false;
+					}
+					break;
+				case "external":
+					if (count($entry['numbers']) < 1) {
+						$this->message = array(
+							'message' => _('An entry must have numbers.'),
+							'type' => 'danger'
+						);
+						return false;
+					}
+					break;
+				}
+
+				if ($entry['id']) {
+					$ret = $this->updateEntry($entry['id'], $entry);
+				} else {
+					$ret = $this->addEntryByGroupID($group, $entry);
 				}
 
 				$this->message = array(
@@ -64,86 +136,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					'type' => $ret['type']
 				);
 				return true;
-			} else {
-				$this->message = array(
-					'message' => _('Group name can not be blank'),
-					'type' => 'danger'
-				);
-				return false;
 			}
-		}
-
-		if (isset($_POST['editentry'])) {
-			$group = !empty($_POST['group']) ? $_POST['group'] : '';
-			$grouptype = !empty($_POST['grouptype']) ? $_POST['grouptype'] : '';
-
-			if (!$group) {
-				$this->message = array(
-					'message' => _('Group can not be empty'),
-					'type' => 'danger'
-				);
-				return false;
-			}
-
-			$numbers = array();
-			foreach ($_POST['number'] as $index => $number) {
-				if (!$number) {
-					continue;
-				}
-				$numbers[$index]['number'] = $number;
-				$numbers[$index]['type'] = $_POST['numbertype'][$index];
-				if ($_POST['sms'][$index]) {
-					$numbers[$index]['flags'][] = 'sms';
-				}
-				if ($_POST['fax'][$index]) {
-					$numbers[$index]['flags'][] = 'fax';
-				}
-			}
-
-			$entry = array(
-				'id' => $_POST['entry'] ? $_POST['entry'] : '',
-				'groupid' => $group,
-				'user' => $_POST['user'] ? $_POST['user'] : -1,
-				'numbers' => $numbers,
-				'displayname' => $_POST['displayname'] ? $_POST['displayname'] : NULL,
-				'fname' => $_POST['fname'] ? $_POST['fname'] : NULL,
-				'lname' => $_POST['lname'] ? $_POST['lname'] : NULL,
-				'title' => $_POST['title'] ? $_POST['title'] : NULL,
-				'company' => $_POST['company'] ? $_POST['company'] : NULL,
-			);
-
-			switch ($grouptype) {
-			case "internal":
-				if ($entry['user'] == -1) {
-					$this->message = array(
-						'message' => _('An entry must have a user.'),
-						'type' => 'danger'
-					);
-					return false;
-				}
-				break;
-			case "external":
-				if (count($entry['numbers']) < 1) {
-					$this->message = array(
-						'message' => _('An entry must have numbers.'),
-						'type' => 'danger'
-					);
-					return false;
-				}
-				break;
-			}
-
-			if ($entry['id']) {
-				$ret = $this->updateEntry($entry['id'], $entry);
-			} else {
-				$ret = $this->addEntryByGroupID($group, $entry);
-			}
-
-			$this->message = array(
-				'message' => $ret['message'],
-				'type' => $ret['type']
-			);
-			return true;
 		}
 	}
 
@@ -621,7 +614,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 	/**
 	 * Lookup a contact in the global and local directorie
-	 * @param {int} $id     The userman user id
+	 * @param {int} $id The userman user id
 	 * @param {string} $search search string
 	 * @param {string} $regexp Regular Expression pattern to replace
 	 */

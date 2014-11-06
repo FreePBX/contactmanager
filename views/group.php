@@ -141,9 +141,18 @@ if ($group) {
 }
 
 $html.= br(2);
-$html.= form_submit('editgroup', _('Submit'));
+$html.= form_submit('submit', _('Submit'));
 
 $html.= form_close();
+
+$html.= '<script language="javascript">
+	$("form").submit(function(event) {
+		if ($("input[name=groupname]").val() == "") {
+			alert("Group name cannot be blank.");
+			event.preventDefault();
+		}
+	});
+</script>';
 
 echo $html;
 ?>

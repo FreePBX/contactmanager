@@ -169,7 +169,7 @@ $html.= $table->generate();
 $html.= $extrahtml;
 
 $html.= br(2);
-$html.= form_submit('editentry', _('Submit'));
+$html.= form_submit('submit', _('Submit'));
 
 $html.= form_close();
 
