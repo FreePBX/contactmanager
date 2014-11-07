@@ -62,6 +62,7 @@ if ($group) {
 	case 'external':
 		$html.= '<th></th>';
 		$html.= '<th>Name</th>';
+		$html.= '<th>Company</th>';
 		$html.= '<th>Numbers</th>';
 		break;
 	case 'userman':
@@ -102,6 +103,7 @@ if ($group) {
 			$html.= '</td>';
 
 			$html.= '<td>' . ($entry['displayname'] ? $entry['displayname'] : $entry['fname'] . ' ' . $entry['lname']) . '</td>';
+			$html.= '<td>' . $entry['company'] . '</td>';
 
 			$html.= '<td>';
 			$html.= '<span id="numbers_' . $count . '">';
