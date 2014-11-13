@@ -92,11 +92,38 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					}
 				}
 
+				$xmpps = array();
+				foreach ($_POST['xmpp'] as $index => $xmpp) {
+					if (!$xmpp) {
+						continue;
+					}
+					$xmpps[$index]['xmpp'] = $xmpp;
+				}
+
+				$emails = array();
+				foreach ($_POST['email'] as $index => $email) {
+					if (!$email) {
+						continue;
+					}
+					$emails[$index]['email'] = $email;
+				}
+
+				$website = array();
+				foreach ($_POST['website'] as $index => $website) {
+					if (!$website) {
+						continue;
+					}
+					$websites[$index]['website'] = $website;
+				}
+
 				$entry = array(
 					'id' => $_POST['entry'] ? $_POST['entry'] : '',
 					'groupid' => $group,
 					'user' => $_POST['user'] ? $_POST['user'] : -1,
 					'numbers' => $numbers,
+					'xmpps' => $xmpps,
+					'emails' => $emails,
+					'websites' => $websites,
 					'displayname' => $_POST['displayname'] ? $_POST['displayname'] : NULL,
 					'fname' => $_POST['fname'] ? $_POST['fname'] : NULL,
 					'lname' => $_POST['lname'] ? $_POST['lname'] : NULL,
@@ -348,6 +375,33 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			}
 		}
 
+		$xmpps = $this->getXMPPsByEntryID($id);
+		if ($xmpps) {
+			foreach ($xmpps as $xmpp) {
+				$entry['xmpps'][$xmpp['id']] = array(
+					'xmpp' => $xmpp['xmpp'],
+				);
+			}
+		}
+
+		$emails = $this->getEmailsByEntryID($id);
+		if ($emails) {
+			foreach ($emails as $email) {
+				$entry['emails'][$email['id']] = array(
+					'email' => $email['email'],
+				);
+			}
+		}
+
+		$websites = $this->getWebsitesByEntryID($id);
+		if ($websites) {
+			foreach ($websites as $website) {
+				$entry['websites'][$website['id']] = array(
+					'website' => $website['website'],
+				);
+			}
+		}
+
 		return $entry;
 	}
 
@@ -379,11 +433,53 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			}
 		}
 
+		$xmpps = $this->getXMPPsByGroupID($groupid);
+		if ($xmpps) {
+			foreach ($xmpps as $xmpp) {
+				$entries[$xmpp['entryid']]['xmpps'][$xmpp['id']] = array(
+					'xmpp' => $xmpp['xmpp'],
+				);
+			}
+		}
+
+		$emails = $this->getEmailsByGroupID($groupid);
+		if ($emails) {
+			foreach ($emails as $email) {
+				$entries[$email['entryid']]['emails'][$email['id']] = array(
+					'email' => $email['email'],
+				);
+			}
+		}
+
+		$websites = $this->getWebsitesByGroupID($groupid);
+		if ($websites) {
+			foreach ($websites as $website) {
+				$entries[$website['entryid']]['websites'][$website['id']] = array(
+					'website' => $website['website'],
+				);
+			}
+		}
+
 		return $entries;
 	}
 
 	public function deleteEntryByID($id) {
 		$ret = $this->deleteNumbersByEntryID($id);
+		if (!$ret['status']) {
+			return $ret;
+		}
+
+		$ret = $this->deleteXMPPsByEntryID($id);
+		if (!$ret['status']) {
+			return $ret;
+		}
+
+		$ret = $this->deleteEmailsByEntryID($id);
+		if (!$ret['status']) {
+			return $ret;
+		}
+
+		$ret = $this->deleteWebsitesByEntryID($id);
 		if (!$ret['status']) {
 			return $ret;
 		}
@@ -397,6 +493,21 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 	public function deleteEntriesByGroupID($groupid) {
 		$ret = $this->deleteNumbersByGroupID($groupid);
+		if (!$ret['status']) {
+			return $ret;
+		}
+
+		$ret = $this->deleteXMPPsByGroupID($groupid);
+		if (!$ret['status']) {
+			return $ret;
+		}
+
+		$ret = $this->deleteEmailsByGroupID($groupid);
+		if (!$ret['status']) {
+			return $ret;
+		}
+
+		$ret = $this->deleteWebsitesByGroupID($groupid);
 		if (!$ret['status']) {
 			return $ret;
 		}
@@ -430,6 +541,12 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 		$this->addNumbersByEntryID($id, $entry['numbers']);
 
+		$this->addXMPPsByEntryID($id, $entry['xmpps']);
+
+		$this->addEmailsByEntryID($id, $entry['emails']);
+
+		$this->addWebsitesByEntryID($id, $entry['websites']);
+
 		return array("status" => true, "type" => "success", "message" => _("Group entry successfully added"), "id" => $id);
 	}
 
@@ -454,6 +571,12 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 			$id = $this->db->lastInsertId();
 			$this->addNumbersByEntryID($id, $entry['numbers']);
+
+			$this->addXMPPsByEntryID($id, $entry['xmpps']);
+
+			$this->addEmailsByEntryID($id, $entry['emails']);
+
+			$this->addWebsitesByEntryID($id, $entry['websites']);
 		}
 
 		return array("status" => true, "type" => "success", "message" => _("Group entries successfully added"));
@@ -484,6 +607,15 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 		$ret = $this->deleteNumbersByEntryID($id);
 		$this->addNumbersByEntryID($id, $entry['numbers']);
+
+		$ret = $this->deleteXMPPsByEntryID($id);
+		$this->addXMPPsByEntryID($id, $entry['xmpps']);
+
+		$ret = $this->deleteEmailsByEntryID($id);
+		$this->addEmailsByEntryID($id, $entry['emails']);
+
+		$ret = $this->deleteWebsitesByEntryID($id);
+		$this->addWebsitesByEntryID($id, $entry['websites']);
 
 		return array("status" => true, "type" => "success", "message" => _("Group entry successfully updated"), "id" => $id);
 	}
@@ -586,6 +718,282 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		}
 
 		return array("status" => true, "type" => "success", "message" => _("Group entry numbers successfully added"));
+	}
+
+	public function getXMPPsByEntryID($entryid) {
+		$fields = array(
+			'id',
+			'entryid',
+			'xmpp',
+		);
+		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_xmpps WHERE `entryid` = :entryid ORDER BY id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':entryid' => $entryid));
+		$xmpps = $sth->fetchAll(\PDO::FETCH_ASSOC);
+
+		return $xmpps;
+	}
+
+	public function getXMPPsByGroupID($groupid) {
+		$fields = array(
+			'x.id',
+			'x.entryid',
+			'x.xmpp',
+		);
+		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_xmpps as x
+			LEFT JOIN contactmanager_group_entries as e ON (x.entryid = e.id) WHERE `groupid` = :groupid ORDER BY e.id, x.id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':groupid' => $groupid));
+		$xmpps = $sth->fetchAll(\PDO::FETCH_ASSOC);
+
+		return $xmpps;
+	}
+
+	public function deleteXMPPByID($id) {
+		$sql = "DELETE FROM contactmanager_entry_xmpps WHERE `id` = :id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':id' => $id));
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry XMPP successfully deleted"));
+	}
+
+	public function deleteXMPPsByEntryID($entryid) {
+		$sql = "DELETE FROM contactmanager_entry_xmpps WHERE `entryid` = :entryid";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':entryid' => $entryid));
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry XMPPs successfully deleted"));
+	}
+
+	public function deleteXMPPsByGroupID($groupid) {
+		$sql = "DELETE x FROM contactmanager_entry_xmpps as x
+			LEFT JOIN contactmanager_group_entries as e ON (x.entryid = e.id) WHERE `groupid` = :groupid";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':groupid' => $groupid));
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry XMPPs successfully deleted"));
+	}
+
+	public function addXMPPByEntryID($entryid, $xmpp) {
+		$entry = $this->getEntryByID($entryid);
+		if (!$entry) {
+			return array("status" => false, "type" => "danger", "message" => _("Group entry does not exist"));
+		}
+
+		$sql = "INSERT INTO contactmanager_entry_xmpps (entryid, xmpp) VALUES (:entryid, :xmpp)";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(
+			':entryid' => $entryid,
+			':xmpp' => $xmpp['xmpp'],
+		));
+
+		$id = $this->db->lastInsertId();
+		return array("status" => true, "type" => "success", "message" => _("Group entry XMPP successfully added"), "id" => $id);
+	}
+
+	public function addXMPPsByEntryID($entryid, $xmpps) {
+		if(empty($xmpps)) {
+			return array("status" => true, "type" => "success", "message" => _("No XMPPs to add"));
+		}
+		$entry = $this->getEntryByID($entryid);
+		if (!$entry) {
+			return array("status" => false, "type" => "danger", "message" => _("Group entry does not exist"));
+		}
+
+		$sql = "INSERT INTO contactmanager_entry_xmpps (entryid, xmpp) VALUES (:entryid, :xmpp)";
+		$sth = $this->db->prepare($sql);
+		foreach ($xmpps as $xmpp) {
+			$sth->execute(array(
+				':entryid' => $entryid,
+				':xmpp' => $xmpp['xmpp'],
+			));
+		}
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry XMPPs successfully added"));
+	}
+
+	public function getEmailsByEntryID($entryid) {
+		$fields = array(
+			'id',
+			'entryid',
+			'email',
+		);
+		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_emails WHERE `entryid` = :entryid ORDER BY id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':entryid' => $entryid));
+		$emails = $sth->fetchAll(\PDO::FETCH_ASSOC);
+
+		return $emails;
+	}
+
+	public function getEmailsByGroupID($groupid) {
+		$fields = array(
+			'm.id',
+			'm.entryid',
+			'm.email',
+		);
+		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_emails as m
+			LEFT JOIN contactmanager_group_entries as e ON (m.entryid = e.id) WHERE `groupid` = :groupid ORDER BY e.id, m.id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':groupid' => $groupid));
+		$emails = $sth->fetchAll(\PDO::FETCH_ASSOC);
+
+		return $emails;
+	}
+
+	public function deleteEmailByID($id) {
+		$sql = "DELETE FROM contactmanager_entry_emails WHERE `id` = :id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':id' => $id));
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry E-Mail successfully deleted"));
+	}
+
+	public function deleteEmailsByEntryID($entryid) {
+		$sql = "DELETE FROM contactmanager_entry_emails WHERE `entryid` = :entryid";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':entryid' => $entryid));
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry E-Mails successfully deleted"));
+	}
+
+	public function deleteEmailsByGroupID($groupid) {
+		$sql = "DELETE m FROM contactmanager_entry_emails as m
+			LEFT JOIN contactmanager_group_entries as e ON (m.entryid = e.id) WHERE `groupid` = :groupid";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':groupid' => $groupid));
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry E-Mails successfully deleted"));
+	}
+
+	public function addEmailByEntryID($entryid, $email) {
+		$entry = $this->getEntryByID($entryid);
+		if (!$entry) {
+			return array("status" => false, "type" => "danger", "message" => _("Group entry does not exist"));
+		}
+
+		$sql = "INSERT INTO contactmanager_entry_emails (entryid, email) VALUES (:entryid, :email)";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(
+			':entryid' => $entryid,
+			':email' => $email['email'],
+		));
+
+		$id = $this->db->lastInsertId();
+		return array("status" => true, "type" => "success", "message" => _("Group entry E-Mail successfully added"), "id" => $id);
+	}
+
+	public function addEmailsByEntryID($entryid, $emails) {
+		if(empty($emails)) {
+			return array("status" => true, "type" => "success", "message" => _("No E-Mails to add"));
+		}
+		$entry = $this->getEntryByID($entryid);
+		if (!$entry) {
+			return array("status" => false, "type" => "danger", "message" => _("Group entry does not exist"));
+		}
+
+		$sql = "INSERT INTO contactmanager_entry_emails (entryid, email) VALUES (:entryid, :email)";
+		$sth = $this->db->prepare($sql);
+		foreach ($emails as $email) {
+			$sth->execute(array(
+				':entryid' => $entryid,
+				':email' => $email['email'],
+			));
+		}
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry E-Mails successfully added"));
+	}
+
+	public function getWebsitesByEntryID($entryid) {
+		$fields = array(
+			'id',
+			'entryid',
+			'website',
+		);
+		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_websites WHERE `entryid` = :entryid ORDER BY id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':entryid' => $entryid));
+		$websites = $sth->fetchAll(\PDO::FETCH_ASSOC);
+
+		return $websites;
+	}
+
+	public function getWebsitesByGroupID($groupid) {
+		$fields = array(
+			'w.id',
+			'w.entryid',
+			'w.website',
+		);
+		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_websites as w
+			LEFT JOIN contactmanager_group_entries as e ON (w.entryid = e.id) WHERE `groupid` = :groupid ORDER BY e.id, w.id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':groupid' => $groupid));
+		$websites = $sth->fetchAll(\PDO::FETCH_ASSOC);
+
+		return $websites;
+	}
+
+	public function deleteWebsiteByID($id) {
+		$sql = "DELETE FROM contactmanager_entry_websites WHERE `id` = :id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':id' => $id));
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry Website successfully deleted"));
+	}
+
+	public function deleteWebsitesByEntryID($entryid) {
+		$sql = "DELETE FROM contactmanager_entry_websites WHERE `entryid` = :entryid";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':entryid' => $entryid));
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry Websites successfully deleted"));
+	}
+
+	public function deleteWebsitesByGroupID($groupid) {
+		$sql = "DELETE w FROM contactmanager_entry_websites as w
+			LEFT JOIN contactmanager_group_entries as e ON (w.entryid = e.id) WHERE `groupid` = :groupid";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':groupid' => $groupid));
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry Websites successfully deleted"));
+	}
+
+	public function addWebsiteByEntryID($entryid, $website) {
+		$entry = $this->getEntryByID($entryid);
+		if (!$entry) {
+			return array("status" => false, "type" => "danger", "message" => _("Group entry does not exist"));
+		}
+
+		$sql = "INSERT INTO contactmanager_entry_websites (entryid, website) VALUES (:entryid, :website)";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(
+			':entryid' => $entryid,
+			':website' => $website['website'],
+		));
+
+		$id = $this->db->lastInsertId();
+		return array("status" => true, "type" => "success", "message" => _("Group entry Website successfully added"), "id" => $id);
+	}
+
+	public function addWebsitesByEntryID($entryid, $websites) {
+		if(empty($websites)) {
+			return array("status" => true, "type" => "success", "message" => _("No Websites to add"));
+		}
+		$entry = $this->getEntryByID($entryid);
+		if (!$entry) {
+			return array("status" => false, "type" => "danger", "message" => _("Group entry does not exist"));
+		}
+
+		$sql = "INSERT INTO contactmanager_entry_websites (entryid, website) VALUES (:entryid, :website)";
+		$sth = $this->db->prepare($sql);
+		foreach ($websites as $website) {
+			$sth->execute(array(
+				':entryid' => $entryid,
+				':website' => $website['website'],
+			));
+		}
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry Websites successfully added"));
 	}
 
 	public function getContactsByUserID($id) {
