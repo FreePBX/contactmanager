@@ -31,6 +31,27 @@ $sql[] = 'CREATE TABLE IF NOT EXISTS `contactmanager_entry_numbers` (
  PRIMARY KEY (`id`)
 );';
 
+$sql[] = 'CREATE TABLE IF NOT EXISTS `contactmanager_entry_xmpps` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `entryid` int(11) NOT NULL,
+ `xmpp` varchar(100) default NULL,
+ PRIMARY KEY (`id`)
+);';
+
+$sql[] = 'CREATE TABLE IF NOT EXISTS `contactmanager_entry_emails` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `entryid` int(11) NOT NULL,
+ `email` varchar(100) default NULL,
+ PRIMARY KEY (`id`)
+);';
+
+$sql[] = 'CREATE TABLE IF NOT EXISTS `contactmanager_entry_websites` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `entryid` int(11) NOT NULL,
+ `website` varchar(100) default NULL,
+ PRIMARY KEY (`id`)
+);';
+
 foreach ($sql as $statement){
 	$check = $db->query($statement);
 	if (DB::IsError($check)){
