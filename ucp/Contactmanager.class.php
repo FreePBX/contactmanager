@@ -17,6 +17,11 @@ class Contactmanager extends Modules{
 		$this->user = $this->UCP->User->getUser();
 	}
 
+	public function lookupMultiple($search) {
+		$entry = $this->cm->lookupMultipleByUserID($this->user['id'],$search);
+		return $entry;
+	}
+
 	public function lookup($search) {
 		$entry = $this->cm->lookupByUserID($this->user['id'],$search);
 		return $entry;
@@ -27,14 +32,30 @@ class Contactmanager extends Modules{
 	*/
 	function getDisplay() {
 		$view = !empty($_REQUEST['view']) ? $_REQUEST['view'] : '';
+
+		$displayvars['groups'] = $this->cm->getGroupsByOwner($this->user['id']);
+		$displayvars['activeList'] = "mycontacts";
+		$displayvars['total'] = 0;
+		$allContacts = array();
+		$c = 1;
+		foreach($displayvars['groups'] as &$group) {
+			$group['contacts'] = $this->cm->getEntriesByGroupID($group['id']);
+			$group['count'] = count($group['contacts']);
+			$displayvars['total'] = $displayvars['total'] + $group['count'];
+			$allContacts = array_merge($allContacts,$group['contacts']);
+		}
+
+		usort($allContacts, function($a, $b) {
+			return strnatcmp($a['displayname'], $b['displayname']);
+		});
+
 		switch($view) {
 			default:
-				$mainDisplay = "Stuff!";
-				$displayvars['groups'] = $this->cm->getGroupsByOwner($this->user['id']);
-				$displayvars['activeList'] = "mycontacts";
+				$displayvars['contacts'] = $allContacts;
 			break;
 		}
-		dbug($displayvars);
+
+		$mainDisplay = $this->load_view(__DIR__.'/views/contacts.php',$displayvars);
 		$html = $this->load_view(__DIR__.'/views/nav.php',$displayvars);
 		$html .= $mainDisplay;
 		return $html;

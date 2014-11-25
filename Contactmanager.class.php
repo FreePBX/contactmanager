@@ -410,10 +410,10 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			'e.id',
 			'e.groupid',
 			'e.user',
-			'e.displayname',
-			'e.fname',
-			'e.lname',
-			'e.title',
+			'COALESCE(e.displayname,u.displayname,u.fname,u.username) as displayname',
+			'COALESCE(e.fname,u.fname) as fname',
+			'COALESCE(e.lname,u.lname) as lname',
+			'COALESCE(e.title,u.title) as title',
 			'e.company',
 		);
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e
@@ -1058,7 +1058,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		foreach($iterator as $key => $value) {
 			$value = !empty($regexp) ? preg_replace($regexp,'',$value) : $value;
 			$value = trim($value);
-			if(!empty($value) && preg_match('/' . $search . '/',$value)) {
+			if(!empty($value) && preg_match('/' . $search . '/i',$value)) {
 				$k = $iterator->getSubIterator(0)->key();
 				$this->contactsCache[$search] = $contacts[$k];
 				return $this->contactsCache[$search];
@@ -1066,5 +1066,28 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			}
 		}
 		return false;
+	}
+
+	/**
+	* Lookup a contact in the global and local directorie
+	* @param {int} $id The userman user id
+	* @param {string} $search search string
+	* @param {string} $regexp Regular Expression pattern to replace
+	*/
+	public function lookupMultipleByUserID($id, $search, $regexp = null) {
+		$contacts = $this->getContactsByUserID($id);
+		$iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($contacts));
+		$final = array();
+		$list = array();
+		foreach($iterator as $key => $value) {
+			$value = !empty($regexp) ? preg_replace($regexp,'',$value) : $value;
+			$value = trim($value);
+			$k = $iterator->getSubIterator(0)->key();
+			if(!in_array($k, $list) && !empty($value) && preg_match('/' . $search . '/i',$value)) {
+				$final[] = $contacts[$k];
+				$list[] = $k;
+			}
+		}
+		return $final;
 	}
 }
