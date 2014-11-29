@@ -2,11 +2,12 @@
 		<rawname>contactmanager</rawname>
 		<repo>standard</repo>
 		<name>Contact Manager</name>
-		<version>12.0.0beta2</version>
+		<version>12.0.0beta3</version>
 		<publisher>Schmooze Com Inc</publisher>
 		<license>GPLv3+</license>
 		<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 		<changelog>
+				*12.0.0beta3* UCP Global Support
 				*12.0.0beta2* Add additional external contact fields.
 				*12.0.0beta1* First beta release.
 		</changelog>
