@@ -352,10 +352,10 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			'e.id',
 			'e.groupid',
 			'e.user',
-			'e.displayname',
-			'e.fname',
-			'e.lname',
-			'e.title',
+			'COALESCE(e.displayname,u.displayname,u.fname,u.username) as displayname',
+			'COALESCE(e.fname,u.fname) as fname',
+			'COALESCE(e.lname,u.lname) as lname',
+			'COALESCE(e.title,u.title) as title',
 			'e.company',
 		);
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e
@@ -364,50 +364,86 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sth->execute(array(':id' => $id));
 		$entry = $sth->fetch(\PDO::FETCH_ASSOC);
 
-		$numbers = $this->getNumbersByEntryID($id);
-		if ($numbers) {
-			foreach ($numbers as $number) {
-				$entry['numbers'][$number['id']] = array(
-					'number' => $number['number'],
-					'type' => $number['type'],
-					'flags' => $number['flags'] ? explode('|', $number['flags']) : array(),
-				);
-			}
-		}
+		$group = $this->getGroupByID($entry['groupid']);
 
-		$xmpps = $this->getXMPPsByEntryID($id);
-		if ($xmpps) {
-			foreach ($xmpps as $xmpp) {
-				$entry['xmpps'][$xmpp['id']] = array(
-					'xmpp' => $xmpp['xmpp'],
-				);
-			}
-		}
+		switch($group['type']) {
+			case "external":
+				$numbers = $this->getNumbersByEntryID($id);
+				if ($numbers) {
+					foreach ($numbers as $number) {
+						$entry['numbers'][$number['id']] = array(
+							'number' => $number['number'],
+							'type' => $number['type'],
+							'flags' => $number['flags'] ? explode('|', $number['flags']) : array(),
+						);
+					}
+				}
 
-		$emails = $this->getEmailsByEntryID($id);
-		if ($emails) {
-			foreach ($emails as $email) {
-				$entry['emails'][$email['id']] = array(
-					'email' => $email['email'],
-				);
-			}
-		}
+				$xmpps = $this->getXMPPsByEntryID($id);
+				if ($xmpps) {
+					foreach ($xmpps as $xmpp) {
+						$entry['xmpps'][$xmpp['id']] = array(
+							'xmpp' => $xmpp['xmpp'],
+						);
+					}
+				}
 
-		$websites = $this->getWebsitesByEntryID($id);
-		if ($websites) {
-			foreach ($websites as $website) {
-				$entry['websites'][$website['id']] = array(
-					'website' => $website['website'],
-				);
-			}
-		}
+				$emails = $this->getEmailsByEntryID($id);
+				if ($emails) {
+					foreach ($emails as $email) {
+						$entry['emails'][$email['id']] = array(
+							'email' => $email['email'],
+						);
+					}
+				}
 
+				$websites = $this->getWebsitesByEntryID($id);
+				if ($websites) {
+					foreach ($websites as $website) {
+						$entry['websites'][$website['id']] = array(
+							'website' => $website['website'],
+						);
+					}
+				}
+			break;
+			case "internal":
+			case "userman":
+				$user = \FreePBX::Userman()->getUserByID($entry['user']);
+				if(!empty($user['cell'])) {
+					$entry['numbers'][] = array(
+						'number' => $user['cell'],
+						'type' => 'cell',
+						'flags' => array(),
+					);
+				}
+				if(!empty($user['work'])) {
+					$entry['numbers'][] = array(
+						'number' => $user['work'],
+						'type' => 'work',
+						'flags' => array(),
+					);
+				}
+				if(!empty($user['home'])) {
+					$entry['numbers'][] = array(
+						'number' => $user['home'],
+						'type' => 'home',
+						'flags' => array(),
+					);
+				}
+				if(!empty($user['email'])) {
+					$entry['emails'][] = array(
+						'email' => $user['email']
+					);
+				}
+			break;
+		}
 		return $entry;
 	}
 
 	public function getEntriesByGroupID($groupid) {
 		$fields = array(
 			'e.id',
+			'e.id as uid',
 			'e.groupid',
 			'e.user',
 			'COALESCE(e.displayname,u.displayname,u.fname,u.username) as displayname',
@@ -1000,12 +1036,13 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		if(!empty($this->contactsCache)) {
 			return $this->contactsCache;
 		}
+		$umentries = $this->freepbx->Userman->getAllContactInfo();
 		$groups = $this->getGroupsByOwner($id);
 		$contacts = array();
 		foreach($groups as $group) {
 			switch($group['type']) {
 				case "userman":
-					$entries = $this->freepbx->Userman->getAllContactInfo();
+					$entries = $umentries;
 					$final = array();
 					foreach($entries as $entry) {
 						$entry['type'] = "userman";
@@ -1036,6 +1073,23 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					$contacts = array_merge($contacts, $entries);
 				break;
 				case "internal":
+					$entries = $this->getEntriesByGroupID($group['id']);
+					$final = array();
+					foreach($entries as $entry) {
+						foreach($umentries as $um) {
+							if($um['id'] == $entry['user']) {
+								$entry['type'] = "userman";
+								//standardize all phone numbers, digits only
+								$entry['numbers'] = array(
+									'cell' => preg_replace('/\D/','',$um['cell']),
+									'work' => preg_replace('/\D/','',$um['work']),
+									'home' => preg_replace('/\D/','',$um['home']),
+								);
+								$final[] = $entry;
+								$contacts = array_merge($contacts, $entries);
+							}
+						}
+					}
 				break;
 			}
 		}
