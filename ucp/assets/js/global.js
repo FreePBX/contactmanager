@@ -16,6 +16,12 @@ var ContactmanagerC = UCPMC.extend({
 	},
 	showActionDialog: function(type, text) {
 		var options = "", count = 0, operation = [];
+		if (typeof type === "undefined" || typeof text === "undefined" ) {
+			return;
+		}
+		if (type == "number") {
+			text = text.replace(/\D/g, "");
+		}
 		$.each(modules, function( index, module ) {
 			if (UCP.validMethod(module, "contactClickOptions")) {
 				var o = UCP.Modules[module].contactClickOptions(type);
