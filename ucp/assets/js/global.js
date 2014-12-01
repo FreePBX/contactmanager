@@ -14,7 +14,54 @@ var ContactmanagerC = UCPMC.extend({
 			cm.contacts = data.contacts;
 		}
 	},
+	showActionDialog: function(type, text) {
+		var options = "", count = 0, operation = [];
+		$.each(modules, function( index, module ) {
+			if (UCP.validMethod(module, "contactClickOptions")) {
+				var o = UCP.Modules[module].contactClickOptions(type);
+				if (o !== false && Array.isArray(o)) {
+					$.each(o, function(k, v) {
+						options = options + "<option data-function='" + v.function + "' data-module='" + module + "'>" + v.text + "</option>";
+						v.module = module;
+						operation = v;
+						count++;
+					});
+				}
+			}
+		});
+		if (count === 0) {
+			alert(_("There are no actions for this type"));
+		} else if (count === 1) {
+			if (UCP.validMethod(operation.module, operation.function)) {
+				UCP.Modules[operation.module][operation.function](text);
+			}
+		} else if (count > 1) {
+			UCP.showDialog(_("Select an Action"),
+				"<select id=\"contactmanageraction\" class=\"form-control\">" + options + "</select><button class=\"btn btn-default\" id=\"initiateaction\" style=\"margin-left: 72px;\">Initiate</button>",
+				105,
+				250,
+				function() {
+					$("#initiateaction").click(function() {
+						var func = $("#contactmanageraction option:selected").data("function"),
+						mod = $("#contactmanageraction option:selected").data("module");
+						if (UCP.validMethod(mod, func)) {
+							UCP.closeDialog(function() {
+								UCP.Modules[mod][func](text);
+							});
+						} else {
+							alert(_("Function call does not exist!"));
+						}
+					});
+				}
+			);
+		}
+	},
 	display: function(event) {
+		var $this = this;
+		$(".clickable").click(function(e) {
+			var type = $(this).data("type"), text = $(this).text();
+			$this.showActionDialog(type, text);
+		});
 		$(".add-additional").click(function(e) {
 			e.preventDefault();
 			var type = $(this).data("type");
@@ -202,6 +249,7 @@ var ContactmanagerC = UCPMC.extend({
 		}
 	},
 	hide: function(event) {
+		$(".clickable").off("click");
 		$(".contact-item").off("click");
 		$("#addgroup").off("click");
 		$("#deletegroup").off("click");

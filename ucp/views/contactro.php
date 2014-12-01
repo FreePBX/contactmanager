@@ -30,7 +30,7 @@
 					<label>Numbers</label><br/>
 					<ul>
 					<?php foreach($contact['numbers'] as $number) {?>
-						<li  data-type="number" data-flag='<?php echo json_encode($number['flags'])?>'><?php echo $number['type']?>: <?php echo $number['number']?>
+						<li data-flag='<?php echo json_encode($number['flags'])?>'><?php echo $number['type']?>: <span class="clickable" data-type="number"><?php echo $number['number']?></span>
 						<?php foreach($number['flags'] as $flag) {?>
 							(<?php echo $flag?>)
 						<?php } ?>
@@ -44,7 +44,7 @@
 					<label>Xmpp</label><br/>
 					<ul>
 					<?php foreach($contact['xmpps'] as $number) {?>
-						<li  data-type="xmpp"><?php echo $number['xmpp']?></li>
+						<li><span class="clickable" data-type="xmpp"><?php echo $number['xmpp']?></span></li>
 					<?php } ?>
 					</ul>
 				</div>
@@ -54,7 +54,7 @@
 					<label>Emails</label><br/>
 					<ul>
 					<?php foreach($contact['emails'] as $number) {?>
-						<li data-type="email"><?php echo $number['email']?></li>
+						<li data-type="email"><a href="mailto:<?php echo $number['email']?>" target="_blank"><?php echo $number['email']?></a></li>
 					<?php } ?>
 					</ul>
 				</div>

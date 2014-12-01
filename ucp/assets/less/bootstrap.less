@@ -1,20 +1,4 @@
 #module-page-contactmanager {
-	.additional {
-		table {
-			width: 100%;
-			.template {
-				display: none;
-			}
-			tr td:first-child {
-				width: 30px;
-				i {
-					font-size: 150%;
-					cursor: pointer;
-					color: rgb(66, 139, 202);
-				}
-			}
-		}
-	}
 	.nav-container {
 		margin-bottom: 5px;
 	}
@@ -28,12 +12,6 @@
 		}
 	}
 	.contact-container {
-		label {
-			text-decoration: underline;
-		}
-		ul {
-			margin-bottom: 0px;
-		}
 		background-color: aliceblue;
 		border-radius: 5px;
 		padding: 10px;
@@ -41,61 +19,92 @@
 		@media only screen and (max-width : 991px) {
 			width:100%;
 		}
+		.additional {
+			table {
+				width: 100%;
+				.template {
+					display: none;
+				}
+				tr td:first-child {
+					width: 30px;
+					i {
+						font-size: 150%;
+						cursor: pointer;
+						color: rgb(66, 139, 202);
+					}
+				}
+			}
+		}
+		label {
+			text-decoration: underline;
+		}
+		ul {
+			margin-bottom: 0px;
+			li {
+				.clickable {
+					color: #428bca;
+					text-decoration: none;
+					cursor: pointer;
+				}
+				.clickable:hover {
+					text-decoration: underline;
+				}
+			}
+		}
 	}
-	.separator-list {
-			height: 15px;
-	}
-	.contact-group {
-		background-color: #fff;
-	}
+
 	.contact-group-list {
-			background-color: aliceblue;
-	}
-	.contact-group.active {
+		background-color: aliceblue;
+		.contact-group {
+			background-color: #fff;
+		}
+		.contact-group.active {
 			background-color: #428bca;
 			border-radius: 2px;
 			a {
-					color: #ffffff;
-					background-color: #428bca;
+				color: #ffffff;
+				background-color: #428bca;
 			}
 			a:hover {
-					text-decoration: none;
-					background-color: #428bca;
-					color: #ffffff;
+				text-decoration: none;
+				background-color: #428bca;
+				color: #ffffff;
 			}
-	}
-	.contact-group-inner {
+		}
+		.contact-group-inner {
 			i {
-			font-size: 120%;
-			color: #999999;
-			float: right;
-			margin-top: 1px;
+				font-size: 120%;
+				color: #999999;
+				float: right;
+				margin-top: 1px;
 			}
 			.badge {
 				font-size: 80%;
 				float: right;
 			}
-	}
-	.contact-group.sub {
-		margin-left: 15px;
-		background-color: rgb(252, 253, 255);
-		.contact-group-inner {
-			font-size: 85%;
 		}
-	}
-	.contact-group {
+		.contact-group.sub {
+			margin-left: 15px;
+			background-color: rgb(252, 253, 255);
+			.contact-group-inner {
+				font-size: 85%;
+			}
+		}
+		.contact-group {
 			a {
-					position: relative;
-					display: block;
-					padding: 3px 8px;
-					border-radius: 2px;
+				position: relative;
+				display: block;
+				padding: 3px 8px;
+				border-radius: 2px;
 			}
 			a:hover {
-					text-decoration: none;
-					background-color: #eeeeee;
-					color: #2a6496;
+				text-decoration: none;
+				background-color: #eeeeee;
+				color: #2a6496;
 			}
+		}
 	}
+
 	.contact-table {
 		font-size: 90%;
 		margin-bottom: inherit;

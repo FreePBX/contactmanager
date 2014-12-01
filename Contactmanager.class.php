@@ -1066,7 +1066,15 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						foreach($entry['numbers'] as $number) {
 							$numbers[$number['type']] = preg_replace("/\D/","",$number['number']);
 						}
+						$xmpps = array();
+						foreach($entry['xmpps'] as $xmpp) {
+							$xmpps[] = $xmpp['xmpp'];
+						}
+						unset($entry['emails']);
+						unset($entry['websites']);
 						unset($entry['numbers']);
+						unset($entry['xmpps']);
+						$entry['xmpps'] = $xmpps;
 						$entry['numbers'] = $numbers;
 						$entry['type'] = "external";
 					}
@@ -1075,7 +1083,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				case "internal":
 					$entries = $this->getEntriesByGroupID($group['id']);
 					$final = array();
-					foreach($entries as $entry) {
+					foreach($entries as &$entry) {
 						foreach($umentries as $um) {
 							if($um['id'] == $entry['user']) {
 								$entry['type'] = "userman";
@@ -1085,7 +1093,6 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 									'work' => preg_replace('/\D/','',$um['work']),
 									'home' => preg_replace('/\D/','',$um['home']),
 								);
-								$final[] = $entry;
 								$contacts = array_merge($contacts, $entries);
 							}
 						}
