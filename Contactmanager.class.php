@@ -238,9 +238,30 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$this->addEntryByGroupID($group['id'], array('user' => $id));
 			}
 		}
+		if($display == 'extensions' || $display == 'users') {
+			$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','processed',true);
+			$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','show',true);
+		} else if($display == 'userman' && isset($_POST['contactmanager_show'])) {
+			if($_POST['contactmanager_show'] == "true") {
+				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','processed',true);
+				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','show',true);
+			} else {
+				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','processed',true);
+				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','show',false);
+			}
+		}
 	}
 
 	public function usermanUpdateUser($id, $display, $data) {
+		if($display == 'userman' && isset($_POST['contactmanager_show'])) {
+			if($_POST['contactmanager_show'] == "true") {
+				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','processed',true);
+				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','show',true);
+			} else {
+				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','processed',true);
+				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','show',false);
+			}
+		}
 	}
 
 	/**
@@ -406,9 +427,12 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					}
 				}
 			break;
-			case "internal":
 			case "userman":
-				$user = \FreePBX::Userman()->getUserByID($entry['user']);
+				if(!$this->showUsermanContact($entry['user'])) {
+					return false;
+				}
+			case "internal":
+				$user = $this->freepbx->Userman->getUserByID($entry['user']);
 				if(!empty($user['cell'])) {
 					$entry['numbers'][] = array(
 						'number' => $user['cell'],
@@ -456,7 +480,18 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			LEFT JOIN freepbx_users as u ON (e.user = u.id) WHERE `groupid` = :groupid ORDER BY e.id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
-		$entries = $sth->fetchAll(\PDO::FETCH_ASSOC | \PDO::FETCH_UNIQUE);
+		$e = $sth->fetchAll(\PDO::FETCH_ASSOC | \PDO::FETCH_UNIQUE);
+
+		$group = $this->getGroupByID($groupid);
+		if($group['type'] == "userman") {
+			foreach($e as $entry) {
+				if($this->showUsermanContact($entry['user'])) {
+					$entries[] = $entry;
+				}
+			}
+		} else {
+			$entries = $e;
+		}
 
 		$numbers = $this->getNumbersByGroupID($groupid);
 		if ($numbers) {
@@ -1045,6 +1080,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					$entries = $umentries;
 					$final = array();
 					foreach($entries as $entry) {
+						if(!$this->showUsermanContact($entry['id'])) {
+							continue;
+						}
 						$entry['type'] = "userman";
 						//standardize all phone numbers, digits only
 						$entry['numbers'] = array(
@@ -1061,24 +1099,26 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				break;
 				case "external":
 					$entries = $this->getEntriesByGroupID($group['id']);
-					foreach($entries as &$entry) {
-						$numbers = array();
-						foreach($entry['numbers'] as $number) {
-							$numbers[$number['type']] = preg_replace("/\D/","",$number['number']);
+					if(is_array($entries)) {
+						foreach($entries as &$entry) {
+							$numbers = array();
+							foreach($entry['numbers'] as $number) {
+								$numbers[$number['type']] = preg_replace("/\D/","",$number['number']);
+							}
+							$xmpps = array();
+							foreach($entry['xmpps'] as $xmpp) {
+								$xmpps[] = $xmpp['xmpp'];
+							}
+							unset($entry['emails']);
+							unset($entry['websites']);
+							unset($entry['numbers']);
+							unset($entry['xmpps']);
+							$entry['xmpps'] = $xmpps;
+							$entry['numbers'] = $numbers;
+							$entry['type'] = "external";
 						}
-						$xmpps = array();
-						foreach($entry['xmpps'] as $xmpp) {
-							$xmpps[] = $xmpp['xmpp'];
-						}
-						unset($entry['emails']);
-						unset($entry['websites']);
-						unset($entry['numbers']);
-						unset($entry['xmpps']);
-						$entry['xmpps'] = $xmpps;
-						$entry['numbers'] = $numbers;
-						$entry['type'] = "external";
+						$contacts = array_merge($contacts, $entries);
 					}
-					$contacts = array_merge($contacts, $entries);
 				break;
 				case "internal":
 					$entries = $this->getEntriesByGroupID($group['id']);
@@ -1086,17 +1126,18 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					foreach($entries as &$entry) {
 						foreach($umentries as $um) {
 							if($um['id'] == $entry['user']) {
-								$entry['type'] = "userman";
+								$entry['type'] = "internal";
 								//standardize all phone numbers, digits only
 								$entry['numbers'] = array(
 									'cell' => preg_replace('/\D/','',$um['cell']),
 									'work' => preg_replace('/\D/','',$um['work']),
 									'home' => preg_replace('/\D/','',$um['home']),
 								);
-								$contacts = array_merge($contacts, $entries);
+								$final[] = $entry;
 							}
 						}
 					}
+					$contacts = array_merge($contacts, $final);
 				break;
 			}
 		}
@@ -1150,5 +1191,28 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			}
 		}
 		return $final;
+	}
+
+	public function usermanShowPage() {
+		if(isset($_REQUEST['action'])) {
+			switch($_REQUEST['action']) {
+				case 'adduser':
+					return load_view(dirname(__FILE__).'/views/userman_hook.php',array("enabled" => true));
+				break;
+				case 'showuser':
+					return load_view(dirname(__FILE__).'/views/userman_hook.php',array("enabled" => $this->showUsermanContact($_REQUEST['user'])));
+				break;
+				default:
+				break;
+			}
+		}
+	}
+
+	public function showUsermanContact($id) {
+		if($this->freepbx->Userman->getModuleSettingByID($id,'contactmanager','processed')) {
+			return $this->freepbx->Userman->getModuleSettingByID($id,"contactmanager","show");
+		} else {
+			return true;
+		}
 	}
 }

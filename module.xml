@@ -32,6 +32,7 @@
 						<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="delUser">usermanDelUser</method>
 						<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="addUser">usermanAddUser</method>
 						<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="updateUser">usermanUpdateUser</method>
+						<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="myShowPage">usermanShowPage</method>
 				</userman>
 		</hooks>
 </module>
