@@ -2,11 +2,12 @@
 		<rawname>contactmanager</rawname>
 		<repo>standard</repo>
 		<name>Contact Manager</name>
-		<version>12.0.0beta5</version>
+		<version>12.0.0beta6</version>
 		<publisher>Schmooze Com Inc</publisher>
 		<license>GPLv3+</license>
 		<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 		<changelog>
+				*12.0.0beta6* Allow hiding users in user manager from contact manager
 				*12.0.0beta5* If its a number then strip all non digits
 				*12.0.0beta4* Click to action support. Also fixed internal contact lookups
 				*12.0.0beta3* UCP Global Support
