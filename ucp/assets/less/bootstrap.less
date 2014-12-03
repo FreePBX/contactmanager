@@ -1,29 +1,151 @@
-#nav-bar-background #top-dashboard-nav-right .nav-btns #nav-btn-xmpp {
-	left: -3px;
-	top: -2px;
-	.sf-xmpp-logo {
-		font-size: 125%;
+#module-page-contactmanager {
+	.nav-container {
+		margin-bottom: 5px;
 	}
-	i {
-		color: red;
+	.group-container {
+		background-color: aliceblue;
+		border-radius: 5px;
+		padding: 10px;
+		width:80%;
+		@media only screen and (max-width : 991px) {
+			width:100%;
+		}
 	}
-}
+	.contact-container {
+		background-color: aliceblue;
+		border-radius: 5px;
+		padding: 10px;
+		width:80%;
+		@media only screen and (max-width : 991px) {
+			width:100%;
+		}
+		.additional {
+			table {
+				width: 100%;
+				.template {
+					display: none;
+				}
+				tr td:first-child {
+					width: 30px;
+					i {
+						font-size: 150%;
+						cursor: pointer;
+						color: rgb(66, 139, 202);
+					}
+				}
+			}
+		}
+		label {
+			text-decoration: underline;
+		}
+		ul {
+			margin-bottom: 0px;
+			li {
+				.clickable {
+					color: #428bca;
+					text-decoration: none;
+					cursor: pointer;
+				}
+				.clickable:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
 
-.message-box[data-module='Xmpp'] .title-bar {
-	.type i {
-		top: 3px;
+	.contact-group-list {
+		background-color: aliceblue;
+		.contact-group {
+			background-color: #fff;
+		}
+		.contact-group.active {
+			background-color: #428bca;
+			border-radius: 2px;
+			a {
+				color: #ffffff;
+				background-color: #428bca;
+			}
+			a:hover {
+				text-decoration: none;
+				background-color: #428bca;
+				color: #ffffff;
+			}
+		}
+		.contact-group-inner {
+			i {
+				font-size: 120%;
+				color: #999999;
+				float: right;
+				margin-top: 1px;
+			}
+			.badge {
+				font-size: 80%;
+				float: right;
+			}
+		}
+		.contact-group.sub {
+			margin-left: 15px;
+			background-color: rgb(252, 253, 255);
+			.contact-group-inner {
+				font-size: 85%;
+			}
+		}
+		.contact-group {
+			a {
+				position: relative;
+				display: block;
+				padding: 3px 8px;
+				border-radius: 2px;
+			}
+			a:hover {
+				text-decoration: none;
+				background-color: #eeeeee;
+				color: #2a6496;
+			}
+		}
 	}
-	.name {
-		left: 47px;
-		width: 123px;
-	}
-}
 
-#xmpp-menu {
-	.contact {
-		i {
-			padding-right: 3px;
+	.contact-table {
+		font-size: 90%;
+		margin-bottom: inherit;
+		.contact-header {
+			th:not(.noclick) {
+				i {
+					float: right;
+				}
+				cursor: pointer;
+			}
+			th:not(.noclick):hover {
+				background-color:#f5f5f5;
+			}
+			background-color: aliceblue;
+		}
+		.contact-item {
+			td {
+				cursor: pointer;
+			}
 			color: black;
+			background-color: rgba(255, 255, 255, 0.5);
+			.actions {
+				a {
+					color: black;
+					text-decoration: none;
+					cursor: pointer;
+				}
+				i {
+					color:black;
+				}
+			}
+			i{
+				font-size: large;
+				color: grey;
+			}
+			i.out {
+				color: #7a16af;
+			}
+			i.in {
+				color: #0fc61b;
+			}
 		}
 	}
 }
