@@ -377,7 +377,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			'COALESCE(e.fname,u.fname) as fname',
 			'COALESCE(e.lname,u.lname) as lname',
 			'COALESCE(e.title,u.title) as title',
-			'e.company',
+			'COALESCE(e.company,u.company) as company',
 		);
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e
 			LEFT JOIN freepbx_users as u ON (e.user = u.id) WHERE e.id = :id";
@@ -392,10 +392,12 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$numbers = $this->getNumbersByEntryID($id);
 				if ($numbers) {
 					foreach ($numbers as $number) {
+						$number['flags'] = !empty($number['flags']) ? explode('|', $number['flags']) : array();
 						$entry['numbers'][$number['id']] = array(
 							'number' => $number['number'],
 							'type' => $number['type'],
-							'flags' => $number['flags'] ? explode('|', $number['flags']) : array(),
+							'flags' => $number['flags'],
+							'primary' => isset($number['flags'][0]) ? $number['flags'][0] : 'phone'
 						);
 					}
 				}
@@ -433,11 +435,20 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				}
 			case "internal":
 				$user = $this->freepbx->Userman->getUserByID($entry['user']);
+				if(!empty($user['default_extension']) && $user['default_extension'] != "none") {
+					$entry['numbers'][] = array(
+						'number' => $user['default_extension'],
+						'type' => 'internal',
+						'flags' => array(),
+						'primary' => 'phone'
+					);
+				}
 				if(!empty($user['cell'])) {
 					$entry['numbers'][] = array(
 						'number' => $user['cell'],
 						'type' => 'cell',
 						'flags' => array(),
+						'primary' => 'sms'
 					);
 				}
 				if(!empty($user['work'])) {
@@ -445,6 +456,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						'number' => $user['work'],
 						'type' => 'work',
 						'flags' => array(),
+						'primary' => 'phone'
 					);
 				}
 				if(!empty($user['home'])) {
@@ -452,11 +464,25 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						'number' => $user['home'],
 						'type' => 'home',
 						'flags' => array(),
+						'primary' => 'phone'
+					);
+				}
+				if(!empty($user['fax'])) {
+					$entry['numbers'][] = array(
+						'number' => $user['fax'],
+						'type' => 'fax',
+						'flags' => array(),
+						'primary' => 'fax'
 					);
 				}
 				if(!empty($user['email'])) {
 					$entry['emails'][] = array(
 						'email' => $user['email']
+					);
+				}
+				if(!empty($user['xmpp'])) {
+					$entry['xmpps'][] = array(
+						'xmpp' => $user['xmpp']
 					);
 				}
 			break;
@@ -474,7 +500,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			'COALESCE(e.fname,u.fname) as fname',
 			'COALESCE(e.lname,u.lname) as lname',
 			'COALESCE(e.title,u.title) as title',
-			'e.company',
+			'COALESCE(e.company,u.company) as company',
 		);
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e
 			LEFT JOIN freepbx_users as u ON (e.user = u.id) WHERE `groupid` = :groupid ORDER BY e.id";
@@ -1089,10 +1115,16 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 							'cell' => preg_replace('/\D/','',$entry['cell']),
 							'work' => preg_replace('/\D/','',$entry['work']),
 							'home' => preg_replace('/\D/','',$entry['home']),
+							'fax' => preg_replace('/\D/','',$entry['fax']),
 						);
 						unset($entry['cell']);
 						unset($entry['work']);
 						unset($entry['home']);
+						unset($entry['fax']);
+						if(isset($entry['xmpp'])) {
+							$entry['xmpps']['xmpp'] = $entry['xmpp'];
+							unset($entry['xmpp']);
+						}
 						$final[] = $entry;
 					}
 					$contacts = array_merge($contacts, $final);
@@ -1132,6 +1164,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 									'cell' => preg_replace('/\D/','',$um['cell']),
 									'work' => preg_replace('/\D/','',$um['work']),
 									'home' => preg_replace('/\D/','',$um['home']),
+									'fax' => preg_replace('/\D/','',$um['fax']),
 								);
 								$final[] = $entry;
 							}

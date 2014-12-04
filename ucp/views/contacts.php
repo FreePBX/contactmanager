@@ -32,8 +32,8 @@
 					<td><?php echo $contact['displayname'];?></td>
 					<td><?php echo $contact['fname'];?></td>
 					<td><?php echo $contact['lname'];?></td>
-					<td><?php echo $contact['company'];?></td>
 					<td><?php echo $contact['title'];?></td>
+					<td><?php echo $contact['company'];?></td>
 				</tr>
 			<?php } ?>
 		</table>

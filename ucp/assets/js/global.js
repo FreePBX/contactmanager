@@ -14,20 +14,26 @@ var ContactmanagerC = UCPMC.extend({
 			cm.contacts = data.contacts;
 		}
 	},
-	showActionDialog: function(type, text) {
-		var options = "", count = 0, operation = [];
+	showActionDialog: function(type, text, p) {
+		var options = "", count = 0, operation = [], primary = "";
 		if (typeof type === "undefined" || typeof text === "undefined" ) {
 			return;
 		}
+
+		primary = (typeof p !== "undefined") ? p : "";
 		if (type == "number") {
 			text = text.replace(/\D/g, "");
 		}
 		$.each(modules, function( index, module ) {
 			if (UCP.validMethod(module, "contactClickOptions")) {
-				var o = UCP.Modules[module].contactClickOptions(type);
+				var o = UCP.Modules[module].contactClickOptions(type), selected = "";
 				if (o !== false && Array.isArray(o)) {
 					$.each(o, function(k, v) {
-						options = options + "<option data-function='" + v.function + "' data-module='" + module + "'>" + v.text + "</option>";
+						if ((typeof v.type !== "undefined") && (v.type == primary)) {
+							options = "<option data-function='" + v.function + "' data-module='" + module + "' " + selected + ">" + v.text + "</option>" + options;
+						} else {
+							options = options + "<option data-function='" + v.function + "' data-module='" + module + "' " + selected + ">" + v.text + "</option>";
+						}
 						v.module = module;
 						operation = v;
 						count++;
@@ -35,6 +41,7 @@ var ContactmanagerC = UCPMC.extend({
 				}
 			}
 		});
+
 		if (count === 0) {
 			alert(_("There are no actions for this type"));
 		} else if (count === 1) {
@@ -65,8 +72,10 @@ var ContactmanagerC = UCPMC.extend({
 	display: function(event) {
 		var $this = this;
 		$(".clickable").click(function(e) {
-			var type = $(this).data("type"), text = $(this).text();
-			$this.showActionDialog(type, text);
+			var type = $(this).data("type"),
+					text = $(this).text(),
+					primary = $(this).data("primary");
+			$this.showActionDialog(type, text, primary);
 		});
 		$(".add-additional").click(function(e) {
 			e.preventDefault();

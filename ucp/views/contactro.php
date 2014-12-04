@@ -30,7 +30,7 @@
 					<label>Numbers</label><br/>
 					<ul>
 					<?php foreach($contact['numbers'] as $number) {?>
-						<li data-flag='<?php echo json_encode($number['flags'])?>'><?php echo $number['type']?>: <span class="clickable" data-type="number"><?php echo $number['number']?></span>
+						<li data-flag='<?php echo json_encode($number['flags'])?>'><?php echo $number['type']?>: <span class="clickable" data-type="number" data-primary="<?php echo $number['primary']?>"><?php echo $number['number']?></span>
 						<?php foreach($number['flags'] as $flag) {?>
 							(<?php echo $flag?>)
 						<?php } ?>
