@@ -23,6 +23,8 @@
 					<th><?php echo _('Display Name')?><i class="fa fa-chevron-<?php echo ($order == 'desc' && $orderby == 'displayname') ? 'down' : 'up'?> <?php echo ($orderby == 'displayname') ? '' : 'hidden'?>"></i></th>
 					<th><?php echo _('First Name')?></th>
 					<th><?php echo _('Last Name')?></th>
+					<th><?php echo _('Title')?></th>
+					<th><?php echo _('Company')?></th>
 				</tr>
 			</thead>
 			<?php foreach($contacts as $contact) {?>
@@ -30,6 +32,8 @@
 					<td><?php echo $contact['displayname'];?></td>
 					<td><?php echo $contact['fname'];?></td>
 					<td><?php echo $contact['lname'];?></td>
+					<td><?php echo $contact['title'];?></td>
+					<td><?php echo $contact['company'];?></td>
 				</tr>
 			<?php } ?>
 		</table>
