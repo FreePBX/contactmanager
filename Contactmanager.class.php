@@ -1115,8 +1115,11 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 							'cell' => preg_replace('/\D/','',$entry['cell']),
 							'work' => preg_replace('/\D/','',$entry['work']),
 							'home' => preg_replace('/\D/','',$entry['home']),
-							'fax' => preg_replace('/\D/','',$entry['fax']),
+							'fax' => preg_replace('/\D/','',$entry['fax'])
 						);
+						if(!empty($entry['internal'])) {
+							$entry['numbers']['internal'] = preg_replace('/\D/','',$entry['internal']);
+						}
 						unset($entry['cell']);
 						unset($entry['work']);
 						unset($entry['home']);
@@ -1166,6 +1169,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 									'home' => preg_replace('/\D/','',$um['home']),
 									'fax' => preg_replace('/\D/','',$um['fax']),
 								);
+								if(!empty($um['internal'])) {
+									$entry['numbers']['internal'] = preg_replace('/\D/','',$um['internal']);
+								}
 								$final[] = $entry;
 							}
 						}
