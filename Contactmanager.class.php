@@ -27,6 +27,35 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 	}
 
+	public function doDialplanHook(&$ext, $engine, $priority) {
+		$contextname = 'ext-contactmanager';
+		$entries = $this->getContactsByUserID(-1);
+		$destinations = array();
+		$used = array();
+		foreach($entries as $entry) {
+			$name = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
+			if(!empty($entry['numbers'])) {
+				foreach($entry['numbers'] as $type => $number) {
+					if(!in_array($number,$used)) {
+						$used[] = $number;
+						if(!empty($number)) {
+							$ext->add($contextname, $number, '', new \ext_noop('Contact Manager: '. $name . "(" . $type . ")"));
+							if($type == "internal") {
+								$ext->add($contextname, $number, '', new \ext_goto('from-internal,'.$number.',1', ''));
+							} else {
+								$ext->add($contextname, $number, '', new \ext_dial($number));
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public static function myDialplanHooks() {
+		return 500;
+	}
+
 	/**
 	 * Get Inital Display
 	 * @param {string} $display The Page name
@@ -1301,7 +1330,11 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			return $this->contactsCache;
 		}
 		$umentries = $this->freepbx->Userman->getAllContactInfo();
-		$groups = $this->getGroupsByOwner($id);
+		if($id = -1) {
+			$groups = $this->getGroups();
+		} else {
+			$groups = $this->getGroupsByOwner($id);
+		}
 		$contacts = array();
 		foreach($groups as $group) {
 			switch($group['type']) {
