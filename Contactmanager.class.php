@@ -82,8 +82,6 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					$this->importCSV($_FILES['csv']['tmp_name'], $_POST['group']);
 				}
 				return true;
-			case "export":
-				return true;
 			}
 		}
 
