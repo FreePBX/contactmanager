@@ -159,16 +159,28 @@ $html.= '<script language="javascript">
 echo $html;
 
 if ($group) {
-	$html = '';
-	$html.= form_open_multipart($_SERVER['REQUEST_URI']);
-	$html.= form_hidden('group', $group['id']);
-	$html.= form_hidden('action', 'import');
-	$html.= form_hidden('MAX_FILE_SIZE', '30000');
+	echo br(2);
+	echo '<a href="' . $_SERVER['PHP_SELF'] . '?type=tool&display=contactmanager&action=export&group=' . $group['id'] . '&quietmode=1">' . _("Export CSV") . '</a>';
 
-	$html.= heading(_("Import CSV"));
+	switch ($group['type']) {
+	case "internal":
+	case "external":
+		$html = '';
+		$html.= form_open_multipart($_SERVER['REQUEST_URI']);
+		$html.= form_hidden('group', $group['id']);
+		$html.= form_hidden('action', 'import');
+		$html.= form_hidden('MAX_FILE_SIZE', '30000');
 
-	$html.= form_close();
+		$html.= heading(_("Import CSV"), 3);
 
-	echo $html;
+		$html.= form_upload('csv');
+		$html.= form_submit('upload', _('Upload'));
+
+		$html.= form_close();
+
+		echo $html;
+
+		break;
+	}
 }
 ?>

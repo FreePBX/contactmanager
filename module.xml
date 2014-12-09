@@ -2,11 +2,12 @@
 		<rawname>contactmanager</rawname>
 		<repo>standard</repo>
 		<name>Contact Manager</name>
-		<version>12.0.0beta8</version>
+		<version>12.0.0beta9</version>
 		<publisher>Schmooze Com Inc</publisher>
 		<license>GPLv3+</license>
 		<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 		<changelog>
+				*12.0.0beta9* Add CSV import/export of contacts
 				*12.0.0beta8* FREEPBX-8203 contacts manager as destination
 				*12.0.0beta7* Updates for xmpp display, internal number display and ordering of actions
 				*12.0.0beta6* Allow hiding users in user manager from contact manager

@@ -63,19 +63,26 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	public function doConfigPageInit($display) {
 		if (isset($_REQUEST['action'])) {
 			switch ($_REQUEST['action']) {
-				case "delgroup":
+			case "delgroup":
 				$ret = $this->deleteGroupByID($_REQUEST['group']);
 				$this->message = array(
 					'message' => $ret['message'],
 					'type' => $ret['type']
 				);
 				return true;
-				case "delentry":
+			case "delentry":
 				$ret = $this->deleteEntryByID($_REQUEST['entry']);
 				$this->message = array(
 					'message' => $ret['message'],
 					'type' => $ret['type']
 				);
+				return true;
+			case "import":
+				if (!empty($_POST['group']) && is_uploaded_file($_FILES['csv']['tmp_name'])) {
+					$this->importCSV($_FILES['csv']['tmp_name'], $_POST['group']);
+				}
+				return true;
+			case "export":
 				return true;
 			}
 		}
@@ -213,6 +220,13 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$action = !empty($_REQUEST['action']) ? $_REQUEST['action'] : '';
 		if ($action == "delentry") {
 			$action = "showgroup";
+		} elseif ($action == "import") {
+			$action = "showgroup";
+		} elseif ($action == "export") {
+			if (!empty($_REQUEST['group'])) {
+				$this->exportCSV($_REQUEST['group']);
+			}
+			return;
 		}
 
 		$html = '';
@@ -586,11 +600,11 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$group = $this->getGroupByID($groupid);
 		switch($group['type']) {
 			case "userman":
-			foreach($e as $entry) {
+			foreach($e as $key => $entry) {
 				if($this->showUsermanContact($entry['user'])) {
 					$user = $this->freepbx->Userman->getUserByID($entry['user']);
 					if(!empty($user)) {
-						$entries[] = $entry;
+						$entries[$key] = $entry;
 					} else {
 						$this->deleteEntryByID($entry['uid']);
 					}
@@ -598,10 +612,10 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			}
 			break;
 			case "internal":
-			foreach($e as $entry) {
+			foreach($e as $key => $entry) {
 				$user = $this->freepbx->Userman->getUserByID($entry['user']);
 				if(!empty($user)) {
-					$entries[] = $entry;
+					$entries[$key] = $entry;
 				} else {
 					$this->deleteEntryByID($entry['uid']);
 				}
@@ -1456,5 +1470,177 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		} else {
 			return true;
 		}
+	}
+
+	function importCSV($filename, $group) {
+		$f = fopen($filename, "r");
+
+		while (($line = fgetcsv($f, 0, ',', '"', '\\'))) {
+			if ($header) {
+				$csv[] = $line;
+			} else {
+				$header = $line;
+			}
+		}
+
+		foreach ($csv as $row) {
+			$a = array_combine($header, $row);
+			$contact = array(
+				'id' => '',
+				'groupid' => $group,
+				'user' => -1,
+				'displayname' => $this->getField($a, array("Display Name", "Name")),
+				'fname' => $this->getField($a, array("First Name", "Given Name")),
+				'lname' => $this->getField($a, array("Last Name", "Family Name")),
+				'title' => $this->getField($a, array("Title", "Organization 1 - Title")),
+				'company' => $this->getField($a, array("Company", "Organization 1 - Name")),
+				'address' => $this->getField($a, array("Address", "Address 1 - Formatted")),
+
+				'numbers' => $this->getField($a, array(array("Phone"), array("Number"), array("Phone 1 - Value", "Phone 1 - Type"), array("Phone 2 - Value", "Phone 2 - Type"), array("Phone 3 - Value", "Phone 3 - Type")), true, 'numbers'),
+				'emails' => $this->getField($a, array(array("E-mail"), array("Email"), array("E-mail 1 - Value"), array("E-mail 2 - Value"), array("E-mail 3 - Value")), true, "emails"),
+				'websites' => $this->getField($a, array(array("Website"), array("Website 1 - Value"), array("Website 2 - Value"), array("Website 3 - Value")), true, "websites"),
+			);
+
+			$user = $this->getField($a, array("UserManID"));
+			if ($user) {
+				$contact['user'] = $user;
+			}
+
+			$this->addEntryByGroupID($group, $contact);
+		}
+	}
+
+	function exportCSV($group) {
+		$entries = $this->getEntriesByGroupID($group);
+		foreach ($entries as $entry) {
+			$entry['numbers'] = array_values($entry['numbers']);
+			$entry['emails'] = array_values($entry['emails']);
+			$entry['websites'] = array_values($entry['websites']);
+
+			$contact = array(
+				"Display Name" => $entry['displayname'],
+				"First Name" => $entry['fname'],
+				"Last Name" => $entry['lname'],
+				"Title" => $entry['title'],
+				"Company" => $entry['company'],
+				"Address" => $entry['address'],
+
+				"Phone 1 - Type" => (count($entry['numbers']) >= 1) ? $entry['numbers'][0]['type'] : NULL,
+				"Phone 1 - Value" => (count($entry['numbers']) >= 1) ? $entry['numbers'][0]['number'] : NULL,
+				"Phone 2 - Type" => (count($entry['numbers']) >= 2) ? $entry['numbers'][1]['type'] : NULL,
+				"Phone 2 - Value" => (count($entry['numbers']) >= 2) ? $entry['numbers'][1]['number'] : NULL,
+				"Phone 3 - Type" => (count($entry['numbers']) >= 3) ? $entry['numbers'][2]['type'] : NULL,
+				"Phone 3 - Value" => (count($entry['numbers']) >= 3) ? $entry['numbers'][2]['number'] : NULL,
+
+				"E-mail 1 - Value" => (count($entry['emails']) >= 1) ? $entry['emails'][0]['email'] : NULL,
+				"E-mail 2 - Value" => (count($entry['emails']) >= 2) ? $entry['emails'][1]['email'] : NULL,
+				"E-mail 3 - Value" => (count($entry['emails']) >= 3) ? $entry['emails'][2]['email'] : NULL,
+
+				"Website 1 - Value" => (count($entry['websites']) >= 1) ? $entry['websites'][0]['website'] : NULL,
+				"Website 2 - Value" => (count($entry['websites']) >= 2) ? $entry['websites'][1]['website'] : NULL,
+				"Website 3 - Value" => (count($entry['websites']) >= 3) ? $entry['websites'][2]['website'] : NULL,
+
+				"UserManID" => $entry['user'],
+			);
+
+			foreach ($contact as $key => $val) {
+				if (strpos($val, "\"")) {
+					$contact[$key] = str_replace("\"", "\"\"", $val);
+				} else if (strpos($val, ",")) {
+					$contact[$key] = "\"" . $val . "\"";
+				}
+			}
+
+			if (!isset($file)) {
+				$file = implode(",", array_keys($contact)) . "\n";
+			}
+
+			$file.= implode(",", $contact) . "\n";
+		}
+
+		header('Content-Type: text/csv');
+		header('Content-disposition: attachment; filename=contacts.csv');
+		print($file);
+	}
+
+	function getField($a, $names, $multiple = false, $type) {
+		$field = array();
+
+		foreach ($names as $name) {
+			if (is_array($name)) {
+				$data = array();
+				foreach ($name as $key => $val) {
+					if (isset($a[$val]) && $a[$val]) {
+						$d = explode(" ::: ", $a[$val]);
+						$data[$key] = trim($d[0]);
+					}
+				}
+
+				if (count($data) > 0) {
+					$field[] = $data;
+				}
+			} else {
+				if (isset($a[$name]) && $a[$name]) {
+					$d = explode(" ::: ", $a[$name]);
+					$data = trim($d[0]);
+
+					$field[] = $data;
+				}
+			}
+		}
+
+		foreach ($field as $key => $val) {
+			switch ($type) {
+			case "numbers":
+				$data['number'] = preg_replace('/\D/', '', $val[0]);
+				$data['type'] = "other";
+
+				switch (strtolower($val[1])) {
+				case "home":
+					$data['type'] = "home";
+					break;
+				case "work":
+					$data['type'] = "work";
+					break;
+				case "mobile":
+				case "cell":
+					$data['type'] = "cell";
+					break;
+				case "home fax":
+					$data['type'] = "home";
+					$data['flags'][] = 'fax';
+					break;
+				case "work fax":
+					$data['type'] = "work";
+					$data['flags'][] = 'fax';
+					break;
+				case "fax":
+					$data['flags'][] = 'fax';
+					break;
+				}
+
+				$field[$key] = $data;
+			case "emails":
+				$data['email'] = $val[0];
+
+				$field[$key] = $data;
+				break;
+			case "websites":
+				$data['website'] = $val[0];
+
+				$field[$key] = $data;
+				break;
+			}
+		}
+
+		if (count($field) > 0) {
+			if ($multiple) {
+				return $field;
+			} else {
+				return $field[0];
+			}
+		}
+
+		return NULL;
 	}
 }
