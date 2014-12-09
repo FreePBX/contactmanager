@@ -163,6 +163,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				'lname' => $_POST['lname'] ? $_POST['lname'] : NULL,
 				'title' => $_POST['title'] ? $_POST['title'] : NULL,
 				'company' => $_POST['company'] ? $_POST['company'] : NULL,
+				'address' => $_POST['address'] ? $_POST['address'] : NULL,
 				);
 
 				switch ($grouptype) {
@@ -441,6 +442,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		'COALESCE(e.lname,u.lname) as lname',
 		'COALESCE(e.title,u.title) as title',
 		'COALESCE(e.company,u.company) as company',
+		'e.address as address',
 		);
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e
 		LEFT JOIN freepbx_users as u ON (e.user = u.id) WHERE e.id = :id";
@@ -573,6 +575,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		'COALESCE(e.lname,u.lname) as lname',
 		'COALESCE(e.title,u.title) as title',
 		'COALESCE(e.company,u.company) as company',
+		'e.address as address',
 		);
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e
 		LEFT JOIN freepbx_users as u ON (e.user = u.id) WHERE `groupid` = :groupid ORDER BY e.id";
@@ -727,7 +730,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
 		}
 
-		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `displayname`, `fname`, `lname`, `title`, `company`) VALUES (:groupid, :user, :displayname, :fname, :lname, :title, :company)";
+		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `displayname`, `fname`, `lname`, `title`, `company`, `address`) VALUES (:groupid, :user, :displayname, :fname, :lname, :title, :company, :address)";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(
 		':groupid' => $groupid,
@@ -737,6 +740,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		':lname' => $entry['lname'],
 		':title' => $entry['title'],
 		':company' => $entry['company'],
+		':address' => $entry['address'],
 		));
 
 		$id = $this->db->lastInsertId();
@@ -763,7 +767,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
 		}
 
-		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `displayname`, `fname`, `lname`, `title`, `company`) VALUES (:groupid, :user, :displayname, :fname, :lname, :title, :company)";
+		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `displayname`, `fname`, `lname`, `title`, `company`, `address`) VALUES (:groupid, :user, :displayname, :fname, :lname, :title, :company, :address)";
 		$sth = $this->db->prepare($sql);
 		foreach ($entries as $entry) {
 			$sth->execute(array(
@@ -774,6 +778,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			':lname' => $entry['lname'],
 			':title' => $entry['title'],
 			':company' => $entry['company'],
+			':address' => $entry['address'],
 			));
 
 			$id = $this->db->lastInsertId();
@@ -804,7 +809,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			return array("status" => false, "type" => "danger", "message" => _("Group entry does not exist"));
 		}
 
-		$sql = "UPDATE contactmanager_group_entries SET `groupid` = :groupid, `user` = :user, `displayname` = :displayname, `fname` = :fname, `lname` = :lname, `title` = :title, `company` = :company WHERE `id` = :id";
+		$sql = "UPDATE contactmanager_group_entries SET `groupid` = :groupid, `user` = :user, `displayname` = :displayname, `fname` = :fname, `lname` = :lname, `title` = :title, `company` = :company, `address` = :address WHERE `id` = :id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(
 		':groupid' => $entry['groupid'],
@@ -814,6 +819,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		':lname' => $entry['lname'],
 		':title' => $entry['title'],
 		':company' => $entry['company'],
+		':address' => $entry['address'],
 		':id' => $id,
 		));
 

@@ -44,8 +44,11 @@ $table->add_row($label, form_input('lname', $entry['lname'], ($user ? 'placehold
 $label = fpbx_label(_('Title'), _('Title  (overrides Title from User Manager)'));
 $table->add_row($label, form_input('title', $entry['title'], ($user ? 'placeholder="' . $user['title'] . '"' : '')));
 
-$label = fpbx_label(_('Company'), _('Company'));
-$table->add_row($label, form_input('company', $entry['company']));
+$label = fpbx_label(_('Company'), _('Company (overrides Company from User Manager)'));
+$table->add_row($label, form_input('company', $entry['company'], ($user ? 'placeholder="' . $user['company'] . '"' : '')));
+
+$label = fpbx_label(_('Address'), _('Address'));
+$table->add_row($label, form_input('address', $entry['address']));
 
 $extrahtml = '';
 

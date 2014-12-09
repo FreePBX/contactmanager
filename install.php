@@ -98,7 +98,7 @@ $sql = "SELECT `address` FROM contactmanager_group_entries";
 $check = $db->getRow($sql, DB_FETCHMODE_ASSOC);
 if(DB::IsError($check)) {
 	// add new field
-	$sql = "ALTER TABLE contactmanager_group_entries ADD `address` varchar(1200)";
+	$sql = "ALTER TABLE contactmanager_group_entries ADD `address` varchar(200)";
 	$result = $db->query($sql);
 	if(DB::IsError($result)) {
 		out(_("ERROR failed to update address field"));
