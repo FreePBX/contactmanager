@@ -157,4 +157,18 @@ $html.= '<script language="javascript">
 </script>';
 
 echo $html;
+
+if ($group) {
+	$html = '';
+	$html.= form_open_multipart($_SERVER['REQUEST_URI']);
+	$html.= form_hidden('group', $group['id']);
+	$html.= form_hidden('action', 'import');
+	$html.= form_hidden('MAX_FILE_SIZE', '30000');
+
+	$html.= heading(_("Import CSV"));
+
+	$html.= form_close();
+
+	echo $html;
+}
 ?>
