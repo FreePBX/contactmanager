@@ -84,6 +84,7 @@ case "external":
 
 		$numhtml.= '<td>';
 		$numhtml.= form_input('number[' . $numcount . ']', $number['number']);
+		$numhtml.= 'Ext.' . form_input('extension[' . $numcount . ']', $number['extension']);
 		$numhtml.= form_dropdown('numbertype[' . $numcount . ']', $numbertypes, $number['type']);
 		$numhtml.= '</td>';
 
@@ -244,6 +245,7 @@ case "external":
 			row+= "</td>";
 			row+= "<td>";
 			row+= "<input type=\"text\" name=\"number[" + index + "]\" value=\"\"/>";
+			row+= "Ext.<input type=\"text\" name=\"extension[" + index + "]\" value=\"\"/>";
 			row+= "<select name=\"numbertype[" + index + "]\">"
 	';
 	foreach ($numbertypes as $id => $type) {

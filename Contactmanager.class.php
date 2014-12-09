@@ -116,6 +116,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						continue;
 					}
 					$numbers[$index]['number'] = $number;
+					$numbers[$index]['extension'] = $_POST['extension'][$index];
 					$numbers[$index]['type'] = $_POST['numbertype'][$index];
 					if ($_POST['sms'][$index]) {
 						$numbers[$index]['flags'][] = 'sms';
@@ -457,6 +458,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					$number['flags'] = !empty($number['flags']) ? explode('|', $number['flags']) : array();
 					$entry['numbers'][$number['id']] = array(
 					'number' => $number['number'],
+					'extension' => $number['extension'],
 					'type' => $number['type'],
 					'flags' => $number['flags'],
 					'primary' => isset($number['flags'][0]) ? $number['flags'][0] : 'phone'
@@ -613,6 +615,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			foreach ($numbers as $number) {
 				$entries[$number['entryid']]['numbers'][$number['id']] = array(
 				'number' => $number['number'],
+				'extension' => $number['extension'],
 				'type' => $number['type'],
 				'flags' => $number['flags'] ? explode('|', $number['flags']) : array(),
 				);
@@ -838,6 +841,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		'id',
 		'entryid',
 		'number',
+		'extension',
 		'type',
 		'flags',
 		);
@@ -858,6 +862,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		'n.id',
 		'n.entryid',
 		'n.number',
+		'n.extension',
 		'n.type',
 		'n.flags',
 		);
@@ -918,11 +923,12 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			return array("status" => false, "type" => "danger", "message" => _("Group entry does not exist"));
 		}
 
-		$sql = "INSERT INTO contactmanager_entry_numbers (entryid, number, type, flags) VALUES (:entryid, :number, :type, :flags)";
+		$sql = "INSERT INTO contactmanager_entry_numbers (entryid, number, extension, type, flags) VALUES (:entryid, :number, :extension, :type, :flags)";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(
 		':entryid' => $entryid,
 		':number' => $number['number'],
+		':extension' => $number['extension'],
 		':type' => $number['type'],
 		':flags' => implode('|', $number['flags']),
 		));
@@ -945,12 +951,13 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			return array("status" => false, "type" => "danger", "message" => _("Group entry does not exist"));
 		}
 
-		$sql = "INSERT INTO contactmanager_entry_numbers (entryid, number, type, flags) VALUES (:entryid, :number, :type, :flags)";
+		$sql = "INSERT INTO contactmanager_entry_numbers (entryid, number, extension, type, flags) VALUES (:entryid, :number, :extension, :type, :flags)";
 		$sth = $this->db->prepare($sql);
 		foreach ($numbers as $number) {
 			$sth->execute(array(
 			':entryid' => $entryid,
 			':number' => $number['number'],
+			':extension' => $number['extension'],
 			':type' => $number['type'],
 			':flags' => implode('|', $number['flags']),
 			));

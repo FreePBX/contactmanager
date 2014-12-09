@@ -109,7 +109,7 @@ if ($group) {
 			$html.= '<span id="numbers_' . $count . '">';
 			$numcount = 0;
 			foreach ($entry['numbers'] as $number) {
-				$html.= $number['number'] . ' (' . $numbertypes[$number['type']] . ')';
+				$html.= $number['number'] . ($number['extension'] ? ' x' . $number['extension'] : '') . ' (' . $numbertypes[$number['type']] . ')';
 				$html.= br(1);
 
 				$numcount++;
