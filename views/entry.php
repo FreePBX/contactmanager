@@ -48,7 +48,7 @@ $label = fpbx_label(_('Company'), _('Company (overrides Company from User Manage
 $table->add_row($label, form_input('company', $entry['company'], ($user ? 'placeholder="' . $user['company'] . '"' : '')));
 
 $label = fpbx_label(_('Address'), _('Address'));
-$table->add_row($label, form_input('address', $entry['address']));
+$table->add_row($label, form_textarea(array('name' => 'address', 'rows' => 4), $entry['address']));
 
 $extrahtml = '';
 
