@@ -21,7 +21,7 @@ function contactmanager_getdest($number) {
 }
 
 function contactmanager_getdestinfo($dest) {
-	if (substr(trim($dest),0,14) == 'ext-miscdests,') {
+	if (substr(trim($dest),0,19) == 'ext-contactmanager,') {
 		$exten = explode(',',$dest);
 		$exten = $exten[1];
 		$cm = \FreePBX::Contactmanager();

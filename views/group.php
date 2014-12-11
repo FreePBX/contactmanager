@@ -104,7 +104,7 @@ if ($group) {
 			$html.= '<span id="numbers_' . $count . '">';
 			$numcount = 0;
 			foreach ($entry['numbers'] as $number) {
-				$html.= $number['number'] . ' (' . $numbertypes[$number['type']] . ')';
+				$html.= $number['number'] . ($number['extension'] ? ' x' . $number['extension'] : '') . ' (' . $numbertypes[$number['type']] . ')';
 				$html.= br(1);
 
 				$numcount++;
@@ -151,4 +151,30 @@ $html.= '<script language="javascript">
 </script>';
 
 echo $html;
+
+if ($group) {
+	echo br(2);
+	echo '<a href="' . $_SERVER['PHP_SELF'] . '?type=tool&display=contactmanager&action=export&group=' . $group['id'] . '&quietmode=1">' . _("Export CSV") . '</a>';
+
+	switch ($group['type']) {
+	case "internal":
+	case "external":
+		$html = '';
+		$html.= form_open_multipart($_SERVER['REQUEST_URI']);
+		$html.= form_hidden('group', $group['id']);
+		$html.= form_hidden('action', 'import');
+		$html.= form_hidden('MAX_FILE_SIZE', '30000');
+
+		$html.= heading(_("Import CSV"), 3);
+
+		$html.= form_upload('csv');
+		$html.= form_submit('upload', _('Upload'));
+
+		$html.= form_close();
+
+		echo $html;
+
+		break;
+	}
+}
 ?>

@@ -44,8 +44,11 @@ $table->add_row($label, form_input('lname', $entry['lname'], ($user ? 'placehold
 $label = fpbx_label(_('Title'), _('Title  (overrides Title from User Manager)'));
 $table->add_row($label, form_input('title', $entry['title'], ($user ? 'placeholder="' . $user['title'] . '"' : '')));
 
-$label = fpbx_label(_('Company'), _('Company'));
-$table->add_row($label, form_input('company', $entry['company']));
+$label = fpbx_label(_('Company'), _('Company (overrides Company from User Manager)'));
+$table->add_row($label, form_input('company', $entry['company'], ($user ? 'placeholder="' . $user['company'] . '"' : '')));
+
+$label = fpbx_label(_('Address'), _('Address'));
+$table->add_row($label, form_textarea(array('name' => 'address', 'rows' => 4), $entry['address']));
 
 $extrahtml = '';
 
@@ -84,6 +87,7 @@ case "external":
 
 		$numhtml.= '<td>';
 		$numhtml.= form_input('number[' . $numcount . ']', $number['number']);
+		$numhtml.= 'Ext.' . form_input('extension[' . $numcount . ']', $number['extension']);
 		$numhtml.= form_dropdown('numbertype[' . $numcount . ']', $numbertypes, $number['type']);
 		$numhtml.= '</td>';
 
@@ -244,6 +248,7 @@ case "external":
 			row+= "</td>";
 			row+= "<td>";
 			row+= "<input type=\"text\" name=\"number[" + index + "]\" value=\"\"/>";
+			row+= "Ext.<input type=\"text\" name=\"extension[" + index + "]\" value=\"\"/>";
 			row+= "<select name=\"numbertype[" + index + "]\">"
 	';
 	foreach ($numbertypes as $id => $type) {
