@@ -2,11 +2,12 @@
 		<rawname>contactmanager</rawname>
 		<repo>standard</repo>
 		<name>Contact Manager</name>
-		<version>12.0.0beta11</version>
+		<version>12.0.0beta12</version>
 		<publisher>Schmooze Com Inc</publisher>
 		<license>GPLv3+</license>
 		<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 		<changelog>
+				*12.0.0beta12* FREEPBX-8366 Allow searching and sorting of contacts in UCP
 				*12.0.0beta11* FREEPBX-8426 dont control miscdests orphan checking
 				*12.0.0beta10* Make address a textarea
 				*12.0.0beta9* Add CSV import/export of contacts

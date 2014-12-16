@@ -77,6 +77,39 @@ var ContactmanagerC = UCPMC.extend({
 					primary = $(this).data("primary");
 			$this.showActionDialog(type, text, primary);
 		});
+		$(".contact-header th[class!=\"noclick\"]").click( function() {
+			var icon = $(this).children("i"),
+			visible = icon.is(":visible"),
+			direction = icon.hasClass("fa-chevron-down") ? "up" : "down",
+			type = $(this).data("type"),
+			search = (typeof $.url().param("search") !== "undefined") ? "&search=" + $.url().param("search") : "",
+			view = (typeof $.url().param("view") !== "undefined") ? "&view=" + $.url().param("view") : "",
+			id = (typeof $.url().param("id") !== "undefined") ? "&id=" + $.url().param("id") : "",
+			uadd = null;
+			if (!visible) {
+				$(".cdr-header th i").addClass("hidden");
+				icon.removeClass("hidden");
+			}
+			if (direction == "up") {
+				uadd = "&order=asc&orderby=" + type + search;
+				icon.removeClass("fa-chevron-down").addClass("fa-chevron-up");
+			} else {
+				uadd = "&order=desc&orderby=" + type + search;
+				icon.removeClass("fa-chevron-up").addClass("fa-chevron-down");
+			}
+			$(".contact-header th[class!=\"noclick\"]").off("click");
+			$.pjax({ url: "?display=dashboard&mod=contactmanager" + uadd + view + id, container: "#dashboard-content" });
+		});
+		$("#search-text").keypress(function(e) {
+			var code = (e.keyCode ? e.keyCode : e.which);
+			if (code == 13) {
+				$this.search($(this).val());
+				e.preventDefault();
+			}
+		});
+		$("#search-btn").click(function() {
+			$this.search($("#search-text").val());
+		});
 		$(".add-additional").click(function(e) {
 			e.preventDefault();
 			var type = $(this).data("type");
@@ -254,12 +287,27 @@ var ContactmanagerC = UCPMC.extend({
 			});
 		});
 		//clear old binds
-		$(document).off("click", "[cm-pjax] a, a[cm-pjax]");
+		$(document).off("click", "[cm-pjax] a, a[cm-pjax], [vm-pjax] a, a[vm-pjax]");
 		//then rebind!
 		if ($.support.pjax) {
-			$(document).on("click", "[cm-pjax] a, a[cm-pjax]", function(event) {
+			$(document).on("click", "[cm-pjax] a, a[cm-pjax], [vm-pjax] a, a[vm-pjax]", function(event) {
 				var container = $("#dashboard-content");
 				$.pjax.click(event, { container: container });
+			});
+		}
+	},
+	search: function(text) {
+		var view = (typeof $.url().param("view") !== "undefined") ? "&view=" + $.url().param("view") : "",
+				id = (typeof $.url().param("id") !== "undefined") ? "&id=" + $.url().param("id") : "";
+		if (text !== "") {
+			$.pjax({
+				url: "?display=dashboard&mod=contactmanager&search=" + encodeURIComponent(text) + view + id,
+				container: "#dashboard-content"
+			});
+		} else {
+			$.pjax({
+				url: "?display=dashboard&mod=contactmanager" + view + id,
+				container: "#dashboard-content"
 			});
 		}
 	},

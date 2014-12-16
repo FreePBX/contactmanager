@@ -20,11 +20,11 @@
 		<table class="table table-hover table-bordered contact-table">
 			<thead class="contact-header">
 				<tr>
-					<th><?php echo _('Display Name')?><i class="fa fa-chevron-<?php echo ($order == 'desc' && $orderby == 'displayname') ? 'down' : 'up'?> <?php echo ($orderby == 'displayname') ? '' : 'hidden'?>"></i></th>
-					<th><?php echo _('First Name')?></th>
-					<th><?php echo _('Last Name')?></th>
-					<th><?php echo _('Title')?></th>
-					<th><?php echo _('Company')?></th>
+					<th data-type="displayname"><?php echo _('Display Name')?><i class="fa fa-chevron-<?php echo ($order == 'desc' && $orderby == 'displayname') ? 'down' : 'up'?> <?php echo ($orderby == 'displayname') ? '' : 'hidden'?>"></i></th>
+					<th data-type="fname"><?php echo _('First Name')?><i class="fa fa-chevron-<?php echo ($order == 'desc' && $orderby == 'fname') ? 'down' : 'up'?> <?php echo ($orderby == 'fname') ? '' : 'hidden'?>"></i></th>
+					<th data-type="lname"><?php echo _('Last Name')?><i class="fa fa-chevron-<?php echo ($order == 'desc' && $orderby == 'lname') ? 'down' : 'up'?> <?php echo ($orderby == 'lname') ? '' : 'hidden'?>"></i></th>
+					<th data-type="title"><?php echo _('Title')?><i class="fa fa-chevron-<?php echo ($order == 'desc' && $orderby == 'title') ? 'down' : 'up'?> <?php echo ($orderby == 'title') ? '' : 'hidden'?>"></i></th>
+					<th data-type="company"><?php echo _('Company')?><i class="fa fa-chevron-<?php echo ($order == 'desc' && $orderby == 'company') ? 'down' : 'up'?> <?php echo ($orderby == 'company') ? '' : 'hidden'?>"></i></th>
 				</tr>
 			</thead>
 			<?php foreach($contacts as $contact) {?>
