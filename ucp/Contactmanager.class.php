@@ -10,6 +10,8 @@ use \UCP\Modules as Modules;
 class Contactmanager extends Modules{
 	protected $module = 'Contactmanager';
 	private $ext = 0;
+	private $limit = 15;
+	private $break = 5;
 
 	public function __construct($Modules) {
 		$this->Modules = $Modules;
@@ -99,6 +101,19 @@ class Contactmanager extends Modules{
 		return $return;
 	}
 
+	function pregRecursiveArraySearch($needle,$haystack,$validKeys=array()) {
+		foreach($haystack as $key=>$value) {
+			if(!empty($validKeys) && !in_array($key, $validKeys)) {
+				continue;
+			}
+			$current_key = $key;
+			if(preg_match('/'.$needle.'/i',$value) OR (is_array($value) && $this->pregRecursiveArraySearch($needle,$value) !== false)) {
+				return $current_key;
+			}
+		}
+		return false;
+	}
+
 	/**
 	* Generate the display in UCP
 	*/
@@ -167,15 +182,78 @@ class Contactmanager extends Modules{
 				}
 			break;
 			default:
+				/*
 				if($_REQUEST['view'] == "group" && isset($_REQUEST['id'])) {
 					$g = $this->cm->getGroupByID($_REQUEST['id']);
 					if($g['owner'] == -1 || $g['owner'] == $this->user['id']) {
 						$displayvars['contacts'] = $displayvars['contacts'];
-						$mainDisplay = $this->load_view(__DIR__.'/views/contacts.php',$displayvars);
-						break;
+						//$mainDisplay = $this->load_view(__DIR__.'/views/contacts.php',$displayvars);
+						//break;
 					}
 				}
-				$displayvars['contacts'] = !empty($displayvars['contacts']) ? $displayvars['contacts'] : $allContacts;
+				*/
+				$contacts = !empty($displayvars['contacts']) ? $displayvars['contacts'] : $allContacts;
+				$displayvars['search'] = $search =  $_REQUEST['search'] ? $_REQUEST['search'] : '';
+				if(!empty($search)) {
+					$temp = $contacts;
+					$contacts = array();
+					foreach($temp as $c) {
+						if($this->pregRecursiveArraySearch($search,$c, array('displayname','fname','lname','title','company')) !== false) {
+							$contacts[] = $c;
+						}
+					}
+				}
+				$orderby = $_REQUEST['orderby'] ? $_REQUEST['orderby'] : 'displayname';
+				$order = $_REQUEST['order'] ? $_REQUEST['order'] : 'desc';
+				switch($orderby) {
+					case 'company':
+						uasort($contacts, function($a, $b) {
+							return strcasecmp($a['company'],$b['company']);
+						});
+						$displayvars['orderby'] = 'company';
+					break;
+					case 'title':
+						uasort($contacts, function($a, $b) {
+							return strcasecmp($a['title'],$b['title']);
+						});
+						$displayvars['orderby'] = 'title';
+					break;
+					case 'lname':
+						uasort($contacts, function($a, $b) {
+							return strcasecmp($a['lname'],$b['lname']);
+						});
+						$displayvars['orderby'] = 'lname';
+					break;
+					case 'fname':
+						uasort($contacts, function($a, $b) {
+							return strcasecmp($a['fname'],$b['fname']);
+						});
+						$displayvars['orderby'] = 'fname';
+					break;
+					case 'displayname':
+					default:
+						uasort($contacts, function($a, $b) {
+							return strcasecmp($a['displayname'],$b['displayname']);
+						});
+						$displayvars['orderby'] = 'displayname';
+					break;
+				}
+
+				if($order == 'asc') {
+					$contacts = array_reverse($contacts);
+					$contacts = array_values($contacts);
+					$displayvars['order'] = 'asc';
+				} else {
+					$displayvars['order'] = 'desc';
+				}
+
+				$view = !empty($_REQUEST['view']) ? $_REQUEST['view'] : 'all';
+				$id = !empty($_REQUEST['id']) ? '&id='.$_REQUEST['id'] : '';
+				$page = !empty($_REQUEST['page']) ? $_REQUEST['page'] : 1;
+				$total = ceil(count($contacts) / $this->limit);
+				$displayvars['pagnation'] = $this->UCP->Template->generatePagnation($total,$page,'?display=dashboard&mod=contactmanager&view='.$view.'&orderby='.$displayvars['orderby'].'&order='.$displayvars['order'].$id,$this->break);
+				$contacts = array_slice($contacts,($this->limit * ($page - 1)),$this->limit);
+				$displayvars['contacts'] = $contacts;
 				$mainDisplay = $this->load_view(__DIR__.'/views/contacts.php',$displayvars);
 			break;
 		}
