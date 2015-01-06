@@ -64,7 +64,7 @@
 					<label>Website</label><br/>
 					<ul>
 					<?php foreach($contact['websites'] as $number) {?>
-						<li data-type="website"><a href="<?php echo $number['website']?>" target="_blank"><?php echo $number['website']?></a></li>
+						<li data-type="website"><a href="<?php echo preg_match("/^http/i",$number['website']) ? $number['website'] : "http://".$number['website']?>" target="_blank"><?php echo $number['website']?></a></li>
 					<?php } ?>
 					</ul>
 				</div>
