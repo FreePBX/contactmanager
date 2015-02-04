@@ -32,6 +32,14 @@ foreach ($users as $u) {
 
 $table = new CI_Table;
 
+switch ($group['type']) {
+case "internal":
+	$label = fpbx_label(_('User'), _('A user from the User Management module'));
+	$table->add_row($label, form_dropdown('user', $userlist, $entry['user']));
+
+	break;
+}
+
 $label = fpbx_label(_('Display Name'), _('Display Name (overrides Display Name from User Manager)'));
 $table->add_row($label, form_input('displayname', $entry['displayname'], ($user ? 'placeholder="' . $user['displayname'] . '"' : '')));
 
@@ -54,15 +62,35 @@ $extrahtml = '';
 
 switch ($group['type']) {
 case "internal":
-	$label = fpbx_label(_('User'), _('A user from the User Management module'));
-	$table->add_row($label, form_dropdown('user', $userlist, $entry['user']));
-
-	$extrahtml.= '<script language="javascript">
+	$extrahtml.= '<script language="javascript">';
+	$extrahtml.= 'var users = ' . json_encode($users);
+	$extrahtml.= '
 		$("form").submit(function(event) {
 			if ($("select[name=user]").val() == "") {
 				alert("An entry must have a user.");
 				event.preventDefault();
 			}
+		});
+
+		$("select[name=user]").change(function(event) {
+			/* Reset placeholders and values. */
+			$("[name=displayname]").attr("placeholder", "").val("");
+			$("[name=fname]").attr("placeholder", "").val("");
+			$("[name=lname]").attr("placeholder", "").val("");
+			$("[name=title]").attr("placeholder", "").val("");
+			$("[name=company]").attr("placeholder", "").val("");
+			$("[name=address]").attr("placeholder", "").val("");
+
+			users.forEach(function(user) {
+				if (user.id == $(event.target).val()) {
+					$("[name=displayname]").attr("placeholder", user.displayname);
+					$("[name=fname]").attr("placeholder", user.fname);
+					$("[name=lname]").attr("placeholder", user.lname);
+					$("[name=title]").attr("placeholder", user.title);
+					$("[name=company]").attr("placeholder", user.company);
+				}
+			});
+
 		});
 	</script>';
 
