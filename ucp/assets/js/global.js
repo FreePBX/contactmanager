@@ -134,6 +134,14 @@ var ContactmanagerC = UCPMC.extend({
 				}
 			});
 		});
+		$("#editcontactpage").click(function(e) {
+			e.preventDefault();
+			var id = $("#id").val(), groupid = $.url().param("group");
+			$.pjax({
+				url: "?display=dashboard&mod=contactmanager&view=contact&group=" + groupid + "&id=" + id + "&mode=edit",
+				container: "#dashboard-content"
+			});
+		});
 		$("#deletecontact").click(function(e) {
 			e.preventDefault();
 			var id = $("#id").val(), groupid = $.url().param("group");
@@ -210,7 +218,8 @@ var ContactmanagerC = UCPMC.extend({
 		});
 		$("#addcontact").click(function(e) {
 			e.preventDefault();
-			var id = $.url().param("group"), contact = { numbers: [] };
+			var id = $.url().param("group"), contact = { numbers: [] }, $this = this;
+			console.log(edit);
 			$("form input").not(".special").each(function(i, v) {
 				var item = $(v);
 				contact[item.prop("id")] = item.val();
@@ -231,14 +240,17 @@ var ContactmanagerC = UCPMC.extend({
 				contact[type] = data;
 			});
 			$("form input").prop("disabled", true);
-			$("#addcontact").text(_("Adding..."));
-			$("#addcontact").prop("disabled", true);
+			$(this).text(_("Adding..."));
+
+			$(this).prop("disabled", true);
 			$.post( "?quietmode=1&module=contactmanager&command=addcontact", { id: id, contact: contact }, function( data ) {
 				if (data.status) {
-					$.pjax({
-						url: "?display=dashboard&mod=contactmanager&view=group&id=" + id,
-						container: "#dashboard-content"
-					});
+						$.pjax({
+							url: "?display=dashboard&mod=contactmanager&view=group&id=" + id,
+							container: "#dashboard-content"
+						});
+				} else {
+					$($this).prop("disabled", false);
 				}
 			});
 		});
@@ -316,9 +328,10 @@ var ContactmanagerC = UCPMC.extend({
 		$(".contact-item").off("click");
 		$("#addgroup").off("click");
 		$("#deletegroup").off("click");
-		$("#addcontact").off("click");
 		$("#deletecontact").off("click");
 		$("#editContact input").off("blur");
+		$("#addcontact, #updatecontact").off("click");
+		$("#editcontact");
 	},
 	/**
 	 * Lookup a contact from the directory

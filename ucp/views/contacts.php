@@ -7,14 +7,14 @@
 			<div class="input-group">
 				<input type="text" class="form-control" id="search-text" placeholder="<?php echo _('Search')?>" value="<?php echo $search?>">
 				<span class="input-group-btn">
-					<button class="btn btn-default" type="button" id="search-btn">Go!</button>
+					<button class="btn btn-default" type="button" id="search-btn"><?php echo _('Go!')?>'</button>
 				</span>
 			</div>
 		</div>
 	</div>
 	<?php if(isset($readonly) && !$readonly) {?>
-		<a cm-pjax href="?display=dashboard&amp;mod=contactmanager&amp;view=addcontact&amp;group=<?php echo $_REQUEST['id']?>" class="btn btn-default btn-sm"><i class="fa fa-plus"></i> Add New Contact</a>
-		<button id="deletegroup" class="btn btn-default btn-sm pull-right" data-id="<?php echo $_REQUEST['id']?>"><i class="fa fa-trash-o"></i> Delete This Group</button>
+		<a cm-pjax href="?display=dashboard&amp;mod=contactmanager&amp;view=addcontact&amp;group=<?php echo $_REQUEST['id']?>" class="btn btn-default btn-sm"><i class="fa fa-plus"></i> <?php echo _('Add New Contact')?></a>
+		<button id="deletegroup" class="btn btn-default btn-sm pull-right" data-id="<?php echo $_REQUEST['id']?>"><i class="fa fa-trash-o"></i> <?php echo _('Delete This Group')?></button>
 	<?php } ?>
 	<div class="table-responsive">
 		<table class="table table-hover table-bordered contact-table">
