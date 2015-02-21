@@ -1,0 +1,520 @@
+# This file is part of FreePBX.
+#
+# For licensing information, please see the file named LICENSE located in the module directory
+#
+# FreePBX language template for contactmanager
+# Copyright (C) 2008-2015 Sangoma, Inc.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-02-20 19:12-0500\n"
+"PO-Revision-Date: 2015-02-20 19:12-0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: views/entry.php:186
+msgid "A list of E-Mail addresses belonging to this entry"
+msgstr ""
+
+#: views/entry.php:161
+msgid "A list of XMPP addresses belonging to this entry"
+msgstr ""
+
+#: views/entry.php:136
+msgid "A list of numbers belonging to this entry"
+msgstr ""
+
+#: views/entry.php:211
+msgid "A list of websites belonging to this entry"
+msgstr ""
+
+#: views/entry.php:37
+msgid "A user from the User Management module"
+msgstr ""
+
+#: ucp/views/contact.php:171
+msgid "Add Contact"
+msgstr ""
+
+#: ucp/views/contact.php:141
+msgid "Add Email"
+msgstr ""
+
+#: views/entry.php:8
+msgid "Add Entry"
+msgstr ""
+
+#: ucp/views/groupcreate.php:8 ucp/views/nav.php:4 views/group.php:10
+msgid "Add Group"
+msgstr ""
+
+#: ucp/views/contacts.php:16
+msgid "Add New Contact"
+msgstr ""
+
+#: views/rnav.php:2
+msgid "Add New Group"
+msgstr ""
+
+#: ucp/views/contact.php:89
+msgid "Add Number"
+msgstr ""
+
+#: ucp/views/contact.php:167
+msgid "Add Website"
+msgstr ""
+
+#: ucp/views/contact.php:115
+msgid "Add XMPP"
+msgstr ""
+
+#: ucp/assets/js/global.js:243
+msgid "Adding..."
+msgstr ""
+
+#: views/entry.php:58
+msgid "Address"
+msgstr ""
+
+#: contactmanager.i18n.php:4 contactmanager.i18n.php:10
+msgid "Admin"
+msgstr ""
+
+#: Contactmanager.class.php:178
+msgid "An entry must have a user."
+msgstr ""
+
+#: Contactmanager.class.php:187
+msgid "An entry must have numbers."
+msgstr ""
+
+#: ucp/assets/js/global.js:148
+msgid "Are you sure you want to delete this contact?"
+msgstr ""
+
+#: ucp/assets/js/global.js:259
+msgid "Are you sure you want to delete this group and all of it's contacts?"
+msgstr ""
+
+#: ucp/views/contact.php:40 ucp/views/contact.php:81 views/entry.php:102
+#: views/group.php:78
+msgid "Cell"
+msgstr ""
+
+#: ucp/views/contact.php:22 ucp/views/contacts.php:27 views/entry.php:55
+msgid "Company"
+msgstr ""
+
+#: views/entry.php:55
+msgid "Company (overrides Company from User Manager)"
+msgstr ""
+
+#: contactmanager.i18n.php:3 contactmanager.i18n.php:5
+#: contactmanager.i18n.php:6 contactmanager.i18n.php:8
+#: contactmanager.i18n.php:12 contactmanager.i18n.php:14
+#: views/userman_hook.php:8
+msgid "Contact Manager"
+msgstr ""
+
+#: functions.inc.php:38 functions.inc.php:41
+#, php-format
+msgid "Contact Manager: %s"
+msgstr ""
+
+#: ucp/Contactmanager.class.php:279
+msgid "Contacts"
+msgstr ""
+
+#: ucp/views/contact.php:174 ucp/views/contactro.php:76
+msgid "Delete Contact"
+msgstr ""
+
+#: views/group.php:18
+#, php-format
+msgid "Delete Group: %s"
+msgstr ""
+
+#: ucp/views/contacts.php:17
+msgid "Delete This Group"
+msgstr ""
+
+#: ucp/assets/js/global.js:150
+msgid "Deleting..."
+msgstr ""
+
+#: ucp/views/contact.php:6 ucp/views/contacts.php:23 views/entry.php:43
+msgid "Display Name"
+msgstr ""
+
+#: views/entry.php:43
+msgid "Display Name (overrides Display Name from User Manager)"
+msgstr ""
+
+#: views/entry.php:186
+msgid "E-Mail"
+msgstr ""
+
+#: install.php:104
+msgid "ERROR failed to update address field"
+msgstr ""
+
+#: install.php:88
+msgid "ERROR failed to update displayname field"
+msgstr ""
+
+#: install.php:120
+msgid "ERROR failed to update extension field"
+msgstr ""
+
+#: install.php:72
+msgid "ERROR failed to update title field"
+msgstr ""
+
+#: ucp/views/contactro.php:75
+msgid "Edit Contact"
+msgstr ""
+
+#: views/entry.php:8
+msgid "Edit Entry"
+msgstr ""
+
+#: views/group.php:10
+msgid "Edit Group"
+msgstr ""
+
+#: ucp/views/contact.php:118
+msgid "Email"
+msgstr ""
+
+#: views/group.php:163
+msgid "Export CSV"
+msgstr ""
+
+#: views/group.php:26
+msgid "External"
+msgstr ""
+
+#: views/entry.php:125 views/entry.php:294
+msgid "FAX"
+msgstr ""
+
+#: ucp/views/contact.php:57
+msgid "Fax"
+msgstr ""
+
+#: ucp/views/contact.php:10 ucp/views/contacts.php:24 views/entry.php:46
+msgid "First Name"
+msgstr ""
+
+#: views/entry.php:46
+msgid "First Name (overrides First Name from User Manager)"
+msgstr ""
+
+#: ucp/assets/js/global.js:65
+msgid "Function call does not exist!"
+msgstr ""
+
+#: ucp/views/contacts.php:10
+msgid "Go!"
+msgstr ""
+
+#: Contactmanager.class.php:427
+#, php-format
+msgid "Group '%s' does not exist"
+msgstr ""
+
+#: ucp/assets/js/global.js:275
+msgid "Group Already Exists"
+msgstr ""
+
+#: ucp/views/groupcreate.php:5
+msgid "Group Name"
+msgstr ""
+
+#: ucp/assets/js/global.js:280
+msgid "Group Name Can Not Be Blank"
+msgstr ""
+
+#: Contactmanager.class.php:371 Contactmanager.class.php:742
+#: Contactmanager.class.php:779 Contactmanager.class.php:817
+msgid "Group does not exist"
+msgstr ""
+
+#: Contactmanager.class.php:806
+msgid "Group entries successfully added"
+msgstr ""
+
+#: Contactmanager.class.php:731
+msgid "Group entries successfully deleted"
+msgstr ""
+
+#: Contactmanager.class.php:1181
+msgid "Group entry E-Mail successfully added"
+msgstr ""
+
+#: Contactmanager.class.php:1147
+msgid "Group entry E-Mail successfully deleted"
+msgstr ""
+
+#: Contactmanager.class.php:1202
+msgid "Group entry E-Mails successfully added"
+msgstr ""
+
+#: Contactmanager.class.php:1155 Contactmanager.class.php:1164
+msgid "Group entry E-Mails successfully deleted"
+msgstr ""
+
+#: Contactmanager.class.php:1273
+msgid "Group entry Website successfully added"
+msgstr ""
+
+#: Contactmanager.class.php:1239
+msgid "Group entry Website successfully deleted"
+msgstr ""
+
+#: Contactmanager.class.php:1294
+msgid "Group entry Websites successfully added"
+msgstr ""
+
+#: Contactmanager.class.php:1247 Contactmanager.class.php:1256
+msgid "Group entry Websites successfully deleted"
+msgstr ""
+
+#: Contactmanager.class.php:1080
+msgid "Group entry XMPP successfully added"
+msgstr ""
+
+#: Contactmanager.class.php:1033
+msgid "Group entry XMPP successfully deleted"
+msgstr ""
+
+#: Contactmanager.class.php:1106
+msgid "Group entry XMPPs successfully added"
+msgstr ""
+
+#: Contactmanager.class.php:1045 Contactmanager.class.php:1058
+msgid "Group entry XMPPs successfully deleted"
+msgstr ""
+
+#: Contactmanager.class.php:821 Contactmanager.class.php:941
+#: Contactmanager.class.php:969 Contactmanager.class.php:1069
+#: Contactmanager.class.php:1094 Contactmanager.class.php:1170
+#: Contactmanager.class.php:1190 Contactmanager.class.php:1262
+#: Contactmanager.class.php:1282
+msgid "Group entry does not exist"
+msgstr ""
+
+#: Contactmanager.class.php:955
+msgid "Group entry number successfully added"
+msgstr ""
+
+#: Contactmanager.class.php:905
+msgid "Group entry number successfully deleted"
+msgstr ""
+
+#: Contactmanager.class.php:984
+msgid "Group entry numbers successfully added"
+msgstr ""
+
+#: Contactmanager.class.php:917 Contactmanager.class.php:930
+msgid "Group entry numbers successfully deleted"
+msgstr ""
+
+#: Contactmanager.class.php:768
+msgid "Group entry successfully added"
+msgstr ""
+
+#: Contactmanager.class.php:699
+msgid "Group entry successfully deleted"
+msgstr ""
+
+#: Contactmanager.class.php:850
+msgid "Group entry successfully updated"
+msgstr ""
+
+#: Contactmanager.class.php:110 Contactmanager.class.php:394
+#: Contactmanager.class.php:430
+msgid "Group name can not be blank"
+msgstr ""
+
+#: Contactmanager.class.php:415
+msgid "Group successfully added"
+msgstr ""
+
+#: Contactmanager.class.php:383
+msgid "Group successfully deleted"
+msgstr ""
+
+#: Contactmanager.class.php:440
+msgid "Group successfully updated"
+msgstr ""
+
+#: ucp/views/contact.php:39 ucp/views/contact.php:80 views/entry.php:101
+#: views/group.php:77
+msgid "Home"
+msgstr ""
+
+#: views/group.php:174
+msgid "Import CSV"
+msgstr ""
+
+#: views/group.php:25
+msgid "Internal"
+msgstr ""
+
+#: ucp/views/contact.php:14 ucp/views/contacts.php:25 views/entry.php:49
+msgid "Last Name"
+msgstr ""
+
+#: views/entry.php:49
+msgid "Last Name (overrides Last Name from User Manager)"
+msgstr ""
+
+#: ucp/views/nav.php:3
+msgid "My Contacts"
+msgstr ""
+
+#: views/group.php:33
+msgid "Name"
+msgstr ""
+
+#: views/group.php:33
+msgid "Name of group"
+msgstr ""
+
+#: views/userman_hook.php:19
+msgid "No"
+msgstr ""
+
+#: Contactmanager.class.php:1186
+msgid "No E-Mails to add"
+msgstr ""
+
+#: Contactmanager.class.php:965
+msgid "No Numbers to add"
+msgstr ""
+
+#: Contactmanager.class.php:1278
+msgid "No Websites to add"
+msgstr ""
+
+#: Contactmanager.class.php:1090
+msgid "No XMPPs to add"
+msgstr ""
+
+#: ucp/Contactmanager.class.php:166 ucp/Contactmanager.class.php:187
+msgid "Not Authorized"
+msgstr ""
+
+#: ucp/views/contact.php:26 views/entry.php:136
+msgid "Numbers"
+msgstr ""
+
+#: install.php:74 install.php:90 install.php:106 install.php:122
+msgid "OK"
+msgstr ""
+
+#: ucp/views/contact.php:41 ucp/views/contact.php:82 views/entry.php:103
+#: views/group.php:79
+msgid "Other"
+msgstr ""
+
+#: ucp/views/contact.php:45 views/entry.php:123 views/entry.php:292
+msgid "SMS"
+msgstr ""
+
+#: ucp/views/contacts.php:8
+msgid "Search"
+msgstr ""
+
+#: ucp/assets/js/global.js:52
+msgid "Select an Action"
+msgstr ""
+
+#: views/userman_hook.php:15
+msgid "Show contact in Contact Manager"
+msgstr ""
+
+#: views/entry.php:385 views/group.php:146
+msgid "Submit"
+msgstr ""
+
+#: ucp/assets/js/global.js:46
+msgid "There are no actions for this type"
+msgstr ""
+
+#: ucp/views/contact.php:18 ucp/views/contacts.php:26 views/entry.php:52
+msgid "Title"
+msgstr ""
+
+#: views/entry.php:52
+msgid "Title  (overrides Title from User Manager)"
+msgstr ""
+
+#: views/group.php:29
+msgid "Type"
+msgstr ""
+
+#: views/group.php:29
+msgid "Type of group"
+msgstr ""
+
+#: ucp/Contactmanager.class.php:62 ucp/Contactmanager.class.php:73
+#: ucp/Contactmanager.class.php:82 ucp/Contactmanager.class.php:91
+msgid "Unauthorized"
+msgstr ""
+
+#: views/group.php:177
+msgid "Upload"
+msgstr ""
+
+#: views/entry.php:37
+msgid "User"
+msgstr ""
+
+#: views/group.php:27
+msgid "User Manager"
+msgstr ""
+
+#: ucp/views/contact.php:144 views/entry.php:211
+msgid "Website"
+msgstr ""
+
+#: ucp/views/contact.php:38 ucp/views/contact.php:79 views/entry.php:100
+#: views/group.php:76
+msgid "Work"
+msgstr ""
+
+#: views/entry.php:161
+msgid "XMPP"
+msgstr ""
+
+#: views/userman_hook.php:18
+msgid "Yes"
+msgstr ""
+
+#: install.php:77 install.php:93 install.php:109 install.php:125
+msgid "already exists"
+msgstr ""
+
+#: install.php:96
+msgid "checking for address field.."
+msgstr ""
+
+#: install.php:80
+msgid "checking for displayname field.."
+msgstr ""
+
+#: install.php:112
+msgid "checking for extension field.."
+msgstr ""
+
+#: install.php:64
+msgid "checking for title field.."
+msgstr ""
