@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-20 19:12-0500\n"
+"POT-Creation-Date: 2015-02-23 21:12-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -75,7 +75,7 @@ msgstr ""
 msgid "Add XMPP"
 msgstr ""
 
-#: ucp/assets/js/global.js:243
+#: ucp/assets/js/global.js:272
 msgid "Adding..."
 msgstr ""
 
@@ -96,12 +96,16 @@ msgstr ""
 msgid "An entry must have numbers."
 msgstr ""
 
-#: ucp/assets/js/global.js:148
+#: ucp/assets/js/global.js:178
 msgid "Are you sure you want to delete this contact?"
 msgstr ""
 
-#: ucp/assets/js/global.js:259
+#: ucp/assets/js/global.js:288
 msgid "Are you sure you want to delete this group and all of it's contacts?"
+msgstr ""
+
+#: ucp/assets/js/global.js:27
+msgid "Call To"
 msgstr ""
 
 #: ucp/views/contact.php:40
@@ -155,7 +159,7 @@ msgstr ""
 msgid "Delete This Group"
 msgstr ""
 
-#: ucp/assets/js/global.js:150
+#: ucp/assets/js/global.js:180
 msgid "Deleting..."
 msgstr ""
 
@@ -218,6 +222,10 @@ msgstr ""
 msgid "FAX"
 msgstr ""
 
+#: ucp/assets/js/global.js:29
+msgid "Facetime"
+msgstr ""
+
 #: ucp/views/contact.php:57
 msgid "Fax"
 msgstr ""
@@ -232,7 +240,7 @@ msgstr ""
 msgid "First Name (overrides First Name from User Manager)"
 msgstr ""
 
-#: ucp/assets/js/global.js:65
+#: ucp/assets/js/global.js:95
 msgid "Function call does not exist!"
 msgstr ""
 
@@ -245,7 +253,7 @@ msgstr ""
 msgid "Group '%s' does not exist"
 msgstr ""
 
-#: ucp/assets/js/global.js:275
+#: ucp/assets/js/global.js:304
 msgid "Group Already Exists"
 msgstr ""
 
@@ -253,7 +261,7 @@ msgstr ""
 msgid "Group Name"
 msgstr ""
 
-#: ucp/assets/js/global.js:280
+#: ucp/assets/js/global.js:309
 msgid "Group Name Can Not Be Blank"
 msgstr ""
 
@@ -473,7 +481,7 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: ucp/assets/js/global.js:52
+#: ucp/assets/js/global.js:82
 msgid "Select an Action"
 msgstr ""
 
@@ -486,7 +494,7 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#: ucp/assets/js/global.js:46
+#: ucp/assets/js/global.js:76
 msgid "There are no actions for this type"
 msgstr ""
 
