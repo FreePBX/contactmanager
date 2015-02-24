@@ -128,6 +128,7 @@ class Contactmanager extends Modules{
 		$displayvars['order'] = 'desc';
 		$displayvars['readonly'] = true;
 		$displayvars['add'] = false;
+		$displayvars['editable'] = false;
 		$allContacts = array();
 		$c = 1;
 		foreach($displayvars['groups'] as &$group) {
@@ -175,24 +176,19 @@ class Contactmanager extends Modules{
 					if($g['owner'] == -1) {
 						$mainDisplay = $this->load_view(__DIR__.'/views/contactro.php',$displayvars);
 					} else {
-						$mainDisplay = $this->load_view(__DIR__.'/views/contact.php',$displayvars);
+						if(!empty($_REQUEST['mode']) && $_REQUEST['mode'] == 'edit') {
+							$mainDisplay = $this->load_view(__DIR__.'/views/contact.php',$displayvars);
+						} else {
+							$displayvars['editable'] = true;
+							$mainDisplay = $this->load_view(__DIR__.'/views/contactro.php',$displayvars);
+						}
 					}
 				} else {
 					$mainDisplay = _("Not Authorized");
 				}
 			break;
 			default:
-				/*
-				if($_REQUEST['view'] == "group" && isset($_REQUEST['id'])) {
-					$g = $this->cm->getGroupByID($_REQUEST['id']);
-					if($g['owner'] == -1 || $g['owner'] == $this->user['id']) {
-						$displayvars['contacts'] = $displayvars['contacts'];
-						//$mainDisplay = $this->load_view(__DIR__.'/views/contacts.php',$displayvars);
-						//break;
-					}
-				}
-				*/
-				$contacts = !empty($displayvars['contacts']) ? $displayvars['contacts'] : $allContacts;
+				$contacts = !empty($displayvars['contacts']) || !empty($_REQUEST['view']) && $_REQUEST['view'] == 'group' ? $displayvars['contacts'] : $allContacts;
 				$displayvars['search'] = $search =  $_REQUEST['search'] ? $_REQUEST['search'] : '';
 				if(!empty($search)) {
 					$temp = $contacts;

@@ -14,6 +14,22 @@ var ContactmanagerC = UCPMC.extend({
 			cm.contacts = data.contacts;
 		}
 	},
+	contactClickInitiateCallTo: function(did) {
+		window.location.replace("tel:" + did);
+	},
+	contactClickInitiateFacetime: function(did) {
+		window.location.replace("facetime:" + did);
+	},
+	contactClickOptions: function(type) {
+		if (type != "number" || false) {
+			return false;
+		}
+		var options = [ { text: _("Call To"), function: "contactClickInitiateCallTo", type: "phone" }];
+		if (navigator.appVersion.indexOf("Mac")!=-1) {
+			options.push({ text: _("Facetime"), function: "contactClickInitiateFacetime", type: "phone" });
+		}
+		return options;
+	},
 	showActionDialog: function(type, text, p) {
 		var options = "", count = 0, operation = [], primary = "";
 		if (typeof type === "undefined" || typeof text === "undefined" ) {
@@ -21,6 +37,9 @@ var ContactmanagerC = UCPMC.extend({
 		}
 
 		primary = (typeof p !== "undefined") ? p : "";
+		if(primary.indexOf(",") !=-1) {
+			var primaries = primary.split(",");
+		}
 		if (type == "number") {
 			text = text.replace(/\D/g, "");
 		}
@@ -29,14 +48,25 @@ var ContactmanagerC = UCPMC.extend({
 				var o = UCP.Modules[module].contactClickOptions(type), selected = "";
 				if (o !== false && Array.isArray(o)) {
 					$.each(o, function(k, v) {
-						if ((typeof v.type !== "undefined") && (v.type == primary)) {
-							options = "<option data-function='" + v.function + "' data-module='" + module + "' " + selected + ">" + v.text + "</option>" + options;
+						if(typeof primaries !== "undefined") {
+							if (primaries.indexOf(v.type) !=-1) {
+								if(primaries.indexOf(v.type) === 0) {
+									options = "<option data-function='" + v.function + "' data-module='" + module + "' " + selected + ">" + v.text + "</option>" + options;
+								} else {
+									options = options + "<option data-function='" + v.function + "' data-module='" + module + "' " + selected + ">" + v.text + "</option>";
+								}
+								v.module = module;
+								operation = v;
+								count++;
+							}
 						} else {
-							options = options + "<option data-function='" + v.function + "' data-module='" + module + "' " + selected + ">" + v.text + "</option>";
+							if ((typeof v.type !== "undefined") && (v.type == primary)) {
+								options = "<option data-function='" + v.function + "' data-module='" + module + "' " + selected + ">" + v.text + "</option>" + options;
+								v.module = module;
+								operation = v;
+								count++;
+							}
 						}
-						v.module = module;
-						operation = v;
-						count++;
 					});
 				}
 			}
@@ -51,7 +81,7 @@ var ContactmanagerC = UCPMC.extend({
 		} else if (count > 1) {
 			UCP.showDialog(_("Select an Action"),
 				"<select id=\"contactmanageraction\" class=\"form-control\">" + options + "</select><button class=\"btn btn-default\" id=\"initiateaction\" style=\"margin-left: 72px;\">Initiate</button>",
-				105,
+				115,
 				250,
 				function() {
 					$("#initiateaction").click(function() {
@@ -134,6 +164,14 @@ var ContactmanagerC = UCPMC.extend({
 				}
 			});
 		});
+		$("#editcontactpage").click(function(e) {
+			e.preventDefault();
+			var id = $("#id").val(), groupid = $.url().param("group");
+			$.pjax({
+				url: "?display=dashboard&mod=contactmanager&view=contact&group=" + groupid + "&id=" + id + "&mode=edit",
+				container: "#dashboard-content"
+			});
+		});
 		$("#deletecontact").click(function(e) {
 			e.preventDefault();
 			var id = $("#id").val(), groupid = $.url().param("group");
@@ -210,7 +248,7 @@ var ContactmanagerC = UCPMC.extend({
 		});
 		$("#addcontact").click(function(e) {
 			e.preventDefault();
-			var id = $.url().param("group"), contact = { numbers: [] };
+			var id = $.url().param("group"), contact = { numbers: [] }, $this = this;
 			$("form input").not(".special").each(function(i, v) {
 				var item = $(v);
 				contact[item.prop("id")] = item.val();
@@ -231,14 +269,17 @@ var ContactmanagerC = UCPMC.extend({
 				contact[type] = data;
 			});
 			$("form input").prop("disabled", true);
-			$("#addcontact").text(_("Adding..."));
-			$("#addcontact").prop("disabled", true);
+			$(this).text(_("Adding..."));
+
+			$(this).prop("disabled", true);
 			$.post( "?quietmode=1&module=contactmanager&command=addcontact", { id: id, contact: contact }, function( data ) {
 				if (data.status) {
-					$.pjax({
-						url: "?display=dashboard&mod=contactmanager&view=group&id=" + id,
-						container: "#dashboard-content"
-					});
+						$.pjax({
+							url: "?display=dashboard&mod=contactmanager&view=group&id=" + id,
+							container: "#dashboard-content"
+						});
+				} else {
+					$($this).prop("disabled", false);
 				}
 			});
 		});
@@ -316,9 +357,10 @@ var ContactmanagerC = UCPMC.extend({
 		$(".contact-item").off("click");
 		$("#addgroup").off("click");
 		$("#deletegroup").off("click");
-		$("#addcontact").off("click");
 		$("#deletecontact").off("click");
 		$("#editContact input").off("blur");
+		$("#addcontact, #updatecontact").off("click");
+		$("#editcontact");
 	},
 	/**
 	 * Lookup a contact from the directory

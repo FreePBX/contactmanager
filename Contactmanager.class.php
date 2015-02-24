@@ -527,7 +527,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					'extension' => $number['extension'],
 					'type' => $number['type'],
 					'flags' => $number['flags'],
-					'primary' => isset($number['flags'][0]) ? $number['flags'][0] : 'phone'
+					'primary' => isset($number['flags'][0]) ? implode(",", $number['flags']) : 'phone'
 					);
 				}
 			}
