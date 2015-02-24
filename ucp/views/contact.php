@@ -41,30 +41,30 @@
 									<option value="other"><?php echo _('Other')?></option>
 								</select>
 							</td>
-							<td style="text-align: right;">
-								<label for="dndenable"><?php echo _('SMS')?>:</label>
+							<!--<td style="text-align: right;">
+								<label for="smsenable1"><?php echo _('SMS')?>:</label>
 							</td>
 							<td>
 								<div class="onoffswitch">
-									<input type="checkbox" name="dndenable" data-name="flag" class="onoffswitch-checkbox number" id="dndenable" <?php echo ($enabled) ? 'checked' : ''?>>
-									<label class="onoffswitch-label" for="dndenable">
+									<input type="checkbox" name="smsenable1" data-name="flag" class="onoffswitch-checkbox number" id="smsenable" <?php echo ($enabled) ? 'checked' : ''?>>
+									<label class="onoffswitch-label" for="smsenable">
 										<div class="onoffswitch-inner"></div>
 										<div class="onoffswitch-switch"></div>
 									</label>
 								</div>
 							</td>
 							<td style="text-align: right;">
-								<label for="dndenable"><?php echo _('Fax')?>:</label>
+								<label for="faxenable1"><?php echo _('Fax')?>:</label>
 							</td>
 							<td>
 								<div class="onoffswitch">
-									<input type="checkbox" name="dndenable" data-name="flag" class="onoffswitch-checkbox number" id="fax" <?php echo ($enabled) ? 'checked' : ''?>>
-									<label class="onoffswitch-label" for="fax">
+									<input type="checkbox" name="faxenable1" data-name="flag" class="onoffswitch-checkbox number" id="faxenable" <?php echo ($enabled) ? 'checked' : ''?>>
+									<label class="onoffswitch-label" for="faxenable">
 										<div class="onoffswitch-inner"></div>
 										<div class="onoffswitch-switch"></div>
 									</label>
 								</div>
-							</td>
+							</td>-->
 						</tr>
 						<?php foreach($contact['numbers'] as $number) {?>
 							<tr>
