@@ -480,7 +480,7 @@ msgstr ""
 
 #: views/group.php:177
 msgid "Upload"
-msgstr ""
+msgstr "上传"
 
 #: views/entry.php:37
 msgid "User"
