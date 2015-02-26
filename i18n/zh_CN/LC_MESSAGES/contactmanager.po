@@ -484,7 +484,7 @@ msgstr ""
 
 #: views/entry.php:37
 msgid "User"
-msgstr ""
+msgstr "用户"
 
 #: views/group.php:27
 msgid "User Manager"
