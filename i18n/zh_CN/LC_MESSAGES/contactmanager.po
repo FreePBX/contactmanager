@@ -84,7 +84,7 @@ msgstr ""
 
 #: contactmanager.i18n.php:4 contactmanager.i18n.php:10
 msgid "Admin"
-msgstr ""
+msgstr "管理员"
 
 #: Contactmanager.class.php:178
 msgid "An entry must have a user."
