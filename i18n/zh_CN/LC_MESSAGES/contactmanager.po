@@ -467,7 +467,7 @@ msgstr ""
 
 #: views/group.php:29
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
 #: views/group.php:29
 msgid "Type of group"
