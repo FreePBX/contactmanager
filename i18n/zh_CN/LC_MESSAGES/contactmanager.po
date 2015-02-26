@@ -509,7 +509,7 @@ msgstr "是"
 
 #: install.php:77 install.php:93 install.php:109 install.php:125
 msgid "already exists"
-msgstr ""
+msgstr "已存在"
 
 #: install.php:96
 msgid "checking for address field.."
