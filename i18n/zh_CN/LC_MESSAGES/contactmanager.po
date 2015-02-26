@@ -214,7 +214,7 @@ msgstr ""
 
 #: ucp/views/contact.php:57
 msgid "Fax"
-msgstr ""
+msgstr "传真"
 
 #: ucp/views/contact.php:10 ucp/views/contacts.php:24 views/entry.php:46
 msgid "First Name"
@@ -398,7 +398,7 @@ msgstr ""
 
 #: views/userman_hook.php:19
 msgid "No"
-msgstr ""
+msgstr "否"
 
 #: Contactmanager.class.php:1186
 msgid "No E-Mails to add"
@@ -505,7 +505,7 @@ msgstr ""
 
 #: views/userman_hook.php:18
 msgid "Yes"
-msgstr ""
+msgstr "是"
 
 #: install.php:77 install.php:93 install.php:109 install.php:125
 msgid "already exists"
