@@ -390,7 +390,7 @@ msgstr ""
 
 #: views/group.php:33
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #: views/group.php:33
 msgid "Name of group"
@@ -451,7 +451,7 @@ msgstr ""
 
 #: views/entry.php:385 views/group.php:146
 msgid "Submit"
-msgstr ""
+msgstr "提交"
 
 #: ucp/assets/js/global.js:76
 msgid "There are no actions for this type"
