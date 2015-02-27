@@ -154,7 +154,7 @@ msgstr ""
 
 #: ucp/views/contact.php:6 ucp/views/contacts.php:23 views/entry.php:43
 msgid "Display Name"
-msgstr ""
+msgstr "显示名"
 
 #: views/entry.php:43
 msgid "Display Name (overrides Display Name from User Manager)"
@@ -476,7 +476,7 @@ msgstr ""
 #: ucp/Contactmanager.class.php:62 ucp/Contactmanager.class.php:73
 #: ucp/Contactmanager.class.php:82 ucp/Contactmanager.class.php:91
 msgid "Unauthorized"
-msgstr ""
+msgstr "权限不足，拒绝访问"
 
 #: views/group.php:177
 msgid "Upload"
