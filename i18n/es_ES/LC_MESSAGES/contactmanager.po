@@ -10,13 +10,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-23 21:12-0500\n"
-"PO-Revision-Date: 2015-02-23 21:12-0500\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2015-03-25 08:38+0200\n"
+"Last-Translator: Ernesto <ecasas@sangoma.com>\n"
+"Language-Team: Spanish "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.2-dev\n"
 
 #: views/entry.php:186
 msgid "A list of E-Mail addresses belonging to this entry"
@@ -48,7 +51,7 @@ msgstr ""
 
 #: views/entry.php:8
 msgid "Add Entry"
-msgstr ""
+msgstr "Agregar entrada"
 
 #: ucp/views/groupcreate.php:8 ucp/views/nav.php:4 views/group.php:10
 msgid "Add Group"
@@ -84,7 +87,7 @@ msgstr ""
 
 #: contactmanager.i18n.php:4 contactmanager.i18n.php:10
 msgid "Admin"
-msgstr ""
+msgstr "Administrador"
 
 #: Contactmanager.class.php:178
 msgid "An entry must have a user."
@@ -214,7 +217,7 @@ msgstr ""
 
 #: ucp/views/contact.php:57
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 #: ucp/views/contact.php:10 ucp/views/contacts.php:24 views/entry.php:46
 msgid "First Name"
@@ -398,7 +401,7 @@ msgstr ""
 
 #: views/userman_hook.php:19
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: Contactmanager.class.php:1186
 msgid "No E-Mails to add"
@@ -451,7 +454,7 @@ msgstr ""
 
 #: views/entry.php:385 views/group.php:146
 msgid "Submit"
-msgstr ""
+msgstr "Envio"
 
 #: ucp/assets/js/global.js:76
 msgid "There are no actions for this type"
@@ -484,7 +487,7 @@ msgstr ""
 
 #: views/entry.php:37
 msgid "User"
-msgstr ""
+msgstr "Usuario"
 
 #: views/group.php:27
 msgid "User Manager"
@@ -505,7 +508,7 @@ msgstr ""
 
 #: views/userman_hook.php:18
 msgid "Yes"
-msgstr ""
+msgstr "Si"
 
 #: install.php:77 install.php:93 install.php:109 install.php:125
 msgid "already exists"
