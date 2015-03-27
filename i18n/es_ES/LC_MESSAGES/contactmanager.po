@@ -442,7 +442,7 @@ msgstr ""
 
 #: ucp/views/contacts.php:8
 msgid "Search"
-msgstr ""
+msgstr "Buscar"
 
 #: ucp/assets/js/global.js:82
 msgid "Select an Action"
