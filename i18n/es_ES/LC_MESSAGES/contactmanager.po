@@ -393,7 +393,7 @@ msgstr ""
 
 #: views/group.php:33
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: views/group.php:33
 msgid "Name of group"
