@@ -429,7 +429,7 @@ msgstr ""
 
 #: install.php:74 install.php:90 install.php:106 install.php:122
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: ucp/views/contact.php:41 ucp/views/contact.php:82 views/entry.php:103
 #: views/group.php:79
