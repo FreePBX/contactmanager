@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-23 21:12-0500\n"
-"PO-Revision-Date: 2015-03-30 08:26+0200\n"
+"PO-Revision-Date: 2015-03-30 10:43+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
@@ -500,7 +500,7 @@ msgstr ""
 #: ucp/views/contact.php:38 ucp/views/contact.php:79 views/entry.php:100
 #: views/group.php:76
 msgid "Work"
-msgstr ""
+msgstr "Trabajo"
 
 #: views/entry.php:161
 msgid "XMPP"
