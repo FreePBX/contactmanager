@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-23 21:12-0500\n"
-"PO-Revision-Date: 2015-03-31 09:50+0200\n"
-"Last-Translator: Ernesto <ecasas@sangoma.com>\n"
+"PO-Revision-Date: 2015-04-03 10:11+0200\n"
+"Last-Translator: Daver <daverjorge46@gmail.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
 "Language: es_ES\n"
@@ -87,7 +87,7 @@ msgstr "Dirección"
 
 #: contactmanager.i18n.php:4 contactmanager.i18n.php:10
 msgid "Admin"
-msgstr "Administración"
+msgstr "Administrador"
 
 #: Contactmanager.class.php:178
 msgid "An entry must have a user."
