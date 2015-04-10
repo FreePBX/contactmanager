@@ -10,13 +10,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-23 21:12-0500\n"
-"PO-Revision-Date: 2015-02-23 21:12-0500\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2015-04-09 20:38+0200\n"
+"Last-Translator: james <zhulizhong@gmail.com>\n"
+"Language-Team: Simplified Chinese "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/zh_CN/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.2-dev\n"
 
 #: views/entry.php:186
 msgid "A list of E-Mail addresses belonging to this entry"
@@ -113,7 +116,7 @@ msgstr ""
 
 #: ucp/views/contact.php:22 ucp/views/contacts.php:27 views/entry.php:55
 msgid "Company"
-msgstr ""
+msgstr "公司"
 
 #: views/entry.php:55
 msgid "Company (overrides Company from User Manager)"
@@ -194,7 +197,7 @@ msgstr ""
 
 #: ucp/views/contact.php:118
 msgid "Email"
-msgstr ""
+msgstr "邮件"
 
 #: views/group.php:163
 msgid "Export CSV"
