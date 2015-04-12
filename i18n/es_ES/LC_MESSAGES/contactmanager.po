@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-23 21:12-0500\n"
-"PO-Revision-Date: 2015-04-03 10:11+0200\n"
-"Last-Translator: Daver <daverjorge46@gmail.com>\n"
+"PO-Revision-Date: 2015-04-12 07:29+0200\n"
+"Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
 "Language: es_ES\n"
@@ -116,7 +116,7 @@ msgstr "Cel"
 
 #: ucp/views/contact.php:22 ucp/views/contacts.php:27 views/entry.php:55
 msgid "Company"
-msgstr "Compañía"
+msgstr "Empresa"
 
 #: views/entry.php:55
 msgid "Company (overrides Company from User Manager)"
@@ -157,7 +157,7 @@ msgstr "Borrando..."
 
 #: ucp/views/contact.php:6 ucp/views/contacts.php:23 views/entry.php:43
 msgid "Display Name"
-msgstr "Desplegar Nombre"
+msgstr "Nombre a Mostrar"
 
 #: views/entry.php:43
 msgid "Display Name (overrides Display Name from User Manager)"
@@ -402,7 +402,7 @@ msgstr "Nombre del Grupo"
 
 #: views/userman_hook.php:19
 msgid "No"
-msgstr "NO"
+msgstr "No"
 
 #: Contactmanager.class.php:1186
 msgid "No E-Mails to add"
@@ -463,7 +463,7 @@ msgstr "No hay acciones para este tipo"
 
 #: ucp/views/contact.php:18 ucp/views/contacts.php:26 views/entry.php:52
 msgid "Title"
-msgstr "Título"
+msgstr "Titulo"
 
 #: views/entry.php:52
 msgid "Title  (overrides Title from User Manager)"
