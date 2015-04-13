@@ -1498,11 +1498,25 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	public function usermanShowPage() {
 		if(isset($_REQUEST['action'])) {
 			switch($_REQUEST['action']) {
+				case 'addgroup':
 				case 'adduser':
-				return load_view(dirname(__FILE__).'/views/userman_hook.php',array("enabled" => true));
+					return array(
+						array(
+							"title" => _("Contact Manager"),
+							"rawname" => "contactmanager",
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("enabled" => true))
+						)
+					);
 				break;
+				case 'addgroup':
 				case 'showuser':
-				return load_view(dirname(__FILE__).'/views/userman_hook.php',array("enabled" => $this->showUsermanContact($_REQUEST['user'])));
+					return array(
+						array(
+							"title" => _("Contact Manager"),
+							"rawname" => "contactmanager",
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("enabled" => $this->showUsermanContact($_REQUEST['user'])))
+						)
+					);
 				break;
 				default:
 				break;
