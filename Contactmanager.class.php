@@ -357,6 +357,13 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','processed',true);
 				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','show',false);
 			}
+			if(!$this->checkCOSStatus()) {
+				if(!empty($_POST['contactmanager_groups'])) {
+					$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','groups',$_POST['contactmanager_groups']);
+				} else {
+					$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','groups',array());
+				}
+			}
 		}
 	}
 
@@ -368,6 +375,13 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			} else {
 				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','processed',true);
 				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','show',false);
+			}
+			if(!$this->checkCOSStatus()) {
+				if(!empty($_POST['contactmanager_groups'])) {
+					$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','groups',$_POST['contactmanager_groups']);
+				} else {
+					$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','groups',array());
+				}
 			}
 		}
 	}
@@ -391,10 +405,34 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 * @param {int} $owner The owner ID
 	 */
 	public function getGroupsbyOwner($owner) {
-		$sql = "SELECT * FROM contactmanager_groups WHERE `owner` = :id OR `owner` = -1 ORDER BY id";
+		if($this->checkCOSStatus()) {
+			$sql = "SELECT * FROM contactmanager_groups WHERE `owner` = :id OR `owner` = -1 ORDER BY id";
+		} else {
+			$user = $this->freepbx->Userman->getUserByID($owner);
+			$assigned = $this->freepbx->Userman->getModuleSettingByID($id,'contactmanager','groups',true);
+			if(is_null($assigned)) {
+				return array();
+			}
+			$sql = "SELECT * FROM contactmanager_groups WHERE `owner` = :id";
+			if (!empty($assigned)) {
+				$sql .= " OR `id` IN (".implode(',',$assigned).")";
+			}
+	 		$sql .= " ORDER BY id";
+		}
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $owner));
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	/**
+	 * Check if COS is enabled or not.
+	 * TODO: There has to be a better way to do this
+	 */
+	private function checkCOSStatus() {
+		if(function_exists('sysadmin_is_module_licensed')) {
+			return sysadmin_is_module_licensed("cos");
+		}
+		return false;
 	}
 
 	/**
@@ -1510,11 +1548,22 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				break;
 				case 'addgroup':
 				case 'showuser':
+					$groups = $this->getGroupsbyOwner(-1);
+					$assigned = $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","groups",true);
+					if(is_null($assigned)) {
+						foreach($groups as $group) {
+							$assigned[] = $group['id'];
+						}
+					}
+					foreach($groups as $k=>$group) {
+						$groups[$k]['selected'] = in_array($group['id'],$assigned);
+					}
+					$cos = $this->checkCOSStatus();
 					return array(
 						array(
 							"title" => _("Contact Manager"),
 							"rawname" => "contactmanager",
-							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("enabled" => $this->showUsermanContact($_REQUEST['user'])))
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("cos" => $cos, "groups" => $groups, "enabled" => $this->showUsermanContact($_REQUEST['user'])))
 						)
 					);
 				break;
