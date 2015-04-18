@@ -409,7 +409,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			$sql = "SELECT * FROM contactmanager_groups WHERE `owner` = :id OR `owner` = -1 ORDER BY id";
 		} else {
 			$user = $this->freepbx->Userman->getUserByID($owner);
-			$assigned = $this->freepbx->Userman->getModuleSettingByID($id,'contactmanager','groups',true);
+			$assigned = $this->freepbx->Userman->getModuleSettingByID($user['id'],'contactmanager','groups',true);
 			if(is_null($assigned)) {
 				return array();
 			}
