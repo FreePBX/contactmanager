@@ -1,34 +1,37 @@
 <module>
-		<rawname>contactmanager</rawname>
-		<repo>standard</repo>
-		<name>Contact Manager</name>
-		<version>13.0.0beta1</version>
-		<publisher>Schmooze Com Inc</publisher>
-		<license>GPLv3+</license>
-		<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
-		<changelog>
-				*13.0.0beta1* First beta release.
-		</changelog>
-		<category>Admin</category>
-		<description>
-				Contact Manager
-		</description>
-		<menuitems>
-				<contactmanager beta="yes" needsenginedb="yes">Contact Manager</contactmanager>
-		</menuitems>
-		<depends>
-				<version>13.0.0</version>
-				<module>userman ge 12.0.9</module>
-		</depends>
-		<supported>
-				<version>13.0</version>
-		</supported>
-		<hooks>
-				<userman namespace="FreePBX\modules" class="Userman">
-						<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="delUser">usermanDelUser</method>
-						<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="addUser">usermanAddUser</method>
-						<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="updateUser">usermanUpdateUser</method>
-						<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="myShowPage">usermanShowPage</method>
-				</userman>
-		</hooks>
+	<rawname>contactmanager</rawname>
+	<repo>standard</repo>
+	<name>Contact Manager</name>
+	<version>13.0.0beta1</version>
+	<publisher>Schmooze Com Inc</publisher>
+	<license>GPLv3+</license>
+	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
+	<changelog>
+		*13.0.0beta1* First beta release.
+	</changelog>
+	<category>Admin</category>
+	<description>
+		Contact Manager
+	</description>
+	<menuitems>
+		<contactmanager beta="yes" needsenginedb="yes">Contact Manager</contactmanager>
+	</menuitems>
+	<depends>
+		<version>13.0.0</version>
+		<module>userman ge 12.0.9</module>
+	</depends>
+	<supported>
+		<version>13.0</version>
+	</supported>
+	<hooks>
+		<userman namespace="FreePBX\modules" class="Userman">
+			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="delGroup">usermanDelGroup</method>
+			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="addGroup">usermanAddGroup</method>
+			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="updateGroup">usermanUpdateGroup</method>
+			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="delUser">usermanDelUser</method>
+			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="addUser">usermanAddUser</method>
+			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="updateUser">usermanUpdateUser</method>
+			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="myShowPage">usermanShowPage</method>
+		</userman>
+	</hooks>
 </module>
