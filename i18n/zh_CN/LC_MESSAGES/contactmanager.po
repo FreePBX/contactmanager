@@ -12,8 +12,7 @@ msgstr ""
 "POT-Creation-Date: 2015-04-28 10:52-0400\n"
 "PO-Revision-Date: 2015-04-09 20:38+0200\n"
 "Last-Translator: james <zhulizhong@gmail.com>\n"
-"Language-Team: Simplified Chinese <http://weblate.freepbx.org/projects/"
-"freepbx/contactmanager/zh_CN/>\n"
+"Language-Team: Simplified Chinese <http://weblate.freepbx.org/projects/freepbx/contactmanager/zh_CN/>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -472,9 +471,7 @@ msgid "There are no actions for this type"
 msgstr ""
 
 #: views/userman_hook.php:49
-msgid ""
-"These are the assigned and active contactmanager groups which will show up "
-"for this user in UCP"
+msgid "These are the assigned and active contactmanager groups which will show up for this user in UCP"
 msgstr ""
 
 #: ucp/views/contact.php:18 ucp/views/contacts.php:26 views/entry.php:52
@@ -549,4 +546,13 @@ msgstr ""
 
 #: install.php:64
 msgid "checking for title field.."
+msgstr ""
+
+#: views/group.php:18
+#, php-format
+msgid "Delete Group: %s"
+msgstr ""
+
+#: views/userman_hook.php:15
+msgid "Show contact in Contact Manager"
 msgstr ""

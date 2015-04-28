@@ -468,9 +468,7 @@ msgid "There are no actions for this type"
 msgstr ""
 
 #: views/userman_hook.php:49
-msgid ""
-"These are the assigned and active contactmanager groups which will show up "
-"for this user in UCP"
+msgid "These are the assigned and active contactmanager groups which will show up for this user in UCP"
 msgstr ""
 
 #: ucp/views/contact.php:18 ucp/views/contacts.php:26 views/entry.php:52
@@ -545,4 +543,13 @@ msgstr ""
 
 #: install.php:64
 msgid "checking for title field.."
+msgstr ""
+
+#: views/group.php:18
+#, php-format
+msgid "Delete Group: %s"
+msgstr ""
+
+#: views/userman_hook.php:15
+msgid "Show contact in Contact Manager"
 msgstr ""

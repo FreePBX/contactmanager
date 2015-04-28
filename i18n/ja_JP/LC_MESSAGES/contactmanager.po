@@ -12,8 +12,7 @@ msgstr ""
 "POT-Creation-Date: 2015-04-28 10:52-0400\n"
 "PO-Revision-Date: 2015-02-28 11:49+0200\n"
 "Last-Translator: Kevin <kevin@qloog.com>\n"
-"Language-Team: Japanese <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/ja_JP/>\n"
+"Language-Team: Japanese <http://weblate.freepbx.org/projects/freepbx/contactmanager/ja_JP/>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -472,9 +471,7 @@ msgid "There are no actions for this type"
 msgstr "この種類のアクションがありません"
 
 #: views/userman_hook.php:49
-msgid ""
-"These are the assigned and active contactmanager groups which will show up "
-"for this user in UCP"
+msgid "These are the assigned and active contactmanager groups which will show up for this user in UCP"
 msgstr ""
 
 #: ucp/views/contact.php:18 ucp/views/contacts.php:26 views/entry.php:52
