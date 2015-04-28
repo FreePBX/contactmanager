@@ -79,8 +79,14 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				);
 				return true;
 			case "import":
+				ini_set('max_execution_time', 300);
 				if (!empty($_POST['group']) && is_uploaded_file($_FILES['csv']['tmp_name'])) {
 					$this->importCSV($_FILES['csv']['tmp_name'], $_POST['group']);
+				} else {
+					$this->message = array(
+						'message' => 'File upload failed, group or file not found.',
+						'type' => 'error'
+					);
 				}
 				return true;
 			}
@@ -238,8 +244,11 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$group = $this->getGroupByID($_REQUEST['group']);
 				$entries = $this->getEntriesByGroupID($_REQUEST['group']);
 			}
-
-			$html .= load_view(dirname(__FILE__).'/views/group.php', array("group" => $group, "entries" => $entries, "users" => $users, "message" => $this->message));
+			
+			$file['post'] = ini_get('post_max_size');
+			$file['upload'] = ini_get('upload_max_filesize');
+			
+			$html .= load_view(dirname(__FILE__).'/views/group.php', array("group" => $group, "entries" => $entries, "users" => $users, "message" => $this->message, "file" => $file));
 			break;
 			case "showentry":
 			case "addentry":
