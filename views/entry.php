@@ -65,9 +65,10 @@ case "internal":
 	$label = fpbx_label(_('User'), _('A user from the User Management module'));
 	$table->add_row($label, form_dropdown('user', $userlist, $entry['user']));
 
-	$extrahtml.= '<script language="javascript">
+	$extrahtml.= '<script language="javascript">';
+	$extrahtml.= 'var users = ' . json_encode($users);
+	$extrahtml.= '
 		$("form[name=\"entry\"]").submit(function(event) {
-			var users = "' . json_encode($users); .'";
 			if ($("select[name=user]").val() == "") {
 				alert("An entry must have a user.");
 				event.preventDefault();
