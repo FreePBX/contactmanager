@@ -7,7 +7,7 @@
 			<div class="input-group">
 				<input type="text" class="form-control" id="search-text" placeholder="<?php echo _('Search')?>" value="<?php echo $search?>">
 				<span class="input-group-btn">
-					<button class="btn btn-default" type="button" id="search-btn"><?php echo _('Go!')?>'</button>
+					<button class="btn btn-default" type="button" id="search-btn"><?php echo _('Go!')?></button>
 				</span>
 			</div>
 		</div>
