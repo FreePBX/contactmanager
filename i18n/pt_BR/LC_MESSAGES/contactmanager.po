@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-28 10:55-0400\n"
-"PO-Revision-Date: 2015-04-29 08:33+0200\n"
+"PO-Revision-Date: 2015-05-01 12:11+0200\n"
 "Last-Translator: Renato <fiuza@tecnologia.inf.br>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/pt_BR/>\n"
@@ -155,7 +155,7 @@ msgstr ""
 
 #: ucp/views/contact.php:6 ucp/views/contacts.php:23 views/entry.php:43
 msgid "Display Name"
-msgstr ""
+msgstr "Nome de Exibição"
 
 #: views/entry.php:43
 msgid "Display Name (overrides Display Name from User Manager)"
@@ -456,7 +456,7 @@ msgstr ""
 
 #: views/entry.php:385 views/group.php:146
 msgid "Submit"
-msgstr ""
+msgstr "Enviar"
 
 #: ucp/assets/js/global.js:76
 msgid "There are no actions for this type"
