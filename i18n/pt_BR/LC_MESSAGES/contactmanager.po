@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-28 10:55-0400\n"
-"PO-Revision-Date: 2015-05-01 12:11+0200\n"
+"PO-Revision-Date: 2015-05-02 12:40+0200\n"
 "Last-Translator: Renato <fiuza@tecnologia.inf.br>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/pt_BR/>\n"
@@ -51,7 +51,7 @@ msgstr ""
 
 #: views/entry.php:8
 msgid "Add Entry"
-msgstr ""
+msgstr "Adicionar Entrada"
 
 #: ucp/views/groupcreate.php:8 ucp/views/nav.php:4 views/group.php:10
 msgid "Add Group"
@@ -116,7 +116,7 @@ msgstr ""
 
 #: ucp/views/contact.php:22 ucp/views/contacts.php:27 views/entry.php:55
 msgid "Company"
-msgstr ""
+msgstr "Empresa"
 
 #: views/entry.php:55
 msgid "Company (overrides Company from User Manager)"
@@ -195,7 +195,7 @@ msgstr ""
 
 #: ucp/views/contact.php:118
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: views/group.php:163
 msgid "Export CSV"
