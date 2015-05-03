@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-28 10:55-0400\n"
-"PO-Revision-Date: 2015-05-02 12:40+0200\n"
+"PO-Revision-Date: 2015-05-02 20:56+0200\n"
 "Last-Translator: Renato <fiuza@tecnologia.inf.br>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/pt_BR/>\n"
@@ -215,11 +215,11 @@ msgstr ""
 
 #: ucp/views/contact.php:57
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 #: ucp/views/contact.php:10 ucp/views/contacts.php:24 views/entry.php:46
 msgid "First Name"
-msgstr ""
+msgstr "Primeiro Nome"
 
 #: views/entry.php:46
 msgid "First Name (overrides First Name from User Manager)"
@@ -367,7 +367,7 @@ msgstr ""
 #: ucp/views/contact.php:39 ucp/views/contact.php:80 views/entry.php:101
 #: views/group.php:77
 msgid "Home"
-msgstr ""
+msgstr "Início"
 
 #: views/group.php:172
 msgid "Import CSV"
@@ -379,7 +379,7 @@ msgstr ""
 
 #: ucp/views/contact.php:14 ucp/views/contacts.php:25 views/entry.php:49
 msgid "Last Name"
-msgstr ""
+msgstr "Último Nome"
 
 #: views/entry.php:49
 msgid "Last Name (overrides Last Name from User Manager)"
@@ -464,7 +464,7 @@ msgstr ""
 
 #: ucp/views/contact.php:18 ucp/views/contacts.php:26 views/entry.php:52
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #: views/entry.php:52
 msgid "Title  (overrides Title from User Manager)"
