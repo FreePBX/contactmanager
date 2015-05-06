@@ -1838,6 +1838,79 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		);
 	}
 
+	public function bulkhandlerGetHeaders($type) {
+		switch ($type) {
+		case 'contacts':
+			return array(
+				'groupname' => array(
+					'required' => true,
+					'identifier' => _('Group Name'),
+					'description' => _('Name of group for contact.  If group does not exist, it will be created.'),
+				),
+				'grouptype' => array(
+					'required' => true,
+					'identifier' => _('Group Type'),
+					'description' => _('Type of group for contact.'),
+					'values' => array(
+						'internal' => _('Internal'),
+						'external' => _('External')
+					),
+				),
+				'displayname' => array(
+					'identifier' => _('Display Name'),
+					'description' => _('Display Name'),
+				),
+				'fname' => array('description' => _('First Name')),
+				'lname' => array('description' => _('Last Name')),
+				'title' => array('description' => _('Title')),
+				'company' => array('description' => _('Company')),
+				'address' => array('description' => _('Address')),
+				'userman_username' => array('description' => _('User Manager username this contact should point to.  Internal contacts only.')),
+				'phone_1_number' => array('description' => _('Phone number.  External contacts only.')),
+				'phone_1_type' => array(
+					'description' => _('Type of phone number.  External contacts only.'),
+					'values' => array(
+						'work' => _('Work'),
+						'home' => _('Home'),
+						'cell' => _('Cell'),
+						'other' => _('Other')
+					),
+				),
+				'phone_1_extension' => array('description' => _('Extension.  External contacts only.')),
+				'phone_1_flags' => array('description' => _('Comma-delimited list of flags.  (Example: sms,fax)  External contacts only.')),
+				'phone_2_number' => array('description' => _('Phone number.  External contacts only.')),
+				'phone_2_type' => array(
+					'description' => _('Type of phone number.  External contacts only.'),
+					'values' => array(
+						'work' => _('Work'),
+						'home' => _('Home'),
+						'cell' => _('Cell'),
+						'other' => _('Other')
+					),
+				),
+				'phone_2_extension' => array('description' => _('Extension.  External contacts only.')),
+				'phone_2_flags' => array('description' => _('Comma-delimited list of flags.  (Example: sms,fax)  External contacts only.')),
+				'phone_3_number' => array('description' => _('Phone number.  External contacts only.')),
+				'phone_3_type' => array(
+					'description' => _('Type of phone number.  External contacts only.'),
+					'values' => array(
+						'work' => _('Work'),
+						'home' => _('Home'),
+						'cell' => _('Cell'),
+						'other' => _('Other')
+					),
+				),
+				'phone_3_extension' => array('description' => _('Extension.  External contacts only.')),
+				'phone_3_flags' => array('description' => _('Comma-delimited list of flags.  (Example: sms,fax)  External contacts only.')),
+				'email_1' => array('description' => _('E-mail address.  External contacts only.')),
+				'email_2' => array('description' => _('E-mail address.  External contacts only.')),
+				'email_3' => array('description' => _('E-mail address.  External contacts only.')),
+			);
+
+			break;
+		}
+	}
+
 	public function bulkhandlerImport($type, $rawData) {
 		$ret = NULL;
 
