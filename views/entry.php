@@ -62,9 +62,6 @@ $extrahtml = '';
 
 switch ($group['type']) {
 case "internal":
-	$label = fpbx_label(_('User'), _('A user from the User Management module'));
-	$table->add_row($label, form_dropdown('user', $userlist, $entry['user']));
-
 	$extrahtml.= '<script language="javascript">';
 	$extrahtml.= 'var users = ' . json_encode($users);
 	$extrahtml.= '

@@ -1828,4 +1828,255 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 		return NULL;
 	}
+
+	public function bulkhandlerGetTypes() {
+		return array(
+			'contacts' => array(
+				'name' => _('Contacts'),
+				'description' => _('Contacts and internal/external groups from the Contact Manager module.')
+			)
+		);
+	}
+
+	public function bulkhandlerGetHeaders($type) {
+		switch ($type) {
+		case 'contacts':
+			return array(
+				'groupname' => array(
+					'required' => true,
+					'identifier' => _('Group Name'),
+					'description' => _('Name of group for contact.  If group does not exist, it will be created.'),
+				),
+				'grouptype' => array(
+					'required' => true,
+					'identifier' => _('Group Type'),
+					'description' => _('Type of group for contact.'),
+					'values' => array(
+						'internal' => _('Internal'),
+						'external' => _('External')
+					),
+				),
+				'displayname' => array(
+					'identifier' => _('Display Name'),
+					'description' => _('Display Name'),
+				),
+				'fname' => array('description' => _('First Name')),
+				'lname' => array('description' => _('Last Name')),
+				'title' => array('description' => _('Title')),
+				'company' => array('description' => _('Company')),
+				'address' => array('description' => _('Address')),
+				'userman_username' => array('description' => _('User Manager username this contact should point to.  Internal contacts only.')),
+				'phone_1_number' => array('description' => _('Phone number.  External contacts only.')),
+				'phone_1_type' => array(
+					'description' => _('Type of phone number.  External contacts only.'),
+					'values' => array(
+						'work' => _('Work'),
+						'home' => _('Home'),
+						'cell' => _('Cell'),
+						'other' => _('Other')
+					),
+				),
+				'phone_1_extension' => array('description' => _('Extension.  External contacts only.')),
+				'phone_1_flags' => array('description' => _('Comma-delimited list of flags.  (Example: sms,fax)  External contacts only.')),
+				'phone_2_number' => array('description' => _('Phone number.  External contacts only.')),
+				'phone_2_type' => array(
+					'description' => _('Type of phone number.  External contacts only.'),
+					'values' => array(
+						'work' => _('Work'),
+						'home' => _('Home'),
+						'cell' => _('Cell'),
+						'other' => _('Other')
+					),
+				),
+				'phone_2_extension' => array('description' => _('Extension.  External contacts only.')),
+				'phone_2_flags' => array('description' => _('Comma-delimited list of flags.  (Example: sms,fax)  External contacts only.')),
+				'phone_3_number' => array('description' => _('Phone number.  External contacts only.')),
+				'phone_3_type' => array(
+					'description' => _('Type of phone number.  External contacts only.'),
+					'values' => array(
+						'work' => _('Work'),
+						'home' => _('Home'),
+						'cell' => _('Cell'),
+						'other' => _('Other')
+					),
+				),
+				'phone_3_extension' => array('description' => _('Extension.  External contacts only.')),
+				'phone_3_flags' => array('description' => _('Comma-delimited list of flags.  (Example: sms,fax)  External contacts only.')),
+				'email_1' => array('description' => _('E-mail address.  External contacts only.')),
+				'email_2' => array('description' => _('E-mail address.  External contacts only.')),
+				'email_3' => array('description' => _('E-mail address.  External contacts only.')),
+			);
+
+			break;
+		}
+	}
+
+	public function bulkhandlerImport($type, $rawData) {
+		$ret = NULL;
+
+		switch ($type) {
+		case 'contacts':
+			foreach ($rawData as $data) {
+				if (empty($data['groupname'])) {
+					return array(
+						'status' => false,
+						'message' => _('Group name is required.'),
+					);
+				}
+
+				if (empty($data['grouptype'])) {
+					return array(
+						'status' => false,
+						'message' => _('Group type is required.'),
+					);
+				}
+
+				$group = NULL;
+
+				$groups = $this->getGroups();
+				foreach ($groups as $g) {
+					if ($g['name'] == $data['groupname'] && $g['type'] == $data['grouptype']) {
+						/* Found an existing group.  Let's bail. */
+						$group = $g;
+						break;
+					}
+				}
+
+				if (!$group) {
+					$res = $this->addGroup($data['groupname'], $data['grouptype']);
+					if ($res['status'] && $res['id']) {
+						$group = $this->getGroupByID($res['id']);
+					} else {
+						$ret = array(
+							'status' => false,
+							'message' => _('Group not found and could not be created.'),
+						);
+					}
+				}
+
+				if (!empty($data['userman_username'])) {
+					$user = $this->userman->getUserByUsername($data['userman_username']);
+				}
+				$contact = array(
+					'id' => '',
+					'groupid' => $group['id'],
+					'user' => $user ? $user['username'] : -1,
+					'displayname' => $data['displayname'],
+					'fname' => $data['fname'],
+					'lname' => $data['lname'],
+					'title' => $data['title'],
+					'company' => $data['company'],
+					'address' => $data['address'],
+				);
+
+				$grep = preg_grep('/^\D+_\d+/', array_keys($data));
+				foreach ($grep as $key) {
+					if (preg_match('/^(.*)_(\d+)_(.*)$/', $key, $matches)) {
+						$extras[$matches[1]][$matches[2] - 1][$matches[3]] = $data[$key];
+					} else if (preg_match('/^(.*)_(\d+)$/', $key, $matches)) {
+						$extras[$matches[1]][$matches[2] - 1] = $data[$key];
+					}
+				}
+
+				foreach ($extras as $key => $type) {
+					foreach ($type as $value) {
+						switch ($key) {
+						case 'phone':
+							$contact['numbers'][] = array(
+								'number' => $value['number'],
+								'type' => isset($value['type']) ? $value['type'] : 'other',
+								'extension' => isset($value['extension']) ? $value['extension'] : '',
+								'flags' => isset($value['flags']) ? explode(',', $value['flags']) : array(),
+							);
+							break;
+						case 'email':
+							$contact['emails'][] = array(
+								'email' => $value,
+							);
+							break;
+						case 'website':
+							$contact['websites'][] = array(
+								'website' => $value,
+							);
+							break;
+						default:
+							return array("status" => false, "message" => _("Unknown data type."));
+							break;
+						}
+					}
+				}
+
+				$this->addEntryByGroupID($group['id'], $contact);
+
+				$ret = array(
+					'status' => true,
+				);
+			}
+
+			break;
+		}
+
+		return $ret;
+	}
+
+	public function bulkhandlerExport($type) {
+		$data = NULL;
+
+		switch ($type) {
+		case 'contacts':
+			$groups = $this->getGroups();
+			foreach ($groups as $group) {
+				if ($group['type'] != 'internal' && $group['type'] != 'external') {
+					continue;
+				}
+
+				$entries = $this->getEntriesByGroupID($group['id']);
+				foreach ($entries as $entry) {
+					$entry['numbers'] = array_values($entry['numbers']);
+					$entry['emails'] = array_values($entry['emails']);
+					$entry['websites'] = array_values($entry['websites']);
+
+					$contact = array(
+						"groupname" => $group['name'],
+						"grouptype" => $group['type'],
+						"displayname" => $entry['displayname'],
+						"fname" => $entry['fname'],
+						"lname" => $entry['lname'],
+						"title" => $entry['title'],
+						"company" => $entry['company'],
+						"address" => $entry['address'],
+					);
+
+					if ($group['type'] == 'internal' && $entry['user']) {
+						$user = $this->userman->getUserByID($entry['user']);
+						$contact["userman_username"] = $user['username'];
+					}
+
+					foreach ($entry['numbers'] as $key => $value) {
+						$id = $key + 1;
+						$contact["phone_" . $id . "_type"] = $value['type'];
+						$contact["phone_" . $id . "_number"] = $value['number'];
+						$contact["phone_" . $id . "_extension"] = $value['extension'];
+						$contact["phone_" . $id . "_flags"] = implode(',', $value['flags']);
+					}
+
+					foreach ($entry['emails'] as $key => $value) {
+						$id = $key + 1;
+						$contact["email_" . $id] = $value['email'];
+					}
+
+					foreach ($entry['websites'] as $key => $value) {
+						$id = $key + 1;
+						$contact["website_" . $id] = $value['website'];
+					}
+
+					$data[] = $contact;
+				}
+			}
+
+			break;
+		}
+
+		return $data;
+	}
 }

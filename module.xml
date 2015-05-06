@@ -25,6 +25,12 @@
 		<version>13.0</version>
 	</supported>
 	<hooks>
+		<bulkhandler namespace="FreePBX\modules" class="Bulkhandler">
+			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="getHeaders">bulkhandlerGetHeaders</method>
+			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="getTypes">bulkhandlerGetTypes</method>
+			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="import">bulkhandlerImport</method>
+			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="export">bulkhandlerExport</method>
+		</bulkhandler>
 		<userman namespace="FreePBX\modules" class="Userman">
 			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="delGroup">usermanDelGroup</method>
 			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="addGroup">usermanAddGroup</method>
