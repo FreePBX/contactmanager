@@ -244,10 +244,10 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$group = $this->getGroupByID($_REQUEST['group']);
 				$entries = $this->getEntriesByGroupID($_REQUEST['group']);
 			}
-			
+
 			$file['post'] = ini_get('post_max_size');
 			$file['upload'] = ini_get('upload_max_filesize');
-			
+
 			$html .= load_view(dirname(__FILE__).'/views/group.php', array("group" => $group, "entries" => $entries, "users" => $users, "message" => $this->message, "file" => $file));
 			break;
 			case "showentry":
@@ -336,14 +336,14 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			if($_POST['contactmanager_show'] == "true") {
 				$this->userman->setModuleSettingByGID($id,'contactmanager','show', true);
 			} else {
-				$this->userman->setModuleSettingByGID($id,'contactmanager','show', null);
+				$this->userman->setModuleSettingByGID($id,'contactmanager','show', false);
 			}
 
 			if(!$this->checkCOSStatus()) {
 				if(!empty($_POST['contactmanager_groups'])) {
 					$this->freepbx->Userman->setModuleSettingByGID($id,'contactmanager','groups',$_POST['contactmanager_groups']);
 				} else {
-					$this->freepbx->Userman->setModuleSettingByGID($id,'contactmanager','groups',array());
+					$this->freepbx->Userman->setModuleSettingByGID($id,'contactmanager','groups',null);
 				}
 			}
 		}
@@ -382,21 +382,20 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			}
 		}
 		if($display == 'extensions' || $display == 'users') {
-			$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','processed',true);
 			$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','show',true);
 		} else if($display == 'userman' && isset($_POST['contactmanager_show'])) {
 			if($_POST['contactmanager_show'] == "true") {
-				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','processed',true);
 				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','show',true);
-			} else {
-				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','processed',true);
+			} elseif($_POST['contactmanager_show'] == "false") {
 				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','show',false);
+			} else {
+				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','show',null);
 			}
 			if(!$this->checkCOSStatus()) {
 				if(!empty($_POST['contactmanager_groups'])) {
 					$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','groups',$_POST['contactmanager_groups']);
 				} else {
-					$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','groups',array());
+					$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','groups',null);
 				}
 			}
 		}
@@ -405,17 +404,17 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	public function usermanUpdateUser($id, $display, $data) {
 		if($display == 'userman' && isset($_POST['contactmanager_show'])) {
 			if($_POST['contactmanager_show'] == "true") {
-				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','processed',true);
 				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','show',true);
-			} else {
-				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','processed',true);
+			} elseif($_POST['contactmanager_show'] == "false") {
 				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','show',false);
+			} else {
+				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','show',null);
 			}
 			if(!$this->checkCOSStatus()) {
 				if(!empty($_POST['contactmanager_groups'])) {
 					$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','groups',$_POST['contactmanager_groups']);
 				} else {
-					$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','groups',array());
+					$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','groups',null);
 				}
 			}
 		}
@@ -633,7 +632,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			}
 			break;
 			case "userman":
-			if(!$this->showUsermanContact($entry['user'])) {
+			if(!$this->freepbx->Userman->getCombinedModuleSettingByID($entry['user'],"contactmanager","show")) {
 				return false;
 			}
 			case "internal":
@@ -724,7 +723,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		switch($group['type']) {
 			case "userman":
 			foreach($e as $key => $entry) {
-				if($this->showUsermanContact($entry['user'])) {
+				if($this->freepbx->Userman->getCombinedModuleSettingByID($entry['user'],"contactmanager","show")) {
 					$user = $this->freepbx->Userman->getUserByID($entry['user']);
 					if(!empty($user)) {
 						$entries[$key] = $entry;
@@ -1440,7 +1439,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$entries = $umentries;
 				$final = array();
 				foreach($entries as $entry) {
-					if(!$this->showUsermanContact($entry['id'])) {
+					if(!$this->freepbx->Userman->getCombinedModuleSettingByID($entry['id'],"contactmanager","show")) {
 						continue;
 					}
 					$entry['type'] = "userman";
@@ -1587,7 +1586,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						array(
 							"title" => _("Contact Manager"),
 							"rawname" => "contactmanager",
-							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("cos" => $cos, "groups" => $groups, "enabled" => $this->userman->getModuleSettingByGID($_POST['group'],'contactmanager','show')))
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("mode" => "group", "cos" => $cos, "groups" => $groups, "enabled" => $this->userman->getModuleSettingByGID($_REQUEST['group'],'contactmanager','show')))
 						)
 					);
 				case 'addgroup':
@@ -1601,7 +1600,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						array(
 							"title" => _("Contact Manager"),
 							"rawname" => "contactmanager",
-							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("cos" => $cos, "groups" => $groups, "enabled" => true))
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("mode" => "group", "cos" => $cos, "groups" => $groups, "enabled" => true))
 						)
 					);
 				break;
@@ -1616,7 +1615,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						array(
 							"title" => _("Contact Manager"),
 							"rawname" => "contactmanager",
-							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("cos" => $cos, "groups" => $groups, "enabled" => $this->showUsermanContact($_REQUEST['user'])))
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("mode" => "user", "cos" => $cos, "groups" => $groups, "enabled" => $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","show",true)))
 						)
 					);
 				break;
@@ -1635,25 +1634,13 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						array(
 							"title" => _("Contact Manager"),
 							"rawname" => "contactmanager",
-							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("cos" => $cos, "groups" => $groups, "enabled" => $this->showUsermanContact($_REQUEST['user'])))
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("mode" => "user", "cos" => $cos, "groups" => $groups, "enabled" => $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","show",true)))
 						)
 					);
 				break;
 				default:
 				break;
 			}
-		}
-	}
-
-	/**
-	 * Whether to show the Userman Contact In Contact Manager or not
-	 * @param {int} $id The userman user id
-	 */
-	public function showUsermanContact($id) {
-		if($this->freepbx->Userman->getModuleSettingByID($id,'contactmanager','processed')) {
-			return $this->freepbx->Userman->getModuleSettingByID($id,"contactmanager","show");
-		} else {
-			return true;
 		}
 	}
 

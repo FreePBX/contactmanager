@@ -10,7 +10,11 @@
 					<div class="col-md-9">
 						<span class="radioset">
 							<input type="radio" id="contactmanager1" name="contactmanager_show" value="true" <?php echo ($enabled) ? 'checked' : ''?>><label for="contactmanager1"><?php echo _('Yes')?></label>
-							<input type="radio" id="contactmanager2" name="contactmanager_show" value="false" <?php echo (!$enabled) ? 'checked' : ''?>><label for="contactmanager2"><?php echo _('No')?></label>
+							<input type="radio" id="contactmanager2" name="contactmanager_show" value="false" <?php echo (!is_null($enabled) && !$enabled) ? 'checked' : ''?>><label for="contactmanager2"><?php echo _('No')?></label>
+							<?php if($mode == "user") {?>
+								<input type="radio" id="contactmanager3" name="contactmanager_show" value='inherit' <?php echo is_null($enabled) ? 'checked' : ''?>>
+								<label for="contactmanager3"><?php echo _('Inherit')?></label>
+							<?php } ?>
 						</span>
 					</div>
 				</div>
