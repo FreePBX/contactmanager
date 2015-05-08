@@ -871,23 +871,23 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sth->execute(array(
 		':groupid' => $groupid,
 		':user' => $entry['user'],
-		':displayname' => $entry['displayname'],
-		':fname' => $entry['fname'],
-		':lname' => $entry['lname'],
-		':title' => $entry['title'],
-		':company' => $entry['company'],
-		':address' => $entry['address'],
+		':displayname' => !empty($entry['displayname']) ? $entry['displayname'] : '',
+		':fname' => !empty($entry['fname']) ? $entry['fname'] : '',
+		':lname' => !empty($entry['lname']) ? $entry['lname'] : '',
+		':title' => !empty($entry['title']) ? $entry['title'] : '',
+		':company' => !empty($entry['company']) ? $entry['company'] : '',
+		':address' => !empty($entry['address']) ? $entry['address'] : '',
 		));
 
 		$id = $this->db->lastInsertId();
 
-		$this->addNumbersByEntryID($id, $entry['numbers']);
+		$this->addNumbersByEntryID($id, !empty($entry['numbers']) ? $entry['numbers'] : '');
 
-		$this->addXMPPsByEntryID($id, $entry['xmpps']);
+		$this->addXMPPsByEntryID($id, !empty($entry['xmpps']) ? $entry['xmpps'] : '');
 
-		$this->addEmailsByEntryID($id, $entry['emails']);
+		$this->addEmailsByEntryID($id, !empty($entry['emails']) ? $entry['emails'] : '');
 
-		$this->addWebsitesByEntryID($id, $entry['websites']);
+		$this->addWebsitesByEntryID($id, !empty($entry['websites']) ? $entry['websites'] : '');
 
 		return array("status" => true, "type" => "success", "message" => _("Group entry successfully added"), "id" => $id);
 	}
@@ -1615,7 +1615,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						array(
 							"title" => _("Contact Manager"),
 							"rawname" => "contactmanager",
-							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("mode" => "user", "cos" => $cos, "groups" => $groups, "enabled" => $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","show",true)))
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("mode" => "user", "cos" => $cos, "groups" => $groups, "enabled" => true))
 						)
 					);
 				break;
