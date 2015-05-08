@@ -149,6 +149,11 @@ msgstr ""
 msgid "Delete Contact"
 msgstr ""
 
+#: views/group.php:18
+#, php-format
+msgid "Delete Group: %s"
+msgstr ""
+
 #: ucp/views/contacts.php:17
 msgid "Delete This Group"
 msgstr ""
@@ -462,6 +467,10 @@ msgstr ""
 msgid "Show In Contact Manager"
 msgstr ""
 
+#: views/userman_hook.php:15
+msgid "Show contact in Contact Manager"
+msgstr ""
+
 #: Contactmanager.class.php:298 Contactmanager.class.php:317
 msgid "Submit"
 msgstr "提交"
@@ -546,13 +555,4 @@ msgstr ""
 
 #: install.php:64
 msgid "checking for title field.."
-msgstr ""
-
-#: views/group.php:18
-#, php-format
-msgid "Delete Group: %s"
-msgstr ""
-
-#: views/userman_hook.php:15
-msgid "Show contact in Contact Manager"
 msgstr ""

@@ -425,9 +425,9 @@ msgstr "No hay XMPP's que agregar"
 msgid "Not Authorized"
 msgstr "No Autorizado"
 
-#: views/group.php:168
+#: views/group.php:174
 msgid "Note: Max file size is "
-msgstr ""
+msgstr "Nota: Tamaño máximo del archivo es "
 
 #: ucp/views/contact.php:26 views/entry.php:139
 msgid "Numbers"
