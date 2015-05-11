@@ -1437,35 +1437,37 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			switch($group['type']) {
 				case "userman":
 				$entries = $umentries;
-				$final = array();
-				foreach($entries as $entry) {
-					if(!$this->freepbx->Userman->getCombinedModuleSettingByID($entry['id'],"contactmanager","show")) {
-						continue;
+				if(!empty($entries) && is_array($entries)) {
+					$final = array();
+					foreach($entries as $entry) {
+						if(!$this->freepbx->Userman->getCombinedModuleSettingByID($entry['id'],"contactmanager","show")) {
+							continue;
+						}
+						$entry['type'] = "userman";
+						//standardize all phone numbers, digits only
+						$entry['numbers'] = array(
+						'cell' => preg_replace('/\D/','',$entry['cell']),
+						'work' => preg_replace('/\D/','',$entry['work']),
+						'home' => preg_replace('/\D/','',$entry['home']),
+						'fax' => preg_replace('/\D/','',$entry['fax']),
+						);
+						unset($entry['cell']);
+						unset($entry['work']);
+						unset($entry['home']);
+						unset($entry['fax']);
+						if(isset($entry['xmpp'])) {
+							$entry['xmpps']['xmpp'] = $entry['xmpp'];
+							unset($entry['xmpp']);
+						}
+						$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
+						$final[] = $entry;
 					}
-					$entry['type'] = "userman";
-					//standardize all phone numbers, digits only
-					$entry['numbers'] = array(
-					'cell' => preg_replace('/\D/','',$entry['cell']),
-					'work' => preg_replace('/\D/','',$entry['work']),
-					'home' => preg_replace('/\D/','',$entry['home']),
-					'fax' => preg_replace('/\D/','',$entry['fax']),
-					);
-					unset($entry['cell']);
-					unset($entry['work']);
-					unset($entry['home']);
-					unset($entry['fax']);
-					if(isset($entry['xmpp'])) {
-						$entry['xmpps']['xmpp'] = $entry['xmpp'];
-						unset($entry['xmpp']);
-					}
-					$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
-					$final[] = $entry;
+					$contacts = array_merge($contacts, $final);
 				}
-				$contacts = array_merge($contacts, $final);
 				break;
 				case "external":
 				$entries = $this->getEntriesByGroupID($group['id']);
-				if(is_array($entries)) {
+				if(!empty($entries) && is_array($entries)) {
 					foreach($entries as &$entry) {
 						$numbers = array();
 						foreach($entry['numbers'] as $number) {
@@ -1492,23 +1494,25 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				case "internal":
 				$entries = $this->getEntriesByGroupID($group['id']);
 				$final = array();
-				foreach($entries as &$entry) {
-					foreach($umentries as $um) {
-						if($um['id'] == $entry['user']) {
-							$entry['type'] = "internal";
-							$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
-							//standardize all phone numbers, digits only
-							$entry['numbers'] = array(
-							'cell' => preg_replace('/\D/','',$um['cell']),
-							'work' => preg_replace('/\D/','',$um['work']),
-							'home' => preg_replace('/\D/','',$um['home']),
-							'fax' => preg_replace('/\D/','',$um['fax']),
-							);
-							$final[] = $entry;
+				if(!empty($entries) && is_array($entries)) {
+					foreach($entries as &$entry) {
+						foreach($umentries as $um) {
+							if($um['id'] == $entry['user']) {
+								$entry['type'] = "internal";
+								$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
+								//standardize all phone numbers, digits only
+								$entry['numbers'] = array(
+								'cell' => preg_replace('/\D/','',$um['cell']),
+								'work' => preg_replace('/\D/','',$um['work']),
+								'home' => preg_replace('/\D/','',$um['home']),
+								'fax' => preg_replace('/\D/','',$um['fax']),
+								);
+								$final[] = $entry;
+							}
 						}
 					}
+					$contacts = array_merge($contacts, $final);
 				}
-				$contacts = array_merge($contacts, $final);
 				break;
 			}
 		}
