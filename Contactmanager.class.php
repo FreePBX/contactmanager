@@ -581,7 +581,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		'e.address as address',
 		);
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e
-		LEFT JOIN freepbx_users as u ON (e.user = u.id) WHERE e.id = :id";
+		LEFT JOIN userman_users as u ON (e.user = u.id) WHERE e.id = :id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $id));
 		$entry = $sth->fetch(\PDO::FETCH_ASSOC);
@@ -714,7 +714,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		'e.address as address',
 		);
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e
-		LEFT JOIN freepbx_users as u ON (e.user = u.id) WHERE `groupid` = :groupid ORDER BY e.id";
+		LEFT JOIN userman_users as u ON (e.user = u.id) WHERE `groupid` = :groupid ORDER BY e.id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
 		$e = $sth->fetchAll(\PDO::FETCH_ASSOC | \PDO::FETCH_UNIQUE);

@@ -2,7 +2,7 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.0beta3</version>
+	<version>13.0.0beta4</version>
 	<publisher>Schmooze Com Inc</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
@@ -20,7 +20,7 @@
 	</menuitems>
 	<depends>
 		<version>13.0.0</version>
-		<module>userman ge 12.0.9</module>
+		<module>userman ge 13.0.1alpha8</module>
 	</depends>
 	<supported>
 		<version>13.0</version>
