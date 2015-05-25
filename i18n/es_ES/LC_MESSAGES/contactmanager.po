@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-28 10:55-0400\n"
-"PO-Revision-Date: 2015-04-29 11:32+0200\n"
+"PO-Revision-Date: 2015-05-25 00:33+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
@@ -368,7 +368,7 @@ msgstr "Grupo satisfactoriamente actualizado"
 #: ucp/views/contact.php:39 ucp/views/contact.php:80 views/entry.php:101
 #: views/group.php:77
 msgid "Home"
-msgstr "Residencia"
+msgstr "Inicio"
 
 #: views/group.php:172
 msgid "Import CSV"
