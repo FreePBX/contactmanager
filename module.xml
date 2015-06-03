@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.0beta5</version>
+	<version>13.0.1</version>
 	<publisher>Schmooze Com Inc</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.1* Visual updates and release
 		*13.0.beta4-5* Invalid array loops
 		*13.0.beta3* Group support in Usermanager
 		*13.0.0beta2* FREEPBX-9098

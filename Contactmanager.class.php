@@ -167,8 +167,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					$this->importCSV($_FILES['csv']['tmp_name'], $_POST['group']);
 				} else {
 					$this->message = array(
-						'message' => 'File upload failed, group or file not found.',
-						'type' => 'error'
+						'message' => _('File upload failed, group or file not found.'),
+						'type' => 'danger'
 					);
 				}
 				return true;
@@ -344,10 +344,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					$entries = $this->getEntriesByGroupID($_REQUEST['group']);
 				}
 
-				$file['post'] = ini_get('post_max_size');
-				$file['upload'] = ini_get('upload_max_filesize');
-
-				$content = load_view(dirname(__FILE__).'/views/group.php', array("group" => $group, "entries" => $entries, "users" => $users, "message" => $this->message, "file" => $file));
+				$content = load_view(dirname(__FILE__).'/views/group.php', array("group" => $group, "entries" => $entries, "users" => $users, "message" => $this->message));
 			break;
 			case "showentry":
 			case "addentry":
@@ -364,7 +361,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				}
 			break;
 			default:
-				$content = load_view(dirname(__FILE__).'/views/grid.php', array("groups" => $groups, "types" => $this->types));
+				$file['post'] = ini_get('post_max_size');
+				$file['upload'] = ini_get('upload_max_filesize');
+				$content = load_view(dirname(__FILE__).'/views/grid.php', array("groups" => $groups, "types" => $this->types, "file" => $file));
 			break;
 		}
 
@@ -1800,9 +1799,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	function exportCSV($group) {
 		$entries = $this->getEntriesByGroupID($group);
 		foreach ($entries as $entry) {
-			$entry['numbers'] = array_values($entry['numbers']);
-			$entry['emails'] = array_values($entry['emails']);
-			$entry['websites'] = array_values($entry['websites']);
+			$entry['numbers'] = !empty($entry['numbers']) ? array_values($entry['numbers']) : array();
+			$entry['emails'] = !empty($entry['emails']) ? array_values($entry['emails']) : array();
+			$entry['websites'] = !empty($entry['websites']) ? array_values($entry['websites']) : array();
 
 			$contact = array(
 				"Display Name" => $entry['displayname'],

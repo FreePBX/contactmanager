@@ -44,15 +44,15 @@
 										<h4 class="modal-title" id="myModalLabel">Import CSV</h4>
 									</div>
 									<div class="modal-body">
-										<form action="/admin/config.php?display=contactmanager&amp;action=showgroup&amp;group=<?php echo $group['id']?>" method="post" accept-charset="" enctype="multipart/form-data">
+										<form id="form-<?php echo $group['id']?>" action="/admin/config.php?display=contactmanager&amp;action=showgroup&amp;group=<?php echo $group['id']?>" method="post" accept-charset="" enctype="multipart/form-data">
 											<input type="hidden" name="group" value="<?php echo $group['id']?>">
 											<input type="hidden" name="action" value="import">
-											<input type="file" name="csv" value="">Note: Max file size is 512M<br><input type="submit" name="upload" value="Upload">
+											<input type="file" name="csv" value=""><?php echo sprintf(_("Note: Max file size is %s"),$file['upload'])?>
 										</form>
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary">Save changes</button>
+										<button type="button" class="btn btn-primary" onclick="document.getElementById('form-<?php echo $group['id']?>').submit();">Upload</button>
 									</div>
 								</div>
 							</div>
