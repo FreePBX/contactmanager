@@ -8,11 +8,39 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	private $message = '';
 	private $lookupCache = array();
 	private $contactsCache = array();
+	private $types = array();
 
 	public function __construct($freepbx = null) {
 		$this->db = $freepbx->Database;
 		$this->freepbx = $freepbx;
 		$this->userman = $this->freepbx->Userman;
+
+		$this->types = array(
+			"internal" => array(
+				"name" => _("Internal"),
+				"fields" => array(
+					"displayname" => _("Name"),
+					"username" => _("User"),
+					"actions" => _("Actions")
+				)
+			),
+			"external" => array(
+				"name" => _("External"),
+				"fields" => array(
+					"fname" => _("Name"),
+					"company" => _("Company"),
+					"numbers" => _("Numbers"),
+					"actions" => _("Actions")
+				)
+			),
+			"userman" => array(
+				"name" => _("User Manager"),
+				"fields" => array(
+					"displayname" => _("User"),
+					"actions" => _("Actions")
+				)
+			)
+		);
 	}
 
 	public function install() {
@@ -57,6 +85,61 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		return 500;
 	}
 
+	public function ajaxRequest($req, &$setting) {
+		switch ($req) {
+			case 'grid':
+				return true;
+			break;
+		}
+		return false;
+	}
+
+	public function ajaxHandler(){
+		switch ($_REQUEST['command']) {
+			case 'grid':
+				$group = $this->getGroupByID($_REQUEST['group']);
+				$entries = $this->getEntriesByGroupID($_REQUEST['group']);
+				$entries = array_values($entries);
+				switch($group['type']) {
+					case "internal":
+						foreach($entries as &$entry) {
+							$user = $this->freepbx->Userman->getUserByID($entry['user']);
+							$entry['fname'] = !empty($entry['fname']) ? $entry['fname'] : $user['fname'];
+							$entry['lname'] = !empty($entry['lname']) ? $entry['lname'] : $user['lname'];
+							$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : (!empty($user['displayname']) ? $user['displayname'] : $entry['fname'] . " " . $entry['lname']);
+							$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $user['username'];
+							$entry['title'] = !empty($entry['title']) ? $entry['title'] : $user['title'];
+							$entry['company'] = !empty($entry['company']) ? $entry['company'] : $user['company'];
+							$entry['username'] = !empty($user['displayname']) ? $user['displayname'] : $entry['fname'] . " " . $entry['lname'];
+							$entry['actions'] = '<a href="config.php?display=contactmanager&amp;action=showentry&amp;group='.$_REQUEST['group'].'&amp;entry='.$entry['uid'].'"><i class="fa fa-edit fa-fw"></i></a><a href="config.php?display=contactmanager&amp;action=delentry&amp;group='.$_REQUEST['group'].'&amp;entry='.$entry['uid'].'"><i class="fa fa-ban fa-fw"></i></a>';
+						}
+					break;
+					case "userman":
+						foreach($entries as &$entry) {
+							$user = $this->freepbx->Userman->getUserByID($entry['user']);
+							$entry = $user;
+							$entry['displayname'] = !empty($user['displayname']) ? $user['displayname'] : $user['fname'] . " " . $user['lname'];
+							$entry['displayname'] = !empty($user['displayname']) ? $user['displayname'] . " (".$user['username'].")" : $user['username'];
+							$entry['actions'] = '<a href="config.php?display=userman&action=showuser&user='.$entry['id'].'"><i class="fa fa-edit fa-fw"></i></a>';
+						}
+					break;
+					case "external":
+						foreach($entries as &$entry) {
+							$entry['numbers'] = !empty($entry['numbers']) ? $entry['numbers'] : array();
+							$nums = array();
+							foreach($entry['numbers'] as &$number) {
+								$nums[] = $number['number'] . "(".$number['type'].")";
+							}
+							$entry['numbers'] = !empty($entry['numbers']) ? implode("<br>",$nums) : "";
+							$entry['actions'] = '<a href="config.php?display=contactmanager&amp;action=showentry&amp;group='.$_REQUEST['group'].'&amp;entry='.$entry['uid'].'"><i class="fa fa-edit fa-fw"></i></a><a href="config.php?display=contactmanager&amp;action=delentry&amp;group='.$_REQUEST['group'].'&amp;entry='.$entry['uid'].'"><i class="fa fa-ban fa-fw"></i></a>';
+						}
+					break;
+				}
+				return $entries;
+			break;
+		}
+	}
+
 	/**
 	 * Get Inital Display
 	 * @param {string} $display The Page name
@@ -93,6 +176,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		}
 
 		if (isset($_POST['group'])) {
+
 			$group = !empty($_POST['group']) ? $_POST['group'] : '';
 
 			if (!isset($_POST['entry'])) {
@@ -123,43 +207,51 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$grouptype = !empty($_POST['grouptype']) ? $_POST['grouptype'] : '';
 
 				$numbers = array();
-				foreach ($_POST['number'] as $index => $number) {
-					if (!$number) {
-						continue;
-					}
-					$numbers[$index]['number'] = $number;
-					$numbers[$index]['extension'] = $_POST['extension'][$index];
-					$numbers[$index]['type'] = $_POST['numbertype'][$index];
-					if ($_POST['sms'][$index]) {
-						$numbers[$index]['flags'][] = 'sms';
-					}
-					if ($_POST['fax'][$index]) {
-						$numbers[$index]['flags'][] = 'fax';
+				if(!empty($_POST['number']) && is_array($_POST['number'])) {
+					foreach ($_POST['number'] as $index => $number) {
+						if (!$number) {
+							continue;
+						}
+						$numbers[$index]['number'] = $number;
+						$numbers[$index]['extension'] = $_POST['extension'][$index];
+						$numbers[$index]['type'] = $_POST['numbertype'][$index];
+						if ($_POST['sms'][$index]) {
+							$numbers[$index]['flags'][] = 'sms';
+						}
+						if ($_POST['fax'][$index]) {
+							$numbers[$index]['flags'][] = 'fax';
+						}
 					}
 				}
 
 				$xmpps = array();
-				foreach ($_POST['xmpp'] as $index => $xmpp) {
-					if (!$xmpp) {
-						continue;
+				if(!empty($_POST['xmpp']) && is_array($_POST['xmpp'])) {
+					foreach ($_POST['xmpp'] as $index => $xmpp) {
+						if (!$xmpp) {
+							continue;
+						}
+						$xmpps[$index]['xmpp'] = $xmpp;
 					}
-					$xmpps[$index]['xmpp'] = $xmpp;
 				}
 
 				$emails = array();
-				foreach ($_POST['email'] as $index => $email) {
-					if (!$email) {
-						continue;
+				if(!empty($_POST['email']) && is_array($_POST['email'])) {
+					foreach ($_POST['email'] as $index => $email) {
+						if (!$email) {
+							continue;
+						}
+						$emails[$index]['email'] = $email;
 					}
-					$emails[$index]['email'] = $email;
 				}
 
 				$website = array();
-				foreach ($_POST['website'] as $index => $website) {
-					if (!$website) {
-						continue;
+				if(!empty($_POST['website']) && is_array($_POST['website'])) {
+					foreach ($_POST['website'] as $index => $website) {
+						if (!$website) {
+							continue;
+						}
+						$websites[$index]['website'] = $website;
 					}
-					$websites[$index]['website'] = $website;
 				}
 
 				$entry = array(
@@ -218,15 +310,15 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 * Function used in page.contactmanager.php
 	 */
 	public function myShowPage() {
-		$groups = $this->getGroups();
+		$groups = $this->getGroupsGroupedByType();
 		$userman = setup_userman();
 		$users = $userman->getAllUsers();
 
 		$action = !empty($_REQUEST['action']) ? $_REQUEST['action'] : '';
 		if ($action == "delentry") {
-			$action = "showgroup";
+			$action = "";
 		} elseif ($action == "import") {
-			$action = "showgroup";
+			$action = "";
 		} elseif ($action == "export") {
 			if (!empty($_REQUEST['group'])) {
 				$this->exportCSV($_REQUEST['group']);
@@ -234,42 +326,49 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			return;
 		}
 
-		$html = '';
-		$html .= load_view(dirname(__FILE__).'/views/rnav.php', array("groups" => $groups, "group" => $_REQUEST['group']));
+		$numbertypes = array(
+			'work' => _('Work'),
+			'home' => _('Home'),
+			'cell' => _('Cell'),
+			'other' => _('Other'),
+		);
+
+		$content = '';
+		$rnav = load_view(dirname(__FILE__).'/views/rnav.php', array("action" => $action));
 
 		switch($action) {
 			case "showgroup":
 			case "addgroup":
-			if ($action == "showgroup" && !empty($_REQUEST['group'])) {
-				$group = $this->getGroupByID($_REQUEST['group']);
-				$entries = $this->getEntriesByGroupID($_REQUEST['group']);
-			}
+				if ($action == "showgroup" && !empty($_REQUEST['group'])) {
+					$group = $this->getGroupByID($_REQUEST['group']);
+					$entries = $this->getEntriesByGroupID($_REQUEST['group']);
+				}
 
-			$file['post'] = ini_get('post_max_size');
-			$file['upload'] = ini_get('upload_max_filesize');
+				$file['post'] = ini_get('post_max_size');
+				$file['upload'] = ini_get('upload_max_filesize');
 
-			$html .= load_view(dirname(__FILE__).'/views/group.php', array("group" => $group, "entries" => $entries, "users" => $users, "message" => $this->message, "file" => $file));
+				$content = load_view(dirname(__FILE__).'/views/group.php', array("group" => $group, "entries" => $entries, "users" => $users, "message" => $this->message, "file" => $file));
 			break;
 			case "showentry":
 			case "addentry":
-			if (!empty($_REQUEST['group'])) {
-				$group = $this->getGroupByID($_REQUEST['group']);
+				if (!empty($_REQUEST['group'])) {
+					$group = $this->getGroupByID($_REQUEST['group']);
 
-				if ($action == "showentry" && !empty($_REQUEST['entry'])) {
-					$entry = $this->getEntryByID($_REQUEST['entry']);
-				} else {
-					$entry = array();
+					if ($action == "showentry" && !empty($_REQUEST['entry'])) {
+						$entry = $this->getEntryByID($_REQUEST['entry']);
+					} else {
+						$entry = array();
+					}
+
+					$content = load_view(dirname(__FILE__).'/views/entry.php', array("numbertypes" => $numbertypes, "group" => $group, "entry" => $entry, "users" => $users, "message" => $this->message));
 				}
-
-				$html .= load_view(dirname(__FILE__).'/views/entry.php', array("group" => $group, "entry" => $entry, "users" => $users, "message" => $this->message));
-			}
 			break;
 			default:
-			$html .= load_view(dirname(__FILE__).'/views/main.php', array("message" => $this->message));
+				$content = load_view(dirname(__FILE__).'/views/grid.php', array("groups" => $groups, "types" => $this->types));
 			break;
 		}
 
-		return $html;
+		return load_view(dirname(__FILE__).'/views/main.php', array("message" => $this->message, "content" => $content, "rnav" => $rnav));
 	}
 
 	public function getActionBar($request) {
@@ -432,6 +531,18 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sth = $this->db->prepare($sql);
 		$sth->execute();
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	public function getGroupsGroupedByType() {
+		$final = array();
+		$sql = "SELECT * FROM contactmanager_groups ORDER BY id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute();
+		$array = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		foreach($array as $a) {
+			$final[$a['type']][] = $a;
+		}
+		return $final;
 	}
 
 	/**
@@ -1101,7 +1212,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			':number' => $number['number'],
 			':extension' => $number['extension'],
 			':type' => $number['type'],
-			':flags' => implode('|', $number['flags']),
+			':flags' => !empty($number['flags']) ? implode('|', $number['flags']) : array(),
 			));
 		}
 

@@ -1,35 +1,67 @@
+<div class="fpbx-container">
+	<div class="display full-border">
+		<form name="group" class="fpbx-submit" method="post" action="config.php?display=contactmanager" <?php if(isset($group['id'])) {?>data-fpbx-delete="config.php?display=contactmanager&amp;group=<?php echo $group['id']?>&amp;action=delgroup<?php }?>">
+			<?php if(!empty($group)) {?>
+				<input type="hidden" name="group" id="group" value="<?php echo $group['id']?>">
+				<input type="hidden" name="grouptype" id="grouptype" value="<?php echo $group['id']?>">
+				<h1><?php echo _("Edit Group")?></h1>
+			<?php } else { ?>
+				<input type="hidden" name="group" id="group" value="">
+				<h1><?php echo _("Add Group")?></h1>
+			<?php }?>
+			<div class="element-container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-3">
+									<label class="control-label" for="groupname"><?php echo _('Name')?></label>
+									<i class="fa fa-question-circle fpbx-help-icon" data-for="groupname"></i>
+								</div>
+								<div class="col-md-9"><input id="groupname" name="groupname" class="form-control" value="<?php echo $group['name']?>"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<span id="groupname-help" class="help-block fpbx-help-block"><?php echo _('Name of group')?></span>
+					</div>
+				</div>
+			</div>
+			<?php if(empty($group)) {?>
+				<div class="element-container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="form-group">
+									<div class="col-md-3">
+										<label class="control-label" for="grouptype"><?php echo _('Type')?></label>
+										<i class="fa fa-question-circle fpbx-help-icon" data-for="grouptype"></i>
+									</div>
+									<div class="col-md-9">
+										<select name="grouptype" id="grouptype" class="form-control">
+											<option value="internal"><?php echo _('Internal')?></option>
+											<option value="external"><?php echo _('External')?></option>
+											<option value="userman"><?php echo _('User Manager')?></option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<span id="grouptype-help" class="help-block fpbx-help-block"><?php echo _('Type of group')?></span>
+						</div>
+					</div>
+				</div>
+			<?php } ?>
+		</form>
+	</div>
+</div>
 <?php
-$html = '';
-$html.= form_open('', 'name="group" class="fpbx-submit" data-fpbx-delete="config.php?display=contactmanager&group=' . $group['id'] . '&action=delgroup"');
-$html.= form_hidden('group', $group['id']);
-
-if (!$group) {
-	$html.= form_hidden('grouptype', $group['type']);
-}
-
-$html.= heading($group ? _("Edit Group") : _("Add Group"));
-
-if (!empty($message)) {
-	$html.= '<div class="alert alert-' . $message['type'] . '">' . $message['message'] . '</div>';
-}
-
-$table = new CI_Table;
-
-if (!$group) {
-	$grouptypes = array(
-		'internal' => _('Internal'),
-		'external' => _('External'),
-		'userman' => _('User Manager'),
-	);
-	$label = fpbx_label(_('Type'), _('Type of group'));
-	$table->add_row($label, form_dropdown('grouptype', $grouptypes, 'internal'));
-}
-
-$label = fpbx_label(_('Name'), _('Name of group'));
-$table->add_row($label, form_input('groupname', $group['name']));
-
-$html.= $table->generate();
-
+return;
 if ($group) {
 	foreach ($users as $user) {
 		$desc = NULL;
@@ -166,7 +198,7 @@ if ($group) {
 		$html.= heading(_("Import CSV"), 3);
 		$html.= form_upload('csv');
 		$html .= _("Note: Max file size is ") . $file['upload'] . "</br>";
-		
+
 		$html.= form_submit('upload', _('Upload'));
 
 		$html.= form_close();

@@ -3,6 +3,7 @@ function contactmanager_destinations() {
 	$cm = \FreePBX::Contactmanager();
 	$entries = $cm->getContactsByUserID(-1);
 	$destinations = array();
+	$extens = array();
 	foreach($entries as $entry) {
 		$name = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
 		if(!empty($entry['numbers'])) {
