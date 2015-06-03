@@ -19,8 +19,8 @@
 								<div id="toolbar-<?php echo $type?>-<?php echo $group['id']?>">
 									<?php if($type != "userman") {?>
 										<a class="btn btn-primary" href="?display=contactmanager&amp;action=addentry&amp;group=<?php echo $group['id']?>"><i class="fa fa-plus"></i> <?php echo _("Add User")?></a>
-										<a class="btn btn-primary" href="?type=tool&amp;display=contactmanager&amp;action=export&amp;group=<?php echo $group['id']?>&amp;quietmode=1"><i class="fa fa-download"></i> <?php echo _('Export CSV')?></a>
-										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#upload-<?php echo $group['id']?>"><i class="fa fa-upload"></i> <?php echo _('Import CSV')?></button>
+										<a class="btn btn-primary" href="?type=tool&amp;display=contactmanager&amp;action=export&amp;group=<?php echo $group['id']?>&amp;quietmode=1"><i class="fa fa-upload"></i> <?php echo _('Export CSV')?></a>
+										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#upload-<?php echo $group['id']?>"><i class="fa fa-download"></i> <?php echo _('Import CSV')?></button>
 									<?php } ?>
 									<a class="btn btn-primary" href="?display=contactmanager&amp;action=showgroup&amp;group=<?php echo $group['id']?>"><i class="fa fa-pencil"></i> <?php echo _('Edit Group')?></a>
 									<a class="btn btn-primary" href="?display=contactmanager&amp;action=delgroup&amp;group=<?php echo $group['id']?>"><i class="glyphicon glyphicon-remove"></i> <?php echo _('Delete Group')?></a>
@@ -47,7 +47,11 @@
 										<form id="form-<?php echo $group['id']?>" action="/admin/config.php?display=contactmanager&amp;action=showgroup&amp;group=<?php echo $group['id']?>" method="post" accept-charset="" enctype="multipart/form-data">
 											<input type="hidden" name="group" value="<?php echo $group['id']?>">
 											<input type="hidden" name="action" value="import">
-											<input type="file" name="csv" value=""><?php echo sprintf(_("Note: Max file size is %s"),$file['upload'])?>
+											<span class="btn btn-default btn-file">
+												<?php echo _('Browse')?> <input type="file" class="form-control" name="csv">
+											</span>
+											<span class="filename"></span><br><br>
+											<?php echo sprintf(_("Note: Max file size is %s"),$file['upload'])?>
 										</form>
 									</div>
 									<div class="modal-footer">
