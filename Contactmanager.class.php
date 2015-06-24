@@ -19,7 +19,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			"internal" => array(
 				"name" => _("Internal"),
 				"fields" => array(
-					"displayname" => _("Name"),
+					"displayname" => _("Display Name"),
+					"fname" => _("First Name"),
+					"lname" => _("Last Name"),
 					"username" => _("User"),
 					"actions" => _("Actions")
 				)
@@ -1580,8 +1582,10 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				if(!empty($entries) && is_array($entries)) {
 					foreach($entries as &$entry) {
 						$numbers = array();
-						foreach($entry['numbers'] as $number) {
-							$numbers[$number['type']] = preg_replace("/\D/","",$number['number']);
+						if(!empty($entry['numbers']) && is_array($entry['numbers'])) {
+							foreach($entry['numbers'] as $number) {
+								$numbers[$number['type']] = preg_replace("/\D/","",$number['number']);
+							}
 						}
 						$xmpps = array();
 						if(!empty($entry['xmpps'])) {

@@ -5,7 +5,7 @@ $(function() {
 			event.preventDefault();
 		}
 		$numbers = $("#numbers input[name^='number[']");
-		if ($numbers.size() < 1) {
+		if ($numbers.length > 0 && $numbers.size() < 1) {
 			alert("An entry must have a number.");
 			event.preventDefault();
 		} else {
@@ -19,7 +19,7 @@ $(function() {
 		}
 
 		$xmpps = $("#xmpps input[name^='xmpp[']");
-		if ($xmpps.size() > 0) {
+		if ($xmpps.length > 0 && $xmpps.size() > 0) {
 			$xmpps.each(function(index) {
 				if ($(this).val() == "") {
 					warnInvalid($(this), _("XMPP address cannot be blank."));
@@ -30,7 +30,7 @@ $(function() {
 		}
 
 		$emails = $("#emails input[name^='email[']");
-		if ($emails.size() > 0) {
+		if ($emails.length > 0 && $emails.size() > 0) {
 			$emails.each(function(index) {
 				if ($(this).val() == "") {
 					warnInvalid($(this), _("E-Mail address cannot be blank."));
@@ -41,7 +41,7 @@ $(function() {
 		}
 
 		$websites = $("#websites input[name^='website[']");
-		if ($websites.size() > 0) {
+		if ($websites.length > 0 && $websites.size() > 0) {
 			$websites.each(function(index) {
 				if ($(this).val() == "") {
 					warnInvalid($(this), _("Website cannot be blank."));
