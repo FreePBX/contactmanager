@@ -8,11 +8,11 @@
 		<?php foreach($types as $type => $data) {?>
 			<div id="<?php echo $type?>" class="tab-pane <?php echo $type == "internal" ? "active" : ""?>">
 				<?php if(!empty($groups[$type])) { ?>
+					<ul class="nav nav-tabs" role="tablist">
 					<?php foreach($groups[$type] as $k => $group) { ?>
-						<ul class="nav nav-tabs" role="tablist">
-							<li data-name="<?php echo $type?>-<?php echo $group['id']?>" class="change-tab <?php echo $k== 0 ? "active" : ""?>"><a href="#<?php echo $type?>-<?php echo $group['id']?>" aria-controls="<?php echo $type?>-<?php echo $group['id']?>" role="tab" data-toggle="tab"><?php echo $group['name']?></a></li>
-						</ul>
+						<li data-name="<?php echo $type?>-<?php echo $group['id']?>" class="change-tab <?php echo $k== 0 ? "active" : ""?>"><a href="#<?php echo $type?>-<?php echo $group['id']?>" aria-controls="<?php echo $type?>-<?php echo $group['id']?>" role="tab" data-toggle="tab"><?php echo $group['name']?></a></li>
 					<?php } ?>
+					</ul>
 					<div class="tab-content display">
 						<?php foreach($groups[$type] as $k => $group) {?>
 							<div id="<?php echo $type?>-<?php echo $group['id']?>" class="tab-pane <?php echo $k== 0 ? "active" : ""?>">
