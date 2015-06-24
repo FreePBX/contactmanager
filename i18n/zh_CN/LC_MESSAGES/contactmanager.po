@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-03 13:04-0400\n"
+"POT-Creation-Date: 2015-06-23 20:13-0400\n"
 "PO-Revision-Date: 2015-04-09 20:38+0200\n"
 "Last-Translator: james <zhulizhong@gmail.com>\n"
 "Language-Team: Simplified Chinese <http://weblate.freepbx.org/projects/"
@@ -41,8 +41,8 @@ msgstr ""
 msgid "A user from the User Management module"
 msgstr ""
 
-#: Contactmanager.class.php:24 Contactmanager.class.php:33
-#: Contactmanager.class.php:40
+#: Contactmanager.class.php:26 Contactmanager.class.php:35
+#: Contactmanager.class.php:42
 msgid "Actions"
 msgstr ""
 
@@ -74,7 +74,7 @@ msgstr ""
 msgid "Add Number"
 msgstr ""
 
-#: views/grid.php:21
+#: views/grid.php:27
 msgid "Add User"
 msgstr ""
 
@@ -90,7 +90,7 @@ msgstr ""
 msgid "Adding..."
 msgstr ""
 
-#: Contactmanager.class.php:1968 views/entry.php:168 views/entry.php:180
+#: Contactmanager.class.php:1972 views/entry.php:168 views/entry.php:180
 msgid "Address"
 msgstr ""
 
@@ -102,11 +102,11 @@ msgstr ""
 msgid "An entry must have a user"
 msgstr ""
 
-#: Contactmanager.class.php:277
+#: Contactmanager.class.php:279
 msgid "An entry must have a user."
 msgstr ""
 
-#: Contactmanager.class.php:286
+#: Contactmanager.class.php:288
 msgid "An entry must have numbers."
 msgstr ""
 
@@ -118,7 +118,7 @@ msgstr ""
 msgid "Are you sure you want to delete this group and all of it's contacts?"
 msgstr ""
 
-#: views/grid.php:51
+#: views/grid.php:57
 msgid "Browse"
 msgstr ""
 
@@ -126,19 +126,19 @@ msgstr ""
 msgid "Call To"
 msgstr ""
 
-#: Contactmanager.class.php:332 Contactmanager.class.php:1976
-#: Contactmanager.class.php:1988 Contactmanager.class.php:2000
+#: Contactmanager.class.php:334 Contactmanager.class.php:1980
+#: Contactmanager.class.php:1992 Contactmanager.class.php:2004
 #: ucp/views/contact.php:40 ucp/views/contact.php:81 views/group.php:105
 msgid "Cell"
 msgstr ""
 
-#: Contactmanager.class.php:1981 Contactmanager.class.php:1993
-#: Contactmanager.class.php:2005
+#: Contactmanager.class.php:1985 Contactmanager.class.php:1997
+#: Contactmanager.class.php:2009
 msgid ""
 "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
 msgstr ""
 
-#: Contactmanager.class.php:31 Contactmanager.class.php:1967
+#: Contactmanager.class.php:33 Contactmanager.class.php:1971
 #: ucp/views/contact.php:22 ucp/views/contacts.php:27 views/entry.php:148
 msgid "Company"
 msgstr "公司"
@@ -147,8 +147,8 @@ msgstr "公司"
 msgid "Company (overrides Company from User Manager)"
 msgstr ""
 
-#: Contactmanager.class.php:1701 Contactmanager.class.php:1715
-#: Contactmanager.class.php:1730 Contactmanager.class.php:1749
+#: Contactmanager.class.php:1705 Contactmanager.class.php:1719
+#: Contactmanager.class.php:1734 Contactmanager.class.php:1753
 msgid "Contact Manager"
 msgstr ""
 
@@ -157,15 +157,15 @@ msgstr ""
 msgid "Contact Manager: %s"
 msgstr ""
 
-#: Contactmanager.class.php:1936 ucp/Contactmanager.class.php:279
+#: Contactmanager.class.php:1940 ucp/Contactmanager.class.php:279
 msgid "Contacts"
 msgstr ""
 
-#: Contactmanager.class.php:1937
+#: Contactmanager.class.php:1941
 msgid "Contacts and internal/external groups from the Contact Manager module."
 msgstr ""
 
-#: Contactmanager.class.php:384 Contactmanager.class.php:403
+#: Contactmanager.class.php:386 Contactmanager.class.php:405
 msgid "Delete"
 msgstr ""
 
@@ -173,7 +173,7 @@ msgstr ""
 msgid "Delete Contact"
 msgstr ""
 
-#: views/grid.php:26
+#: views/grid.php:32
 msgid "Delete Group"
 msgstr ""
 
@@ -185,8 +185,9 @@ msgstr ""
 msgid "Deleting..."
 msgstr ""
 
-#: Contactmanager.class.php:1961 Contactmanager.class.php:1962
-#: ucp/views/contact.php:6 ucp/views/contacts.php:23 views/entry.php:68
+#: Contactmanager.class.php:22 Contactmanager.class.php:1965
+#: Contactmanager.class.php:1966 ucp/views/contact.php:6
+#: ucp/views/contacts.php:23 views/entry.php:68
 msgid "Display Name"
 msgstr "显示名"
 
@@ -198,8 +199,8 @@ msgstr ""
 msgid "E-Mail address cannot be blank."
 msgstr ""
 
-#: Contactmanager.class.php:2006 Contactmanager.class.php:2007
-#: Contactmanager.class.php:2008
+#: Contactmanager.class.php:2010 Contactmanager.class.php:2011
+#: Contactmanager.class.php:2012
 msgid "E-mail address.  External contacts only."
 msgstr ""
 
@@ -227,7 +228,7 @@ msgstr ""
 msgid "Edit Entry"
 msgstr ""
 
-#: views/grid.php:25 views/group.php:7
+#: views/grid.php:31 views/group.php:7
 msgid "Edit Group"
 msgstr ""
 
@@ -235,7 +236,7 @@ msgstr ""
 msgid "Email"
 msgstr "邮件"
 
-#: views/grid.php:22 views/group.php:189
+#: views/grid.php:28 views/group.php:189
 msgid "Export CSV"
 msgstr ""
 
@@ -243,12 +244,12 @@ msgstr ""
 msgid "Ext."
 msgstr ""
 
-#: Contactmanager.class.php:1980 Contactmanager.class.php:1992
-#: Contactmanager.class.php:2004
+#: Contactmanager.class.php:1984 Contactmanager.class.php:1996
+#: Contactmanager.class.php:2008
 msgid "Extension.  External contacts only."
 msgstr ""
 
-#: Contactmanager.class.php:28 Contactmanager.class.php:1957
+#: Contactmanager.class.php:30 Contactmanager.class.php:1961
 #: views/group.php:45
 msgid "External"
 msgstr ""
@@ -265,12 +266,12 @@ msgstr ""
 msgid "Fax"
 msgstr "传真"
 
-#: Contactmanager.class.php:170
+#: Contactmanager.class.php:172
 msgid "File upload failed, group or file not found."
 msgstr ""
 
-#: Contactmanager.class.php:1964 ucp/views/contact.php:10
-#: ucp/views/contacts.php:24 views/entry.php:88
+#: Contactmanager.class.php:23 Contactmanager.class.php:1968
+#: ucp/views/contact.php:10 ucp/views/contacts.php:24 views/entry.php:88
 msgid "First Name"
 msgstr ""
 
@@ -286,7 +287,7 @@ msgstr ""
 msgid "Go!"
 msgstr ""
 
-#: Contactmanager.class.php:661
+#: Contactmanager.class.php:663
 #, php-format
 msgid "Group '%s' does not exist"
 msgstr ""
@@ -295,7 +296,7 @@ msgstr ""
 msgid "Group Already Exists"
 msgstr ""
 
-#: Contactmanager.class.php:1948 ucp/views/groupcreate.php:5
+#: Contactmanager.class.php:1952 ucp/views/groupcreate.php:5
 msgid "Group Name"
 msgstr ""
 
@@ -303,143 +304,143 @@ msgstr ""
 msgid "Group Name Can Not Be Blank"
 msgstr ""
 
-#: Contactmanager.class.php:1953
+#: Contactmanager.class.php:1957
 msgid "Group Type"
 msgstr ""
 
-#: Contactmanager.class.php:605 Contactmanager.class.php:976
-#: Contactmanager.class.php:1013 Contactmanager.class.php:1051
+#: Contactmanager.class.php:607 Contactmanager.class.php:978
+#: Contactmanager.class.php:1015 Contactmanager.class.php:1053
 msgid "Group does not exist"
 msgstr ""
 
-#: Contactmanager.class.php:1040
+#: Contactmanager.class.php:1042
 msgid "Group entries successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:965
+#: Contactmanager.class.php:967
 msgid "Group entries successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:1415
+#: Contactmanager.class.php:1417
 msgid "Group entry E-Mail successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:1381
+#: Contactmanager.class.php:1383
 msgid "Group entry E-Mail successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:1436
+#: Contactmanager.class.php:1438
 msgid "Group entry E-Mails successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:1389 Contactmanager.class.php:1398
+#: Contactmanager.class.php:1391 Contactmanager.class.php:1400
 msgid "Group entry E-Mails successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:1507
+#: Contactmanager.class.php:1509
 msgid "Group entry Website successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:1473
+#: Contactmanager.class.php:1475
 msgid "Group entry Website successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:1528
+#: Contactmanager.class.php:1530
 msgid "Group entry Websites successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:1481 Contactmanager.class.php:1490
+#: Contactmanager.class.php:1483 Contactmanager.class.php:1492
 msgid "Group entry Websites successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:1314
+#: Contactmanager.class.php:1316
 msgid "Group entry XMPP successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:1267
+#: Contactmanager.class.php:1269
 msgid "Group entry XMPP successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:1340
+#: Contactmanager.class.php:1342
 msgid "Group entry XMPPs successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:1279 Contactmanager.class.php:1292
+#: Contactmanager.class.php:1281 Contactmanager.class.php:1294
 msgid "Group entry XMPPs successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:1055 Contactmanager.class.php:1175
-#: Contactmanager.class.php:1203 Contactmanager.class.php:1303
-#: Contactmanager.class.php:1328 Contactmanager.class.php:1404
-#: Contactmanager.class.php:1424 Contactmanager.class.php:1496
-#: Contactmanager.class.php:1516
+#: Contactmanager.class.php:1057 Contactmanager.class.php:1177
+#: Contactmanager.class.php:1205 Contactmanager.class.php:1305
+#: Contactmanager.class.php:1330 Contactmanager.class.php:1406
+#: Contactmanager.class.php:1426 Contactmanager.class.php:1498
+#: Contactmanager.class.php:1518
 msgid "Group entry does not exist"
 msgstr ""
 
-#: Contactmanager.class.php:1189
+#: Contactmanager.class.php:1191
 msgid "Group entry number successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:1139
+#: Contactmanager.class.php:1141
 msgid "Group entry number successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:1218
+#: Contactmanager.class.php:1220
 msgid "Group entry numbers successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:1151 Contactmanager.class.php:1164
+#: Contactmanager.class.php:1153 Contactmanager.class.php:1166
 msgid "Group entry numbers successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:1002
+#: Contactmanager.class.php:1004
 msgid "Group entry successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:933
+#: Contactmanager.class.php:935
 msgid "Group entry successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:1084
+#: Contactmanager.class.php:1086
 msgid "Group entry successfully updated"
 msgstr ""
 
-#: Contactmanager.class.php:201 Contactmanager.class.php:628
-#: Contactmanager.class.php:664
+#: Contactmanager.class.php:203 Contactmanager.class.php:630
+#: Contactmanager.class.php:666
 msgid "Group name can not be blank"
 msgstr ""
 
-#: Contactmanager.class.php:2024
+#: Contactmanager.class.php:2028
 msgid "Group name is required."
 msgstr ""
 
-#: Contactmanager.class.php:2053
+#: Contactmanager.class.php:2057
 msgid "Group not found and could not be created."
 msgstr ""
 
-#: Contactmanager.class.php:649
+#: Contactmanager.class.php:651
 msgid "Group successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:617
+#: Contactmanager.class.php:619
 msgid "Group successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:674
+#: Contactmanager.class.php:676
 msgid "Group successfully updated"
 msgstr ""
 
-#: Contactmanager.class.php:2031
+#: Contactmanager.class.php:2035
 msgid "Group type is required."
 msgstr ""
 
-#: Contactmanager.class.php:331 Contactmanager.class.php:1975
-#: Contactmanager.class.php:1987 Contactmanager.class.php:1999
+#: Contactmanager.class.php:333 Contactmanager.class.php:1979
+#: Contactmanager.class.php:1991 Contactmanager.class.php:2003
 #: ucp/views/contact.php:39 ucp/views/contact.php:80 views/group.php:104
 msgid "Home"
 msgstr ""
 
-#: views/grid.php:23 views/group.php:198
+#: views/grid.php:29 views/group.php:198
 msgid "Import CSV"
 msgstr ""
 
@@ -447,13 +448,13 @@ msgstr ""
 msgid "Inherit"
 msgstr ""
 
-#: Contactmanager.class.php:20 Contactmanager.class.php:1956
+#: Contactmanager.class.php:20 Contactmanager.class.php:1960
 #: views/group.php:44
 msgid "Internal"
 msgstr ""
 
-#: Contactmanager.class.php:1965 ucp/views/contact.php:14
-#: ucp/views/contacts.php:25 views/entry.php:108
+#: Contactmanager.class.php:24 Contactmanager.class.php:1969
+#: ucp/views/contact.php:14 ucp/views/contacts.php:25 views/entry.php:108
 msgid "Last Name"
 msgstr ""
 
@@ -469,7 +470,7 @@ msgstr ""
 msgid "My Contacts"
 msgstr ""
 
-#: Contactmanager.class.php:22 Contactmanager.class.php:30 views/group.php:18
+#: Contactmanager.class.php:32 views/group.php:18
 msgid "Name"
 msgstr "名称"
 
@@ -477,7 +478,7 @@ msgstr "名称"
 msgid "Name of group"
 msgstr ""
 
-#: Contactmanager.class.php:1949
+#: Contactmanager.class.php:1953
 msgid ""
 "Name of group for contact.  If group does not exist, it will be created."
 msgstr ""
@@ -486,23 +487,23 @@ msgstr ""
 msgid "No"
 msgstr "否"
 
-#: Contactmanager.class.php:1420
+#: Contactmanager.class.php:1422
 msgid "No E-Mails to add"
 msgstr ""
 
-#: views/grid.php:66
+#: views/grid.php:72
 msgid "No Groups for this type"
 msgstr ""
 
-#: Contactmanager.class.php:1199
+#: Contactmanager.class.php:1201
 msgid "No Numbers to add"
 msgstr ""
 
-#: Contactmanager.class.php:1512
+#: Contactmanager.class.php:1514
 msgid "No Websites to add"
 msgstr ""
 
-#: Contactmanager.class.php:1324
+#: Contactmanager.class.php:1326
 msgid "No XMPPs to add"
 msgstr ""
 
@@ -514,7 +515,7 @@ msgstr ""
 msgid "Note: Max file size is "
 msgstr ""
 
-#: views/grid.php:54
+#: views/grid.php:60
 #, php-format
 msgid "Note: Max file size is %s"
 msgstr ""
@@ -523,7 +524,7 @@ msgstr ""
 msgid "Number cannot be blank."
 msgstr ""
 
-#: Contactmanager.class.php:32 ucp/views/contact.php:26 views/entry.php:192
+#: Contactmanager.class.php:34 ucp/views/contact.php:26 views/entry.php:192
 msgid "Numbers"
 msgstr ""
 
@@ -531,18 +532,18 @@ msgstr ""
 msgid "OK"
 msgstr "正常"
 
-#: Contactmanager.class.php:333 Contactmanager.class.php:1977
-#: Contactmanager.class.php:1989 Contactmanager.class.php:2001
+#: Contactmanager.class.php:335 Contactmanager.class.php:1981
+#: Contactmanager.class.php:1993 Contactmanager.class.php:2005
 #: ucp/views/contact.php:41 ucp/views/contact.php:82 views/group.php:106
 msgid "Other"
 msgstr ""
 
-#: Contactmanager.class.php:1970 Contactmanager.class.php:1982
-#: Contactmanager.class.php:1994
+#: Contactmanager.class.php:1974 Contactmanager.class.php:1986
+#: Contactmanager.class.php:1998
 msgid "Phone number.  External contacts only."
 msgstr ""
 
-#: Contactmanager.class.php:391 Contactmanager.class.php:410
+#: Contactmanager.class.php:393 Contactmanager.class.php:412
 msgid "Reset"
 msgstr ""
 
@@ -562,7 +563,7 @@ msgstr ""
 msgid "Show In Contact Manager"
 msgstr ""
 
-#: Contactmanager.class.php:396 Contactmanager.class.php:415
+#: Contactmanager.class.php:398 Contactmanager.class.php:417
 msgid "Submit"
 msgstr "提交"
 
@@ -576,7 +577,7 @@ msgid ""
 "for this user in UCP"
 msgstr ""
 
-#: Contactmanager.class.php:1966 ucp/views/contact.php:18
+#: Contactmanager.class.php:1970 ucp/views/contact.php:18
 #: ucp/views/contacts.php:26 views/entry.php:128
 msgid "Title"
 msgstr ""
@@ -593,12 +594,12 @@ msgstr "类型"
 msgid "Type of group"
 msgstr ""
 
-#: Contactmanager.class.php:1954
+#: Contactmanager.class.php:1958
 msgid "Type of group for contact."
 msgstr ""
 
-#: Contactmanager.class.php:1972 Contactmanager.class.php:1984
-#: Contactmanager.class.php:1996
+#: Contactmanager.class.php:1976 Contactmanager.class.php:1988
+#: Contactmanager.class.php:2000
 msgid "Type of phone number.  External contacts only."
 msgstr ""
 
@@ -607,7 +608,7 @@ msgstr ""
 msgid "Unauthorized"
 msgstr "权限不足，拒绝访问"
 
-#: Contactmanager.class.php:2104
+#: Contactmanager.class.php:2108
 msgid "Unknown data type."
 msgstr ""
 
@@ -615,15 +616,15 @@ msgstr ""
 msgid "Upload"
 msgstr "上传"
 
-#: Contactmanager.class.php:23 Contactmanager.class.php:39 views/entry.php:41
+#: Contactmanager.class.php:25 Contactmanager.class.php:41 views/entry.php:41
 msgid "User"
 msgstr "用户"
 
-#: Contactmanager.class.php:37 views/group.php:46
+#: Contactmanager.class.php:39 views/group.php:46
 msgid "User Manager"
 msgstr ""
 
-#: Contactmanager.class.php:1969
+#: Contactmanager.class.php:1973
 msgid ""
 "User Manager username this contact should point to.  Internal contacts only."
 msgstr ""
@@ -640,8 +641,8 @@ msgstr ""
 msgid "Whether to show this contact in contact manager."
 msgstr ""
 
-#: Contactmanager.class.php:330 Contactmanager.class.php:1974
-#: Contactmanager.class.php:1986 Contactmanager.class.php:1998
+#: Contactmanager.class.php:332 Contactmanager.class.php:1978
+#: Contactmanager.class.php:1990 Contactmanager.class.php:2002
 #: ucp/views/contact.php:38 ucp/views/contact.php:79 views/group.php:103
 msgid "Work"
 msgstr ""
