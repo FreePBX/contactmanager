@@ -813,6 +813,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 * @param {int} $groupid The group ID
 	 */
 	public function getEntriesByGroupID($groupid) {
+		$entries = array();
 		$fields = array(
 		'e.id',
 		'e.id as uid',
