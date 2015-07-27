@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-28 10:55-0400\n"
-"PO-Revision-Date: 2015-02-28 11:49+0200\n"
+"PO-Revision-Date: 2015-07-27 09:37+0200\n"
 "Last-Translator: Kevin <kevin@qloog.com>\n"
-"Language-Team: Japanese <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/ja_JP/>\n"
+"Language-Team: Japanese "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/ja_JP/>\n"
+"Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ja_JP\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 2.2-dev\n"
 
@@ -423,7 +423,7 @@ msgstr "非表示"
 
 #: views/group.php:174
 msgid "Note: Max file size is "
-msgstr ""
+msgstr "注意: ファイルサイズの上限は "
 
 #: ucp/views/contact.php:26 views/entry.php:136
 msgid "Numbers"
@@ -464,7 +464,7 @@ msgstr "この種類のアクションがありません"
 
 #: ucp/views/contact.php:18 ucp/views/contacts.php:26 views/entry.php:52
 msgid "Title"
-msgstr "役職"
+msgstr "肩書"
 
 #: views/entry.php:52
 msgid "Title  (overrides Title from User Manager)"
