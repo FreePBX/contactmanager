@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-04-28 10:55-0400\n"
-"PO-Revision-Date: 2015-07-27 09:37+0200\n"
+"PO-Revision-Date: 2015-07-27 10:31+0200\n"
 "Last-Translator: Kevin <kevin@qloog.com>\n"
 "Language-Team: Japanese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/ja_JP/>\n"
@@ -472,7 +472,7 @@ msgstr "役職（ユーザー管理の役職を上書きします）"
 
 #: views/group.php:29
 msgid "Type"
-msgstr "タイプ"
+msgstr "種類"
 
 #: views/group.php:29
 msgid "Type of group"
