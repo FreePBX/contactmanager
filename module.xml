@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.4</version>
+	<version>13.0.5</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.5* Invalid arrays
 		*13.0.4* Remove old import/export code, as this functionality has been moved into the Bulk Handler module
 		*13.0.3* FREEPBX-9531 Cannot add user to Internal Contact Group, FREEPBX-9538 Display and Navigation issues if there are multiple Contact Groups
 		*13.0.2* Fix up visuals.. again

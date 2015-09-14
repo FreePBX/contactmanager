@@ -815,6 +815,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$e = $sth->fetchAll(\PDO::FETCH_ASSOC | \PDO::FETCH_UNIQUE);
 
 		$group = $this->getGroupByID($groupid);
+		$entries = array();
 		switch($group['type']) {
 			case "userman":
 			foreach($e as $key => $entry) {
@@ -1528,6 +1529,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			$groups = $this->getGroupsByOwner($id);
 		}
 		$contacts = array();
+		$entries = array();
 		foreach($groups as $group) {
 			switch($group['type']) {
 				case "userman":
