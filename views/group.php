@@ -83,18 +83,18 @@ if ($group) {
 	switch ($group['type']) {
 	case 'internal':
 		$html.= '<th></th>';
-		$html.= '<th>Name</th>';
-		$html.= '<th>User</th>';
+		$html.= '<th>'._("Name").'</th>';
+		$html.= '<th>'._("User").'</th>';
 		break;
 	case 'external':
 		$html.= '<th></th>';
-		$html.= '<th>Name</th>';
-		$html.= '<th>Company</th>';
-		$html.= '<th>Numbers</th>';
+		$html.= '<th>'._("Name").'</th>';
+		$html.= '<th>'._("Company").'</th>';
+		$html.= '<th>'._("Numbers").'</th>';
 		break;
 	case 'userman':
 		$html.= '<th></th>';
-		$html.= '<th>User</th>';
+		$html.= '<th>'._("User").'</th>';
 		break;
 	}
 	$html.= '</tr>';
@@ -128,7 +128,6 @@ if ($group) {
 			$html.= '<a href="config.php?display=contactmanager&action=showentry&group=' . $group['id'] . '&entry=' . $id . '"><i class="fa fa-edit fa-fw"></i></a>';
 			$html.= '<a href="config.php?display=contactmanager&action=delentry&group=' . $group['id'] . '&entry=' . $id . '"><i class="fa fa-ban fa-fw"></i></a>';
 			$html.= '</td>';
-
 			$html.= '<td>' . ($entry['displayname'] ? $entry['displayname'] : $entry['fname'] . ' ' . $entry['lname']) . '</td>';
 			$html.= '<td>' . $entry['company'] . '</td>';
 

@@ -29,7 +29,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			"external" => array(
 				"name" => _("External"),
 				"fields" => array(
-					"fname" => _("Name"),
+					"displayname" => _("Display Name"),
 					"company" => _("Company"),
 					"numbers" => _("Numbers"),
 					"actions" => _("Actions")
