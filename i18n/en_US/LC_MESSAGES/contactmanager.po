@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-14 11:22-0700\n"
+"POT-Creation-Date: 2015-09-21 12:27-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -132,6 +132,7 @@ msgstr ""
 
 #: Contactmanager.class.php:33 Contactmanager.class.php:1784
 #: ucp/views/contact.php:22 ucp/views/contacts.php:27 views/entry.php:148
+#: views/group.php:92
 msgid "Company"
 msgstr ""
 
@@ -177,9 +178,9 @@ msgstr ""
 msgid "Deleting..."
 msgstr ""
 
-#: Contactmanager.class.php:22 Contactmanager.class.php:1778
-#: Contactmanager.class.php:1779 ucp/views/contact.php:6
-#: ucp/views/contacts.php:23 views/entry.php:68
+#: Contactmanager.class.php:22 Contactmanager.class.php:32
+#: Contactmanager.class.php:1778 Contactmanager.class.php:1779
+#: ucp/views/contact.php:6 ucp/views/contacts.php:23 views/entry.php:68
 msgid "Display Name"
 msgstr ""
 
@@ -450,7 +451,7 @@ msgstr ""
 msgid "My Contacts"
 msgstr ""
 
-#: Contactmanager.class.php:32 views/group.php:18
+#: views/group.php:18 views/group.php:86 views/group.php:91
 msgid "Name"
 msgstr ""
 
@@ -496,6 +497,7 @@ msgid "Number cannot be blank."
 msgstr ""
 
 #: Contactmanager.class.php:34 ucp/views/contact.php:26 views/entry.php:192
+#: views/group.php:93
 msgid "Numbers"
 msgstr ""
 
@@ -584,6 +586,7 @@ msgid "Unknown data type."
 msgstr ""
 
 #: Contactmanager.class.php:25 Contactmanager.class.php:41 views/entry.php:41
+#: views/group.php:87 views/group.php:97
 msgid "User"
 msgstr ""
 
