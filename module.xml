@@ -2,11 +2,13 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.6</version>
+	<version>13.0.8</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.8* FREEPBX-10304 unable to create/view groups in UCP
+		*13.0.7* FREEPBX-10283, FREEPBX-10226
 		*13.0.6* "FREEPBX-10211 - Make external use display name.
 		*13.0.5* Invalid arrays
 		*13.0.4* Remove old import/export code, as this functionality has been moved into the Bulk Handler module
@@ -27,7 +29,7 @@
 	</menuitems>
 	<depends>
 		<version>13.0.0</version>
-		<module>userman ge 13.0.1alpha8</module>
+		<module>userman ge 13.0.24</module>
 	</depends>
 	<supported>
 		<version>13.0</version>
