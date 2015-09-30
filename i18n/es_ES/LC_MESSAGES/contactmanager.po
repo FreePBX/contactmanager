@@ -12,8 +12,7 @@ msgstr ""
 "POT-Creation-Date: 2015-09-23 14:47-0700\n"
 "PO-Revision-Date: 2015-05-25 00:33+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
-"Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/es_ES/>\n"
+"Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -130,8 +129,7 @@ msgstr "Cel"
 
 #: Contactmanager.class.php:1942 Contactmanager.class.php:1954
 #: Contactmanager.class.php:1966
-msgid ""
-"Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
+msgid "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
 msgstr ""
 
 #: Contactmanager.class.php:33 Contactmanager.class.php:1928
@@ -190,8 +188,7 @@ msgstr "Nombre a Mostrar"
 
 #: views/entry.php:78
 msgid "Display Name (overrides Display Name from User Manager)"
-msgstr ""
-"Nombre a desplegar (sustituye Nombre a Desplegar del Gestor de Usuarios)"
+msgstr "Nombre a desplegar (sustituye Nombre a Desplegar del Gestor de Usuarios)"
 
 #: assets/js/contactmanager.js:36
 msgid "E-Mail address cannot be blank."
@@ -465,8 +462,7 @@ msgid "Name of group"
 msgstr "Nombre del Grupo"
 
 #: Contactmanager.class.php:1910
-msgid ""
-"Name of group for contact.  If group does not exist, it will be created."
+msgid "Name of group for contact.  If group does not exist, it will be created."
 msgstr ""
 
 #: views/userman_hook.php:13
@@ -551,9 +547,7 @@ msgid "There are no actions for this type"
 msgstr "No hay acciones para este tipo"
 
 #: views/userman_hook.php:53
-msgid ""
-"These are the assigned and active contactmanager groups which will show up "
-"for this user in UCP"
+msgid "These are the assigned and active contactmanager groups which will show up for this user in UCP"
 msgstr ""
 
 #: Contactmanager.class.php:1927 ucp/views/contact.php:18
@@ -605,8 +599,7 @@ msgid "User Manager Group"
 msgstr ""
 
 #: Contactmanager.class.php:1930
-msgid ""
-"User Manager username this contact should point to.  Internal contacts only."
+msgid "User Manager username this contact should point to.  Internal contacts only."
 msgstr ""
 
 #: ucp/views/contact.php:144 views/entry.php:296
@@ -660,18 +653,6 @@ msgstr "chequeando campo extension.."
 msgid "checking for title field.."
 msgstr "chequeando campo title.."
 
-#~ msgid "Export CSV"
-#~ msgstr "Exportar CSV"
-
-#~ msgid "Import CSV"
-#~ msgstr "Importar CSV"
-
-#~ msgid "Note: Max file size is "
-#~ msgstr "Nota: Tamaño máximo del archivo es "
-
-#~ msgid "Upload"
-#~ msgstr "Subir"
-
 #~ msgid "Admin"
 #~ msgstr "Administrador"
 
@@ -681,8 +662,20 @@ msgstr "chequeando campo title.."
 #~ msgid "E-Mail"
 #~ msgstr "Correo Electronico"
 
+#~ msgid "Export CSV"
+#~ msgstr "Exportar CSV"
+
+#~ msgid "Import CSV"
+#~ msgstr "Importar CSV"
+
+#~ msgid "Note: Max file size is "
+#~ msgstr "Nota: Tamaño máximo del archivo es "
+
 #~ msgid "Show contact in Contact Manager"
 #~ msgstr "Mostrar contacto en Gestor de Contactos"
 
 #~ msgid "Title  (overrides Title from User Manager)"
 #~ msgstr "Titulo (sustituye Titulo del Gestor de Usuarios)"
+
+#~ msgid "Upload"
+#~ msgstr "Subir"
