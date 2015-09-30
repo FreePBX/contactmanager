@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-23 14:47-0700\n"
+"POT-Creation-Date: 2015-09-30 15:51-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -126,7 +126,8 @@ msgstr ""
 
 #: Contactmanager.class.php:1942 Contactmanager.class.php:1954
 #: Contactmanager.class.php:1966
-msgid "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
+msgid ""
+"Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
 msgstr ""
 
 #: Contactmanager.class.php:33 Contactmanager.class.php:1928
@@ -459,7 +460,8 @@ msgid "Name of group"
 msgstr ""
 
 #: Contactmanager.class.php:1910
-msgid "Name of group for contact.  If group does not exist, it will be created."
+msgid ""
+"Name of group for contact.  If group does not exist, it will be created."
 msgstr ""
 
 #: views/userman_hook.php:13
@@ -544,7 +546,9 @@ msgid "There are no actions for this type"
 msgstr ""
 
 #: views/userman_hook.php:53
-msgid "These are the assigned and active contactmanager groups which will show up for this user in UCP"
+msgid ""
+"These are the assigned and active contactmanager groups which will show up "
+"for this user in UCP"
 msgstr ""
 
 #: Contactmanager.class.php:1927 ucp/views/contact.php:18
@@ -596,7 +600,8 @@ msgid "User Manager Group"
 msgstr ""
 
 #: Contactmanager.class.php:1930
-msgid "User Manager username this contact should point to.  Internal contacts only."
+msgid ""
+"User Manager username this contact should point to.  Internal contacts only."
 msgstr ""
 
 #: ucp/views/contact.php:144 views/entry.php:296
@@ -648,41 +653,4 @@ msgstr ""
 
 #: Contactmanager.class.php:110
 msgid "checking for title field.."
-msgstr ""
-
-#: views/group.php:18
-#, php-format
-msgid "Delete Group: %s"
-msgstr ""
-
-#: views/entry.php:186
-msgid "E-Mail"
-msgstr ""
-
-#: views/group.php:163
-msgid "Export CSV"
-msgstr ""
-
-#: views/group.php:172
-msgid "Import CSV"
-msgstr ""
-
-#: views/group.php:174
-msgid "Note: Max file size is "
-msgstr ""
-
-#: views/userman_hook.php:15
-msgid "Show contact in Contact Manager"
-msgstr ""
-
-#: views/entry.php:52
-msgid "Title  (overrides Title from User Manager)"
-msgstr ""
-
-#: views/group.php:176
-msgid "Upload"
-msgstr ""
-
-#: contactmanager.i18n.php:6 contactmanager.i18n.php:12
-msgid "Admin"
 msgstr ""

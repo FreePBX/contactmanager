@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.8</version>
+	<version>13.0.9</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.9* FREEPBX-10303 Allow apostrophes in group names
 		*13.0.8* FREEPBX-10304 unable to create/view groups in UCP
 		*13.0.7* FREEPBX-10283, FREEPBX-10226
 		*13.0.6* "FREEPBX-10211 - Make external use display name.
