@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-28 10:55-0400\n"
+"POT-Creation-Date: 2015-09-30 15:49-0700\n"
 "PO-Revision-Date: 2015-04-09 20:38+0200\n"
 "Last-Translator: james <zhulizhong@gmail.com>\n"
 "Language-Team: Simplified Chinese <http://weblate.freepbx.org/projects/"
@@ -85,10 +85,6 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: contactmanager.i18n.php:6 contactmanager.i18n.php:12
-msgid "Admin"
-msgstr "管理员"
-
 #: Contactmanager.class.php:184
 msgid "An entry must have a user."
 msgstr ""
@@ -122,8 +118,7 @@ msgstr "公司"
 msgid "Company (overrides Company from User Manager)"
 msgstr ""
 
-#: contactmanager.i18n.php:4 contactmanager.i18n.php:8
-#: contactmanager.i18n.php:10 views/userman_hook.php:8
+#: views/userman_hook.php:8
 msgid "Contact Manager"
 msgstr ""
 
@@ -531,3 +526,6 @@ msgstr ""
 #: install.php:64
 msgid "checking for title field.."
 msgstr ""
+
+#~ msgid "Admin"
+#~ msgstr "管理员"

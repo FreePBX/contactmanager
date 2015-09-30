@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-28 10:55-0400\n"
+"POT-Creation-Date: 2015-09-30 15:49-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,11 +83,6 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: contactmanager.i18n.php:6
-#: contactmanager.i18n.php:12
-msgid "Admin"
-msgstr ""
-
 #: Contactmanager.class.php:184
 msgid "An entry must have a user."
 msgstr ""
@@ -125,9 +120,6 @@ msgstr ""
 msgid "Company (overrides Company from User Manager)"
 msgstr ""
 
-#: contactmanager.i18n.php:4
-#: contactmanager.i18n.php:8
-#: contactmanager.i18n.php:10
 #: views/userman_hook.php:8
 msgid "Contact Manager"
 msgstr ""

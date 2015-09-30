@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-28 10:55-0400\n"
+"POT-Creation-Date: 2015-09-30 15:49-0700\n"
 "PO-Revision-Date: 2015-04-12 22:34+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
@@ -85,10 +85,6 @@ msgstr "Agregando..."
 msgid "Address"
 msgstr "Dirección"
 
-#: contactmanager.i18n.php:6 contactmanager.i18n.php:12
-msgid "Admin"
-msgstr "Administrador"
-
 #: Contactmanager.class.php:184
 msgid "An entry must have a user."
 msgstr "Una entrada debe tener un usuario."
@@ -122,8 +118,7 @@ msgstr "Empresa"
 msgid "Company (overrides Company from User Manager)"
 msgstr "Empresa (sustituye Empresa del Gestor de Usuarios)"
 
-#: contactmanager.i18n.php:4 contactmanager.i18n.php:8
-#: contactmanager.i18n.php:10 views/userman_hook.php:8
+#: views/userman_hook.php:8
 msgid "Contact Manager"
 msgstr "Gestor de Contactos"
 
@@ -532,3 +527,6 @@ msgstr "chequeando campo extension.."
 #: install.php:64
 msgid "checking for title field.."
 msgstr "chequeando campo title.."
+
+#~ msgid "Admin"
+#~ msgstr "Administrador"

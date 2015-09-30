@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-28 10:55-0400\n"
+"POT-Creation-Date: 2015-09-30 15:49-0700\n"
 "PO-Revision-Date: 2015-02-28 11:49+0200\n"
 "Last-Translator: Kevin <kevin@qloog.com>\n"
 "Language-Team: Japanese <http://weblate.freepbx.org/projects/freepbx/"
@@ -85,10 +85,6 @@ msgstr "追加中…"
 msgid "Address"
 msgstr "住所"
 
-#: contactmanager.i18n.php:6 contactmanager.i18n.php:12
-msgid "Admin"
-msgstr "アドミン"
-
 #: Contactmanager.class.php:184
 msgid "An entry must have a user."
 msgstr "ユーザーが必須です。"
@@ -122,8 +118,7 @@ msgstr "会社"
 msgid "Company (overrides Company from User Manager)"
 msgstr "会社（ユーザー管理の「会社」を上書きします）"
 
-#: contactmanager.i18n.php:4 contactmanager.i18n.php:8
-#: contactmanager.i18n.php:10 views/userman_hook.php:8
+#: views/userman_hook.php:8
 msgid "Contact Manager"
 msgstr "連絡先の管理"
 
@@ -531,3 +526,6 @@ msgstr "内線フィールドを確認中‥"
 #: install.php:64
 msgid "checking for title field.."
 msgstr "役職フィールドを確認中‥"
+
+#~ msgid "Admin"
+#~ msgstr "アドミン"
