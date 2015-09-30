@@ -288,7 +288,7 @@ var ContactmanagerC = UCPMC.extend({
 			if (confirm(_("Are you sure you want to delete this group and all of it's contacts?"))) {
 				$.post( "?quietmode=1&module=contactmanager&command=deletegroup", { id: $(this).data("id") }, function( data ) {
 					if (data.status) {
-						$(".contact-group[data-name='" + data.name + "']").remove();
+						$(".contact-group[data-name='" + data.name.replace(/[\\"']/g, '\\$&') + "']").remove();
 						$.pjax({
 							url: "?display=dashboard&mod=contactmanager",
 							container: "#dashboard-content"
@@ -300,7 +300,7 @@ var ContactmanagerC = UCPMC.extend({
 		$("#addgroup").click(function(e) {
 			var groupid = 1, groupname = $("#name").val();
 			e.preventDefault();
-			if ($(".contact-group[data-name='" + groupname + "']").length) {
+			if ($(".contact-group[data-name='" + groupname.replace(/[\\"']/g, '\\$&') + "']").length) {
 				alert(_("Group Already Exists"));
 				$("#name").focus();
 				return false;
