@@ -10,8 +10,6 @@ use \UCP\Modules as Modules;
 class Contactmanager extends Modules{
 	protected $module = 'Contactmanager';
 	private $ext = 0;
-	private $limit = 15;
-	private $break = 5;
 
 	public function __construct($Modules) {
 		$this->Modules = $Modules;
@@ -35,6 +33,7 @@ class Contactmanager extends Modules{
 			case 'addcontact':
 			case 'deletegroup':
 			case 'addgroup':
+			case 'grid':
 				return true;
 			default:
 				return false;
@@ -52,6 +51,44 @@ class Contactmanager extends Modules{
 	function ajaxHandler() {
 		$return = array("status" => false, "message" => "");
 		switch($_REQUEST['command']) {
+			case 'grid':
+				$limit = $_REQUEST['limit'];
+				$group = $_REQUEST['id'];
+				$order = $_REQUEST['order'];
+				$orderby = !empty($_REQUEST['sort']) ? $_REQUEST['sort'] : "displayname";
+				$search = !empty($_REQUEST['search']) ? $_REQUEST['search'] : "";
+				if(empty($group)) {
+					$groups = $this->cm->getGroupsByOwner($this->user['id']);
+					$allContacts = array();
+					foreach($groups as $group) {
+						$contacts = $this->cm->getEntriesByGroupID($group['id']);
+						$allContacts = array_merge($allContacts,$contacts);
+					}
+					@usort($allContacts, function($a, $b) {
+						return strnatcmp($a[$orderby], $b[$orderby]);
+					});
+					$contacts = array_values($allContacts);
+				} else {
+					$contacts = $this->cm->getEntriesByGroupID($group);
+					$contacts = array_values($contacts);
+				}
+				if(!empty($search)) {
+					$temp = $contacts;
+					$contacts = array();
+					foreach($temp as $c) {
+						if($this->pregRecursiveArraySearch($search,$c, array('displayname','fname','lname','title','company')) !== false) {
+							$contacts[] = $c;
+						}
+					}
+				}
+				if($order == 'asc') {
+					$contacts = array_reverse($contacts);
+				}
+				return array(
+					"total" => count($contacts),
+					"rows" => $contacts
+				);
+			break;
 			case 'updatecontact':
 				$entry = $this->cm->getEntryByID($_REQUEST['id']);
 				if(!empty($entry)) {
@@ -124,32 +161,20 @@ class Contactmanager extends Modules{
 		$displayvars['groups'] = $this->cm->getGroupsByOwner($this->user['id']);
 		$displayvars['activeList'] = "mycontacts";
 		$displayvars['total'] = 0;
-		$displayvars['orderby'] = 'displayname';
-		$displayvars['order'] = 'desc';
-		$displayvars['readonly'] = true;
-		$displayvars['add'] = false;
-		$displayvars['editable'] = false;
-		$allContacts = array();
 		$c = 1;
 		foreach($displayvars['groups'] as &$group) {
 			$group['readonly'] = ($group['owner'] == -1);
 			$group['contacts'] = $this->cm->getEntriesByGroupID($group['id']);
 			$group['count'] = count($group['contacts']);
 			$displayvars['total'] = $displayvars['total'] + $group['count'];
-			$allContacts = array_merge($allContacts,$group['contacts']);
 			if(!empty($_REQUEST['view']) && $_REQUEST['view'] == "group" && $_REQUEST['id'] == $group['id']) {
 				$displayvars['activeList'] = $group['name'];
-				$displayvars['contacts'] = $group['contacts'];
 				$displayvars['readonly'] = $group['readonly'];
 			}else if(!empty($_REQUEST['view']) && $_REQUEST['view'] == "contact" && $_REQUEST['group'] == $group['id']) {
 				$displayvars['activeList'] = $group['name'];
 				$displayvars['readonly'] = $group['readonly'];
 			}
 		}
-
-		usort($allContacts, function($a, $b) {
-			return strnatcmp($a['displayname'], $b['displayname']);
-		});
 
 		switch($view) {
 			case "addcontact":
@@ -188,72 +213,9 @@ class Contactmanager extends Modules{
 				}
 			break;
 			default:
-				$contacts = !empty($displayvars['contacts']) || !empty($_REQUEST['view']) && $_REQUEST['view'] == 'group' ? $displayvars['contacts'] : $allContacts;
-				$displayvars['search'] = $search =  $_REQUEST['search'] ? $_REQUEST['search'] : '';
-				if(!empty($search)) {
-					$temp = $contacts;
-					$contacts = array();
-					foreach($temp as $c) {
-						if($this->pregRecursiveArraySearch($search,$c, array('displayname','fname','lname','title','company')) !== false) {
-							$contacts[] = $c;
-						}
-					}
-				}
-				$orderby = $_REQUEST['orderby'] ? $_REQUEST['orderby'] : 'displayname';
-				$order = $_REQUEST['order'] ? $_REQUEST['order'] : 'desc';
-				switch($orderby) {
-					case 'company':
-						uasort($contacts, function($a, $b) {
-							return strcasecmp($a['company'],$b['company']);
-						});
-						$displayvars['orderby'] = 'company';
-					break;
-					case 'title':
-						uasort($contacts, function($a, $b) {
-							return strcasecmp($a['title'],$b['title']);
-						});
-						$displayvars['orderby'] = 'title';
-					break;
-					case 'lname':
-						uasort($contacts, function($a, $b) {
-							return strcasecmp($a['lname'],$b['lname']);
-						});
-						$displayvars['orderby'] = 'lname';
-					break;
-					case 'fname':
-						uasort($contacts, function($a, $b) {
-							return strcasecmp($a['fname'],$b['fname']);
-						});
-						$displayvars['orderby'] = 'fname';
-					break;
-					case 'displayname':
-					default:
-						uasort($contacts, function($a, $b) {
-							return strcasecmp($a['displayname'],$b['displayname']);
-						});
-						$displayvars['orderby'] = 'displayname';
-					break;
-				}
-
-				if($order == 'asc') {
-					$contacts = array_reverse($contacts);
-					$contacts = array_values($contacts);
-					$displayvars['order'] = 'asc';
-				} else {
-					$displayvars['order'] = 'desc';
-				}
-
-				$view = !empty($_REQUEST['view']) ? $_REQUEST['view'] : 'all';
-				$id = !empty($_REQUEST['id']) ? '&id='.$_REQUEST['id'] : '';
-				$page = !empty($_REQUEST['page']) ? $_REQUEST['page'] : 1;
-				$total = ceil(count($contacts) / $this->limit);
-				$displayvars['pagnation'] = $this->UCP->Template->generatePagnation($total,$page,'?display=dashboard&mod=contactmanager&view='.$view.'&orderby='.$displayvars['orderby'].'&order='.$displayvars['order'].$id,$this->break);
-				$contacts = array_slice($contacts,($this->limit * ($page - 1)),$this->limit);
-				$displayvars['contacts'] = $contacts;
 				$mainDisplay = $this->load_view(__DIR__.'/views/contacts.php',$displayvars);
 			break;
 		}
-
 
 		$html = $this->load_view(__DIR__.'/views/nav.php',$displayvars);
 		$html .= $mainDisplay;
