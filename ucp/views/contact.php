@@ -66,6 +66,7 @@
 								</div>
 							</td>-->
 						</tr>
+						<?php $contact['numbers'] = is_array($contact['numbers']) ? $contact['numbers'] : array(); ?>
 						<?php foreach($contact['numbers'] as $number) {?>
 							<tr>
 								<td>
@@ -100,6 +101,7 @@
 								<input type="text" class="form-control special" data-name="xmpp">
 							</td>
 						</tr>
+						<?php $contact['xmpps'] = is_array($contact['xmpps']) ? $contact['xmpps'] : array(); ?>
 						<?php foreach($contact['xmpps'] as $xmpp) {?>
 							<tr>
 								<td>
@@ -126,6 +128,7 @@
 								<input type="text" class="form-control special" data-name="email">
 							</td>
 						</tr>
+						<?php $contact['emails'] = is_array($contact['emails']) ? $contact['emails'] : array(); ?>
 						<?php foreach($contact['emails'] as $email) {?>
 							<tr>
 								<td>
@@ -152,6 +155,7 @@
 								<input type="text" class="form-control special" data-name="website">
 							</td>
 						</tr>
+						<?php $contact['websites'] = is_array($contact['websites']) ? $contact['websites'] : array(); ?>
 						<?php foreach($contact['websites'] as $website) {?>
 							<tr>
 								<td>
