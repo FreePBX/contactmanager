@@ -1,6 +1,6 @@
 <div class="col-md-10">
 		<div id="contacts-toolbar">
-			<?php if($_REQUEST['view'] == "all") { ?>
+			<?php if(isset($_REQUEST['view']) && $_REQUEST['view'] == "all") { ?>
 				<a cm-pjax="" href="?display=dashboard&amp;mod=contactmanager&amp;view=addgroup" class="btn btn-default"><i class="fa fa-plus"></i> Add Group</a>
 			<?php } ?>
 			<?php if(isset($readonly) && !$readonly && $_REQUEST['view'] == "group") { ?>
@@ -11,9 +11,9 @@
 		<table id="contacts-grid"
 					data-url="index.php?quietmode=1&amp;module=contactmanager&amp;command=grid&amp;id=<?php echo !empty($_REQUEST['id']) ? $_REQUEST['id'] : 0?>"
 					data-cache="false"
-					data-state-save="true"
 					data-toolbar="#contacts-toolbar"
-					data-state-save-id-table="ucp-contacts-table"
+					data-cookie="true"
+					data-cookie-id-table="ucp-contacts-table"
 					data-maintain-selected="true"
 					data-show-columns="true"
 					data-show-toggle="true"
@@ -24,7 +24,11 @@
 					data-sort-name="displayname"
 					data-side-pagination="server"
 					data-show-refresh="true"
-					class="table table-hover table-bordered">
+					data-silent-sort="false"
+					data-mobile-responsive="true"
+					data-check-on-init="true"
+					data-min-width="992"
+					class="table table-hover">
 			<thead>
 					<tr>
 							<th data-field="displayname" data-sortable="true"><?php echo _("Display Name")?></th>
