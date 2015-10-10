@@ -523,7 +523,7 @@ msgstr ""
 
 #: Contactmanager.class.php:509 Contactmanager.class.php:528
 msgid "Reset"
-msgstr ""
+msgstr "重新设置"
 
 #: ucp/views/contact.php:45 assets/js/contactmanager.js:99
 msgid "SMS"
