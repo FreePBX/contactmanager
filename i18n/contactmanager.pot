@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-30 15:51-0700\n"
+"POT-Creation-Date: 2015-10-10 12:27-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,11 +43,11 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-#: ucp/views/contact.php:171
+#: ucp/views/contact.php:175
 msgid "Add Contact"
 msgstr ""
 
-#: ucp/views/contact.php:141
+#: ucp/views/contact.php:144
 #: views/entry.php:278
 msgid "Add Email"
 msgstr ""
@@ -62,15 +62,11 @@ msgstr ""
 msgid "Add Group"
 msgstr ""
 
-#: ucp/views/contacts.php:16
-msgid "Add New Contact"
-msgstr ""
-
 #: views/rnav.php:3
 msgid "Add New Group"
 msgstr ""
 
-#: ucp/views/contact.php:89
+#: ucp/views/contact.php:90
 msgid "Add Number"
 msgstr ""
 
@@ -78,17 +74,17 @@ msgstr ""
 msgid "Add User"
 msgstr ""
 
-#: ucp/views/contact.php:167
+#: ucp/views/contact.php:171
 #: views/entry.php:310
 msgid "Add Website"
 msgstr ""
 
-#: ucp/views/contact.php:115
+#: ucp/views/contact.php:117
 #: views/entry.php:246
 msgid "Add XMPP"
 msgstr ""
 
-#: ucp/assets/js/global.js:272
+#: ucp/assets/js/global.js:245
 msgid "Adding..."
 msgstr ""
 
@@ -114,11 +110,11 @@ msgstr ""
 msgid "An entry must have numbers."
 msgstr ""
 
-#: ucp/assets/js/global.js:178
+#: ucp/assets/js/global.js:151
 msgid "Are you sure you want to delete this contact?"
 msgstr ""
 
-#: ucp/assets/js/global.js:288
+#: ucp/assets/js/global.js:261
 msgid "Are you sure you want to delete this group and all of it's contacts?"
 msgstr ""
 
@@ -131,7 +127,7 @@ msgstr ""
 #: Contactmanager.class.php:1949
 #: Contactmanager.class.php:1961
 #: ucp/views/contact.php:40
-#: ucp/views/contact.php:81
+#: ucp/views/contact.php:82
 #: views/group.php:105
 msgid "Cell"
 msgstr ""
@@ -146,7 +142,7 @@ msgstr ""
 #: Contactmanager.class.php:33
 #: Contactmanager.class.php:1928
 #: ucp/views/contact.php:22
-#: ucp/views/contacts.php:27
+#: ucp/views/contacts.php:38
 #: views/entry.php:148
 #: views/group.php:92
 msgid "Company"
@@ -170,7 +166,7 @@ msgid "Contact Manager: %s"
 msgstr ""
 
 #: Contactmanager.class.php:1897
-#: ucp/Contactmanager.class.php:279
+#: ucp/Contactmanager.class.php:241
 msgid "Contacts"
 msgstr ""
 
@@ -183,7 +179,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: ucp/views/contact.php:174
+#: ucp/views/contact.php:178
 #: ucp/views/contactro.php:76
 msgid "Delete Contact"
 msgstr ""
@@ -192,11 +188,7 @@ msgstr ""
 msgid "Delete Group"
 msgstr ""
 
-#: ucp/views/contacts.php:17
-msgid "Delete This Group"
-msgstr ""
-
-#: ucp/assets/js/global.js:180
+#: ucp/assets/js/global.js:153
 msgid "Deleting..."
 msgstr ""
 
@@ -205,7 +197,7 @@ msgstr ""
 #: Contactmanager.class.php:1922
 #: Contactmanager.class.php:1923
 #: ucp/views/contact.php:6
-#: ucp/views/contacts.php:23
+#: ucp/views/contacts.php:34
 #: views/entry.php:68
 msgid "Display Name"
 msgstr ""
@@ -253,7 +245,7 @@ msgstr ""
 msgid "Edit Group"
 msgstr ""
 
-#: ucp/views/contact.php:118
+#: ucp/views/contact.php:120
 #: views/entry.php:264
 msgid "Email"
 msgstr ""
@@ -289,7 +281,7 @@ msgstr ""
 #: Contactmanager.class.php:23
 #: Contactmanager.class.php:1925
 #: ucp/views/contact.php:10
-#: ucp/views/contacts.php:24
+#: ucp/views/contacts.php:35
 #: views/entry.php:88
 msgid "First Name"
 msgstr ""
@@ -302,16 +294,12 @@ msgstr ""
 msgid "Function call does not exist!"
 msgstr ""
 
-#: ucp/views/contacts.php:10
-msgid "Go!"
-msgstr ""
-
 #: Contactmanager.class.php:789
 #, php-format
 msgid "Group '%s' does not exist"
 msgstr ""
 
-#: ucp/assets/js/global.js:304
+#: ucp/assets/js/global.js:277
 msgid "Group Already Exists"
 msgstr ""
 
@@ -320,7 +308,7 @@ msgstr ""
 msgid "Group Name"
 msgstr ""
 
-#: ucp/assets/js/global.js:309
+#: ucp/assets/js/global.js:282
 msgid "Group Name Can Not Be Blank"
 msgstr ""
 
@@ -470,7 +458,7 @@ msgstr ""
 #: Contactmanager.class.php:1948
 #: Contactmanager.class.php:1960
 #: ucp/views/contact.php:39
-#: ucp/views/contact.php:80
+#: ucp/views/contact.php:81
 #: views/group.php:104
 msgid "Home"
 msgstr ""
@@ -488,7 +476,7 @@ msgstr ""
 #: Contactmanager.class.php:24
 #: Contactmanager.class.php:1926
 #: ucp/views/contact.php:14
-#: ucp/views/contacts.php:25
+#: ucp/views/contacts.php:36
 #: views/entry.php:108
 msgid "Last Name"
 msgstr ""
@@ -544,8 +532,8 @@ msgstr ""
 msgid "No XMPPs to add"
 msgstr ""
 
-#: ucp/Contactmanager.class.php:166
-#: ucp/Contactmanager.class.php:187
+#: ucp/Contactmanager.class.php:191
+#: ucp/Contactmanager.class.php:212
 msgid "Not Authorized"
 msgstr ""
 
@@ -572,7 +560,7 @@ msgstr ""
 #: Contactmanager.class.php:1950
 #: Contactmanager.class.php:1962
 #: ucp/views/contact.php:41
-#: ucp/views/contact.php:82
+#: ucp/views/contact.php:83
 #: views/group.php:106
 msgid "Other"
 msgstr ""
@@ -591,10 +579,6 @@ msgstr ""
 #: ucp/views/contact.php:45
 #: assets/js/contactmanager.js:99
 msgid "SMS"
-msgstr ""
-
-#: ucp/views/contacts.php:8
-msgid "Search"
 msgstr ""
 
 #: ucp/assets/js/global.js:82
@@ -622,13 +606,16 @@ msgstr ""
 
 #: Contactmanager.class.php:1927
 #: ucp/views/contact.php:18
-#: ucp/views/contacts.php:26
 #: views/entry.php:128
 msgid "Title"
 msgstr ""
 
 #: views/entry.php:138
 msgid "Title (overrides Title from User Manager)"
+msgstr ""
+
+#: ucp/views/contacts.php:37
+msgid "Title Name"
 msgstr ""
 
 #: views/group.php:39
@@ -649,10 +636,10 @@ msgstr ""
 msgid "Type of phone number.  External contacts only."
 msgstr ""
 
-#: ucp/Contactmanager.class.php:62
-#: ucp/Contactmanager.class.php:73
-#: ucp/Contactmanager.class.php:82
-#: ucp/Contactmanager.class.php:91
+#: ucp/Contactmanager.class.php:99
+#: ucp/Contactmanager.class.php:110
+#: ucp/Contactmanager.class.php:119
+#: ucp/Contactmanager.class.php:128
 msgid "Unauthorized"
 msgstr ""
 
@@ -682,7 +669,7 @@ msgid ""
 "User Manager username this contact should point to.  Internal contacts only."
 msgstr ""
 
-#: ucp/views/contact.php:144
+#: ucp/views/contact.php:147
 #: views/entry.php:296
 msgid "Website"
 msgstr ""
@@ -700,7 +687,7 @@ msgstr ""
 #: Contactmanager.class.php:1947
 #: Contactmanager.class.php:1959
 #: ucp/views/contact.php:38
-#: ucp/views/contact.php:79
+#: ucp/views/contact.php:80
 #: views/group.php:103
 msgid "Work"
 msgstr ""
