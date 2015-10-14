@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-10 12:27-0700\n"
-"PO-Revision-Date: 2015-04-09 20:38+0200\n"
+"PO-Revision-Date: 2015-10-14 14:57+0200\n"
 "Last-Translator: james <zhulizhong@gmail.com>\n"
-"Language-Team: Simplified Chinese <http://weblate.freepbx.org/projects/"
-"freepbx/contactmanager/zh_CN/>\n"
+"Language-Team: Simplified Chinese "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/zh_CN/>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 2.2-dev\n"
 
@@ -60,7 +60,7 @@ msgstr ""
 
 #: ucp/views/groupcreate.php:8 ucp/views/nav.php:4 views/group.php:10
 msgid "Add Group"
-msgstr ""
+msgstr "添加组"
 
 #: views/rnav.php:3
 msgid "Add New Group"
@@ -72,7 +72,7 @@ msgstr ""
 
 #: views/grid.php:27
 msgid "Add User"
-msgstr ""
+msgstr "添加用户"
 
 #: ucp/views/contact.php:171 views/entry.php:310
 msgid "Add Website"
@@ -160,7 +160,7 @@ msgstr ""
 
 #: Contactmanager.class.php:502 Contactmanager.class.php:521
 msgid "Delete"
-msgstr ""
+msgstr "删除"
 
 #: ucp/views/contact.php:178 ucp/views/contactro.php:76
 msgid "Delete Contact"
@@ -172,13 +172,13 @@ msgstr ""
 
 #: ucp/assets/js/global.js:153
 msgid "Deleting..."
-msgstr ""
+msgstr "删除。。。"
 
 #: Contactmanager.class.php:22 Contactmanager.class.php:32
 #: Contactmanager.class.php:1922 Contactmanager.class.php:1923
 #: ucp/views/contact.php:6 ucp/views/contacts.php:34 views/entry.php:68
 msgid "Display Name"
-msgstr "显示名"
+msgstr "显示名称"
 
 #: views/entry.php:78
 msgid "Display Name (overrides Display Name from User Manager)"
@@ -219,7 +219,7 @@ msgstr ""
 
 #: views/grid.php:29 views/group.php:7
 msgid "Edit Group"
-msgstr ""
+msgstr "编辑组"
 
 #: ucp/views/contact.php:120 views/entry.php:264
 msgid "Email"
@@ -254,7 +254,7 @@ msgstr "传真"
 #: Contactmanager.class.php:23 Contactmanager.class.php:1925
 #: ucp/views/contact.php:10 ucp/views/contacts.php:35 views/entry.php:88
 msgid "First Name"
-msgstr ""
+msgstr "姓"
 
 #: views/entry.php:98
 msgid "First Name (overrides First Name from User Manager)"
@@ -275,7 +275,7 @@ msgstr ""
 
 #: Contactmanager.class.php:1909 ucp/views/groupcreate.php:5
 msgid "Group Name"
-msgstr ""
+msgstr "组名称"
 
 #: ucp/assets/js/global.js:282
 msgid "Group Name Can Not Be Blank"
