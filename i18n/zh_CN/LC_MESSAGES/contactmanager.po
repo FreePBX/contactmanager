@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-10 12:27-0700\n"
-"PO-Revision-Date: 2015-10-14 14:57+0200\n"
+"PO-Revision-Date: 2015-10-15 09:43+0200\n"
 "Last-Translator: james <zhulizhong@gmail.com>\n"
 "Language-Team: Simplified Chinese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/zh_CN/>\n"
@@ -44,7 +44,7 @@ msgstr ""
 #: Contactmanager.class.php:26 Contactmanager.class.php:35
 #: Contactmanager.class.php:42
 msgid "Actions"
-msgstr ""
+msgstr "命令"
 
 #: ucp/views/contact.php:175
 msgid "Add Contact"
@@ -415,7 +415,7 @@ msgstr ""
 #: Contactmanager.class.php:1948 Contactmanager.class.php:1960
 #: ucp/views/contact.php:39 ucp/views/contact.php:81 views/group.php:104
 msgid "Home"
-msgstr ""
+msgstr "主页"
 
 #: views/userman_hook.php:16
 msgid "Inherit"
