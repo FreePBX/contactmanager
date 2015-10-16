@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-10 12:27-0700\n"
-"PO-Revision-Date: 2015-10-15 09:43+0200\n"
+"PO-Revision-Date: 2015-10-16 08:22+0200\n"
 "Last-Translator: james <zhulizhong@gmail.com>\n"
 "Language-Team: Simplified Chinese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/zh_CN/>\n"
@@ -419,7 +419,7 @@ msgstr "主页"
 
 #: views/userman_hook.php:16
 msgid "Inherit"
-msgstr ""
+msgstr "继承"
 
 #: Contactmanager.class.php:20 Contactmanager.class.php:1917
 #: views/group.php:44
