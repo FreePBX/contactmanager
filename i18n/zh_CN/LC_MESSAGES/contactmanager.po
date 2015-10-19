@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-10 12:27-0700\n"
-"PO-Revision-Date: 2015-10-16 13:57+0200\n"
+"PO-Revision-Date: 2015-10-19 14:40+0200\n"
 "Last-Translator: james <zhulizhong@gmail.com>\n"
 "Language-Team: Simplified Chinese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/zh_CN/>\n"
@@ -511,7 +511,7 @@ msgstr ""
 
 #: Contactmanager.class.php:509 Contactmanager.class.php:528
 msgid "Reset"
-msgstr "重新设置"
+msgstr "重设"
 
 #: ucp/views/contact.php:45 assets/js/contactmanager.js:99
 msgid "SMS"
