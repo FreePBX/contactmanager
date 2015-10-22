@@ -2,11 +2,12 @@
 		<rawname>contactmanager</rawname>
 		<repo>standard</repo>
 		<name>Contact Manager</name>
-		<version>12.0.4</version>
+		<version>12.0.5</version>
 		<publisher>Sangoma Technologies Corporation</publisher>
 		<license>GPLv3+</license>
 		<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 		<changelog>
+				*12.0.5* Remove beta
 				*12.0.4* FREEPBX-10303 Allow apostrophes in group names
 				*12.0.3* FREEPBX-9098 Increase timeout and max file size for contact import.
 				*12.0.2* FREEPBX-8386 Add tel: into contact manager. Readjust other values.
@@ -31,7 +32,7 @@
 				Contact Manager
 		</description>
 		<menuitems>
-				<contactmanager beta="yes" needsenginedb="yes">Contact Manager</contactmanager>
+				<contactmanager needsenginedb="yes">Contact Manager</contactmanager>
 		</menuitems>
 		<depends>
 				<version>12.0.0</version>
