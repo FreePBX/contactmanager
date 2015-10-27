@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-10 12:27-0700\n"
-"PO-Revision-Date: 2015-10-27 08:43+0200\n"
+"PO-Revision-Date: 2015-10-27 11:13+0200\n"
 "Last-Translator: Kevin <kevin@qloog.com>\n"
 "Language-Team: Japanese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/ja_JP/>\n"
@@ -628,7 +628,7 @@ msgstr "はい"
 #: Contactmanager.class.php:123 Contactmanager.class.php:139
 #: Contactmanager.class.php:155 Contactmanager.class.php:171
 msgid "already exists"
-msgstr "すでに存在しています"
+msgstr "既に存在します"
 
 #: Contactmanager.class.php:142
 msgid "checking for address field.."
