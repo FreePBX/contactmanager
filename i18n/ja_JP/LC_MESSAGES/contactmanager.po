@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-10 12:27-0700\n"
-"PO-Revision-Date: 2015-10-27 11:13+0200\n"
+"PO-Revision-Date: 2015-10-28 13:18+0200\n"
 "Last-Translator: Kevin <kevin@qloog.com>\n"
 "Language-Team: Japanese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/ja_JP/>\n"
@@ -72,7 +72,7 @@ msgstr "番号を追加"
 
 #: views/grid.php:27
 msgid "Add User"
-msgstr ""
+msgstr "ユーザを追加"
 
 #: ucp/views/contact.php:171 views/entry.php:310
 msgid "Add Website"
