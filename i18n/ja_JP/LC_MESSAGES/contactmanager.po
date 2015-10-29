@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-10 12:27-0700\n"
-"PO-Revision-Date: 2015-10-28 13:18+0200\n"
+"PO-Revision-Date: 2015-10-29 06:41+0200\n"
 "Last-Translator: Kevin <kevin@qloog.com>\n"
 "Language-Team: Japanese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/ja_JP/>\n"
@@ -92,11 +92,11 @@ msgstr "住所"
 
 #: views/userman_hook.php:37
 msgid "Allowed Contact Manager Groups"
-msgstr ""
+msgstr "許可された連絡先グループ"
 
 #: assets/js/contactmanager.js:4
 msgid "An entry must have a user"
-msgstr ""
+msgstr "エントリにユーザを指定する必要があります"
 
 #: Contactmanager.class.php:402
 msgid "An entry must have a user."
@@ -128,7 +128,7 @@ msgstr "携帯"
 #: Contactmanager.class.php:1966
 msgid ""
 "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
-msgstr ""
+msgstr "コンマで区切ったフラグのリスト。 例: sms,fax  ※外部の連絡先のみ"
 
 #: Contactmanager.class.php:33 Contactmanager.class.php:1928
 #: ucp/views/contact.php:22 ucp/views/contacts.php:38 views/entry.php:148
@@ -156,7 +156,7 @@ msgstr "連絡先"
 
 #: Contactmanager.class.php:1898
 msgid "Contacts and internal/external groups from the Contact Manager module."
-msgstr ""
+msgstr "「連絡先の管理」モジュールからの連絡先、または内部・外部のグループ。"
 
 #: Contactmanager.class.php:502 Contactmanager.class.php:521
 msgid "Delete"
@@ -168,7 +168,7 @@ msgstr "連絡先を削除"
 
 #: views/grid.php:30
 msgid "Delete Group"
-msgstr ""
+msgstr "グループを削除"
 
 #: ucp/assets/js/global.js:153
 msgid "Deleting..."
@@ -186,12 +186,12 @@ msgstr "表示名（ユーザー管理の表示名を上書きします）"
 
 #: assets/js/contactmanager.js:36
 msgid "E-Mail address cannot be blank."
-msgstr ""
+msgstr "メールアドレスは空にできません。"
 
 #: Contactmanager.class.php:1967 Contactmanager.class.php:1968
 #: Contactmanager.class.php:1969
 msgid "E-mail address.  External contacts only."
-msgstr ""
+msgstr "メールアドレス。※外部の連絡先のみ"
 
 #: Contactmanager.class.php:150
 msgid "ERROR failed to update address field"
@@ -227,12 +227,12 @@ msgstr "メール"
 
 #: assets/js/contactmanager.js:91
 msgid "Ext."
-msgstr ""
+msgstr "内線番号"
 
 #: Contactmanager.class.php:1941 Contactmanager.class.php:1953
 #: Contactmanager.class.php:1965
 msgid "Extension.  External contacts only."
-msgstr ""
+msgstr "内線番号。※外部の連絡先のみ"
 
 #: Contactmanager.class.php:30 Contactmanager.class.php:1918
 #: views/group.php:45
@@ -283,7 +283,7 @@ msgstr "グループ名は空にできません"
 
 #: Contactmanager.class.php:1914
 msgid "Group Type"
-msgstr ""
+msgstr "グループの種類"
 
 #: Contactmanager.class.php:733 Contactmanager.class.php:1106
 #: Contactmanager.class.php:1143 Contactmanager.class.php:1181
@@ -389,11 +389,11 @@ msgstr "グループ名は空にできません"
 
 #: Contactmanager.class.php:1985
 msgid "Group name is required."
-msgstr ""
+msgstr "グループ名は必須です。"
 
 #: Contactmanager.class.php:2014
 msgid "Group not found and could not be created."
-msgstr ""
+msgstr "グループは見つからず、作成できませんでした。"
 
 #: Contactmanager.class.php:777
 msgid "Group successfully added"
