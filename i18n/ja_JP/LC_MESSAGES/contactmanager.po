@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-10 12:27-0700\n"
-"PO-Revision-Date: 2015-10-29 06:41+0200\n"
+"PO-Revision-Date: 2015-10-30 06:32+0200\n"
 "Last-Translator: Kevin <kevin@qloog.com>\n"
 "Language-Team: Japanese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/ja_JP/>\n"
@@ -409,7 +409,7 @@ msgstr "グループを更新しました"
 
 #: Contactmanager.class.php:1992
 msgid "Group type is required."
-msgstr ""
+msgstr "グループの種類を入力してください。"
 
 #: Contactmanager.class.php:449 Contactmanager.class.php:1936
 #: Contactmanager.class.php:1948 Contactmanager.class.php:1960
@@ -419,7 +419,7 @@ msgstr "ホーム"
 
 #: views/userman_hook.php:16
 msgid "Inherit"
-msgstr ""
+msgstr "引き継ぐ"
 
 #: Contactmanager.class.php:20 Contactmanager.class.php:1917
 #: views/group.php:44
@@ -437,7 +437,7 @@ msgstr "性（ユーザー管理の苗字を上書きします）"
 
 #: views/rnav.php:2
 msgid "List All Groups"
-msgstr ""
+msgstr "グループを一覧表示"
 
 #: ucp/views/nav.php:3
 msgid "My Contacts"
@@ -454,7 +454,7 @@ msgstr "グループの名前"
 #: Contactmanager.class.php:1910
 msgid ""
 "Name of group for contact.  If group does not exist, it will be created."
-msgstr ""
+msgstr "連絡先のグループ名。グループが存在しない場合は新しく作ります。"
 
 #: views/userman_hook.php:13
 msgid "No"
@@ -466,7 +466,7 @@ msgstr "追加できるメールアドレスがありません"
 
 #: views/grid.php:45
 msgid "No Groups for this type"
-msgstr ""
+msgstr "この種類のグループはありません。"
 
 #: Contactmanager.class.php:1329
 msgid "No Numbers to add"
@@ -486,7 +486,7 @@ msgstr "非表示"
 
 #: assets/js/contactmanager.js:14
 msgid "Number cannot be blank."
-msgstr ""
+msgstr "番号を空にできません。"
 
 #: Contactmanager.class.php:34 ucp/views/contact.php:26 views/entry.php:192
 #: views/group.php:93
@@ -507,7 +507,7 @@ msgstr "その他"
 #: Contactmanager.class.php:1931 Contactmanager.class.php:1943
 #: Contactmanager.class.php:1955
 msgid "Phone number.  External contacts only."
-msgstr ""
+msgstr "電話番号。※外部の連絡先のみ"
 
 #: Contactmanager.class.php:509 Contactmanager.class.php:528
 msgid "Reset"
@@ -523,7 +523,7 @@ msgstr "アクションを選択"
 
 #: views/userman_hook.php:7
 msgid "Show In Contact Manager"
-msgstr ""
+msgstr "「連絡先の管理」で表示"
 
 #: Contactmanager.class.php:514 Contactmanager.class.php:533
 msgid "Submit"
@@ -537,7 +537,7 @@ msgstr "この種類のアクションがありません"
 msgid ""
 "These are the assigned and active contactmanager groups which will show up "
 "for this user in UCP"
-msgstr ""
+msgstr "このユーザのUCPで表示するグループです。"
 
 #: Contactmanager.class.php:1927 ucp/views/contact.php:18 views/entry.php:128
 msgid "Title"
@@ -545,11 +545,11 @@ msgstr "肩書"
 
 #: views/entry.php:138
 msgid "Title (overrides Title from User Manager)"
-msgstr ""
+msgstr "役職 (ユーザ管理で設定した役職を上書きします)"
 
 #: ucp/views/contacts.php:37
 msgid "Title Name"
-msgstr ""
+msgstr "役職"
 
 #: views/group.php:39
 msgid "Type"
@@ -561,12 +561,12 @@ msgstr "グループの種類"
 
 #: Contactmanager.class.php:1915
 msgid "Type of group for contact."
-msgstr ""
+msgstr "連絡先のグループの種類。"
 
 #: Contactmanager.class.php:1933 Contactmanager.class.php:1945
 #: Contactmanager.class.php:1957
 msgid "Type of phone number.  External contacts only."
-msgstr ""
+msgstr "電話番号の種類。※外部の連絡先のみ"
 
 #: ucp/Contactmanager.class.php:99 ucp/Contactmanager.class.php:110
 #: ucp/Contactmanager.class.php:119 ucp/Contactmanager.class.php:128
@@ -575,7 +575,7 @@ msgstr "非表示"
 
 #: Contactmanager.class.php:2065
 msgid "Unknown data type."
-msgstr ""
+msgstr "不明なデータタイプ。"
 
 #: Contactmanager.class.php:25 Contactmanager.class.php:41 views/entry.php:41
 #: views/group.php:87 views/group.php:97
@@ -588,12 +588,12 @@ msgstr "ユーザー管理"
 
 #: Contactmanager.class.php:179
 msgid "User Manager Group"
-msgstr ""
+msgstr "ユーザ管理のグループ"
 
 #: Contactmanager.class.php:1930
 msgid ""
 "User Manager username this contact should point to.  Internal contacts only."
-msgstr ""
+msgstr "この連絡先が参照する、ユーザ管理のユーザ名。※内部の連絡先のみ"
 
 #: ucp/views/contact.php:147 views/entry.php:296
 msgid "Website"
@@ -601,11 +601,11 @@ msgstr "ホームページ"
 
 #: assets/js/contactmanager.js:47
 msgid "Website cannot be blank."
-msgstr ""
+msgstr "ホームページは必須項目です。"
 
 #: views/userman_hook.php:26
 msgid "Whether to show this contact in contact manager."
-msgstr ""
+msgstr "この連絡先を「連絡先の管理」で表示するかどうか設定します。"
 
 #: Contactmanager.class.php:448 Contactmanager.class.php:1935
 #: Contactmanager.class.php:1947 Contactmanager.class.php:1959
@@ -619,7 +619,7 @@ msgstr "XMPP"
 
 #: assets/js/contactmanager.js:25
 msgid "XMPP address cannot be blank."
-msgstr ""
+msgstr "XMPPアドレスは必須項目です。"
 
 #: views/userman_hook.php:12
 msgid "Yes"
