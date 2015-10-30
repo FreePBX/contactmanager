@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-10 12:27-0700\n"
-"PO-Revision-Date: 2015-10-30 06:32+0200\n"
+"PO-Revision-Date: 2015-10-30 07:42+0200\n"
 "Last-Translator: Kevin <kevin@qloog.com>\n"
 "Language-Team: Japanese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/ja_JP/>\n"
@@ -172,7 +172,7 @@ msgstr "グループを削除"
 
 #: ucp/assets/js/global.js:153
 msgid "Deleting..."
-msgstr "削除中…"
+msgstr "削除中..."
 
 #: Contactmanager.class.php:22 Contactmanager.class.php:32
 #: Contactmanager.class.php:1922 Contactmanager.class.php:1923
@@ -584,7 +584,7 @@ msgstr "ユーザー"
 
 #: Contactmanager.class.php:39 views/group.php:46
 msgid "User Manager"
-msgstr "ユーザー管理"
+msgstr "ユーザ管理"
 
 #: Contactmanager.class.php:179
 msgid "User Manager Group"
