@@ -672,7 +672,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		} else {
 			$user = $this->freepbx->Userman->getUserByID($owner);
 			$assigned = $this->freepbx->Userman->getModuleSettingByID($user['id'],'contactmanager','groups',true);
-			$assigned = !is_array($assigned) ? $assigned : array();
+			$assigned = is_array($assigned) ? $assigned : array();
 			$sql = "SELECT * FROM contactmanager_groups WHERE `owner` = :id";
 			if (!empty($assigned)) {
 				$sql .= " OR `id` IN (".implode(',',$assigned).")";
@@ -681,7 +681,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		}
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $owner));
-		return $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$ret = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		return $ret;
 	}
 
 	/**
