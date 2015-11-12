@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-10 12:27-0700\n"
-"PO-Revision-Date: 2015-11-09 14:27+0200\n"
+"PO-Revision-Date: 2015-11-12 12:42+0200\n"
 "Last-Translator: james <zhulizhong@gmail.com>\n"
 "Language-Team: Simplified Chinese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/zh_CN/>\n"
@@ -458,7 +458,7 @@ msgstr ""
 
 #: views/userman_hook.php:13
 msgid "No"
-msgstr "否"
+msgstr "无"
 
 #: Contactmanager.class.php:1550
 msgid "No E-Mails to add"
@@ -511,7 +511,7 @@ msgstr ""
 
 #: Contactmanager.class.php:509 Contactmanager.class.php:528
 msgid "Reset"
-msgstr "重设"
+msgstr "重新设置"
 
 #: ucp/views/contact.php:45 assets/js/contactmanager.js:99
 msgid "SMS"
@@ -623,7 +623,7 @@ msgstr ""
 
 #: views/userman_hook.php:12
 msgid "Yes"
-msgstr ""
+msgstr "是"
 
 #: Contactmanager.class.php:123 Contactmanager.class.php:139
 #: Contactmanager.class.php:155 Contactmanager.class.php:171
