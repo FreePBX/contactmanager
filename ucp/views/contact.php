@@ -1,7 +1,7 @@
 <div class="col-md-10">
 	<div class="contact-container">
 		<div class="alert" role="alert" style="display:none"></div>
-		<form role="form" id="<?php echo ($add) ? 'add' : 'edit'?>Contact">
+		<form role="form" id="<?php echo isset($add) && ($add) ? 'add' : 'edit'?>Contact">
 			<div class="form-group">
 				<label for="displayname"><?php echo _('Display Name')?></label>
 				<input type="text" class="form-control" id="displayname" placeholder="Display Name" value="<?php echo $contact['displayname']?>">
@@ -41,33 +41,33 @@
 									<option value="other"><?php echo _('Other')?></option>
 								</select>
 							</td>
-							<!--<td style="text-align: right;">
-								<label for="smsenable1"><?php echo _('SMS')?>:</label>
+							<td style="text-align: right;">
+								<label><?php echo _('SMS')?>:</label>
 							</td>
 							<td>
-								<div class="onoffswitch">
-									<input type="checkbox" name="smsenable1" data-name="flag" class="onoffswitch-checkbox number" id="smsenable" <?php echo ($enabled) ? 'checked' : ''?>>
-									<label class="onoffswitch-label" for="smsenable">
+								<div class="onoffswitch flag smsenable smsenable-template">
+									<input type="checkbox" data-name="flag" class="onoffswitch-checkbox number" id="smsenable1">
+									<label class="onoffswitch-label" for="smsenable1">
 										<div class="onoffswitch-inner"></div>
 										<div class="onoffswitch-switch"></div>
 									</label>
 								</div>
 							</td>
 							<td style="text-align: right;">
-								<label for="faxenable1"><?php echo _('Fax')?>:</label>
+								<label><?php echo _('Fax')?>:</label>
 							</td>
 							<td>
-								<div class="onoffswitch">
-									<input type="checkbox" name="faxenable1" data-name="flag" class="onoffswitch-checkbox number" id="faxenable" <?php echo ($enabled) ? 'checked' : ''?>>
-									<label class="onoffswitch-label" for="faxenable">
+								<div class="onoffswitch flag faxenable faxenable-template">
+									<input type="checkbox" data-name="flag" class="onoffswitch-checkbox number" id="faxenable1">
+									<label class="onoffswitch-label" for="faxenable1">
 										<div class="onoffswitch-inner"></div>
 										<div class="onoffswitch-switch"></div>
 									</label>
 								</div>
-							</td>-->
+							</td>
 						</tr>
 						<?php $contact['numbers'] = is_array($contact['numbers']) ? $contact['numbers'] : array(); ?>
-						<?php foreach($contact['numbers'] as $number) {?>
+						<?php foreach($contact['numbers'] as $c => $number) {?>
 							<tr>
 								<td>
 									<a><i class="fa fa-ban fa-fw delete"></i></a>
@@ -82,6 +82,30 @@
 										<option value="cell" <?php echo ($number['type'] == "cell") ? 'selected' : ''?>><?php echo _('Cell')?></option>
 										<option value="other" <?php echo ($number['type'] == "other") ? 'selected' : ''?>><?php echo _('Other')?></option>
 									</select>
+								</td>
+								<td style="text-align: right;">
+									<label><?php echo _('SMS')?>:</label>
+								</td>
+								<td>
+									<div class="onoffswitch">
+										<input type="checkbox" data-name="flag" class="onoffswitch-checkbox flag smsenable" id="smsenable_<?php echo $number['number']?>_<?php echo $c?>" <?php echo in_array("sms",$number['flags']) ? 'checked' : ''?>>
+										<label class="onoffswitch-label" for="smsenable_<?php echo $number['number']?>_<?php echo $c?>">
+											<div class="onoffswitch-inner"></div>
+											<div class="onoffswitch-switch"></div>
+										</label>
+									</div>
+								</td>
+								<td style="text-align: right;">
+									<label><?php echo _('Fax')?>:</label>
+								</td>
+								<td>
+									<div class="onoffswitch">
+										<input type="checkbox" data-name="flag" class="onoffswitch-checkbox flag faxenable" id="faxenable_<?php echo $number['number']?>_<?php echo $c?>" <?php echo in_array("fax",$number['flags']) ? 'checked' : ''?>>
+										<label class="onoffswitch-label" for="faxenable_<?php echo $number['number']?>_<?php echo $c?>">
+											<div class="onoffswitch-inner"></div>
+											<div class="onoffswitch-switch"></div>
+										</label>
+									</div>
 								</td>
 							</tr>
 						<?php } ?>
@@ -101,7 +125,7 @@
 								<input type="text" class="form-control special" data-name="xmpp">
 							</td>
 						</tr>
-						<?php $contact['xmpps'] = is_array($contact['xmpps']) ? $contact['xmpps'] : array(); ?>
+						<?php $contact['xmpps'] = !empty($contact['xmpps']) ? $contact['xmpps'] : array(); ?>
 						<?php foreach($contact['xmpps'] as $xmpp) {?>
 							<tr>
 								<td>
@@ -128,7 +152,7 @@
 								<input type="text" class="form-control special" data-name="email">
 							</td>
 						</tr>
-						<?php $contact['emails'] = is_array($contact['emails']) ? $contact['emails'] : array(); ?>
+						<?php $contact['emails'] = !empty($contact['emails']) ? $contact['emails'] : array(); ?>
 						<?php foreach($contact['emails'] as $email) {?>
 							<tr>
 								<td>
@@ -155,7 +179,7 @@
 								<input type="text" class="form-control special" data-name="website">
 							</td>
 						</tr>
-						<?php $contact['websites'] = is_array($contact['websites']) ? $contact['websites'] : array(); ?>
+						<?php $contact['websites'] = !empty($contact['websites']) ? $contact['websites'] : array(); ?>
 						<?php foreach($contact['websites'] as $website) {?>
 							<tr>
 								<td>
@@ -170,8 +194,8 @@
 				</div>
 				<button class="btn btn-default btn-xs add-additional" data-type="websites"><i class="fa fa-plus fa-fw"></i><?php echo _('Add Website')?></button>
 			</div>
-			<input type="hidden" id="mode" name="mode" value="<?php echo ($add) ? 'add' : 'edit'?>">
-			<?php if($add) {?>
+			<input type="hidden" id="mode" name="mode" value="<?php echo isset($add) && ($add) ? 'add' : 'edit'?>">
+			<?php if(isset($add) && $add) {?>
 				<button id="addcontact" class="btn btn-default"><?php echo _('Add Contact')?></button>
 			<?php } else { ?>
 				<input type="hidden" id="id" name="id" value="<?php echo $contact['id']?>">
