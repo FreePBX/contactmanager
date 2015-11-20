@@ -44,7 +44,7 @@
 					<label>XMPP</label><br/>
 					<ul>
 					<?php foreach($contact['xmpps'] as $number) {?>
-						<li><span class="clickable" data-type="xmpp"><?php echo $number['xmpp']?></span></li>
+						<li><span class="clickable" data-type="xmpp" data-primary="xmpp"><?php echo $number['xmpp']?></span></li>
 					<?php } ?>
 					</ul>
 				</div>
