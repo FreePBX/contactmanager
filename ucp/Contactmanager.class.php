@@ -85,12 +85,6 @@ class Contactmanager extends Modules{
 					$contacts = array_reverse($contacts);
 				}
 				return $contacts;
-				/*
-				return array(
-					"total" => count($contacts),
-					"rows" => $contacts
-				);
-				*/
 			break;
 			case 'updatecontact':
 				$entry = $this->cm->getEntryByID($_REQUEST['id']);
