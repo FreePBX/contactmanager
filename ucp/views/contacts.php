@@ -22,7 +22,6 @@
 					data-search="true"
 					data-sort-order="asc"
 					data-sort-name="displayname"
-					data-side-pagination="server"
 					data-show-refresh="true"
 					data-silent-sort="false"
 					data-mobile-responsive="true"

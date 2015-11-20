@@ -52,7 +52,7 @@ class Contactmanager extends Modules{
 		$return = array("status" => false, "message" => "");
 		switch($_REQUEST['command']) {
 			case 'grid':
-				$limit = $_REQUEST['limit'];
+				//$limit = $_REQUEST['limit'];
 				$group = $_REQUEST['id'];
 				$order = $_REQUEST['order'];
 				$orderby = !empty($_REQUEST['sort']) ? $_REQUEST['sort'] : "displayname";
@@ -84,10 +84,13 @@ class Contactmanager extends Modules{
 				if($order == 'asc') {
 					$contacts = array_reverse($contacts);
 				}
+				return $contacts;
+				/*
 				return array(
 					"total" => count($contacts),
 					"rows" => $contacts
 				);
+				*/
 			break;
 			case 'updatecontact':
 				$entry = $this->cm->getEntryByID($_REQUEST['id']);
