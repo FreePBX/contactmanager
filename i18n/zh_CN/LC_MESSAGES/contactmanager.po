@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-11-12 15:39-0800\n"
-"PO-Revision-Date: 2015-11-17 12:22+0200\n"
+"PO-Revision-Date: 2015-11-23 13:56+0200\n"
 "Last-Translator: james <zhulizhong@gmail.com>\n"
 "Language-Team: Simplified Chinese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/zh_CN/>\n"
@@ -464,7 +464,7 @@ msgstr ""
 
 #: views/userman_hook.php:13
 msgid "No"
-msgstr "无"
+msgstr ""
 
 #: Contactmanager.class.php:1551
 msgid "No E-Mails to add"
@@ -488,7 +488,7 @@ msgstr ""
 
 #: ucp/Contactmanager.class.php:191 ucp/Contactmanager.class.php:212
 msgid "Not Authorized"
-msgstr ""
+msgstr "未经授权"
 
 #: assets/js/contactmanager.js:14
 msgid "Number cannot be blank."
