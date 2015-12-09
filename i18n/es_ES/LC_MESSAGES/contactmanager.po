@@ -174,7 +174,7 @@ msgstr "Eliminar Contacto"
 
 #: views/grid.php:30
 msgid "Delete Group"
-msgstr ""
+msgstr "Eliminar Grupo"
 
 #: ucp/assets/js/global.js:153
 msgid "Deleting..."
@@ -503,7 +503,7 @@ msgstr "Numeros"
 #: Contactmanager.class.php:120 Contactmanager.class.php:136
 #: Contactmanager.class.php:152 Contactmanager.class.php:168
 msgid "OK"
-msgstr "Ok"
+msgstr "OK"
 
 #: Contactmanager.class.php:451 Contactmanager.class.php:1939
 #: Contactmanager.class.php:1951 Contactmanager.class.php:1963
