@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-11-12 15:39-0800\n"
-"PO-Revision-Date: 2015-05-25 00:33+0200\n"
-"Last-Translator: Ernesto <ecasas@sangoma.com>\n"
-"Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/es_ES/>\n"
+"PO-Revision-Date: 2015-12-08 23:36+0200\n"
+"Last-Translator: Andrew <andrew.nagy@the159.com>\n"
+"Language-Team: Spanish "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es_ES\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.2-dev\n"
 
@@ -635,7 +635,7 @@ msgstr "Si"
 #: Contactmanager.class.php:123 Contactmanager.class.php:139
 #: Contactmanager.class.php:155 Contactmanager.class.php:171
 msgid "already exists"
-msgstr "ya existe"
+msgstr "Ya existe"
 
 #: Contactmanager.class.php:142
 msgid "checking for address field.."
