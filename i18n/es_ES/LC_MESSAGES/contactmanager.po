@@ -44,7 +44,7 @@ msgstr "Un usuario del modulo Gestor de Usuarios"
 #: Contactmanager.class.php:26 Contactmanager.class.php:35
 #: Contactmanager.class.php:42
 msgid "Actions"
-msgstr ""
+msgstr "Acciones"
 
 #: ucp/views/contact.php:175
 msgid "Add Contact"
@@ -518,7 +518,7 @@ msgstr ""
 
 #: Contactmanager.class.php:509 Contactmanager.class.php:528
 msgid "Reset"
-msgstr ""
+msgstr "Restaura"
 
 #: ucp/views/contact.php:45 assets/js/contactmanager.js:99
 msgid "SMS"
