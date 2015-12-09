@@ -72,7 +72,7 @@ msgstr "Agregar Numero"
 
 #: views/grid.php:27
 msgid "Add User"
-msgstr ""
+msgstr "Añadir Usuario"
 
 #: ucp/views/contact.php:171 views/entry.php:310
 msgid "Add Website"
