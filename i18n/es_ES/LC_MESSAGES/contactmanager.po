@@ -166,7 +166,7 @@ msgstr ""
 
 #: Contactmanager.class.php:502 Contactmanager.class.php:521
 msgid "Delete"
-msgstr ""
+msgstr "Eliminar"
 
 #: ucp/views/contact.php:178 ucp/views/contactro.php:76
 msgid "Delete Contact"
