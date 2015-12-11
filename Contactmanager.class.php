@@ -1200,6 +1200,11 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		':id' => $id,
 		));
 
+		$entry['numbers'] = !empty($entry['numbers']) ? $entry['numbers'] : array();
+		$entry['xmpps'] = !empty($entry['xmpps']) ? $entry['xmpps'] : array();
+		$entry['emails'] = !empty($entry['emails']) ? $entry['emails'] : array();
+		$entry['websites'] = !empty($entry['websites']) ? $entry['websites'] : array();
+
 		$ret = $this->deleteNumbersByEntryID($id);
 		$this->addNumbersByEntryID($id, $entry['numbers']);
 
@@ -1340,9 +1345,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			$sth->execute(array(
 			':entryid' => $entryid,
 			':number' => $number['number'],
-			':extension' => $number['extension'],
-			':type' => $number['type'],
-			':flags' => !empty($number['flags']) ? implode('|', $number['flags']) : array(),
+			':extension' => isset($number['extension']) ? $number['extension'] : "",
+			':type' => isset($number['type']) ? $number['type'] : "",
+			':flags' => !empty($number['flags']) ? implode('|', $number['flags']) : "",
 			));
 		}
 
@@ -1668,7 +1673,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			return $this->contactsCache;
 		}
 		$umentries = $this->freepbx->Userman->getAllContactInfo();
-		if($id = -1) {
+		if($id == -1) {
 			$groups = $this->getGroups();
 		} else {
 			$groups = $this->getGroupsByOwner($id);

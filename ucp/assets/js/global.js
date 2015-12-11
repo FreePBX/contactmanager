@@ -117,6 +117,25 @@ var ContactmanagerC = UCPMC.extend({
 			e.preventDefault();
 			var type = $(this).data("type");
 			$("." + type + " table").append("<tr>" + $("." + type + " .template").html() + "</tr>");
+			var tr = $(".numbers tr").not(".template");
+			tr.find(".smsenable-template").each(function() {
+				var input = $(this).find("input"),
+						label = $(this).find("label"),
+						id = Date.now();
+
+				input.prop("id","smsenable"+id);
+				label.prop("for","smsenable"+id);
+				$(this).removeClass("smsenable-template");
+			});
+			tr.find(".faxenable-template").each(function() {
+				var input = $(this).find("input"),
+						label = $(this).find("label"),
+						id = Date.now();
+
+				input.prop("id","faxenable"+id);
+				label.prop("for","faxenable"+id);
+				$(this).removeClass("faxenable-template");
+			});
 		});
 		$("#addContact .additional").on("click", ".delete", function() {
 			$(this).parents("tr").remove();
@@ -124,7 +143,7 @@ var ContactmanagerC = UCPMC.extend({
 		$("#editContact .additional").on("click", ".delete", function() {
 			var table = $(this).parents("table"), count = 0, type = table.data("type"), data = [],  id = $("#id").val();
 			$(this).parents("tr").remove();
-			table.find("tr").not(".template").find("input").each(function(i, v) {
+			table.find("tr").not(".template").find("input[type!=checkbox]").each(function(i, v) {
 				var obj = {};
 				obj[$(this).data("name")] = $(this).val();
 				data.push(obj);
@@ -188,12 +207,19 @@ var ContactmanagerC = UCPMC.extend({
 				}
 			});
 		});
-		$("#editContact .numbers").on("change", "select", function(e) {
+		$("#editContact .numbers").on("change", "select, input[type=checkbox]", function(e) {
 			var table = $(this).parents("table"), count = 0, type = table.data("type"), data = [],  id = $("#id").val();
 			$(".numbers tr").filter(":visible").each(function(i, v) {
 				var obj = {};
 				obj.number = $(this).find("input[data-name='number']").val();
 				obj.type = $(this).find("select[data-name='type']").val();
+				obj.flags = [];
+				if($(this).find("input[type=checkbox].smsenable").is(":checked")) {
+					obj.flags.push("sms");
+				}
+				if($(this).find("input[type=checkbox].faxenable").is(":checked")) {
+					obj.flags.push("fax");
+				}
 				data.push(obj);
 			});
 			$.post( "?quietmode=1&module=contactmanager&command=updatecontact", { id: id, key: type, value: data }, function( data ) {
