@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-11-12 15:39-0800\n"
-"PO-Revision-Date: 2015-05-25 00:33+0200\n"
-"Last-Translator: Ernesto <ecasas@sangoma.com>\n"
-"Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/es_ES/>\n"
+"PO-Revision-Date: 2015-12-08 23:36+0200\n"
+"Last-Translator: Andrew <andrew.nagy@the159.com>\n"
+"Language-Team: Spanish "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es_ES\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.2-dev\n"
 
@@ -44,7 +44,7 @@ msgstr "Un usuario del modulo Gestor de Usuarios"
 #: Contactmanager.class.php:26 Contactmanager.class.php:35
 #: Contactmanager.class.php:42
 msgid "Actions"
-msgstr ""
+msgstr "Acciones"
 
 #: ucp/views/contact.php:175
 msgid "Add Contact"
@@ -72,7 +72,7 @@ msgstr "Agregar Numero"
 
 #: views/grid.php:27
 msgid "Add User"
-msgstr ""
+msgstr "Añadir Usuario"
 
 #: ucp/views/contact.php:171 views/entry.php:310
 msgid "Add Website"
@@ -166,7 +166,7 @@ msgstr ""
 
 #: Contactmanager.class.php:502 Contactmanager.class.php:521
 msgid "Delete"
-msgstr ""
+msgstr "Eliminar"
 
 #: ucp/views/contact.php:178 ucp/views/contactro.php:76
 msgid "Delete Contact"
@@ -174,7 +174,7 @@ msgstr "Eliminar Contacto"
 
 #: views/grid.php:30
 msgid "Delete Group"
-msgstr ""
+msgstr "Eliminar Grupo"
 
 #: ucp/assets/js/global.js:153
 msgid "Deleting..."
@@ -503,7 +503,7 @@ msgstr "Numeros"
 #: Contactmanager.class.php:120 Contactmanager.class.php:136
 #: Contactmanager.class.php:152 Contactmanager.class.php:168
 msgid "OK"
-msgstr "Ok"
+msgstr "OK"
 
 #: Contactmanager.class.php:451 Contactmanager.class.php:1939
 #: Contactmanager.class.php:1951 Contactmanager.class.php:1963
@@ -518,7 +518,7 @@ msgstr ""
 
 #: Contactmanager.class.php:509 Contactmanager.class.php:528
 msgid "Reset"
-msgstr ""
+msgstr "Restaura"
 
 #: ucp/views/contact.php:45 assets/js/contactmanager.js:99
 msgid "SMS"
@@ -635,7 +635,7 @@ msgstr "Si"
 #: Contactmanager.class.php:123 Contactmanager.class.php:139
 #: Contactmanager.class.php:155 Contactmanager.class.php:171
 msgid "already exists"
-msgstr "ya existe"
+msgstr "Ya existe"
 
 #: Contactmanager.class.php:142
 msgid "checking for address field.."
