@@ -669,16 +669,30 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	public function getGroupsbyOwner($owner) {
 		if($this->checkCOSStatus()) {
 			$sql = "SELECT * FROM contactmanager_groups WHERE `owner` = :id OR `owner` = -1 ORDER BY id";
+			$user = $this->freepbx->Userman->getUserByID($owner);
+			if(empty($user) || $user['default_extension'] == "none") {
+				return array();
+			}
+			$coses = $this->freepbx->cos->getCoSforUser($user['default_extension']);
+			$coses = is_array($coses) ? $coses : array();
+			$assigned = array();
+			foreach($coses as $c) {
+				$all = $this->freepbx->cos->getAll($c);
+				if(!empty($all)) {
+					$grps = array_keys($all['contactgroupsallow']);
+					$assigned = array_merge($assigned,$grps);
+				}
+			}
 		} else {
 			$user = $this->freepbx->Userman->getUserByID($owner);
 			$assigned = $this->freepbx->Userman->getModuleSettingByID($user['id'],'contactmanager','groups',true);
 			$assigned = is_array($assigned) ? $assigned : array();
-			$sql = "SELECT * FROM contactmanager_groups WHERE `owner` = :id";
-			if (!empty($assigned)) {
-				$sql .= " OR `id` IN (".implode(',',$assigned).")";
-			}
-	 		$sql .= " ORDER BY id";
 		}
+		$sql = "SELECT * FROM contactmanager_groups WHERE `owner` = :id";
+		if (!empty($assigned)) {
+			$sql .= " OR `id` IN (".implode(',',$assigned).")";
+		}
+		$sql .= " ORDER BY id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $owner));
 		$ret = $sth->fetchAll(\PDO::FETCH_ASSOC);
@@ -702,8 +716,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 * TODO: There has to be a better way to do this
 	 */
 	private function checkCOSStatus() {
-		if(function_exists('sysadmin_is_module_licensed')) {
-			return sysadmin_is_module_licensed("cos");
+		if($this->freepbx->Modules->checkStatus("cos") && $this->freepbx->Cos->isLicensed()) {
+			return true;
 		}
 		return false;
 	}
@@ -1857,6 +1871,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					);
 				break;
 				case 'adduser':
+					$assigned = array();
 					foreach($groups as $group) {
 						$assigned[] = $group['id'];
 					}
@@ -1874,9 +1889,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				case 'showuser':
 					$assigned = $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","groups",true);
 					if(is_null($assigned)) {
-						foreach($groups as $group) {
-							$assigned[] = $group['id'];
-						}
+						$assigned = array();
 					}
 					foreach($groups as $k=>$group) {
 						$groups[$k]['selected'] = in_array($group['id'],$assigned);
