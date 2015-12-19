@@ -826,15 +826,14 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		'e.id',
 		'e.groupid',
 		'e.user',
-		'COALESCE(e.displayname,u.displayname,u.fname,u.username) as displayname',
-		'COALESCE(e.fname,u.fname) as fname',
-		'COALESCE(e.lname,u.lname) as lname',
-		'COALESCE(e.title,u.title) as title',
-		'COALESCE(e.company,u.company) as company',
+		'e.displayname',
+		'e.fname',
+		'e.lname',
+		'e.title',
+		'e.company',
 		'e.address as address',
 		);
-		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e
-		LEFT JOIN userman_users as u ON (e.user = u.id) WHERE e.id = :id";
+		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e WHERE e.id = :id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $id));
 		$entry = $sth->fetch(\PDO::FETCH_ASSOC);
@@ -885,12 +884,21 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			}
 			break;
 			case "userman":
-			if(!$this->freepbx->Userman->getCombinedModuleSettingByID($entry['user'],"contactmanager","show")) {
-				return false;
-			}
+				if(!$this->freepbx->Userman->getCombinedModuleSettingByID($entry['user'],"contactmanager","show")) {
+					return false;
+				} else {
+					$user = $this->freepbx->Userman->getUserByID($entry['user']);
+					if(!empty($user)) {
+						$entry = array_merge($entry,$user);
+					} else {
+						$this->deleteEntryByID($entry['uid']);
+					}
+				}
 			case "internal":
 			$user = $this->freepbx->Userman->getUserByID($entry['user']);
-			if(empty($user)) {
+			if(!empty($user)) {
+				$entries[$key] = array_merge($entry,$user);
+			} else {
 				$this->deleteEntryByID($entry['uid']);
 				return false;
 			}
