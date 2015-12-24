@@ -33,7 +33,7 @@
 							<th data-field="displayname" data-sortable="true"><?php echo _("Display Name")?></th>
 							<th data-field="fname" data-sortable="true"><?php echo _("First Name")?></th>
 							<th data-field="lname" data-sortable="true"><?php echo _("Last Name")?></th>
-							<th data-field="title" data-sortable="true"><?php echo _("Title Name")?></th>
+							<th data-field="title" data-sortable="true"><?php echo _("Title")?></th>
 							<th data-field="company" data-sortable="true"><?php echo _("Company")?></th>
 					</tr>
 			</thead>

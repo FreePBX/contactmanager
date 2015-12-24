@@ -846,6 +846,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			if ($numbers) {
 				foreach ($numbers as $number) {
 					$number['flags'] = !empty($number['flags']) ? explode('|', $number['flags']) : array();
+					$number['flags'][] = 'phone';
 					$entry['numbers'][$number['id']] = array(
 					'number' => $number['number'],
 					'extension' => $number['extension'],
