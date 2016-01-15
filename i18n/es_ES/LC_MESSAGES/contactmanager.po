@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-23 16:15-0800\n"
-"PO-Revision-Date: 2016-01-15 00:25+0200\n"
+"PO-Revision-Date: 2016-01-15 02:12+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
@@ -534,7 +534,7 @@ msgstr "Seleccione Acción"
 
 #: views/userman_hook.php:7
 msgid "Show In Contact Manager"
-msgstr ""
+msgstr "Monstrar en Gestor de Contactos"
 
 #: Contactmanager.class.php:514 Contactmanager.class.php:533
 msgid "Submit"
@@ -549,10 +549,12 @@ msgid ""
 "These are the assigned and active contactmanager groups which will show up "
 "for this user in UCP"
 msgstr ""
+"Estos son los grupos asignados y activos que se mostrarán para este usuario "
+"en la UCP"
 
 #: views/userman_hook.php:68
 msgid "This is managed through the Class of Service module"
-msgstr ""
+msgstr "Esto es gestionado a través del Modulo Class of Service"
 
 #: Contactmanager.class.php:1954 ucp/views/contact.php:18
 #: ucp/views/contacts.php:36 views/entry.php:128
@@ -561,7 +563,7 @@ msgstr "Titulo"
 
 #: views/entry.php:138
 msgid "Title (overrides Title from User Manager)"
-msgstr ""
+msgstr "Título (anula título de Administrador de usuarios)"
 
 #: views/group.php:39
 msgid "Type"
@@ -573,12 +575,12 @@ msgstr "Tipo de Grupo"
 
 #: Contactmanager.class.php:1942
 msgid "Type of group for contact."
-msgstr ""
+msgstr "Tipo de grupo para contacto."
 
 #: Contactmanager.class.php:1960 Contactmanager.class.php:1972
 #: Contactmanager.class.php:1984
 msgid "Type of phone number.  External contacts only."
-msgstr ""
+msgstr "Tipo del número de teléfono. Los contactos externos solamente."
 
 #: ucp/Contactmanager.class.php:96 ucp/Contactmanager.class.php:107
 #: ucp/Contactmanager.class.php:116 ucp/Contactmanager.class.php:125
@@ -587,7 +589,7 @@ msgstr "No autorizado"
 
 #: Contactmanager.class.php:2092
 msgid "Unknown data type."
-msgstr ""
+msgstr "Tipo de datos desconocido."
 
 #: Contactmanager.class.php:25 Contactmanager.class.php:41 views/entry.php:41
 #: views/group.php:87 views/group.php:97
