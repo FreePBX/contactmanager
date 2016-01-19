@@ -2000,7 +2000,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		}
 	}
 
-	public function bulkhandlerImport($type, $rawData) {
+	public function bulkhandlerImport($type, $rawData, $replaceExisting = true) {
 		$ret = NULL;
 
 		switch ($type) {
@@ -2049,7 +2049,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$contact = array(
 					'id' => '',
 					'groupid' => $group['id'],
-					'user' => $user ? $user['username'] : -1,
+					'user' => !empty($user) ? $user['username'] : -1,
 					'displayname' => $data['displayname'],
 					'fname' => $data['fname'],
 					'lname' => $data['lname'],
