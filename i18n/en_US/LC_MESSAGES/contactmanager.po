@@ -10,12 +10,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-23 16:15-0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2016-01-20 05:28+0200\n"
+"Last-Translator: Ernesto <ecasas@sangoma.com>\n"
+"Language-Team: English (United States) "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/en_US/>\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.2-dev\n"
 
 #: views/entry.php:286
 msgid "A list of E-Mail addresses belonging to this entry"
@@ -40,7 +44,7 @@ msgstr ""
 #: Contactmanager.class.php:26 Contactmanager.class.php:35
 #: Contactmanager.class.php:42
 msgid "Actions"
-msgstr ""
+msgstr "Acciones"
 
 #: ucp/views/contact.php:199
 msgid "Add Contact"
@@ -88,7 +92,7 @@ msgstr ""
 
 #: contactmanager.i18n.php:6 contactmanager.i18n.php:12
 msgid "Admin"
-msgstr ""
+msgstr "Admin"
 
 #: views/userman_hook.php:37 views/userman_hook.php:64
 msgid "Allowed Contact Manager Groups"
@@ -460,7 +464,7 @@ msgstr ""
 
 #: views/userman_hook.php:13
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: Contactmanager.class.php:1578
 msgid "No E-Mails to add"
@@ -530,7 +534,7 @@ msgstr ""
 
 #: Contactmanager.class.php:514 Contactmanager.class.php:533
 msgid "Submit"
-msgstr ""
+msgstr "Enviar"
 
 #: ucp/assets/js/global.js:76
 msgid "There are no actions for this type"
@@ -627,7 +631,7 @@ msgstr ""
 
 #: views/userman_hook.php:12
 msgid "Yes"
-msgstr ""
+msgstr "Si"
 
 #: Contactmanager.class.php:123 Contactmanager.class.php:139
 #: Contactmanager.class.php:155 Contactmanager.class.php:171
