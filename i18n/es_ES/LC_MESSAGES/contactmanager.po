@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-23 16:15-0800\n"
-"PO-Revision-Date: 2016-01-15 02:12+0200\n"
+"PO-Revision-Date: 2016-01-20 06:05+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
@@ -602,12 +602,14 @@ msgstr "Gestor de Usuarios"
 
 #: Contactmanager.class.php:179
 msgid "User Manager Group"
-msgstr ""
+msgstr "Grupo Administrador de usuarios"
 
 #: Contactmanager.class.php:1957
 msgid ""
 "User Manager username this contact should point to.  Internal contacts only."
 msgstr ""
+"Nombre de usuario Administrador que este contacto debería apuntar. Contactos "
+"internos solamente."
 
 #: ucp/views/contact.php:171 views/entry.php:296
 msgid "Website"
@@ -615,11 +617,11 @@ msgstr "Sitio Web"
 
 #: assets/js/contactmanager.js:47
 msgid "Website cannot be blank."
-msgstr ""
+msgstr "Sitio Web no puede estar en Blanco."
 
 #: views/userman_hook.php:26
 msgid "Whether to show this contact in contact manager."
-msgstr ""
+msgstr "Ya sea para mostrar este contacto en el administrador de contactos."
 
 #: Contactmanager.class.php:448 Contactmanager.class.php:1962
 #: Contactmanager.class.php:1974 Contactmanager.class.php:1986
@@ -633,7 +635,7 @@ msgstr "XMPP"
 
 #: assets/js/contactmanager.js:25
 msgid "XMPP address cannot be blank."
-msgstr ""
+msgstr "Direccion XMPP no puede estar en balno."
 
 #: views/userman_hook.php:12
 msgid "Yes"
