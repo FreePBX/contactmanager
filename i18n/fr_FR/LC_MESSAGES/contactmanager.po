@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-23 16:15-0800\n"
-"PO-Revision-Date: 2016-01-22 09:24+0200\n"
+"PO-Revision-Date: 2016-01-24 06:28+0200\n"
 "Last-Translator: Nicolas <forums@riendeau.org>\n"
 "Language-Team: French "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/fr_FR/>\n"
@@ -451,7 +451,7 @@ msgstr ""
 
 #: views/group.php:18 views/group.php:86 views/group.php:91
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: views/group.php:28
 msgid "Name of group"
