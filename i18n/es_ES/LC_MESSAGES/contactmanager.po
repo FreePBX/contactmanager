@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-23 16:15-0800\n"
-"PO-Revision-Date: 2015-12-08 23:36+0200\n"
-"Last-Translator: Andrew <andrew.nagy@the159.com>\n"
-"Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/es_ES/>\n"
+"PO-Revision-Date: 2016-01-20 06:05+0200\n"
+"Last-Translator: Ernesto <ecasas@sangoma.com>\n"
+"Language-Team: Spanish "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es_ES\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.2-dev\n"
 
@@ -84,7 +84,7 @@ msgstr "Agregar XMPP"
 
 #: ucp/assets/js/global.js:271
 msgid "Adding..."
-msgstr "Agregando..."
+msgstr "Añadiendo..."
 
 #: Contactmanager.class.php:1956 views/entry.php:168 views/entry.php:180
 msgid "Address"
@@ -92,15 +92,15 @@ msgstr "Dirección"
 
 #: contactmanager.i18n.php:6 contactmanager.i18n.php:12
 msgid "Admin"
-msgstr "Administrador"
+msgstr "Admin"
 
 #: views/userman_hook.php:37 views/userman_hook.php:64
 msgid "Allowed Contact Manager Groups"
-msgstr ""
+msgstr "Grupos de Gestion de COntactos permitidos"
 
 #: assets/js/contactmanager.js:4
 msgid "An entry must have a user"
-msgstr ""
+msgstr "Debe contener un usuario"
 
 #: Contactmanager.class.php:402
 msgid "An entry must have a user."
@@ -133,6 +133,8 @@ msgstr "Cel"
 msgid ""
 "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
 msgstr ""
+"Lista de flags separadas por coma. (Ejemplo: sms, fax). Solo Contactos "
+"externos."
 
 #: Contactmanager.class.php:33 Contactmanager.class.php:1955
 #: ucp/views/contact.php:22 ucp/views/contacts.php:37 views/entry.php:148
@@ -163,10 +165,11 @@ msgstr "Contactos"
 #: Contactmanager.class.php:1925
 msgid "Contacts and internal/external groups from the Contact Manager module."
 msgstr ""
+"Contactos y Grupos internos/externos del modulo de Gestion de Contactos."
 
 #: Contactmanager.class.php:502 Contactmanager.class.php:521
 msgid "Delete"
-msgstr "Eliminar"
+msgstr "Borrar"
 
 #: ucp/views/contact.php:202 ucp/views/contactro.php:76
 msgid "Delete Contact"
@@ -193,12 +196,12 @@ msgstr ""
 
 #: assets/js/contactmanager.js:36
 msgid "E-Mail address cannot be blank."
-msgstr ""
+msgstr "Dirección E-Mail no puede estar en blanco."
 
 #: Contactmanager.class.php:1994 Contactmanager.class.php:1995
 #: Contactmanager.class.php:1996
 msgid "E-mail address.  External contacts only."
-msgstr ""
+msgstr "Dirección de correo electrónico. Los contactos externos solamente."
 
 #: Contactmanager.class.php:150
 msgid "ERROR failed to update address field"
@@ -234,12 +237,12 @@ msgstr "Correo"
 
 #: assets/js/contactmanager.js:91
 msgid "Ext."
-msgstr ""
+msgstr "Ext."
 
 #: Contactmanager.class.php:1968 Contactmanager.class.php:1980
 #: Contactmanager.class.php:1992
 msgid "Extension.  External contacts only."
-msgstr ""
+msgstr "Extensión. Los contactos externos solamente."
 
 #: Contactmanager.class.php:30 Contactmanager.class.php:1945
 #: views/group.php:45
@@ -290,7 +293,7 @@ msgstr "El Nombre de Grupo no puede estar en blanco"
 
 #: Contactmanager.class.php:1941
 msgid "Group Type"
-msgstr ""
+msgstr "Tipo de Grupo"
 
 #: Contactmanager.class.php:748 Contactmanager.class.php:1129
 #: Contactmanager.class.php:1166 Contactmanager.class.php:1204
@@ -396,11 +399,11 @@ msgstr "Nombre de grupo no puede estar en blanco"
 
 #: Contactmanager.class.php:2012
 msgid "Group name is required."
-msgstr ""
+msgstr "Nombre de Grupo es requerido."
 
 #: Contactmanager.class.php:2041
 msgid "Group not found and could not be created."
-msgstr ""
+msgstr "Grupo no encontrado y no puede ser creado."
 
 #: Contactmanager.class.php:792
 msgid "Group successfully added"
@@ -416,7 +419,7 @@ msgstr "Grupo satisfactoriamente actualizado"
 
 #: Contactmanager.class.php:2019
 msgid "Group type is required."
-msgstr ""
+msgstr "Tipo de Grupo es requerido."
 
 #: Contactmanager.class.php:449 Contactmanager.class.php:1963
 #: Contactmanager.class.php:1975 Contactmanager.class.php:1987
@@ -426,7 +429,7 @@ msgstr "Inicio"
 
 #: views/userman_hook.php:16
 msgid "Inherit"
-msgstr ""
+msgstr "Hereda"
 
 #: Contactmanager.class.php:20 Contactmanager.class.php:1944
 #: views/group.php:44
@@ -444,7 +447,7 @@ msgstr "Apellido (sustituye Apellido del Gestor de Usuarios)"
 
 #: views/rnav.php:2
 msgid "List All Groups"
-msgstr ""
+msgstr "Lista Todos los Grupos"
 
 #: ucp/views/nav.php:3
 msgid "My Contacts"
@@ -461,7 +464,7 @@ msgstr "Nombre del Grupo"
 #: Contactmanager.class.php:1937
 msgid ""
 "Name of group for contact.  If group does not exist, it will be created."
-msgstr ""
+msgstr "Nombre de Grupo para contacto. SI el Grupo no existe, este sera creado."
 
 #: views/userman_hook.php:13
 msgid "No"
@@ -473,7 +476,7 @@ msgstr "No hay correos que agregar"
 
 #: views/grid.php:45
 msgid "No Groups for this type"
-msgstr ""
+msgstr "No hay Grupos para este tipo"
 
 #: Contactmanager.class.php:1357
 msgid "No Numbers to add"
@@ -493,7 +496,7 @@ msgstr "No Autorizado"
 
 #: assets/js/contactmanager.js:14
 msgid "Number cannot be blank."
-msgstr ""
+msgstr "Numero no puede estar en blanco."
 
 #: Contactmanager.class.php:34 ucp/views/contact.php:26 views/entry.php:192
 #: views/group.php:93
@@ -514,11 +517,11 @@ msgstr "Otro"
 #: Contactmanager.class.php:1958 Contactmanager.class.php:1970
 #: Contactmanager.class.php:1982
 msgid "Phone number.  External contacts only."
-msgstr ""
+msgstr "Numero de Telefono. Solo contactos externos."
 
 #: Contactmanager.class.php:509 Contactmanager.class.php:528
 msgid "Reset"
-msgstr "Restaura"
+msgstr "Reiniciar"
 
 #: ucp/views/contact.php:45 ucp/views/contact.php:87
 #: assets/js/contactmanager.js:99
@@ -531,7 +534,7 @@ msgstr "Seleccione Acción"
 
 #: views/userman_hook.php:7
 msgid "Show In Contact Manager"
-msgstr ""
+msgstr "Monstrar en Gestor de Contactos"
 
 #: Contactmanager.class.php:514 Contactmanager.class.php:533
 msgid "Submit"
@@ -546,10 +549,12 @@ msgid ""
 "These are the assigned and active contactmanager groups which will show up "
 "for this user in UCP"
 msgstr ""
+"Estos son los grupos asignados y activos que se mostrarán para este usuario "
+"en la UCP"
 
 #: views/userman_hook.php:68
 msgid "This is managed through the Class of Service module"
-msgstr ""
+msgstr "Esto es gestionado a través del Modulo Class of Service"
 
 #: Contactmanager.class.php:1954 ucp/views/contact.php:18
 #: ucp/views/contacts.php:36 views/entry.php:128
@@ -558,7 +563,7 @@ msgstr "Titulo"
 
 #: views/entry.php:138
 msgid "Title (overrides Title from User Manager)"
-msgstr ""
+msgstr "Título (anula título de Administrador de usuarios)"
 
 #: views/group.php:39
 msgid "Type"
@@ -570,12 +575,12 @@ msgstr "Tipo de Grupo"
 
 #: Contactmanager.class.php:1942
 msgid "Type of group for contact."
-msgstr ""
+msgstr "Tipo de grupo para contacto."
 
 #: Contactmanager.class.php:1960 Contactmanager.class.php:1972
 #: Contactmanager.class.php:1984
 msgid "Type of phone number.  External contacts only."
-msgstr ""
+msgstr "Tipo del número de teléfono. Los contactos externos solamente."
 
 #: ucp/Contactmanager.class.php:96 ucp/Contactmanager.class.php:107
 #: ucp/Contactmanager.class.php:116 ucp/Contactmanager.class.php:125
@@ -584,7 +589,7 @@ msgstr "No autorizado"
 
 #: Contactmanager.class.php:2092
 msgid "Unknown data type."
-msgstr ""
+msgstr "Tipo de datos desconocido."
 
 #: Contactmanager.class.php:25 Contactmanager.class.php:41 views/entry.php:41
 #: views/group.php:87 views/group.php:97
@@ -597,12 +602,14 @@ msgstr "Gestor de Usuarios"
 
 #: Contactmanager.class.php:179
 msgid "User Manager Group"
-msgstr ""
+msgstr "Grupo Administrador de usuarios"
 
 #: Contactmanager.class.php:1957
 msgid ""
 "User Manager username this contact should point to.  Internal contacts only."
 msgstr ""
+"Nombre de usuario Administrador que este contacto debería apuntar. Contactos "
+"internos solamente."
 
 #: ucp/views/contact.php:171 views/entry.php:296
 msgid "Website"
@@ -610,11 +617,11 @@ msgstr "Sitio Web"
 
 #: assets/js/contactmanager.js:47
 msgid "Website cannot be blank."
-msgstr ""
+msgstr "Sitio Web no puede estar en Blanco."
 
 #: views/userman_hook.php:26
 msgid "Whether to show this contact in contact manager."
-msgstr ""
+msgstr "Ya sea para mostrar este contacto en el administrador de contactos."
 
 #: Contactmanager.class.php:448 Contactmanager.class.php:1962
 #: Contactmanager.class.php:1974 Contactmanager.class.php:1986
@@ -628,7 +635,7 @@ msgstr "XMPP"
 
 #: assets/js/contactmanager.js:25
 msgid "XMPP address cannot be blank."
-msgstr ""
+msgstr "Direccion XMPP no puede estar en balno."
 
 #: views/userman_hook.php:12
 msgid "Yes"
