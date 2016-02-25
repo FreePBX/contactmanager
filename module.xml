@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.17</version>
+	<version>13.0.18</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.18* Remove en_US Translations
 		*13.0.17* FREEPBX-11267 bulk handler issues
 		*13.0.16* FREEPBX-11133
 		*13.0.15* FREEPBX-10845
@@ -44,20 +45,20 @@
 		<version>13.0</version>
 	</supported>
 	<hooks>
-		<bulkhandler namespace="FreePBX\modules" class="Bulkhandler">
-			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="getHeaders">bulkhandlerGetHeaders</method>
-			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="getTypes">bulkhandlerGetTypes</method>
-			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="import">bulkhandlerImport</method>
-			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="export">bulkhandlerExport</method>
+		<bulkhandler class="Bulkhandler" namespace="FreePBX\modules">
+			<method callingMethod="getHeaders" class="Contactmanager" namespace="FreePBX\modules">bulkhandlerGetHeaders</method>
+			<method callingMethod="getTypes" class="Contactmanager" namespace="FreePBX\modules">bulkhandlerGetTypes</method>
+			<method callingMethod="import" class="Contactmanager" namespace="FreePBX\modules">bulkhandlerImport</method>
+			<method callingMethod="export" class="Contactmanager" namespace="FreePBX\modules">bulkhandlerExport</method>
 		</bulkhandler>
-		<userman namespace="FreePBX\modules" class="Userman">
-			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="delGroup">usermanDelGroup</method>
-			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="addGroup">usermanAddGroup</method>
-			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="updateGroup">usermanUpdateGroup</method>
-			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="delUser">usermanDelUser</method>
-			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="addUser">usermanAddUser</method>
-			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="updateUser">usermanUpdateUser</method>
-			<method namespace="FreePBX\modules" class="Contactmanager" callingMethod="myShowPage">usermanShowPage</method>
+		<userman class="Userman" namespace="FreePBX\modules">
+			<method callingMethod="delGroup" class="Contactmanager" namespace="FreePBX\modules">usermanDelGroup</method>
+			<method callingMethod="addGroup" class="Contactmanager" namespace="FreePBX\modules">usermanAddGroup</method>
+			<method callingMethod="updateGroup" class="Contactmanager" namespace="FreePBX\modules">usermanUpdateGroup</method>
+			<method callingMethod="delUser" class="Contactmanager" namespace="FreePBX\modules">usermanDelUser</method>
+			<method callingMethod="addUser" class="Contactmanager" namespace="FreePBX\modules">usermanAddUser</method>
+			<method callingMethod="updateUser" class="Contactmanager" namespace="FreePBX\modules">usermanUpdateUser</method>
+			<method callingMethod="myShowPage" class="Contactmanager" namespace="FreePBX\modules">usermanShowPage</method>
 		</userman>
 	</hooks>
 </module>
