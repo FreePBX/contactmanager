@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.19</version>
+	<version>13.0.20</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.20* FREEPBX-11557 Primary number deletes if more than one number entered when saving edit
 		*13.0.19* Remove en_US Translations
 		*13.0.18* Remove en_US Translations
 		*13.0.17* FREEPBX-11267 bulk handler issues
