@@ -209,7 +209,7 @@ foreach ($users as $u) {
 															</td>
 															<td><input type="checkbox" name="sms[<?php echo $numcount?>]" value="1" <?php echo in_array('sms', $number['flags']) ? "checked" : ""?>>SMS<br><input type="checkbox" name="fax[<?php echo $numcount?>]" value="1" <?php echo in_array('fax', $number['flags']) ? "checked" : ""?>>FAX</td>
 														</tr>
-													<?php } ?>
+													<?php $numcount++;} ?>
 												</table>
 												<a class="clickable" onclick="addNumber()"><i class="fa fa-plus fa-fw"></i>Add Number</a>
 											</div>
@@ -241,7 +241,7 @@ foreach ($users as $u) {
 															<td><a class="clickable" onclick="delXMPP(' . $numcount . ')"><i class="fa fa-ban fa-fw"></i></a></td>
 															<td><input type="text" class="form-control" name="xmpp[<?php echo $numcount?>]" value="<?php echo $number['xmpp']?>"></td>
 														</tr>
-													<?php } ?>
+													<?php $numcount++;} ?>
 												</table>
 												<a class="clickable" onclick="addXMPP()"><i class="fa fa-plus fa-fw"></i><?php echo _('Add XMPP')?></a>
 											</div>
@@ -273,7 +273,7 @@ foreach ($users as $u) {
 															<td><a class="clickable" onclick="delEmail(' . $numcount . ')"><i class="fa fa-ban fa-fw"></i></a></td>
 															<td><input type="text" class="form-control" name="email[<?php echo $numcount?>]" value="<?php echo $number['email']?>"></td>
 														</tr>
-													<?php } ?>
+													<?php $numcount++;} ?>
 												</table>
 												<a class="clickable" onclick="addEmail()"><i class="fa fa-plus fa-fw"></i><?php echo _('Add Email')?></a>
 											</div>
@@ -305,7 +305,7 @@ foreach ($users as $u) {
 															<td><a class="clickable" onclick="delWebsite(' . $numcount . ')"><i class="fa fa-ban fa-fw"></i></a></td>
 															<td><input type="text" class="form-control" name="website[<?php echo $numcount?>]" value="<?php echo $number['website']?>"></td>
 														</tr>
-													<?php } ?>
+													<?php $numcount++;} ?>
 												</table>
 												<a class="clickable" onclick="addWebsite()"><i class="fa fa-plus fa-fw"></i><?php echo _('Add Website')?></a>
 											</div>
