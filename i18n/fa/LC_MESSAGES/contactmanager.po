@@ -421,7 +421,7 @@ msgstr "نوع گروه مورد نیاز است."
 #: Contactmanager.class.php:1975 Contactmanager.class.php:1987
 #: ucp/views/contact.php:39 ucp/views/contact.php:81 views/group.php:104
 msgid "Home"
-msgstr "منزل"
+msgstr "خانه"
 
 #: views/userman_hook.php:16
 msgid "Inherit"
