@@ -10,16 +10,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-10 13:29-0800\n"
-"PO-Revision-Date: 2016-02-14 09:06+0200\n"
+"PO-Revision-Date: 2016-03-20 11:23+0300\n"
 "Last-Translator: Media <mousavi.media@gmail.com>\n"
-"Language-Team: Persian <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/fa/>\n"
+"Language-Team: Persian "
+"<http://weblate.freepbx.org/projects/freepbx/userman/fa/>\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.2-dev\n"
+"X-Generator: Weblate 2.4\n"
 
 #: views/entry.php:286
 msgid "A list of E-Mail addresses belonging to this entry"
@@ -44,7 +44,7 @@ msgstr "یک کاربر از ماژول مدیریت کاربر"
 #: Contactmanager.class.php:26 Contactmanager.class.php:35
 #: Contactmanager.class.php:42
 msgid "Actions"
-msgstr "عملیات"
+msgstr "اعمال"
 
 #: ucp/views/contact.php:199
 msgid "Add Contact"
@@ -132,7 +132,7 @@ msgstr "موبایل"
 #: Contactmanager.class.php:1993
 msgid ""
 "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
-msgstr ""
+msgstr "تنها مخاطبین خارجی. (مانند： پیامک,فکس)."
 
 #: Contactmanager.class.php:33 Contactmanager.class.php:1955
 #: ucp/views/contact.php:22 ucp/views/contacts.php:37 views/entry.php:148
@@ -233,7 +233,7 @@ msgstr "ایمیل"
 
 #: assets/js/contactmanager.js:91
 msgid "Ext."
-msgstr ""
+msgstr "داخلی."
 
 #: Contactmanager.class.php:1968 Contactmanager.class.php:1980
 #: Contactmanager.class.php:1992
@@ -251,7 +251,7 @@ msgstr "دورنگار"
 
 #: ucp/assets/js/global.js:29
 msgid "Facetime"
-msgstr ""
+msgstr "زمان رویارویی"
 
 #: ucp/views/contact.php:57 ucp/views/contact.php:99
 msgid "Fax"
@@ -421,7 +421,7 @@ msgstr "نوع گروه مورد نیاز است."
 #: Contactmanager.class.php:1975 Contactmanager.class.php:1987
 #: ucp/views/contact.php:39 ucp/views/contact.php:81 views/group.php:104
 msgid "Home"
-msgstr "منزل"
+msgstr "خانه"
 
 #: views/userman_hook.php:16
 msgid "Inherit"
@@ -544,11 +544,11 @@ msgstr "عملکردی برای این نوع وجود ندارد"
 msgid ""
 "These are the assigned and active contactmanager groups which will show up "
 "for this user in UCP"
-msgstr ""
+msgstr "گروه های مدیریت مخاطب فعال برای کاربر در پنل کاربری نمایش داده میشود"
 
 #: views/userman_hook.php:68
 msgid "This is managed through the Class of Service module"
-msgstr ""
+msgstr "توسط کلاس ماژول سرویس مدیریت میشود"
 
 #: Contactmanager.class.php:1954 ucp/views/contact.php:18
 #: ucp/views/contacts.php:36 views/entry.php:128
@@ -601,7 +601,7 @@ msgstr "گروه مدیریت کاربر"
 #: Contactmanager.class.php:1957
 msgid ""
 "User Manager username this contact should point to.  Internal contacts only."
-msgstr ""
+msgstr "نام کاربری که مخاطب باید به آن اشاره کند. تنها مخاطبین داخلی."
 
 #: ucp/views/contact.php:171 views/entry.php:296
 msgid "Website"
@@ -623,7 +623,7 @@ msgstr "محل کار"
 
 #: views/entry.php:232
 msgid "XMPP"
-msgstr ""
+msgstr "زمپ"
 
 #: assets/js/contactmanager.js:25
 msgid "XMPP address cannot be blank."
