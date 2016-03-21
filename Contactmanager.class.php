@@ -436,8 +436,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 */
 	public function myShowPage() {
 		$groups = $this->getGroupsGroupedByType();
-		$userman = setup_userman();
-		$users = $userman->getAllUsers();
+		$users = $this->userman->getAllUsers();
 
 		$action = !empty($_REQUEST['action']) ? $_REQUEST['action'] : '';
 		if ($action == "delentry") {
@@ -781,8 +780,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$id = $this->db->lastInsertId();
 
 		if ($type == 'userman') {
-			$userman = setup_userman();
-			$users = $userman->getAllUsers();
+			$users = $this->userman->getAllUsers();
 
 			foreach ($users as $user) {
 				$this->addEntryByGroupID($id, array('user' => $user['id']));
