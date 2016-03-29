@@ -1703,11 +1703,11 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		foreach($groups as $group) {
 			switch($group['type']) {
 				case "userman":
-				$entries = $umentries;
+				$entries = $this->getEntriesByGroupID($group['id']);
 				if(!empty($entries) && is_array($entries)) {
 					$final = array();
 					foreach($entries as $entry) {
-						if(!$this->freepbx->Userman->getCombinedModuleSettingByID($entry['id'],"contactmanager","show")) {
+						if(!$this->freepbx->Userman->getCombinedModuleSettingByID($entry['user'],"contactmanager","show")) {
 							continue;
 						}
 						$entry['type'] = "userman";
@@ -1756,6 +1756,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						$entry['numbers'] = $numbers;
 						$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
 						$entry['type'] = "external";
+						$entry['groupid'] = $group['id'];
 					}
 					$contacts = array_merge($contacts, $entries);
 				}
@@ -1768,6 +1769,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						foreach($umentries as $um) {
 							if($um['id'] == $entry['user']) {
 								$entry['type'] = "internal";
+								$entry['groupid'] = $group['id'];
 								$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
 								//standardize all phone numbers, digits only
 								$entry['numbers'] = array(
