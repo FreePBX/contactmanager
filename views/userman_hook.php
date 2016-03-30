@@ -27,7 +27,6 @@
 		</div>
 	</div>
 </div>
-<?php if(!$cos) {?>
 <div class="element-container">
 	<div class="row">
 		<div class="col-md-12">
@@ -54,27 +53,3 @@
 		</div>
 	</div>
 </div>
-<?php } else { ?>
-	<div class="element-container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="row">
-					<div class="form-group">
-						<div class="col-md-3">
-							<label class="control-label" for="contactmanager_groups"><?php echo _('Allowed Contact Manager Groups')?></label>
-							<i class="fa fa-question-circle fpbx-help-icon" data-for="contactmanager_groups"></i>
-						</div>
-						<div class="col-md-9">
-							<strong><?php echo _("This is managed through the Class of Service module")?></strong>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<span id="contactmanager_groups-help" class="help-block fpbx-help-block"><?php echo _("These are the assigned and active contactmanager groups which will show up for this user in UCP")?></span>
-			</div>
-		</div>
-	</div>
-<?php } ?>
