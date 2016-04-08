@@ -1,6 +1,6 @@
 <div class="col-md-10">
 		<div id="contacts-toolbar">
-			<?php if(isset($_REQUEST['view']) && $_REQUEST['view'] == "all") { ?>
+			<?php if(!isset($_REQUEST['view']) || (isset($_REQUEST['view']) && $_REQUEST['view'] == "all")) { ?>
 				<a cm-pjax="" href="?display=dashboard&amp;mod=contactmanager&amp;view=addgroup" class="btn btn-default"><i class="fa fa-plus"></i> Add Group</a>
 			<?php } ?>
 			<?php if(isset($readonly) && !$readonly && $_REQUEST['view'] == "group") { ?>

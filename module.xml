@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.23</version>
+	<version>13.0.24</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.24* FREEPBX-11972 FREEPBX-11686
 		*13.0.23* Remove CoS functionality, this is now controlled in User Manager
 		*13.0.22* Reference contact manager
 		*13.0.21* Dont reference old userman callbacks
@@ -44,7 +45,7 @@
 	</menuitems>
 	<depends>
 		<version>13.0.0</version>
-		<module>userman ge 13.0.24</module>
+		<module>userman ge 13.0.56</module>
 	</depends>
 	<supported>
 		<version>13.0</version>
