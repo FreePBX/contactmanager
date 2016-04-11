@@ -579,7 +579,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			}
 
 			if(!empty($_POST['contactmanager_groups'])) {
-				$this->freepbx->Userman->setModuleSettingByGID($id,'contactmanager','groups',$_POST['contactmanager_groups']);
+				$grps = !in_array("*",$_POST['contactmanager_groups']) ? $_POST['contactmanager_groups'] : array("*");
+				$this->freepbx->Userman->setModuleSettingByGID($id,'contactmanager','groups',$grps);
 			} else {
 				$this->freepbx->Userman->setModuleSettingByGID($id,'contactmanager','groups',null);
 			}
@@ -642,7 +643,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','show',null);
 			}
 			if(!empty($_POST['contactmanager_groups'])) {
-				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','groups',$_POST['contactmanager_groups']);
+				$grps = !in_array("*",$_POST['contactmanager_groups']) ? $_POST['contactmanager_groups'] : array("*");
+				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','groups',$grps);
 			} else {
 				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','groups',null);
 			}
@@ -667,7 +669,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','show',null);
 			}
 			if(!empty($_POST['contactmanager_groups'])) {
-				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','groups',$_POST['contactmanager_groups']);
+				$grps = !in_array("*",$_POST['contactmanager_groups']) ? $_POST['contactmanager_groups'] : array("*");
+				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','groups',$grps);
 			} else {
 				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','groups',null);
 			}
@@ -735,8 +738,10 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$assigned = $this->freepbx->Userman->getCombinedModuleSettingByID($user['id'],'contactmanager','groups');
 		$assigned = is_array($assigned) ? $assigned : array();
 		$sql = "SELECT * FROM contactmanager_groups WHERE `owner` = :id";
-		if (!empty($assigned)) {
+		if (!empty($assigned) && !in_array("*",$assigned)) {
 			$sql .= " OR `id` IN (".implode(',',$assigned).")";
+		} else if(!empty($assigned) && in_array("*",$assigned)) {
+			$sql .= " OR `owner` = -1";
 		}
 		$sql .= " ORDER BY id";
 		$sth = $this->db->prepare($sql);
@@ -1944,6 +1949,12 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	public function usermanShowPage() {
 		if(isset($_REQUEST['action'])) {
 			$groups = $this->getUnrestrictedGroupsbyOwner(-1);
+			array_unshift($groups,array(
+				'id' => '*',
+				'owner' => '*',
+				'name' => _("All Public Groups"),
+				'type' => '*'
+			));
 			switch($_REQUEST['action']) {
 				case 'showgroup':
 					$assigned = $this->freepbx->Userman->getModuleSettingByGID($_REQUEST['group'],"contactmanager","groups",true);

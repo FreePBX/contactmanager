@@ -33,12 +33,12 @@
 			<div class="row">
 				<div class="form-group">
 					<div class="col-md-3">
-						<label class="control-label" for="contactmanager_groups"><?php echo _('Allowed Contact Manager Groups')?></label>
+						<label class="control-label" for="contactmanager_groups"><?php echo _("Allowed Contact Manager Groups")?></label>
 						<i class="fa fa-question-circle fpbx-help-icon" data-for="contactmanager_groups"></i>
 					</div>
 					<div class="col-md-9">
-						<select id="contactmanager_groups" class="bsmultiselect " name="contactmanager_groups[]" multiple="multiple">
-							<?php foreach($groups as $group) {?>
+						<select id="contactmanager_groups" class="form-control chosenmultiselect contactmanager-group" name="contactmanager_groups[]" multiple="multiple">
+							<?php foreach($groups as $group) { ?>
 								<option value="<?php echo $group['id']?>" <?php echo $group['selected'] ? 'selected' : '' ?>><?php echo $group['name']?></option>
 							<?php } ?>
 						</select>
