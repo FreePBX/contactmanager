@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-11 16:29-0700\n"
+"POT-Creation-Date: 2016-04-12 12:37-0700\n"
 "PO-Revision-Date: 2016-01-20 06:05+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
@@ -553,10 +553,8 @@ msgstr "No hay acciones para este tipo"
 #: views/userman_hook.php:52
 msgid ""
 "These are the assigned and active contactmanager groups which will show up "
-"for this user in UCP"
+"for this user in UCP and RestApps (If purchased)"
 msgstr ""
-"Estos son los grupos asignados y activos que se mostrarán para este usuario "
-"en la UCP"
 
 #: Contactmanager.class.php:2063 ucp/views/contact.php:18
 #: ucp/views/contacts.php:36 views/entry.php:128
@@ -663,6 +661,13 @@ msgstr "chequeando campo extension.."
 #: Contactmanager.class.php:112
 msgid "checking for title field.."
 msgstr "chequeando campo title.."
+
+#~ msgid ""
+#~ "These are the assigned and active contactmanager groups which will show "
+#~ "up for this user in UCP"
+#~ msgstr ""
+#~ "Estos son los grupos asignados y activos que se mostrarán para este "
+#~ "usuario en la UCP"
 
 #~ msgid "This is managed through the Class of Service module"
 #~ msgstr "Esto es gestionado a través del Modulo Class of Service"
