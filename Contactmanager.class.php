@@ -1212,15 +1212,15 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		':address' => !empty($entry['address']) ? $data['address'] : '',
 		));
 
-		$this->addNumbersByEntryID($id, !empty($entry['numbers']) ? $entry['numbers'] : '');
+		$this->addNumbersByEntryID($data['id'], !empty($entry['numbers']) ? $entry['numbers'] : '');
 
-		$this->addXMPPsByEntryID($id, !empty($entry['xmpps']) ? $entry['xmpps'] : '');
+		$this->addXMPPsByEntryID($data['id'], !empty($entry['xmpps']) ? $entry['xmpps'] : '');
 
-		$this->addEmailsByEntryID($id, !empty($entry['emails']) ? $entry['emails'] : '');
+		$this->addEmailsByEntryID($data['id'], !empty($entry['emails']) ? $entry['emails'] : '');
 
-		$this->addWebsitesByEntryID($id, !empty($entry['websites']) ? $entry['websites'] : '');
+		$this->addWebsitesByEntryID($data['id'], !empty($entry['websites']) ? $entry['websites'] : '');
 
-		return array("status" => true, "type" => "success", "message" => _("Group entry successfully updated"), "id" => $id);
+		return array("status" => true, "type" => "success", "message" => _("Group entry successfully updated"), "id" => $data['id']);
 	}
 
 	/**

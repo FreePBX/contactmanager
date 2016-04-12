@@ -49,7 +49,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<span id="contactmanager_groups-help" class="help-block fpbx-help-block"><?php echo _("These are the assigned and active contactmanager groups which will show up for this user in UCP")?></span>
+			<span id="contactmanager_groups-help" class="help-block fpbx-help-block"><?php echo _("These are the assigned and active contactmanager groups which will show up for this user in UCP and RestApps (If purchased)")?></span>
 		</div>
 	</div>
 </div>
