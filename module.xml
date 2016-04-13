@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.26</version>
+	<version>13.0.27</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.27* Fix bug when trying to clean up corruption
 		*13.0.26* Fix undefined id in updateGroupEntryByID
 		*13.0.25* Allow assigning all public groups
 		*13.0.24* FREEPBX-11972 FREEPBX-11686

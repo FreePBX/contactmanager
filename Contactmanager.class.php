@@ -1024,7 +1024,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			$u = $entry['user'] > 0 ? $entry['user'] : "-f";
 			$id = $entry['groupid'].$u;
 			if($entry['user'] > 0) {
-				if(isset($tmp[$id])) {
+				if(isset($tmp[$id]) && !empty($entry['id'])) {
 					$del[] = $entry['id'];
 					continue;
 				}
