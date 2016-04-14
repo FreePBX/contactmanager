@@ -207,11 +207,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						$used[] = $number;
 						if(!empty($number)) {
 							$ext->add($contextname, $number, '', new \ext_noop('Contact Manager: '. $name . "(" . $type . ")"));
-							if($type == "internal") {
-								$ext->add($contextname, $number, '', new \ext_goto('from-internal,'.$number.',1', ''));
-							} else {
-								$ext->add($contextname, $number, '', new \ext_dial($number));
-							}
+							$ext->add($contextname, $number, '', new \ext_goto('from-internal,'.$number.',1', ''));
 						}
 					}
 				}
