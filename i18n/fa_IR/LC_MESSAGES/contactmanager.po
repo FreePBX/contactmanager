@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-12 12:37-0700\n"
-"PO-Revision-Date: 2016-04-27 10:52+0200\n"
+"PO-Revision-Date: 2016-04-28 15:33+0200\n"
 "Last-Translator: psdk <hyavari26@gmail.com>\n"
 "Language-Team: Persian (Iran) "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/fa_IR/>\n"
@@ -188,7 +188,7 @@ msgstr "در حال حذف..."
 #: Contactmanager.class.php:2058 Contactmanager.class.php:2059
 #: ucp/views/contact.php:6 ucp/views/contacts.php:33 views/entry.php:68
 msgid "Display Name"
-msgstr "نام"
+msgstr "نام قابل نمایش"
 
 #: views/entry.php:78
 msgid "Display Name (overrides Display Name from User Manager)"
@@ -507,7 +507,7 @@ msgstr "شماره ها"
 #: Contactmanager.class.php:122 Contactmanager.class.php:138
 #: Contactmanager.class.php:154 Contactmanager.class.php:170
 msgid "OK"
-msgstr "تایید"
+msgstr "بله"
 
 #: Contactmanager.class.php:464 Contactmanager.class.php:2074
 #: Contactmanager.class.php:2086 Contactmanager.class.php:2098
@@ -639,7 +639,7 @@ msgstr "بله"
 #: Contactmanager.class.php:125 Contactmanager.class.php:141
 #: Contactmanager.class.php:157 Contactmanager.class.php:173
 msgid "already exists"
-msgstr "موجود است"
+msgstr "در حال حاضر وجود دارد"
 
 #: Contactmanager.class.php:144
 msgid "checking for address field.."
