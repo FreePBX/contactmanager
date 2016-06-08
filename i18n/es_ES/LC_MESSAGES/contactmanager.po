@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-28 17:58-0700\n"
-"PO-Revision-Date: 2016-06-07 10:44+0200\n"
+"PO-Revision-Date: 2016-06-08 06:15+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
@@ -527,7 +527,7 @@ msgstr "Numero de Telefono. Solo contactos externos."
 
 #: Contactmanager.class.php:518 Contactmanager.class.php:537
 msgid "Reset"
-msgstr "Reiniciar"
+msgstr "Reinicio"
 
 #: ucp/views/contact.php:45 ucp/views/contact.php:87
 #: assets/js/contactmanager.js:99
