@@ -181,7 +181,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			$ret = $this->addGroup(_("User Manager Group"),"userman");
 			$id = $this->freepbx->Userman->getAutoGroup();
 			$id = !empty($id) ? $id : 1;
-			$this->freepbx->Userman->setModuleSettingByGID($id,'contactmanager','groups',array($ret['id']));
+			$this->freepbx->Userman->setModuleSettingByGID($id,'contactmanager','groups',array("*"));
 		}
 	}
 	public function uninstall() {
@@ -1954,11 +1954,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			switch($_REQUEST['action']) {
 				case 'showgroup':
 					$assigned = $this->freepbx->Userman->getModuleSettingByGID($_REQUEST['group'],"contactmanager","groups",true);
-					if(is_null($assigned)) {
-						foreach($groups as $group) {
-							$assigned[] = $group['id'];
-						}
-					}
+					$assigned = is_array($assigned) ? $assigned : array();
 					foreach($groups as $k=>$group) {
 						$groups[$k]['selected'] = in_array($group['id'],$assigned);
 					}
@@ -1970,9 +1966,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						)
 					);
 				case 'addgroup':
-					foreach($groups as $group) {
-						$assigned[] = $group['id'];
-					}
+					$assigned = array("*");
 					foreach($groups as $k=>$group) {
 						$groups[$k]['selected'] = in_array($group['id'],$assigned);
 					}
@@ -1985,12 +1979,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					);
 				break;
 				case 'adduser':
-					$assigned = array();
-					foreach($groups as $group) {
-						$assigned[] = $group['id'];
-					}
 					foreach($groups as $k=>$group) {
-						$groups[$k]['selected'] = in_array($group['id'],$assigned);
+						$groups[$k]['selected'] = false;
 					}
 					return array(
 						array(
@@ -2002,9 +1992,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				break;
 				case 'showuser':
 					$assigned = $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","groups",true);
-					if(is_null($assigned)) {
-						$assigned = array();
-					}
+					$assigned = is_array($assigned) ? $assigned : array();
 					foreach($groups as $k=>$group) {
 						$groups[$k]['selected'] = in_array($group['id'],$assigned);
 					}
