@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-28 17:58-0700\n"
-"PO-Revision-Date: 2016-04-28 15:33+0200\n"
+"PO-Revision-Date: 2016-06-18 16:43+0200\n"
 "Last-Translator: psdk <hyavari26@gmail.com>\n"
-"Language-Team: Persian (Iran) <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/fa_IR/>\n"
+"Language-Team: Persian (Iran) "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/fa_IR/>\n"
+"Language: fa_IR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa_IR\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.4\n"
 
@@ -259,7 +259,7 @@ msgstr "زمان رویارویی"
 
 #: ucp/views/contact.php:57 ucp/views/contact.php:99
 msgid "Fax"
-msgstr "دورنگار"
+msgstr "فکس"
 
 #: Contactmanager.class.php:25 Contactmanager.class.php:2057
 #: ucp/views/contact.php:10 ucp/views/contacts.php:34 views/entry.php:88
@@ -430,7 +430,7 @@ msgstr "خانه"
 
 #: views/userman_hook.php:16
 msgid "Inherit"
-msgstr "ارثی"
+msgstr "ارث بری"
 
 #: Contactmanager.class.php:22 Contactmanager.class.php:2049
 #: views/group.php:44
