@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-21 15:41-0700\n"
-"PO-Revision-Date: 2016-06-22 10:52+0200\n"
-"Last-Translator: psdk <hyavari26@gmail.com>\n"
+"PO-Revision-Date: 2016-07-06 05:22+0200\n"
+"Last-Translator: Media <mousavi.media@gmail.com>\n"
 "Language-Team: Persian (Iran) "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/fa_IR/>\n"
 "Language: fa_IR\n"
@@ -170,7 +170,7 @@ msgstr "مخاطبین و گروه های ورودی/خروجی از ماژول 
 
 #: Contactmanager.class.php:511 Contactmanager.class.php:530
 msgid "Delete"
-msgstr "حذف"
+msgstr "حذف کردن"
 
 #: ucp/views/contact.php:202 ucp/views/contactro.php:76
 msgid "Delete Contact"
@@ -430,7 +430,7 @@ msgstr "خانه"
 
 #: views/userman_hook.php:16
 msgid "Inherit"
-msgstr "ارث بری"
+msgstr "موروثی"
 
 #: Contactmanager.class.php:22 Contactmanager.class.php:2037
 #: views/group.php:44
@@ -539,7 +539,7 @@ msgstr "نمایش در مدیریت مخاطب"
 
 #: Contactmanager.class.php:523 Contactmanager.class.php:542
 msgid "Submit"
-msgstr "ثبت"
+msgstr "ارسال"
 
 #: ucp/assets/js/global.js:76
 msgid "There are no actions for this type"
@@ -626,7 +626,7 @@ msgstr "محل کار"
 
 #: views/entry.php:232
 msgid "XMPP"
-msgstr "زمپ"
+msgstr "XMPP"
 
 #: assets/js/contactmanager.js:25
 msgid "XMPP address cannot be blank."
