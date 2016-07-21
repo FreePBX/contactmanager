@@ -179,3 +179,98 @@ function addWebsite() {
 function delWebsite(index) {
 	$("#website_" + index).remove();
 }
+
+
+/**
+ * Drag/Drop/Upload Files
+ */
+$('#dropzone').on('drop dragover', function (e) {
+	e.preventDefault();
+});
+$('#dropzone').on('dragleave drop', function (e) {
+	$(this).removeClass("activate");
+});
+$('#dropzone').on('dragover', function (e) {
+	$(this).addClass("activate");
+});
+var supportedRegExp = "png|jpg|jpeg";
+$('#imageupload').fileupload({
+	dataType: 'json',
+	dropZone: $("#dropzone"),
+	add: function (e, data) {
+		//TODO: Need to check all supported formats
+		var sup = "\.("+supportedRegExp+")$",
+				patt = new RegExp(sup),
+				submit = true;
+		$.each(data.files, function(k, v) {
+			if(!patt.test(v.name.toLowerCase())) {
+				submit = false;
+				alert(_("Unsupported file type"));
+				return false;
+			}
+			var s = v.name.replace(/\.[^/.]+$/, "").replace(/\s+|'+|\"+|\?+|\*+/g, '-').toLowerCase();
+			/*
+			if(mohConflict(s)) {
+				alert(sprintf(_("File '%s' will overwrite a file (%s) that already exists in this category"),v.name, s));
+				submit = false;
+				return false;
+			}
+			*/
+		});
+		if(submit) {
+			$("#upload-progress .progress-bar").addClass("progress-bar-striped active");
+			data.submit();
+		}
+	},
+	drop: function () {
+		$("#upload-progress .progress-bar").css("width", "0%");
+	},
+	dragover: function (e, data) {
+	},
+	change: function (e, data) {
+	},
+	done: function (e, data) {
+		$("#upload-progress .progress-bar").removeClass("progress-bar-striped active");
+		$("#upload-progress .progress-bar").css("width", "0%");
+
+		if(data.result.status) {
+			$("#dropzone img").attr("src","ajax.php?module=contactmanager&command=image&temporary=1&name="+data.result.filename);
+			$("#image").val(data.result.filename);
+			$("#dropzone img").removeClass("hidden");
+			$("#del-image").removeClass("hidden");
+		} else {
+			alert(data.result.message);
+		}
+	},
+	progressall: function (e, data) {
+		var progress = parseInt(data.loaded / data.total * 100, 10);
+		$("#upload-progress .progress-bar").css("width", progress+"%");
+	},
+	fail: function (e, data) {
+	},
+	always: function (e, data) {
+	}
+});
+
+$("#del-image").click(function(e) {
+	e.preventDefault();
+	e.stopPropagation();
+	var img = $("#image").val(),
+			data = {},
+			id = $(this).data("entryid");
+	if(id !== "") {
+		data.id = id;
+	} else if (img !== "") {
+		data.img = img;
+	} else {
+		return;
+	}
+	$.post( "ajax.php?module=contactmanager&command=delimage", data, function( data ) {
+		if(data.status) {
+			$("#image").val("");
+			$("#dropzone img").addClass("hidden");
+			$("#dropzone img").attr("src","");
+			$("#del-image").addClass("hidden");
+		}
+	});
+});

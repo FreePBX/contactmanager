@@ -45,6 +45,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				)
 			)
 		);
+
+		$this->tmp = $this->freepbx->Config->get("ASTSPOOLDIR") . "/tmp";
 	}
 
 	public function install() {
@@ -80,6 +82,13 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		 `flags` varchar(100),
 		 PRIMARY KEY (`id`)
 		);';
+
+		$sql[] = 'CREATE TABLE `contactmanager_entry_images` (
+		 `entryid` int(11) NOT NULL,
+		 `image` LONGBLOB,
+		 `format` VARCHAR(45) NOT NULL,
+		 PRIMARY KEY (`entryid`)
+	 );';
 
 		$sql[] = 'CREATE TABLE IF NOT EXISTS `contactmanager_entry_xmpps` (
 		 `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -221,6 +230,11 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 	public function ajaxRequest($req, &$setting) {
 		switch ($req) {
+			case 'image':
+				$setting['authenticate'] = false;
+				$setting['allowremote'] = true;
+			case 'uploadimage':
+			case 'delimage':
 			case 'grid':
 				return true;
 			break;
@@ -228,8 +242,107 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		return false;
 	}
 
+	public function ajaxCustomHandler() {
+		switch($_REQUEST['command']) {
+			case "image":
+				$buffer = '';
+				if(!empty($_REQUEST['temporary'])) {
+					$name = basename($_REQUEST['name']);
+					$buffer = file_get_contents($this->tmp."/".$name);
+				} elseif(!empty($_REQUEST['entryid'])) {
+					$data = $this->getImageByEntryID($_REQUEST['entryid']);
+					$buffer = $data['image'];
+				} elseif(!empty($_REQUEST['did'])) {
+					$data = $this->lookupByUserID(-1, $_REQUEST['did'],"/\D/");
+					if(!empty($data) && !empty($data['image'])) {
+						$data = $this->getImageByEntryID($data['uid']);
+						if(!empty($data['image'])) {
+							$buffer = $data['image'];
+						}
+					}
+				}
+				if(!empty($buffer)) {
+					$finfo = new \finfo(FILEINFO_MIME);
+					header("Content-type: ".$finfo->buffer($buffer));
+					echo $buffer;
+				} else {
+					header('HTTP/1.0 404 Not Found');
+				}
+				return true;
+			break;
+		}
+	}
+
 	public function ajaxHandler(){
 		switch ($_REQUEST['command']) {
+			case "delimage":
+				if(!empty($_POST['id'])) {
+					$this->delImageByEntryID($_POST['id']);
+					return array("status" => true);
+				} elseif(!empty($_POST['img'])) {
+					$name = basename($_POST['img']);
+					if(file_exists($this->tmp."/".$name)) {
+						unlink($this->tmp."/".$name);
+						return array("status" => true);
+					}
+				}
+				return array("status" => false, "message" => _("Invalid"));
+			break;
+			case 'uploadimage':
+				// XXX If the posted file was too large,
+				// we will get here, but $_FILES is empty!
+				// Specifically, if the file that was posted is
+				// larger than 'post_max_size' in php.ini.
+				// So, php will throw an error, as index
+				// $_FILES["files"] does not exist, because
+				// $_FILES is empty.
+				if (!isset($_FILES)) {
+					return array("status" => false,
+						"message" => _("File upload failed"));
+				}
+				$this->freepbx->Media();
+				foreach ($_FILES["files"]["error"] as $key => $error) {
+					switch($error) {
+						case UPLOAD_ERR_OK:
+							$extension = pathinfo($_FILES["files"]["name"][$key], PATHINFO_EXTENSION);
+							$extension = strtolower($extension);
+							$supported = array("jpg","png");
+							if(in_array($extension,$supported)) {
+								$tmp_name = $_FILES["files"]["tmp_name"][$key];
+								$dname = \Media\Media::cleanFileName($_FILES["files"]["name"][$key]);
+								$dname = "cm-".rand()."-".pathinfo($dname,PATHINFO_FILENAME);
+								imagepng(imagecreatefromstring(file_get_contents($tmp_name)), $this->tmp."/".$dname.".png");
+								return array("status" => true, "name" => $dname, "filename" => $dname.".png");
+							} else {
+								return array("status" => false, "message" => _("Unsupported file format"));
+								break;
+							}
+						break;
+						case UPLOAD_ERR_INI_SIZE:
+							return array("status" => false, "message" => _("The uploaded file exceeds the upload_max_filesize directive in php.ini"));
+						break;
+						case UPLOAD_ERR_FORM_SIZE:
+							return array("status" => false, "message" => _("The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form"));
+						break;
+						case UPLOAD_ERR_PARTIAL:
+							return array("status" => false, "message" => _("The uploaded file was only partially uploaded"));
+						break;
+						case UPLOAD_ERR_NO_FILE:
+							return array("status" => false, "message" => _("No file was uploaded"));
+						break;
+						case UPLOAD_ERR_NO_TMP_DIR:
+							return array("status" => false, "message" => _("Missing a temporary folder"));
+						break;
+						case UPLOAD_ERR_CANT_WRITE:
+							return array("status" => false, "message" => _("Failed to write file to disk"));
+						break;
+						case UPLOAD_ERR_EXTENSION:
+							return array("status" => false, "message" => _("A PHP extension stopped the file upload"));
+						break;
+					}
+				}
+				return array("status" => false, "message" => _("Can Not Find Uploaded Files"));
+			break;
 			case 'grid':
 				$group = $this->getGroupByID($_REQUEST['group']);
 				$entries = $this->getEntriesByGroupID($_REQUEST['group']);
@@ -340,7 +453,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				}
 			} else {
 				$grouptype = !empty($_POST['grouptype']) ? $_POST['grouptype'] : '';
-
+				$image = !empty($_POST['image']) ? $_POST['image'] : '';
 				$numbers = array();
 				if(!empty($_POST['number']) && is_array($_POST['number'])) {
 					foreach ($_POST['number'] as $index => $number) {
@@ -403,6 +516,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				'title' => $_POST['title'] ? $_POST['title'] : NULL,
 				'company' => $_POST['company'] ? $_POST['company'] : NULL,
 				'address' => $_POST['address'] ? $_POST['address'] : NULL,
+				'image' => $image
 				);
 
 				switch ($grouptype) {
@@ -926,6 +1040,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					);
 				}
 			}
+
+			$image = $this->getImageByEntryID($id);
+			$entry['image'] = $image;
 			break;
 			case "userman":
 				if(!$this->freepbx->Userman->getCombinedModuleSettingByID($entry['user'],"contactmanager","show")) {
@@ -935,6 +1052,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					$user = $this->freepbx->Userman->getUserByID($entry['user']);
 					if(!empty($user)) {
 						$entry = array_merge($entry,$user);
+						$image = $this->getImageByEntryID($entry['user']);
+						$entry['image'] = $image;
 					} else {
 						$this->deleteEntryByID($entry['uid']);
 					}
@@ -997,6 +1116,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				'xmpp' => $user['xmpp']
 				);
 			}
+			$image = $this->getImageByEntryID($id);
+			$entry['image'] = $image;
 			break;
 		}
 		return $entry;
@@ -1065,6 +1186,13 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			default:
 				$entries = $e;
 			break;
+		}
+
+		$images = $this->getImagesByGroupID($groupid);
+		if($images) {
+			foreach ($images as $image) {
+				$entries[$image['entryid']]['image'] = true; //we do this to not explode the size of the json
+			}
 		}
 
 		$numbers = $this->getNumbersByGroupID($groupid);
@@ -1208,6 +1336,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		':address' => !empty($entry['address']) ? $data['address'] : '',
 		));
 
+		$this->updateImageByEntryID($data['id'], $entry['image']);
+
 		$this->addNumbersByEntryID($data['id'], !empty($entry['numbers']) ? $entry['numbers'] : '');
 
 		$this->addXMPPsByEntryID($data['id'], !empty($entry['xmpps']) ? $entry['xmpps'] : '');
@@ -1244,6 +1374,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		));
 
 		$id = $this->db->lastInsertId();
+
+		$this->updateImageByEntryID($id, $entry['image']);
 
 		$this->addNumbersByEntryID($id, !empty($entry['numbers']) ? $entry['numbers'] : '');
 
@@ -1282,6 +1414,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			));
 
 			$id = $this->db->lastInsertId();
+
+			$this->updateImageByEntryID($id, $entry['image']);
+
 			$this->addNumbersByEntryID($id, $entry['numbers']);
 
 			$this->addXMPPsByEntryID($id, $entry['xmpps']);
@@ -1328,6 +1463,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$entry['emails'] = !empty($entry['emails']) ? $entry['emails'] : array();
 		$entry['websites'] = !empty($entry['websites']) ? $entry['websites'] : array();
 
+		$this->updateImageByEntryID($id, $entry['image']);
+
 		$ret = $this->deleteNumbersByEntryID($id);
 		$this->addNumbersByEntryID($id, $entry['numbers']);
 
@@ -1359,6 +1496,26 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_numbers WHERE `entryid` = :entryid ORDER BY id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':entryid' => $entryid));
+		$numbers = $sth->fetchAll(\PDO::FETCH_ASSOC);
+
+		return $numbers;
+	}
+
+	/**
+	 * Get allm numbers by group ID
+	 * @param {int} $groupid The group ID
+	 */
+	public function getImagesByGroupID($groupid) {
+		$fields = array(
+		'e.id',
+		'n.entryid',
+		'n.image',
+		'n.format'
+		);
+		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_images as n
+		LEFT JOIN contactmanager_group_entries as e ON (n.entryid = e.id) WHERE `groupid` = :groupid ORDER BY e.id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':groupid' => $groupid));
 		$numbers = $sth->fetchAll(\PDO::FETCH_ASSOC);
 
 		return $numbers;
@@ -1449,6 +1606,31 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	}
 
 	/**
+	 * Update Image By Entry ID
+	 * @param  [type] $entryid [description]
+	 * @param  [type] $image   [description]
+	 * @return [type]          [description]
+	 */
+	public function updateImageByEntryID($entryid, $filename) {
+		if(empty($filename)) {
+			return;
+		}
+		$name = basename($filename);
+		if(!file_exists($this->tmp."/".$name)) {
+			return;
+		}
+		$sql = "REPLACE INTO contactmanager_entry_images (entryid, image, format) VALUES (:id, :image, 'image/png')";
+
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(
+			':id' => $entryid,
+			':image' => file_get_contents($this->tmp."/".$name)
+		));
+
+		return array("status" => true, "type" => "success", "message" => _("Group entry image successfully added"), "id" => $entryid);
+	}
+
+	/**
 	 * Add Numbers by Entry ID
 	 * @param {int} $entryid The entry ID
 	 * @param {array} $numbers Array of numbers to add
@@ -1475,6 +1657,25 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		}
 
 		return array("status" => true, "type" => "success", "message" => _("Group entry numbers successfully added"));
+	}
+
+	/**
+	 * [getImageByEntryID description]
+	 * @param  [type] $entryid [description]
+	 * @return [type]          [description]
+	 */
+	public function getImageByEntryID($entryid) {
+		$sql = "SELECT image, format FROM contactmanager_entry_images WHERE `entryid` = :entryid";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':entryid' => $entryid));
+		$image = $sth->fetch(\PDO::FETCH_ASSOC);
+		return $image;
+	}
+
+	public function delImageByEntryID($entryid) {
+		$sql = "DELETE FROM contactmanager_entry_images WHERE `entryid` = :entryid";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':entryid' => $entryid));
 	}
 
 	/**
