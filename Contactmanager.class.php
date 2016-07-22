@@ -11,6 +11,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	private $types = array();
 	private $groupCache = array();
 	private $groupsCache = array();
+	private $token = null;
 
 	public function __construct($freepbx = null) {
 		$this->db = $freepbx->Database;
@@ -83,10 +84,11 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		 PRIMARY KEY (`id`)
 		);';
 
-		$sql[] = 'CREATE TABLE `contactmanager_entry_images` (
+		$sql[] = 'CREATE TABLE IF NOT EXISTS `contactmanager_entry_images` (
 		 `entryid` int(11) NOT NULL,
 		 `image` LONGBLOB,
 		 `format` VARCHAR(45) NOT NULL,
+		 `gravatar` tinyint(4) NOT NULL DEFAULT "0",
 		 PRIMARY KEY (`entryid`)
 	 );';
 
@@ -228,14 +230,42 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		return 500;
 	}
 
+	/**
+	 * Get External URL for Contact Images
+	 * @param  did $did The did to lookup
+	 * @return string      The url
+	 */
+	public function getExternalImageUrl($did) {
+		return 'ajax.php?module=contactmanager&command=image&did='.$did.'&token='.$this->getToken();
+	}
+
+	/**
+	 * Get Token for unauthenticated Ajax requests
+	 * Will generate a token if one does not exist
+	 * @return string The Token
+	 */
+	public function getToken() {
+		if(!empty($this->token)) {
+			return $this->token;
+		}
+		$this->token = $this->getConfig("token");
+		if(empty($this->token)) {
+			$this->token = bin2hex(openssl_random_pseudo_bytes(16));
+			$this->setConfig("token",$this->token);
+		}
+		return $this->token;
+	}
+
 	public function ajaxRequest($req, &$setting) {
 		switch ($req) {
 			case 'image':
 				$setting['authenticate'] = false;
 				$setting['allowremote'] = true;
+			case 'limage':
 			case 'uploadimage':
 			case 'delimage':
 			case 'grid':
+			case 'getgravatar':
 				return true;
 			break;
 		}
@@ -245,36 +275,85 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	public function ajaxCustomHandler() {
 		switch($_REQUEST['command']) {
 			case "image":
-				$buffer = '';
-				if(!empty($_REQUEST['temporary'])) {
-					$name = basename($_REQUEST['name']);
-					$buffer = file_get_contents($this->tmp."/".$name);
-				} elseif(!empty($_REQUEST['entryid'])) {
-					$data = $this->getImageByEntryID($_REQUEST['entryid']);
-					$buffer = $data['image'];
-				} elseif(!empty($_REQUEST['did'])) {
-					$data = $this->lookupByUserID(-1, $_REQUEST['did'],"/\D/");
-					if(!empty($data) && !empty($data['image'])) {
-						$data = $this->getImageByEntryID($data['uid']);
-						if(!empty($data['image'])) {
-							$buffer = $data['image'];
-						}
-					}
+				$token = !empty($_REQUEST['token']) ? $_REQUEST['token'] : "";
+				$stoken = $this->getToken();
+				if($token != $stoken) {
+					header('HTTP/1.0 403 Forbidden');
+					return true;
 				}
-				if(!empty($buffer)) {
-					$finfo = new \finfo(FILEINFO_MIME);
-					header("Content-type: ".$finfo->buffer($buffer));
-					echo $buffer;
-				} else {
-					header('HTTP/1.0 404 Not Found');
-				}
+			case "limage":
+				$this->displayContactImage();
 				return true;
 			break;
 		}
 	}
 
+	/**
+	 * Get and Display Contact Image
+	 */
+	public function displayContactImage() {
+		$buffer = '';
+		if(!empty($_REQUEST['temporary'])) {
+			$name = basename($_REQUEST['name']);
+			$buffer = file_get_contents($this->tmp."/".$name);
+		} elseif(!empty($_REQUEST['entryid'])) {
+			$data = $this->getEntryByID($_REQUEST['entryid']);
+			$email = !empty($data['email']) ? $data['email'] : (!empty($data['emails'][0]) ? $data['emails'][0] : '');
+			$data = $this->getImageByEntryID($_REQUEST['entryid'], $email);
+			if(!empty($data['image'])) {
+				$buffer = $data['image'];
+			}
+		} elseif(!empty($_REQUEST['did'])) {
+			$data = $this->lookupByUserID(-1, $_REQUEST['did'],"/\D/");
+			if(!empty($data) && !empty($data['image'])) {
+				$data = $this->getImageByEntryID($data['uid'],$data['email']);
+				if(!empty($data['image'])) {
+					$buffer = $data['image'];
+				}
+			}
+		}
+		if(!empty($buffer)) {
+			$finfo = new \finfo(FILEINFO_MIME);
+			header("Cache-Control: no-cache, must-revalidate");
+			header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+			header("Content-type: ".$finfo->buffer($buffer));
+			echo $buffer;
+		} else {
+			header('HTTP/1.0 404 Not Found');
+		}
+	}
+
 	public function ajaxHandler(){
 		switch ($_REQUEST['command']) {
+			case 'getgravatar':
+				$type = !empty($_POST['grouptype']) ? $_POST['grouptype'] : "";
+				$id = !empty($_POST['id']) ? $_POST['id'] : "";
+				switch($type) {
+					case "internal":
+						$data = $this->freepbx->Userman->getUserByID($id);
+						$email = $data['email'];
+					break;
+					case "userman":
+						$email = !empty($_POST['email']) ? $_POST['email'] : '';
+						if(empty($email)) {
+							$data = $this->freepbx->Userman->getUserByID($id);
+							$email = $data['email'];
+						}
+					break;
+				}
+				if(empty($email)) {
+					return array("status" => false, "message" => _("Please enter a valid email address"));
+				}
+				$data = $this->getGravatar($email);
+				if(!empty($data)) {
+					$dname = "cm-".rand()."-".md5($email);
+					imagepng(imagecreatefromstring($data), $this->tmp."/".$dname.".png");
+					return array("status" => true, "name" => $dname, "filename" => $dname.".png");
+				} else {
+					return array("status" => false, "message" => sprintf(_("Unable to find gravatar for %s"),$email));
+				}
+
+			break;
 			case "delimage":
 				if(!empty($_POST['id'])) {
 					$this->delImageByEntryID($_POST['id']);
@@ -311,7 +390,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 								$tmp_name = $_FILES["files"]["tmp_name"][$key];
 								$dname = \Media\Media::cleanFileName($_FILES["files"]["name"][$key]);
 								$dname = "cm-".rand()."-".pathinfo($dname,PATHINFO_FILENAME);
-								imagepng(imagecreatefromstring(file_get_contents($tmp_name)), $this->tmp."/".$dname.".png");
+								//imagepng(imagecreatefromstring(file_get_contents($tmp_name)), $this->tmp."/".$dname.".png");
+								$this->resizeImage(file_get_contents($tmp_name),$dname);
 								return array("status" => true, "name" => $dname, "filename" => $dname.".png");
 							} else {
 								return array("status" => false, "message" => _("Unsupported file format"));
@@ -400,6 +480,70 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	}
 
 	/**
+	 * Resize and image using constraints
+	 * @param  string  $data         Binary image data
+	 * @param  string  $filename     The final filename
+	 * @param  integer $thumb_width  The max width
+	 * @param  integer $thumb_height The max height
+	 * @return string                The basename of the filepath
+	 */
+	public function resizeImage($data, $filename, $thumb_width=90, $thumb_height=75) {
+		$image = imagecreatefromstring($data);
+		$filename = $this->tmp.'/'.$filename.'.png';
+		$width = imagesx($image);
+		$height = imagesy($image);
+		$original_aspect = $width / $height;
+		$thumb_aspect = $thumb_width / $thumb_height;
+		if ( $original_aspect >= $thumb_aspect ) {
+			// If image is wider than thumbnail (in aspect ratio sense)
+			$new_height = $thumb_height;
+			$new_width = $width / ($height / $thumb_height);
+		} else {
+			// If the thumbnail is wider than the image
+			$new_width = $thumb_width;
+			$new_height = $height / ($width / $thumb_width);
+		}
+		$thumb = imagecreatetruecolor( $thumb_width, $thumb_height );
+		// Resize and crop
+		imagecopyresampled($thumb,
+		$image,
+		0 - ($new_width - $thumb_width) / 2, // Center the image horizontally
+		0 - ($new_height - $thumb_height) / 2, // Center the image vertically
+		0, 0,
+		$new_width, $new_height,
+		$width, $height);
+		imagepng($thumb, $filename, 9);
+		return basename($filename);
+	}
+
+	/**
+	 * Get either a Gravatar URL or complete image tag for a specified email address.
+	 *
+	 * @param string $email The email address
+	 * @source https://gravatar.com/site/implement/images/php/
+	 */
+	function getGravatar($email) {
+		$s = 75; //Size in pixels, defaults to 80px [ 1 - 2048 ]
+		$d = '404'; //Default imageset to use [ 404 | mm | identicon | monsterid | wavatar ]
+		$r = 'g'; //Maximum rating (inclusive) [ g | pg | r | x ]
+		$pest = new \Pest('https://www.gravatar.com/avatar/');
+		$email = md5( strtolower( trim( $email ) ) );
+		try{
+			return $pest->get($email.'?s='.$s.'&d='.$d.'&r='.$r);
+		} catch(\Exception $e) {
+			switch(get_class($e)) {
+				case "Pest_NotFound":
+					return false;
+				break;
+				default:
+					return false;
+				break;
+			}
+		}
+
+	}
+
+	/**
 	 * Get Inital Display
 	 * @param {string} $display The Page name
 	 */
@@ -454,6 +598,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			} else {
 				$grouptype = !empty($_POST['grouptype']) ? $_POST['grouptype'] : '';
 				$image = !empty($_POST['image']) ? $_POST['image'] : '';
+				$gravatar = !empty($_POST['gravatar']) && $_POST['gravatar'] == 'on' ? true : false;
 				$numbers = array();
 				if(!empty($_POST['number']) && is_array($_POST['number'])) {
 					foreach ($_POST['number'] as $index => $number) {
@@ -516,7 +661,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				'title' => $_POST['title'] ? $_POST['title'] : NULL,
 				'company' => $_POST['company'] ? $_POST['company'] : NULL,
 				'address' => $_POST['address'] ? $_POST['address'] : NULL,
-				'image' => $image
+				'image' => $image,
+				'gravatar' => $gravatar
 				);
 
 				switch ($grouptype) {
@@ -763,7 +909,10 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			$groups = $this->getGroups();
 			foreach ($groups as $group) {
 				if ($group['type'] == 'userman') {
-					$this->addEntryByGroupID($group['id'], array('user' => $id));
+					$out = $this->addEntryByGroupID($group['id'], array('user' => $id));
+					if($display == 'userman' && isset($_POST['contactmanager_show'])) {
+						$this->updateImageByEntryID($out['id'], $_POST['contactmanager_image'], ($_POST['contactmanager_gravatar'] == "on" ? 1 : 0));
+					}
 				}
 			}
 		}
@@ -790,7 +939,10 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		if($this->freepbx->Userman->getCombinedModuleSettingByID($id,'contactmanager','show')) {
 			foreach ($groups as $group) {
 				if ($group['type'] == 'userman') {
-					$this->updateEntryByGroupID($group['id'], array('user' => $id));
+					$out = $this->updateEntryByGroupID($group['id'], array('user' => $id));
+					if($display == 'userman' && isset($_POST['contactmanager_show'])) {
+						$this->updateImageByEntryID($out['id'], $_POST['contactmanager_image'], ($_POST['contactmanager_gravatar'] == "on" ? 1 : 0));
+					}
 				}
 			}
 		} else {
@@ -974,6 +1126,20 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		return array("status" => true, "type" => "success", "message" => _("Group successfully updated"), "id" => $id);
 	}
 
+	public function getEntryIDByUsermanID($id) {
+		if(empty($id)) {
+			return false;
+		}
+		$sql = "SELECT e.id FROM contactmanager_group_entries as e, contactmanager_groups as g WHERE e.user = :id AND e.groupid = g.id AND g.type = 'userman'";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':id' => $id));
+		$entry = $sth->fetch(\PDO::FETCH_ASSOC);
+		if(empty($entry)) {
+			return false;
+		}
+		return $this->getEntryByID($entry['id']);
+	}
+
 	/**
 	 * Get all information about an Entry
 	 * @param {int} $id The entry ID
@@ -1041,7 +1207,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				}
 			}
 
-			$image = $this->getImageByEntryID($id);
+			$email = !empty($entry['emails'][0]) ? $entry['emails'][0] : '';
+			$image = $this->getImageByEntryID($id, $email);
 			$entry['image'] = $image;
 			break;
 			case "userman":
@@ -1051,8 +1218,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				} else {
 					$user = $this->freepbx->Userman->getUserByID($entry['user']);
 					if(!empty($user)) {
+						unset($user['id']);
 						$entry = array_merge($entry,$user);
-						$image = $this->getImageByEntryID($entry['user']);
+						$image = $this->getImageByEntryID($entry['user'], $user['email']);
 						$entry['image'] = $image;
 					} else {
 						$this->deleteEntryByID($entry['uid']);
@@ -1060,8 +1228,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				}
 			case "internal":
 			$user = $this->freepbx->Userman->getUserByID($entry['user']);
+			unset($user['id']);
 			if(!empty($user)) {
-				$entries[$key] = array_merge($entry,$user);
+				$entry = array_merge($user,$entry);
 			} else {
 				$this->deleteEntryByID($entry['uid']);
 				return false;
@@ -1116,7 +1285,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				'xmpp' => $user['xmpp']
 				);
 			}
-			$image = $this->getImageByEntryID($id);
+			$image = $this->getImageByEntryID($id, $user['email']);
 			$entry['image'] = $image;
 			break;
 		}
@@ -1175,8 +1344,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			case "internal":
 				foreach($e as $key => $entry) {
 					$user = $this->freepbx->Userman->getUserByID($entry['user']);
+					unset($user['id']);
 					if(!empty($user)) {
-						$entries[$key] = array_merge($entry,$user);
+						$entries[$key] = array_merge($user,$entry);
 					} else {
 						$this->deleteEntryByID($entry['uid']);
 					}
@@ -1336,7 +1506,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		':address' => !empty($entry['address']) ? $data['address'] : '',
 		));
 
-		$this->updateImageByEntryID($data['id'], $entry['image']);
+		$this->updateImageByEntryID($data['id'], $entry['image'], $entry['gravatar']);
 
 		$this->addNumbersByEntryID($data['id'], !empty($entry['numbers']) ? $entry['numbers'] : '');
 
@@ -1375,7 +1545,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 		$id = $this->db->lastInsertId();
 
-		$this->updateImageByEntryID($id, $entry['image']);
+		$this->updateImageByEntryID($id, $entry['image'], $entry['gravatar']);
 
 		$this->addNumbersByEntryID($id, !empty($entry['numbers']) ? $entry['numbers'] : '');
 
@@ -1415,7 +1585,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 			$id = $this->db->lastInsertId();
 
-			$this->updateImageByEntryID($id, $entry['image']);
+			$this->updateImageByEntryID($id, $entry['image'], $entry['gravatar']);
 
 			$this->addNumbersByEntryID($id, $entry['numbers']);
 
@@ -1463,7 +1633,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$entry['emails'] = !empty($entry['emails']) ? $entry['emails'] : array();
 		$entry['websites'] = !empty($entry['websites']) ? $entry['websites'] : array();
 
-		$this->updateImageByEntryID($id, $entry['image']);
+		$this->updateImageByEntryID($id, $entry['image'], $entry['gravatar']);
 
 		$ret = $this->deleteNumbersByEntryID($id);
 		$this->addNumbersByEntryID($id, $entry['numbers']);
@@ -1502,7 +1672,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	}
 
 	/**
-	 * Get allm numbers by group ID
+	 * Get all images by group ID
 	 * @param {int} $groupid The group ID
 	 */
 	public function getImagesByGroupID($groupid) {
@@ -1607,11 +1777,11 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 	/**
 	 * Update Image By Entry ID
-	 * @param  [type] $entryid [description]
-	 * @param  [type] $image   [description]
-	 * @return [type]          [description]
+	 * @param  int $entryid The entry ID to update
+	 * @param  string $filename The image filename
+	 * @return array
 	 */
-	public function updateImageByEntryID($entryid, $filename) {
+	public function updateImageByEntryID($entryid, $filename, $gravatar = false) {
 		if(empty($filename)) {
 			return;
 		}
@@ -1619,13 +1789,16 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		if(!file_exists($this->tmp."/".$name)) {
 			return;
 		}
-		$sql = "REPLACE INTO contactmanager_entry_images (entryid, image, format) VALUES (:id, :image, 'image/png')";
+		$sql = "REPLACE INTO contactmanager_entry_images (entryid, image, format, gravatar) VALUES (:id, :image, 'image/png', :gravatar)";
 
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(
 			':id' => $entryid,
-			':image' => file_get_contents($this->tmp."/".$name)
+			':image' => file_get_contents($this->tmp."/".$name),
+			':gravatar' => $gravatar ? 1 : 0
 		));
+
+		unlink($this->tmp."/".$name);
 
 		return array("status" => true, "type" => "success", "message" => _("Group entry image successfully added"), "id" => $entryid);
 	}
@@ -1660,18 +1833,36 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	}
 
 	/**
-	 * [getImageByEntryID description]
-	 * @param  [type] $entryid [description]
-	 * @return [type]          [description]
+	 * Get Image By Entry ID
+	 * @param  int $entryid The entryid
+	 * @param  string $email   The email addres of entry (for automatic gravatar updates)
+	 * @return array          Array of information about the image
 	 */
-	public function getImageByEntryID($entryid) {
-		$sql = "SELECT image, format FROM contactmanager_entry_images WHERE `entryid` = :entryid";
+	public function getImageByEntryID($entryid, $email=false) {
+		$sql = "SELECT image, format, gravatar FROM contactmanager_entry_images WHERE `entryid` = :entryid";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':entryid' => $entryid));
 		$image = $sth->fetch(\PDO::FETCH_ASSOC);
+		if(!empty($image['gravatar']) && !empty($email)) {
+			$data = $this->getGravatar($email);
+			if(empty($data)) {
+				$this->delImageByEntryID($entryid);
+				return false;
+			} else {
+				$rand = rand();
+				imagepng(imagecreatefromstring($data), $this->tmp."/".$rand.".png");
+				$image['image'] = file_get_contents($this->tmp."/".$rand.".png");
+				$this->updateImageByEntryID($entryid, $this->tmp."/".$rand.".png", true);
+				return $image;
+			}
+		}
 		return $image;
 	}
 
+	/**
+	 * Delete image by Entry ID
+	 * @param  int $entryid The entry id
+	 */
 	public function delImageByEntryID($entryid) {
 		$sql = "DELETE FROM contactmanager_entry_images WHERE `entryid` = :entryid";
 		$sth = $this->db->prepare($sql);
@@ -2192,6 +2383,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					);
 				break;
 				case 'showuser':
+					$cmdata = $this->getEntryIDByUsermanID($_REQUEST['user']);
 					$assigned = $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","groups",true);
 					$assigned = is_array($assigned) ? $assigned : array();
 					foreach($groups as $k=>$group) {
@@ -2202,7 +2394,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						array(
 							"title" => _("Contact Manager"),
 							"rawname" => "contactmanager",
-							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("mode" => "user", "groups" => $groups, "enabled" => $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","show",true)))
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("mode" => "user", "cmdata" => $cmdata, "groups" => $groups, "enabled" => $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","show",true)))
 						)
 					);
 				break;

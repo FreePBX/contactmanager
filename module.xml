@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.29</version>
+	<version>13.0.30</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.30* Support contact images (uploaded or from gravatar)
 		*13.0.29* FREEPBX-12561 Cannot see personal External Contact Manager Groups in Phone Apps that were created in UCP
 		*13.0.28* Remove dialing code that would never work correctly
 		*13.0.27* Fix bug when trying to clean up corruption

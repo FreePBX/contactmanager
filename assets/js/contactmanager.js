@@ -234,10 +234,11 @@ $('#imageupload').fileupload({
 		$("#upload-progress .progress-bar").css("width", "0%");
 
 		if(data.result.status) {
-			$("#dropzone img").attr("src","ajax.php?module=contactmanager&command=image&temporary=1&name="+data.result.filename);
+			$("#dropzone img").attr("src","ajax.php?module=contactmanager&command=limage&temporary=1&name="+data.result.filename);
 			$("#image").val(data.result.filename);
 			$("#dropzone img").removeClass("hidden");
 			$("#del-image").removeClass("hidden");
+			$("#gravatar").prop('checked', false);
 		} else {
 			alert(data.result.message);
 		}
@@ -271,6 +272,43 @@ $("#del-image").click(function(e) {
 			$("#dropzone img").addClass("hidden");
 			$("#dropzone img").attr("src","");
 			$("#del-image").addClass("hidden");
+			$("#gravatar").prop('checked', false);
 		}
 	});
+});
+
+$("#gravatar").change(function() {
+	if($(this).is(":checked")) {
+		var id = null,
+				grouptype = $("#grouptype").val();
+		switch(grouptype) {
+			case "internal":
+				id = $("#user").val();
+			break;
+		}
+		$.post( "ajax.php?module=contactmanager&command=getgravatar", {id: id, grouptype: grouptype}, function( data ) {
+			if(data.status) {
+				$("#dropzone img").data("oldsrc",$("#dropzone img").attr("src"));
+				$("#dropzone img").attr("src","ajax.php?module=contactmanager&command=limage&temporary=1&name="+data.filename);
+				$("#image").data("old",$("#image").val());
+				$("#image").val(data.filename);
+				$("#dropzone img").removeClass("hidden");
+				$("#del-image").removeClass("hidden");
+			} else {
+				alert(data.message);
+				$("#gravatar").prop('checked', false);
+			}
+		});
+	} else {
+		var oldsrc = $("#dropzone img").data("oldsrc");
+		if(typeof oldsrc !== "undefined" && oldsrc !== "") {
+			$("#dropzone img").attr("src",oldsrc);
+			$("#image").val($("#image").data("old"));
+		} else {
+			$("#image").val("");
+			$("#dropzone img").addClass("hidden");
+			$("#dropzone img").attr("src","");
+			$("#del-image").addClass("hidden");
+		}
+	}
 });

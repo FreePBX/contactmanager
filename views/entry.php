@@ -23,7 +23,7 @@ foreach ($users as $u) {
 	<div class="display full-border">
 		<form name="entry" class="fpbx-submit" method="post" action="config.php?display=contactmanager" <?php if(isset($entry['id'])) {?>data-fpbx-delete="config.php?display=contactmanager&amp;group=<?php echo $group['id']?>&amp;entry=<?php echo $entry['id']?>&amp;action=delentry<?php }?>">
 			<input type="hidden" name="group" id="group" value="<?php echo $group['id']?>">
-			<input type="hidden" name="grouptype" id="grouptype" value="<?php echo $group['id']?>">
+			<input type="hidden" name="grouptype" id="grouptype" value="<?php echo $group['type']?>">
 			<?php if(!empty($entry)) {?>
 				<input type="hidden" name="entry" id="entry" value="<?php echo $entry['id']?>">
 				<h1><a href="config.php?display=contactmanager&amp;action=showgroup&amp;group=<?php echo $group['id']?>"><?php echo $group['name']?></a> - <?php echo _("Edit Entry")?></h1>
@@ -65,18 +65,18 @@ foreach ($users as $u) {
 						<div class="row">
 							<div class="form-group">
 								<div class="col-md-3">
-									<label class="control-label" for="imageupload"><?php echo _('Image')?></label>
+									<label class="control-label" for="imageupload"><?php echo _('Contact Image')?></label>
 									<i class="fa fa-question-circle fpbx-help-icon" data-for="image"></i>
 								</div>
 								<div class="col-md-9">
-									<div class="col-md-5">
+									<div class="col-md-4">
 										<div id="dropzone" class="image">
 											<div class="message"><?php echo _("Drop a new image here")?></div>
-											<img class="<?php echo (!empty($entry) && !empty($entry['image'])) ? '' : 'hidden'?>" src="<?php echo (!empty($entry) && !empty($entry['image'])) ? 'ajax.php?module=contactmanager&amp;command=image&amp;entryid='.$entry['id'] : ''?>">
+											<img class="<?php echo (!empty($entry) && !empty($entry['image'])) ? '' : 'hidden'?>" src="<?php echo (!empty($entry) && !empty($entry['image'])) ? 'ajax.php?module=contactmanager&amp;command=limage&amp;entryid='.$entry['id'] : ''?>">
 										</div>
-										<button id="del-image" data-entryid="<?php echo !empty($entry) ? $entry['id'] : ''?>" class="btn btn-danger <?php echo (!empty($entry) && !empty($entry['image'])) ? '' : 'hidden'?>"><?php echo _("Delete Image")?></button>
+										<button id="del-image" data-entryid="<?php echo !empty($entry) ? $entry['id'] : ''?>" class="btn btn-danger btn-sm <?php echo (!empty($entry) && !empty($entry['image'])) ? '' : 'hidden'?>"><?php echo _("Delete Image")?></button>
 									</div>
-									<div class="col-md-7">
+									<div class="col-md-8">
 										<input type="hidden" name="image" id="image">
 										<span class="btn btn-default btn-file">
 											<?php echo _("Browse")?>
@@ -85,6 +85,10 @@ foreach ($users as $u) {
 										<span class="filename"></span>
 										<div id="upload-progress" class="progress">
 											<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+										</div>
+										<div class="radioset">
+											<input name="gravatar" id="gravatar" data-entryid="<?php echo !empty($entry) ? $entry['id'] : ''?>" type="checkbox" value="on" <?php echo (!empty($entry) && !empty($entry['image'])) && !empty($entry['image']['gravatar']) ? 'checked' : ''?>>
+											<label for="gravatar">Use Gravatar</label>
 										</div>
 									</div>
 								</div>
