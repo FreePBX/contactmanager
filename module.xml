@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.30</version>
+	<version>13.0.31</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.31* Further work on contact images
 		*13.0.30* Support contact images (uploaded or from gravatar)
 		*13.0.29* FREEPBX-12561 Cannot see personal External Contact Manager Groups in Phone Apps that were created in UCP
 		*13.0.28* Remove dialing code that would never work correctly
@@ -71,6 +72,7 @@
 			<method callingMethod="addUser" class="Contactmanager" namespace="FreePBX\modules">usermanAddUser</method>
 			<method callingMethod="updateUser" class="Contactmanager" namespace="FreePBX\modules">usermanUpdateUser</method>
 			<method callingMethod="myShowPage" class="Contactmanager" namespace="FreePBX\modules">usermanShowPage</method>
+			<method callingMethod="getExtraUserDetailsDisplay" class="Contactmanager" namespace="FreePBX\modules">usermanUserDetails</method>
 		</userman>
 	</hooks>
 </module>

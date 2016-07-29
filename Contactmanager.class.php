@@ -12,6 +12,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	private $groupCache = array();
 	private $groupsCache = array();
 	private $token = null;
+	public $tmp;
 
 	public function __construct($freepbx = null) {
 		$this->db = $freepbx->Database;
@@ -231,12 +232,17 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	}
 
 	/**
-	 * Get External URL for Contact Images
-	 * @param  did $did The did to lookup
-	 * @return string      The url
+	 * Get the Contact Image URL
+	 * @param  integer $did The incoming DID to lookup
+	 * @param  integer $ext The local extension to use for lookups
+	 * @return string      The link to return
 	 */
-	public function getExternalImageUrl($did) {
-		return 'ajax.php?module=contactmanager&command=image&did='.$did.'&token='.$this->getToken();
+	public function getExternalImageUrl($did,$ext=null) {
+		if(!empty($ext)) {
+			return 'ajax.php?module=contactmanager&command=image&token='.$this->getToken().'&ext='.$ext.'&did='.$did;
+		} else {
+			return 'ajax.php?module=contactmanager&command=image&token='.$this->getToken().'&did='.$did;
+		}
 	}
 
 	/**
@@ -291,9 +297,16 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	/**
 	 * Get and Display Contact Image
 	 */
-	public function displayContactImage() {
+	public function displayContactImage($entryid=null) {
 		$buffer = '';
-		if(!empty($_REQUEST['temporary'])) {
+		if(!empty($entryid)) {
+			$data = $this->getEntryByID($entryid);
+			$email = !empty($data['email']) ? $data['email'] : (!empty($data['emails'][0]) ? $data['emails'][0] : '');
+			$data = $this->getImageByEntryID($entryid, $email);
+			if(!empty($data['image'])) {
+				$buffer = $data['image'];
+			}
+		} elseif(!empty($_REQUEST['temporary'])) {
 			$name = basename($_REQUEST['name']);
 			$buffer = file_get_contents($this->tmp."/".$name);
 		} elseif(!empty($_REQUEST['entryid'])) {
@@ -304,7 +317,17 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$buffer = $data['image'];
 			}
 		} elseif(!empty($_REQUEST['did'])) {
-			$data = $this->lookupByUserID(-1, $_REQUEST['did'],"/\D/");
+			$parts = explode(".",$_REQUEST['did']);
+			$did = $parts[0];
+			if(!empty($_POST['ext'])) {
+				$user = $this->userman->getUserByDefaultExtension($_POST['ext']);
+				if(!empty($user)) {
+					$data = $this->lookupByUserID($user['id'], $did,"/\D/");
+				}
+			}
+			if(empty($data)) {
+				$data = $this->lookupByUserID(-1, $did,"/\D/");
+			}
 			if(!empty($data) && !empty($data['image'])) {
 				$data = $this->getImageByEntryID($data['uid'],$data['email']);
 				if(!empty($data['image'])) {
@@ -329,6 +352,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$type = !empty($_POST['grouptype']) ? $_POST['grouptype'] : "";
 				$id = !empty($_POST['id']) ? $_POST['id'] : "";
 				switch($type) {
+					case "external":
+						$email = $_POST['email'];
+					break;
 					case "internal":
 						$data = $this->freepbx->Userman->getUserByID($id);
 						$email = $data['email'];
@@ -1220,6 +1246,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					if(!empty($user)) {
 						unset($user['id']);
 						$entry = array_merge($entry,$user);
+						$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $user['username'];
+
 						$image = $this->getImageByEntryID($entry['user'], $user['email']);
 						$entry['image'] = $image;
 					} else {
@@ -1231,6 +1259,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			unset($user['id']);
 			if(!empty($user)) {
 				$entry = array_merge($user,$entry);
+				$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $user['username'];
 			} else {
 				$this->deleteEntryByID($entry['uid']);
 				return false;
@@ -1339,6 +1368,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						continue;
 					}
 					$entries[$key] = array_merge($entry,$umanusers[$entry['user']]);
+					$entries[$key]['displayname'] = !empty($entries[$key]['displayname']) ? $entries[$key]['displayname'] : $umanusers[$entry['user']]['username'];
 				}
 			break;
 			case "internal":
@@ -1347,6 +1377,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					unset($user['id']);
 					if(!empty($user)) {
 						$entries[$key] = array_merge($user,$entry);
+						$entries[$key]['displayname'] = !empty($entries[$key]['displayname']) ? $entries[$key]['displayname'] : $user['username'];
 					} else {
 						$this->deleteEntryByID($entry['uid']);
 					}
@@ -1782,7 +1813,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 * @return array
 	 */
 	public function updateImageByEntryID($entryid, $filename, $gravatar = false) {
-		if(empty($filename)) {
+		if(empty($filename) || is_array($filename)) {
 			return;
 		}
 		$name = basename($filename);
@@ -2219,6 +2250,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 								unset($entry['xmpp']);
 							}
 							$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
+							$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['username'];
 							$final[] = $entry;
 						}
 						$contacts = array_merge($contacts, $final);
@@ -2263,6 +2295,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 									$entry['type'] = "internal";
 									$entry['groupid'] = $group['id'];
 									$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
+									$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['username'];
 									//standardize all phone numbers, digits only
 									$entry['numbers'] = array(
 									'cell' => preg_replace('/\D/','',$um['cell']),
@@ -2331,6 +2364,11 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		return $final;
 	}
 
+	public function usermanUserDetails($user) {
+		$cmdata = $this->getEntryIDByUsermanID($_REQUEST['user']);
+		return array(load_view(dirname(__FILE__).'/views/user_details_hook.php',array("cmdata" => $cmdata)));
+	}
+
 	/**
 	 * Userman Page hook
 	 */
@@ -2383,7 +2421,6 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					);
 				break;
 				case 'showuser':
-					$cmdata = $this->getEntryIDByUsermanID($_REQUEST['user']);
 					$assigned = $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","groups",true);
 					$assigned = is_array($assigned) ? $assigned : array();
 					foreach($groups as $k=>$group) {
@@ -2394,7 +2431,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						array(
 							"title" => _("Contact Manager"),
 							"rawname" => "contactmanager",
-							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("mode" => "user", "cmdata" => $cmdata, "groups" => $groups, "enabled" => $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","show",true)))
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("mode" => "user", "groups" => $groups, "enabled" => $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","show",true)))
 						)
 					);
 				break;
@@ -2542,6 +2579,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					'title' => $data['title'],
 					'company' => $data['company'],
 					'address' => $data['address'],
+					'image' => ''
 				);
 
 				$grep = preg_grep('/^\D+_\d+/', array_keys($data));

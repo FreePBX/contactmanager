@@ -280,13 +280,18 @@ $("#del-image").click(function(e) {
 $("#gravatar").change(function() {
 	if($(this).is(":checked")) {
 		var id = null,
-				grouptype = $("#grouptype").val();
+				grouptype = $("#grouptype").val(),
+				email = null;
 		switch(grouptype) {
 			case "internal":
 				id = $("#user").val();
 			break;
+			case "external":
+				id = $("#entry").val();
+				email = $("#emails input:visible").one().val();
+			break;
 		}
-		$.post( "ajax.php?module=contactmanager&command=getgravatar", {id: id, grouptype: grouptype}, function( data ) {
+		$.post( "ajax.php?module=contactmanager&command=getgravatar", {id: id, grouptype: grouptype, email: email}, function( data ) {
 			if(data.status) {
 				$("#dropzone img").data("oldsrc",$("#dropzone img").attr("src"));
 				$("#dropzone img").attr("src","ajax.php?module=contactmanager&command=limage&temporary=1&name="+data.filename);

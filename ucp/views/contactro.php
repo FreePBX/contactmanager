@@ -1,9 +1,14 @@
 <div class="col-md-10">
 	<div class="contact-container">
+		<?php if(!empty($contact['image'])) { ?>
+			<div class="contact-image pull-right">
+				<img class="" src="?quietmode=1&amp;module=Contactmanager&amp;command=limage&amp;entryid=<?php echo $contact['id']?>&amp;time=<?php echo time()?>">
+			</div>
+		<?php } ?>
 		<form role="form">
 			<div class="form-group">
 				<label><?php echo ('Display Name')?></label><br/>
-				<?php echo $contact['displayname']?>
+				<?php echo $contact['displayname'];?>
 			</div>
 			<div class="form-group">
 				<label><?php echo ('First Name')?></label><br/>

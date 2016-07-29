@@ -34,9 +34,38 @@ class Contactmanager extends Modules{
 			case 'deletegroup':
 			case 'addgroup':
 			case 'grid':
+			case 'limage':
+			case 'uploadimage':
+			case 'delimage':
+			case 'getgravatar':
 				return true;
 			default:
 				return false;
+			break;
+		}
+	}
+
+	public function userDetails() {
+		$cmdata = $this->cm->getEntryIDByUsermanID($this->user['id']);
+		return $cmdata;
+	}
+
+	public function ajaxCustomHandler() {
+		switch($_REQUEST['command']) {
+			case "limage":
+				if(!empty($_REQUEST['temporary'])) {
+					$id = null;
+				} elseif(empty($_REQUEST['entryid'])) {
+					$entry = $this->userDetails();
+					$id = $entry['id'];
+				} else {
+					if(!$this->editEntry($_REQUEST['entryid'])) {
+						return false;
+					}
+					$id = $_REQUEST['entryid'];
+				}
+				$this->cm->displayContactImage($id);
+				return true;
 			break;
 		}
 	}
@@ -51,6 +80,139 @@ class Contactmanager extends Modules{
 	function ajaxHandler() {
 		$return = array("status" => false, "message" => "");
 		switch($_REQUEST['command']) {
+			case 'getgravatar':
+				$type = !empty($_POST['grouptype']) ? $_POST['grouptype'] : "";
+				$id = $this->user['id'];
+				switch($type) {
+					case "external":
+						$email = !empty($_POST['email']) ? $_POST['email'] : '';
+					break;
+					case "internal":
+						$data = $this->UCP->FreePBX->Userman->getUserByID($id);
+						$email = $data['email'];
+					break;
+					case "userman":
+						$email = !empty($_POST['email']) ? $_POST['email'] : '';
+						if(empty($email)) {
+							$data = $this->UCP->FreePBX->Userman->getUserByID($id);
+							$email = $data['email'];
+						}
+					break;
+				}
+				if(empty($email)) {
+					return array("status" => false, "message" => _("Please enter a valid email address"));
+				}
+				$data = $this->cm->getGravatar($email);
+				if(!empty($data)) {
+					$dname = "cm-".rand()."-".md5($email);
+					imagepng(imagecreatefromstring($data), $this->cm->tmp."/".$dname.".png");
+					if(!empty($_REQUEST['type']) && $_REQUEST['type'] == 'contact') {
+						if(!empty($_REQUEST['id'])) {
+							if(!$this->editEntry($_REQUEST['id'])) {
+								return array("status" => false, "message" => _("Invalid"));
+							}
+							$this->cm->updateImageByEntryID($_REQUEST['id'], $this->cm->tmp."/".$dname.".png", true);
+							$url = "?quietmode=1&module=Contactmanager&command=limage&entryid=".$_REQUEST['id']."&time=".time();
+						} else {
+							$url = "?quietmode=1&module=Contactmanager&command=limage&temporary=1&name=".$dname.".png";
+						}
+					} elseif(empty($_POST['type'])) {
+						$entry = $this->cm->getEntryIDByUsermanID($this->user['id']);
+						$this->cm->updateImageByEntryID($entry['id'], $this->cm->tmp."/".$dname.".png", true);
+						$url = "?quietmode=1&module=Contactmanager&command=limage&time=".time();
+					}
+					return array("status" => true, "name" => $dname, "filename" => $dname.".png", "url" => $url);
+				} else {
+					return array("status" => false, "message" => sprintf(_("Unable to find gravatar for %s"),$email));
+				}
+
+			break;
+			case "delimage":
+				if(!empty($_POST['id'])) {
+					if(!$this->editEntry($_POST['id'])) {
+						return array("status" => false, "message" => _("Invalid"));
+					}
+					$this->cm->delImageByEntryID($_POST['id']);
+					return array("status" => true);
+				} elseif(!empty($_POST['image'])) {
+					unlink($this->cm->tmp."/".$_POST['image'].".png");
+					return array("status" => true);
+				} else {
+					$entry = $this->cm->getEntryIDByUsermanID($this->user['id']);
+					if(!empty($entry)) {
+						$this->cm->delImageByEntryID($entry['id']);
+						return array("status" => true);
+					}
+				}
+				return array("status" => false, "message" => _("Invalid"));
+			break;
+			case 'uploadimage':
+				// XXX If the posted file was too large,
+				// we will get here, but $_FILES is empty!
+				// Specifically, if the file that was posted is
+				// larger than 'post_max_size' in php.ini.
+				// So, php will throw an error, as index
+				// $_FILES["files"] does not exist, because
+				// $_FILES is empty.
+				if (!isset($_FILES)) {
+					return array("status" => false,
+						"message" => _("File upload failed"));
+				}
+				$this->UCP->FreePBX->Media();
+				foreach ($_FILES["files"]["error"] as $key => $error) {
+					switch($error) {
+						case UPLOAD_ERR_OK:
+							$extension = pathinfo($_FILES["files"]["name"][$key], PATHINFO_EXTENSION);
+							$extension = strtolower($extension);
+							$supported = array("jpg","png");
+							if(in_array($extension,$supported)) {
+								$tmp_name = $_FILES["files"]["tmp_name"][$key];
+								$dname = \Media\Media::cleanFileName($_FILES["files"]["name"][$key]);
+								$dname = "cm-".rand()."-".pathinfo($dname,PATHINFO_FILENAME);
+								$this->cm->resizeImage(file_get_contents($tmp_name),$dname);
+								if(!empty($_REQUEST['type']) && $_REQUEST['type'] == 'contact') {
+									if(!empty($_REQUEST['id'])) {
+										$this->cm->updateImageByEntryID($_REQUEST['id'], $this->cm->tmp."/".$dname.".png", false);
+										$url = "?quietmode=1&module=Contactmanager&command=limage&entryid=".$_REQUEST['id']."&time=".time();
+									} else {
+										$url = "?quietmode=1&module=Contactmanager&command=limage&temporary=1&name=".$dname.".png";
+									}
+								} elseif(empty($_POST['type'])) {
+									$entry = $this->cm->getEntryIDByUsermanID($this->user['id']);
+									$this->cm->updateImageByEntryID($entry['id'], $this->cm->tmp."/".$dname.".png", false);
+									$url = "?quietmode=1&module=Contactmanager&command=limage&time=".time();
+								}
+								return array("status" => true, "name" => $dname, "filename" => $dname.".png", "url" => $url);
+							} else {
+								return array("status" => false, "message" => _("Unsupported file format"));
+								break;
+							}
+						break;
+						case UPLOAD_ERR_INI_SIZE:
+							return array("status" => false, "message" => _("The uploaded file exceeds the upload_max_filesize directive in php.ini"));
+						break;
+						case UPLOAD_ERR_FORM_SIZE:
+							return array("status" => false, "message" => _("The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form"));
+						break;
+						case UPLOAD_ERR_PARTIAL:
+							return array("status" => false, "message" => _("The uploaded file was only partially uploaded"));
+						break;
+						case UPLOAD_ERR_NO_FILE:
+							return array("status" => false, "message" => _("No file was uploaded"));
+						break;
+						case UPLOAD_ERR_NO_TMP_DIR:
+							return array("status" => false, "message" => _("Missing a temporary folder"));
+						break;
+						case UPLOAD_ERR_CANT_WRITE:
+							return array("status" => false, "message" => _("Failed to write file to disk"));
+						break;
+						case UPLOAD_ERR_EXTENSION:
+							return array("status" => false, "message" => _("A PHP extension stopped the file upload"));
+						break;
+					}
+				}
+				return array("status" => false, "message" => _("Can Not Find Uploaded Files"));
+			break;
 			case 'grid':
 				//$limit = $_REQUEST['limit'];
 				$group = $_REQUEST['id'];
@@ -87,6 +249,9 @@ class Contactmanager extends Modules{
 				return $contacts;
 			break;
 			case 'updatecontact':
+				if(!$this->editEntry($_REQUEST['id'])) {
+					$return = array("status" => false, "message" => _("Unauthorized"));
+				}
 				$entry = $this->cm->getEntryByID($_REQUEST['id']);
 				if(!empty($entry)) {
 					$entry[$_REQUEST['key']] = $_REQUEST['value'];
@@ -96,6 +261,9 @@ class Contactmanager extends Modules{
 				$return = array("status" => false, "message" => _("Unauthorized"));
 			break;
 			case 'deletecontact':
+				if(!$this->editEntry($_REQUEST['id'])) {
+					$return = array("status" => false, "message" => _("Unauthorized"));
+				}
 				$entry = $this->cm->getEntryByID($_REQUEST['id']);
 				if(!empty($entry)) {
 					$g = $this->cm->getGroupByID($entry['groupid']);
@@ -265,5 +433,16 @@ class Contactmanager extends Modules{
 		} else {
 			return array('enabled' => false);
 		}
+	}
+
+	public function editEntry($id) {
+		$contacts = $this->cm->getContactsByUserID($this->user['id']);
+		$allowed = false;
+		foreach($contacts as $contact) {
+			if($contact['uid'] == $id) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

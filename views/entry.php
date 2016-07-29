@@ -65,49 +65,6 @@ foreach ($users as $u) {
 						<div class="row">
 							<div class="form-group">
 								<div class="col-md-3">
-									<label class="control-label" for="imageupload"><?php echo _('Contact Image')?></label>
-									<i class="fa fa-question-circle fpbx-help-icon" data-for="image"></i>
-								</div>
-								<div class="col-md-9">
-									<div class="col-md-4">
-										<div id="dropzone" class="image">
-											<div class="message"><?php echo _("Drop a new image here")?></div>
-											<img class="<?php echo (!empty($entry) && !empty($entry['image'])) ? '' : 'hidden'?>" src="<?php echo (!empty($entry) && !empty($entry['image'])) ? 'ajax.php?module=contactmanager&amp;command=limage&amp;entryid='.$entry['id'] : ''?>">
-										</div>
-										<button id="del-image" data-entryid="<?php echo !empty($entry) ? $entry['id'] : ''?>" class="btn btn-danger btn-sm <?php echo (!empty($entry) && !empty($entry['image'])) ? '' : 'hidden'?>"><?php echo _("Delete Image")?></button>
-									</div>
-									<div class="col-md-8">
-										<input type="hidden" name="image" id="image">
-										<span class="btn btn-default btn-file">
-											<?php echo _("Browse")?>
-											<input id="imageupload" type="file" class="form-control" name="files[]" data-url="ajax.php?module=contactmanager&amp;command=uploadimage" class="form-control" multiple>
-										</span>
-										<span class="filename"></span>
-										<div id="upload-progress" class="progress">
-											<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
-										</div>
-										<div class="radioset">
-											<input name="gravatar" id="gravatar" data-entryid="<?php echo !empty($entry) ? $entry['id'] : ''?>" type="checkbox" value="on" <?php echo (!empty($entry) && !empty($entry['image'])) && !empty($entry['image']['gravatar']) ? 'checked' : ''?>>
-											<label for="gravatar">Use Gravatar</label>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<span id="image-help" class="help-block fpbx-help-block"><?php echo _('Contact Image for this user')?></span>
-					</div>
-				</div>
-			</div>
-			<div class="element-container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="form-group">
-								<div class="col-md-3">
 									<label class="control-label" for="displayname"><?php echo _('Display Name')?></label>
 									<i class="fa fa-question-circle fpbx-help-icon" data-for="displayname"></i>
 								</div>
@@ -179,6 +136,49 @@ foreach ($users as $u) {
 				<div class="row">
 					<div class="col-md-12">
 						<span id="title-help" class="help-block fpbx-help-block"><?php echo _('Title (overrides Title from User Manager)')?></span>
+					</div>
+				</div>
+			</div>
+			<div class="element-container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-3">
+									<label class="control-label" for="imageupload"><?php echo _('Contact Image')?></label>
+									<i class="fa fa-question-circle fpbx-help-icon" data-for="image"></i>
+								</div>
+								<div class="col-md-9">
+									<div class="col-md-4">
+										<div id="dropzone" class="image">
+											<div class="message"><?php echo _("Drop a new image here")?></div>
+											<img class="<?php echo (!empty($entry) && !empty($entry['image'])) ? '' : 'hidden'?>" src="<?php echo (!empty($entry) && !empty($entry['image'])) ? 'ajax.php?module=contactmanager&amp;command=limage&amp;entryid='.$entry['id'] : ''?>">
+										</div>
+										<button id="del-image" data-entryid="<?php echo !empty($entry) ? $entry['id'] : ''?>" class="btn btn-danger btn-sm <?php echo (!empty($entry) && !empty($entry['image'])) ? '' : 'hidden'?>"><?php echo _("Delete Image")?></button>
+									</div>
+									<div class="col-md-8">
+										<input type="hidden" name="image" id="image">
+										<span class="btn btn-default btn-file">
+											<?php echo _("Browse")?>
+											<input id="imageupload" type="file" class="form-control" name="files[]" data-url="ajax.php?module=contactmanager&amp;command=uploadimage" class="form-control" multiple>
+										</span>
+										<span class="filename"></span>
+										<div id="upload-progress" class="progress">
+											<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+										</div>
+										<div class="radioset">
+											<input name="gravatar" id="gravatar" data-entryid="<?php echo !empty($entry) ? $entry['id'] : ''?>" type="checkbox" value="on" <?php echo (!empty($entry) && !empty($entry['image'])) && !empty($entry['image']['gravatar']) ? 'checked' : ''?>>
+											<label for="gravatar">Use Gravatar</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<span id="image-help" class="help-block fpbx-help-block"><?php echo _('Contact Image for this user')?></span>
 					</div>
 				</div>
 			</div>

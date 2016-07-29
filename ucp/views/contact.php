@@ -22,6 +22,30 @@
 				<label for="company"><?php echo _('Company')?></label>
 				<input type="text" class="form-control" id="company" placeholder="Company" value="<?php echo $contact['company']?>">
 			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<div id="contactmanager_dropzone" class="image">
+						<div class="message"><?php echo _("Drop a new image here");?></div>
+						<img class="<?php echo (!empty($contact) && !empty($contact['image'])) ? '' : 'hidden'?>" src="<?php echo (!empty($contact) && !empty($contact['image'])) ? '?quietmode=1&module=Contactmanager&command=limage&entryid='.$contact['id'].'&time='.time() : ''?>">
+					</div>
+					<button id="contactmanager_del-image" data-entryid="<?php echo !empty($contact) ? $contact['id'] : ''?>" class="btn btn-danger btn-sm <?php echo (!empty($contact) && !empty($contact['image'])) ? '' : 'hidden'?>"><?php echo _("Delete Image")?></button>
+				</div>
+				<div class="col-md-9">
+					<input type="hidden" class="special" name="contactmanager_image" id="contactmanager_image">
+					<span class="btn btn-default btn-file">
+						<?php echo _("Browse")?>
+						<input id="contactmanager_imageupload" type="file" class="skip form-control" name="files[]" data-url="?quietmode=1&amp;module=Contactmanager&amp;command=uploadimage&amp;type=contact&amp;id=<?php echo $contact['id']?>" class="form-control" multiple>
+					</span>
+					<span class="filename"></span>
+					<div id="contactmanager_upload-progress" class="progress">
+						<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+					</div>
+					<div class="radioset">
+						<input name="contactmanager_gravatar" id="contactmanager_gravatar" class="skip" data-entryid="<?php echo !empty($contact) ? $contact['id'] : ''?>" type="checkbox" value="on" <?php echo (!empty($contact) && !empty($contact['image'])) && !empty($contact['image']['gravatar']) ? 'checked' : ''?>>
+						<label for="contactmanager_gravatar"><?php echo _("Use Gravatar")?></label>
+					</div>
+				</div>
+			</div>
 			<div class="form-group">
 				<label><?php echo _('Numbers')?></label>
 				<div class="numbers additional">
