@@ -52,7 +52,7 @@
 	</menuitems>
 	<depends>
 		<version>13.0.0</version>
-		<module>userman ge 13.0.56</module>
+		<module>userman ge 13.0.70</module>
 	</depends>
 	<supported>
 		<version>13.0</version>
