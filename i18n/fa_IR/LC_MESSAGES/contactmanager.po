@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-07-29 17:18-0700\n"
-"PO-Revision-Date: 2016-08-04 14:43+0200\n"
-"Last-Translator: psdk <hyavari26@gmail.com>\n"
+"PO-Revision-Date: 2016-08-07 06:50+0200\n"
+"Last-Translator: Media <mousavi.media@gmail.com>\n"
 "Language-Team: Persian (Iran) "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/fa_IR/>\n"
 "Language: fa_IR\n"
@@ -128,7 +128,7 @@ msgstr "آیا از حذف این گروه و تمام مخاطبین آن مط�
 
 #: ucp/views/contact.php:36 views/entry.php:162 views/user_details_hook.php:21
 msgid "Browse"
-msgstr "مرور کردن"
+msgstr "مسیر"
 
 #: ucp/assets/js/global.js:27
 msgid "Call To"
@@ -173,6 +173,8 @@ msgid ""
 "Contact Image for this user. Image will be deleted if \"Show in Contact "
 "Manager\" is set to no or inherits no under the \"Contact Manager\" tab"
 msgstr ""
+"تصویر تماس این کاربر. در صورتی که در \"نمایش در مدیریت تماس\" به صورت موروثی "
+"و یا خیر تنظیم شود تصویر حذف خواهد شد"
 
 #: Contactmanager.class.php:2393 Contactmanager.class.php:2405
 #: Contactmanager.class.php:2417 Contactmanager.class.php:2432
@@ -208,7 +210,7 @@ msgstr "حذف گروه"
 
 #: ucp/views/contact.php:31 views/entry.php:157 views/user_details_hook.php:16
 msgid "Delete Image"
-msgstr "حذف کردن تصویر"
+msgstr "حذف تصویر"
 
 #: ucp/assets/js/global.js:172
 msgid "Deleting..."
@@ -226,7 +228,7 @@ msgstr "نام نمایشی (از مدیریت کاربر بازنویسی کن�
 
 #: ucp/views/contact.php:28 views/entry.php:154 views/user_details_hook.php:13
 msgid "Drop a new image here"
-msgstr "یک تصویر جدید را به اینجا بکشید"
+msgstr "یک تصویر جدید به اینجا منتقل کنید"
 
 #: assets/js/contactmanager.js:36
 msgid "E-Mail address cannot be blank."
@@ -552,7 +554,7 @@ msgstr "XMPP برای افزودن وجود ندارد"
 
 #: ucp/assets/js/global.js:420
 msgid "No email defined"
-msgstr ""
+msgstr "ایمیلی تغریف نشده است"
 
 #: Contactmanager.class.php:437 ucp/Contactmanager.class.php:201
 msgid "No file was uploaded"
