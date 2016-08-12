@@ -319,6 +319,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		} elseif(!empty($_REQUEST['did'])) {
 			$parts = explode(".",$_REQUEST['did']);
 			$did = $parts[0];
+			$did = preg_replace("/\D/","",$parts[0]);
 			if(!empty($_POST['ext'])) {
 				$user = $this->userman->getUserByDefaultExtension($_POST['ext']);
 				if(!empty($user)) {
