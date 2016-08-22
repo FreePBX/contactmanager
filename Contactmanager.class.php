@@ -1538,7 +1538,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		':address' => !empty($entry['address']) ? $data['address'] : '',
 		));
 
-		$this->updateImageByEntryID($data['id'], $entry['image'], $entry['gravatar']);
+		$this->updateImageByEntryID($data['id'], !empty($entry['image']) ? $entry['image'] : '', !empty($entry['gravatar']) ? $entry['gravatar'] : '');
 
 		$this->addNumbersByEntryID($data['id'], !empty($entry['numbers']) ? $entry['numbers'] : '');
 
@@ -1577,7 +1577,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 		$id = $this->db->lastInsertId();
 
-		$this->updateImageByEntryID($id, $entry['image'], $entry['gravatar']);
+		$this->updateImageByEntryID($id, !empty($entry['image']) ? $entry['image'] : '', !empty($entry['gravatar']) ? $entry['gravatar'] : '');
 
 		$this->addNumbersByEntryID($id, !empty($entry['numbers']) ? $entry['numbers'] : '');
 
