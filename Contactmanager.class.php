@@ -2227,6 +2227,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		}
 		$contacts = array();
 		$entries = array();
+
 		foreach($groups as $group) {
 			switch($group['type']) {
 				case "userman":
@@ -2327,9 +2328,25 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		if(!empty($this->contactsCache[$search])) {
 			return $this->contactsCache[$search];
 		}
+		$skip = array(
+			"uid",
+			"groupid",
+			"user",
+			"id",
+			"auth",
+			"authid",
+			"username",
+			"password",
+			"primary_group",
+			"permissions",
+			"type"
+		);
 		$contacts = $this->getContactsByUserID($id);
 		$iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($contacts));
 		foreach($iterator as $key => $value) {
+			if(in_array($key,$skip)) {
+				continue;
+			}
 			$value = !empty($regexp) ? preg_replace($regexp,'',$value) : $value;
 			$value = trim($value);
 			if(!empty($value) && preg_match('/' . $search . '/i',$value)) {
@@ -2350,10 +2367,26 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 */
 	public function lookupMultipleByUserID($id, $search, $regexp = null) {
 		$contacts = $this->getContactsByUserID($id);
-		$iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($contacts));
 		$final = array();
 		$list = array();
+		$skip = array(
+			"uid",
+			"groupid",
+			"user",
+			"id",
+			"auth",
+			"authid",
+			"username",
+			"password",
+			"primary_group",
+			"permissions",
+			"type"
+		);
+		$iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($contacts));
 		foreach($iterator as $key => $value) {
+			if(in_array($key,$skip)) {
+				continue;
+			}
 			$value = !empty($regexp) ? preg_replace($regexp,'',$value) : $value;
 			$value = trim($value);
 			$k = $iterator->getSubIterator(0)->key();
