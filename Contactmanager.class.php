@@ -2726,4 +2726,12 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 		return $data;
 	}
+
+	public function getNamebyNumber($number, $group){
+		$sql = 'select a.fname, a.lname,a.displayname,a.company from contactmanager_group_entries as a, contactmanager_entry_numbers as b where b.entryid = a.id and b.number = :number and a.groupid = :group LIMIT 1';
+		$stmt = $this->db->prepare($sql);
+		$stmt->execute(array(':number'=>$number, ':group' => $group));
+		$ret = $stmt->fetch(\PDO::FETCH_ASSOC);
+    return $ret;
+	}
 }

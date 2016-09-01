@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.34</version>
+	<version>14.0.1</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*14.0.1* Add number search by group
 		*13.0.34* Fix issue with looking up wrong user information
 		*13.0.33* Fix a whoops error when modifying contacts externally
 		*13.0.32* Get rid of extra characters from URL on images
@@ -54,7 +55,7 @@
 		<contactmanager needsenginedb="yes">Contact Manager</contactmanager>
 	</menuitems>
 	<depends>
-		<version>13.0.0</version>
+		<version>14.0.0</version>
 		<module>userman ge 13.0.70</module>
 	</depends>
 	<supported>
