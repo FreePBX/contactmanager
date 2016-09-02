@@ -8,44 +8,6 @@
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
 		*14.0.1* Add number search by group
-		*13.0.34* Fix issue with looking up wrong user information
-		*13.0.33* Fix a whoops error when modifying contacts externally
-		*13.0.32* Get rid of extra characters from URL on images
-		*13.0.31* Further work on contact images
-		*13.0.30* Support contact images (uploaded or from gravatar)
-		*13.0.29* FREEPBX-12561 Cannot see personal External Contact Manager Groups in Phone Apps that were created in UCP
-		*13.0.28* Remove dialing code that would never work correctly
-		*13.0.27* Fix bug when trying to clean up corruption
-		*13.0.26* Fix undefined id in updateGroupEntryByID
-		*13.0.25* Allow assigning all public groups
-		*13.0.24* FREEPBX-11972 FREEPBX-11686
-		*13.0.23* Remove CoS functionality, this is now controlled in User Manager
-		*13.0.22* Reference contact manager
-		*13.0.21* Dont reference old userman callbacks
-		*13.0.20* FREEPBX-11557 Primary number deletes if more than one number entered when saving edit
-		*13.0.19* Remove en_US Translations
-		*13.0.18* Remove en_US Translations
-		*13.0.17* FREEPBX-11267 bulk handler issues
-		*13.0.16* FREEPBX-11133
-		*13.0.15* FREEPBX-10845
-		*13.0.14* FREEPBX-10889
-		*13.0.13* FREEPBX-10057 FREEPBX-10845
-		*13.0.12* FREEPBX-10480
-		*13.0.11* Remove beta
-		*13.0.10* Use boostrap tables
-		*13.0.9* FREEPBX-10303 Allow apostrophes in group names
-		*13.0.8* FREEPBX-10304 unable to create/view groups in UCP
-		*13.0.7* FREEPBX-10283, FREEPBX-10226
-		*13.0.6* "FREEPBX-10211 - Make external use display name.
-		*13.0.5* Invalid arrays
-		*13.0.4* Remove old import/export code, as this functionality has been moved into the Bulk Handler module
-		*13.0.3* FREEPBX-9531 Cannot add user to Internal Contact Group, FREEPBX-9538 Display and Navigation issues if there are multiple Contact Groups
-		*13.0.2* Fix up visuals.. again
-		*13.0.1* Visual updates and release
-		*13.0.beta4-5* Invalid array loops
-		*13.0.beta3* Group support in Usermanager
-		*13.0.0beta2* FREEPBX-9098
-		*13.0.0beta1* First beta release.
 	</changelog>
 	<category>Admin</category>
 	<description>
@@ -59,7 +21,7 @@
 		<module>userman ge 13.0.70</module>
 	</depends>
 	<supported>
-		<version>13.0</version>
+		<version>14.0</version>
 	</supported>
 	<hooks>
 		<bulkhandler class="Bulkhandler" namespace="FreePBX\modules">
@@ -68,7 +30,7 @@
 			<method callingMethod="import" class="Contactmanager" namespace="FreePBX\modules">bulkhandlerImport</method>
 			<method callingMethod="export" class="Contactmanager" namespace="FreePBX\modules">bulkhandlerExport</method>
 		</bulkhandler>
-		<userman class="Userman" namespace="FreePBX\modules">
+	<userman class="Userman" namespace="FreePBX\modules">
 			<method callingMethod="delGroup" class="Contactmanager" namespace="FreePBX\modules">usermanDelGroup</method>
 			<method callingMethod="addGroup" class="Contactmanager" namespace="FreePBX\modules">usermanAddGroup</method>
 			<method callingMethod="updateGroup" class="Contactmanager" namespace="FreePBX\modules">usermanUpdateGroup</method>
