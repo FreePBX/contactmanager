@@ -2261,7 +2261,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				case "external":
 					$entries = $this->getEntriesByGroupID($group['id']);
 					if(!empty($entries) && is_array($entries)) {
-						foreach($entries as &$entry) {
+						$final = array();
+						foreach($entries as $id => $entry) {
 							$numbers = array();
 							if(!empty($entry['numbers']) && is_array($entry['numbers'])) {
 								foreach($entry['numbers'] as $number) {
@@ -2283,8 +2284,11 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 							$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
 							$entry['type'] = "external";
 							$entry['groupid'] = $group['id'];
+
+							$final[] = $entry;
 						}
-						$contacts = array_merge($contacts, $entries);
+
+						$contacts = array_merge($contacts, $final);
 					}
 				break;
 				case "internal":
