@@ -4,18 +4,15 @@
 			<div class="row">
 				<div class="form-group">
 					<div class="col-md-3">
-						<label class="control-label" for="contactmanager_show"><?php echo _('Show In Contact Manager')?></label>
-						<i class="fa fa-question-circle fpbx-help-icon" data-for="contactmanager_show"></i>
+						<label class="control-label" for="contactmanager_showingroups"><?php echo _('Show In Contact Manager Groups')?></label>
+						<i class="fa fa-question-circle fpbx-help-icon" data-for="contactmanager_showingroups"></i>
 					</div>
 					<div class="col-md-9">
-						<span class="radioset">
-							<input type="radio" id="contactmanager1" name="contactmanager_show" value="true" <?php echo ($enabled) ? 'checked' : ''?>><label for="contactmanager1"><?php echo _('Yes')?></label>
-							<input type="radio" id="contactmanager2" name="contactmanager_show" value="false" <?php echo (!is_null($enabled) && !$enabled) ? 'checked' : ''?>><label for="contactmanager2"><?php echo _('No')?></label>
-							<?php if($mode == "user") {?>
-								<input type="radio" id="contactmanager3" name="contactmanager_show" value='inherit' <?php echo is_null($enabled) ? 'checked' : ''?>>
-								<label for="contactmanager3"><?php echo _('Inherit')?></label>
+						<select id="contactmanager_showingroups" class="form-control chosenmultiselect contactmanager-group" name="contactmanager_showingroups[]" multiple="multiple">
+							<?php foreach($visiblegroups as $group) { ?>
+								<option value="<?php echo $group['id']?>" <?php echo in_array($group['id'],$showingroups) ? 'selected' : '' ?>><?php echo $group['name']?></option>
 							<?php } ?>
-						</span>
+						</select>
 					</div>
 				</div>
 			</div>
@@ -23,7 +20,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<span id="contactmanager_show-help" class="help-block fpbx-help-block"><?php echo _("Whether to show this contact in contact manager.")?></span>
+			<span id="contactmanager_showingroups-help" class="help-block fpbx-help-block"><?php echo _("What internal groups to show this user in")?></span>
 		</div>
 	</div>
 </div>
@@ -33,7 +30,7 @@
 			<div class="row">
 				<div class="form-group">
 					<div class="col-md-3">
-						<label class="control-label" for="contactmanager_groups"><?php echo _("Allowed Contact Manager Groups")?></label>
+						<label class="control-label" for="contactmanager_groups"><?php echo _("Viewable Contact Manager Groups")?></label>
 						<i class="fa fa-question-circle fpbx-help-icon" data-for="contactmanager_groups"></i>
 					</div>
 					<div class="col-md-9">
@@ -49,7 +46,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<span id="contactmanager_groups-help" class="help-block fpbx-help-block"><?php echo _("These are the assigned and active contactmanager groups which will show up for this user in UCP and RestApps (If purchased)")?></span>
+			<span id="contactmanager_groups-help" class="help-block fpbx-help-block"><?php echo _("These are the viewable contact manager groups which will show up for this user in UCP and RestApps (If purchased)")?></span>
 		</div>
 	</div>
 </div>

@@ -41,9 +41,8 @@
 									</div>
 									<div class="col-md-9">
 										<select name="grouptype" id="grouptype" class="form-control">
-											<option value="internal"><?php echo _('Internal')?></option>
 											<option value="external"><?php echo _('External')?></option>
-											<option value="userman"><?php echo _('User Manager')?></option>
+											<option value="internal"><?php echo _('Internal')?></option>
 										</select>
 									</div>
 								</div>
