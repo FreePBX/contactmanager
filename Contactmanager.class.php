@@ -188,6 +188,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sth->execute();
 
 		//remove useless internal groups without any contacts
+		/*
 		$sql = "SELECT * FROM contactmanager_groups WHERE type = 'internal' AND id NOT IN (SELECT DISTINCT g.id FROM contactmanager_groups g, contactmanager_group_entries e WHERE g.id = e.groupid)";
 		$sth = $this->db->prepare($sql);
 		$sth->execute();
@@ -197,16 +198,18 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			$sth = $this->db->prepare($sql);
 			$sth->execute(array($grp['id']));
 		}
+		*/
 
 		$info = $this->freepbx->Modules->getInfo("contactmanager");
-		if($info['contactmanager']['status'] == MODULE_STATUS_NOTINSTALLED) {
+		$newinstall = ($info['contactmanager']['status'] == MODULE_STATUS_NOTINSTALLED);
+		if(empty($oldgrps) && $newinstall) {
 			$ret = $this->addGroup(_("User Manager Group"),"internal");
 			$defaultgrp = $ret['id'];
 		} elseif(isset($oldgrps[0])) {
 			$defaultgrp = $oldgrps[0];
 		}
 
-		if(isset($defaultgrp)) {
+		if(isset($defaultgrp) && !$newinstall) {
 			//Now scan all the old users/groups from userman and get the setting
 			$users = $this->userman->getAllUsers();
 			foreach($users as $user) {
@@ -214,13 +217,23 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				if($show) {
 					$this->userman->setModuleSettingByID($user['id'],"contactmanager","showingroups", array($defaultgrp));
 				}
+				$this->usermanUpdateUser($user['id'],'',$user);
 			}
 			$groups = $this->userman->getAllGroups();
 			foreach($groups as $group) {
 				$show = $this->userman->getModuleSettingByGID($group['id'],"contactmanager","show");
 				if($show) {
-					$this->userman->setModuleSettingByID($user['id'],"contactmanager","showingroups", array($defaultgrp));
+					$this->userman->setModuleSettingByGID($group['id'],"contactmanager","showingroups", array($defaultgrp));
 				}
+				$this->usermanUpdateGroup($group['id'],'',$group);
+			}
+		} elseif($newinstall) {
+			$id = $this->freepbx->Userman->getAutoGroup();
+			$id = !empty($id) ? $id : 1;
+			$group = $this->freepbx->Userman->getGroupByGID($id);
+			if(!empty($group)) {
+				$this->userman->setModuleSettingByGID($id,"contactmanager","showingroups", array($defaultgrp));
+				$this->usermanUpdateGroup($id,'',$group);
 			}
 		}
 	}
