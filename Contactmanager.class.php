@@ -187,6 +187,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sth = $this->db->prepare($sql);
 		$sth->execute();
 
+
+
 		//remove useless internal groups without any contacts
 		/*
 		$sql = "SELECT * FROM contactmanager_groups WHERE type = 'internal' AND id NOT IN (SELECT DISTINCT g.id FROM contactmanager_groups g, contactmanager_group_entries e WHERE g.id = e.groupid)";
@@ -209,13 +211,34 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			$defaultgrp = $oldgrps[0]['id'];
 		}
 
+		if(!empty($info['contactmanager']['dbversion']) && version_compare_freepbx($info['contactmanager']['dbversion'],"13.0.37","<")) {
+			$sql = "SELECT e.* FROM contactmanager_group_entries e, contactmanager_groups g WHERE type = 'internal' AND e.groupid = g.id";
+			$sth = $this->db->prepare($sql);
+			$sth->execute();
+			$entries = $sth->fetchAll(\PDO::FETCH_ASSOC);
+			foreach($entries as $entry) {
+				$uid = $entry['user'];
+				$gs = $this->userman->getModuleSettingByID($uid,"contactmanager","showingroups");
+				$gs = is_array($gs) ? $gs : array();
+				if(!in_array($entry['groupid'],$gs)) {
+					$gs[] = $entry['groupid'];
+				}
+				$this->userman->setModuleSettingByID($uid,"contactmanager","showingroups", $gs);
+			}
+		}
+
 		if(isset($defaultgrp) && !$newinstall) {
 			//Now scan all the old users/groups from userman and get the setting
 			$users = $this->userman->getAllUsers();
 			foreach($users as $user) {
 				$show = $this->userman->getModuleSettingByID($user['id'],"contactmanager","show");
 				if($show) {
-					$this->userman->setModuleSettingByID($user['id'],"contactmanager","showingroups", array($defaultgrp));
+					$gs = $this->userman->getModuleSettingByID($user['id'],"contactmanager","showingroups");
+					$gs = is_array($gs) ? $gs : array();
+					if(!in_array($defaultgrp,$gs)) {
+						$gs[] = $defaultgrp;
+					}
+					$this->userman->setModuleSettingByID($user['id'],"contactmanager","showingroups", $gs);
 				}
 				$this->usermanUpdateUser($user['id'],'',$user);
 			}
