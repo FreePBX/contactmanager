@@ -206,7 +206,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			$ret = $this->addGroup(_("User Manager Group"),"internal");
 			$defaultgrp = $ret['id'];
 		} elseif(isset($oldgrps[0])) {
-			$defaultgrp = $oldgrps[0];
+			$defaultgrp = $oldgrps[0]['id'];
 		}
 
 		if(isset($defaultgrp) && !$newinstall) {
