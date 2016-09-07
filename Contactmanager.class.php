@@ -1305,7 +1305,34 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						$entry = array_merge($entry,$user);
 						$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $user['username'];
 
-						$image = $this->getImageByEntryID($entry['user'], $user['email']);
+						$numbers = array(
+							"default_extension" => _("extension"),
+							"cell" => _("cell"),
+							"work" => _("work"),
+							"home" => _("home"),
+							"fax" => _("fax")
+						);
+						foreach($numbers as $key => $name) {
+							if(isset($entry[$key])) {
+								$entry['numbers'][] = array(
+								'number' => $entry[$key],
+								'extension' => '',
+								'type' => $name,
+								'flags' => array((($key == 'fax') ? 'fax' : 'phone')),
+								'primary' => ($key == 'fax') ? 'fax' : 'phone'
+								);
+							}
+						}
+
+						if(isset($entry['email'])) {
+							$entry['emails'][] = array("email" => $entry['email']);
+						}
+
+						if(isset($entry['xmpp'])) {
+							$entry['xmpps'][] = array("xmpp" => $entry['xmpp']);
+						}
+
+						$image = $this->getImageByEntryID($entry['id'], $user['email']);
 						$entry['image'] = $image;
 					} else {
 						$this->deleteEntryByID($entry['uid']);
