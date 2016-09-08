@@ -23,7 +23,7 @@
 						<?php foreach($groups[$type] as $k => $group) {?>
 							<div id="<?php echo $type?>-<?php echo $group['id']?>" class="tab-pane <?php echo $k== 0 ? "active" : ""?>">
 								<div id="toolbar-<?php echo $type?>-<?php echo $group['id']?>">
-									<?php if($type != "userman") {?>
+									<?php if($type != "internal") {?>
 										<a class="btn btn-primary" href="?display=contactmanager&amp;action=addentry&amp;group=<?php echo $group['id']?>"><i class="fa fa-plus"></i> <?php echo _("Add User")?></a>
 									<?php } ?>
 									<a class="btn btn-primary" href="?display=contactmanager&amp;action=showgroup&amp;group=<?php echo $group['id']?>"><i class="fa fa-pencil"></i> <?php echo _('Edit Group')?></a>
