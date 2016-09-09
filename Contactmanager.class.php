@@ -383,20 +383,22 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		} elseif(!empty($_REQUEST['did'])) {
 			$parts = explode(".",$_REQUEST['did']);
 			$did = $parts[0];
-			$did = preg_replace("/\D/","",$parts[0]);
-			if(!empty($_POST['ext'])) {
-				$user = $this->userman->getUserByDefaultExtension($_POST['ext']);
-				if(!empty($user)) {
-					$data = $this->lookupByUserID($user['id'], $did,"/\D/");
+			if(!empty($did)) {
+				$did = preg_replace("/\D/","",$parts[0]);
+				if(!empty($_POST['ext'])) {
+					$user = $this->userman->getUserByDefaultExtension($_POST['ext']);
+					if(!empty($user)) {
+						$data = $this->lookupByUserID($user['id'], $did,"/\D/");
+					}
 				}
-			}
-			if(empty($data)) {
-				$data = $this->lookupByUserID(-1, $did,"/\D/");
-			}
-			if(!empty($data) && !empty($data['image'])) {
-				$data = $this->getImageByEntryID($data['uid'],$data['email']);
-				if(!empty($data['image'])) {
-					$buffer = $data['image'];
+				if(empty($data)) {
+					$data = $this->lookupByUserID(-1, $did,"/\D/");
+				}
+				if(!empty($data) && !empty($data['image'])) {
+					$data = $this->getImageByEntryID($data['uid'],$data['email']);
+					if(!empty($data['image'])) {
+						$buffer = $data['image'];
+					}
 				}
 			}
 		}
@@ -2320,6 +2322,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 * @param {string} $regexp Regular Expression pattern to replace
 	 */
 	public function lookupByUserID($id, $search, $regexp = null) {
+		if(trim($search) == "") {
+			return false;
+		}
 		if(!empty($this->contactsCache[$search])) {
 			return $this->contactsCache[$search];
 		}
@@ -2334,7 +2339,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			"password",
 			"primary_group",
 			"permissions",
-			"type"
+			"type",
+			"image"
 		);
 		$contacts = $this->getContactsByUserID($id);
 		$iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($contacts));

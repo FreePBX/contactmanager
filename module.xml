@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.40</version>
+	<version>13.0.41</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.41* Contact Image Lookup issues
 		*13.0.40* Fix more issues
 		*13.0.39* Fix numbers in UCP
 		*13.0.37-38* Bug fix
