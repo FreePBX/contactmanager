@@ -2,11 +2,14 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.41</version>
+	<version>13.0.41.3</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.41.3* FREEPBX-13129 Userman contact image not functional in userman nor UCP
+		*13.0.41.2* FREEPBX-13144 Cannot see details on users despite permissions
+		*13.0.41.1* FREEPBX-13143 Display Name is populated getting automatically populated by extension
 		*13.0.41* Contact Image Lookup issues
 		*13.0.40* Fix more issues
 		*13.0.39* Fix numbers in UCP
@@ -82,6 +85,8 @@
 			<method callingMethod="updateUser" class="Contactmanager" namespace="FreePBX\modules">usermanUpdateUser</method>
 			<method callingMethod="myShowPage" class="Contactmanager" namespace="FreePBX\modules">usermanShowPage</method>
 			<method callingMethod="getExtraUserDetailsDisplay" class="Contactmanager" namespace="FreePBX\modules">usermanUserDetails</method>
+			<method callingMethod="getExtraContactInfo" class="Contactmanager" namespace="FreePBX\modules">usermanAddContactInfo</method>
+
 		</userman>
 	</hooks>
 </module>

@@ -45,29 +45,30 @@ class Contactmanager extends Modules{
 		}
 	}
 
-	public function userDetails() {
-		$cmdata = $this->cm->getEntryIDByUsermanID($this->user['id']);
-		return $cmdata;
-	}
-
 	public function ajaxCustomHandler() {
 		switch($_REQUEST['command']) {
 			case "limage":
+				$type = !empty($_REQUEST['type']) ? $_REQUEST['type'] : null;
 				if(!empty($_REQUEST['temporary'])) {
 					$id = null;
-				} elseif(empty($_REQUEST['entryid'])) {
-					$entry = $this->userDetails();
-					$id = $entry['id'];
-				} else {
-					if(!$this->editEntry($_REQUEST['entryid'])) {
-						return false;
-					}
+				} elseif(!empty($_REQUEST['entryid'])) {
 					$id = $_REQUEST['entryid'];
+				} else {
+					$type = 'internal';
+					$id = $this->user['id'];
 				}
-				$this->cm->displayContactImage($id);
+
+				$this->cm->displayContactImage($id,$type);
 				return true;
 			break;
 		}
+	}
+
+	public function userDetails() {
+		$data = $this->UCP->FreePBX->Userman->getUserByID($this->user['id']);
+		$image = $this->cm->getImageByID($this->user['id'],$data['email'],'internal');
+		$data['image'] = $image;
+		return $data;
 	}
 
 	/**
@@ -87,11 +88,8 @@ class Contactmanager extends Modules{
 					case "external":
 						$email = !empty($_POST['email']) ? $_POST['email'] : '';
 					break;
-					case "internal":
-						$data = $this->UCP->FreePBX->Userman->getUserByID($id);
-						$email = $data['email'];
-					break;
 					case "userman":
+					case "internal":
 						$email = !empty($_POST['email']) ? $_POST['email'] : '';
 						if(empty($email)) {
 							$data = $this->UCP->FreePBX->Userman->getUserByID($id);
@@ -111,14 +109,13 @@ class Contactmanager extends Modules{
 							if(!$this->editEntry($_REQUEST['id'])) {
 								return array("status" => false, "message" => _("Invalid"));
 							}
-							$this->cm->updateImageByEntryID($_REQUEST['id'], $this->cm->tmp."/".$dname.".png", true);
+							$this->cm->updateImageByID($_REQUEST['id'], $this->cm->tmp."/".$dname.".png", true, 'external');
 							$url = "?quietmode=1&module=Contactmanager&command=limage&entryid=".$_REQUEST['id']."&time=".time();
 						} else {
 							$url = "?quietmode=1&module=Contactmanager&command=limage&temporary=1&name=".$dname.".png";
 						}
 					} elseif(empty($_POST['type'])) {
-						$entry = $this->cm->getEntryIDByUsermanID($this->user['id']);
-						$this->cm->updateImageByEntryID($entry['id'], $this->cm->tmp."/".$dname.".png", true);
+						$this->cm->updateImageByID($this->user['id'], $this->cm->tmp."/".$dname.".png", true, 'internal');
 						$url = "?quietmode=1&module=Contactmanager&command=limage&time=".time();
 					}
 					return array("status" => true, "name" => $dname, "filename" => $dname.".png", "url" => $url);
@@ -132,17 +129,14 @@ class Contactmanager extends Modules{
 					if(!$this->editEntry($_POST['id'])) {
 						return array("status" => false, "message" => _("Invalid"));
 					}
-					$this->cm->delImageByEntryID($_POST['id']);
+					$this->cm->delImageByID($_POST['id'], 'external');
 					return array("status" => true);
 				} elseif(!empty($_POST['image'])) {
 					unlink($this->cm->tmp."/".$_POST['image'].".png");
 					return array("status" => true);
 				} else {
-					$entry = $this->cm->getEntryIDByUsermanID($this->user['id']);
-					if(!empty($entry)) {
-						$this->cm->delImageByEntryID($entry['id']);
-						return array("status" => true);
-					}
+					$this->cm->delImageByID($this->user['id'], 'internal');
+					return array("status" => true);
 				}
 				return array("status" => false, "message" => _("Invalid"));
 			break;
@@ -172,14 +166,13 @@ class Contactmanager extends Modules{
 								$this->cm->resizeImage(file_get_contents($tmp_name),$dname);
 								if(!empty($_REQUEST['type']) && $_REQUEST['type'] == 'contact') {
 									if(!empty($_REQUEST['id'])) {
-										$this->cm->updateImageByEntryID($_REQUEST['id'], $this->cm->tmp."/".$dname.".png", false);
+										$this->cm->updateImageByID($_REQUEST['id'], $this->cm->tmp."/".$dname.".png", false, 'external');
 										$url = "?quietmode=1&module=Contactmanager&command=limage&entryid=".$_REQUEST['id']."&time=".time();
 									} else {
 										$url = "?quietmode=1&module=Contactmanager&command=limage&temporary=1&name=".$dname.".png";
 									}
 								} elseif(empty($_POST['type'])) {
-									$entry = $this->cm->getEntryIDByUsermanID($this->user['id']);
-									$this->cm->updateImageByEntryID($entry['id'], $this->cm->tmp."/".$dname.".png", false);
+									$this->cm->updateImageByID($this->user['id'], $this->cm->tmp."/".$dname.".png", false, 'internal');
 									$url = "?quietmode=1&module=Contactmanager&command=limage&time=".time();
 								}
 								return array("status" => true, "name" => $dname, "filename" => $dname.".png", "url" => $url);

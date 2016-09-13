@@ -143,7 +143,7 @@ $( document ).ready(function() {
 		e.stopPropagation();
 		var id = $("input[name=user]").val(),
 				grouptype = 'userman';
-		$.post( "ajax.php?module=contactmanager&command=delimage", {id: id, img: $("#contactmanager_image").val()}, function( data ) {
+		$.post( "ajax.php?module=contactmanager&command=delimage", {id: id, img: $("#contactmanager_image").val(), type: "internal"}, function( data ) {
 			if(data.status) {
 				$("#contactmanager_image").val("");
 				$("#contactmanager_dropzone img").addClass("hidden");
