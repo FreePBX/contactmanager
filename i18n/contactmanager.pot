@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-09 12:20-0700\n"
+"POT-Creation-Date: 2016-09-13 13:20-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: Contactmanager.class.php:509
-#: ucp/Contactmanager.class.php:210
+#: Contactmanager.class.php:573
+#: ucp/Contactmanager.class.php:203
 msgid "A PHP extension stopped the file upload"
 msgstr ""
 
@@ -92,7 +92,7 @@ msgstr ""
 msgid "Adding..."
 msgstr ""
 
-#: Contactmanager.class.php:2531
+#: Contactmanager.class.php:2616
 #: views/entry.php:211
 #: views/entry.php:223
 msgid "Address"
@@ -103,11 +103,11 @@ msgstr ""
 msgid "Admin"
 msgstr ""
 
-#: Contactmanager.class.php:2423
+#: Contactmanager.class.php:2508
 msgid "All Internal Groups"
 msgstr ""
 
-#: Contactmanager.class.php:2429
+#: Contactmanager.class.php:2514
 msgid "All Public Groups"
 msgstr ""
 
@@ -115,11 +115,11 @@ msgstr ""
 msgid "An entry must have a user"
 msgstr ""
 
-#: Contactmanager.class.php:745
+#: Contactmanager.class.php:809
 msgid "An entry must have a user."
 msgstr ""
 
-#: Contactmanager.class.php:754
+#: Contactmanager.class.php:818
 msgid "An entry must have numbers."
 msgstr ""
 
@@ -141,30 +141,30 @@ msgstr ""
 msgid "Call To"
 msgstr ""
 
-#: Contactmanager.class.php:513
-#: ucp/Contactmanager.class.php:214
+#: Contactmanager.class.php:577
+#: ucp/Contactmanager.class.php:207
 msgid "Can Not Find Uploaded Files"
 msgstr ""
 
-#: Contactmanager.class.php:792
-#: Contactmanager.class.php:2539
-#: Contactmanager.class.php:2551
-#: Contactmanager.class.php:2563
+#: Contactmanager.class.php:856
+#: Contactmanager.class.php:2624
+#: Contactmanager.class.php:2636
+#: Contactmanager.class.php:2648
 #: ucp/views/contact.php:64
 #: ucp/views/contact.php:106
 #: views/group.php:104
 msgid "Cell"
 msgstr ""
 
-#: Contactmanager.class.php:2544
-#: Contactmanager.class.php:2556
-#: Contactmanager.class.php:2568
+#: Contactmanager.class.php:2629
+#: Contactmanager.class.php:2641
+#: Contactmanager.class.php:2653
 msgid ""
 "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
 msgstr ""
 
 #: Contactmanager.class.php:37
-#: Contactmanager.class.php:2530
+#: Contactmanager.class.php:2615
 #: ucp/views/contact.php:22
 #: ucp/views/contacts.php:37
 #: views/entry.php:191
@@ -191,10 +191,10 @@ msgid ""
 "Manager\" is set to no or inherits no under the \"Contact Manager\" tab"
 msgstr ""
 
-#: Contactmanager.class.php:2443
-#: Contactmanager.class.php:2455
-#: Contactmanager.class.php:2467
-#: Contactmanager.class.php:2484
+#: Contactmanager.class.php:2528
+#: Contactmanager.class.php:2540
+#: Contactmanager.class.php:2552
+#: Contactmanager.class.php:2569
 #: contactmanager.i18n.php:4
 #: contactmanager.i18n.php:8
 #: contactmanager.i18n.php:10
@@ -207,17 +207,17 @@ msgstr ""
 msgid "Contact Manager: %s"
 msgstr ""
 
-#: Contactmanager.class.php:2499
-#: ucp/Contactmanager.class.php:406
+#: Contactmanager.class.php:2584
+#: ucp/Contactmanager.class.php:399
 msgid "Contacts"
 msgstr ""
 
-#: Contactmanager.class.php:2500
+#: Contactmanager.class.php:2585
 msgid "Contacts and internal/external groups from the Contact Manager module."
 msgstr ""
 
-#: Contactmanager.class.php:844
-#: Contactmanager.class.php:863
+#: Contactmanager.class.php:908
+#: Contactmanager.class.php:927
 msgid "Delete"
 msgstr ""
 
@@ -242,8 +242,8 @@ msgstr ""
 
 #: Contactmanager.class.php:26
 #: Contactmanager.class.php:36
-#: Contactmanager.class.php:2524
-#: Contactmanager.class.php:2525
+#: Contactmanager.class.php:2609
+#: Contactmanager.class.php:2610
 #: ucp/views/contact.php:6
 #: ucp/views/contacts.php:33
 #: views/entry.php:68
@@ -264,25 +264,25 @@ msgstr ""
 msgid "E-Mail address cannot be blank."
 msgstr ""
 
-#: Contactmanager.class.php:2569
-#: Contactmanager.class.php:2570
-#: Contactmanager.class.php:2571
+#: Contactmanager.class.php:2654
+#: Contactmanager.class.php:2655
+#: Contactmanager.class.php:2656
 msgid "E-mail address.  External contacts only."
 msgstr ""
 
-#: Contactmanager.class.php:157
+#: Contactmanager.class.php:183
 msgid "ERROR failed to update address field"
 msgstr ""
 
-#: Contactmanager.class.php:141
+#: Contactmanager.class.php:167
 msgid "ERROR failed to update displayname field"
 msgstr ""
 
-#: Contactmanager.class.php:173
+#: Contactmanager.class.php:199
 msgid "ERROR failed to update extension field"
 msgstr ""
 
-#: Contactmanager.class.php:125
+#: Contactmanager.class.php:151
 msgid "ERROR failed to update title field"
 msgstr ""
 
@@ -308,14 +308,14 @@ msgstr ""
 msgid "Ext."
 msgstr ""
 
-#: Contactmanager.class.php:2543
-#: Contactmanager.class.php:2555
-#: Contactmanager.class.php:2567
+#: Contactmanager.class.php:2628
+#: Contactmanager.class.php:2640
+#: Contactmanager.class.php:2652
 msgid "Extension.  External contacts only."
 msgstr ""
 
 #: Contactmanager.class.php:34
-#: Contactmanager.class.php:2520
+#: Contactmanager.class.php:2605
 #: views/group.php:44
 msgid "External"
 msgstr ""
@@ -328,8 +328,8 @@ msgstr ""
 msgid "Facetime"
 msgstr ""
 
-#: Contactmanager.class.php:506
-#: ucp/Contactmanager.class.php:207
+#: Contactmanager.class.php:570
+#: ucp/Contactmanager.class.php:200
 msgid "Failed to write file to disk"
 msgstr ""
 
@@ -338,13 +338,13 @@ msgstr ""
 msgid "Fax"
 msgstr ""
 
-#: Contactmanager.class.php:469
-#: ucp/Contactmanager.class.php:159
+#: Contactmanager.class.php:533
+#: ucp/Contactmanager.class.php:153
 msgid "File upload failed"
 msgstr ""
 
 #: Contactmanager.class.php:27
-#: Contactmanager.class.php:2527
+#: Contactmanager.class.php:2612
 #: ucp/views/contact.php:10
 #: ucp/views/contacts.php:34
 #: views/entry.php:88
@@ -359,7 +359,7 @@ msgstr ""
 msgid "Function call does not exist!"
 msgstr ""
 
-#: Contactmanager.class.php:1196
+#: Contactmanager.class.php:1261
 #, php-format
 msgid "Group '%s' does not exist"
 msgstr ""
@@ -368,7 +368,7 @@ msgstr ""
 msgid "Group Already Exists"
 msgstr ""
 
-#: Contactmanager.class.php:2511
+#: Contactmanager.class.php:2596
 #: ucp/views/groupcreate.php:5
 msgid "Group Name"
 msgstr ""
@@ -377,157 +377,157 @@ msgstr ""
 msgid "Group Name Can Not Be Blank"
 msgstr ""
 
-#: Contactmanager.class.php:2516
+#: Contactmanager.class.php:2601
 msgid "Group Type"
 msgstr ""
 
-#: Contactmanager.class.php:1131
-#: Contactmanager.class.php:1532
-#: Contactmanager.class.php:1580
-#: Contactmanager.class.php:1619
-#: Contactmanager.class.php:1660
+#: Contactmanager.class.php:1196
+#: Contactmanager.class.php:1585
+#: Contactmanager.class.php:1633
+#: Contactmanager.class.php:1672
+#: Contactmanager.class.php:1713
 msgid "Group does not exist"
 msgstr ""
 
-#: Contactmanager.class.php:1649
+#: Contactmanager.class.php:1702
 msgid "Group entries successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:1520
+#: Contactmanager.class.php:1573
 msgid "Group entries successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:2116
+#: Contactmanager.class.php:2196
 msgid "Group entry E-Mail successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:2082
+#: Contactmanager.class.php:2162
 msgid "Group entry E-Mail successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:2137
+#: Contactmanager.class.php:2217
 msgid "Group entry E-Mails successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:2090
-#: Contactmanager.class.php:2099
+#: Contactmanager.class.php:2170
+#: Contactmanager.class.php:2179
 msgid "Group entry E-Mails successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:2208
+#: Contactmanager.class.php:2288
 msgid "Group entry Website successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:2174
+#: Contactmanager.class.php:2254
 msgid "Group entry Website successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:2229
+#: Contactmanager.class.php:2309
 msgid "Group entry Websites successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:2182
-#: Contactmanager.class.php:2191
+#: Contactmanager.class.php:2262
+#: Contactmanager.class.php:2271
 msgid "Group entry Websites successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:2015
+#: Contactmanager.class.php:2095
 msgid "Group entry XMPP successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:1968
+#: Contactmanager.class.php:2048
 msgid "Group entry XMPP successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:2041
+#: Contactmanager.class.php:2121
 msgid "Group entry XMPPs successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:1980
-#: Contactmanager.class.php:1993
+#: Contactmanager.class.php:2060
+#: Contactmanager.class.php:2073
 msgid "Group entry XMPPs successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:1664
-#: Contactmanager.class.php:1811
-#: Contactmanager.class.php:1867
-#: Contactmanager.class.php:2004
-#: Contactmanager.class.php:2029
-#: Contactmanager.class.php:2105
-#: Contactmanager.class.php:2125
-#: Contactmanager.class.php:2197
-#: Contactmanager.class.php:2217
+#: Contactmanager.class.php:1717
+#: Contactmanager.class.php:1875
+#: Contactmanager.class.php:1936
+#: Contactmanager.class.php:2084
+#: Contactmanager.class.php:2109
+#: Contactmanager.class.php:2185
+#: Contactmanager.class.php:2205
+#: Contactmanager.class.php:2277
+#: Contactmanager.class.php:2297
 msgid "Group entry does not exist"
 msgstr ""
 
-#: Contactmanager.class.php:1853
+#: Contactmanager.class.php:1922
 msgid "Group entry image successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:1825
+#: Contactmanager.class.php:1889
 msgid "Group entry number successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:1775
+#: Contactmanager.class.php:1839
 msgid "Group entry number successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:1882
+#: Contactmanager.class.php:1951
 msgid "Group entry numbers successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:1787
-#: Contactmanager.class.php:1800
+#: Contactmanager.class.php:1851
+#: Contactmanager.class.php:1864
 msgid "Group entry numbers successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:1608
+#: Contactmanager.class.php:1661
 msgid "Group entry successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:1488
+#: Contactmanager.class.php:1541
 msgid "Group entry successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:1569
-#: Contactmanager.class.php:1700
+#: Contactmanager.class.php:1622
+#: Contactmanager.class.php:1753
 msgid "Group entry successfully updated"
 msgstr ""
 
-#: Contactmanager.class.php:666
-#: Contactmanager.class.php:1156
-#: Contactmanager.class.php:1199
+#: Contactmanager.class.php:730
+#: Contactmanager.class.php:1221
+#: Contactmanager.class.php:1264
 msgid "Group name can not be blank"
 msgstr ""
 
-#: Contactmanager.class.php:2587
+#: Contactmanager.class.php:2672
 msgid "Group name is required."
 msgstr ""
 
-#: Contactmanager.class.php:2616
+#: Contactmanager.class.php:2701
 msgid "Group not found and could not be created."
 msgstr ""
 
-#: Contactmanager.class.php:1184
+#: Contactmanager.class.php:1249
 msgid "Group successfully added"
 msgstr ""
 
-#: Contactmanager.class.php:1145
+#: Contactmanager.class.php:1210
 msgid "Group successfully deleted"
 msgstr ""
 
-#: Contactmanager.class.php:1211
+#: Contactmanager.class.php:1276
 msgid "Group successfully updated"
 msgstr ""
 
-#: Contactmanager.class.php:2594
+#: Contactmanager.class.php:2679
 msgid "Group type is required."
 msgstr ""
 
-#: Contactmanager.class.php:791
-#: Contactmanager.class.php:2538
-#: Contactmanager.class.php:2550
-#: Contactmanager.class.php:2562
+#: Contactmanager.class.php:855
+#: Contactmanager.class.php:2623
+#: Contactmanager.class.php:2635
+#: Contactmanager.class.php:2647
 #: ucp/views/contact.php:63
 #: ucp/views/contact.php:105
 #: views/group.php:103
@@ -535,20 +535,20 @@ msgid "Home"
 msgstr ""
 
 #: Contactmanager.class.php:24
-#: Contactmanager.class.php:2519
+#: Contactmanager.class.php:2604
 #: views/group.php:45
 msgid "Internal"
 msgstr ""
 
-#: Contactmanager.class.php:457
-#: ucp/Contactmanager.class.php:112
-#: ucp/Contactmanager.class.php:133
-#: ucp/Contactmanager.class.php:147
+#: Contactmanager.class.php:521
+#: ucp/Contactmanager.class.php:110
+#: ucp/Contactmanager.class.php:130
+#: ucp/Contactmanager.class.php:141
 msgid "Invalid"
 msgstr ""
 
 #: Contactmanager.class.php:28
-#: Contactmanager.class.php:2528
+#: Contactmanager.class.php:2613
 #: ucp/views/contact.php:14
 #: ucp/views/contacts.php:35
 #: views/entry.php:108
@@ -567,8 +567,8 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-#: Contactmanager.class.php:503
-#: ucp/Contactmanager.class.php:204
+#: Contactmanager.class.php:567
+#: ucp/Contactmanager.class.php:197
 msgid "Missing a temporary folder"
 msgstr ""
 
@@ -586,12 +586,12 @@ msgstr ""
 msgid "Name of group"
 msgstr ""
 
-#: Contactmanager.class.php:2512
+#: Contactmanager.class.php:2597
 msgid ""
 "Name of group for contact.  If group does not exist, it will be created."
 msgstr ""
 
-#: Contactmanager.class.php:2121
+#: Contactmanager.class.php:2201
 msgid "No E-Mails to add"
 msgstr ""
 
@@ -599,15 +599,15 @@ msgstr ""
 msgid "No Groups for this type"
 msgstr ""
 
-#: Contactmanager.class.php:1863
+#: Contactmanager.class.php:1932
 msgid "No Numbers to add"
 msgstr ""
 
-#: Contactmanager.class.php:2213
+#: Contactmanager.class.php:2293
 msgid "No Websites to add"
 msgstr ""
 
-#: Contactmanager.class.php:2025
+#: Contactmanager.class.php:2105
 msgid "No XMPPs to add"
 msgstr ""
 
@@ -615,13 +615,13 @@ msgstr ""
 msgid "No email defined"
 msgstr ""
 
-#: Contactmanager.class.php:500
-#: ucp/Contactmanager.class.php:201
+#: Contactmanager.class.php:564
+#: ucp/Contactmanager.class.php:194
 msgid "No file was uploaded"
 msgstr ""
 
-#: ucp/Contactmanager.class.php:356
-#: ucp/Contactmanager.class.php:377
+#: ucp/Contactmanager.class.php:349
+#: ucp/Contactmanager.class.php:370
 msgid "Not Authorized"
 msgstr ""
 
@@ -636,36 +636,36 @@ msgstr ""
 msgid "Numbers"
 msgstr ""
 
-#: Contactmanager.class.php:127
-#: Contactmanager.class.php:143
-#: Contactmanager.class.php:159
-#: Contactmanager.class.php:175
+#: Contactmanager.class.php:153
+#: Contactmanager.class.php:169
+#: Contactmanager.class.php:185
+#: Contactmanager.class.php:201
 msgid "OK"
 msgstr ""
 
-#: Contactmanager.class.php:793
-#: Contactmanager.class.php:2540
-#: Contactmanager.class.php:2552
-#: Contactmanager.class.php:2564
+#: Contactmanager.class.php:857
+#: Contactmanager.class.php:2625
+#: Contactmanager.class.php:2637
+#: Contactmanager.class.php:2649
 #: ucp/views/contact.php:65
 #: ucp/views/contact.php:107
 #: views/group.php:105
 msgid "Other"
 msgstr ""
 
-#: Contactmanager.class.php:2533
-#: Contactmanager.class.php:2545
-#: Contactmanager.class.php:2557
+#: Contactmanager.class.php:2618
+#: Contactmanager.class.php:2630
+#: Contactmanager.class.php:2642
 msgid "Phone number.  External contacts only."
 msgstr ""
 
-#: Contactmanager.class.php:434
-#: ucp/Contactmanager.class.php:103
+#: Contactmanager.class.php:497
+#: ucp/Contactmanager.class.php:101
 msgid "Please enter a valid email address"
 msgstr ""
 
-#: Contactmanager.class.php:851
-#: Contactmanager.class.php:870
+#: Contactmanager.class.php:915
+#: Contactmanager.class.php:934
 msgid "Reset"
 msgstr ""
 
@@ -683,25 +683,25 @@ msgstr ""
 msgid "Show In Contact Manager Groups"
 msgstr ""
 
-#: Contactmanager.class.php:856
-#: Contactmanager.class.php:875
+#: Contactmanager.class.php:920
+#: Contactmanager.class.php:939
 msgid "Submit"
 msgstr ""
 
-#: Contactmanager.class.php:494
-#: ucp/Contactmanager.class.php:195
+#: Contactmanager.class.php:558
+#: ucp/Contactmanager.class.php:188
 msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
 msgstr ""
 
-#: Contactmanager.class.php:491
-#: ucp/Contactmanager.class.php:192
+#: Contactmanager.class.php:555
+#: ucp/Contactmanager.class.php:185
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr ""
 
-#: Contactmanager.class.php:497
-#: ucp/Contactmanager.class.php:198
+#: Contactmanager.class.php:561
+#: ucp/Contactmanager.class.php:191
 msgid "The uploaded file was only partially uploaded"
 msgstr ""
 
@@ -715,7 +715,7 @@ msgid ""
 "user in UCP and RestApps (If purchased)"
 msgstr ""
 
-#: Contactmanager.class.php:2529
+#: Contactmanager.class.php:2614
 #: ucp/views/contact.php:18
 #: ucp/views/contacts.php:36
 #: views/entry.php:128
@@ -734,37 +734,37 @@ msgstr ""
 msgid "Type of group"
 msgstr ""
 
-#: Contactmanager.class.php:2517
+#: Contactmanager.class.php:2602
 msgid "Type of group for contact."
 msgstr ""
 
-#: Contactmanager.class.php:2535
-#: Contactmanager.class.php:2547
-#: Contactmanager.class.php:2559
+#: Contactmanager.class.php:2620
+#: Contactmanager.class.php:2632
+#: Contactmanager.class.php:2644
 msgid "Type of phone number.  External contacts only."
 msgstr ""
 
-#: Contactmanager.class.php:442
-#: ucp/Contactmanager.class.php:126
+#: Contactmanager.class.php:505
+#: ucp/Contactmanager.class.php:123
 #, php-format
 msgid "Unable to find gravatar for %s"
 msgstr ""
 
-#: ucp/Contactmanager.class.php:253
-#: ucp/Contactmanager.class.php:261
-#: ucp/Contactmanager.class.php:265
-#: ucp/Contactmanager.class.php:275
-#: ucp/Contactmanager.class.php:284
-#: ucp/Contactmanager.class.php:293
+#: ucp/Contactmanager.class.php:246
+#: ucp/Contactmanager.class.php:254
+#: ucp/Contactmanager.class.php:258
+#: ucp/Contactmanager.class.php:268
+#: ucp/Contactmanager.class.php:277
+#: ucp/Contactmanager.class.php:286
 msgid "Unauthorized"
 msgstr ""
 
-#: Contactmanager.class.php:2668
+#: Contactmanager.class.php:2753
 msgid "Unknown data type."
 msgstr ""
 
-#: Contactmanager.class.php:486
-#: ucp/Contactmanager.class.php:187
+#: Contactmanager.class.php:550
+#: ucp/Contactmanager.class.php:180
 msgid "Unsupported file format"
 msgstr ""
 
@@ -785,11 +785,11 @@ msgstr ""
 msgid "User"
 msgstr ""
 
-#: Contactmanager.class.php:208
+#: Contactmanager.class.php:234
 msgid "User Manager Group"
 msgstr ""
 
-#: Contactmanager.class.php:2532
+#: Contactmanager.class.php:2617
 msgid ""
 "User Manager username this contact should point to.  Internal contacts only."
 msgstr ""
@@ -811,10 +811,10 @@ msgstr ""
 msgid "What internal groups to show this user in"
 msgstr ""
 
-#: Contactmanager.class.php:790
-#: Contactmanager.class.php:2537
-#: Contactmanager.class.php:2549
-#: Contactmanager.class.php:2561
+#: Contactmanager.class.php:854
+#: Contactmanager.class.php:2622
+#: Contactmanager.class.php:2634
+#: Contactmanager.class.php:2646
 #: ucp/views/contact.php:62
 #: ucp/views/contact.php:104
 #: views/group.php:102
@@ -829,45 +829,45 @@ msgstr ""
 msgid "XMPP address cannot be blank."
 msgstr ""
 
-#: Contactmanager.class.php:130
-#: Contactmanager.class.php:146
-#: Contactmanager.class.php:162
-#: Contactmanager.class.php:178
+#: Contactmanager.class.php:156
+#: Contactmanager.class.php:172
+#: Contactmanager.class.php:188
+#: Contactmanager.class.php:204
 msgid "already exists"
 msgstr ""
 
-#: Contactmanager.class.php:1312
+#: Contactmanager.class.php:1359
 msgid "cell"
 msgstr ""
 
-#: Contactmanager.class.php:149
+#: Contactmanager.class.php:175
 msgid "checking for address field.."
 msgstr ""
 
-#: Contactmanager.class.php:133
+#: Contactmanager.class.php:159
 msgid "checking for displayname field.."
 msgstr ""
 
-#: Contactmanager.class.php:165
+#: Contactmanager.class.php:191
 msgid "checking for extension field.."
 msgstr ""
 
-#: Contactmanager.class.php:117
+#: Contactmanager.class.php:143
 msgid "checking for title field.."
 msgstr ""
 
-#: Contactmanager.class.php:1311
+#: Contactmanager.class.php:1358
 msgid "extension"
 msgstr ""
 
-#: Contactmanager.class.php:1315
+#: Contactmanager.class.php:1362
 msgid "fax"
 msgstr ""
 
-#: Contactmanager.class.php:1314
+#: Contactmanager.class.php:1361
 msgid "home"
 msgstr ""
 
-#: Contactmanager.class.php:1313
+#: Contactmanager.class.php:1360
 msgid "work"
 msgstr ""
