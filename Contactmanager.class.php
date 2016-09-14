@@ -459,7 +459,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					$data = $this->lookupByUserID(-1, $did,"/\D/");
 				}
 				if(!empty($data) && !empty($data['image'])) {
-					$data = $this->getImageByID($data['uid'],$data['email'], $data['type']);
+					$data = $this->getImageByID($data['id'],$data['email'], $data['type']);
 					if(!empty($data['image'])) {
 						$buffer = $data['image'];
 					}

@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.41.4</version>
+	<version>13.0.41.5</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.41.5* FREEPBX-13129 again
 		*13.0.41.4* FREEPBX-13129 again
 		*13.0.41.3* FREEPBX-13129 Userman contact image not functional in userman nor UCP
 		*13.0.41.2* FREEPBX-13144 Cannot see details on users despite permissions
