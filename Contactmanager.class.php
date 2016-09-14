@@ -396,7 +396,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					return true;
 				}
 			case "limage":
-				$this->displayContactImage();
+				$entryid = !empty($_REQUEST['entryid']) ? $_REQUEST['entryid'] : null;
+				$type = !empty($_REQUEST['type']) ? $_REQUEST['type'] : null;
+				$this->displayContactImage($entryid, $type);
 				return true;
 			break;
 		}

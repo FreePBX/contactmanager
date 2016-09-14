@@ -11,7 +11,7 @@
 						<div class="col-md-4">
 							<div id="contactmanager_dropzone" class="image">
 								<div class="message"><?php echo _("Drop a new image here");?></div>
-								<img class="<?php echo (!empty($cmdata) && !empty($cmdata['image'])) ? '' : 'hidden'?>" src="<?php echo (!empty($cmdata) && !empty($cmdata['image'])) ? 'ajax.php?module=contactmanager&amp;command=limage&amp;entryid='.$cmdata['id'] : ''?>">
+								<img class="<?php echo (!empty($cmdata) && !empty($cmdata['image'])) ? '' : 'hidden'?>" src="<?php echo (!empty($cmdata) && !empty($cmdata['image'])) ? 'ajax.php?module=contactmanager&amp;command=limage&amp;type=internal&amp;entryid='.$cmdata['id'] : ''?>">
 							</div>
 							<button id="contactmanager_del-image" data-entryid="<?php echo !empty($cmdata) ? $cmdata['id'] : ''?>" class="btn btn-danger btn-sm <?php echo (!empty($cmdata) && !empty($cmdata['image'])) ? '' : 'hidden'?>"><?php echo _("Delete Image")?></button>
 						</div>
