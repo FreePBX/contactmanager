@@ -295,12 +295,14 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql1 = "DELETE FROM contactmanager_entry_images WHERE entryid = :id";
 		$sth1 = $this->db->prepare($sql1);
 		foreach($entries as $entry) {
-			$sth->execute(array(
-				"uid" => $entry['user'],
-				"image" => $entry['image'],
-				"format" => $entry['format'],
-				"gravatar" => $entry['gravatar']
-			));
+			try {
+				$sth->execute(array(
+					"uid" => $entry['user'],
+					"image" => $entry['image'],
+					"format" => $entry['format'],
+					"gravatar" => $entry['gravatar']
+				));
+			} catch(\Exception $e) {}
 			$sth1->execute(array("id" => $entry['entryid']));
 		}
 	}
