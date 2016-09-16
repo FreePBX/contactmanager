@@ -2404,8 +2404,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 * @param {int} $id The userman user id
 	 * @param {string} $search search string
 	 * @param {string} $regexp Regular Expression pattern to replace
+	 * @param {boolean} $regexpsearch Allow regular expressions to be passed into search. Make sure you preg_quote!
 	 */
-	public function lookupByUserID($id, $search, $regexp = null) {
+	public function lookupByUserID($id, $search, $regexp = null, $regexpsearch = false) {
 		if(trim($search) == "") {
 			return false;
 		}
@@ -2426,6 +2427,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			"type",
 			"image"
 		);
+		if(!$regexpsearch) {
+			$search = preg_quote($search,"/");
+		}
 		$contacts = $this->getContactsByUserID($id);
 		$iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($contacts));
 		foreach($iterator as $key => $value) {
@@ -2434,8 +2438,6 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			}
 			$value = !empty($regexp) ? preg_replace($regexp,'',$value) : $value;
 			$value = trim($value);
-			$search = str_replace("*","",$search);
-			$search = preg_quote($search,"/");
 			if(!empty($value) && preg_match('/' . $search . '/i',$value)) {
 				$k = $iterator->getSubIterator(0)->key();
 				$this->contactsCache[$search] = $contacts[$k];
@@ -2451,8 +2453,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 * @param {int} $id The userman user id
 	 * @param {string} $search search string
 	 * @param {string} $regexp Regular Expression pattern to replace
+	 * @param {boolean} $regexpsearch Allow regular expressions to be passed into search. Make sure you preg_quote!
 	 */
-	public function lookupMultipleByUserID($id, $search, $regexp = null) {
+	public function lookupMultipleByUserID($id, $search, $regexp = null, $regexpsearch = false) {
 		$contacts = $this->getContactsByUserID($id);
 		$final = array();
 		$list = array();
@@ -2469,6 +2472,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			"permissions",
 			"type"
 		);
+		if(!$regexpsearch) {
+			$search = preg_quote($search,"/");
+		}
 		$iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($contacts));
 		foreach($iterator as $key => $value) {
 			if(in_array($key,$skip)) {
@@ -2477,8 +2483,6 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			$value = !empty($regexp) ? preg_replace($regexp,'',$value) : $value;
 			$value = trim($value);
 			$k = $iterator->getSubIterator(0)->key();
-			$search = str_replace("*","",$search);
-			$search = preg_quote($search,"/");
 			if(!in_array($k, $list) && !empty($value) && preg_match('/' . $search . '/i',$value)) {
 				$final[] = $contacts[$k];
 				$list[] = $k;
