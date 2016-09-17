@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.41.7</version>
+	<version>13.0.41.8</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.41.8* FREEPBX-13035 fix contact type select boxes
 		*13.0.41.7* FREEPBX-13165 Fix error during contact search
 		*13.0.41.6* FREEPBX-13146 error on upgrade when usermanager contacts already exist
 		*13.0.41.5* FREEPBX-13129 again

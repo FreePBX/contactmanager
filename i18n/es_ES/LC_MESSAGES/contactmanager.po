@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-16 14:33-0700\n"
+"POT-Creation-Date: 2016-09-16 18:31-0700\n"
 "PO-Revision-Date: 2016-06-08 06:15+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
@@ -25,19 +25,19 @@ msgstr ""
 msgid "A PHP extension stopped the file upload"
 msgstr ""
 
-#: views/entry.php:329
+#: views/entry.php:331
 msgid "A list of E-Mail addresses belonging to this entry"
 msgstr "Una lista de direcciones de correo pertenecientes a esta entrada"
 
-#: views/entry.php:297
+#: views/entry.php:299
 msgid "A list of XMPP addresses belonging to this entry"
 msgstr "Una lista de direcciones XMPP pertenecientes a esta entrada"
 
-#: views/entry.php:265
+#: views/entry.php:267
 msgid "A list of numbers belonging to this entry"
 msgstr "Una lista de números pertenecientes a esta entrada"
 
-#: views/entry.php:361
+#: views/entry.php:363
 msgid "A list of websites belonging to this entry"
 msgstr "Una lista de sitios Web pertenecientes a esta entrada"
 
@@ -53,7 +53,7 @@ msgstr "Acciones"
 msgid "Add Contact"
 msgstr "Agregar Contacto"
 
-#: ucp/views/contact.php:192 views/entry.php:321
+#: ucp/views/contact.php:192 views/entry.php:323
 msgid "Add Email"
 msgstr "Agregar Correo Electrónico"
 
@@ -77,11 +77,11 @@ msgstr "Agregar Numero"
 msgid "Add User"
 msgstr "Añadir Usuario"
 
-#: ucp/views/contact.php:219 views/entry.php:353
+#: ucp/views/contact.php:219 views/entry.php:355
 msgid "Add Website"
 msgstr "Agregar sitio Web"
 
-#: ucp/views/contact.php:165 views/entry.php:289
+#: ucp/views/contact.php:165 views/entry.php:291
 msgid "Add XMPP"
 msgstr "Agregar XMPP"
 
@@ -268,7 +268,7 @@ msgstr "Editar Entrada"
 msgid "Edit Group"
 msgstr "Editar Grupo"
 
-#: ucp/views/contact.php:168 views/entry.php:307
+#: ucp/views/contact.php:168 views/entry.php:309
 msgid "Email"
 msgstr "Correo"
 
@@ -705,7 +705,7 @@ msgstr ""
 msgid "Viewable Contact Manager Groups"
 msgstr ""
 
-#: ucp/views/contact.php:195 views/entry.php:339
+#: ucp/views/contact.php:195 views/entry.php:341
 msgid "Website"
 msgstr "Sitio Web"
 
@@ -723,7 +723,7 @@ msgstr ""
 msgid "Work"
 msgstr "Trabajo"
 
-#: views/entry.php:275
+#: views/entry.php:277
 msgid "XMPP"
 msgstr "XMPP"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-16 14:33-0700\n"
+"POT-Creation-Date: 2016-09-16 18:31-0700\n"
 "PO-Revision-Date: 2016-09-02 15:22+0200\n"
 "Last-Translator: Kenichi <k.kitani@qloog.com>\n"
 "Language-Team: Japanese <http://weblate.freepbx.org/projects/freepbx/"
@@ -26,19 +26,19 @@ msgid "A PHP extension stopped the file upload"
 msgstr ""
 "ファイルのアップロードは、PHPのエクステンションによって中断されました。"
 
-#: views/entry.php:329
+#: views/entry.php:331
 msgid "A list of E-Mail addresses belonging to this entry"
 msgstr "このエントリのメールアドレスのリスト"
 
-#: views/entry.php:297
+#: views/entry.php:299
 msgid "A list of XMPP addresses belonging to this entry"
 msgstr "このエントリのXMPPアドレスのリスト"
 
-#: views/entry.php:265
+#: views/entry.php:267
 msgid "A list of numbers belonging to this entry"
 msgstr "このエントリの電話番号のリスト"
 
-#: views/entry.php:361
+#: views/entry.php:363
 msgid "A list of websites belonging to this entry"
 msgstr "このエントリのウェブサイトのリスト"
 
@@ -54,7 +54,7 @@ msgstr "アクション"
 msgid "Add Contact"
 msgstr "連絡先を追加"
 
-#: ucp/views/contact.php:192 views/entry.php:321
+#: ucp/views/contact.php:192 views/entry.php:323
 msgid "Add Email"
 msgstr "メールを追加"
 
@@ -78,11 +78,11 @@ msgstr "番号を追加"
 msgid "Add User"
 msgstr "ユーザを追加"
 
-#: ucp/views/contact.php:219 views/entry.php:353
+#: ucp/views/contact.php:219 views/entry.php:355
 msgid "Add Website"
 msgstr "ホームページを追加"
 
-#: ucp/views/contact.php:165 views/entry.php:289
+#: ucp/views/contact.php:165 views/entry.php:291
 msgid "Add XMPP"
 msgstr "XMPPを追加"
 
@@ -265,7 +265,7 @@ msgstr "エントリを編集"
 msgid "Edit Group"
 msgstr "グループを編集"
 
-#: ucp/views/contact.php:168 views/entry.php:307
+#: ucp/views/contact.php:168 views/entry.php:309
 msgid "Email"
 msgstr "メール"
 
@@ -699,7 +699,7 @@ msgstr "この連絡先が参照する、ユーザ管理のユーザ名。※内
 msgid "Viewable Contact Manager Groups"
 msgstr ""
 
-#: ucp/views/contact.php:195 views/entry.php:339
+#: ucp/views/contact.php:195 views/entry.php:341
 msgid "Website"
 msgstr "ホームページ"
 
@@ -717,7 +717,7 @@ msgstr ""
 msgid "Work"
 msgstr "勤務先"
 
-#: views/entry.php:275
+#: views/entry.php:277
 msgid "XMPP"
 msgstr "XMPP"
 

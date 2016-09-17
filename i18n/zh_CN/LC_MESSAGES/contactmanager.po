@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-16 14:33-0700\n"
+"POT-Creation-Date: 2016-09-16 18:31-0700\n"
 "PO-Revision-Date: 2015-11-23 13:56+0200\n"
 "Last-Translator: james <zhulizhong@gmail.com>\n"
 "Language-Team: Simplified Chinese <http://weblate.freepbx.org/projects/"
@@ -25,19 +25,19 @@ msgstr ""
 msgid "A PHP extension stopped the file upload"
 msgstr ""
 
-#: views/entry.php:329
+#: views/entry.php:331
 msgid "A list of E-Mail addresses belonging to this entry"
 msgstr ""
 
-#: views/entry.php:297
+#: views/entry.php:299
 msgid "A list of XMPP addresses belonging to this entry"
 msgstr ""
 
-#: views/entry.php:265
+#: views/entry.php:267
 msgid "A list of numbers belonging to this entry"
 msgstr ""
 
-#: views/entry.php:361
+#: views/entry.php:363
 msgid "A list of websites belonging to this entry"
 msgstr ""
 
@@ -53,7 +53,7 @@ msgstr "操作"
 msgid "Add Contact"
 msgstr ""
 
-#: ucp/views/contact.php:192 views/entry.php:321
+#: ucp/views/contact.php:192 views/entry.php:323
 msgid "Add Email"
 msgstr ""
 
@@ -77,11 +77,11 @@ msgstr ""
 msgid "Add User"
 msgstr "添加用户"
 
-#: ucp/views/contact.php:219 views/entry.php:353
+#: ucp/views/contact.php:219 views/entry.php:355
 msgid "Add Website"
 msgstr ""
 
-#: ucp/views/contact.php:165 views/entry.php:289
+#: ucp/views/contact.php:165 views/entry.php:291
 msgid "Add XMPP"
 msgstr ""
 
@@ -264,7 +264,7 @@ msgstr ""
 msgid "Edit Group"
 msgstr "编辑组"
 
-#: ucp/views/contact.php:168 views/entry.php:307
+#: ucp/views/contact.php:168 views/entry.php:309
 msgid "Email"
 msgstr "邮件"
 
@@ -698,7 +698,7 @@ msgstr ""
 msgid "Viewable Contact Manager Groups"
 msgstr ""
 
-#: ucp/views/contact.php:195 views/entry.php:339
+#: ucp/views/contact.php:195 views/entry.php:341
 msgid "Website"
 msgstr ""
 
@@ -716,7 +716,7 @@ msgstr ""
 msgid "Work"
 msgstr ""
 
-#: views/entry.php:275
+#: views/entry.php:277
 msgid "XMPP"
 msgstr ""
 
