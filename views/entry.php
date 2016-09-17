@@ -245,8 +245,10 @@ foreach ($users as $u) {
 															<td>
 																<input type="text" class="form-control" name="number[<?php echo $numcount?>]" value="<?php echo $number['number']?>">Ext.<input type="text" class="form-control" name="extension[<?php echo $numcount?>]" value="<?php echo $number['extension']?>">
 																<select class="form-control" name="numbertype[<?php echo $numcount?>]">
-																	<?php foreach($numbertypes as $key => $val) {?>
-																		<option value="<?php echo $key?>"><?php echo $val?></option>
+																	<?php foreach($numbertypes as $key => $val) {
+																		$selected = ($number['type'] == $key)?'SELECTED':'';
+																	?>
+																		<option value="<?php echo $key?>" <?php echo $selected?>><?php echo $val?></option>
 																	<?php } ?>
 																</select>
 															</td>
