@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-16 18:31-0700\n"
-"PO-Revision-Date: 2016-10-05 18:48+0200\n"
+"PO-Revision-Date: 2016-10-05 19:58+0200\n"
 "Last-Translator: Maxim <maxim@ua.fm>\n"
 "Language-Team: Ukrainian "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/uk_UA/>\n"
@@ -158,15 +158,15 @@ msgstr "Компанія"
 
 #: views/entry.php:201
 msgid "Company (overrides Company from User Manager)"
-msgstr ""
+msgstr "Компанія (перевизначає компанію з диспетчера користувачів)"
 
 #: views/entry.php:148 views/user_details_hook.php:7
 msgid "Contact Image"
-msgstr ""
+msgstr "Зображення контакту"
 
 #: views/entry.php:181
 msgid "Contact Image for this user"
-msgstr ""
+msgstr "Зображення контакту для цього користувача"
 
 #: views/user_details_hook.php:40
 msgid ""
@@ -179,16 +179,16 @@ msgstr ""
 #: contactmanager.i18n.php:4 contactmanager.i18n.php:8
 #: contactmanager.i18n.php:10
 msgid "Contact Manager"
-msgstr ""
+msgstr "Менеджер контактів"
 
 #: functions.inc.php:39 functions.inc.php:42
 #, php-format
 msgid "Contact Manager: %s"
-msgstr ""
+msgstr "Менеджер контактів: %s"
 
 #: Contactmanager.class.php:2592 ucp/Contactmanager.class.php:399
 msgid "Contacts"
-msgstr ""
+msgstr "Контакти"
 
 #: Contactmanager.class.php:2593
 msgid "Contacts and internal/external groups from the Contact Manager module."
@@ -196,29 +196,29 @@ msgstr ""
 
 #: Contactmanager.class.php:912 Contactmanager.class.php:931
 msgid "Delete"
-msgstr ""
+msgstr "Видалити"
 
 #: ucp/views/contact.php:226 ucp/views/contactro.php:81
 msgid "Delete Contact"
-msgstr ""
+msgstr "Видалити контакт"
 
 #: views/grid.php:30
 msgid "Delete Group"
-msgstr ""
+msgstr "Видалити групу"
 
 #: ucp/views/contact.php:31 views/entry.php:157 views/user_details_hook.php:16
 msgid "Delete Image"
-msgstr ""
+msgstr "Видалити зображення"
 
 #: ucp/assets/js/global.js:172
 msgid "Deleting..."
-msgstr ""
+msgstr "Видалення..."
 
 #: Contactmanager.class.php:26 Contactmanager.class.php:36
 #: Contactmanager.class.php:2617 Contactmanager.class.php:2618
 #: ucp/views/contact.php:6 ucp/views/contacts.php:33 views/entry.php:68
 msgid "Display Name"
-msgstr ""
+msgstr "Відображене ім'я"
 
 #: views/entry.php:78
 msgid "Display Name (overrides Display Name from User Manager)"
@@ -226,11 +226,11 @@ msgstr ""
 
 #: ucp/views/contact.php:28 views/entry.php:154 views/user_details_hook.php:13
 msgid "Drop a new image here"
-msgstr ""
+msgstr "Киньте нове зображення тут"
 
 #: assets/js/contactmanager.js:36
 msgid "E-Mail address cannot be blank."
-msgstr ""
+msgstr "Електронна пошта не може бути порожньою."
 
 #: Contactmanager.class.php:2662 Contactmanager.class.php:2663
 #: Contactmanager.class.php:2664
@@ -255,23 +255,23 @@ msgstr ""
 
 #: ucp/views/contactro.php:80
 msgid "Edit Contact"
-msgstr ""
+msgstr "Редагувати контакт"
 
 #: views/entry.php:29
 msgid "Edit Entry"
-msgstr ""
+msgstr "Редагувати запис"
 
 #: views/grid.php:29 views/group.php:7
 msgid "Edit Group"
-msgstr ""
+msgstr "Редагувати групу"
 
 #: ucp/views/contact.php:168 views/entry.php:309
 msgid "Email"
-msgstr ""
+msgstr "Електронна пошта"
 
 #: assets/js/contactmanager.js:91
 msgid "Ext."
-msgstr ""
+msgstr "Дод."
 
 #: Contactmanager.class.php:2636 Contactmanager.class.php:2648
 #: Contactmanager.class.php:2660
@@ -285,7 +285,7 @@ msgstr ""
 
 #: assets/js/contactmanager.js:101
 msgid "FAX"
-msgstr ""
+msgstr "Факс"
 
 #: ucp/assets/js/global.js:29
 msgid "Facetime"
@@ -293,11 +293,11 @@ msgstr ""
 
 #: Contactmanager.class.php:574 ucp/Contactmanager.class.php:200
 msgid "Failed to write file to disk"
-msgstr ""
+msgstr "Не вдалося записати файл на диск"
 
 #: ucp/views/contact.php:81 ucp/views/contact.php:123
 msgid "Fax"
-msgstr ""
+msgstr "Факс"
 
 #: Contactmanager.class.php:537 ucp/Contactmanager.class.php:153
 msgid "File upload failed"
@@ -306,7 +306,7 @@ msgstr ""
 #: Contactmanager.class.php:27 Contactmanager.class.php:2620
 #: ucp/views/contact.php:10 ucp/views/contacts.php:34 views/entry.php:88
 msgid "First Name"
-msgstr ""
+msgstr "Ім'я"
 
 #: views/entry.php:98
 msgid "First Name (overrides First Name from User Manager)"
@@ -323,19 +323,19 @@ msgstr ""
 
 #: ucp/assets/js/global.js:306
 msgid "Group Already Exists"
-msgstr ""
+msgstr "Група вже існує"
 
 #: Contactmanager.class.php:2604 ucp/views/groupcreate.php:5
 msgid "Group Name"
-msgstr ""
+msgstr "Ім'я групи"
 
 #: ucp/assets/js/global.js:311
 msgid "Group Name Can Not Be Blank"
-msgstr ""
+msgstr "Ім'я групи не може бути порожнім"
 
 #: Contactmanager.class.php:2609
 msgid "Group Type"
-msgstr ""
+msgstr "Тип групи"
 
 #: Contactmanager.class.php:1200 Contactmanager.class.php:1589
 #: Contactmanager.class.php:1637 Contactmanager.class.php:1676
@@ -472,7 +472,7 @@ msgstr ""
 #: Contactmanager.class.php:2643 Contactmanager.class.php:2655
 #: ucp/views/contact.php:63 ucp/views/contact.php:105 views/group.php:103
 msgid "Home"
-msgstr ""
+msgstr "До дому"
 
 #: Contactmanager.class.php:24 Contactmanager.class.php:2612
 #: views/group.php:45
@@ -482,12 +482,12 @@ msgstr ""
 #: Contactmanager.class.php:525 ucp/Contactmanager.class.php:110
 #: ucp/Contactmanager.class.php:130 ucp/Contactmanager.class.php:141
 msgid "Invalid"
-msgstr ""
+msgstr "Недійсний"
 
 #: Contactmanager.class.php:28 Contactmanager.class.php:2621
 #: ucp/views/contact.php:14 ucp/views/contacts.php:35 views/entry.php:108
 msgid "Last Name"
-msgstr ""
+msgstr "Прізвище"
 
 #: views/entry.php:118
 msgid "Last Name (overrides Last Name from User Manager)"
@@ -499,19 +499,19 @@ msgstr ""
 
 #: ucp/assets/js/global.js:425
 msgid "Loading..."
-msgstr ""
+msgstr "Завантажується..."
 
 #: Contactmanager.class.php:571 ucp/Contactmanager.class.php:197
 msgid "Missing a temporary folder"
-msgstr ""
+msgstr "Відсутня тимчасова папка"
 
 #: ucp/views/nav.php:3
 msgid "My Contacts"
-msgstr ""
+msgstr "Мої контакти"
 
 #: views/group.php:18 views/group.php:85 views/group.php:90
 msgid "Name"
-msgstr ""
+msgstr "Ім'я"
 
 #: views/group.php:28
 msgid "Name of group"
@@ -544,7 +544,7 @@ msgstr ""
 
 #: ucp/assets/js/global.js:420
 msgid "No email defined"
-msgstr ""
+msgstr "Електронна пошта не визначена"
 
 #: Contactmanager.class.php:568 ucp/Contactmanager.class.php:194
 msgid "No file was uploaded"
@@ -566,13 +566,13 @@ msgstr ""
 #: Contactmanager.class.php:153 Contactmanager.class.php:169
 #: Contactmanager.class.php:185 Contactmanager.class.php:201
 msgid "OK"
-msgstr ""
+msgstr "Добре"
 
 #: Contactmanager.class.php:861 Contactmanager.class.php:2633
 #: Contactmanager.class.php:2645 Contactmanager.class.php:2657
 #: ucp/views/contact.php:65 ucp/views/contact.php:107 views/group.php:105
 msgid "Other"
-msgstr ""
+msgstr "Інше"
 
 #: Contactmanager.class.php:2626 Contactmanager.class.php:2638
 #: Contactmanager.class.php:2650
@@ -585,16 +585,17 @@ msgstr ""
 
 #: Contactmanager.class.php:919 Contactmanager.class.php:938
 msgid "Reset"
-msgstr ""
+msgstr "Скинути"
 
 #: ucp/views/contact.php:69 ucp/views/contact.php:111
 #: assets/js/contactmanager.js:99
+#, fuzzy
 msgid "SMS"
-msgstr ""
+msgstr "SMS"
 
 #: ucp/assets/js/global.js:82
 msgid "Select an Action"
-msgstr ""
+msgstr "Виберіть дію"
 
 #: views/userman_hook.php:7
 msgid "Show In Contact Manager Groups"
@@ -602,7 +603,7 @@ msgstr ""
 
 #: Contactmanager.class.php:924 Contactmanager.class.php:943
 msgid "Submit"
-msgstr ""
+msgstr "Застосувати"
 
 #: Contactmanager.class.php:562 ucp/Contactmanager.class.php:188
 msgid ""
@@ -616,11 +617,11 @@ msgstr ""
 
 #: Contactmanager.class.php:565 ucp/Contactmanager.class.php:191
 msgid "The uploaded file was only partially uploaded"
-msgstr ""
+msgstr "Файл завантажено частково"
 
 #: ucp/assets/js/global.js:76
 msgid "There are no actions for this type"
-msgstr ""
+msgstr "Немає дій для даного типа"
 
 #: views/userman_hook.php:49
 msgid ""
@@ -631,7 +632,7 @@ msgstr ""
 #: Contactmanager.class.php:2622 ucp/views/contact.php:18
 #: ucp/views/contacts.php:36 views/entry.php:128
 msgid "Title"
-msgstr ""
+msgstr "Назва"
 
 #: views/entry.php:138
 msgid "Title (overrides Title from User Manager)"
@@ -639,15 +640,15 @@ msgstr ""
 
 #: views/group.php:39
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: views/group.php:54
 msgid "Type of group"
-msgstr ""
+msgstr "Тип групи"
 
 #: Contactmanager.class.php:2610
 msgid "Type of group for contact."
-msgstr ""
+msgstr "Тип групи для контакту."
 
 #: Contactmanager.class.php:2628 Contactmanager.class.php:2640
 #: Contactmanager.class.php:2652
@@ -657,34 +658,34 @@ msgstr ""
 #: Contactmanager.class.php:509 ucp/Contactmanager.class.php:123
 #, php-format
 msgid "Unable to find gravatar for %s"
-msgstr ""
+msgstr "Неможливо знайти граватар для %s"
 
 #: ucp/Contactmanager.class.php:246 ucp/Contactmanager.class.php:254
 #: ucp/Contactmanager.class.php:258 ucp/Contactmanager.class.php:268
 #: ucp/Contactmanager.class.php:277 ucp/Contactmanager.class.php:286
 msgid "Unauthorized"
-msgstr ""
+msgstr "Недозволено"
 
 #: Contactmanager.class.php:2761
 msgid "Unknown data type."
-msgstr ""
+msgstr "Невідомий тип даних."
 
 #: Contactmanager.class.php:554 ucp/Contactmanager.class.php:180
 msgid "Unsupported file format"
-msgstr ""
+msgstr "Непідтримуваний формат файлу"
 
 #: assets/js/contactmanager.js:208 ucp/assets/js/global.js:361
 msgid "Unsupported file type"
-msgstr ""
+msgstr "Непідтримуваний тип файлу"
 
 #: ucp/views/contact.php:45 views/user_details_hook.php:30
 msgid "Use Gravatar"
-msgstr ""
+msgstr "Використовувати Gravatar"
 
 #: Contactmanager.class.php:29 views/entry.php:41 views/group.php:86
 #: views/group.php:96
 msgid "User"
-msgstr ""
+msgstr "Користувач"
 
 #: Contactmanager.class.php:234
 msgid "User Manager Group"
@@ -701,7 +702,7 @@ msgstr ""
 
 #: ucp/views/contact.php:195 views/entry.php:341
 msgid "Website"
-msgstr ""
+msgstr "Веб-сторінка"
 
 #: assets/js/contactmanager.js:47
 msgid "Website cannot be blank."
@@ -718,8 +719,9 @@ msgid "Work"
 msgstr ""
 
 #: views/entry.php:277
+#, fuzzy
 msgid "XMPP"
-msgstr ""
+msgstr "XMPP"
 
 #: assets/js/contactmanager.js:25
 msgid "XMPP address cannot be blank."
@@ -756,12 +758,12 @@ msgstr ""
 
 #: Contactmanager.class.php:1366
 msgid "fax"
-msgstr ""
+msgstr "факс"
 
 #: Contactmanager.class.php:1365
 msgid "home"
-msgstr ""
+msgstr "домашній"
 
 #: Contactmanager.class.php:1364
 msgid "work"
-msgstr ""
+msgstr "робочий"
