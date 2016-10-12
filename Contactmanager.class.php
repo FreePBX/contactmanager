@@ -257,6 +257,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			//Now scan all the old users/groups from userman and get the setting
 			$users = $this->userman->getAllUsers();
 			foreach($users as $user) {
+				if(empty($user['id'])) {
+					continue;
+				}
 				$show = $this->userman->getModuleSettingByID($user['id'],"contactmanager","show");
 				if($show) {
 					$gs = $this->userman->getModuleSettingByID($user['id'],"contactmanager","showingroups");
