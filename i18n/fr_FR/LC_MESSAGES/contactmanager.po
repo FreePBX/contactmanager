@@ -10,16 +10,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-31 15:57-0700\n"
-"PO-Revision-Date: 2016-02-20 20:37+0200\n"
-"Last-Translator: Nicolas Riendeau <freepbx@riendeau.org>\n"
-"Language-Team: French <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/fr_FR/>\n"
+"PO-Revision-Date: 2016-11-20 00:05+0200\n"
+"Last-Translator: Pascal <pascal.noyel@ipexia.com>\n"
+"Language-Team: French "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/fr_FR/>\n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.2-dev\n"
+"X-Generator: Weblate 2.4\n"
 
 #: Contactmanager.class.php:594 ucp/Contactmanager.class.php:203
 msgid "A PHP extension stopped the file upload"
@@ -127,7 +127,7 @@ msgstr ""
 
 #: ucp/views/contact.php:36 views/entry.php:162 views/user_details_hook.php:21
 msgid "Browse"
-msgstr ""
+msgstr "Naviguer"
 
 #: ucp/assets/js/global.js:27
 msgid "Call To"
@@ -153,7 +153,7 @@ msgstr ""
 #: ucp/views/contact.php:22 ucp/views/contacts.php:37 views/entry.php:191
 #: views/group.php:91
 msgid "Company"
-msgstr "Compagnie"
+msgstr "Entreprise"
 
 #: views/entry.php:201
 msgid "Company (overrides Company from User Manager)"
@@ -161,7 +161,7 @@ msgstr ""
 
 #: views/entry.php:148 views/user_details_hook.php:7
 msgid "Contact Image"
-msgstr ""
+msgstr "Image du contact"
 
 #: views/entry.php:181
 msgid "Contact Image for this user"
@@ -207,7 +207,7 @@ msgstr ""
 
 #: ucp/views/contact.php:31 views/entry.php:157 views/user_details_hook.php:16
 msgid "Delete Image"
-msgstr ""
+msgstr "Supprimer l'image"
 
 #: ucp/assets/js/global.js:172
 msgid "Deleting..."
@@ -225,7 +225,7 @@ msgstr ""
 
 #: ucp/views/contact.php:28 views/entry.php:154 views/user_details_hook.php:13
 msgid "Drop a new image here"
-msgstr ""
+msgstr "Déposer une nouvelle image ici"
 
 #: assets/js/contactmanager.js:36
 msgid "E-Mail address cannot be blank."
@@ -266,7 +266,7 @@ msgstr "Éditer le groupe"
 
 #: ucp/views/contact.php:168 views/entry.php:309
 msgid "Email"
-msgstr "Courriel"
+msgstr "Email"
 
 #: assets/js/contactmanager.js:91
 msgid "Ext."
@@ -471,7 +471,7 @@ msgstr ""
 #: Contactmanager.class.php:2671 Contactmanager.class.php:2683
 #: ucp/views/contact.php:63 ucp/views/contact.php:105 views/group.php:103
 msgid "Home"
-msgstr "Acceuil"
+msgstr "Accueil"
 
 #: Contactmanager.class.php:24 Contactmanager.class.php:2640
 #: views/group.php:45
@@ -481,7 +481,7 @@ msgstr ""
 #: Contactmanager.class.php:542 ucp/Contactmanager.class.php:110
 #: ucp/Contactmanager.class.php:130 ucp/Contactmanager.class.php:141
 msgid "Invalid"
-msgstr ""
+msgstr "Invalide"
 
 #: Contactmanager.class.php:28 Contactmanager.class.php:2649
 #: ucp/views/contact.php:14 ucp/views/contacts.php:35 views/entry.php:108
@@ -498,7 +498,7 @@ msgstr ""
 
 #: ucp/assets/js/global.js:425
 msgid "Loading..."
-msgstr ""
+msgstr "Chargement..."
 
 #: Contactmanager.class.php:588 ucp/Contactmanager.class.php:197
 msgid "Missing a temporary folder"
@@ -543,7 +543,7 @@ msgstr ""
 
 #: ucp/assets/js/global.js:420
 msgid "No email defined"
-msgstr ""
+msgstr "Pas d'email défini"
 
 #: Contactmanager.class.php:585 ucp/Contactmanager.class.php:194
 msgid "No file was uploaded"
@@ -674,11 +674,11 @@ msgstr ""
 
 #: assets/js/contactmanager.js:208 ucp/assets/js/global.js:361
 msgid "Unsupported file type"
-msgstr ""
+msgstr "Type de fichier non supporté"
 
 #: ucp/views/contact.php:45 views/user_details_hook.php:30
 msgid "Use Gravatar"
-msgstr ""
+msgstr "Utiliser le Gravatar"
 
 #: Contactmanager.class.php:29 views/entry.php:41 views/group.php:86
 #: views/group.php:96
