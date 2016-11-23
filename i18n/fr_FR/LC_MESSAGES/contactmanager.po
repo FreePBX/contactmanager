@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-31 15:57-0700\n"
-"PO-Revision-Date: 2016-11-20 00:05+0200\n"
+"PO-Revision-Date: 2016-11-22 22:33+0200\n"
 "Last-Translator: Pascal <pascal.noyel@ipexia.com>\n"
 "Language-Team: French "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/fr_FR/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: Contactmanager.class.php:594 ucp/Contactmanager.class.php:203
 msgid "A PHP extension stopped the file upload"
-msgstr ""
+msgstr "Une extension PHP a arrêté le téléchargement du fichier"
 
 #: views/entry.php:331
 msgid "A list of E-Mail addresses belonging to this entry"
@@ -95,7 +95,7 @@ msgstr ""
 
 #: contactmanager.i18n.php:6 contactmanager.i18n.php:12
 msgid "Admin"
-msgstr "Admin"
+msgstr "Administrateur"
 
 #: Contactmanager.class.php:2544
 msgid "All Internal Groups"
@@ -584,7 +584,7 @@ msgstr ""
 
 #: Contactmanager.class.php:936 Contactmanager.class.php:955
 msgid "Reset"
-msgstr "Réinitialiser"
+msgstr "Remise à Zero"
 
 #: ucp/views/contact.php:69 ucp/views/contact.php:111
 #: assets/js/contactmanager.js:99
@@ -601,7 +601,7 @@ msgstr ""
 
 #: Contactmanager.class.php:941 Contactmanager.class.php:960
 msgid "Submit"
-msgstr "Soumettre"
+msgstr "Envoyer"
 
 #: Contactmanager.class.php:579 ucp/Contactmanager.class.php:188
 msgid ""
@@ -751,7 +751,7 @@ msgstr ""
 
 #: Contactmanager.class.php:1379
 msgid "extension"
-msgstr ""
+msgstr "extension"
 
 #: Contactmanager.class.php:1383
 msgid "fax"
