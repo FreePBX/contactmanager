@@ -5,9 +5,10 @@ $(function() {
 			event.preventDefault();
 		}
 		$numbers = $("#numbers input[name^='number[']");
-		if ($numbers.length > 0 && $numbers.size() < 1) {
+		if ($numbers.length < 1 || $numbers.size() < 1) {
 			alert("An entry must have a number.");
 			event.preventDefault();
+			return false;
 		} else {
 			$numbers.each(function(index) {
 				if ($(this).val() === "") {
