@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-31 15:57-0700\n"
+"POT-Creation-Date: 2016-11-29 10:51-0800\n"
 "PO-Revision-Date: 2016-06-08 06:15+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
@@ -182,6 +182,10 @@ msgstr ""
 msgid "Contact Manager"
 msgstr "Gestor de Contactos"
 
+#: contactmanager.i18n.php:16
+msgid "Contact Manager Module"
+msgstr ""
+
 #: functions.inc.php:39 functions.inc.php:42
 #, php-format
 msgid "Contact Manager: %s"
@@ -231,7 +235,7 @@ msgstr ""
 msgid "Drop a new image here"
 msgstr ""
 
-#: assets/js/contactmanager.js:36
+#: assets/js/contactmanager.js:37
 msgid "E-Mail address cannot be blank."
 msgstr "Dirección E-Mail no puede estar en blanco."
 
@@ -272,7 +276,7 @@ msgstr "Editar Grupo"
 msgid "Email"
 msgstr "Correo"
 
-#: assets/js/contactmanager.js:91
+#: assets/js/contactmanager.js:92
 msgid "Ext."
 msgstr "Ext."
 
@@ -286,7 +290,7 @@ msgstr "Extensión. Los contactos externos solamente."
 msgid "External"
 msgstr "Externo"
 
-#: assets/js/contactmanager.js:101
+#: assets/js/contactmanager.js:102
 msgid "FAX"
 msgstr "FAX"
 
@@ -477,6 +481,12 @@ msgstr "Tipo de Grupo es requerido."
 msgid "Home"
 msgstr "Inicio"
 
+#: contactmanager.i18n.php:18
+msgid ""
+"How many digits should a number be before a partial match is used when "
+"looking up a contact"
+msgstr ""
+
 #: Contactmanager.class.php:24 Contactmanager.class.php:2640
 #: views/group.php:45
 msgid "Internal"
@@ -558,7 +568,7 @@ msgstr ""
 msgid "Not Authorized"
 msgstr "No Autorizado"
 
-#: assets/js/contactmanager.js:14
+#: assets/js/contactmanager.js:15
 msgid "Number cannot be blank."
 msgstr "Numero no puede estar en blanco."
 
@@ -578,6 +588,10 @@ msgstr "OK"
 msgid "Other"
 msgstr "Otro"
 
+#: contactmanager.i18n.php:14
+msgid "Partial Match Length"
+msgstr ""
+
 #: Contactmanager.class.php:2654 Contactmanager.class.php:2666
 #: Contactmanager.class.php:2678
 msgid "Phone number.  External contacts only."
@@ -592,7 +606,7 @@ msgid "Reset"
 msgstr "Reinicio"
 
 #: ucp/views/contact.php:69 ucp/views/contact.php:111
-#: assets/js/contactmanager.js:99
+#: assets/js/contactmanager.js:100
 msgid "SMS"
 msgstr "SMS"
 
@@ -677,7 +691,7 @@ msgstr "Tipo de datos desconocido."
 msgid "Unsupported file format"
 msgstr ""
 
-#: assets/js/contactmanager.js:208 ucp/assets/js/global.js:361
+#: assets/js/contactmanager.js:209 ucp/assets/js/global.js:361
 msgid "Unsupported file type"
 msgstr ""
 
@@ -709,7 +723,7 @@ msgstr ""
 msgid "Website"
 msgstr "Sitio Web"
 
-#: assets/js/contactmanager.js:47
+#: assets/js/contactmanager.js:48
 msgid "Website cannot be blank."
 msgstr "Sitio Web no puede estar en Blanco."
 
@@ -727,7 +741,7 @@ msgstr "Trabajo"
 msgid "XMPP"
 msgstr "XMPP"
 
-#: assets/js/contactmanager.js:25
+#: assets/js/contactmanager.js:26
 msgid "XMPP address cannot be blank."
 msgstr "Direccion XMPP no puede estar en balno."
 

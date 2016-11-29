@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-31 15:57-0700\n"
+"POT-Creation-Date: 2016-11-29 10:51-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -201,6 +201,10 @@ msgstr ""
 msgid "Contact Manager"
 msgstr ""
 
+#: contactmanager.i18n.php:16
+msgid "Contact Manager Module"
+msgstr ""
+
 #: functions.inc.php:39
 #: functions.inc.php:42
 #, php-format
@@ -260,7 +264,7 @@ msgstr ""
 msgid "Drop a new image here"
 msgstr ""
 
-#: assets/js/contactmanager.js:36
+#: assets/js/contactmanager.js:37
 msgid "E-Mail address cannot be blank."
 msgstr ""
 
@@ -304,7 +308,7 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: assets/js/contactmanager.js:91
+#: assets/js/contactmanager.js:92
 msgid "Ext."
 msgstr ""
 
@@ -320,7 +324,7 @@ msgstr ""
 msgid "External"
 msgstr ""
 
-#: assets/js/contactmanager.js:101
+#: assets/js/contactmanager.js:102
 msgid "FAX"
 msgstr ""
 
@@ -534,6 +538,12 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
+#: contactmanager.i18n.php:18
+msgid ""
+"How many digits should a number be before a partial match is used when "
+"looking up a contact"
+msgstr ""
+
 #: Contactmanager.class.php:24
 #: Contactmanager.class.php:2640
 #: views/group.php:45
@@ -625,7 +635,7 @@ msgstr ""
 msgid "Not Authorized"
 msgstr ""
 
-#: assets/js/contactmanager.js:14
+#: assets/js/contactmanager.js:15
 msgid "Number cannot be blank."
 msgstr ""
 
@@ -653,6 +663,10 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
+#: contactmanager.i18n.php:14
+msgid "Partial Match Length"
+msgstr ""
+
 #: Contactmanager.class.php:2654
 #: Contactmanager.class.php:2666
 #: Contactmanager.class.php:2678
@@ -671,7 +685,7 @@ msgstr ""
 
 #: ucp/views/contact.php:69
 #: ucp/views/contact.php:111
-#: assets/js/contactmanager.js:99
+#: assets/js/contactmanager.js:100
 msgid "SMS"
 msgstr ""
 
@@ -768,7 +782,7 @@ msgstr ""
 msgid "Unsupported file format"
 msgstr ""
 
-#: assets/js/contactmanager.js:208
+#: assets/js/contactmanager.js:209
 #: ucp/assets/js/global.js:361
 msgid "Unsupported file type"
 msgstr ""
@@ -803,7 +817,7 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: assets/js/contactmanager.js:47
+#: assets/js/contactmanager.js:48
 msgid "Website cannot be blank."
 msgstr ""
 
@@ -825,7 +839,7 @@ msgstr ""
 msgid "XMPP"
 msgstr ""
 
-#: assets/js/contactmanager.js:25
+#: assets/js/contactmanager.js:26
 msgid "XMPP address cannot be blank."
 msgstr ""
 

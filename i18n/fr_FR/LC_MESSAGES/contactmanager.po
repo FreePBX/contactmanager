@@ -9,15 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-31 15:57-0700\n"
+"POT-Creation-Date: 2016-11-29 10:51-0800\n"
 "PO-Revision-Date: 2016-11-25 04:11+0200\n"
 "Last-Translator: Pascal <pascal.noyel@ipexia.com>\n"
-"Language-Team: French "
-"<http://weblate.freepbx.org/projects/freepbx/contactmanager/fr_FR/>\n"
-"Language: fr_FR\n"
+"Language-Team: French <http://weblate.freepbx.org/projects/freepbx/"
+"contactmanager/fr_FR/>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 2.4\n"
 
@@ -180,6 +180,10 @@ msgstr ""
 msgid "Contact Manager"
 msgstr ""
 
+#: contactmanager.i18n.php:16
+msgid "Contact Manager Module"
+msgstr ""
+
 #: functions.inc.php:39 functions.inc.php:42
 #, php-format
 msgid "Contact Manager: %s"
@@ -227,7 +231,7 @@ msgstr ""
 msgid "Drop a new image here"
 msgstr "Déposer une nouvelle image ici"
 
-#: assets/js/contactmanager.js:36
+#: assets/js/contactmanager.js:37
 msgid "E-Mail address cannot be blank."
 msgstr ""
 
@@ -268,7 +272,7 @@ msgstr "Éditer le groupe"
 msgid "Email"
 msgstr "Email"
 
-#: assets/js/contactmanager.js:91
+#: assets/js/contactmanager.js:92
 msgid "Ext."
 msgstr ""
 
@@ -282,7 +286,7 @@ msgstr ""
 msgid "External"
 msgstr ""
 
-#: assets/js/contactmanager.js:101
+#: assets/js/contactmanager.js:102
 msgid "FAX"
 msgstr ""
 
@@ -473,6 +477,12 @@ msgstr ""
 msgid "Home"
 msgstr "Accueil"
 
+#: contactmanager.i18n.php:18
+msgid ""
+"How many digits should a number be before a partial match is used when "
+"looking up a contact"
+msgstr ""
+
 #: Contactmanager.class.php:24 Contactmanager.class.php:2640
 #: views/group.php:45
 msgid "Internal"
@@ -553,7 +563,7 @@ msgstr ""
 msgid "Not Authorized"
 msgstr ""
 
-#: assets/js/contactmanager.js:14
+#: assets/js/contactmanager.js:15
 msgid "Number cannot be blank."
 msgstr ""
 
@@ -573,6 +583,10 @@ msgstr "OK"
 msgid "Other"
 msgstr "Autre"
 
+#: contactmanager.i18n.php:14
+msgid "Partial Match Length"
+msgstr ""
+
 #: Contactmanager.class.php:2654 Contactmanager.class.php:2666
 #: Contactmanager.class.php:2678
 msgid "Phone number.  External contacts only."
@@ -587,7 +601,7 @@ msgid "Reset"
 msgstr "Remise à zéro"
 
 #: ucp/views/contact.php:69 ucp/views/contact.php:111
-#: assets/js/contactmanager.js:99
+#: assets/js/contactmanager.js:100
 msgid "SMS"
 msgstr "SMS"
 
@@ -672,7 +686,7 @@ msgstr ""
 msgid "Unsupported file format"
 msgstr ""
 
-#: assets/js/contactmanager.js:208 ucp/assets/js/global.js:361
+#: assets/js/contactmanager.js:209 ucp/assets/js/global.js:361
 msgid "Unsupported file type"
 msgstr "Type de fichier non supporté"
 
@@ -702,7 +716,7 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: assets/js/contactmanager.js:47
+#: assets/js/contactmanager.js:48
 msgid "Website cannot be blank."
 msgstr ""
 
@@ -720,7 +734,7 @@ msgstr "Travail"
 msgid "XMPP"
 msgstr ""
 
-#: assets/js/contactmanager.js:25
+#: assets/js/contactmanager.js:26
 msgid "XMPP address cannot be blank."
 msgstr ""
 

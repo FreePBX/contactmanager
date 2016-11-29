@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-31 15:57-0700\n"
+"POT-Creation-Date: 2016-11-29 10:51-0800\n"
 "PO-Revision-Date: 2016-09-02 15:22+0200\n"
 "Last-Translator: Kenichi <k.kitani@qloog.com>\n"
 "Language-Team: Japanese <http://weblate.freepbx.org/projects/freepbx/"
@@ -181,6 +181,10 @@ msgstr ""
 msgid "Contact Manager"
 msgstr "連絡先の管理"
 
+#: contactmanager.i18n.php:16
+msgid "Contact Manager Module"
+msgstr ""
+
 #: functions.inc.php:39 functions.inc.php:42
 #, php-format
 msgid "Contact Manager: %s"
@@ -228,7 +232,7 @@ msgstr "表示名（ユーザー管理の表示名を上書きします）"
 msgid "Drop a new image here"
 msgstr "新しい画像をここにドロップしてください"
 
-#: assets/js/contactmanager.js:36
+#: assets/js/contactmanager.js:37
 msgid "E-Mail address cannot be blank."
 msgstr "メールアドレスは空にできません。"
 
@@ -269,7 +273,7 @@ msgstr "グループを編集"
 msgid "Email"
 msgstr "メール"
 
-#: assets/js/contactmanager.js:91
+#: assets/js/contactmanager.js:92
 msgid "Ext."
 msgstr "内線番号"
 
@@ -283,7 +287,7 @@ msgstr "内線番号。※外部の連絡先のみ"
 msgid "External"
 msgstr "外部"
 
-#: assets/js/contactmanager.js:101
+#: assets/js/contactmanager.js:102
 msgid "FAX"
 msgstr "FAX"
 
@@ -474,6 +478,12 @@ msgstr "グループの種類を入力してください。"
 msgid "Home"
 msgstr "ホーム"
 
+#: contactmanager.i18n.php:18
+msgid ""
+"How many digits should a number be before a partial match is used when "
+"looking up a contact"
+msgstr ""
+
 #: Contactmanager.class.php:24 Contactmanager.class.php:2640
 #: views/group.php:45
 msgid "Internal"
@@ -554,7 +564,7 @@ msgstr ""
 msgid "Not Authorized"
 msgstr "非表示"
 
-#: assets/js/contactmanager.js:14
+#: assets/js/contactmanager.js:15
 msgid "Number cannot be blank."
 msgstr "番号を空にできません。"
 
@@ -574,6 +584,10 @@ msgstr "OK"
 msgid "Other"
 msgstr "その他"
 
+#: contactmanager.i18n.php:14
+msgid "Partial Match Length"
+msgstr ""
+
 #: Contactmanager.class.php:2654 Contactmanager.class.php:2666
 #: Contactmanager.class.php:2678
 msgid "Phone number.  External contacts only."
@@ -588,7 +602,7 @@ msgid "Reset"
 msgstr "リセット"
 
 #: ucp/views/contact.php:69 ucp/views/contact.php:111
-#: assets/js/contactmanager.js:99
+#: assets/js/contactmanager.js:100
 msgid "SMS"
 msgstr "SMS"
 
@@ -673,7 +687,7 @@ msgstr "不明なデータタイプ。"
 msgid "Unsupported file format"
 msgstr ""
 
-#: assets/js/contactmanager.js:208 ucp/assets/js/global.js:361
+#: assets/js/contactmanager.js:209 ucp/assets/js/global.js:361
 msgid "Unsupported file type"
 msgstr "サポートされていないファイル形式"
 
@@ -703,7 +717,7 @@ msgstr ""
 msgid "Website"
 msgstr "ホームページ"
 
-#: assets/js/contactmanager.js:47
+#: assets/js/contactmanager.js:48
 msgid "Website cannot be blank."
 msgstr "ホームページは必須項目です。"
 
@@ -721,7 +735,7 @@ msgstr "勤務先"
 msgid "XMPP"
 msgstr "XMPP"
 
-#: assets/js/contactmanager.js:25
+#: assets/js/contactmanager.js:26
 msgid "XMPP address cannot be blank."
 msgstr "XMPPアドレスは必須項目です。"
 

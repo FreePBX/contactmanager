@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-31 15:57-0700\n"
+"POT-Creation-Date: 2016-11-29 10:51-0800\n"
 "PO-Revision-Date: 2016-10-05 19:58+0200\n"
 "Last-Translator: Maxim <maxim@ua.fm>\n"
 "Language-Team: Ukrainian <http://weblate.freepbx.org/projects/freepbx/"
@@ -181,6 +181,10 @@ msgstr ""
 msgid "Contact Manager"
 msgstr "Менеджер контактів"
 
+#: contactmanager.i18n.php:16
+msgid "Contact Manager Module"
+msgstr ""
+
 #: functions.inc.php:39 functions.inc.php:42
 #, php-format
 msgid "Contact Manager: %s"
@@ -228,7 +232,7 @@ msgstr ""
 msgid "Drop a new image here"
 msgstr "Киньте нове зображення тут"
 
-#: assets/js/contactmanager.js:36
+#: assets/js/contactmanager.js:37
 msgid "E-Mail address cannot be blank."
 msgstr "Електронна пошта не може бути порожньою."
 
@@ -269,7 +273,7 @@ msgstr "Редагувати групу"
 msgid "Email"
 msgstr "Електронна пошта"
 
-#: assets/js/contactmanager.js:91
+#: assets/js/contactmanager.js:92
 msgid "Ext."
 msgstr "Дод."
 
@@ -283,7 +287,7 @@ msgstr ""
 msgid "External"
 msgstr ""
 
-#: assets/js/contactmanager.js:101
+#: assets/js/contactmanager.js:102
 msgid "FAX"
 msgstr "Факс"
 
@@ -474,6 +478,12 @@ msgstr ""
 msgid "Home"
 msgstr "До дому"
 
+#: contactmanager.i18n.php:18
+msgid ""
+"How many digits should a number be before a partial match is used when "
+"looking up a contact"
+msgstr ""
+
 #: Contactmanager.class.php:24 Contactmanager.class.php:2640
 #: views/group.php:45
 msgid "Internal"
@@ -554,7 +564,7 @@ msgstr ""
 msgid "Not Authorized"
 msgstr ""
 
-#: assets/js/contactmanager.js:14
+#: assets/js/contactmanager.js:15
 msgid "Number cannot be blank."
 msgstr ""
 
@@ -574,6 +584,10 @@ msgstr "Добре"
 msgid "Other"
 msgstr "Інше"
 
+#: contactmanager.i18n.php:14
+msgid "Partial Match Length"
+msgstr ""
+
 #: Contactmanager.class.php:2654 Contactmanager.class.php:2666
 #: Contactmanager.class.php:2678
 msgid "Phone number.  External contacts only."
@@ -588,7 +602,7 @@ msgid "Reset"
 msgstr "Скинути"
 
 #: ucp/views/contact.php:69 ucp/views/contact.php:111
-#: assets/js/contactmanager.js:99
+#: assets/js/contactmanager.js:100
 #, fuzzy
 msgid "SMS"
 msgstr "SMS"
@@ -674,7 +688,7 @@ msgstr "Невідомий тип даних."
 msgid "Unsupported file format"
 msgstr "Непідтримуваний формат файлу"
 
-#: assets/js/contactmanager.js:208 ucp/assets/js/global.js:361
+#: assets/js/contactmanager.js:209 ucp/assets/js/global.js:361
 msgid "Unsupported file type"
 msgstr "Непідтримуваний тип файлу"
 
@@ -704,7 +718,7 @@ msgstr ""
 msgid "Website"
 msgstr "Веб-сторінка"
 
-#: assets/js/contactmanager.js:47
+#: assets/js/contactmanager.js:48
 msgid "Website cannot be blank."
 msgstr ""
 
@@ -723,7 +737,7 @@ msgstr ""
 msgid "XMPP"
 msgstr "XMPP"
 
-#: assets/js/contactmanager.js:25
+#: assets/js/contactmanager.js:26
 msgid "XMPP address cannot be blank."
 msgstr ""
 
