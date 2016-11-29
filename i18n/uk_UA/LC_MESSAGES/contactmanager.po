@@ -12,14 +12,12 @@ msgstr ""
 "POT-Creation-Date: 2016-10-12 16:50-0700\n"
 "PO-Revision-Date: 2016-10-05 19:58+0200\n"
 "Last-Translator: Maxim <maxim@ua.fm>\n"
-"Language-Team: Ukrainian <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/uk_UA/>\n"
+"Language-Team: Ukrainian <http://weblate.freepbx.org/projects/freepbx/contactmanager/uk_UA/>\n"
 "Language: uk_UA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.4\n"
 
 #: Contactmanager.class.php:580 ucp/Contactmanager.class.php:203
@@ -146,8 +144,7 @@ msgstr "Мобільний"
 
 #: Contactmanager.class.php:2640 Contactmanager.class.php:2652
 #: Contactmanager.class.php:2664
-msgid ""
-"Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
+msgid "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
 msgstr ""
 
 #: Contactmanager.class.php:37 Contactmanager.class.php:2626
@@ -169,9 +166,7 @@ msgid "Contact Image for this user"
 msgstr "Зображення контакту для цього користувача"
 
 #: views/user_details_hook.php:40
-msgid ""
-"Contact Image for this user. Image will be deleted if \"Show in Contact "
-"Manager\" is set to no or inherits no under the \"Contact Manager\" tab"
+msgid "Contact Image for this user. Image will be deleted if \"Show in Contact Manager\" is set to no or inherits no under the \"Contact Manager\" tab"
 msgstr ""
 
 #: Contactmanager.class.php:2539 Contactmanager.class.php:2551
@@ -514,8 +509,7 @@ msgid "Name of group"
 msgstr ""
 
 #: Contactmanager.class.php:2608
-msgid ""
-"Name of group for contact.  If group does not exist, it will be created."
+msgid "Name of group for contact.  If group does not exist, it will be created."
 msgstr ""
 
 #: Contactmanager.class.php:2208
@@ -598,9 +592,7 @@ msgid "Submit"
 msgstr "Застосувати"
 
 #: Contactmanager.class.php:565 ucp/Contactmanager.class.php:188
-msgid ""
-"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
-"the HTML form"
+msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form"
 msgstr ""
 
 #: Contactmanager.class.php:562 ucp/Contactmanager.class.php:185
@@ -616,9 +608,7 @@ msgid "There are no actions for this type"
 msgstr "Немає дій для даного типа"
 
 #: views/userman_hook.php:49
-msgid ""
-"These are the viewable contact manager groups which will show up for this "
-"user in UCP and RestApps (If purchased)"
+msgid "These are the viewable contact manager groups which will show up for this user in UCP and RestApps (If purchased)"
 msgstr ""
 
 #: Contactmanager.class.php:2625 ucp/views/contact.php:18
@@ -684,8 +674,7 @@ msgid "User Manager Group"
 msgstr ""
 
 #: Contactmanager.class.php:2628
-msgid ""
-"User Manager username this contact should point to.  Internal contacts only."
+msgid "User Manager username this contact should point to.  Internal contacts only."
 msgstr ""
 
 #: views/userman_hook.php:33
@@ -759,6 +748,18 @@ msgstr "домашній"
 #: Contactmanager.class.php:1367
 msgid "work"
 msgstr "робочий"
+
+#: contactmanager.i18n.php:16
+msgid "Contact Manager Module"
+msgstr ""
+
+#: contactmanager.i18n.php:18
+msgid "How many digits should a number be before a partial match is used when looking up a contact"
+msgstr ""
+
+#: contactmanager.i18n.php:14
+msgid "Partial Match Length"
+msgstr ""
 
 #~ msgid "Loading..."
 #~ msgstr "Завантажується..."

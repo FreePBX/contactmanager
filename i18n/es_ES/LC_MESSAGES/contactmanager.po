@@ -12,8 +12,7 @@ msgstr ""
 "POT-Creation-Date: 2016-10-12 16:50-0700\n"
 "PO-Revision-Date: 2016-06-08 06:15+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
-"Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/es_ES/>\n"
+"Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -145,11 +144,8 @@ msgstr "Cel"
 
 #: Contactmanager.class.php:2640 Contactmanager.class.php:2652
 #: Contactmanager.class.php:2664
-msgid ""
-"Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
-msgstr ""
-"Lista de flags separadas por coma. (Ejemplo: sms, fax). Solo Contactos "
-"externos."
+msgid "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
+msgstr "Lista de flags separadas por coma. (Ejemplo: sms, fax). Solo Contactos externos."
 
 #: Contactmanager.class.php:37 Contactmanager.class.php:2626
 #: ucp/views/contact.php:22 ucp/views/contacts.php:37 views/entry.php:191
@@ -170,9 +166,7 @@ msgid "Contact Image for this user"
 msgstr ""
 
 #: views/user_details_hook.php:40
-msgid ""
-"Contact Image for this user. Image will be deleted if \"Show in Contact "
-"Manager\" is set to no or inherits no under the \"Contact Manager\" tab"
+msgid "Contact Image for this user. Image will be deleted if \"Show in Contact Manager\" is set to no or inherits no under the \"Contact Manager\" tab"
 msgstr ""
 
 #: Contactmanager.class.php:2539 Contactmanager.class.php:2551
@@ -193,8 +187,7 @@ msgstr "Contactos"
 
 #: Contactmanager.class.php:2596
 msgid "Contacts and internal/external groups from the Contact Manager module."
-msgstr ""
-"Contactos y Grupos internos/externos del modulo de Gestion de Contactos."
+msgstr "Contactos y Grupos internos/externos del modulo de Gestion de Contactos."
 
 #: Contactmanager.class.php:915 Contactmanager.class.php:934
 msgid "Delete"
@@ -224,8 +217,7 @@ msgstr "Nombre a Mostrar"
 
 #: views/entry.php:78
 msgid "Display Name (overrides Display Name from User Manager)"
-msgstr ""
-"Nombre a desplegar (sustituye Nombre a Desplegar del Gestor de Usuarios)"
+msgstr "Nombre a desplegar (sustituye Nombre a Desplegar del Gestor de Usuarios)"
 
 #: ucp/views/contact.php:28 views/entry.php:154 views/user_details_hook.php:13
 msgid "Drop a new image here"
@@ -517,10 +509,8 @@ msgid "Name of group"
 msgstr "Nombre del Grupo"
 
 #: Contactmanager.class.php:2608
-msgid ""
-"Name of group for contact.  If group does not exist, it will be created."
-msgstr ""
-"Nombre de Grupo para contacto. SI el Grupo no existe, este sera creado."
+msgid "Name of group for contact.  If group does not exist, it will be created."
+msgstr "Nombre de Grupo para contacto. SI el Grupo no existe, este sera creado."
 
 #: Contactmanager.class.php:2208
 msgid "No E-Mails to add"
@@ -601,9 +591,7 @@ msgid "Submit"
 msgstr "Enviar"
 
 #: Contactmanager.class.php:565 ucp/Contactmanager.class.php:188
-msgid ""
-"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
-"the HTML form"
+msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form"
 msgstr ""
 
 #: Contactmanager.class.php:562 ucp/Contactmanager.class.php:185
@@ -619,9 +607,7 @@ msgid "There are no actions for this type"
 msgstr "No hay acciones para este tipo"
 
 #: views/userman_hook.php:49
-msgid ""
-"These are the viewable contact manager groups which will show up for this "
-"user in UCP and RestApps (If purchased)"
+msgid "These are the viewable contact manager groups which will show up for this user in UCP and RestApps (If purchased)"
 msgstr ""
 
 #: Contactmanager.class.php:2625 ucp/views/contact.php:18
@@ -687,11 +673,8 @@ msgid "User Manager Group"
 msgstr "Grupo Administrador de usuarios"
 
 #: Contactmanager.class.php:2628
-msgid ""
-"User Manager username this contact should point to.  Internal contacts only."
-msgstr ""
-"Nombre de usuario Administrador que este contacto debería apuntar. Contactos "
-"internos solamente."
+msgid "User Manager username this contact should point to.  Internal contacts only."
+msgstr "Nombre de usuario Administrador que este contacto debería apuntar. Contactos internos solamente."
 
 #: views/userman_hook.php:33
 msgid "Viewable Contact Manager Groups"
@@ -764,8 +747,49 @@ msgstr ""
 msgid "work"
 msgstr ""
 
+#: contactmanager.i18n.php:16
+msgid "Contact Manager Module"
+msgstr ""
+
+#: contactmanager.i18n.php:18
+msgid "How many digits should a number be before a partial match is used when looking up a contact"
+msgstr ""
+
+#: ucp/assets/js/global.js:425
+msgid "Loading..."
+msgstr ""
+
+#: ucp/assets/js/global.js:420
+msgid "No email defined"
+msgstr ""
+
+#: contactmanager.i18n.php:14
+msgid "Partial Match Length"
+msgstr ""
+
+#~ msgid "Add New Contact"
+#~ msgstr "Agregar Nuevo Contacto"
+
 #~ msgid "Allowed Contact Manager Groups"
 #~ msgstr "Grupos de Gestion de COntactos permitidos"
+
+#~ msgid "Delete Group: %s"
+#~ msgstr "Eliminar Grupo: %s"
+
+#~ msgid "Delete This Group"
+#~ msgstr "Eliminar Este Grupo"
+
+#~ msgid "E-Mail"
+#~ msgstr "Correo Electronico"
+
+#~ msgid "Export CSV"
+#~ msgstr "Exportar CSV"
+
+#~ msgid "Go!"
+#~ msgstr "Ir!"
+
+#~ msgid "Import CSV"
+#~ msgstr "Importar CSV"
 
 #~ msgid "Inherit"
 #~ msgstr "heredado"
@@ -773,15 +797,32 @@ msgstr ""
 #~ msgid "No"
 #~ msgstr "No"
 
+#~ msgid "Note: Max file size is "
+#~ msgstr "Nota: Tamaño máximo del archivo es "
+
+#~ msgid "Search"
+#~ msgstr "Buscar"
+
 #~ msgid "Show In Contact Manager"
 #~ msgstr "Monstrar en Gestor de Contactos"
 
-#~ msgid ""
-#~ "These are the assigned and active contactmanager groups which will show "
-#~ "up for this user in UCP and RestApps (If purchased)"
-#~ msgstr ""
-#~ "Estos son los grupos asignados y activos del contactmanager que se "
-#~ "mostraran para este usuario en su UCP y PhoneApps (si se ha adquirido)"
+#~ msgid "Show contact in Contact Manager"
+#~ msgstr "Mostrar contacto en Gestor de Contactos"
+
+#~ msgid "These are the assigned and active contactmanager groups which will show up for this user in UCP"
+#~ msgstr "Estos son los grupos asignados y activos que se mostrarán para este usuario en la UCP"
+
+#~ msgid "These are the assigned and active contactmanager groups which will show up for this user in UCP and RestApps (If purchased)"
+#~ msgstr "Estos son los grupos asignados y activos del contactmanager que se mostraran para este usuario en su UCP y PhoneApps (si se ha adquirido)"
+
+#~ msgid "This is managed through the Class of Service module"
+#~ msgstr "Esto es gestionado a través del Modulo Class of Service"
+
+#~ msgid "Title  (overrides Title from User Manager)"
+#~ msgstr "Titulo (sustituye Titulo del Gestor de Usuarios)"
+
+#~ msgid "Upload"
+#~ msgstr "Subir"
 
 #~ msgid "User Manager"
 #~ msgstr "Gestor de Usuarios"
@@ -791,49 +832,3 @@ msgstr ""
 
 #~ msgid "Yes"
 #~ msgstr "Si"
-
-#~ msgid ""
-#~ "These are the assigned and active contactmanager groups which will show "
-#~ "up for this user in UCP"
-#~ msgstr ""
-#~ "Estos son los grupos asignados y activos que se mostrarán para este "
-#~ "usuario en la UCP"
-
-#~ msgid "This is managed through the Class of Service module"
-#~ msgstr "Esto es gestionado a través del Modulo Class of Service"
-
-#~ msgid "Add New Contact"
-#~ msgstr "Agregar Nuevo Contacto"
-
-#~ msgid "Delete This Group"
-#~ msgstr "Eliminar Este Grupo"
-
-#~ msgid "Go!"
-#~ msgstr "Ir!"
-
-#~ msgid "Search"
-#~ msgstr "Buscar"
-
-#~ msgid "Delete Group: %s"
-#~ msgstr "Eliminar Grupo: %s"
-
-#~ msgid "E-Mail"
-#~ msgstr "Correo Electronico"
-
-#~ msgid "Export CSV"
-#~ msgstr "Exportar CSV"
-
-#~ msgid "Import CSV"
-#~ msgstr "Importar CSV"
-
-#~ msgid "Note: Max file size is "
-#~ msgstr "Nota: Tamaño máximo del archivo es "
-
-#~ msgid "Show contact in Contact Manager"
-#~ msgstr "Mostrar contacto en Gestor de Contactos"
-
-#~ msgid "Title  (overrides Title from User Manager)"
-#~ msgstr "Titulo (sustituye Titulo del Gestor de Usuarios)"
-
-#~ msgid "Upload"
-#~ msgstr "Subir"

@@ -12,8 +12,7 @@ msgstr ""
 "POT-Creation-Date: 2016-10-12 16:50-0700\n"
 "PO-Revision-Date: 2016-02-20 20:37+0200\n"
 "Last-Translator: Nicolas Riendeau <freepbx@riendeau.org>\n"
-"Language-Team: French <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/fr_FR/>\n"
+"Language-Team: French <http://weblate.freepbx.org/projects/freepbx/contactmanager/fr_FR/>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,9 +20,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 2.2-dev\n"
 
-#: Contactmanager.class.php:580 ucp/Contactmanager.class.php:203
+#: Contactmanager.class.php:594 ucp/Contactmanager.class.php:203
 msgid "A PHP extension stopped the file upload"
-msgstr ""
+msgstr "Une extension PHP a arrêté le téléchargement du fichier"
 
 #: views/entry.php:331
 msgid "A list of E-Mail addresses belonging to this entry"
@@ -127,7 +126,7 @@ msgstr ""
 
 #: ucp/views/contact.php:36 views/entry.php:162 views/user_details_hook.php:21
 msgid "Browse"
-msgstr ""
+msgstr "Naviguer"
 
 #: ucp/assets/js/global.js:27
 msgid "Call To"
@@ -145,15 +144,15 @@ msgstr ""
 
 #: Contactmanager.class.php:2640 Contactmanager.class.php:2652
 #: Contactmanager.class.php:2664
-msgid ""
-"Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
+msgid "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
 msgstr ""
 
 #: Contactmanager.class.php:37 Contactmanager.class.php:2626
 #: ucp/views/contact.php:22 ucp/views/contacts.php:37 views/entry.php:191
 #: views/group.php:91
+#, fuzzy
 msgid "Company"
-msgstr "Compagnie"
+msgstr "Entreprise"
 
 #: views/entry.php:201
 msgid "Company (overrides Company from User Manager)"
@@ -161,16 +160,14 @@ msgstr ""
 
 #: views/entry.php:148 views/user_details_hook.php:7
 msgid "Contact Image"
-msgstr ""
+msgstr "Image du contact"
 
 #: views/entry.php:181
 msgid "Contact Image for this user"
 msgstr ""
 
 #: views/user_details_hook.php:40
-msgid ""
-"Contact Image for this user. Image will be deleted if \"Show in Contact "
-"Manager\" is set to no or inherits no under the \"Contact Manager\" tab"
+msgid "Contact Image for this user. Image will be deleted if \"Show in Contact Manager\" is set to no or inherits no under the \"Contact Manager\" tab"
 msgstr ""
 
 #: Contactmanager.class.php:2539 Contactmanager.class.php:2551
@@ -207,7 +204,7 @@ msgstr ""
 
 #: ucp/views/contact.php:31 views/entry.php:157 views/user_details_hook.php:16
 msgid "Delete Image"
-msgstr ""
+msgstr "Supprimer l'image"
 
 #: ucp/assets/js/global.js:172
 msgid "Deleting..."
@@ -225,7 +222,7 @@ msgstr ""
 
 #: ucp/views/contact.php:28 views/entry.php:154 views/user_details_hook.php:13
 msgid "Drop a new image here"
-msgstr ""
+msgstr "Déposer une nouvelle image ici"
 
 #: assets/js/contactmanager.js:36
 msgid "E-Mail address cannot be blank."
@@ -266,7 +263,7 @@ msgstr "Éditer le groupe"
 
 #: ucp/views/contact.php:168 views/entry.php:309
 msgid "Email"
-msgstr "Courriel"
+msgstr "Email"
 
 #: assets/js/contactmanager.js:91
 msgid "Ext."
@@ -470,18 +467,19 @@ msgstr ""
 #: Contactmanager.class.php:862 Contactmanager.class.php:2634
 #: Contactmanager.class.php:2646 Contactmanager.class.php:2658
 #: ucp/views/contact.php:63 ucp/views/contact.php:105 views/group.php:103
+#, fuzzy
 msgid "Home"
-msgstr "Acceuil"
+msgstr "Accueil"
 
 #: Contactmanager.class.php:24 Contactmanager.class.php:2615
 #: views/group.php:45
 msgid "Internal"
 msgstr ""
 
-#: Contactmanager.class.php:528 ucp/Contactmanager.class.php:110
+#: Contactmanager.class.php:542 ucp/Contactmanager.class.php:110
 #: ucp/Contactmanager.class.php:130 ucp/Contactmanager.class.php:141
 msgid "Invalid"
-msgstr ""
+msgstr "Invalide"
 
 #: Contactmanager.class.php:28 Contactmanager.class.php:2624
 #: ucp/views/contact.php:14 ucp/views/contacts.php:35 views/entry.php:108
@@ -513,8 +511,7 @@ msgid "Name of group"
 msgstr ""
 
 #: Contactmanager.class.php:2608
-msgid ""
-"Name of group for contact.  If group does not exist, it will be created."
+msgid "Name of group for contact.  If group does not exist, it will be created."
 msgstr ""
 
 #: Contactmanager.class.php:2208
@@ -575,8 +572,9 @@ msgid "Please enter a valid email address"
 msgstr ""
 
 #: Contactmanager.class.php:922 Contactmanager.class.php:941
+#, fuzzy
 msgid "Reset"
-msgstr "Réinitialiser"
+msgstr "Remise à zéro"
 
 #: ucp/views/contact.php:69 ucp/views/contact.php:111
 #: assets/js/contactmanager.js:99
@@ -592,13 +590,12 @@ msgid "Show In Contact Manager Groups"
 msgstr ""
 
 #: Contactmanager.class.php:927 Contactmanager.class.php:946
+#, fuzzy
 msgid "Submit"
-msgstr "Soumettre"
+msgstr "Envoyer"
 
 #: Contactmanager.class.php:565 ucp/Contactmanager.class.php:188
-msgid ""
-"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
-"the HTML form"
+msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form"
 msgstr ""
 
 #: Contactmanager.class.php:562 ucp/Contactmanager.class.php:185
@@ -614,9 +611,7 @@ msgid "There are no actions for this type"
 msgstr ""
 
 #: views/userman_hook.php:49
-msgid ""
-"These are the viewable contact manager groups which will show up for this "
-"user in UCP and RestApps (If purchased)"
+msgid "These are the viewable contact manager groups which will show up for this user in UCP and RestApps (If purchased)"
 msgstr ""
 
 #: Contactmanager.class.php:2625 ucp/views/contact.php:18
@@ -664,13 +659,13 @@ msgstr ""
 msgid "Unsupported file format"
 msgstr ""
 
-#: assets/js/contactmanager.js:208 ucp/assets/js/global.js:361
+#: assets/js/contactmanager.js:209 ucp/assets/js/global.js:361
 msgid "Unsupported file type"
-msgstr ""
+msgstr "Type de fichier non supporté"
 
 #: ucp/views/contact.php:45 views/user_details_hook.php:30
 msgid "Use Gravatar"
-msgstr ""
+msgstr "Utiliser le Gravatar"
 
 #: Contactmanager.class.php:29 views/entry.php:41 views/group.php:86
 #: views/group.php:96
@@ -682,8 +677,7 @@ msgid "User Manager Group"
 msgstr ""
 
 #: Contactmanager.class.php:2628
-msgid ""
-"User Manager username this contact should point to.  Internal contacts only."
+msgid "User Manager username this contact should point to.  Internal contacts only."
 msgstr ""
 
 #: views/userman_hook.php:33
@@ -741,9 +735,9 @@ msgstr ""
 msgid "checking for title field.."
 msgstr ""
 
-#: Contactmanager.class.php:1365
+#: Contactmanager.class.php:1379
 msgid "extension"
-msgstr ""
+msgstr "extension"
 
 #: Contactmanager.class.php:1369
 msgid "fax"
@@ -755,6 +749,26 @@ msgstr ""
 
 #: Contactmanager.class.php:1367
 msgid "work"
+msgstr ""
+
+#: contactmanager.i18n.php:16
+msgid "Contact Manager Module"
+msgstr ""
+
+#: contactmanager.i18n.php:18
+msgid "How many digits should a number be before a partial match is used when looking up a contact"
+msgstr ""
+
+#: ucp/assets/js/global.js:425
+msgid "Loading..."
+msgstr "Chargement..."
+
+#: ucp/assets/js/global.js:420
+msgid "No email defined"
+msgstr "Pas d'email défini"
+
+#: contactmanager.i18n.php:14
+msgid "Partial Match Length"
 msgstr ""
 
 #~ msgid "Inherit"

@@ -257,9 +257,6 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			//Now scan all the old users/groups from userman and get the setting
 			$users = $this->userman->getAllUsers();
 			foreach($users as $user) {
-				if(empty($user['id'])) {
-					continue;
-				}
 				$show = $this->userman->getModuleSettingByID($user['id'],"contactmanager","show");
 				if($show) {
 					$gs = $this->userman->getModuleSettingByID($user['id'],"contactmanager","showingroups");
@@ -308,6 +305,23 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			} catch(\Exception $e) {}
 			$sth1->execute(array("id" => $entry['entryid']));
 		}
+
+
+		// CONTACTMANLOOKUPLENGTH in Advanced Settings of FreePBX
+		//
+		$set['value'] = 7;
+		$set['defaultval'] =& $set['value'];
+		$set['readonly'] = 0;
+		$set['hidden'] = 0;
+		$set['level'] = 1;
+		$set['module'] = 'contactmanager'; //This will help delete the settings when module is uninstalled
+		$set['category'] = 'Contact Manager Module';
+		$set['emptyok'] = 0;
+		$set['name'] = 'Partial Match Length';
+		$set['description'] = 'How many digits should a number be before a partial match is used when looking up a contact';
+		$set['type'] = CONF_TYPE_INT;
+		$set['options'] = array(1,86400);
+		$this->freepbx->Config->define_conf_setting('CONTACTMANLOOKUPLENGTH',$set,true);
 	}
 	public function uninstall() {
 
@@ -1645,12 +1659,12 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sth->execute(array(
 		':groupid' => $groupid,
 		':user' => $entry['user'],
-		':displayname' => !empty($entry['displayname']) ? $entry['displayname'] : '',
-		':fname' => !empty($entry['fname']) ? $entry['fname'] : '',
-		':lname' => !empty($entry['lname']) ? $entry['lname'] : '',
-		':title' => !empty($entry['title']) ? $entry['title'] : '',
-		':company' => !empty($entry['company']) ? $entry['company'] : '',
-		':address' => !empty($entry['address']) ? $entry['address'] : '',
+		':displayname' => $entry['displayname'],
+		':fname' => $entry['fname'],
+		':lname' => $entry['lname'],
+		':title' => $entry['title'],
+		':company' => $entry['company'],
+		':address' => $entry['address']
 		));
 
 		$id = $this->db->lastInsertId();
@@ -2413,8 +2427,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		if(trim($search) == "") {
 			return false;
 		}
-		if(!empty($this->contactsCache[$search])) {
-			return $this->contactsCache[$search];
+		$st = $strict ? 'st' : '';
+		if(!empty($this->contactsCache[$search.$st])) {
+			return $this->contactsCache[$search.$st];
 		}
 		$skip = array(
 			"uid",
@@ -2433,18 +2448,23 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		if(!$regexpsearch) {
 			$search = preg_quote($search,"/");
 		}
+		$search = trim($search);
 		$contacts = $this->getContactsByUserID($id);
 		$iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($contacts));
+		$lookuplen = (int)$this->freepbx->Config->get('CONTACTMANLOOKUPLENGTH');
 		foreach($iterator as $key => $value) {
 			if(in_array($key,$skip)) {
 				continue;
 			}
 			$value = !empty($regexp) ? preg_replace($regexp,'',$value) : $value;
 			$value = trim($value);
-			if(!empty($value) && preg_match('/' . $search . '/i',$value)) {
+			if(empty($value)) {
+				continue;
+			}
+			if(preg_match('/^' . $search . '$/i',$value) || (strlen($search) > $lookuplen && preg_match('/' . $search . '/i',$value))) {
 				$k = $iterator->getSubIterator(0)->key();
-				$this->contactsCache[$search] = $contacts[$k];
-				return $this->contactsCache[$search];
+				$this->contactsCache[$search.$st] = $contacts[$k];
+				return $this->contactsCache[$search.$st];
 				break;
 			}
 		}
@@ -2478,7 +2498,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		if(!$regexpsearch) {
 			$search = preg_quote($search,"/");
 		}
+		$search = trim($search);
 		$iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($contacts));
+		$lookuplen = (int)$this->freepbx->Config->get('CONTACTMANLOOKUPLENGTH');
 		foreach($iterator as $key => $value) {
 			if(in_array($key,$skip)) {
 				continue;
@@ -2486,7 +2508,10 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			$value = !empty($regexp) ? preg_replace($regexp,'',$value) : $value;
 			$value = trim($value);
 			$k = $iterator->getSubIterator(0)->key();
-			if(!in_array($k, $list) && !empty($value) && preg_match('/' . $search . '/i',$value)) {
+			if(empty($value)) {
+				continue;
+			}
+			if(!in_array($k, $list) && (preg_match('/' . $search . '/i',$value) || (strlen($search) > $lookuplen && preg_match('/' . $search . '/i',$value)))) {
 				$final[] = $contacts[$k];
 				$list[] = $k;
 			}
