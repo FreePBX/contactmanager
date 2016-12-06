@@ -17,6 +17,51 @@ class Contactmanager extends Modules{
 		$this->user = $this->UCP->User->getUser();
 	}
 
+	public function getWidgetList() {
+		$widgets = array();
+
+		$widgets['contactmanager'] = array(
+			"display" => _("Contacts"),
+			"defaultsize" => array("height" => 4, "width" => 4)
+		);
+
+		if (empty($widgets)) {
+			return array();
+		}
+
+		return array(
+			"rawname" => "contactmanager",
+			"display" => _("Contacts"),
+			"icon" => "fa fa-address-card",
+			"list" => $widgets
+		);
+	}
+
+	public function getWidgetDisplay($id) {
+		$displayvars = array();
+		$displayvars['groups'] = $this->cm->getGroupsByOwner($this->user['id']);
+
+		foreach($displayvars['groups'] as &$group) {
+			$group['readonly'] = ($group['owner'] == -1);
+			$group['contacts'] = $this->cm->getEntriesByGroupID($group['id']);
+			$group['count'] = count($group['contacts']);
+			if ($_REQUEST['id'] == $group['id']) {
+				$displayvars['group'] = $group['name'];
+			}
+		}
+
+		$mainDisplay = $this->load_view(__DIR__.'/views/widget.php',$displayvars);
+
+		$html .= $mainDisplay;
+
+		$display = array(
+			'title' => _("Contacts"),
+			'html' => $html
+		);
+
+		return $display;
+	}
+
 	/**
 	* Determine what commands are allowed
 	*
@@ -207,8 +252,7 @@ class Contactmanager extends Modules{
 				return array("status" => false, "message" => _("Can Not Find Uploaded Files"));
 			break;
 			case 'grid':
-				//$limit = $_REQUEST['limit'];
-				$group = $_REQUEST['id'];
+				$group = $_REQUEST['group'];
 				$order = $_REQUEST['order'];
 				$orderby = !empty($_REQUEST['sort']) ? $_REQUEST['sort'] : "displayname";
 				$search = !empty($_REQUEST['search']) ? $_REQUEST['search'] : "";

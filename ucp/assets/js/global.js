@@ -8,6 +8,27 @@ var ContactmanagerC = UCPMC.extend({
 			}
 		});
 	},
+	resize: function() {
+		height = $("li[data-rawname='contactmanager'] .widget-content").height();
+		$("#contacts-grid").bootstrapTable('resetView',{height: height})
+	},
+	displayWidget: function(widget_id, dashboard_id) {
+		var self = this;
+
+		self.init();
+
+		$('#contacts-grid').bootstrapTable();
+		// Trigger a resize so that we can have proper scrollbars on the table.
+		self.resize();
+
+		$(".group").click(function() {
+			$(".group").removeClass("active");
+			$(this).addClass("active");
+			group = $(this).data("group");
+			$('#contacts-grid').bootstrapTable('refresh', {url: 'index.php?quietmode=1&module=contactmanager&command=grid&group='+group});
+		});
+
+	},
 	poll: function(data) {
 		var cm = this;
 		if (data.enabled) {

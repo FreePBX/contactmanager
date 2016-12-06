@@ -1,4 +1,4 @@
-#module-page-contactmanager {
+li[data-rawname='contactmanager'] {
 	#contacts-grid {
 		tr {
 			cursor: pointer;
@@ -58,44 +58,14 @@
 		}
 	}
 
-	.contact-group-list {
+	.group-list {
 		background-color: aliceblue;
-		.contact-group {
-			background-color: #fff;
-		}
-		.contact-group.active {
-			background-color: #428bca;
-			border-radius: 2px;
-			a {
-				color: #ffffff;
-				background-color: #428bca;
-			}
-			a:hover {
-				text-decoration: none;
-				background-color: #428bca;
-				color: #ffffff;
-			}
-		}
-		.contact-group-inner {
-			i {
-				font-size: 120%;
-				color: #999999;
-				float: right;
-				margin-top: 1px;
-			}
+		.group {
+			margin-bottom: 1px;
+			font-size: 85%;
 			.badge {
-				font-size: 80%;
-				float: right;
+				float:right;
 			}
-		}
-		.contact-group.sub {
-			margin-left: 15px;
-			background-color: rgb(252, 253, 255);
-			.contact-group-inner {
-				font-size: 85%;
-			}
-		}
-		.contact-group {
 			a {
 				position: relative;
 				display: block;
@@ -106,6 +76,18 @@
 				text-decoration: none;
 				background-color: #eeeeee;
 				color: #2a6496;
+			}
+		}
+		.group.active {
+			background-color: #428bca;
+			border-radius: 2px;
+			a {
+				color: #ffffff;
+			}
+			a:hover {
+				text-decoration: none;
+				background-color: #428bca;
+				color: #ffffff;
 			}
 		}
 	}
