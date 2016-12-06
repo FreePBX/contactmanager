@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-29 10:51-0800\n"
-"PO-Revision-Date: 2016-12-05 22:48+0200\n"
+"PO-Revision-Date: 2016-12-06 02:33+0200\n"
 "Last-Translator: Alexander <alexander.schley@paranagua.pr.gov.br>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/pt_BR/>\n"
@@ -520,7 +520,7 @@ msgstr ""
 
 #: views/group.php:18 views/group.php:85 views/group.php:90
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: views/group.php:28
 msgid "Name of group"
