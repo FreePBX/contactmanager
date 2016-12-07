@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-29 10:51-0800\n"
-"PO-Revision-Date: 2016-12-06 21:58+0200\n"
+"PO-Revision-Date: 2016-12-07 12:59+0200\n"
 "Last-Translator: Sven <spiderrs4@web.de>\n"
 "Language-Team: German "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/de_DE/>\n"
@@ -23,27 +23,27 @@ msgstr ""
 
 #: Contactmanager.class.php:594 ucp/Contactmanager.class.php:203
 msgid "A PHP extension stopped the file upload"
-msgstr ""
+msgstr "Eine PHP Erweiterung hat den Datei Upload gestoppt"
 
 #: views/entry.php:331
 msgid "A list of E-Mail addresses belonging to this entry"
-msgstr ""
+msgstr "Eine Liste der E-Mail-Adressen, die zu diesem Eintrag gehören."
 
 #: views/entry.php:299
 msgid "A list of XMPP addresses belonging to this entry"
-msgstr ""
+msgstr "Eine Liste der XMPP-Adressen, die zu diesem Eintrag gehören."
 
 #: views/entry.php:267
 msgid "A list of numbers belonging to this entry"
-msgstr ""
+msgstr "Eine Liste von Nummern, die zu diesem Eintrag gehören."
 
 #: views/entry.php:363
 msgid "A list of websites belonging to this entry"
-msgstr ""
+msgstr "Eine Liste von Webseiten, die zu diesem Eintrag gehören."
 
 #: views/entry.php:57
 msgid "A user from the User Management module"
-msgstr ""
+msgstr "Ein Benutzer aus dem Benutzer-Management-Modul."
 
 #: Contactmanager.class.php:30 Contactmanager.class.php:39
 msgid "Actions"
@@ -246,53 +246,53 @@ msgstr "E-Mail Adresse. Nur externe Kontakte."
 
 #: Contactmanager.class.php:183
 msgid "ERROR failed to update address field"
-msgstr ""
+msgstr "Fehler, das Adressfeld konnte nicht aktualisiert werden."
 
 #: Contactmanager.class.php:167
 msgid "ERROR failed to update displayname field"
-msgstr ""
+msgstr "Fehler, das Feld Anzeigename konnte nicht aktualisiert werden."
 
 #: Contactmanager.class.php:199
 msgid "ERROR failed to update extension field"
-msgstr ""
+msgstr "Fehler, das Nummernfeld konnte nicht aktualisiert werden."
 
 #: Contactmanager.class.php:151
 msgid "ERROR failed to update title field"
-msgstr ""
+msgstr "Fehler, das Titelfeld konnte nicht aktualisiert werden."
 
 #: ucp/views/contactro.php:80
 msgid "Edit Contact"
-msgstr ""
+msgstr "Kontakt bearbeiten"
 
 #: views/entry.php:29
 msgid "Edit Entry"
-msgstr ""
+msgstr "Eintrag bearbeiten"
 
 #: views/grid.php:29 views/group.php:7
 msgid "Edit Group"
-msgstr ""
+msgstr "Gruppe bearbeiten"
 
 #: ucp/views/contact.php:168 views/entry.php:309
 msgid "Email"
-msgstr ""
+msgstr "E-Mail"
 
 #: assets/js/contactmanager.js:92
 msgid "Ext."
-msgstr ""
+msgstr "Extern"
 
 #: Contactmanager.class.php:2664 Contactmanager.class.php:2676
 #: Contactmanager.class.php:2688
 msgid "Extension.  External contacts only."
-msgstr ""
+msgstr "Nebenstelle. Nur externe Kontakte."
 
 #: Contactmanager.class.php:34 Contactmanager.class.php:2641
 #: views/group.php:44
 msgid "External"
-msgstr ""
+msgstr "Extern"
 
 #: assets/js/contactmanager.js:102
 msgid "FAX"
-msgstr ""
+msgstr "FAX"
 
 #: ucp/assets/js/global.js:29
 msgid "Facetime"
@@ -300,20 +300,20 @@ msgstr ""
 
 #: Contactmanager.class.php:591 ucp/Contactmanager.class.php:200
 msgid "Failed to write file to disk"
-msgstr ""
+msgstr "Fehler beim Speichern der Datei"
 
 #: ucp/views/contact.php:81 ucp/views/contact.php:123
 msgid "Fax"
-msgstr ""
+msgstr "Fax"
 
 #: Contactmanager.class.php:554 ucp/Contactmanager.class.php:153
 msgid "File upload failed"
-msgstr ""
+msgstr "Hochladen fehlgeschlagen"
 
 #: Contactmanager.class.php:27 Contactmanager.class.php:2648
 #: ucp/views/contact.php:10 ucp/views/contacts.php:34 views/entry.php:88
 msgid "First Name"
-msgstr ""
+msgstr "Vorname"
 
 #: views/entry.php:98
 msgid "First Name (overrides First Name from User Manager)"
