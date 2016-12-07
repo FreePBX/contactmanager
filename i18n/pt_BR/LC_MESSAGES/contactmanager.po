@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-29 10:51-0800\n"
-"PO-Revision-Date: 2016-12-06 02:33+0200\n"
+"PO-Revision-Date: 2016-12-07 01:27+0200\n"
 "Last-Translator: Alexander <alexander.schley@paranagua.pr.gov.br>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/pt_BR/>\n"
@@ -598,7 +598,7 @@ msgstr ""
 
 #: Contactmanager.class.php:936 Contactmanager.class.php:955
 msgid "Reset"
-msgstr "Desfazer"
+msgstr "Reiniciar"
 
 #: ucp/views/contact.php:69 ucp/views/contact.php:111
 #: assets/js/contactmanager.js:100
