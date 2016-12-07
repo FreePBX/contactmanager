@@ -10,13 +10,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-29 10:51-0800\n"
-"PO-Revision-Date: 2016-11-29 10:51-0800\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2016-12-06 21:58+0200\n"
+"Last-Translator: Sven <spiderrs4@web.de>\n"
+"Language-Team: German "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/de_DE/>\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.4\n"
 
 #: Contactmanager.class.php:594 ucp/Contactmanager.class.php:203
 msgid "A PHP extension stopped the file upload"
@@ -44,95 +47,97 @@ msgstr ""
 
 #: Contactmanager.class.php:30 Contactmanager.class.php:39
 msgid "Actions"
-msgstr ""
+msgstr "Aktionen"
 
 #: ucp/views/contact.php:223
 msgid "Add Contact"
-msgstr ""
+msgstr "Kontakt hinzufügen"
 
 #: ucp/views/contact.php:192 views/entry.php:323
 msgid "Add Email"
-msgstr ""
+msgstr "E-mail hinzufügen"
 
 #: views/entry.php:32
 msgid "Add Entry"
-msgstr ""
+msgstr "Eintrag hinzufügen"
 
 #: ucp/views/groupcreate.php:8 ucp/views/nav.php:4 views/group.php:10
 msgid "Add Group"
-msgstr ""
+msgstr "Gruppe hinzufügen"
 
 #: views/rnav.php:3
 msgid "Add New Group"
-msgstr ""
+msgstr "Neue Gruppe hinzufügen"
 
 #: ucp/views/contact.php:138
 msgid "Add Number"
-msgstr ""
+msgstr "Nummer hinzufügen"
 
 #: views/grid.php:27
 msgid "Add User"
-msgstr ""
+msgstr "Benutzer hinzufügen"
 
 #: ucp/views/contact.php:219 views/entry.php:355
 msgid "Add Website"
-msgstr ""
+msgstr "Webseite hinzufügen"
 
 #: ucp/views/contact.php:165 views/entry.php:291
 msgid "Add XMPP"
-msgstr ""
+msgstr "XMPP hinzufügen"
 
 #: ucp/assets/js/global.js:274
 msgid "Adding..."
-msgstr ""
+msgstr "Hinzufügen..."
 
 #: Contactmanager.class.php:2652 views/entry.php:211 views/entry.php:223
 msgid "Address"
-msgstr ""
+msgstr "Adresse"
 
 #: contactmanager.i18n.php:6 contactmanager.i18n.php:12
 msgid "Admin"
-msgstr ""
+msgstr "Administrator"
 
 #: Contactmanager.class.php:2544
 msgid "All Internal Groups"
-msgstr ""
+msgstr "Alle internen Gruppen"
 
 #: Contactmanager.class.php:2550
 msgid "All Public Groups"
-msgstr ""
+msgstr "Alle öffentlichen Gruppen"
 
 #: assets/js/contactmanager.js:4
 msgid "An entry must have a user"
-msgstr ""
+msgstr "Es muss ein Benutzer eingetragen sein."
 
 #: Contactmanager.class.php:830
 msgid "An entry must have a user."
-msgstr ""
+msgstr "Es muss ein Benutzer eingetragen sein."
 
 #: Contactmanager.class.php:839
 msgid "An entry must have numbers."
-msgstr ""
+msgstr "Es muss eine Nummer eingetragen sein."
 
 #: ucp/assets/js/global.js:170
 msgid "Are you sure you want to delete this contact?"
-msgstr ""
+msgstr "Wollen Sie diesen Kontakt wirklich löschen?"
 
 #: ucp/assets/js/global.js:290
 msgid "Are you sure you want to delete this group and all of it's contacts?"
 msgstr ""
+"Sind Sie sicher, dass Sie diese Gruppe und alle darin enthaltenen Kontakte "
+"wirklich löschen wollen?"
 
 #: ucp/views/contact.php:36 views/entry.php:162 views/user_details_hook.php:21
 msgid "Browse"
-msgstr ""
+msgstr "Durchsuchen"
 
 #: ucp/assets/js/global.js:27
 msgid "Call To"
-msgstr ""
+msgstr "Anrufen"
 
 #: Contactmanager.class.php:598 ucp/Contactmanager.class.php:207
 msgid "Can Not Find Uploaded Files"
-msgstr ""
+msgstr "Es können keine hochgeladenen Dateien gefunden werden"
 
 #: Contactmanager.class.php:877 Contactmanager.class.php:2660
 #: Contactmanager.class.php:2672 Contactmanager.class.php:2684
@@ -145,24 +150,26 @@ msgstr ""
 msgid ""
 "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
 msgstr ""
+"Einträge werden durch Komma getrennt (z.B. sms,fax). Nur für externe "
+"Kontakte."
 
 #: Contactmanager.class.php:37 Contactmanager.class.php:2651
 #: ucp/views/contact.php:22 ucp/views/contacts.php:37 views/entry.php:191
 #: views/group.php:91
 msgid "Company"
-msgstr ""
+msgstr "Firma"
 
 #: views/entry.php:201
 msgid "Company (overrides Company from User Manager)"
-msgstr ""
+msgstr "Firma (Überschreibt die Firma vom Benutzermanager)"
 
 #: views/entry.php:148 views/user_details_hook.php:7
 msgid "Contact Image"
-msgstr ""
+msgstr "Kontaktblid"
 
 #: views/entry.php:181
 msgid "Contact Image for this user"
-msgstr ""
+msgstr "Kontaktbild für diesen Benutzer"
 
 #: views/user_details_hook.php:40
 msgid ""
@@ -175,20 +182,20 @@ msgstr ""
 #: contactmanager.i18n.php:4 contactmanager.i18n.php:8
 #: contactmanager.i18n.php:10
 msgid "Contact Manager"
-msgstr ""
+msgstr "Kontakt-Manager"
 
 #: contactmanager.i18n.php:16
 msgid "Contact Manager Module"
-msgstr ""
+msgstr "Kontakt-Manager-Modul"
 
 #: functions.inc.php:39 functions.inc.php:42
 #, php-format
 msgid "Contact Manager: %s"
-msgstr ""
+msgstr "Kontakt-Manager: %s"
 
 #: Contactmanager.class.php:2620 ucp/Contactmanager.class.php:399
 msgid "Contacts"
-msgstr ""
+msgstr "Kontakte"
 
 #: Contactmanager.class.php:2621
 msgid "Contacts and internal/external groups from the Contact Manager module."
@@ -196,46 +203,46 @@ msgstr ""
 
 #: Contactmanager.class.php:929 Contactmanager.class.php:948
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: ucp/views/contact.php:226 ucp/views/contactro.php:81
 msgid "Delete Contact"
-msgstr ""
+msgstr "Kontakt löschen"
 
 #: views/grid.php:30
 msgid "Delete Group"
-msgstr ""
+msgstr "Gruppe löschen"
 
 #: ucp/views/contact.php:31 views/entry.php:157 views/user_details_hook.php:16
 msgid "Delete Image"
-msgstr ""
+msgstr "Bild löschen"
 
 #: ucp/assets/js/global.js:172
 msgid "Deleting..."
-msgstr ""
+msgstr "Löschen..."
 
 #: Contactmanager.class.php:26 Contactmanager.class.php:36
 #: Contactmanager.class.php:2645 Contactmanager.class.php:2646
 #: ucp/views/contact.php:6 ucp/views/contacts.php:33 views/entry.php:68
 msgid "Display Name"
-msgstr ""
+msgstr "Anzeigename"
 
 #: views/entry.php:78
 msgid "Display Name (overrides Display Name from User Manager)"
-msgstr ""
+msgstr "Anzeigename (Überschreibt den Name des Benutzer-Manager)"
 
 #: ucp/views/contact.php:28 views/entry.php:154 views/user_details_hook.php:13
 msgid "Drop a new image here"
-msgstr ""
+msgstr "Neues Bild hier rein ziehen"
 
 #: assets/js/contactmanager.js:37
 msgid "E-Mail address cannot be blank."
-msgstr ""
+msgstr "E-Mail Adresse darf nicht leer sein."
 
 #: Contactmanager.class.php:2690 Contactmanager.class.php:2691
 #: Contactmanager.class.php:2692
 msgid "E-mail address.  External contacts only."
-msgstr ""
+msgstr "E-Mail Adresse. Nur externe Kontakte."
 
 #: Contactmanager.class.php:183
 msgid "ERROR failed to update address field"
