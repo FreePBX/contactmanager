@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-29 10:51-0800\n"
-"PO-Revision-Date: 2016-12-07 14:05+0200\n"
+"PO-Revision-Date: 2016-12-07 18:08+0200\n"
 "Last-Translator: Sven <spiderrs4@web.de>\n"
 "Language-Team: German "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/de_DE/>\n"
@@ -143,7 +143,7 @@ msgstr "Es können keine hochgeladenen Dateien gefunden werden"
 #: Contactmanager.class.php:2672 Contactmanager.class.php:2684
 #: ucp/views/contact.php:64 ucp/views/contact.php:106 views/group.php:104
 msgid "Cell"
-msgstr ""
+msgstr "Mobil"
 
 #: Contactmanager.class.php:2665 Contactmanager.class.php:2677
 #: Contactmanager.class.php:2689
@@ -176,6 +176,9 @@ msgid ""
 "Contact Image for this user. Image will be deleted if \"Show in Contact "
 "Manager\" is set to no or inherits no under the \"Contact Manager\" tab"
 msgstr ""
+"Kontaktbild für diesen Benutzer. Das Bild wird gelöscht, wenn \"Zeige im "
+"Kontakt Manager\" auf nein gesetzt ist oder unter der Registerkarte \""
+"Kontakt Manager\" nicht vererben steht."
 
 #: Contactmanager.class.php:2564 Contactmanager.class.php:2576
 #: Contactmanager.class.php:2588 Contactmanager.class.php:2605
@@ -199,7 +202,7 @@ msgstr "Kontakte"
 
 #: Contactmanager.class.php:2621
 msgid "Contacts and internal/external groups from the Contact Manager module."
-msgstr ""
+msgstr "Kontakte und interne / externe Gruppen aus dem Kontakt-Manager-Modul."
 
 #: Contactmanager.class.php:929 Contactmanager.class.php:948
 msgid "Delete"
@@ -479,7 +482,7 @@ msgstr "Gruppentyp ist erforderlich."
 #: Contactmanager.class.php:2671 Contactmanager.class.php:2683
 #: ucp/views/contact.php:63 ucp/views/contact.php:105 views/group.php:103
 msgid "Home"
-msgstr "Home"
+msgstr "Privat"
 
 #: contactmanager.i18n.php:18
 msgid ""
@@ -534,6 +537,7 @@ msgstr "Name der Gruppe"
 msgid ""
 "Name of group for contact.  If group does not exist, it will be created."
 msgstr ""
+"Gruppenname für Kontakt. Wenn die Gruppe nicht existiert, wird sie erstellt."
 
 #: Contactmanager.class.php:2222
 msgid "No E-Mails to add"
@@ -615,114 +619,122 @@ msgstr "Wählen Sie eine Aktion"
 
 #: views/userman_hook.php:7
 msgid "Show In Contact Manager Groups"
-msgstr ""
+msgstr "In Kontakt-Manager-Gruppen Anzeigen"
 
 #: Contactmanager.class.php:941 Contactmanager.class.php:960
 msgid "Submit"
-msgstr ""
+msgstr "Bestätigen"
 
 #: Contactmanager.class.php:579 ucp/Contactmanager.class.php:188
 msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
 msgstr ""
+"Die hochgeladene Datei überschreitet die Maximal zulässige Dateigröße welche "
+"als Wert \"MAX_FILE_SIZE\" in der HTML definiert wurde"
 
 #: Contactmanager.class.php:576 ucp/Contactmanager.class.php:185
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr ""
+"Die hochgeladene Datei überschreitet die maximal zulässige Dateigröße welche "
+"als Wert \"upload_max_filesize\" in der php.ini definiert wurde"
 
 #: Contactmanager.class.php:582 ucp/Contactmanager.class.php:191
 msgid "The uploaded file was only partially uploaded"
-msgstr ""
+msgstr "Die hochgeladene Datei wurde nur teilweise hochgeladen"
 
 #: ucp/assets/js/global.js:76
 msgid "There are no actions for this type"
-msgstr ""
+msgstr "Es gibt keine Aktionen für diesen Typ"
 
 #: views/userman_hook.php:49
 msgid ""
 "These are the viewable contact manager groups which will show up for this "
 "user in UCP and RestApps (If purchased)"
 msgstr ""
+"Dies sind die sichtbaren Kontakt-Manager-Gruppen, die für diesen Benutzer in "
+"UCP und RestApps angezeigt werden (falls gekauft)"
 
 #: Contactmanager.class.php:2650 ucp/views/contact.php:18
 #: ucp/views/contacts.php:36 views/entry.php:128
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 #: views/entry.php:138
 msgid "Title (overrides Title from User Manager)"
-msgstr ""
+msgstr "Titel (Überschreibt den Titel vom Benutzer-Manager)"
 
 #: views/group.php:39
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: views/group.php:54
 msgid "Type of group"
-msgstr ""
+msgstr "Typ der Gruppe"
 
 #: Contactmanager.class.php:2638
 msgid "Type of group for contact."
-msgstr ""
+msgstr "Art der Gruppe für Kontakt."
 
 #: Contactmanager.class.php:2656 Contactmanager.class.php:2668
 #: Contactmanager.class.php:2680
 msgid "Type of phone number.  External contacts only."
-msgstr ""
+msgstr "Telefonnummern Typ. Nur externe Kontakte."
 
 #: Contactmanager.class.php:526 ucp/Contactmanager.class.php:123
 #, php-format
 msgid "Unable to find gravatar for %s"
-msgstr ""
+msgstr "Der Gravatar für %s konnte nicht gefunden werden"
 
 #: ucp/Contactmanager.class.php:246 ucp/Contactmanager.class.php:254
 #: ucp/Contactmanager.class.php:258 ucp/Contactmanager.class.php:268
 #: ucp/Contactmanager.class.php:277 ucp/Contactmanager.class.php:286
 msgid "Unauthorized"
-msgstr ""
+msgstr "Keine Berechtigung"
 
 #: Contactmanager.class.php:2789
 msgid "Unknown data type."
-msgstr ""
+msgstr "Unbekannter Datentyp."
 
 #: Contactmanager.class.php:571 ucp/Contactmanager.class.php:180
 msgid "Unsupported file format"
-msgstr ""
+msgstr "Nicht unterstütztes Datei Format"
 
 #: assets/js/contactmanager.js:209 ucp/assets/js/global.js:361
 msgid "Unsupported file type"
-msgstr ""
+msgstr "Nicht unterstützter Dateityp"
 
 #: ucp/views/contact.php:45 views/user_details_hook.php:30
 msgid "Use Gravatar"
-msgstr ""
+msgstr "Gravatar benutzen"
 
 #: Contactmanager.class.php:29 views/entry.php:41 views/group.php:86
 #: views/group.php:96
 msgid "User"
-msgstr ""
+msgstr "Benutzer"
 
 #: Contactmanager.class.php:234
 msgid "User Manager Group"
-msgstr ""
+msgstr "Benutzer-Manager-Gruppe"
 
 #: Contactmanager.class.php:2653
 msgid ""
 "User Manager username this contact should point to.  Internal contacts only."
 msgstr ""
+"Benutzer-Manager Benutzername, auf den dieser Kontakt verweisen soll. Nur "
+"interne Kontakte."
 
 #: views/userman_hook.php:33
 msgid "Viewable Contact Manager Groups"
-msgstr ""
+msgstr "Sichtbare Kontakt-Manager-Gruppen"
 
 #: ucp/views/contact.php:195 views/entry.php:341
 msgid "Website"
-msgstr ""
+msgstr "Webseite"
 
 #: assets/js/contactmanager.js:48
 msgid "Website cannot be blank."
-msgstr ""
+msgstr "Webseite darf nicht leer sein."
 
 #: views/userman_hook.php:23
 msgid "What internal groups to show this user in"
@@ -732,53 +744,53 @@ msgstr ""
 #: Contactmanager.class.php:2670 Contactmanager.class.php:2682
 #: ucp/views/contact.php:62 ucp/views/contact.php:104 views/group.php:102
 msgid "Work"
-msgstr ""
+msgstr "Arbeit"
 
 #: views/entry.php:277
 msgid "XMPP"
-msgstr ""
+msgstr "XMPP"
 
 #: assets/js/contactmanager.js:26
 msgid "XMPP address cannot be blank."
-msgstr ""
+msgstr "XMPP Adresse darf nicht leer sein."
 
 #: Contactmanager.class.php:156 Contactmanager.class.php:172
 #: Contactmanager.class.php:188 Contactmanager.class.php:204
 msgid "already exists"
-msgstr ""
+msgstr "bereits vorhanden"
 
 #: Contactmanager.class.php:1380
 msgid "cell"
-msgstr ""
+msgstr "Mobil"
 
 #: Contactmanager.class.php:175
 msgid "checking for address field.."
-msgstr ""
+msgstr "Überprüfen des Adressfeldes..."
 
 #: Contactmanager.class.php:159
 msgid "checking for displayname field.."
-msgstr ""
+msgstr "Überprüfen des Anzeigenamen.."
 
 #: Contactmanager.class.php:191
 msgid "checking for extension field.."
-msgstr ""
+msgstr "Überprüfen des Nummernfeldes.."
 
 #: Contactmanager.class.php:143
 msgid "checking for title field.."
-msgstr ""
+msgstr "Überprüfen des Titelfeldes.."
 
 #: Contactmanager.class.php:1379
 msgid "extension"
-msgstr ""
+msgstr "Nebenstelle"
 
 #: Contactmanager.class.php:1383
 msgid "fax"
-msgstr ""
+msgstr "fax"
 
 #: Contactmanager.class.php:1382
 msgid "home"
-msgstr ""
+msgstr "privat"
 
 #: Contactmanager.class.php:1381
 msgid "work"
-msgstr ""
+msgstr "Arbeit"
