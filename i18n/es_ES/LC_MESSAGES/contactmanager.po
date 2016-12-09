@@ -10,20 +10,20 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-29 10:51-0800\n"
-"PO-Revision-Date: 2016-06-08 06:15+0200\n"
+"PO-Revision-Date: 2016-12-09 08:49+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
-"Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/es_ES/>\n"
+"Language-Team: Spanish "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es_ES\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.4\n"
 
 #: Contactmanager.class.php:594 ucp/Contactmanager.class.php:203
 msgid "A PHP extension stopped the file upload"
-msgstr ""
+msgstr "Una extensión de PHP detuvo la subida del archivo"
 
 #: views/entry.php:331
 msgid "A list of E-Mail addresses belonging to this entry"
@@ -127,7 +127,7 @@ msgstr "Esta seguro que quiere eliminar este grupo y todos sus contactos?"
 
 #: ucp/views/contact.php:36 views/entry.php:162 views/user_details_hook.php:21
 msgid "Browse"
-msgstr ""
+msgstr "Vistazo"
 
 #: ucp/assets/js/global.js:27
 msgid "Call To"
@@ -135,7 +135,7 @@ msgstr "Llamar a"
 
 #: Contactmanager.class.php:598 ucp/Contactmanager.class.php:207
 msgid "Can Not Find Uploaded Files"
-msgstr ""
+msgstr "No puede encontrase Archivos subidos"
 
 #: Contactmanager.class.php:877 Contactmanager.class.php:2660
 #: Contactmanager.class.php:2672 Contactmanager.class.php:2684
@@ -300,7 +300,7 @@ msgstr "FaceTime"
 
 #: Contactmanager.class.php:591 ucp/Contactmanager.class.php:200
 msgid "Failed to write file to disk"
-msgstr ""
+msgstr "Fallo al escribir al disco"
 
 #: ucp/views/contact.php:81 ucp/views/contact.php:123
 msgid "Fax"
@@ -308,7 +308,7 @@ msgstr "Fax"
 
 #: Contactmanager.class.php:554 ucp/Contactmanager.class.php:153
 msgid "File upload failed"
-msgstr ""
+msgstr "Subida de Archivo Fallo"
 
 #: Contactmanager.class.php:27 Contactmanager.class.php:2648
 #: ucp/views/contact.php:10 ucp/views/contacts.php:34 views/entry.php:88
@@ -512,11 +512,11 @@ msgstr "Lista Todos los Grupos"
 
 #: ucp/assets/js/global.js:425
 msgid "Loading..."
-msgstr ""
+msgstr "Cargando..."
 
 #: Contactmanager.class.php:588 ucp/Contactmanager.class.php:197
 msgid "Missing a temporary folder"
-msgstr ""
+msgstr "Carpeta temporal faltante"
 
 #: ucp/views/nav.php:3
 msgid "My Contacts"
@@ -562,7 +562,7 @@ msgstr ""
 
 #: Contactmanager.class.php:585 ucp/Contactmanager.class.php:194
 msgid "No file was uploaded"
-msgstr ""
+msgstr "No se subió archivo"
 
 #: ucp/Contactmanager.class.php:349 ucp/Contactmanager.class.php:370
 msgid "Not Authorized"
@@ -603,7 +603,7 @@ msgstr ""
 
 #: Contactmanager.class.php:936 Contactmanager.class.php:955
 msgid "Reset"
-msgstr "Reinicio"
+msgstr "Reiniciar"
 
 #: ucp/views/contact.php:69 ucp/views/contact.php:111
 #: assets/js/contactmanager.js:100
