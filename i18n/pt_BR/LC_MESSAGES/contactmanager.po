@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-29 10:51-0800\n"
-"PO-Revision-Date: 2016-12-07 23:56+0200\n"
+"PO-Revision-Date: 2016-12-09 21:47+0200\n"
 "Last-Translator: Alexander <alexander.schley@paranagua.pr.gov.br>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/pt_BR/>\n"
@@ -562,7 +562,7 @@ msgstr "Nenhum arquivo foi carregado"
 
 #: ucp/Contactmanager.class.php:349 ucp/Contactmanager.class.php:370
 msgid "Not Authorized"
-msgstr ""
+msgstr "Não Autorizado"
 
 #: assets/js/contactmanager.js:15
 msgid "Number cannot be blank."
