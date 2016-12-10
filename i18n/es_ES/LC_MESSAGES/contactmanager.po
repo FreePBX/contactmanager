@@ -691,7 +691,7 @@ msgstr "Tipo de datos desconocido."
 
 #: Contactmanager.class.php:571 ucp/Contactmanager.class.php:180
 msgid "Unsupported file format"
-msgstr "Formato no soportado"
+msgstr "formato de archivo no soportado"
 
 #: assets/js/contactmanager.js:209 ucp/assets/js/global.js:361
 msgid "Unsupported file type"
