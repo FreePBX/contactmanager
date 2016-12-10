@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-29 10:51-0800\n"
-"PO-Revision-Date: 2016-12-09 21:47+0200\n"
+"PO-Revision-Date: 2016-12-09 22:51+0200\n"
 "Last-Translator: Alexander <alexander.schley@paranagua.pr.gov.br>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/pt_BR/>\n"
@@ -744,7 +744,7 @@ msgstr ""
 #: Contactmanager.class.php:156 Contactmanager.class.php:172
 #: Contactmanager.class.php:188 Contactmanager.class.php:204
 msgid "already exists"
-msgstr ""
+msgstr "já existe"
 
 #: Contactmanager.class.php:1380
 msgid "cell"
