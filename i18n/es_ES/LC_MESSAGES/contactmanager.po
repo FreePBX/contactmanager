@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-29 10:51-0800\n"
-"PO-Revision-Date: 2016-12-09 23:18+0200\n"
+"PO-Revision-Date: 2016-12-10 10:30+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
@@ -300,7 +300,7 @@ msgstr "FaceTime"
 
 #: Contactmanager.class.php:591 ucp/Contactmanager.class.php:200
 msgid "Failed to write file to disk"
-msgstr "Fallo al escribir al disco"
+msgstr "Fallo escritura del archivo al disco"
 
 #: ucp/views/contact.php:81 ucp/views/contact.php:123
 msgid "Fax"
@@ -516,7 +516,7 @@ msgstr "Cargando..."
 
 #: Contactmanager.class.php:588 ucp/Contactmanager.class.php:197
 msgid "Missing a temporary folder"
-msgstr "Carpeta temporal faltante"
+msgstr "Falta una carpeta temporal"
 
 #: ucp/views/nav.php:3
 msgid "My Contacts"
@@ -562,7 +562,7 @@ msgstr ""
 
 #: Contactmanager.class.php:585 ucp/Contactmanager.class.php:194
 msgid "No file was uploaded"
-msgstr "No se subió archivo"
+msgstr "No se ha cargado ningún archivo"
 
 #: ucp/Contactmanager.class.php:349 ucp/Contactmanager.class.php:370
 msgid "Not Authorized"
@@ -691,11 +691,11 @@ msgstr "Tipo de datos desconocido."
 
 #: Contactmanager.class.php:571 ucp/Contactmanager.class.php:180
 msgid "Unsupported file format"
-msgstr "Formato de Archivo no soportado"
+msgstr "Formato no soportado"
 
 #: assets/js/contactmanager.js:209 ucp/assets/js/global.js:361
 msgid "Unsupported file type"
-msgstr "Tipo de Archivo no soportado"
+msgstr "Tipo no soportado"
 
 #: ucp/views/contact.php:45 views/user_details_hook.php:30
 msgid "Use Gravatar"
