@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-29 10:51-0800\n"
-"PO-Revision-Date: 2016-12-09 08:49+0200\n"
+"PO-Revision-Date: 2016-12-09 20:57+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
@@ -627,14 +627,16 @@ msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
 msgstr ""
+"El archivo subido supera la directiva MAX_FILE_SIZE que se especificó en el "
+"formulario HTML"
 
 #: Contactmanager.class.php:576 ucp/Contactmanager.class.php:185
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
-msgstr ""
+msgstr "El archivo subido supera la directiva upload_max_filesize en php.ini"
 
 #: Contactmanager.class.php:582 ucp/Contactmanager.class.php:191
 msgid "The uploaded file was only partially uploaded"
-msgstr ""
+msgstr "El archivo subido sólo se cargó parcialmente"
 
 #: ucp/assets/js/global.js:76
 msgid "There are no actions for this type"
@@ -689,11 +691,11 @@ msgstr "Tipo de datos desconocido."
 
 #: Contactmanager.class.php:571 ucp/Contactmanager.class.php:180
 msgid "Unsupported file format"
-msgstr ""
+msgstr "Formato de Archivo no soportado"
 
 #: assets/js/contactmanager.js:209 ucp/assets/js/global.js:361
 msgid "Unsupported file type"
-msgstr ""
+msgstr "Tipo de Archivo no soportado"
 
 #: ucp/views/contact.php:45 views/user_details_hook.php:30
 msgid "Use Gravatar"
