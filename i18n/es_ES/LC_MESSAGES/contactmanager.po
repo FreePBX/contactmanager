@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-29 10:51-0800\n"
-"PO-Revision-Date: 2016-12-10 22:37+0200\n"
+"PO-Revision-Date: 2016-12-11 02:11+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
@@ -99,7 +99,7 @@ msgstr "Administ"
 
 #: Contactmanager.class.php:2544
 msgid "All Internal Groups"
-msgstr ""
+msgstr "Todos los Grupos Internos"
 
 #: Contactmanager.class.php:2550
 msgid "All Public Groups"
@@ -163,17 +163,20 @@ msgstr "Empresa (sustituye Empresa del Gestor de Usuarios)"
 
 #: views/entry.php:148 views/user_details_hook.php:7
 msgid "Contact Image"
-msgstr ""
+msgstr "Imagen de Contacto"
 
 #: views/entry.php:181
 msgid "Contact Image for this user"
-msgstr ""
+msgstr "Imagen de Contacto para este usuario"
 
 #: views/user_details_hook.php:40
 msgid ""
 "Contact Image for this user. Image will be deleted if \"Show in Contact "
 "Manager\" is set to no or inherits no under the \"Contact Manager\" tab"
 msgstr ""
+"Imagen de Contacto para este usuario. La imagen se eliminará si \"Mostrar en "
+"Administrador de contactos\" se establece en \"no\" o hereda \"no\" en la "
+"pestaña \"Administrador de contactos\""
 
 #: Contactmanager.class.php:2564 Contactmanager.class.php:2576
 #: Contactmanager.class.php:2588 Contactmanager.class.php:2605
@@ -184,7 +187,7 @@ msgstr "Gestor de Contactos"
 
 #: contactmanager.i18n.php:16
 msgid "Contact Manager Module"
-msgstr ""
+msgstr "Modulo Gestor de Contactos"
 
 #: functions.inc.php:39 functions.inc.php:42
 #, php-format
@@ -214,7 +217,7 @@ msgstr "Eliminar Grupo"
 
 #: ucp/views/contact.php:31 views/entry.php:157 views/user_details_hook.php:16
 msgid "Delete Image"
-msgstr ""
+msgstr "Borrar Imagen"
 
 #: ucp/assets/js/global.js:172
 msgid "Deleting..."
@@ -233,7 +236,7 @@ msgstr ""
 
 #: ucp/views/contact.php:28 views/entry.php:154 views/user_details_hook.php:13
 msgid "Drop a new image here"
-msgstr ""
+msgstr "Deje una nueva imagen aquí"
 
 #: assets/js/contactmanager.js:37
 msgid "E-Mail address cannot be blank."
@@ -416,7 +419,7 @@ msgstr "Entrada de Grupo no existe"
 
 #: Contactmanager.class.php:1943
 msgid "Group entry image successfully added"
-msgstr ""
+msgstr "Imagen de entrada de grupo agregada correctamente"
 
 #: Contactmanager.class.php:1910
 msgid "Group entry number successfully added"
@@ -486,6 +489,8 @@ msgid ""
 "How many digits should a number be before a partial match is used when "
 "looking up a contact"
 msgstr ""
+"Cuántos dígitos debe tener un número antes de utilizar una coincidencia "
+"parcial al buscar un contacto"
 
 #: Contactmanager.class.php:24 Contactmanager.class.php:2640
 #: views/group.php:45
@@ -495,7 +500,7 @@ msgstr "Interno"
 #: Contactmanager.class.php:542 ucp/Contactmanager.class.php:110
 #: ucp/Contactmanager.class.php:130 ucp/Contactmanager.class.php:141
 msgid "Invalid"
-msgstr ""
+msgstr "Invalido"
 
 #: Contactmanager.class.php:28 Contactmanager.class.php:2649
 #: ucp/views/contact.php:14 ucp/views/contacts.php:35 views/entry.php:108
@@ -558,7 +563,7 @@ msgstr "No hay XMPP's que agregar"
 
 #: ucp/assets/js/global.js:420
 msgid "No email defined"
-msgstr ""
+msgstr "No se definió email"
 
 #: Contactmanager.class.php:585 ucp/Contactmanager.class.php:194
 msgid "No file was uploaded"
@@ -590,7 +595,7 @@ msgstr "Otro"
 
 #: contactmanager.i18n.php:14
 msgid "Partial Match Length"
-msgstr ""
+msgstr "Longitud de coincidencia parcial"
 
 #: Contactmanager.class.php:2654 Contactmanager.class.php:2666
 #: Contactmanager.class.php:2678
@@ -599,7 +604,7 @@ msgstr "Numero de Telefono. Solo contactos externos."
 
 #: Contactmanager.class.php:518 ucp/Contactmanager.class.php:101
 msgid "Please enter a valid email address"
-msgstr ""
+msgstr "Pro Favor introduzca un email valido"
 
 #: Contactmanager.class.php:936 Contactmanager.class.php:955
 msgid "Reset"
@@ -616,7 +621,7 @@ msgstr "Seleccione Acción"
 
 #: views/userman_hook.php:7
 msgid "Show In Contact Manager Groups"
-msgstr ""
+msgstr "Mostrar en Grupos de Gestor de Contactos"
 
 #: Contactmanager.class.php:941 Contactmanager.class.php:960
 msgid "Submit"
@@ -647,6 +652,8 @@ msgid ""
 "These are the viewable contact manager groups which will show up for this "
 "user in UCP and RestApps (If purchased)"
 msgstr ""
+"Estos son los grupos de gestores de contactos visibles que se mostrarán para "
+"este usuario en UCP y RestApps (si se tienen)"
 
 #: Contactmanager.class.php:2650 ucp/views/contact.php:18
 #: ucp/views/contacts.php:36 views/entry.php:128
@@ -677,7 +684,7 @@ msgstr "Tipo del número de teléfono. Los contactos externos solamente."
 #: Contactmanager.class.php:526 ucp/Contactmanager.class.php:123
 #, php-format
 msgid "Unable to find gravatar for %s"
-msgstr ""
+msgstr "No se encontró un gravatar para %s"
 
 #: ucp/Contactmanager.class.php:246 ucp/Contactmanager.class.php:254
 #: ucp/Contactmanager.class.php:258 ucp/Contactmanager.class.php:268
@@ -699,7 +706,7 @@ msgstr "Tipo no soportado"
 
 #: ucp/views/contact.php:45 views/user_details_hook.php:30
 msgid "Use Gravatar"
-msgstr ""
+msgstr "Usar Gravatar"
 
 #: Contactmanager.class.php:29 views/entry.php:41 views/group.php:86
 #: views/group.php:96
@@ -719,7 +726,7 @@ msgstr ""
 
 #: views/userman_hook.php:33
 msgid "Viewable Contact Manager Groups"
-msgstr ""
+msgstr "Grupos de Gestor de Contactos visibles"
 
 #: ucp/views/contact.php:195 views/entry.php:341
 msgid "Website"
@@ -731,7 +738,7 @@ msgstr "Sitio Web no puede estar en Blanco."
 
 #: views/userman_hook.php:23
 msgid "What internal groups to show this user in"
-msgstr ""
+msgstr "En qué grupos internos se mostrará a este usuario"
 
 #: Contactmanager.class.php:875 Contactmanager.class.php:2658
 #: Contactmanager.class.php:2670 Contactmanager.class.php:2682
@@ -754,7 +761,7 @@ msgstr "ya existe"
 
 #: Contactmanager.class.php:1380
 msgid "cell"
-msgstr ""
+msgstr "cell"
 
 #: Contactmanager.class.php:175
 msgid "checking for address field.."
@@ -774,19 +781,19 @@ msgstr "chequeando campo title.."
 
 #: Contactmanager.class.php:1379
 msgid "extension"
-msgstr ""
+msgstr "extensión"
 
 #: Contactmanager.class.php:1383
 msgid "fax"
-msgstr ""
+msgstr "fax"
 
 #: Contactmanager.class.php:1382
 msgid "home"
-msgstr ""
+msgstr "inicio"
 
 #: Contactmanager.class.php:1381
 msgid "work"
-msgstr ""
+msgstr "trabajo"
 
 #~ msgid "Allowed Contact Manager Groups"
 #~ msgstr "Grupos de Gestion de COntactos permitidos"
