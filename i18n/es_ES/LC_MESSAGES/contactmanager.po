@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-29 10:51-0800\n"
-"PO-Revision-Date: 2016-12-11 05:38+0200\n"
+"PO-Revision-Date: 2016-12-11 07:27+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
@@ -337,7 +337,7 @@ msgstr "Grupo ya Existe"
 
 #: Contactmanager.class.php:2632 ucp/views/groupcreate.php:5
 msgid "Group Name"
-msgstr "Nombre de Grupo"
+msgstr "Nombre del Grupo"
 
 #: ucp/assets/js/global.js:311
 msgid "Group Name Can Not Be Blank"
