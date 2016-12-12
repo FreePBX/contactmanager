@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-29 10:51-0800\n"
-"PO-Revision-Date: 2016-12-12 00:37+0200\n"
+"PO-Revision-Date: 2016-12-12 01:18+0200\n"
 "Last-Translator: Alexander <alexander.schley@paranagua.pr.gov.br>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/pt_BR/>\n"
@@ -639,7 +639,7 @@ msgstr "O arquivo carregado excede a diretiva upload_max_filesize no php.ini"
 
 #: Contactmanager.class.php:582 ucp/Contactmanager.class.php:191
 msgid "The uploaded file was only partially uploaded"
-msgstr "O arquivo enviado somente foi carregado parcialmente"
+msgstr "O arquivo enviado foi carregado parcialmente"
 
 #: ucp/assets/js/global.js:76
 msgid "There are no actions for this type"
@@ -696,7 +696,7 @@ msgstr "Tipo de dados desconhecido."
 
 #: Contactmanager.class.php:571 ucp/Contactmanager.class.php:180
 msgid "Unsupported file format"
-msgstr "Formato de arquivo não compatível"
+msgstr "Formato de arquivo não suportado"
 
 #: assets/js/contactmanager.js:209 ucp/assets/js/global.js:361
 msgid "Unsupported file type"
