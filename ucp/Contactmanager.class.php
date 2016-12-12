@@ -40,6 +40,7 @@ class Contactmanager extends Modules{
 	public function getWidgetDisplay($id) {
 		$displayvars = array();
 		$displayvars['groups'] = $this->cm->getGroupsByOwner($this->user['id']);
+		$displayvars['total'] = 0;
 
 		foreach($displayvars['groups'] as &$group) {
 			$group['readonly'] = ($group['owner'] == -1);
@@ -48,6 +49,8 @@ class Contactmanager extends Modules{
 			if ($_REQUEST['id'] == $group['id']) {
 				$displayvars['group'] = $group['name'];
 			}
+
+			$displayvars['total'] = $displayvars['total'] + $group['count'];
 		}
 
 		$mainDisplay = $this->load_view(__DIR__.'/views/widget.php',$displayvars);
@@ -76,8 +79,10 @@ class Contactmanager extends Modules{
 			case 'updatecontact':
 			case 'deletecontact':
 			case 'addcontact':
+			case 'addcontactmodal':
 			case 'deletegroup':
 			case 'addgroup':
+			case 'addgroupmodal':
 			case 'grid':
 			case 'limage':
 			case 'uploadimage':
@@ -321,6 +326,9 @@ class Contactmanager extends Modules{
 					$return = array("status" => false, "message" => _("Unauthorized"));
 				}
 			break;
+			case "addcontactmodal":
+				$return = $this->load_view(__DIR__.'/views/contactEdit.php',$displayvars);
+			break;
 			case 'deletegroup':
 				$g = $this->cm->getGroupByID($_REQUEST['id']);
 				if($g['owner'] == $this->user['id']) {
@@ -331,7 +339,10 @@ class Contactmanager extends Modules{
 				}
 			break;
 			case 'addgroup':
-				$return = $this->cm->addGroup($_POST['name'], 'external', $this->user['id']);
+				$return = $this->cm->addGroup($_POST['groupname'], 'external', $this->user['id']);
+			break;
+			case "addgroupmodal":
+				$return = $this->load_view(__DIR__.'/views/groupCreate.php',$displayvars);
 			break;
 			default:
 				return false;

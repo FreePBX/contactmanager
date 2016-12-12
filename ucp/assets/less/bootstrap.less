@@ -1,4 +1,4 @@
-li[data-rawname='contactmanager'] {
+div[data-rawname='contactmanager'] {
 	#contacts-grid {
 		tr {
 			cursor: pointer;
@@ -58,13 +58,17 @@ li[data-rawname='contactmanager'] {
 		}
 	}
 
-	.group-list {
+	.group-list, .group-actions {
 		background-color: aliceblue;
-		.group {
+		.group, .group-action {
 			margin-bottom: 1px;
 			font-size: 85%;
 			.badge {
-				float:right;
+				float: right;
+			}
+			i {
+				float: right;
+				font-size: 120%;
 			}
 			a {
 				position: relative;
@@ -78,7 +82,7 @@ li[data-rawname='contactmanager'] {
 				color: #2a6496;
 			}
 		}
-		.group.active {
+		.group.active, .group-action.active {
 			background-color: #428bca;
 			border-radius: 2px;
 			a {
