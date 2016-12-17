@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-29 10:51-0800\n"
-"PO-Revision-Date: 2016-12-07 18:08+0200\n"
+"PO-Revision-Date: 2016-12-16 20:44+0200\n"
 "Last-Translator: Sven <spiderrs4@web.de>\n"
 "Language-Team: German "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/de_DE/>\n"
@@ -137,7 +137,7 @@ msgstr "Anrufen"
 
 #: Contactmanager.class.php:598 ucp/Contactmanager.class.php:207
 msgid "Can Not Find Uploaded Files"
-msgstr "Es können keine hochgeladenen Dateien gefunden werden"
+msgstr "Es können keine hochgeladenen Dateien gefunden werden."
 
 #: Contactmanager.class.php:877 Contactmanager.class.php:2660
 #: Contactmanager.class.php:2672 Contactmanager.class.php:2684
