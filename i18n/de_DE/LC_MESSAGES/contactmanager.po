@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-29 10:51-0800\n"
-"PO-Revision-Date: 2016-12-16 20:44+0200\n"
+"PO-Revision-Date: 2016-12-16 22:22+0200\n"
 "Last-Translator: Sven <spiderrs4@web.de>\n"
 "Language-Team: German "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/de_DE/>\n"
@@ -631,17 +631,17 @@ msgid ""
 "the HTML form"
 msgstr ""
 "Die hochgeladene Datei überschreitet die Maximal zulässige Dateigröße welche "
-"als Wert \"MAX_FILE_SIZE\" in der HTML definiert wurde"
+"als Wert \"MAX_FILE_SIZE\" in der HTML definiert wurde."
 
 #: Contactmanager.class.php:576 ucp/Contactmanager.class.php:185
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr ""
 "Die hochgeladene Datei überschreitet die maximal zulässige Dateigröße welche "
-"als Wert \"upload_max_filesize\" in der php.ini definiert wurde"
+"als Wert \"upload_max_filesize\" in der php.ini definiert wurde."
 
 #: Contactmanager.class.php:582 ucp/Contactmanager.class.php:191
 msgid "The uploaded file was only partially uploaded"
-msgstr "Die hochgeladene Datei wurde nur teilweise hochgeladen"
+msgstr "Die hochgeladene Datei wurde nur teilweise hochgeladen."
 
 #: ucp/assets/js/global.js:76
 msgid "There are no actions for this type"
