@@ -9,17 +9,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-29 10:51-0800\n"
+"POT-Creation-Date: 2016-12-19 14:01-0800\n"
 "PO-Revision-Date: 2016-12-12 18:54+0200\n"
 "Last-Translator: Maxim <maxim@ua.fm>\n"
-"Language-Team: Ukrainian "
-"<http://weblate.freepbx.org/projects/freepbx/contactmanager/uk_UA/>\n"
-"Language: uk_UA\n"
+"Language-Team: Ukrainian <http://weblate.freepbx.org/projects/freepbx/"
+"contactmanager/uk_UA/>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Language: uk_UA\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.4\n"
 
 #: Contactmanager.class.php:594 ucp/Contactmanager.class.php:203
@@ -50,7 +50,7 @@ msgstr ""
 msgid "Actions"
 msgstr "Дії"
 
-#: ucp/views/contact.php:223
+#: ucp/views/contact.php:223 views/grid.php:27 views/group.php:165
 msgid "Add Contact"
 msgstr "Додати контакт"
 
@@ -73,10 +73,6 @@ msgstr "Додати нову групу"
 #: ucp/views/contact.php:138
 msgid "Add Number"
 msgstr "Додати номер"
-
-#: views/grid.php:27
-msgid "Add User"
-msgstr "Додати користувача"
 
 #: ucp/views/contact.php:219 views/entry.php:355
 msgid "Add Website"
@@ -781,3 +777,6 @@ msgstr "домашній"
 #: Contactmanager.class.php:1381
 msgid "work"
 msgstr "робочий"
+
+#~ msgid "Add User"
+#~ msgstr "Додати користувача"

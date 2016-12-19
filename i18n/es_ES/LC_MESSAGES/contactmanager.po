@@ -9,15 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-29 10:51-0800\n"
+"POT-Creation-Date: 2016-12-19 14:01-0800\n"
 "PO-Revision-Date: 2016-12-12 04:50+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
-"Language-Team: Spanish "
-"<http://weblate.freepbx.org/projects/freepbx/contactmanager/es_ES/>\n"
-"Language: es_ES\n"
+"Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
+"contactmanager/es_ES/>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es_ES\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.4\n"
 
@@ -49,7 +49,7 @@ msgstr "Un usuario del modulo Gestor de Usuarios"
 msgid "Actions"
 msgstr "Acciones"
 
-#: ucp/views/contact.php:223
+#: ucp/views/contact.php:223 views/grid.php:27 views/group.php:165
 msgid "Add Contact"
 msgstr "Agregar Contacto"
 
@@ -72,10 +72,6 @@ msgstr "Agregar Nuevo Grupo"
 #: ucp/views/contact.php:138
 msgid "Add Number"
 msgstr "Agregar Numero"
-
-#: views/grid.php:27
-msgid "Add User"
-msgstr "Añadir Usuario"
 
 #: ucp/views/contact.php:219 views/entry.php:355
 msgid "Add Website"
@@ -794,6 +790,9 @@ msgstr "inicio"
 #: Contactmanager.class.php:1381
 msgid "work"
 msgstr "trabajo"
+
+#~ msgid "Add User"
+#~ msgstr "Añadir Usuario"
 
 #~ msgid "Allowed Contact Manager Groups"
 #~ msgstr "Grupos de Gestion de COntactos permitidos"

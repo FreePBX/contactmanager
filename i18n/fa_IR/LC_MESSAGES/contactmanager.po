@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-29 10:51-0800\n"
+"POT-Creation-Date: 2016-12-19 14:01-0800\n"
 "PO-Revision-Date: 2016-10-08 12:16+0200\n"
 "Last-Translator: psdk <hyavari26@gmail.com>\n"
 "Language-Team: Persian (Iran) <http://weblate.freepbx.org/projects/freepbx/"
@@ -49,7 +49,7 @@ msgstr "یک کاربر از ماژول مدیریت کاربر"
 msgid "Actions"
 msgstr "عملیات"
 
-#: ucp/views/contact.php:223
+#: ucp/views/contact.php:223 views/grid.php:27 views/group.php:165
 msgid "Add Contact"
 msgstr "افزودن مخاطب"
 
@@ -72,10 +72,6 @@ msgstr "افزودن گروه جدید"
 #: ucp/views/contact.php:138
 msgid "Add Number"
 msgstr "افزودن تعداد"
-
-#: views/grid.php:27
-msgid "Add User"
-msgstr "افزودن کاربر"
 
 #: ucp/views/contact.php:219 views/entry.php:355
 msgid "Add Website"
@@ -781,6 +777,9 @@ msgstr ""
 #: Contactmanager.class.php:1381
 msgid "work"
 msgstr ""
+
+#~ msgid "Add User"
+#~ msgstr "افزودن کاربر"
 
 #~ msgid "Allowed Contact Manager Groups"
 #~ msgstr "گروه های مدیریت مخاطب مجاز"
