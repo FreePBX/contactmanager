@@ -12,8 +12,7 @@ msgstr ""
 "POT-Creation-Date: 2016-11-29 16:41-0800\n"
 "PO-Revision-Date: 2016-09-02 15:22+0200\n"
 "Last-Translator: Kenichi <k.kitani@qloog.com>\n"
-"Language-Team: Japanese <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/ja_JP/>\n"
+"Language-Team: Japanese <http://weblate.freepbx.org/projects/freepbx/contactmanager/ja_JP/>\n"
 "Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,8 +22,7 @@ msgstr ""
 
 #: Contactmanager.class.php:594 ucp/Contactmanager.class.php:203
 msgid "A PHP extension stopped the file upload"
-msgstr ""
-"ファイルのアップロードは、PHPのエクステンションによって中断されました。"
+msgstr "ファイルのアップロードは、PHPのエクステンションによって中断されました。"
 
 #: views/entry.php:331
 msgid "A list of E-Mail addresses belonging to this entry"
@@ -146,8 +144,7 @@ msgstr "携帯"
 
 #: Contactmanager.class.php:2665 Contactmanager.class.php:2677
 #: Contactmanager.class.php:2689
-msgid ""
-"Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
+msgid "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
 msgstr "コンマで区切ったフラグのリスト。 例: sms,fax  ※外部の連絡先のみ"
 
 #: Contactmanager.class.php:37 Contactmanager.class.php:2651
@@ -169,9 +166,7 @@ msgid "Contact Image for this user"
 msgstr ""
 
 #: views/user_details_hook.php:40
-msgid ""
-"Contact Image for this user. Image will be deleted if \"Show in Contact "
-"Manager\" is set to no or inherits no under the \"Contact Manager\" tab"
+msgid "Contact Image for this user. Image will be deleted if \"Show in Contact Manager\" is set to no or inherits no under the \"Contact Manager\" tab"
 msgstr ""
 
 #: Contactmanager.class.php:2564 Contactmanager.class.php:2576
@@ -479,9 +474,7 @@ msgid "Home"
 msgstr "ホーム"
 
 #: contactmanager.i18n.php:18
-msgid ""
-"How many digits should a number be before a partial match is used when "
-"looking up a contact"
+msgid "How many digits should a number be before a partial match is used when looking up a contact"
 msgstr ""
 
 #: Contactmanager.class.php:24 Contactmanager.class.php:2640
@@ -524,8 +517,7 @@ msgid "Name of group"
 msgstr "グループの名前"
 
 #: Contactmanager.class.php:2633
-msgid ""
-"Name of group for contact.  If group does not exist, it will be created."
+msgid "Name of group for contact.  If group does not exist, it will be created."
 msgstr "連絡先のグループ名。グループが存在しない場合は新しく作ります。"
 
 #: Contactmanager.class.php:2222
@@ -611,9 +603,7 @@ msgid "Submit"
 msgstr "送信"
 
 #: Contactmanager.class.php:579 ucp/Contactmanager.class.php:188
-msgid ""
-"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
-"the HTML form"
+msgid "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form"
 msgstr ""
 
 #: Contactmanager.class.php:576 ucp/Contactmanager.class.php:185
@@ -629,9 +619,7 @@ msgid "There are no actions for this type"
 msgstr "この種類のアクションがありません"
 
 #: views/userman_hook.php:49
-msgid ""
-"These are the viewable contact manager groups which will show up for this "
-"user in UCP and RestApps (If purchased)"
+msgid "These are the viewable contact manager groups which will show up for this user in UCP and RestApps (If purchased)"
 msgstr ""
 
 #: Contactmanager.class.php:2650 ucp/views/contact.php:18
@@ -697,8 +685,7 @@ msgid "User Manager Group"
 msgstr "ユーザ管理のグループ"
 
 #: Contactmanager.class.php:2653
-msgid ""
-"User Manager username this contact should point to.  Internal contacts only."
+msgid "User Manager username this contact should point to.  Internal contacts only."
 msgstr "この連絡先が参照する、ユーザ管理のユーザ名。※内部の連絡先のみ"
 
 #: views/userman_hook.php:33
@@ -772,8 +759,9 @@ msgstr ""
 msgid "work"
 msgstr ""
 
-#~ msgid "No email defined"
-#~ msgstr "Emailが設定されていません"
+#: ucp/assets/js/global.js:425
+msgid "Loading..."
+msgstr ""
 
 #~ msgid "Add New Contact"
 #~ msgstr "新規連絡先を追加する"
@@ -805,6 +793,9 @@ msgstr ""
 #~ msgid "No"
 #~ msgstr "いいえ"
 
+#~ msgid "No email defined"
+#~ msgstr "Emailが設定されていません"
+
 #~ msgid "Note: Max file size is "
 #~ msgstr "注意: ファイルサイズの上限は "
 
@@ -817,9 +808,7 @@ msgstr ""
 #~ msgid "Show contact in Contact Manager"
 #~ msgstr "連絡先管理に表示する"
 
-#~ msgid ""
-#~ "These are the assigned and active contactmanager groups which will show "
-#~ "up for this user in UCP"
+#~ msgid "These are the assigned and active contactmanager groups which will show up for this user in UCP"
 #~ msgstr "このユーザのUCPで表示するグループです。"
 
 #~ msgid "Title  (overrides Title from User Manager)"

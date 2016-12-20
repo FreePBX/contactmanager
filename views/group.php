@@ -162,7 +162,7 @@ if ($group) {
 	switch ($group['type']) {
 	case 'internal':
 	case 'external':
-		$html.= '<a href="config.php?display=contactmanager&action=addentry&group=' . $group['id'] . '"><i class="fa fa-plus fa-fw"></i>Add Entry</a>';
+		$html.= '<a href="config.php?display=contactmanager&action=addentry&group=' . $group['id'] . '"><i class="fa fa-plus fa-fw"></i>'._("Add Contact").'</a>';
 		break;
 	}
 }
