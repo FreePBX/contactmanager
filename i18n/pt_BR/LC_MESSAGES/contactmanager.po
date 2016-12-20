@@ -213,7 +213,7 @@ msgstr "Apagando..."
 #: Contactmanager.class.php:2645 Contactmanager.class.php:2646
 #: ucp/views/contact.php:6 ucp/views/contacts.php:33 views/entry.php:68
 msgid "Display Name"
-msgstr "Exibir Nome"
+msgstr "Nome de Exibição"
 
 #: views/entry.php:78
 msgid "Display Name (overrides Display Name from User Manager)"
@@ -496,6 +496,10 @@ msgstr "Sobrenome (substitui Sobrenome do Gerenciador de Usuários)"
 msgid "List All Groups"
 msgstr "Listar Todos os Grupos"
 
+#: ucp/assets/js/global.js:425
+msgid "Loading..."
+msgstr "Carregando..."
+
 #: Contactmanager.class.php:588 ucp/Contactmanager.class.php:197
 msgid "Missing a temporary folder"
 msgstr "Faltando uma pasta temporária"
@@ -535,6 +539,10 @@ msgstr "Não há sites para adicionar"
 #: Contactmanager.class.php:2126
 msgid "No XMPPs to add"
 msgstr "Não há XMPPs para adicionar"
+
+#: ucp/assets/js/global.js:420
+msgid "No email defined"
+msgstr "Nenhum e-mail definido"
 
 #: Contactmanager.class.php:585 ucp/Contactmanager.class.php:194
 msgid "No file was uploaded"
@@ -754,14 +762,6 @@ msgstr "início"
 #: Contactmanager.class.php:1381
 msgid "work"
 msgstr "trabalho"
-
-#: ucp/assets/js/global.js:425
-msgid "Loading..."
-msgstr "Carregando..."
-
-#: ucp/assets/js/global.js:420
-msgid "No email defined"
-msgstr "Nenhum e-mail definido"
 
 #~ msgid "Add User"
 #~ msgstr "Adicionar Usuário"
