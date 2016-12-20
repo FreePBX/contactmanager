@@ -9,21 +9,21 @@
 				<?php }?>
 			</div>
 			<div class="group-actions">
-				<div class="group-action" id="addgroup"><a href="#" class="group-inner"><?php echo _('Add Group')?><span class="badges"><i class="fa fa-plus"></i></span></a></div>
+				<div class="group-action addgroup"><a href="#" class="group-inner"><?php echo _('Add Group')?><span class="badges"><i class="fa fa-plus"></i></span></a></div>
 			</div>
 		</div>
 		<div class="col-md-9">
 			<div id="contacts-toolbar">
 				<?php if(!isset($readonly) || !$readonly) { ?>
-					<button id="deletegroup" class="btn btn-danger disabled">
+					<button class="btn btn-danger deletegroup disabled">
 						<i class="fa fa-trash"></i> <span><?php echo _('Delete Group')?></span>
 					</button>
-					<button id="addcontact" class="btn btn-default disabled">
+					<button class="btn btn-default addcontact disabled">
 						<i class="fa fa-plus"></i> <span><?php echo _('Add Contact')?></span>
 					</button>
 				<?php } ?>
 			</div>
-			<table id="contacts-grid"
+			<table class="contacts-grid"
 				data-url="index.php?quietmode=1&amp;module=contactmanager&amp;command=grid&amp;group="
 				data-cache="false"
 				data-toolbar="#contacts-toolbar"

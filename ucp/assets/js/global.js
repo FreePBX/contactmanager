@@ -8,16 +8,15 @@ var ContactmanagerC = UCPMC.extend({
 			}
 		});
 	},
-	resize: function() {
-		var height = $("div[data-rawname='contactmanager']").height() - $("div[data-rawname='contactmanager'] .widget-title").height();
-		$("#contacts-grid").bootstrapTable('resetView',{height: height})
+	resize: function(widget_id) {
+		$(".grid-stack-item[data-id='"+widget_id+"'] .contacts-grid").bootstrapTable('resetView',{height: $(".grid-stack-item[data-id='"+widget_id+"'] .widget-content").height()});
 	},
 	groupClick: function() {
 		$(".group").removeClass("active");
 		$(this).addClass("active");
 		var group = $(this).data("group");
 
-		if (group.length == 0) {
+		if (group.length === 0) {
 			$("#deletegroup").addClass("disabled");
 			$("#addcontact").addClass("disabled");
 		} else {
@@ -30,26 +29,25 @@ var ContactmanagerC = UCPMC.extend({
 	displayWidget: function(widget_id, dashboard_id) {
 		var self = this;
 
-		self.init();
-
-		$('#contacts-grid').bootstrapTable();
-		// Trigger a resize so that we can have proper scrollbars on the table.
-		self.resize();
+		$(".grid-stack-item[data-id='"+widget_id+"'] .contacts-grid").one("post-body.bs.table", function() {
+			setTimeout(function() {
+				self.resize(widget_id);
+			},250);
+		});
 
 		$(".group").click(self.groupClick);
 
-		$("#addgroup").click(function() {
+		$(".grid-stack-item[data-id='"+widget_id+"'] .addgroup").click(function() {
 			$.getJSON('index.php?quietmode=1&module=contactmanager&command=addgroupmodal', function(data){
 				if (data.status === true){
-					$('#globalModalBody').html(data.message);
+					UCP.showDialog(_("Add Group"),data.message);
+					$('#globalModal .modal-footer').html('<button type="button" class="btn btn-secondary" data-dismiss="modal">'+_("Close")+'</button><button type="button" class="btn btn-primary save">'+ _("Save changes")+'</button>');
 				} else {
-					$('#globalModalBody').html('<h2>'+_("Error getting form")+'</h2>');
+					UCP.showDialog(_("Add Group"),_("Error getting form"));
+					$('#globalModal .modal-footer').html('<button type="button" class="btn btn-secondary" data-dismiss="modal">'+_("Close"));
 				}
 			});
-			$('#globalModalLabel').html('<h3>'+_("Add Group")+'</h3>');
-			$('#globalModalFooter').html('<button type="button" class="btn btn-secondary" data-dismiss="modal">'+_("Close")+'</button><button id="save" type="button" class="btn btn-primary">'+ _("Save changes")+'</button>');
-			$("#globalModal").modal('show');
-			$('#save').on('click',function() {
+			$('#globalModal .save').one('click',function() {
 				$.ajax({
 					type: 'POST',
 					url: 'index.php?quietmode=1&module=contactmanager&command=addgroup',
@@ -57,8 +55,7 @@ var ContactmanagerC = UCPMC.extend({
 					success: function (data) {
 						$(".group-list").append('<div class="group" data-name="' + $("#groupname").val() + '" data-group="' + data.id + '"><a href="#" class="group-inner">' + $("#groupname").val() + '<span class="badge">0</span></a></div>');
 						$(".group[data-group=" + data.id + "]").click(self.groupClick);
-
-						$("#globalModal").modal('hide');
+						UCP.closeDialog();
 					}
 				});
 			});
