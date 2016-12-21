@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-19 14:01-0800\n"
-"PO-Revision-Date: 2016-12-16 22:03+0200\n"
+"PO-Revision-Date: 2016-12-20 23:05+0200\n"
 "Last-Translator: Alexander <alexander.schley@paranagua.pr.gov.br>\n"
-"Language-Team: Portuguese (Brazil) <http://weblate.freepbx.org/projects/"
-"freepbx/contactmanager/pt_BR/>\n"
+"Language-Team: Portuguese (Brazil) "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/pt_BR/>\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.4\n"
 
@@ -222,7 +222,7 @@ msgstr "Apagando..."
 #: Contactmanager.class.php:2645 Contactmanager.class.php:2646
 #: ucp/views/contact.php:6 ucp/views/contacts.php:33 views/entry.php:68
 msgid "Display Name"
-msgstr "Exibir Nome"
+msgstr "Nome de Exibição"
 
 #: views/entry.php:78
 msgid "Display Name (overrides Display Name from User Manager)"
