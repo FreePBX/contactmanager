@@ -22,7 +22,8 @@ class Contactmanager extends Modules{
 
 		$widgets['contactmanager'] = array(
 			"display" => _("Contacts"),
-			"defaultsize" => array("height" => 4, "width" => 4)
+			"defaultsize" => array("height" => 4, "width" => 4),
+			'description' => _("PBX Contacts"),
 		);
 
 		if (empty($widgets)) {
@@ -79,6 +80,7 @@ class Contactmanager extends Modules{
 			case 'updatecontact':
 			case 'deletecontact':
 			case 'addcontact':
+			case 'editcontactmodal':
 			case 'addcontactmodal':
 			case 'deletegroup':
 			case 'addgroup':
@@ -88,6 +90,7 @@ class Contactmanager extends Modules{
 			case 'uploadimage':
 			case 'delimage':
 			case 'getgravatar':
+			case 'showcontact':
 				return true;
 			default:
 				return false;
@@ -317,17 +320,48 @@ class Contactmanager extends Modules{
 				$return = array("status" => false, "message" => _("Unauthorized"));
 			break;
 			case 'addcontact':
-				$g = $this->cm->getGroupByID($_REQUEST['id']);
+				$data = $_POST;
+				$g = $this->cm->getGroupByID($data['group']);
 				if($g['owner'] == $this->user['id']) {
-					$contact = $_REQUEST['contact'];
+					$contact = $data['contact'];
 					$contact['user'] = -1;
-					$return = $this->cm->addEntryByGroupID($_REQUEST['id'], $contact);
+					$return = $this->cm->addEntryByGroupID($data['group'], $contact);
 				} else {
 					$return = array("status" => false, "message" => _("Unauthorized"));
 				}
 			break;
+			case "editcontactmodal":
+				$return = $this->load_view(__DIR__.'/views/contactEdit.php',$displayvars);
+			break;
 			case "addcontactmodal":
 				$return = $this->load_view(__DIR__.'/views/contactEdit.php',$displayvars);
+			break;
+			case "showcontact":
+				$g = $this->cm->getGroupByID($_REQUEST['group']);
+				$displayvars = array();
+				if(!empty($g)) {
+					$displayvars['contact'] = $this->cm->getEntryByID($_REQUEST['id']);
+					if($g['owner'] == -1) {
+						$return = array(
+							"status" => true,
+							"title" => _("View Contact"),
+							"body" => $this->load_view(__DIR__.'/views/contactView.php',$displayvars),
+							"footer" => '<button type="button" class="btn btn-secondary" data-dismiss="modal">'._("Close").'</button>'
+						);
+					} else {
+						$return = array(
+							"status" => true,
+							"title" => _("View Contact"),
+							"body" => $this->load_view(__DIR__.'/views/contactView.php',$displayvars),
+							"footer" => '<button id="deletecontact" class="btn btn-danger">'._('Delete Contact').'</button><button type="button" class="btn btn-secondary" data-dismiss="modal">'._("Close").'</button><button type="button" class="btn btn-primary" id="editcontact">'._("Edit").'</button>'
+						);
+					}
+				} else {
+					$return = array(
+						"status" => true,
+						"message" => _("Not Authorized")
+					);
+				}
 			break;
 			case 'deletegroup':
 				$g = $this->cm->getGroupByID($_REQUEST['id']);

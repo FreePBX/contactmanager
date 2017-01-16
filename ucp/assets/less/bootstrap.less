@@ -141,6 +141,15 @@ div[data-rawname='contactmanager'] {
 			}
 		}
 	}
+}
+
+.contact-container {
+	.item-container {
+		display: inline-block;width: 100%;
+		.delete {
+			cursor: pointer;
+		}
+	}
 	#contactmanager_dropzone {
 		min-height: 75px;
 		width: 90px;
@@ -166,7 +175,6 @@ div[data-rawname='contactmanager'] {
 	#contactmanager_dropzone.activate {
 		border-color: black;
 	}
-
 	#contactmanager_dropzone.activate .message {
 		opacity: .5;
 	}

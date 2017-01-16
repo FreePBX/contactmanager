@@ -15,16 +15,16 @@
 		<div class="col-md-9">
 			<div id="contacts-toolbar">
 				<?php if(!isset($readonly) || !$readonly) { ?>
-					<button class="btn btn-danger deletegroup disabled">
+					<button class="btn btn-danger deletegroup" disabled>
 						<i class="fa fa-trash"></i> <span><?php echo _('Delete Group')?></span>
 					</button>
-					<button class="btn btn-default addcontact disabled">
+					<button class="btn btn-default addcontact" disabled>
 						<i class="fa fa-plus"></i> <span><?php echo _('Add Contact')?></span>
 					</button>
 				<?php } ?>
 			</div>
 			<table class="contacts-grid"
-				data-url="index.php?quietmode=1&amp;module=contactmanager&amp;command=grid&amp;group="
+				data-url="ajax.php?module=contactmanager&amp;command=grid"
 				data-cache="false"
 				data-toolbar="#contacts-toolbar"
 				data-cookie="true"

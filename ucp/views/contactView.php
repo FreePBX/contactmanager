@@ -1,4 +1,4 @@
-<div class="col-md-10">
+<div class="col-md-12">
 	<div class="contact-container">
 		<?php if(!empty($contact['image'])) { ?>
 			<div class="contact-image pull-right">
@@ -6,18 +6,24 @@
 			</div>
 		<?php } ?>
 		<form role="form">
-			<div class="form-group">
-				<label><?php echo ('Display Name')?></label><br/>
-				<?php echo $contact['displayname'];?>
-			</div>
-			<div class="form-group">
-				<label><?php echo ('First Name')?></label><br/>
-				<?php echo $contact['fname']?>
-			</div>
-			<div class="form-group">
-				<label><?php echo ('Last Name')?></label><br/>
-				<?php echo $contact['lname']?>
-			</div>
+			<?php if(!empty($contact['displayname'])) {?>
+				<div class="form-group">
+					<label><?php echo ('Display Name')?></label><br/>
+					<?php echo $contact['displayname'];?>
+				</div>
+			<?php } ?>
+			<?php if(!empty($contact['fname'])) {?>
+				<div class="form-group">
+					<label><?php echo ('First Name')?></label><br/>
+					<?php echo $contact['fname']?>
+				</div>
+			<?php } ?>
+			<?php if(!empty($contact['lname'])) {?>
+				<div class="form-group">
+					<label><?php echo ('Last Name')?></label><br/>
+					<?php echo $contact['lname']?>
+				</div>
+			<?php } ?>
 			<?php if(!empty($contact['title'])) {?>
 				<div class="form-group">
 					<label><?php echo ('Title')?></label><br/>
@@ -34,7 +40,7 @@
 				<div class="form-group">
 					<label><?php echo ('Numbers')?></label><br/>
 					<ul>
-					<?php foreach($contact['numbers'] as $number) {?>
+					<?php foreach($contact['numbers'] as $number) { if(trim($number['number']) == "" || $number['number'] == "none") {continue;}?>
 						<li data-flag='<?php echo json_encode($number['flags'])?>'><?php echo $number['type']?>: <span class="clickable" data-type="number" data-primary="<?php echo $number['primary']?>"><?php echo $number['number']?></span>
 						<?php foreach($number['flags'] as $flag) {?>
 							(<?php echo $flag?>)
@@ -54,7 +60,7 @@
 					</ul>
 				</div>
 			<?php } ?>
-			<?php if(!empty($contact['emails'])) {?>
+			<?php if(!empty($contact['emails']) && !empty($contact['emails'][0]['email'])) { ?>
 				<div class="form-group">
 					<label><?php echo ('Emails')?></label><br/>
 					<ul>
@@ -75,10 +81,5 @@
 				</div>
 			<?php } ?>
 		</form>
-		<?php if($editable) { ?>
-			<input type="hidden" id="id" name="id" value="<?php echo $contact['id']?>">
-			<button id="editcontactpage" class="btn btn-default"><i class="fa fa-pencil-square-o"></i> <?php echo _('Edit Contact')?></button>
-			<button id="deletecontact" class="btn btn-default"><i class="fa fa-trash-o"></i> <?php echo _('Delete Contact')?></button>
-		<?php } ?>
 	</div>
 </div>
