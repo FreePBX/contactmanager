@@ -1405,7 +1405,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					$image = $this->getImageByID($entry['user'], $user['email'], 'internal');
 					$entry['image'] = $image;
 				} else {
-					$this->deleteEntryByID($entry['uid']);
+					$this->deleteEntryByID($entry['id']);
 				}
 			break;
 		}
