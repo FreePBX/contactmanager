@@ -1,6 +1,7 @@
 <div class="col-md-12">
 	<div class="contact-container">
 		<form role="form" id="contact-form">
+			<input type="hidden" id="id" name="id" value="<?php echo $contact['id']?>">
 			<div class="form-group">
 				<label for="displayname"><?php echo _('Display Name')?></label>
 				<input type="text" class="form-control" id="displayname" placeholder="Display Name" name="displayname" value="<?php echo $contact['displayname']?>">

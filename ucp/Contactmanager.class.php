@@ -294,13 +294,15 @@ class Contactmanager extends Modules{
 				return $contacts;
 			break;
 			case 'updatecontact':
-				if(!$this->editEntry($_REQUEST['id'])) {
+				$contact = $_REQUEST['contact'];
+				if(!$this->editEntry($contact['id'])) {
 					$return = array("status" => false, "message" => _("Unauthorized"));
 				}
-				$entry = $this->cm->getEntryByID($_REQUEST['id']);
-				if(!empty($entry)) {
-					$entry[$_REQUEST['key']] = $_REQUEST['value'];
-					$return = $this->cm->updateEntry($_REQUEST['id'], $entry);
+
+				$entry = $this->cm->getEntryByID($contact['id']);
+				if(!empty($entry) && !empty($contact)) {
+					$contact = array_merge($entry, $contact);
+					$return = $this->cm->updateEntry($contact['id'], $contact);
 					break;
 				}
 				$return = array("status" => false, "message" => _("Unauthorized"));
@@ -331,6 +333,11 @@ class Contactmanager extends Modules{
 				}
 			break;
 			case "editcontactmodal":
+				$g = $this->cm->getGroupByID($_REQUEST['group']);
+				$displayvars = array();
+				if(!empty($g)) {
+					$displayvars['contact'] = $this->cm->getEntryByID($_REQUEST['id']);
+				}
 				$return = $this->load_view(__DIR__.'/views/contactEdit.php',$displayvars);
 			break;
 			case "addcontactmodal":
@@ -519,7 +526,6 @@ class Contactmanager extends Modules{
 
 	public function editEntry($id) {
 		$contacts = $this->cm->getContactsByUserID($this->user['id']);
-		$allowed = false;
 		foreach($contacts as $contact) {
 			if($contact['uid'] == $id) {
 				return true;

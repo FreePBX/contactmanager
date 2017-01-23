@@ -65,7 +65,7 @@ var ContactmanagerC = UCPMC.extend({
 										id: row.uid
 									}, function( data ) {
 										if (data.status) {
-											$('.grid-stack-item[data-id='+widget_id+'] .contacts-grid').bootstrapTable('refresh');
+											$('.grid-stack-item[data-id='+widget_id+'] .contacts-grid').bootstrapTable('refresh', {url: UCP.ajaxUrl+'?module=contactmanager&command=grid&group=' + row.groupid});
 											UCP.closeDialog();
 										} else {
 											UCP.showAlert(_("Error deleting user"),'danger');
@@ -76,7 +76,7 @@ var ContactmanagerC = UCPMC.extend({
 							$("#editcontact").click(function() {
 								$.getJSON(UCP.ajaxUrl, {
 									module: "contactmanager",
-									command: "showcontact",
+									command: "editcontactmodal",
 									group: row.groupid,
 									id: row.uid
 								}, function(data){
@@ -266,6 +266,7 @@ var ContactmanagerC = UCPMC.extend({
 		$('#globalModal input[type=checkbox][data-toggle="toggle"]:visible').bootstrapToggle();
 		$('#save').on('click',function() {
 			var data = {
+				id: $("#id").val(),
 				displayname: $("#displayname").val(),
 				fname: $("#fname").val(),
 				lname: $("#lname").val(),
@@ -305,7 +306,7 @@ var ContactmanagerC = UCPMC.extend({
 
 			var params = {
 				module: "contactmanager",
-				command: "addcontact",
+				command: (data.id === "" ? "addcontact" : "updatecontact"),
 				group: group,
 				contact: data
 			};
