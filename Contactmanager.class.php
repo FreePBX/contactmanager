@@ -1528,7 +1528,15 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 * @param {int} $id The entry ID
 	 */
 	public function deleteEntryByID($id) {
-		$entry = $this->getEntryByID($id);
+		//getEntryByID loops back here dont use it
+		$sql = "SELECT e.groupid, e.user FROM contactmanager_group_entries as e, contactmanager_groups as g WHERE e.id = :id AND e.groupid = g.id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':id' => $id));
+		$entry = $sth->fetch(\PDO::FETCH_ASSOC);
+		if(empty($entry)) {
+			return true;
+		}
+
 		$group = $this->getGroupByID($entry['groupid']);
 
 		$ret = $this->deleteNumbersByEntryID($id);
