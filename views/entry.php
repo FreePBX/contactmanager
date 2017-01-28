@@ -242,8 +242,9 @@ foreach ($users as $u) {
 													foreach ($entry['numbers'] as $number) {?>
 														<tr id="number_<?php echo $numcount?>">
 															<td><a class="clickable" onclick="delNumber('<?php echo $numcount?>')"><i class="fa fa-ban fa-fw"></i></a></td>
-															<td>
-																<input type="text" class="form-control" name="number[<?php echo $numcount?>]" value="<?php echo $number['number']?>">Ext.<input type="text" class="form-control" name="extension[<?php echo $numcount?>]" value="<?php echo $number['extension']?>">
+															<td class="form-inline">
+																<input type="text" class="form-control" name="number[<?php echo $numcount?>]" value="<?php echo $number['number']?>"> <label><?php echo _("Ext.")?></label> <input type="text" class="form-control" name="extension[<?php echo $numcount?>]" value="<?php echo $number['extension']?>">
+																<label><?php echo _("Type")?></label>
 																<select class="form-control" name="numbertype[<?php echo $numcount?>]">
 																	<?php foreach($numbertypes as $key => $val) {
 																		$selected = ($number['type'] == $key)?'SELECTED':'';
@@ -251,6 +252,18 @@ foreach ($users as $u) {
 																		<option value="<?php echo $key?>" <?php echo $selected?>><?php echo $val?></option>
 																	<?php } ?>
 																</select>
+																<?php if($speeddialcode['enabled']) { ?>
+																	<br>
+																	<br>
+																	<label><?php echo _("Speed Dial")?></label>
+																	<div class="input-group">
+																		<span class="input-group-addon"><?php echo $speeddialcode['code']?></span>
+																		<input type="number" class="form-control number-sd" name="numbersd[<?php echo $numcount?>]" min="0" data-id="<?php echo $numcount?>" <?php echo (trim($number['speeddial']) == "") ? "disabled" : ""?> value="<?php echo $number['speeddial']?>">
+																		<span class="input-group-addon">
+																			<input type="checkbox" name="numbersde[<?php echo $numcount?>]" id="numbersde[<?php echo $numcount?>]" data-id="<?php echo $numcount?>" class="enable-sd" <?php echo (trim($number['speeddial']) == "") ? "" : "checked"?>><label for="numbersde[<?php echo $numcount?>]" style="margin-bottom: 0px;"><?php echo _("Enable")?></label>
+																		</span>
+																	</div>
+																<?php } ?>
 															</td>
 															<td><input type="checkbox" name="sms[<?php echo $numcount?>]" value="1" <?php echo in_array('sms', $number['flags']) ? "checked" : ""?>>SMS<br><input type="checkbox" name="fax[<?php echo $numcount?>]" value="1" <?php echo in_array('fax', $number['flags']) ? "checked" : ""?>>FAX</td>
 														</tr>
@@ -369,3 +382,6 @@ foreach ($users as $u) {
 		</form>
 	</div>
 </div>
+<script>
+	var speeddialcode = <?php echo json_encode($speeddialcode)?>;
+</script>

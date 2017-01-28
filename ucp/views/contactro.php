@@ -39,6 +39,9 @@
 						<?php foreach($number['flags'] as $flag) {?>
 							(<?php echo $flag?>)
 						<?php } ?>
+						<?php if($featurecode['enabled'] && trim($number['speeddial']) != "") { ?>
+							<b><?php echo ('Speed Dial')?></b> <?php echo $featurecode['code'].$number['speeddial']?>
+						<?php } ?>
 						</li>
 					<?php } ?>
 					</ul>

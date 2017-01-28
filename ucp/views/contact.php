@@ -48,7 +48,7 @@
 			</div>
 			<div class="form-group">
 				<label><?php echo _('Numbers')?></label>
-				<div class="numbers additional">
+				<div class="numbers additional form-inline">
 					<table data-type="numbers">
 						<tr class="template">
 							<td>
@@ -65,6 +65,20 @@
 									<option value="other"><?php echo _('Other')?></option>
 								</select>
 							</td>
+							<?php if($featurecode['enabled']) { ?>
+								<td style="text-align: right;">
+									<label><?php echo _('Speed Dial')?>:</label>
+								</td>
+								<td>
+									<div class="input-group">
+										<span class="input-group-addon" style="padding: 4px;">*1</span>
+										<input type="number" class="form-control number-sd skip" value="" style="width: 50px;padding: 3px;" min="0" data-name="numbersd" disabled>
+										<span class="input-group-addon">
+											<input type="checkbox" style="margin-bottom: 0px;" class="enable-sd skip" data-name="numbersde"><?php echo _("Enable")?></label>
+										</span>
+									</div>
+								</td>
+							<?php } ?>
 							<td style="text-align: right;">
 								<label><?php echo _('SMS')?>:</label>
 							</td>
@@ -107,6 +121,20 @@
 										<option value="other" <?php echo ($number['type'] == "other") ? 'selected' : ''?>><?php echo _('Other')?></option>
 									</select>
 								</td>
+								<?php if($featurecode['enabled']) { ?>
+									<td style="text-align: right;">
+										<label><?php echo _('Speed Dial')?>:</label>
+									</td>
+									<td>
+										<div class="input-group">
+											<span class="input-group-addon" style="padding: 4px;"><?php echo $featurecode['code']?></span>
+											<input type="number" class="form-control number-sd skip" value="<?php echo $number['speeddial']?>" data-value="<?php echo $number['speeddial']?>" style="width: 50px;padding: 3px;" min="0" data-name="numbersd" <?php echo (trim($number['speeddial']) == "") ? 'disabled' : ''?>>
+											<span class="input-group-addon">
+												<input type="checkbox" style="margin-bottom: 0px;" class="enable-sd skip" data-name="numbersde" <?php echo (trim($number['speeddial']) == "") ? '' : 'checked'?>><?php echo _("Enable")?></label>
+											</span>
+										</div>
+									</td>
+								<?php } ?>
 								<td style="text-align: right;">
 									<label><?php echo _('SMS')?>:</label>
 								</td>
@@ -220,7 +248,7 @@
 			</div>
 			<input type="hidden" id="mode" name="mode" value="<?php echo isset($add) && ($add) ? 'add' : 'edit'?>">
 			<?php if(isset($add) && $add) {?>
-				<button id="addcontact" class="btn btn-default"><?php echo _('Add Contact')?></button>
+				<button id="addcontact-btn" class="btn btn-default"><?php echo _('Add Contact')?></button>
 			<?php } else { ?>
 				<input type="hidden" id="id" name="id" value="<?php echo $contact['id']?>">
 				<button id="deletecontact" class="btn btn-default"><i class="fa fa-trash-o"></i> <?php echo _('Delete Contact')?></button>

@@ -113,6 +113,18 @@ var ContactmanagerC = UCPMC.extend({
 				container: "#dashboard-content"
 			});
 		});
+		var changeSpeedDial = function() {
+			var el = $(this).parents(".input-group").find(".number-sd");
+			el.prop("disabled",!$(this).is(":checked"));
+			if(!$(this).is(":checked")) {
+				el.val("");
+			} else {
+				if(typeof el.data("value") !== "undefined") {
+					el.val(el.data("value"));
+				}
+			}
+		};
+		$(".enable-sd").change(changeSpeedDial);
 		$(".add-additional").click(function(e) {
 			e.preventDefault();
 			var type = $(this).data("type");
@@ -136,6 +148,8 @@ var ContactmanagerC = UCPMC.extend({
 				label.prop("for","faxenable"+id);
 				$(this).removeClass("faxenable-template");
 			});
+			$(".enable-sd").off("change");
+			$(".enable-sd").change(changeSpeedDial);
 		});
 		$("#addContact .additional").on("click", ".delete", function() {
 			$(this).parents("tr").remove();
@@ -191,12 +205,17 @@ var ContactmanagerC = UCPMC.extend({
 				}
 			});
 		});
-		$("#editContact .numbers").on("blur", "input", function(e) {
-			var table = $(this).parents("table"), count = 0, type = table.data("type"), data = [],  id = $("#id").val();
+		var saveNumbers = function() {
+			var count = 0, type = "numbers", data = [],  id = $("#id").val();
 			$(".numbers tr").filter(":visible").each(function(i, v) {
 				var obj = {};
 				obj.number = $(this).find("input[data-name='number']").val();
 				obj.type = $(this).find("select[data-name='type']").val();
+				if($(this).find("input[data-name='numbersd']:enabled").length) {
+					obj.speeddial = $(this).find("input[data-name='numbersd']:enabled").val();
+				} else {
+					obj.speeddial = '';
+				}
 				data.push(obj);
 			});
 			$.post( "?quietmode=1&module=contactmanager&command=updatecontact", { id: id, key: type, value: data }, function( data ) {
@@ -206,6 +225,42 @@ var ContactmanagerC = UCPMC.extend({
 					});
 				}
 			});
+		};
+		$("#editContact .numbers").on("blur", "input:not(.number-sd)", function(e) {
+			saveNumbers();
+		});
+		$("#editContact .numbers").on("blur", "input.number-sd", function(e) {
+			var id = $(this).data("id"),
+					val = $(this).val(),
+					entry = $("#entry").val(),
+					$this = $(this),
+					orig = (typeof $(this).data("value") !== "undefined") ? $(this).data("value") : "";
+			if(val !== "") {
+				var indexes = [];
+				$(".number-sd").each(function() {
+					if($(this).val() === "" || $(this).data("id") == id) {
+						return true;
+					}
+					indexes.push($(this).val());
+				});
+				if($.inArray(val, indexes) > -1) {
+					alert("This speed dial id conflicts with another speed dial on this page");
+					$this.val(orig);
+				} else {
+					$.post( "?quietmode=1&module=contactmanager&command=checksd", {id: val, entryid: entry}, function( data ) {
+						if(!data.status) {
+							alert("This speed dial id conflicts with another contact");
+							$this.val(orig);
+						} else {
+							$this.data("value".val);
+							saveNumbers();
+						}
+					});
+				}
+			} else {
+				$this.data("value".val);
+				saveNumbers();
+			}
 		});
 		$("#editContact .numbers").on("change", "select, input[type=checkbox]", function(e) {
 			var table = $(this).parents("table"), count = 0, type = table.data("type"), data = [],  id = $("#id").val();
@@ -246,7 +301,37 @@ var ContactmanagerC = UCPMC.extend({
 				}
 			});
 		});
-		$("#addcontact").click(function(e) {
+		$("#addContact .numbers").on("blur", "input.number-sd", function(e) {
+			var id = $(this).data("id"),
+					val = $(this).val(),
+					entry = $("#entry").val(),
+					$this = $(this);
+			if(val !== "") {
+				var indexes = [];
+				$(".number-sd").each(function() {
+					if($(this).val() === "" || $(this).data("id") == id) {
+						return true;
+					}
+					indexes.push($(this).val());
+				});
+				if($.inArray(val, indexes) > -1) {
+					alert("This speed dial id conflicts with another speed dial on this page");
+					$this.val("");
+				} else {
+					$.post( "?quietmode=1&module=contactmanager&command=checksd", {id: val, entryid: entry}, function( data ) {
+						if(!data.status) {
+							alert("This speed dial id conflicts with another contact");
+							$this.val("");
+						} else {
+							$this.data("value",val);
+						}
+					});
+				}
+			} else {
+				$this.data("value",val);
+			}
+		});
+		$("#addcontact-btn").click(function(e) {
 			e.preventDefault();
 			var id = $.url().param("group"), contact = { numbers: [] }, $this = this;
 			$("form input").not(".special").each(function(i, v) {
@@ -257,6 +342,11 @@ var ContactmanagerC = UCPMC.extend({
 				var obj = {};
 				obj.number = $(this).find("input[data-name='number']").val();
 				obj.type = $(this).find("select[data-name='type']").val();
+				if($(this).find("input[data-name='numbersd']:enabled").length) {
+					obj.speeddial = $(this).find("input[data-name='numbersd']:enabled").val();
+				} else {
+					obj.speeddial = '';
+				}
 				contact.numbers.push(obj);
 			});
 			$("form input").filter(":visible").filter(".special").each(function(i, v) {
