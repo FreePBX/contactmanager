@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.42</version>
+	<version>13.0.43</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.43* Always give data back to user manager entries when added or updated
 		*13.0.42* FREEPBX-13829 Speed Dial functionality
 		*13.0.41.14* FREEPBX-14021 Segmentation Fault when deleting a user
 		*13.0.41.13* FREEPBX-13847 Error when deleting users

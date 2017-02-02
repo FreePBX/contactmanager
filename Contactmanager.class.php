@@ -1067,7 +1067,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			if($this->freepbx->Userman->getCombinedModuleSettingByID($user,'contactmanager','show')) {
 				foreach ($groups as $group) {
 					if ($group['type'] == 'internal') {
-						$this->updateEntryByGroupID($group['id'], array('user' => $user));
+						$data = $this->Userman->getUserByID($user);
+						$data['user'] = $user;
+						$this->updateEntryByGroupID($group['id'], $data);
 					}
 				}
 			}
@@ -1104,7 +1106,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					continue;
 				}
 				if (in_array($group['id'],$showingroups) || in_array("*",$showingroups)) {
-					$out = $this->updateEntryByGroupID($group['id'], array('user' => $user));
+					$data = $this->Userman->getUserByID($user);
+					$data['user'] = $user;
+					$this->updateEntryByGroupID($group['id'], $data);
 				} else {
 					$entries = $this->getEntriesByGroupID($group['id']);
 					foreach ($entries as $entryid => $entry) {
@@ -1144,7 +1148,6 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 	public function usermanAddUser($id, $display, $data) {
 		if($display == 'extensions' || $display == 'users') {
-			//$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','show',true);
 		} else if($display == 'userman') {
 			if(!empty($_POST['contactmanager_showingroups'])) {
 				$grps = !in_array("*",$_POST['contactmanager_showingroups']) ? $_POST['contactmanager_showingroups'] : array("*");
@@ -1170,7 +1173,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					continue;
 				}
 				if (in_array($group['id'],$showingroups) || in_array("*",$showingroups)) {
-					$out = $this->addEntryByGroupID($group['id'], array('user' => $id));
+					$data['user'] = $id;
+					$out = $this->addEntryByGroupID($group['id'], $data);
 				}
 			}
 		}
@@ -1203,7 +1207,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				continue;
 			}
 			if (in_array($group['id'],$showingroups) || in_array("*",$showingroups)) {
-				$out = $this->updateEntryByGroupID($group['id'], array('user' => $id));
+				$data['user'] = $id;
+				$out = $this->updateEntryByGroupID($group['id'], $data);
 			} else {
 				$entries = $this->getEntriesByGroupID($group['id']);
 				foreach ($entries as $entryid => $entry) {
@@ -1354,7 +1359,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				if(in_array("*",$showingroups)) {
 					foreach ($users as $user) {
 						if(in_array($user['id'],$group['users'])) {
-							$this->addEntryByGroupID($id, array('user' => $user['id']));
+							$user['user'] = $id;
+							$this->addEntryByGroupID($id, $user);
 						}
 					}
 				}
