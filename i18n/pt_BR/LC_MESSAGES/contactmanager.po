@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-02 09:21-0800\n"
-"PO-Revision-Date: 2017-02-09 19:46+0200\n"
+"PO-Revision-Date: 2017-02-09 23:11+0200\n"
 "Last-Translator: Kingvoice <suporte@kingvoice.com.br>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/pt_BR/>\n"
@@ -626,7 +626,7 @@ msgstr "Por favor insira um endereço de e-mail válido"
 
 #: Contactmanager.class.php:1030 Contactmanager.class.php:1049
 msgid "Reset"
-msgstr "Reiniciar"
+msgstr "Restabelecer"
 
 #: ucp/views/contact.php:83 ucp/views/contact.php:139
 #: assets/js/contactmanager.js:161
