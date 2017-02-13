@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-02 09:21-0800\n"
+"POT-Creation-Date: 2017-02-13 11:53-0800\n"
 "PO-Revision-Date: 2016-09-02 15:22+0200\n"
 "Last-Translator: Kenichi <k.kitani@qloog.com>\n"
 "Language-Team: Japanese <http://weblate.freepbx.org/projects/freepbx/"
@@ -90,7 +90,7 @@ msgstr "XMPPを追加"
 msgid "Adding..."
 msgstr "追加中…"
 
-#: Contactmanager.class.php:2817 views/entry.php:211 views/entry.php:223
+#: Contactmanager.class.php:2820 views/entry.php:211 views/entry.php:223
 msgid "Address"
 msgstr "住所"
 
@@ -98,11 +98,11 @@ msgstr "住所"
 msgid "Admin"
 msgstr "アドミン"
 
-#: Contactmanager.class.php:2709
+#: Contactmanager.class.php:2712
 msgid "All Internal Groups"
 msgstr ""
 
-#: Contactmanager.class.php:2715
+#: Contactmanager.class.php:2718
 msgid "All Public Groups"
 msgstr ""
 
@@ -138,19 +138,19 @@ msgstr "発信"
 msgid "Can Not Find Uploaded Files"
 msgstr ""
 
-#: Contactmanager.class.php:966 Contactmanager.class.php:2825
-#: Contactmanager.class.php:2837 Contactmanager.class.php:2849
+#: Contactmanager.class.php:966 Contactmanager.class.php:2828
+#: Contactmanager.class.php:2840 Contactmanager.class.php:2852
 #: ucp/views/contact.php:64 ucp/views/contact.php:120 views/group.php:104
 msgid "Cell"
 msgstr "携帯"
 
-#: Contactmanager.class.php:2830 Contactmanager.class.php:2842
-#: Contactmanager.class.php:2854
+#: Contactmanager.class.php:2833 Contactmanager.class.php:2845
+#: Contactmanager.class.php:2857
 msgid ""
 "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
 msgstr "コンマで区切ったフラグのリスト。 例: sms,fax  ※外部の連絡先のみ"
 
-#: Contactmanager.class.php:37 Contactmanager.class.php:2816
+#: Contactmanager.class.php:37 Contactmanager.class.php:2819
 #: ucp/views/contact.php:22 ucp/views/contacts.php:37 views/entry.php:191
 #: views/group.php:91
 msgid "Company"
@@ -174,8 +174,8 @@ msgid ""
 "Manager\" is set to no or inherits no under the \"Contact Manager\" tab"
 msgstr ""
 
-#: Contactmanager.class.php:2729 Contactmanager.class.php:2741
-#: Contactmanager.class.php:2753 Contactmanager.class.php:2770
+#: Contactmanager.class.php:2732 Contactmanager.class.php:2744
+#: Contactmanager.class.php:2756 Contactmanager.class.php:2773
 #: contactmanager.i18n.php:4 contactmanager.i18n.php:8
 #: contactmanager.i18n.php:10 views/grid.php:1
 msgid "Contact Manager"
@@ -194,11 +194,11 @@ msgstr ""
 msgid "Contact Manager: %s"
 msgstr "連絡先管理： %s"
 
-#: Contactmanager.class.php:2785 ucp/Contactmanager.class.php:410
+#: Contactmanager.class.php:2788 ucp/Contactmanager.class.php:410
 msgid "Contacts"
 msgstr "連絡先"
 
-#: Contactmanager.class.php:2786
+#: Contactmanager.class.php:2789
 msgid "Contacts and internal/external groups from the Contact Manager module."
 msgstr "「連絡先の管理」モジュールからの連絡先、または内部・外部のグループ。"
 
@@ -223,7 +223,7 @@ msgid "Deleting..."
 msgstr "削除中..."
 
 #: Contactmanager.class.php:26 Contactmanager.class.php:36
-#: Contactmanager.class.php:2810 Contactmanager.class.php:2811
+#: Contactmanager.class.php:2813 Contactmanager.class.php:2814
 #: ucp/views/contact.php:6 ucp/views/contacts.php:33 views/entry.php:68
 #: views/speeddial-grid.php:13
 msgid "Display Name"
@@ -241,8 +241,8 @@ msgstr "新しい画像をここにドロップしてください"
 msgid "E-Mail address cannot be blank."
 msgstr "メールアドレスは空にできません。"
 
-#: Contactmanager.class.php:2855 Contactmanager.class.php:2856
-#: Contactmanager.class.php:2857
+#: Contactmanager.class.php:2858 Contactmanager.class.php:2859
+#: Contactmanager.class.php:2860
 msgid "E-mail address.  External contacts only."
 msgstr "メールアドレス。※外部の連絡先のみ"
 
@@ -287,12 +287,12 @@ msgstr ""
 msgid "Ext."
 msgstr "内線番号"
 
-#: Contactmanager.class.php:2829 Contactmanager.class.php:2841
-#: Contactmanager.class.php:2853
+#: Contactmanager.class.php:2832 Contactmanager.class.php:2844
+#: Contactmanager.class.php:2856
 msgid "Extension.  External contacts only."
 msgstr "内線番号。※外部の連絡先のみ"
 
-#: Contactmanager.class.php:34 Contactmanager.class.php:2806
+#: Contactmanager.class.php:34 Contactmanager.class.php:2809
 #: views/group.php:44
 msgid "External"
 msgstr "外部"
@@ -317,7 +317,7 @@ msgstr "FAX"
 msgid "File upload failed"
 msgstr ""
 
-#: Contactmanager.class.php:27 Contactmanager.class.php:2813
+#: Contactmanager.class.php:27 Contactmanager.class.php:2816
 #: ucp/views/contact.php:10 ucp/views/contacts.php:34 views/entry.php:88
 #: views/speeddial-grid.php:14
 msgid "First Name"
@@ -340,7 +340,7 @@ msgstr "グループ %s は存在しません"
 msgid "Group Already Exists"
 msgstr "グループは既に存在しています"
 
-#: Contactmanager.class.php:2797 ucp/views/groupcreate.php:5
+#: Contactmanager.class.php:2800 ucp/views/groupcreate.php:5
 msgid "Group Name"
 msgstr "グループ名"
 
@@ -348,7 +348,7 @@ msgstr "グループ名"
 msgid "Group Name Can Not Be Blank"
 msgstr "グループ名は空にできません"
 
-#: Contactmanager.class.php:2802
+#: Contactmanager.class.php:2805
 msgid "Group Type"
 msgstr "グループの種類"
 
@@ -459,11 +459,11 @@ msgstr "グループを更新しました"
 msgid "Group name can not be blank"
 msgstr "グループ名は空にできません"
 
-#: Contactmanager.class.php:2873
+#: Contactmanager.class.php:2876
 msgid "Group name is required."
 msgstr "グループ名は必須です。"
 
-#: Contactmanager.class.php:2902
+#: Contactmanager.class.php:2905
 msgid "Group not found and could not be created."
 msgstr "グループは見つからず、作成できませんでした。"
 
@@ -479,12 +479,12 @@ msgstr "グループを削除しました"
 msgid "Group successfully updated"
 msgstr "グループを更新しました"
 
-#: Contactmanager.class.php:2880
+#: Contactmanager.class.php:2883
 msgid "Group type is required."
 msgstr "グループの種類を入力してください。"
 
-#: Contactmanager.class.php:965 Contactmanager.class.php:2824
-#: Contactmanager.class.php:2836 Contactmanager.class.php:2848
+#: Contactmanager.class.php:965 Contactmanager.class.php:2827
+#: Contactmanager.class.php:2839 Contactmanager.class.php:2851
 #: ucp/views/contact.php:63 ucp/views/contact.php:119 views/group.php:103
 msgid "Home"
 msgstr "ホーム"
@@ -495,7 +495,7 @@ msgid ""
 "looking up a contact"
 msgstr ""
 
-#: Contactmanager.class.php:24 Contactmanager.class.php:2805
+#: Contactmanager.class.php:24 Contactmanager.class.php:2808
 #: views/group.php:45
 msgid "Internal"
 msgstr "内部"
@@ -505,7 +505,7 @@ msgstr "内部"
 msgid "Invalid"
 msgstr ""
 
-#: Contactmanager.class.php:28 Contactmanager.class.php:2814
+#: Contactmanager.class.php:28 Contactmanager.class.php:2817
 #: ucp/views/contact.php:14 ucp/views/contacts.php:35 views/entry.php:108
 #: views/speeddial-grid.php:15
 msgid "Last Name"
@@ -543,7 +543,7 @@ msgstr "名前"
 msgid "Name of group"
 msgstr "グループの名前"
 
-#: Contactmanager.class.php:2798
+#: Contactmanager.class.php:2801
 msgid ""
 "Name of group for contact.  If group does not exist, it will be created."
 msgstr "連絡先のグループ名。グループが存在しない場合は新しく作ります。"
@@ -598,8 +598,8 @@ msgstr "番号"
 msgid "OK"
 msgstr "OK"
 
-#: Contactmanager.class.php:967 Contactmanager.class.php:2826
-#: Contactmanager.class.php:2838 Contactmanager.class.php:2850
+#: Contactmanager.class.php:967 Contactmanager.class.php:2829
+#: Contactmanager.class.php:2841 Contactmanager.class.php:2853
 #: ucp/views/contact.php:65 ucp/views/contact.php:121 views/group.php:105
 msgid "Other"
 msgstr "その他"
@@ -608,8 +608,8 @@ msgstr "その他"
 msgid "Partial Match Length"
 msgstr ""
 
-#: Contactmanager.class.php:2819 Contactmanager.class.php:2831
-#: Contactmanager.class.php:2843
+#: Contactmanager.class.php:2822 Contactmanager.class.php:2834
+#: Contactmanager.class.php:2846
 msgid "Phone number.  External contacts only."
 msgstr "電話番号。※外部の連絡先のみ"
 
@@ -679,7 +679,7 @@ msgid ""
 "user in UCP and RestApps (If purchased)"
 msgstr ""
 
-#: Contactmanager.class.php:2815 ucp/views/contact.php:18
+#: Contactmanager.class.php:2818 ucp/views/contact.php:18
 #: ucp/views/contacts.php:36 views/entry.php:128
 msgid "Title"
 msgstr "肩書"
@@ -696,12 +696,12 @@ msgstr "種類"
 msgid "Type of group"
 msgstr "グループの種類"
 
-#: Contactmanager.class.php:2803
+#: Contactmanager.class.php:2806
 msgid "Type of group for contact."
 msgstr "連絡先のグループの種類。"
 
-#: Contactmanager.class.php:2821 Contactmanager.class.php:2833
-#: Contactmanager.class.php:2845
+#: Contactmanager.class.php:2824 Contactmanager.class.php:2836
+#: Contactmanager.class.php:2848
 msgid "Type of phone number.  External contacts only."
 msgstr "電話番号の種類。※外部の連絡先のみ"
 
@@ -716,7 +716,7 @@ msgstr ""
 msgid "Unauthorized"
 msgstr "非表示"
 
-#: Contactmanager.class.php:2954
+#: Contactmanager.class.php:2957
 msgid "Unknown data type."
 msgstr "不明なデータタイプ。"
 
@@ -741,7 +741,7 @@ msgstr "ユーザー"
 msgid "User Manager Group"
 msgstr "ユーザ管理のグループ"
 
-#: Contactmanager.class.php:2818
+#: Contactmanager.class.php:2821
 msgid ""
 "User Manager username this contact should point to.  Internal contacts only."
 msgstr "この連絡先が参照する、ユーザ管理のユーザ名。※内部の連絡先のみ"
@@ -762,8 +762,8 @@ msgstr "ホームページは必須項目です。"
 msgid "What internal groups to show this user in"
 msgstr ""
 
-#: Contactmanager.class.php:964 Contactmanager.class.php:2823
-#: Contactmanager.class.php:2835 Contactmanager.class.php:2847
+#: Contactmanager.class.php:964 Contactmanager.class.php:2826
+#: Contactmanager.class.php:2838 Contactmanager.class.php:2850
 #: ucp/views/contact.php:62 ucp/views/contact.php:118 views/group.php:102
 msgid "Work"
 msgstr "勤務先"
