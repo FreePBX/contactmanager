@@ -2537,6 +2537,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 							}
 							$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
 							$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['username'];
+							$entry['groupid'] = $group['id'];
+							$entry['groupname'] = $group['name'];
 							$final[] = $entry;
 						}
 						$contacts = array_merge($contacts, $final);
@@ -2568,6 +2570,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 							$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
 							$entry['type'] = "external";
 							$entry['groupid'] = $group['id'];
+							$entry['groupname'] = $group['name'];
 							$entry['id'] = $entry['uid'];
 							$final[] = $entry;
 						}
