@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.42.2</version>
+	<version>13.0.42.3</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.42.3* Issues releated to FREEPBX-14212 and quick create
 		*13.0.42.2* Add group information to getContactsByUserID
 		*13.0.42.1* Always give data back to user manager entries when added or updated
 		*13.0.42* FREEPBX-13829 Speed Dial functionality
@@ -78,7 +79,7 @@
 	</menuitems>
 	<depends>
 		<version>13.0.0</version>
-		<module>userman ge 13.0.70</module>
+		<module>userman ge 13.0.75.4</module>
 	</depends>
 	<supported>
 		<version>13.0</version>

@@ -1768,12 +1768,12 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sth->execute(array(
 		':groupid' => $groupid,
 		':user' => $entry['user'],
-		':displayname' => $entry['displayname'],
-		':fname' => $entry['fname'],
-		':lname' => $entry['lname'],
-		':title' => $entry['title'],
-		':company' => $entry['company'],
-		':address' => $entry['address']
+		':displayname' => isset($entry['displayname']) ? $entry['displayname'] : "",
+		':fname' => isset($entry['fname']) ? $entry['fname'] : "",
+		':lname' => isset($entry['lname']) ? $entry['lname'] : "",
+		':title' => isset($entry['title']) ? $entry['title'] : "",
+		':company' => isset($entry['company']) ? $entry['company'] : "",
+		':address' => isset($entry['address']) ? $entry['address'] : ""
 		));
 
 		$id = $this->db->lastInsertId();
