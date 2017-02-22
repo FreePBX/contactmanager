@@ -1,4 +1,42 @@
+var timeout = null;
 $(function() {
+	$(document).on("change",".enable-sd",function() {
+		var id = $(this).data("id");
+		$(".number-sd[data-id="+id+"]").prop("disabled",!$(this).is(":checked"));
+	});
+	$(document).on("input",".number-sd",function() {
+		var id = $(this).data("id"),
+				val = $(this).val(),
+				entry = $("#entry").val(),
+				$this = $(this);
+		clearTimeout(timeout);
+		timeout = setTimeout(function() {
+			if(val !== "") {
+				var indexes = [];
+				$(".number-sd").each(function() {
+					if($(this).val() === "" || $(this).data("id") == id) {
+						return true;
+					}
+					indexes.push($(this).val());
+				});
+				if($.inArray(val, indexes) > -1) {
+					alert("This speed dial id conflicts with another speed dial on this page");
+					$this.data("conflict",true);
+				} else {
+					$.post( "ajax.php?module=contactmanager&command=checksd", {id: val, entryid: entry}, function( data ) {
+						if(!data.status) {
+							alert("This speed dial id conflicts with another contact");
+							$this.data("conflict",true);
+						} else {
+							$this.data("conflict",false);
+						}
+					});
+				}
+			} else {
+				$this.data("conflict",false);
+			}
+		},200);
+	});
 	$("form[name=entry]").submit(function(event) {
 		if ($("select[name=user]").val() === "") {
 			warnInvalid($("select[name=user]"),_("An entry must have a user"));
@@ -18,6 +56,16 @@ $(function() {
 				}
 			});
 		}
+
+		var indexes = [];
+		$(".number-sd").each(function() {
+			if($(this).data("conflict")) {
+				alert("There are conflicting speed dials on this page");
+				event.preventDefault();
+				return false;
+			}
+		});
+
 
 		$xmpps = $("#xmpps input[name^='xmpp[']");
 		if ($xmpps.length > 0 && $xmpps.size() > 0) {
@@ -87,14 +135,27 @@ function addNumber() {
 	row+= "<td>";
 	row+= "<a class=\"clickable\" onclick=\"delNumber(" + index + ")\"><i class=\"fa fa-ban fa-fw\"></i></a>";
 	row+= "</td>";
-	row+= "<td>";
+	row+= "<td class='form-inline'>";
 	row+= "<input class=\"form-control\" type=\"text\" name=\"number[" + index + "]\" value=\"\"/>";
-	row+= "<br>"+_('Ext.')+"<input class=\"form-control\" type=\"text\" name=\"extension[" + index + "]\" value=\"\"/>";
+	row+= " <label>"+_('Ext.')+"</label> <input class=\"form-control\" type=\"text\" name=\"extension[" + index + "]\" value=\"\"/>";
+	row+= " <label>"+_("Type")+"</label> ";
 	row+= "<select class=\"form-control\" name=\"numbertype[" + index + "]\">";
 	$.each(numbertypes, function(k,v) {
 		row+= "<option value=\"" + k + "\">" + v + "</option>";
 	});
 	row+= "</select>";
+	if(speeddialcode.enabled) {
+		row+= "<br>";
+		row+= "<br>";
+		row+= "<label>"+_("Speed Dial")+"</label> ";
+		row+= '<div class="input-group">';
+		row+= '<span class="input-group-addon">'+speeddialcode.code+'</span>';
+		row+= '<input type="number" class="form-control number-sd" min="0" name="numbersd['+index+']" data-id="'+index+'" disabled>';
+		row+= '<span class="input-group-addon">';
+		row+= '<input type="checkbox" name="numbersde['+index+']" id="numbersde['+index+']" data-id="'+index+'" class="enable-sd"><label for="numbersde['+index+']" style="margin-bottom: 0px;">'+_("Enable")+'</label>';
+		row+= "</span>";
+		row+= "</div>";
+	}
 	row+= "</td>";
 	row+= "<td>";
 	row+= "<input type=\"checkbox\" name=\"sms[" + index + "]\" value=\"1\"/>" + _('SMS');
@@ -318,3 +379,12 @@ $("#gravatar").change(function() {
 		}
 	}
 });
+
+function speeddialformat(value, row, index) {
+	return speeddialcode.code+value;
+}
+
+function userActions(value, row, index) {
+	var html = '<a href="?display=contactmanager&action=showentry&group='+row.groupid+'&entry='+row.id+'"><i class="fa fa-edit"></i></a>';
+	return html;
+}

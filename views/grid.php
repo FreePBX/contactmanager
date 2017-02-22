@@ -1,3 +1,4 @@
+<h1><?php echo _("Contact Manager")?></h1>
 <div class="fpbx-container">
 	<ul class="nav nav-tabs" role="tablist">
 		<?php foreach($types as $type => $data) {?>
@@ -7,6 +8,7 @@
 	<div class="tab-content display">
 		<?php foreach($types as $type => $data) {?>
 			<div id="<?php echo $type?>" class="tab-pane <?php echo $type == "internal" ? "active" : ""?>">
+				<a href="?display=contactmanager&amp;action=addgroup" class="btn btn-primary"><i class="fa fa-plus"></i> <?php echo _("Add New Group")?></a>
 				<?php if(!empty($groups[$type])) { ?>
 					<div class="nav-container">
 						<div class="scroller scroller-left"><i class="glyphicon glyphicon-chevron-left"></i></div>

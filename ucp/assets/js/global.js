@@ -264,6 +264,42 @@ var ContactmanagerC = UCPMC.extend({
 	},
 	displayEditContact: function(widget_id) {
 		$('#globalModal input[type=checkbox][data-toggle="toggle"]:visible').bootstrapToggle();
+		$("#globalModal").on("blur", "input.number-sd", function(e) {
+			var orig = $(this).data("orig"),
+				val = $(this).val(),
+				$this = $(this),
+				entry = null;
+
+			orig = (typeof orig !== "undefined") ? orig : "";
+
+			if(val !== "") {
+				var indexes = [];
+				var stop = false;
+				$(".number-sd").each(function() {
+					if($(this).val() === "") {
+						return true;
+					}
+					if($.inArray(val, indexes) > -1) {
+						UCP.showAlert(_("This speed dial id conflicts with another speed dial on this page"),'warning');
+						$this.val(orig);
+						stop = true;
+						return false;
+					}
+					indexes.push($(this).val());
+				});
+				if(stop) {
+					return false;
+				}
+				$.post( UCP.ajaxUrl + "?module=contactmanager&command=checksd", {id: val, entryid: entry}, function( data ) {
+					if(!data.status) {
+						UCP.showAlert(_("This speed dial id conflicts with another contact"),'warning');
+						$this.val(orig);
+					} else {
+						$this.data("value",val);
+					}
+				});
+			}
+		});
 		$('#save').on('click',function() {
 			var data = {
 				id: $("#id").val(),
@@ -282,15 +318,21 @@ var ContactmanagerC = UCPMC.extend({
 						parent = $(this).parents(".form-inline"),
 						type = parent.find("select[data-name=type]").val(),
 						sms = parent.find("input[data-name=smsflag]").is(":checked"),
-						fax = parent.find("input[data-name=faxflag]").is(":checked");
+						fax = parent.find("input[data-name=faxflag]").is(":checked"),
+						speeddial = '';
 				if(val === "") {
 					return true;
 				}
+				if(parent.find("input[data-name=numbersd]:enabled").length) {
+					speeddial = parent.find("input[data-name=numbersd]:enabled").val();
+				}
+
 				data.numbers.push({
 					number: val,
 					type: type,
 					smsflag: sms,
-					faxflag: fax
+					faxflag: fax,
+					speeddial: speeddial
 				});
 			});
 			$("input[data-name=websites], input[data-name=email], input[data-name=xmpp]").each(function() {
@@ -326,6 +368,18 @@ var ContactmanagerC = UCPMC.extend({
 				UCP.showAlert(_("There was an error"), 'danger');
 			});
 		});
+		var changeSpeedDial = function() {
+			var el = $(this).parents(".input-group").find(".number-sd");
+			el.prop("disabled",!$(this).is(":checked"));
+			if(!$(this).is(":checked")) {
+				el.val("");
+			} else {
+				if(typeof el.data("value") !== "undefined") {
+					el.val(el.data("value"));
+				}
+			}
+		};
+		$(".enable-sd").change(changeSpeedDial);
 		$(".add-additional").click(function(e) {
 			e.preventDefault();
 			e.stopPropagation();
@@ -342,6 +396,8 @@ var ContactmanagerC = UCPMC.extend({
 			if(name === "number") {
 				$('#globalModal input[data-name=smsflag], #globalModal input[data-name=faxflag]').bootstrapToggle();
 			}
+			$(".enable-sd").off("change");
+			$(".enable-sd").change(changeSpeedDial);
 		});
 		$(document).on("click",".item-container .delete",function() {
 			var name = $(this).data("type");

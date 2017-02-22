@@ -65,6 +65,13 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	public function install() {
 		global $db;
 
+		$fcc = new \featurecode('contactmanager', 'app-contactmanager-sd');
+		$fcc->setDescription('Contact Manager Speed Dials');
+		$fcc->setDefault('*10');
+		$fcc->setProvideDest();
+		$fcc->update();
+		unset($fcc);
+
 		$sql[] = 'CREATE TABLE IF NOT EXISTS `contactmanager_groups` (
 		 `id` int(11) NOT NULL AUTO_INCREMENT,
 		 `owner` int(11) NOT NULL,
@@ -83,6 +90,13 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		 `title` varchar(100) default NULL,
 		 `company` varchar(100) default NULL,
 		 `address` varchar(200) default NULL,
+		 PRIMARY KEY (`id`)
+		);';
+
+		$sql[] = 'CREATE TABLE IF NOT EXISTS `contactmanager_entry_speeddials` (
+		 `id` int(11) NOT NULL,
+		 `entryid` int(11) NOT NULL,
+		 `numberid` int(11) NOT NULL,
 		 PRIMARY KEY (`id`)
 		);';
 
@@ -352,6 +366,26 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				}
 			}
 		}
+
+		$fcc = new \featurecode('contactmanager', $contextname);
+		$code = $fcc->getCodeActive();
+		unset($fcc);
+
+		if (!empty($code)) {
+			$contextname = 'app-contactmanager-sd';
+			$ext->add($contextname, "_".$code."X!", '', new \ext_answer());
+			$ext->add($contextname, "_".$code."X!", '', new \ext_macro('user-callerid'));
+			$ext->add($contextname, "_".$code."X!", '', new \ext_goto('app-contactmanager-sd-dial,${EXTEN:'.strlen($code).'},1', ''));
+			$ext->addInclude('from-internal-additional', $contextname);
+
+			$contextname = 'app-contactmanager-sd-dial';
+			$list = $this->getAllSpeedDials();
+			foreach($list as $item) {
+				$ext->add($contextname, $item['speeddial'], '', new \ext_goto('from-internal,'.$item['number'].',1', ''));
+			}
+			$ext->add($contextname, 'h', '', new \ext_hangup());
+			$ext->add($contextname, 'i', '', new \ext_goto('bad-number,s,1'));
+		}
 	}
 
 	public static function myDialplanHooks() {
@@ -399,6 +433,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			case 'delimage':
 			case 'grid':
 			case 'getgravatar':
+			case 'checksd':
+			case 'sdgrid':
 				return true;
 			break;
 		}
@@ -496,8 +532,46 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		}
 	}
 
+	public function getAllSpeedDials() {
+		$sql = "SELECT e.*, s.id as speeddial, n.number FROM contactmanager_entry_speeddials s, contactmanager_group_entries e, contactmanager_entry_numbers n WHERE e.id = s.entryid AND n.id = s.numberid ORDER BY s.id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute();
+		return $sth->fetchAll();
+	}
+
+	public function checkSpeedDialConflict($id,$entryid=null) {
+		if(is_null($entryid)) {
+			$sql = "SELECT * FROM contactmanager_entry_speeddials WHERE id = :id";
+			$sth = $this->db->prepare($sql);
+			$sth->execute(array(
+				':id' => $id
+			));
+		} else {
+			$sql = "SELECT * FROM contactmanager_entry_speeddials WHERE id = :id AND entryid != :entryid";
+			$sth = $this->db->prepare($sql);
+			$sth->execute(array(
+				':id' => $id,
+				':entryid' => $entryid
+			));
+		}
+
+		$ret = $sth->fetch(\PDO::FETCH_ASSOC);
+		return empty($ret);
+	}
+
 	public function ajaxHandler(){
 		switch ($_REQUEST['command']) {
+			case 'sdgrid':
+				return $this->getAllSpeedDials();
+			break;
+			case 'checksd':
+				if(empty($_POST['entryid'])) {
+					$ret = $this->checkSpeedDialConflict($_POST['id']);
+				} else {
+					$ret = $this->checkSpeedDialConflict($_POST['id'],$_POST['entryid']);
+				}
+				return array("status" => $ret);
+			break;
 			case 'getgravatar':
 				$type = !empty($_POST['grouptype']) ? $_POST['grouptype'] : "";
 				$id = !empty($_POST['id']) ? $_POST['id'] : "";
@@ -772,6 +846,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						if ($_POST['fax'][$index]) {
 							$numbers[$index]['flags'][] = 'fax';
 						}
+						$numbers[$index]['speeddial'] = isset($_POST['numbersde'][$index]) ? $_POST['numbersd'][$index] : "";
 					}
 				}
 
@@ -806,21 +881,21 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				}
 
 				$entry = array(
-				'id' => $_POST['entry'] ? $_POST['entry'] : '',
-				'groupid' => $group,
-				'user' => $_POST['user'] ? $_POST['user'] : -1,
-				'numbers' => $numbers,
-				'xmpps' => $xmpps,
-				'emails' => $emails,
-				'websites' => $websites,
-				'displayname' => $_POST['displayname'] ? $_POST['displayname'] : NULL,
-				'fname' => $_POST['fname'] ? $_POST['fname'] : NULL,
-				'lname' => $_POST['lname'] ? $_POST['lname'] : NULL,
-				'title' => $_POST['title'] ? $_POST['title'] : NULL,
-				'company' => $_POST['company'] ? $_POST['company'] : NULL,
-				'address' => $_POST['address'] ? $_POST['address'] : NULL,
-				'image' => $image,
-				'gravatar' => $gravatar
+					'id' => $_POST['entry'] ? $_POST['entry'] : '',
+					'groupid' => $group,
+					'user' => $_POST['user'] ? $_POST['user'] : -1,
+					'numbers' => $numbers,
+					'xmpps' => $xmpps,
+					'emails' => $emails,
+					'websites' => $websites,
+					'displayname' => $_POST['displayname'] ? $_POST['displayname'] : NULL,
+					'fname' => $_POST['fname'] ? $_POST['fname'] : NULL,
+					'lname' => $_POST['lname'] ? $_POST['lname'] : NULL,
+					'title' => $_POST['title'] ? $_POST['title'] : NULL,
+					'company' => $_POST['company'] ? $_POST['company'] : NULL,
+					'address' => $_POST['address'] ? $_POST['address'] : NULL,
+					'image' => $image,
+					'gravatar' => $gravatar
 				);
 
 				switch ($grouptype) {
@@ -859,6 +934,20 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		}
 	}
 
+	public function getFeatureCodeStatus() {
+		$fcc = new \featurecode('contactmanager', 'app-contactmanager-sd');
+		return array(
+			"code" => $fcc->getCode(),
+			"enabled" => $fcc->isEnabled()
+		);
+	}
+
+	public function getRightNav($request) {
+		$action = '';
+		$rnav = load_view(dirname(__FILE__).'/views/rnav.php', array("action" => $action));
+		return $rnav;
+	}
+
 	/**
 	 * Function used in page.contactmanager.php
 	 */
@@ -879,9 +968,13 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		);
 
 		$content = '';
-		$rnav = load_view(dirname(__FILE__).'/views/rnav.php', array("action" => $action));
+		//
 
 		switch($action) {
+			case "speeddials":
+				$speeddialcode = $this->getFeatureCodeStatus();
+				$content = load_view(dirname(__FILE__).'/views/speeddial-grid.php', array("speeddialcode" => $speeddialcode));
+			break;
 			case "showgroup":
 			case "addgroup":
 				if ($action == "showgroup" && !empty($_REQUEST['group'])) {
@@ -901,8 +994,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					} else {
 						$entry = array();
 					}
+					$speeddialcode = $this->getFeatureCodeStatus();
 
-					$content = load_view(dirname(__FILE__).'/views/entry.php', array("numbertypes" => $numbertypes, "group" => $group, "entry" => $entry, "users" => $users, "message" => $this->message));
+					$content = load_view(dirname(__FILE__).'/views/entry.php', array("speeddialcode" => $speeddialcode, "numbertypes" => $numbertypes, "group" => $group, "entry" => $entry, "users" => $users, "message" => $this->message));
 				}
 			break;
 			default:
@@ -912,7 +1006,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			break;
 		}
 
-		return load_view(dirname(__FILE__).'/views/main.php', array("message" => $this->message, "content" => $content, "rnav" => $rnav));
+		return load_view(dirname(__FILE__).'/views/main.php', array("message" => $this->message, "content" => $content));
 	}
 
 	public function getActionBar($request) {
@@ -973,7 +1067,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			if($this->freepbx->Userman->getCombinedModuleSettingByID($user,'contactmanager','show')) {
 				foreach ($groups as $group) {
 					if ($group['type'] == 'internal') {
-						$this->updateEntryByGroupID($group['id'], array('user' => $user));
+						$data = $this->Userman->getUserByID($user);
+						$data['user'] = $user;
+						$this->updateEntryByGroupID($group['id'], $data);
 					}
 				}
 			}
@@ -1010,7 +1106,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					continue;
 				}
 				if (in_array($group['id'],$showingroups) || in_array("*",$showingroups)) {
-					$out = $this->updateEntryByGroupID($group['id'], array('user' => $user));
+					$data = $this->Userman->getUserByID($user);
+					$data['user'] = $user;
+					$this->updateEntryByGroupID($group['id'], $data);
 				} else {
 					$entries = $this->getEntriesByGroupID($group['id']);
 					foreach ($entries as $entryid => $entry) {
@@ -1050,7 +1148,6 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 	public function usermanAddUser($id, $display, $data) {
 		if($display == 'extensions' || $display == 'users') {
-			//$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','show',true);
 		} else if($display == 'userman') {
 			if(!empty($_POST['contactmanager_showingroups'])) {
 				$grps = !in_array("*",$_POST['contactmanager_showingroups']) ? $_POST['contactmanager_showingroups'] : array("*");
@@ -1076,7 +1173,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					continue;
 				}
 				if (in_array($group['id'],$showingroups) || in_array("*",$showingroups)) {
-					$out = $this->addEntryByGroupID($group['id'], array('user' => $id));
+					$data['user'] = $id;
+					$out = $this->addEntryByGroupID($group['id'], $data);
 				}
 			}
 		}
@@ -1109,7 +1207,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				continue;
 			}
 			if (in_array($group['id'],$showingroups) || in_array("*",$showingroups)) {
-				$out = $this->updateEntryByGroupID($group['id'], array('user' => $id));
+				$data['user'] = $id;
+				$out = $this->updateEntryByGroupID($group['id'], $data);
 			} else {
 				$entries = $this->getEntriesByGroupID($group['id']);
 				foreach ($entries as $entryid => $entry) {
@@ -1260,7 +1359,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				if(in_array("*",$showingroups)) {
 					foreach ($users as $user) {
 						if(in_array($user['id'],$group['users'])) {
-							$this->addEntryByGroupID($id, array('user' => $user['id']));
+							$user['user'] = $id;
+							$this->addEntryByGroupID($id, $user);
 						}
 					}
 				}
@@ -1332,7 +1432,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					'extension' => $number['extension'],
 					'type' => $number['type'],
 					'flags' => $number['flags'],
-					'primary' => isset($number['flags'][0]) ? implode(",", $number['flags']) : 'phone'
+					'primary' => isset($number['flags'][0]) ? implode(",", $number['flags']) : 'phone',
+					'speeddial' => $number['speeddial']
 					);
 				}
 			}
@@ -1667,12 +1768,12 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sth->execute(array(
 		':groupid' => $groupid,
 		':user' => $entry['user'],
-		':displayname' => $entry['displayname'],
-		':fname' => $entry['fname'],
-		':lname' => $entry['lname'],
-		':title' => $entry['title'],
-		':company' => $entry['company'],
-		':address' => $entry['address']
+		':displayname' => isset($entry['displayname']) ? $entry['displayname'] : "",
+		':fname' => isset($entry['fname']) ? $entry['fname'] : "",
+		':lname' => isset($entry['lname']) ? $entry['lname'] : "",
+		':title' => isset($entry['title']) ? $entry['title'] : "",
+		':company' => isset($entry['company']) ? $entry['company'] : "",
+		':address' => isset($entry['address']) ? $entry['address'] : ""
 		));
 
 		$id = $this->db->lastInsertId();
@@ -1788,14 +1889,16 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 */
 	public function getNumbersByEntryID($entryid) {
 		$fields = array(
-		'id',
-		'entryid',
-		'number',
-		'extension',
-		'type',
-		'flags',
+		'n.id',
+		'n.entryid',
+		'n.number',
+		'n.extension',
+		'n.type',
+		'n.flags',
+		's.id as speeddial'
 		);
-		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_numbers WHERE `entryid` = :entryid ORDER BY id";
+		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_numbers as n
+		LEFT JOIN contactmanager_entry_speeddials as s ON (s.numberid = n.id) WHERE n.entryid = :entryid ORDER BY n.id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':entryid' => $entryid));
 		$numbers = $sth->fetchAll(\PDO::FETCH_ASSOC);
@@ -1845,7 +1948,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		'n.number',
 		'n.extension',
 		'n.type',
-		'n.flags',
+		'n.flags'
 		);
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_numbers as n
 		LEFT JOIN contactmanager_group_entries as e ON (n.entryid = e.id) WHERE `groupid` = :groupid ORDER BY e.id, n.id";
@@ -1865,6 +1968,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $id));
 
+		$this->removeSpeedDialNumberByNumberID($id);
+
 		return array("status" => true, "type" => "success", "message" => _("Group entry number successfully deleted"));
 	}
 
@@ -1877,6 +1982,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':entryid' => $entryid));
 
+		$this->removeSpeedDialNumbersByEntryID($entryid);
+
 		return array("status" => true, "type" => "success", "message" => _("Group entry numbers successfully deleted"));
 	}
 
@@ -1886,6 +1993,11 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 */
 	public function deleteNumbersByGroupID($groupid) {
 		$sql = "DELETE n FROM contactmanager_entry_numbers as n
+		LEFT JOIN contactmanager_group_entries as e ON (n.entryid = e.id) WHERE `groupid` = :groupid";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':groupid' => $groupid));
+
+		$sql = "DELETE n FROM contactmanager_entry_speeddials as n
 		LEFT JOIN contactmanager_group_entries as e ON (n.entryid = e.id) WHERE `groupid` = :groupid";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
@@ -1975,9 +2087,54 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			':type' => isset($number['type']) ? $number['type'] : "",
 			':flags' => !empty($number['flags']) ? implode('|', $number['flags']) : "",
 			));
+
+			if(isset($number['speeddial'])) {
+				$numberid = $this->db->lastInsertId();
+				if(trim($number['speeddial']) !== "") {
+					$this->addSpeedDialNumber($entryid,$numberid,$number['speeddial']);
+				} else {
+					$this->removeSpeedDialNumberByNumberID($id);
+				}
+			}
+
 		}
 
 		return array("status" => true, "type" => "success", "message" => _("Group entry numbers successfully added"));
+	}
+
+	public function getSpeedDialByID($id) {
+		$sql = "SELECT * FROM contactmanager_entry_speeddials WHERE id = :id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(
+			':id' => $id
+		));
+		return $sth->fetch(\PDO::FETCH_ASSOC);
+	}
+
+	public function addSpeedDialNumber($entryid, $numberid,$speeddial) {
+		$sql = "REPLACE INTO contactmanager_entry_speeddials (id, entryid, numberid) VALUES (:id, :entryid, :numberid)";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(
+			':id' => $speeddial,
+			':entryid' => $entryid,
+			':numberid' => $numberid
+		));
+	}
+
+	public function removeSpeedDialNumberByNumberID($numberid) {
+		$sql = "DELETE FROM contactmanager_entry_speeddials WHERE numberid = :id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(
+			":id" => $entryid
+		));
+	}
+
+	public function removeSpeedDialNumbersByEntryID($entryid) {
+		$sql = "DELETE FROM contactmanager_entry_speeddials WHERE entryid = :id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(
+			":id" => $entryid
+		));
 	}
 
 	/**
@@ -2380,6 +2537,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 							}
 							$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
 							$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['username'];
+							$entry['groupid'] = $group['id'];
+							$entry['groupname'] = $group['name'];
 							$final[] = $entry;
 						}
 						$contacts = array_merge($contacts, $final);
@@ -2411,6 +2570,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 							$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
 							$entry['type'] = "external";
 							$entry['groupid'] = $group['id'];
+							$entry['groupname'] = $group['name'];
 							$entry['id'] = $entry['uid'];
 							$final[] = $entry;
 						}

@@ -91,6 +91,7 @@ class Contactmanager extends Modules{
 			case 'delimage':
 			case 'getgravatar':
 			case 'showcontact':
+			case 'checksd':
 				return true;
 			default:
 				return false;
@@ -134,6 +135,14 @@ class Contactmanager extends Modules{
 	function ajaxHandler() {
 		$return = array("status" => false, "message" => "");
 		switch($_REQUEST['command']) {
+			case 'checksd':
+				if(empty($_POST['entryid'])) {
+					$ret = $this->cm->checkSpeedDialConflict($_POST['id']);
+				} else {
+					$ret = $this->cm->checkSpeedDialConflict($_POST['id'],$_POST['entryid']);
+				}
+				return array("status" => $ret);
+			break;
 			case 'getgravatar':
 				$type = !empty($_POST['grouptype']) ? $_POST['grouptype'] : "";
 				$id = $this->user['id'];
@@ -338,14 +347,17 @@ class Contactmanager extends Modules{
 				if(!empty($g)) {
 					$displayvars['contact'] = $this->cm->getEntryByID($_REQUEST['id']);
 				}
+				$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 				$return = $this->load_view(__DIR__.'/views/contactEdit.php',$displayvars);
 			break;
 			case "addcontactmodal":
+				$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 				$return = $this->load_view(__DIR__.'/views/contactEdit.php',$displayvars);
 			break;
 			case "showcontact":
 				$g = $this->cm->getGroupByID($_REQUEST['group']);
 				$displayvars = array();
+				$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 				if(!empty($g)) {
 					$displayvars['contact'] = $this->cm->getEntryByID($_REQUEST['id']);
 					if($g['owner'] == -1) {
@@ -435,6 +447,7 @@ class Contactmanager extends Modules{
 				$g = $this->cm->getGroupByID($_REQUEST['group']);
 				if(!empty($g)) {
 					if($g['owner'] != -1) {
+						$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 						$displayvars['activeList'] = $g['name'];
 						$displayvars['add'] = true;
 						$mainDisplay = $this->load_view(__DIR__.'/views/contact.php',$displayvars);
@@ -451,6 +464,7 @@ class Contactmanager extends Modules{
 			case "contact":
 				$g = $this->cm->getGroupByID($_REQUEST['group']);
 				if(!empty($g)) {
+					$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 					$displayvars['contact'] = $this->cm->getEntryByID($_REQUEST['id']);
 					if($g['owner'] == -1) {
 						$mainDisplay = $this->load_view(__DIR__.'/views/contactro.php',$displayvars);
