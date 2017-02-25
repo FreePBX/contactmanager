@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-13 11:53-0800\n"
-"PO-Revision-Date: 2017-02-24 18:12+0200\n"
+"PO-Revision-Date: 2017-02-24 20:14+0200\n"
 "Last-Translator: Kingvoice <suporte@kingvoice.com.br>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/pt_BR/>\n"
@@ -191,7 +191,7 @@ msgstr "Módulo de gerenciador de Contatos"
 
 #: contactmanager.i18n.php:18
 msgid "Contact Manager Speed Dials"
-msgstr ""
+msgstr "Discagens Rápidas do Gerenciador de Contatos"
 
 #: functions.inc.php:39 functions.inc.php:42
 #, php-format
@@ -528,7 +528,7 @@ msgstr "Listar Todos os Grupos"
 
 #: views/rnav.php:3
 msgid "List All Speeddials"
-msgstr ""
+msgstr "Listar Todas Discagens Rápidas"
 
 #: ucp/assets/js/global.js:515
 msgid "Loading..."
@@ -589,7 +589,7 @@ msgstr "Não Autorizado"
 
 #: views/speeddial-grid.php:12
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 #: assets/js/contactmanager.js:53
 msgid "Number cannot be blank."
@@ -644,19 +644,20 @@ msgstr "Mostrar em Grupos do Gerenciador de Contatos"
 #: ucp/views/contact.php:70 ucp/views/contact.php:126 views/entry.php:258
 #: assets/js/contactmanager.js:150
 msgid "Speed Dial"
-msgstr ""
+msgstr "Discagem Rápida"
 
 #: views/speeddial-grid.php:11
 msgid "Speed Dial Feature Code"
-msgstr ""
+msgstr "Código do Recurso da Discagem Rápida"
 
 #: views/speeddial-grid.php:3
 msgid "Speed Dial Feature code has been disabled in Feature Code Admin"
 msgstr ""
+"Código do Recurso de Discagem Rápida foi desabilitado em Códigos de Recurso"
 
 #: views/speeddial-grid.php:1
 msgid "Speed Dials"
-msgstr ""
+msgstr "Discagens Rápidas"
 
 #: Contactmanager.class.php:1035 Contactmanager.class.php:1054
 msgid "Submit"
