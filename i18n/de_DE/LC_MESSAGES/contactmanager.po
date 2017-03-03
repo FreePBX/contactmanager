@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-13 11:53-0800\n"
-"PO-Revision-Date: 2017-01-09 20:32+0200\n"
-"Last-Translator: Sven <spiderrs4@web.de>\n"
-"Language-Team: German <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/de_DE/>\n"
+"PO-Revision-Date: 2017-03-03 15:51+0200\n"
+"Last-Translator: hammer125 <auswertung@aon.at>\n"
+"Language-Team: German "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/de_DE/>\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.4\n"
 
@@ -47,7 +47,7 @@ msgstr "Ein Benutzer aus dem Benutzer-Management-Modul."
 
 #: views/speeddial-grid.php:16
 msgid "Action"
-msgstr ""
+msgstr "Aktion"
 
 #: Contactmanager.class.php:30 Contactmanager.class.php:39
 msgid "Actions"
@@ -107,7 +107,7 @@ msgstr "Alle öffentlichen Gruppen"
 
 #: assets/js/contactmanager.js:42
 msgid "An entry must have a user"
-msgstr "Es muss ein Benutzer eingetragen sein."
+msgstr "Es muss ein Benutzer eingetragen sein"
 
 #: Contactmanager.class.php:905
 msgid "An entry must have a user."
@@ -137,7 +137,7 @@ msgstr "Anrufen"
 
 #: Contactmanager.class.php:672 ucp/Contactmanager.class.php:216
 msgid "Can Not Find Uploaded Files"
-msgstr "Es können keine hochgeladenen Dateien gefunden werden."
+msgstr "Es können keine hochgeladenen Dateien gefunden werden"
 
 #: Contactmanager.class.php:966 Contactmanager.class.php:2828
 #: Contactmanager.class.php:2840 Contactmanager.class.php:2852
@@ -287,7 +287,7 @@ msgstr "E-Mail"
 #: ucp/views/contact.php:77 ucp/views/contact.php:133 views/entry.php:263
 #: assets/js/contactmanager.js:155
 msgid "Enable"
-msgstr ""
+msgstr "Aktivieren"
 
 #: views/entry.php:246 assets/js/contactmanager.js:140
 msgid "Ext."
@@ -321,7 +321,7 @@ msgstr "Fax"
 
 #: Contactmanager.class.php:628 ucp/Contactmanager.class.php:162
 msgid "File upload failed"
-msgstr "Hochladen fehlgeschlagen"
+msgstr "Datei hochladen fehlgeschlagen"
 
 #: Contactmanager.class.php:27 Contactmanager.class.php:2816
 #: ucp/views/contact.php:10 ucp/views/contacts.php:34 views/entry.php:88
@@ -660,7 +660,7 @@ msgstr ""
 
 #: Contactmanager.class.php:1035 Contactmanager.class.php:1054
 msgid "Submit"
-msgstr "Bestätigen"
+msgstr "absenden"
 
 #: Contactmanager.class.php:653 ucp/Contactmanager.class.php:197
 msgid ""
@@ -668,17 +668,17 @@ msgid ""
 "the HTML form"
 msgstr ""
 "Die hochgeladene Datei überschreitet die Maximal zulässige Dateigröße welche "
-"als Wert \"MAX_FILE_SIZE\" in der HTML definiert wurde."
+"als Wert \"MAX_FILE_SIZE\" in der HTML definiert wurde"
 
 #: Contactmanager.class.php:650 ucp/Contactmanager.class.php:194
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr ""
 "Die hochgeladene Datei überschreitet die maximal zulässige Dateigröße welche "
-"als Wert \"upload_max_filesize\" in der php.ini definiert wurde."
+"als Wert \"upload_max_filesize\" in der php.ini definiert wurde"
 
 #: Contactmanager.class.php:656 ucp/Contactmanager.class.php:200
 msgid "The uploaded file was only partially uploaded"
-msgstr "Die hochgeladene Datei wurde nur teilweise hochgeladen."
+msgstr "Die hochgeladene Datei wurde nur teilweise hochgeladen"
 
 #: ucp/assets/js/global.js:76
 msgid "There are no actions for this type"
