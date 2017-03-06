@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-13 11:53-0800\n"
-"PO-Revision-Date: 2017-02-24 20:14+0200\n"
+"PO-Revision-Date: 2017-03-06 17:51+0200\n"
 "Last-Translator: Kingvoice <suporte@kingvoice.com.br>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/pt_BR/>\n"
@@ -581,7 +581,7 @@ msgstr "Nenhum e-mail definido"
 
 #: Contactmanager.class.php:659 ucp/Contactmanager.class.php:203
 msgid "No file was uploaded"
-msgstr "Nenhum arquivo foi carregado"
+msgstr "Nenhum arquivo foi enviado"
 
 #: ucp/Contactmanager.class.php:359 ucp/Contactmanager.class.php:381
 msgid "Not Authorized"
