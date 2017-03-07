@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-13 11:53-0800\n"
-"PO-Revision-Date: 2017-03-05 21:27+0200\n"
-"Last-Translator: Francis <fbinet@solist.ca>\n"
+"PO-Revision-Date: 2017-03-07 09:15+0200\n"
+"Last-Translator: Nicolas <freepbx@riendeau.org>\n"
 "Language-Team: French "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/fr_FR/>\n"
 "Language: fr_FR\n"
@@ -87,7 +87,7 @@ msgstr ""
 
 #: ucp/assets/js/global.js:364
 msgid "Adding..."
-msgstr ""
+msgstr "En cours d'ajout..."
 
 #: Contactmanager.class.php:2820 views/entry.php:211 views/entry.php:223
 msgid "Address"
@@ -618,7 +618,7 @@ msgstr ""
 
 #: Contactmanager.class.php:1030 Contactmanager.class.php:1049
 msgid "Reset"
-msgstr "Remise à zéro"
+msgstr "Réinitialiser"
 
 #: ucp/views/contact.php:83 ucp/views/contact.php:139
 #: assets/js/contactmanager.js:161
@@ -652,7 +652,7 @@ msgstr ""
 
 #: Contactmanager.class.php:1035 Contactmanager.class.php:1054
 msgid "Submit"
-msgstr "Envoyer"
+msgstr "Soumettre"
 
 #: Contactmanager.class.php:653 ucp/Contactmanager.class.php:197
 msgid ""
