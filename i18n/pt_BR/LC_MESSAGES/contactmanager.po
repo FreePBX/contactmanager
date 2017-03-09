@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-13 11:53-0800\n"
-"PO-Revision-Date: 2017-03-06 17:51+0200\n"
+"PO-Revision-Date: 2017-03-08 21:01+0200\n"
 "Last-Translator: Kingvoice <suporte@kingvoice.com.br>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/pt_BR/>\n"
@@ -95,7 +95,7 @@ msgstr "Endereço"
 
 #: contactmanager.i18n.php:6
 msgid "Admin"
-msgstr "Administrador"
+msgstr "Admin"
 
 #: Contactmanager.class.php:2712
 msgid "All Internal Groups"
@@ -127,7 +127,7 @@ msgstr "Tem certeza de que deseja excluir este grupo e todos os seus contatos?"
 
 #: ucp/views/contact.php:36 views/entry.php:162 views/user_details_hook.php:21
 msgid "Browse"
-msgstr "Visualizar"
+msgstr "Localizar"
 
 #: ucp/assets/js/global.js:27
 msgid "Call To"
