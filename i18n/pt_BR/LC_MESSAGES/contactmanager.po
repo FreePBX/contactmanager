@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-13 11:53-0800\n"
-"PO-Revision-Date: 2017-03-08 21:01+0200\n"
+"PO-Revision-Date: 2017-03-08 19:13+0200\n"
 "Last-Translator: Kingvoice <suporte@kingvoice.com.br>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/pt_BR/>\n"
@@ -609,7 +609,7 @@ msgstr "OK"
 #: Contactmanager.class.php:2841 Contactmanager.class.php:2853
 #: ucp/views/contact.php:65 ucp/views/contact.php:121 views/group.php:105
 msgid "Other"
-msgstr "Outro"
+msgstr "Outros"
 
 #: contactmanager.i18n.php:12
 msgid "Partial Match Length"
