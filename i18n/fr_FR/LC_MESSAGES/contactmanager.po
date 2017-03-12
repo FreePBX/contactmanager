@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-13 11:53-0800\n"
-"PO-Revision-Date: 2017-03-07 09:15+0200\n"
+"PO-Revision-Date: 2017-03-12 17:12+0200\n"
 "Last-Translator: Nicolas <freepbx@riendeau.org>\n"
 "Language-Team: French "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/fr_FR/>\n"
@@ -203,7 +203,7 @@ msgstr ""
 
 #: Contactmanager.class.php:1023 Contactmanager.class.php:1042
 msgid "Delete"
-msgstr "Supprime"
+msgstr "Supprimer"
 
 #: ucp/views/contact.php:254 ucp/views/contactro.php:84
 msgid "Delete Contact"
@@ -275,7 +275,7 @@ msgstr "Éditer le groupe"
 
 #: ucp/views/contact.php:196 views/entry.php:322
 msgid "Email"
-msgstr "Email"
+msgstr "Courriel"
 
 #: ucp/views/contact.php:77 ucp/views/contact.php:133 views/entry.php:263
 #: assets/js/contactmanager.js:155
