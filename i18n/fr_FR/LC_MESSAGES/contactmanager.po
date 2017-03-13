@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-13 11:53-0800\n"
-"PO-Revision-Date: 2017-03-12 17:12+0200\n"
-"Last-Translator: Nicolas <freepbx@riendeau.org>\n"
+"PO-Revision-Date: 2017-03-12 20:58+0200\n"
+"Last-Translator: Francis <fbinet@solist.ca>\n"
 "Language-Team: French "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/fr_FR/>\n"
 "Language: fr_FR\n"
@@ -721,7 +721,7 @@ msgstr ""
 
 #: Contactmanager.class.php:645 ucp/Contactmanager.class.php:189
 msgid "Unsupported file format"
-msgstr ""
+msgstr "Format de fichier non supporté"
 
 #: assets/js/contactmanager.js:270 ucp/assets/js/global.js:451
 msgid "Unsupported file type"
