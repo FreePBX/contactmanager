@@ -252,13 +252,13 @@ var ContactmanagerC = UCPMC.extend({
 							alert("This speed dial id conflicts with another contact");
 							$this.val(orig);
 						} else {
-							$this.data("value".val);
+							$this.data("value",val);
 							saveNumbers();
 						}
 					});
 				}
 			} else {
-				$this.data("value".val);
+				$this.data("value",val);
 				saveNumbers();
 			}
 		});

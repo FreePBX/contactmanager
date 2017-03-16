@@ -71,7 +71,7 @@
 								</td>
 								<td>
 									<div class="input-group">
-										<span class="input-group-addon" style="padding: 4px;">*1</span>
+										<span class="input-group-addon" style="padding: 4px;"><?php echo $featurecode['code']?></span>
 										<input type="number" class="form-control number-sd skip" value="" style="width: 50px;padding: 3px;" min="0" data-name="numbersd" disabled>
 										<span class="input-group-addon">
 											<input type="checkbox" style="margin-bottom: 0px;" class="enable-sd skip" data-name="numbersde"><?php echo _("Enable")?></label>
