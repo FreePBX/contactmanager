@@ -10,44 +10,44 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-13 11:53-0800\n"
-"PO-Revision-Date: 2017-01-09 20:32+0200\n"
-"Last-Translator: Sven <spiderrs4@web.de>\n"
-"Language-Team: German <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/de_DE/>\n"
+"PO-Revision-Date: 2017-03-07 02:13+0200\n"
+"Last-Translator: hammer125 <auswertung@aon.at>\n"
+"Language-Team: German "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/de_DE/>\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.4\n"
 
 #: Contactmanager.class.php:668 ucp/Contactmanager.class.php:212
 msgid "A PHP extension stopped the file upload"
-msgstr "Eine PHP Erweiterung hat den Datei Upload gestoppt"
+msgstr "Eine PHP-Erweiterung hat den Datei-Upload gestoppt"
 
 #: views/entry.php:344
 msgid "A list of E-Mail addresses belonging to this entry"
-msgstr "Eine Liste der E-Mail-Adressen, die zu diesem Eintrag gehören."
+msgstr "Eine Liste der E-Mail-Adressen, die zu diesem Eintrag gehören"
 
 #: views/entry.php:312
 msgid "A list of XMPP addresses belonging to this entry"
-msgstr "Eine Liste der XMPP-Adressen, die zu diesem Eintrag gehören."
+msgstr "Eine Liste der XMPP-Adressen, die zu diesem Eintrag gehören"
 
 #: views/entry.php:280
 msgid "A list of numbers belonging to this entry"
-msgstr "Eine Liste von Nummern, die zu diesem Eintrag gehören."
+msgstr "Eine Liste von Nummern, die zu diesem Eintrag gehören"
 
 #: views/entry.php:376
 msgid "A list of websites belonging to this entry"
-msgstr "Eine Liste von Webseiten, die zu diesem Eintrag gehören."
+msgstr "Eine Liste von Webseiten, die zu diesem Eintrag gehören"
 
 #: views/entry.php:57
 msgid "A user from the User Management module"
-msgstr "Ein Benutzer aus dem Benutzer-Management-Modul."
+msgstr "Ein Benutzer aus dem Benutzer-Management-Modul"
 
 #: views/speeddial-grid.php:16
 msgid "Action"
-msgstr ""
+msgstr "Aktion"
 
 #: Contactmanager.class.php:30 Contactmanager.class.php:39
 msgid "Actions"
@@ -107,7 +107,7 @@ msgstr "Alle öffentlichen Gruppen"
 
 #: assets/js/contactmanager.js:42
 msgid "An entry must have a user"
-msgstr "Es muss ein Benutzer eingetragen sein."
+msgstr "Es muss ein Benutzer eingetragen sein"
 
 #: Contactmanager.class.php:905
 msgid "An entry must have a user."
@@ -137,7 +137,7 @@ msgstr "Anrufen"
 
 #: Contactmanager.class.php:672 ucp/Contactmanager.class.php:216
 msgid "Can Not Find Uploaded Files"
-msgstr "Es können keine hochgeladenen Dateien gefunden werden."
+msgstr "Es können keine hochgeladenen Dateien gefunden werden"
 
 #: Contactmanager.class.php:966 Contactmanager.class.php:2828
 #: Contactmanager.class.php:2840 Contactmanager.class.php:2852
@@ -177,8 +177,8 @@ msgid ""
 "Manager\" is set to no or inherits no under the \"Contact Manager\" tab"
 msgstr ""
 "Kontaktbild für diesen Benutzer. Das Bild wird gelöscht, wenn \"Zeige im "
-"Kontakt Manager\" auf nein gesetzt ist oder unter der Registerkarte "
-"\"Kontakt Manager\" nicht vererben steht."
+"Kontakt Manager\" auf nein gesetzt ist oder unter der Registerkarte \""
+"Kontakt Manager\" nicht vererben steht"
 
 #: Contactmanager.class.php:2732 Contactmanager.class.php:2744
 #: Contactmanager.class.php:2756 Contactmanager.class.php:2773
@@ -193,7 +193,7 @@ msgstr "Kontakt-Manager-Modul"
 
 #: contactmanager.i18n.php:18
 msgid "Contact Manager Speed Dials"
-msgstr ""
+msgstr "Kontaktmanager-Kurzwahlen"
 
 #: functions.inc.php:39 functions.inc.php:42
 #, php-format
@@ -254,19 +254,19 @@ msgstr "E-Mail Adresse. Nur externe Kontakte."
 
 #: Contactmanager.class.php:197
 msgid "ERROR failed to update address field"
-msgstr "Fehler, das Adressfeld konnte nicht aktualisiert werden."
+msgstr "Fehler, das Adressfeld konnte nicht aktualisiert werden"
 
 #: Contactmanager.class.php:181
 msgid "ERROR failed to update displayname field"
-msgstr "Fehler, das Feld Anzeigename konnte nicht aktualisiert werden."
+msgstr "Fehler, das Feld Anzeigename konnte nicht aktualisiert werden"
 
 #: Contactmanager.class.php:213
 msgid "ERROR failed to update extension field"
-msgstr "Fehler, das Nummernfeld konnte nicht aktualisiert werden."
+msgstr "Fehler, das Nummernfeld konnte nicht aktualisiert werden"
 
 #: Contactmanager.class.php:165
 msgid "ERROR failed to update title field"
-msgstr "Fehler, das Titelfeld konnte nicht aktualisiert werden."
+msgstr "Fehler, das Titelfeld konnte nicht aktualisiert werden"
 
 #: ucp/views/contactro.php:83
 msgid "Edit Contact"
@@ -287,7 +287,7 @@ msgstr "E-Mail"
 #: ucp/views/contact.php:77 ucp/views/contact.php:133 views/entry.php:263
 #: assets/js/contactmanager.js:155
 msgid "Enable"
-msgstr ""
+msgstr "Aktivieren"
 
 #: views/entry.php:246 assets/js/contactmanager.js:140
 msgid "Ext."
@@ -321,7 +321,7 @@ msgstr "Fax"
 
 #: Contactmanager.class.php:628 ucp/Contactmanager.class.php:162
 msgid "File upload failed"
-msgstr "Hochladen fehlgeschlagen"
+msgstr "Datei hochladen fehlgeschlagen"
 
 #: Contactmanager.class.php:27 Contactmanager.class.php:2816
 #: ucp/views/contact.php:10 ucp/views/contacts.php:34 views/entry.php:88
@@ -500,6 +500,8 @@ msgid ""
 "How many digits should a number be before a partial match is used when "
 "looking up a contact"
 msgstr ""
+"Wieviele Ziffern muss eine Nummer haben, bevor eine teilweise "
+"Übereinstimmung verwendet wird, um einen Kontakt zu suchen"
 
 #: Contactmanager.class.php:24 Contactmanager.class.php:2808
 #: views/group.php:45
@@ -527,7 +529,7 @@ msgstr "Alle Gruppen anzeigen"
 
 #: views/rnav.php:3
 msgid "List All Speeddials"
-msgstr ""
+msgstr "Zeige alle Kurzwahlen"
 
 #: ucp/assets/js/global.js:515
 msgid "Loading..."
@@ -589,7 +591,7 @@ msgstr "Nicht berechtigt"
 
 #: views/speeddial-grid.php:12
 msgid "Number"
-msgstr ""
+msgstr "Nummer"
 
 #: assets/js/contactmanager.js:53
 msgid "Number cannot be blank."
@@ -613,7 +615,7 @@ msgstr "Andere"
 
 #: contactmanager.i18n.php:12
 msgid "Partial Match Length"
-msgstr ""
+msgstr "Länge der teilweisen Übereinstimmung"
 
 #: Contactmanager.class.php:2822 Contactmanager.class.php:2834
 #: Contactmanager.class.php:2846
@@ -644,23 +646,25 @@ msgstr "In Kontakt-Manager-Gruppen Anzeigen"
 #: ucp/views/contact.php:70 ucp/views/contact.php:126 views/entry.php:258
 #: assets/js/contactmanager.js:150
 msgid "Speed Dial"
-msgstr ""
+msgstr "Kurzwahl"
 
 #: views/speeddial-grid.php:11
 msgid "Speed Dial Feature Code"
-msgstr ""
+msgstr "Code für Kurzwahl-Spezialfunktionen"
 
 #: views/speeddial-grid.php:3
 msgid "Speed Dial Feature code has been disabled in Feature Code Admin"
 msgstr ""
+"Der Code für Kurzwahl-Spezialfunktionen wurde in der Spezialfunktionen-"
+"Verwaltung deaktiviert"
 
 #: views/speeddial-grid.php:1
 msgid "Speed Dials"
-msgstr ""
+msgstr "Kurzwahlen"
 
 #: Contactmanager.class.php:1035 Contactmanager.class.php:1054
 msgid "Submit"
-msgstr "Bestätigen"
+msgstr "absenden"
 
 #: Contactmanager.class.php:653 ucp/Contactmanager.class.php:197
 msgid ""
@@ -668,17 +672,17 @@ msgid ""
 "the HTML form"
 msgstr ""
 "Die hochgeladene Datei überschreitet die Maximal zulässige Dateigröße welche "
-"als Wert \"MAX_FILE_SIZE\" in der HTML definiert wurde."
+"als Wert \"MAX_FILE_SIZE\" in der HTML definiert wurde"
 
 #: Contactmanager.class.php:650 ucp/Contactmanager.class.php:194
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr ""
 "Die hochgeladene Datei überschreitet die maximal zulässige Dateigröße welche "
-"als Wert \"upload_max_filesize\" in der php.ini definiert wurde."
+"als Wert \"upload_max_filesize\" in der php.ini definiert wurde"
 
 #: Contactmanager.class.php:656 ucp/Contactmanager.class.php:200
 msgid "The uploaded file was only partially uploaded"
-msgstr "Die hochgeladene Datei wurde nur teilweise hochgeladen."
+msgstr "Die hochgeladene Datei wurde nur teilweise hochgeladen"
 
 #: ucp/assets/js/global.js:76
 msgid "There are no actions for this type"
@@ -794,7 +798,7 @@ msgstr "XMPP Adresse darf nicht leer sein."
 #: Contactmanager.class.php:170 Contactmanager.class.php:186
 #: Contactmanager.class.php:202 Contactmanager.class.php:218
 msgid "already exists"
-msgstr "bereits vorhanden"
+msgstr "besteht bereits"
 
 #: Contactmanager.class.php:1481
 msgid "cell"

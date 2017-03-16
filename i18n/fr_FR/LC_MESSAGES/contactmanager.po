@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-13 11:53-0800\n"
-"PO-Revision-Date: 2016-11-25 04:11+0200\n"
-"Last-Translator: Pascal <pascal.noyel@ipexia.com>\n"
-"Language-Team: French <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/fr_FR/>\n"
+"PO-Revision-Date: 2017-03-12 20:58+0200\n"
+"Last-Translator: Francis <fbinet@solist.ca>\n"
+"Language-Team: French "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/fr_FR/>\n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 2.4\n"
 
@@ -87,7 +87,7 @@ msgstr ""
 
 #: ucp/assets/js/global.js:364
 msgid "Adding..."
-msgstr ""
+msgstr "En cours d'ajout..."
 
 #: Contactmanager.class.php:2820 views/entry.php:211 views/entry.php:223
 msgid "Address"
@@ -275,12 +275,12 @@ msgstr "Éditer le groupe"
 
 #: ucp/views/contact.php:196 views/entry.php:322
 msgid "Email"
-msgstr "Email"
+msgstr "Courriel"
 
 #: ucp/views/contact.php:77 ucp/views/contact.php:133 views/entry.php:263
 #: assets/js/contactmanager.js:155
 msgid "Enable"
-msgstr ""
+msgstr "Activer"
 
 #: views/entry.php:246 assets/js/contactmanager.js:140
 msgid "Ext."
@@ -618,7 +618,7 @@ msgstr ""
 
 #: Contactmanager.class.php:1030 Contactmanager.class.php:1049
 msgid "Reset"
-msgstr "Remise à zéro"
+msgstr "Réinitialiser"
 
 #: ucp/views/contact.php:83 ucp/views/contact.php:139
 #: assets/js/contactmanager.js:161
@@ -652,7 +652,7 @@ msgstr ""
 
 #: Contactmanager.class.php:1035 Contactmanager.class.php:1054
 msgid "Submit"
-msgstr "Envoyer"
+msgstr "Soumettre"
 
 #: Contactmanager.class.php:653 ucp/Contactmanager.class.php:197
 msgid ""
@@ -721,7 +721,7 @@ msgstr ""
 
 #: Contactmanager.class.php:645 ucp/Contactmanager.class.php:189
 msgid "Unsupported file format"
-msgstr ""
+msgstr "Format de fichier non supporté"
 
 #: assets/js/contactmanager.js:270 ucp/assets/js/global.js:451
 msgid "Unsupported file type"
