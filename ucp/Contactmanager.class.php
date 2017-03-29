@@ -22,8 +22,9 @@ class Contactmanager extends Modules{
 
 		$widgets['contactmanager'] = array(
 			"display" => _("Contacts"),
-			"defaultsize" => array("height" => 4, "width" => 4),
-			'description' => _("PBX Contacts"),
+			"defaultsize" => array("height" => 7, "width" => 6),
+			"minsize" => array("height" => 6, "width" => 5),
+			'description' => _("PBX Contacts")
 		);
 
 		if (empty($widgets)) {
