@@ -298,6 +298,8 @@ var ContactmanagerC = UCPMC.extend({
 						$this.data("value",val);
 					}
 				});
+			} else {
+				$this.data("value",val);
 			}
 		});
 		$('#save').on('click',function() {

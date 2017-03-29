@@ -367,24 +367,19 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			}
 		}
 
+		$contextname = 'app-contactmanager-sd';
 		$fcc = new \featurecode('contactmanager', $contextname);
 		$code = $fcc->getCodeActive();
 		unset($fcc);
 
 		if (!empty($code)) {
-			$contextname = 'app-contactmanager-sd';
+			$this->syncSpeedDials();
 			$ext->add($contextname, "_".$code."X!", '', new \ext_answer());
 			$ext->add($contextname, "_".$code."X!", '', new \ext_macro('user-callerid'));
-			$ext->add($contextname, "_".$code."X!", '', new \ext_goto('app-contactmanager-sd-dial,${EXTEN:'.strlen($code).'},1', ''));
-			$ext->addInclude('from-internal-additional', $contextname);
+			$ext->add($contextname, "_".$code."X!", '', new \ext_gotoif('$[${DB_EXISTS(CM/speeddial/${EXTEN:'.strlen($code).'})}=1]','from-internal,${DB(CM/speeddial/${EXTEN:'.strlen($code).'})},1'));
+			$ext->add($contextname, "_".$code."X!", '', new \ext_goto('bad-number,s,1'));
 
-			$contextname = 'app-contactmanager-sd-dial';
-			$list = $this->getAllSpeedDials();
-			foreach($list as $item) {
-				$ext->add($contextname, $item['speeddial'], '', new \ext_goto('from-internal,'.$item['number'].',1', ''));
-			}
-			$ext->add($contextname, 'h', '', new \ext_hangup());
-			$ext->add($contextname, 'i', '', new \ext_goto('bad-number,s,1'));
+			$ext->addInclude('from-internal-additional', $contextname);
 		}
 	}
 
@@ -536,7 +531,23 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "SELECT e.*, s.id as speeddial, n.number FROM contactmanager_entry_speeddials s, contactmanager_group_entries e, contactmanager_entry_numbers n WHERE e.id = s.entryid AND n.id = s.numberid ORDER BY s.id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute();
-		return $sth->fetchAll();
+		return $sth->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	public function syncSpeedDials() {
+		$sds = $this->getAllSpeedDials();
+		$active = array();
+		foreach($sds as $sd) {
+			$this->freepbx->astman->database_put("CM","speeddial/".$sd['speeddial'],$sd['number']);
+			$active[] = '/CM/speeddial/'.$sd['speeddial'];
+		}
+		$all = $this->freepbx->astman->database_show('CM');
+		foreach($all as $key => $value) {
+			if(!in_array($key,$active)) {
+				preg_match('/^\/CM\/speeddial\/(\d+)$/',$key,$match);
+				$this->freepbx->astman->database_del("CM","speeddial/".$match[1]);
+			}
+		}
 	}
 
 	public function checkSpeedDialConflict($id,$entryid=null) {
@@ -2002,6 +2013,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
 
+		$this->syncSpeedDials();
+
 		return array("status" => true, "type" => "success", "message" => _("Group entry numbers successfully deleted"));
 	}
 
@@ -2119,6 +2132,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			':entryid' => $entryid,
 			':numberid' => $numberid
 		));
+		$this->syncSpeedDials();
 	}
 
 	public function removeSpeedDialNumberByNumberID($numberid) {
@@ -2127,6 +2141,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sth->execute(array(
 			":id" => $entryid
 		));
+		$this->syncSpeedDials();
 	}
 
 	public function removeSpeedDialNumbersByEntryID($entryid) {
@@ -2135,6 +2150,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sth->execute(array(
 			":id" => $entryid
 		));
+		$this->syncSpeedDials();
 	}
 
 	/**
