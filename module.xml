@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>14.0.1</version>
+	<version>14.0.1.1</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*14.0.1.1* FREEPBX-14407 Cant exclude contact from showing in contact groups
 		*14.0.1beta3* Merge in changes from 13
 		*14.0.1alpha1* Add number search by group
 	</changelog>
