@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-16 13:20-0700\n"
-"PO-Revision-Date: 2017-03-08 19:13+0200\n"
+"PO-Revision-Date: 2017-03-20 13:15+0200\n"
 "Last-Translator: Kingvoice <suporte@kingvoice.com.br>\n"
-"Language-Team: Portuguese (Brazil) <http://weblate.freepbx.org/projects/"
-"freepbx/contactmanager/pt_BR/>\n"
+"Language-Team: Portuguese (Brazil) "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/pt_BR/>\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.4\n"
 
@@ -668,16 +668,16 @@ msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
 msgstr ""
-"O arquivo enviado excede a diretiva MAX_FILE_SIZE que foi especificada no "
+"O arquivo enviado excede o atributo MAX_FILE_SIZE que foi especificado no "
 "formulário HTML"
 
 #: Contactmanager.class.php:661 ucp/Contactmanager.class.php:194
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
-msgstr "O arquivo carregado excede a diretiva upload_max_filesize no php.ini"
+msgstr "O arquivo enviado excede o atributo upload_max_filesize no php.ini"
 
 #: Contactmanager.class.php:667 ucp/Contactmanager.class.php:200
 msgid "The uploaded file was only partially uploaded"
-msgstr "O arquivo enviado foi carregado parcialmente"
+msgstr "O arquivo enviado foi parcialmente carregado"
 
 #: ucp/assets/js/global.js:76
 msgid "There are no actions for this type"
