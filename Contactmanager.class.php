@@ -2611,10 +2611,6 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		if(trim($search) == "") {
 			return false;
 		}
-		$st = $strict ? 'st' : '';
-		if(!empty($this->contactsCache[$search.$st])) {
-			return $this->contactsCache[$search.$st];
-		}
 		$skip = array(
 			"uid",
 			"groupid",
@@ -2647,8 +2643,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			}
 			if(preg_match('/^' . $search . '$/i',$value) || (strlen($search) > $lookuplen && preg_match('/' . $search . '/i',$value))) {
 				$k = $iterator->getSubIterator(0)->key();
-				$this->contactsCache[$search.$st] = $contacts[$k];
-				return $this->contactsCache[$search.$st];
+				$this->contactsCache[$search] = $contacts[$k];
+				return $this->contactsCache[$search];
 				break;
 			}
 		}
