@@ -13,11 +13,12 @@ msgstr ""
 "PO-Revision-Date: 2017-04-07 18:12-0400\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: Contactmanager.class.php:679 ucp/Contactmanager.class.php:212
 msgid "A PHP extension stopped the file upload"
@@ -49,121 +50,123 @@ msgstr ""
 
 #: Contactmanager.class.php:30 Contactmanager.class.php:39
 msgid "Actions"
-msgstr ""
+msgstr "Действия"
 
 #: ucp/views/contact.php:251 views/grid.php:29 views/group.php:165
 msgid "Add Contact"
-msgstr ""
+msgstr "Добавить контакт"
 
 #: ucp/views/contact.php:220 views/entry.php:336
 msgid "Add Email"
-msgstr ""
+msgstr "Добавить e-mail"
 
 #: views/entry.php:32
 msgid "Add Entry"
-msgstr ""
+msgstr "Добавить запись"
 
 #: ucp/views/groupcreate.php:8 ucp/views/nav.php:4 views/group.php:10
 msgid "Add Group"
-msgstr ""
+msgstr "Добавить группу"
 
 #: views/grid.php:11
 msgid "Add New Group"
-msgstr ""
+msgstr "Добавить новую группу"
 
 #: ucp/views/contact.php:166
 msgid "Add Number"
-msgstr ""
+msgstr "Добавить номер"
 
 #: ucp/views/contact.php:247 views/entry.php:368
 msgid "Add Website"
-msgstr ""
+msgstr "Добавить сайт"
 
 #: ucp/views/contact.php:193 views/entry.php:304
 msgid "Add XMPP"
-msgstr ""
+msgstr "Добавить XMPP"
 
 #: ucp/assets/js/global.js:364
 msgid "Adding..."
-msgstr ""
+msgstr "Добавление..."
 
 #: Contactmanager.class.php:2832 views/entry.php:211 views/entry.php:223
 msgid "Address"
-msgstr ""
+msgstr "Адрес"
 
 #: contactmanager.i18n.php:6
 msgid "Admin"
-msgstr ""
+msgstr "Администратор"
 
 #: Contactmanager.class.php:2724
 msgid "All Internal Groups"
-msgstr ""
+msgstr "Добавить внутреннюю группу"
 
 #: Contactmanager.class.php:2730
 msgid "All Public Groups"
-msgstr ""
+msgstr "Все публичные группы"
 
 #: assets/js/contactmanager.js:42
 msgid "An entry must have a user"
-msgstr ""
+msgstr "Запись должна содержать пользователя"
 
 #: Contactmanager.class.php:916
 msgid "An entry must have a user."
-msgstr ""
+msgstr "Запись должна содержать пользователя."
 
 #: Contactmanager.class.php:925
 msgid "An entry must have numbers."
-msgstr ""
+msgstr "Запись должна содержать цифры."
 
 #: ucp/assets/js/global.js:184
 msgid "Are you sure you want to delete this contact?"
-msgstr ""
+msgstr "Вы уверены, что хотите удалить этот контакт?"
 
 #: ucp/assets/js/global.js:380
 msgid "Are you sure you want to delete this group and all of it's contacts?"
-msgstr ""
+msgstr "Вы уверены, что хотите удалить эту группу и все ее контакты?"
 
 #: ucp/views/contact.php:36 views/entry.php:162 views/user_details_hook.php:21
 msgid "Browse"
-msgstr ""
+msgstr "Выбрать"
 
 #: ucp/assets/js/global.js:27
 msgid "Call To"
-msgstr ""
+msgstr "Позвонить"
 
 #: Contactmanager.class.php:683 ucp/Contactmanager.class.php:216
 msgid "Can Not Find Uploaded Files"
-msgstr ""
+msgstr "Не могу найти загруженные файлы"
 
 #: Contactmanager.class.php:977 Contactmanager.class.php:2840
 #: Contactmanager.class.php:2852 Contactmanager.class.php:2864
 #: ucp/views/contact.php:64 ucp/views/contact.php:120 views/group.php:104
 msgid "Cell"
-msgstr ""
+msgstr "Мобильный"
 
 #: Contactmanager.class.php:2845 Contactmanager.class.php:2857
 #: Contactmanager.class.php:2869
 msgid ""
 "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
 msgstr ""
+"Список параметров, отделенных запятой. (Например: sms, факс) Только для "
+"внешних контаков."
 
 #: Contactmanager.class.php:37 Contactmanager.class.php:2831
 #: ucp/views/contact.php:22 ucp/views/contacts.php:37 views/entry.php:191
 #: views/group.php:91
 msgid "Company"
-msgstr ""
+msgstr "Компания"
 
 #: views/entry.php:201
 msgid "Company (overrides Company from User Manager)"
-msgstr ""
+msgstr "Комнания (переопределяет компанию из \"управления пользователями\""
 
 #: views/entry.php:148 views/user_details_hook.php:7
 msgid "Contact Image"
-msgstr ""
+msgstr "Фото контакта"
 
 #: views/entry.php:181
 msgid "Contact Image for this user"
-msgstr ""
+msgstr "Изображение контакта для этого пользователя"
 
 #: views/user_details_hook.php:40
 msgid ""
@@ -176,11 +179,11 @@ msgstr ""
 #: contactmanager.i18n.php:4 contactmanager.i18n.php:8
 #: contactmanager.i18n.php:10 views/grid.php:1
 msgid "Contact Manager"
-msgstr ""
+msgstr "Управление контактами"
 
 #: contactmanager.i18n.php:14
 msgid "Contact Manager Module"
-msgstr ""
+msgstr "Модуль управления контактами"
 
 #: contactmanager.i18n.php:18
 msgid "Contact Manager Speed Dials"
@@ -193,7 +196,7 @@ msgstr ""
 
 #: Contactmanager.class.php:2800 ucp/Contactmanager.class.php:410
 msgid "Contacts"
-msgstr ""
+msgstr "Контакты"
 
 #: Contactmanager.class.php:2801
 msgid "Contacts and internal/external groups from the Contact Manager module."
@@ -201,30 +204,30 @@ msgstr ""
 
 #: Contactmanager.class.php:1034 Contactmanager.class.php:1053
 msgid "Delete"
-msgstr ""
+msgstr "Удалить"
 
 #: ucp/views/contact.php:254 ucp/views/contactro.php:84
 msgid "Delete Contact"
-msgstr ""
+msgstr "Удалиь контакт"
 
 #: views/grid.php:32
 msgid "Delete Group"
-msgstr ""
+msgstr "Удалить группу"
 
 #: ucp/views/contact.php:31 views/entry.php:157 views/user_details_hook.php:16
 msgid "Delete Image"
-msgstr ""
+msgstr "Удалить изображение"
 
 #: ucp/assets/js/global.js:186
 msgid "Deleting..."
-msgstr ""
+msgstr "Удаление..."
 
 #: Contactmanager.class.php:26 Contactmanager.class.php:36
 #: Contactmanager.class.php:2825 Contactmanager.class.php:2826
 #: ucp/views/contact.php:6 ucp/views/contacts.php:33 views/entry.php:68
 #: views/speeddial-grid.php:13
 msgid "Display Name"
-msgstr ""
+msgstr "Отображаемое имя"
 
 #: views/entry.php:78
 msgid "Display Name (overrides Display Name from User Manager)"
@@ -232,7 +235,7 @@ msgstr ""
 
 #: ucp/views/contact.php:28 views/entry.php:154 views/user_details_hook.php:13
 msgid "Drop a new image here"
-msgstr ""
+msgstr "Перетащите изображение сюда"
 
 #: assets/js/contactmanager.js:85
 msgid "E-Mail address cannot be blank."
@@ -530,7 +533,7 @@ msgstr ""
 
 #: ucp/views/nav.php:3
 msgid "My Contacts"
-msgstr ""
+msgstr "Мои контакты"
 
 #: views/group.php:18 views/group.php:85 views/group.php:90
 msgid "Name"
@@ -538,12 +541,12 @@ msgstr ""
 
 #: views/group.php:28
 msgid "Name of group"
-msgstr ""
+msgstr "Имя группы"
 
 #: Contactmanager.class.php:2813
 msgid ""
 "Name of group for contact.  If group does not exist, it will be created."
-msgstr ""
+msgstr "Имя группы для контактов. Если группа не существует, она будет создана."
 
 #: Contactmanager.class.php:2403
 msgid "No E-Mails to add"
