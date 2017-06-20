@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-07 18:12-0400\n"
-"PO-Revision-Date: 2017-06-20 14:54+0200\n"
+"PO-Revision-Date: 2017-06-20 15:59+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/vi/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: Contactmanager.class.php:679 ucp/Contactmanager.class.php:212
 msgid "A PHP extension stopped the file upload"
-msgstr "Một máy nhánh PHP dưng tải tệp lên"
+msgstr "Một máy nhánh PHP dừng tải tệp lên"
 
 #: views/entry.php:344
 msgid "A list of E-Mail addresses belonging to this entry"
@@ -39,7 +39,7 @@ msgstr "Một danh sách các số thuộc mục nhập này"
 
 #: views/entry.php:376
 msgid "A list of websites belonging to this entry"
-msgstr "Danh sách các website thuộc mục nhập này"
+msgstr "Danh sách các trang web thuộc mục nhập này"
 
 #: views/entry.php:57
 msgid "A user from the User Management module"
@@ -79,7 +79,7 @@ msgstr "Thêm số"
 
 #: ucp/views/contact.php:247 views/entry.php:368
 msgid "Add Website"
-msgstr "Thêm Website"
+msgstr "Thêm trang web"
 
 #: ucp/views/contact.php:193 views/entry.php:304
 msgid "Add XMPP"
@@ -141,7 +141,7 @@ msgstr "Không thể tìm thấy các tệp đã tải lên"
 #: Contactmanager.class.php:2852 Contactmanager.class.php:2864
 #: ucp/views/contact.php:64 ucp/views/contact.php:120 views/group.php:104
 msgid "Cell"
-msgstr "Cầm tay"
+msgstr "Vùng phủ sóng"
 
 #: Contactmanager.class.php:2845 Contactmanager.class.php:2857
 #: Contactmanager.class.php:2869
@@ -175,7 +175,9 @@ msgid ""
 "Manager\" is set to no or inherits no under the \"Contact Manager\" tab"
 msgstr ""
 "Hình ảnh liên lạc cho người dùng này. Hình ảnh sẽ bị xóa nếu \" Show in "
-"contact Manager\" cài đặt về No hoặc"
+"contact Manager\" (Hiển thị trong bộ quản lý liên lạc) cài đặt về No hoặc "
+"các inherit ( tương tự như mặc định) không có trong tab \"Contact Manager' ( "
+"bộ quản lý liên lạc)"
 
 #: Contactmanager.class.php:2744 Contactmanager.class.php:2756
 #: Contactmanager.class.php:2768 Contactmanager.class.php:2785
@@ -203,7 +205,7 @@ msgstr "Các liên lạc"
 
 #: Contactmanager.class.php:2801
 msgid "Contacts and internal/external groups from the Contact Manager module."
-msgstr "Các liên lạc và các nhóm nội bộ/ ngoại vi từ mô đun quản lý liên lạc."
+msgstr "Các liên lạc và các nhóm nội bộ/ bên ngoài từ mô đun quản lý liên lạc."
 
 #: Contactmanager.class.php:1034 Contactmanager.class.php:1053
 msgid "Delete"
@@ -288,7 +290,7 @@ msgstr "Bật"
 
 #: views/entry.php:246 assets/js/contactmanager.js:140
 msgid "Ext."
-msgstr "Ext."
+msgstr "Máy nhánh."
 
 #: Contactmanager.class.php:2844 Contactmanager.class.php:2856
 #: Contactmanager.class.php:2868
@@ -387,19 +389,19 @@ msgstr "Các E-mail mục nhập nhóm đa được xóa thành công"
 
 #: Contactmanager.class.php:2490
 msgid "Group entry Website successfully added"
-msgstr "Website mục nhập nhóm đã được thêm thành công"
+msgstr "Trang web mục nhập nhóm đã được thêm thành công"
 
 #: Contactmanager.class.php:2456
 msgid "Group entry Website successfully deleted"
-msgstr "Website mục nhập nhóm đã được xóa thành công"
+msgstr "Trang web mục nhập nhóm đã được xóa thành công"
 
 #: Contactmanager.class.php:2511
 msgid "Group entry Websites successfully added"
-msgstr "Các website mục nhập nhóm đã được thêm thành công"
+msgstr "Các trang web mục nhập nhóm đã được thêm thành công"
 
 #: Contactmanager.class.php:2464 Contactmanager.class.php:2473
 msgid "Group entry Websites successfully deleted"
-msgstr "Các mục nhập nhóm đã được xóa thành công"
+msgstr "Các trang web mục nhập nhóm đã được xóa thành công"
 
 #: Contactmanager.class.php:2297
 msgid "Group entry XMPP successfully added"
@@ -568,7 +570,7 @@ msgstr "Không có số nào để thêm"
 
 #: Contactmanager.class.php:2495
 msgid "No Websites to add"
-msgstr "Không có Website nào để thêm"
+msgstr "Không có trang Web nào để thêm"
 
 #: Contactmanager.class.php:2307
 msgid "No XMPPs to add"
@@ -617,7 +619,7 @@ msgstr "Độ dài so khớp từng phần"
 #: Contactmanager.class.php:2834 Contactmanager.class.php:2846
 #: Contactmanager.class.php:2858
 msgid "Phone number.  External contacts only."
-msgstr "Số điện thoại. Chỉ liên lạc nội bộ."
+msgstr "Số điện thoại. Chỉ liên lạc bên ngoài."
 
 #: Contactmanager.class.php:603 ucp/Contactmanager.class.php:110
 msgid "Please enter a valid email address"
