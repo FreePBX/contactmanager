@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-07 18:12-0400\n"
-"PO-Revision-Date: 2017-06-22 08:38+0200\n"
+"PO-Revision-Date: 2017-06-22 10:39+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/vi/>\n"
@@ -604,7 +604,7 @@ msgstr "Các số"
 #: Contactmanager.class.php:167 Contactmanager.class.php:183
 #: Contactmanager.class.php:199 Contactmanager.class.php:215
 msgid "OK"
-msgstr "Ok"
+msgstr "OK"
 
 #: Contactmanager.class.php:978 Contactmanager.class.php:2841
 #: Contactmanager.class.php:2853 Contactmanager.class.php:2865
