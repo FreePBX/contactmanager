@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-07 18:12-0400\n"
-"PO-Revision-Date: 2017-06-22 10:39+0200\n"
+"PO-Revision-Date: 2017-07-01 10:24+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/vi/>\n"
@@ -326,7 +326,7 @@ msgstr "Tải tệp lên không thành công"
 #: ucp/views/contact.php:10 ucp/views/contacts.php:34 views/entry.php:88
 #: views/speeddial-grid.php:14
 msgid "First Name"
-msgstr "Họ"
+msgstr "Tên"
 
 #: views/entry.php:98
 msgid "First Name (overrides First Name from User Manager)"
