@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-07 18:12-0400\n"
-"PO-Revision-Date: 2017-07-10 15:46+0200\n"
+"PO-Revision-Date: 2017-07-10 17:12+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/vi/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: Contactmanager.class.php:679 ucp/Contactmanager.class.php:212
 msgid "A PHP extension stopped the file upload"
-msgstr "Máy nhánh PHP đã ngừng tải tệp lên"
+msgstr "Một máy nhánh PHP vừa ngừng tải tệp lên"
 
 #: views/entry.php:344
 msgid "A list of E-Mail addresses belonging to this entry"
@@ -135,7 +135,7 @@ msgstr "Gọi tới"
 
 #: Contactmanager.class.php:683 ucp/Contactmanager.class.php:216
 msgid "Can Not Find Uploaded Files"
-msgstr "Không tìm thấy các tệp đã tải lên"
+msgstr "Không thể tìm thấy các tệp đã tải lên"
 
 #: Contactmanager.class.php:977 Contactmanager.class.php:2840
 #: Contactmanager.class.php:2852 Contactmanager.class.php:2864
