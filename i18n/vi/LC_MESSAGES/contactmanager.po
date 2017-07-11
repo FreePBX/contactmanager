@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-07 18:12-0400\n"
-"PO-Revision-Date: 2017-07-10 20:04+0200\n"
+"PO-Revision-Date: 2017-07-10 22:29+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/vi/>\n"
@@ -313,7 +313,7 @@ msgstr "Ứng dụng gọi video miễn phí facetime"
 
 #: Contactmanager.class.php:676 ucp/Contactmanager.class.php:209
 msgid "Failed to write file to disk"
-msgstr "Ghi tệp vào đĩa không thành công"
+msgstr "Ghi tệp vào đã không thành công"
 
 #: ucp/views/contact.php:95 ucp/views/contact.php:151
 msgid "Fax"
@@ -537,7 +537,7 @@ msgstr "Đang tải..."
 
 #: Contactmanager.class.php:673 ucp/Contactmanager.class.php:206
 msgid "Missing a temporary folder"
-msgstr "Thiếu một thư mục tạm"
+msgstr "Bị thiếu một thư mục tạm"
 
 #: ucp/views/nav.php:3
 msgid "My Contacts"
@@ -583,7 +583,7 @@ msgstr "Không có email được xác định"
 
 #: Contactmanager.class.php:670 ucp/Contactmanager.class.php:203
 msgid "No file was uploaded"
-msgstr "Đã không có tệp nào được tải lên"
+msgstr "Không có tệp nào được tải lên"
 
 #: ucp/Contactmanager.class.php:359 ucp/Contactmanager.class.php:381
 msgid "Not Authorized"
@@ -662,17 +662,17 @@ msgstr "Quay số nhanh"
 
 #: Contactmanager.class.php:1046 Contactmanager.class.php:1065
 msgid "Submit"
-msgstr "Gửi đi"
+msgstr "gửi đi"
 
 #: Contactmanager.class.php:664 ucp/Contactmanager.class.php:197
 msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
-msgstr "Tệp đã tải lên vượt quá kích cỡ tối đa được quy định trong mẫu HTML"
+msgstr ""
 
 #: Contactmanager.class.php:661 ucp/Contactmanager.class.php:194
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
-msgstr "Tệp đã tải lên vượt qua kích cỡ tối đa quy định trong php.ini"
+msgstr ""
 
 #: Contactmanager.class.php:667 ucp/Contactmanager.class.php:200
 msgid "The uploaded file was only partially uploaded"
