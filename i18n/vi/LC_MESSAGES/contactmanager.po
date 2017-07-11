@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-07 18:12-0400\n"
-"PO-Revision-Date: 2017-07-10 17:12+0200\n"
+"PO-Revision-Date: 2017-07-10 20:04+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/vi/>\n"
@@ -159,7 +159,7 @@ msgstr "Công ty"
 
 #: views/entry.php:201
 msgid "Company (overrides Company from User Manager)"
-msgstr "Công ty (viết đè công ty từ bộ quản lý người dùng)"
+msgstr "Công ty (viết đè công ty từ trình quản lý người dùng)"
 
 #: views/entry.php:148 views/user_details_hook.php:7
 msgid "Contact Image"
@@ -175,29 +175,29 @@ msgid ""
 "Manager\" is set to no or inherits no under the \"Contact Manager\" tab"
 msgstr ""
 "Hình ảnh liên lạc cho người dùng này. Hình ảnh sẽ bị xóa nếu \" Show in "
-"contact Manager\" (Hiển thị trong bộ quản lý liên lạc) cài đặt về No hoặc "
+"contact Manager\" (Hiển thị trong trình quản lý liên lạc) cài đặt về No hoặc "
 "các inherit ( tương tự như mặc định) không có trong tab \"Contact Manager' ( "
-"bộ quản lý liên lạc)"
+"trình quản lý liên lạc)"
 
 #: Contactmanager.class.php:2744 Contactmanager.class.php:2756
 #: Contactmanager.class.php:2768 Contactmanager.class.php:2785
 #: contactmanager.i18n.php:4 contactmanager.i18n.php:8
 #: contactmanager.i18n.php:10 views/grid.php:1
 msgid "Contact Manager"
-msgstr "Bộ quản lý liên lạc"
+msgstr "Trình quản lý liên lạc"
 
 #: contactmanager.i18n.php:14
 msgid "Contact Manager Module"
-msgstr "Mô đun quản lý liên lạc"
+msgstr "Mô đun trình quản lý liên lạc"
 
 #: contactmanager.i18n.php:18
 msgid "Contact Manager Speed Dials"
-msgstr "Bộ quản lý liên lạc quay số nhanh"
+msgstr "Trình quản lý liên lạc quay số nhanh"
 
 #: functions.inc.php:39 functions.inc.php:42
 #, php-format
 msgid "Contact Manager: %s"
-msgstr "Bộ quản lý liên lạc:%s"
+msgstr "Trình quản lý liên lạc:%s"
 
 #: Contactmanager.class.php:2800 ucp/Contactmanager.class.php:410
 msgid "Contacts"
@@ -205,7 +205,8 @@ msgstr "Các liên lạc"
 
 #: Contactmanager.class.php:2801
 msgid "Contacts and internal/external groups from the Contact Manager module."
-msgstr "Các liên lạc và các nhóm nội bộ/ bên ngoài từ mô đun quản lý liên lạc."
+msgstr ""
+"Các liên lạc và các nhóm nội bộ/ bên ngoài từ mô đun trình quản lý liên lạc."
 
 #: Contactmanager.class.php:1034 Contactmanager.class.php:1053
 msgid "Delete"
@@ -236,7 +237,7 @@ msgstr "Tên hiển thị"
 
 #: views/entry.php:78
 msgid "Display Name (overrides Display Name from User Manager)"
-msgstr "Tên hiển thị ( ghi đè tên hiển thị từ bộ quản lý người dùng)"
+msgstr "Tên hiển thị ( ghi đè tên hiển thị từ trình quản lý người dùng)"
 
 #: ucp/views/contact.php:28 views/entry.php:154 views/user_details_hook.php:13
 msgid "Drop a new image here"
@@ -330,7 +331,7 @@ msgstr "Tên"
 
 #: views/entry.php:98
 msgid "First Name (overrides First Name from User Manager)"
-msgstr "Tên ( ghi đè Tên từ bộ quản lý người dùng)"
+msgstr "Tên ( ghi đè Tên từ trình quản lý người dùng)"
 
 #: ucp/assets/js/global.js:95
 msgid "Function call does not exist!"
@@ -520,7 +521,7 @@ msgstr "Họ"
 
 #: views/entry.php:118
 msgid "Last Name (overrides Last Name from User Manager)"
-msgstr "Họ ( ghi đè Họ từ bộ quản lý người dùng)"
+msgstr "Họ ( ghi đè Họ từ trình quản lý người dùng)"
 
 #: views/rnav.php:2
 msgid "List All Groups"
@@ -640,7 +641,7 @@ msgstr "Chọn một thao tác"
 
 #: views/userman_hook.php:7
 msgid "Show In Contact Manager Groups"
-msgstr "Hiển thị các nhóm quản lý liên lạc"
+msgstr "Hiển thị các nhóm trình quản lý liên lạc"
 
 #: ucp/views/contact.php:70 ucp/views/contact.php:126 views/entry.php:258
 #: assets/js/contactmanager.js:150
@@ -686,8 +687,8 @@ msgid ""
 "These are the viewable contact manager groups which will show up for this "
 "user in UCP and RestApps (If purchased)"
 msgstr ""
-"Đây là các nhóm quản lý liên lạc có thể xem được sẽ hiển thị cho người dùng "
-"này trong UCP và RestApps ( Nếu được mua)"
+"Đây là các nhóm trình quản lý liên lạc có thể xem được sẽ hiển thị cho người "
+"dùng này trong UCP và RestApps ( Nếu được mua)"
 
 #: Contactmanager.class.php:2830 ucp/views/contact.php:18
 #: ucp/views/contacts.php:36 views/entry.php:128
@@ -696,7 +697,7 @@ msgstr "Tiêu đề"
 
 #: views/entry.php:138
 msgid "Title (overrides Title from User Manager)"
-msgstr "Tiêu đề ( ghi đè Tiêu đề từ bộ quản lý người dùng)"
+msgstr "Tiêu đề ( ghi đè Tiêu đề từ trình quản lý người dùng)"
 
 #: views/entry.php:247 views/group.php:39 assets/js/contactmanager.js:141
 msgid "Type"
@@ -751,18 +752,18 @@ msgstr "Người dùng"
 
 #: Contactmanager.class.php:248
 msgid "User Manager Group"
-msgstr "Nhóm quản lý người dùng"
+msgstr "Nhóm trình quản lý người dùng"
 
 #: Contactmanager.class.php:2833
 msgid ""
 "User Manager username this contact should point to.  Internal contacts only."
 msgstr ""
-"Tên người dùng của bộ quản lý người dùng mà liên lạc hướng đến. Chỉ các liên "
-"lạc nội bộ."
+"Tên người dùng của trình quản lý người dùng mà liên lạc hướng đến. Chỉ các "
+"liên lạc nội bộ."
 
 #: views/userman_hook.php:33
 msgid "Viewable Contact Manager Groups"
-msgstr "Các nhóm quản lý liên lạc có thể xem được"
+msgstr "Các nhóm trình quản lý liên lạc có thể xem được"
 
 #: ucp/views/contact.php:223 views/entry.php:354
 msgid "Website"
@@ -784,7 +785,7 @@ msgstr "Công việc"
 
 #: views/entry.php:290
 msgid "XMPP"
-msgstr "XMPP"
+msgstr "Giao thức XMPP"
 
 #: assets/js/contactmanager.js:74
 msgid "XMPP address cannot be blank."
