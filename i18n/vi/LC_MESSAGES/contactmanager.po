@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-07 18:12-0400\n"
-"PO-Revision-Date: 2017-07-11 08:19+0200\n"
+"PO-Revision-Date: 2017-07-11 09:14+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/vi/>\n"
@@ -662,7 +662,7 @@ msgstr "Quay số nhanh"
 
 #: Contactmanager.class.php:1046 Contactmanager.class.php:1065
 msgid "Submit"
-msgstr "gửi đi"
+msgstr "Gửi đi"
 
 #: Contactmanager.class.php:664 ucp/Contactmanager.class.php:197
 msgid ""
@@ -678,7 +678,7 @@ msgstr ""
 
 #: Contactmanager.class.php:667 ucp/Contactmanager.class.php:200
 msgid "The uploaded file was only partially uploaded"
-msgstr "Tệp đã tải lên chỉ được tải lên từng phần"
+msgstr "Các tệp tải lên đã chỉ được tải lên từng phần"
 
 #: ucp/assets/js/global.js:76
 msgid "There are no actions for this type"
