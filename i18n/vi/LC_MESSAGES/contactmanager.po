@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-07 18:12-0400\n"
-"PO-Revision-Date: 2017-07-11 14:02+0200\n"
+"PO-Revision-Date: 2017-07-11 21:35+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/vi/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: Contactmanager.class.php:679 ucp/Contactmanager.class.php:212
 msgid "A PHP extension stopped the file upload"
-msgstr "Một máy nhánh PHP vừa ngừng tải tệp lên"
+msgstr "Máy nhánh PHP đã ngừng tải tệp lên"
 
 #: views/entry.php:344
 msgid "A list of E-Mail addresses belonging to this entry"
@@ -135,7 +135,7 @@ msgstr "Gọi tới"
 
 #: Contactmanager.class.php:683 ucp/Contactmanager.class.php:216
 msgid "Can Not Find Uploaded Files"
-msgstr "Không thể tìm thấy các tệp đã tải lên"
+msgstr "Không tìm thấy các tệp đã tải lên"
 
 #: Contactmanager.class.php:977 Contactmanager.class.php:2840
 #: Contactmanager.class.php:2852 Contactmanager.class.php:2864
@@ -233,7 +233,7 @@ msgstr "Đang xóa..."
 #: ucp/views/contact.php:6 ucp/views/contacts.php:33 views/entry.php:68
 #: views/speeddial-grid.php:13
 msgid "Display Name"
-msgstr "Tên hiển thị"
+msgstr "Hiển thị Tên"
 
 #: views/entry.php:78
 msgid "Display Name (overrides Display Name from User Manager)"
@@ -313,7 +313,7 @@ msgstr "Ứng dụng gọi video miễn phí facetime"
 
 #: Contactmanager.class.php:676 ucp/Contactmanager.class.php:209
 msgid "Failed to write file to disk"
-msgstr "Ghi tệp vào đã không thành công"
+msgstr "Ghi tệp vào đĩa không thành công"
 
 #: ucp/views/contact.php:95 ucp/views/contact.php:151
 msgid "Fax"
@@ -537,7 +537,7 @@ msgstr "Đang tải..."
 
 #: Contactmanager.class.php:673 ucp/Contactmanager.class.php:206
 msgid "Missing a temporary folder"
-msgstr "Bị thiếu một thư mục tạm"
+msgstr "Đang thiếu một thư mục tạm"
 
 #: ucp/views/nav.php:3
 msgid "My Contacts"
@@ -668,17 +668,15 @@ msgstr "Gửi đi"
 msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
-msgstr ""
-"Tệp được tải lên vượt quá kích cỡ tệp tối đa được quy định trong mẫu HTML"
+msgstr "Tệp tải lên vượt quá kích cỡ tối đa đã quy định trong mẫu HTML"
 
 #: Contactmanager.class.php:661 ucp/Contactmanager.class.php:194
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
-msgstr ""
-"Tệp được tải lên vượt quá kích cỡ tải lên tối đa được quy định trong php.ini"
+msgstr "Tệp tải lên vượt quá kích cỡ tối đa đã quy định trong php.ini"
 
 #: Contactmanager.class.php:667 ucp/Contactmanager.class.php:200
 msgid "The uploaded file was only partially uploaded"
-msgstr "Các tệp tải lên đã chỉ được tải lên từng phần"
+msgstr "Tệp tải lên đã chỉ được tải lên từng phần"
 
 #: ucp/assets/js/global.js:76
 msgid "There are no actions for this type"
