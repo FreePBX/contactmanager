@@ -82,6 +82,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 		$sql[] = 'CREATE TABLE IF NOT EXISTS `contactmanager_group_entries` (
 		 `id` int(11) NOT NULL AUTO_INCREMENT,
+		 `uuid` varchar(36) default NULL,
 		 `groupid` int(11) NOT NULL,
 		 `user` int(11) NOT NULL,
 		 `displayname` varchar(100) default NULL,
@@ -152,6 +153,32 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			if (\DB::IsError($check)){
 				die_freepbx("Can not execute $statement : " . $check->getMessage() .  "\n");
 			}
+		}
+
+		outn(_("checking for uuid field.."));
+		$sql = "SELECT `uuid` FROM contactmanager_group_entries";
+		$check = $db->getRow($sql, DB_FETCHMODE_ASSOC);
+		if(\DB::IsError($check)) {
+			// add new field
+			$sql = "ALTER TABLE contactmanager_group_entries ADD `uuid` varchar(36) default NULL";
+			$result = $db->query($sql);
+			if(\DB::IsError($result)) {
+				out(_("ERROR failed to update title field"));
+			} else {
+				out(_("OK"));
+			}
+		} else {
+			out(_("already exists"));
+		}
+
+		outn(_("Checking for uuid index.."));
+		$sql = "SHOW INDEXES FROM `contactmanager_group_entries` WHERE Key_name='uuid_index'";
+		$check = $dbcdr->getOne($sql);
+		if (empty($check)) {
+			$result = $db->query("ALTER TABLE `contactmanager_group_entries` ADD UNIQUE INDEX uuid_index (uuid)");
+			out(_("found"));
+		} else {
+			out(_("already indexed"));
 		}
 
 		outn(_("checking for title field.."));
@@ -227,6 +254,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sth = $this->db->prepare($sql);
 		$sth->execute();
 
+		$sql = "UPDATE contactmanager_group_entries SET `uuid` = UUID() WHERE `uuid` IS NULL";
+		$sth = $this->db->prepare($sql);
+		$sth->execute();
 
 
 		//remove useless internal groups without any contacts
@@ -1774,7 +1804,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
 		}
 
-		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `displayname`, `fname`, `lname`, `title`, `company`, `address`) VALUES (:groupid, :user, :displayname, :fname, :lname, :title, :company, :address)";
+		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `displayname`, `fname`, `lname`, `title`, `company`, `address`, `uuid`) VALUES (:groupid, :user, :displayname, :fname, :lname, :title, :company, :address, UUID())";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(
 		':groupid' => $groupid,
@@ -1813,7 +1843,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
 		}
 
-		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `displayname`, `fname`, `lname`, `title`, `company`, `address`) VALUES (:groupid, :user, :displayname, :fname, :lname, :title, :company, :address)";
+		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `displayname`, `fname`, `lname`, `title`, `company`, `address`, `uuid`) VALUES (:groupid, :user, :displayname, :fname, :lname, :title, :company, :address, UUID())";
 		$sth = $this->db->prepare($sql);
 		foreach ($entries as $entry) {
 			$sth->execute(array(
