@@ -848,10 +848,11 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$entry = !empty($_POST['entry']) ? $_POST['entry'] : '';
 				$grouptype = !empty($_POST['grouptype']) ? $_POST['grouptype'] : '';
 				$groupname = !empty($_POST['groupname']) ? $_POST['groupname'] : '';
+				$groupowner = !empty($_POST['owner']) ? $_POST['owner'] : '';
 
 				if ($groupname) {
 					if ($group) {
-						$ret = $this->updateGroup($group, $groupname);
+						$ret = $this->updateGroup($group, $groupname,$groupowner);
 					} else {
 						$ret = $this->addGroup($groupname, $grouptype);
 					}
