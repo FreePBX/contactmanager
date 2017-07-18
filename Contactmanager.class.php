@@ -173,7 +173,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 		outn(_("Checking for uuid index.."));
 		$sql = "SHOW INDEXES FROM `contactmanager_group_entries` WHERE Key_name='uuid_index'";
-		$check = $dbcdr->getOne($sql);
+		$check = $db->getOne($sql);
 		if (empty($check)) {
 			$result = $db->query("ALTER TABLE `contactmanager_group_entries` ADD UNIQUE INDEX uuid_index (uuid)");
 			out(_("found"));
