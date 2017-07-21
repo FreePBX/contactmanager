@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-18 13:04-0400\n"
-"PO-Revision-Date: 2017-07-20 10:18+0200\n"
+"PO-Revision-Date: 2017-07-21 10:16+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/vi/>\n"
@@ -51,7 +51,7 @@ msgstr "Tháo tác"
 
 #: Contactmanager.class.php:30 Contactmanager.class.php:39
 msgid "Actions"
-msgstr "Thao tác"
+msgstr "Các Thao tác"
 
 #: ucp/views/contact.php:251 views/grid.php:29 views/group.php:166
 msgid "Add Contact"
