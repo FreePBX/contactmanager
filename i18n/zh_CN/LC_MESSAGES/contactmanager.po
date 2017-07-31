@@ -7,17 +7,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: FreePBX 2.5 Chinese Translation\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-18 13:04-0400\n"
-"PO-Revision-Date: 2015-11-23 13:56+0200\n"
+"PO-Revision-Date: 2017-07-31 06:48+0800\n"
 "Last-Translator: james <zhulizhong@gmail.com>\n"
-"Language-Team: Simplified Chinese <http://weblate.freepbx.org/projects/"
-"freepbx/contactmanager/zh_CN/>\n"
+"Language-Team: Simplified Chinese "
+"<http://weblate.freepbx.org/projects/freepbx/findmefollow/zh_CN/>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 2.2-dev\n"
 
@@ -284,7 +284,7 @@ msgstr "邮件"
 #: ucp/views/contact.php:77 ucp/views/contact.php:133 views/entry.php:263
 #: assets/js/contactmanager.js:155
 msgid "Enable"
-msgstr ""
+msgstr "开启"
 
 #: views/entry.php:246 assets/js/contactmanager.js:140
 msgid "Ext."
@@ -816,7 +816,7 @@ msgstr ""
 
 #: Contactmanager.class.php:1522
 msgid "extension"
-msgstr ""
+msgstr "分机"
 
 #: Contactmanager.class.php:1526
 msgid "fax"
