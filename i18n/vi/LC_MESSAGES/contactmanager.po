@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-18 13:04-0400\n"
-"PO-Revision-Date: 2017-08-03 10:22+0200\n"
+"PO-Revision-Date: 2017-08-08 16:34+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/vi/>\n"
@@ -47,7 +47,7 @@ msgstr "Một người dùng từ mô đun quản lý người dùng"
 
 #: views/speeddial-grid.php:16
 msgid "Action"
-msgstr "Tháo tác"
+msgstr "Thao tác"
 
 #: Contactmanager.class.php:30 Contactmanager.class.php:39
 msgid "Actions"
