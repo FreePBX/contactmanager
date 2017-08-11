@@ -1058,6 +1058,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		case 'contactmanager':
 			switch($request['action']) {
 			case 'delentry':
+				break;
 			case 'showgroup':
 				$buttons['delete'] = array(
 					'name' => 'delete',
