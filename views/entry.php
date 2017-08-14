@@ -189,7 +189,7 @@ foreach ($users as $u) {
 							<div class="form-group">
 								<div class="col-md-3">
 									<label class="control-label" for="company"><?php echo _('Company')?></label>
-									<i class="fa fa-question-circle fpbx-help-icon" data-for="displayname"></i>
+									<i class="fa fa-question-circle fpbx-help-icon" data-for="company"></i>
 								</div>
 								<div class="col-md-9"><input class="form-control" id="company" name="company" value="<?php echo $entry['company']?>" <?php echo !empty($user) ? 'placeholder="' . $user['company'] . '"' : ''?>></div>
 							</div>
