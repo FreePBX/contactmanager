@@ -4,6 +4,7 @@
 			<?php if(!empty($group)) {?>
 				<input type="hidden" name="group" id="group" value="<?php echo $group['id']?>">
 				<input type="hidden" name="grouptype" id="grouptype" value="<?php echo $group['id']?>">
+				<input type="hidden" name="owner" id="owner" value="<?php echo $group['owner']?>">
 				<h1><?php echo _("Edit Group")?></h1>
 			<?php } else { ?>
 				<input type="hidden" name="group" id="group" value="">

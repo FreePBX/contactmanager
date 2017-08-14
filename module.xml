@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>14.0.2</version>
+	<version>14.0.3</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*14.0.3* FREEPBX-15461 FREEPBX-15465
 		*14.0.2* Merge in changes from 13
 		*14.0.1.1* FREEPBX-14407 Cant exclude contact from showing in contact groups
 		*14.0.1beta3* Merge in changes from 13
@@ -53,6 +54,7 @@
 		</table>
 		<table name="contactmanager_group_entries">
 			<field name="id" type="integer" primarykey="true" autoincrement="true"/>
+			<field name="uuid" type="string" length="36" notnull="false"/>
 			<field name="groupid" type="integer"/>
 			<field name="user" type="integer"/>
 			<field name="displayname" type="string" length="100" notnull="false"/>
