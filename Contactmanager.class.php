@@ -2413,9 +2413,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 							$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['username'];
 							$entry['groupid'] = $group['id'];
 							$entry['groupname'] = $group['name'];
-							$final[] = $entry;
+							$contacts[] = $entry;
 						}
-						$contacts = array_merge($contacts, $final);
 					}
 				break;
 				case "external":
@@ -2426,7 +2425,17 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 							$numbers = array();
 							if(!empty($entry['numbers']) && is_array($entry['numbers'])) {
 								foreach($entry['numbers'] as $number) {
-									$numbers[$number['type']] = preg_replace("/\D/","",$number['number']);
+									//TODO: this is terrible. Multiple numbers are allowed in the GUI but dont display right
+									//TODO: To conform for OLD hooks we need to be a string... sigh
+									if(isset($numbers[$number['type']])) {
+										if(!is_array($numbers[$number['type']])) {
+											$numbers[$number['type']] = array($numbers[$number['type']]);
+										}
+										$numbers[$number['type']][] = preg_replace("/\D/","",$number['number']);
+									} else {
+										$numbers[$number['type']] = preg_replace("/\D/","",$number['number']);
+									}
+
 								}
 							}
 							$xmpps = array();
@@ -2446,10 +2455,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 							$entry['groupid'] = $group['id'];
 							$entry['groupname'] = $group['name'];
 							$entry['id'] = $entry['uid'];
-							$final[] = $entry;
+							$contacts[] = $entry;
 						}
-
-						$contacts = array_merge($contacts, $final);
 					}
 				break;
 			}
@@ -2501,8 +2508,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			}
 			if(preg_match('/^' . $search . '$/i',$value) || (strlen($search) > $lookuplen && preg_match('/' . $search . '/i',$value))) {
 				$k = $iterator->getSubIterator(0)->key();
-				$this->contactsCache[$search] = $contacts[$k];
-				return $this->contactsCache[$search];
+				return $contacts[$k];
 				break;
 			}
 		}
