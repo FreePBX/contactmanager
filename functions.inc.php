@@ -9,7 +9,13 @@ function contactmanager_destinations() {
 		if(!empty($entry['numbers'])) {
 			foreach($entry['numbers'] as $type => $number) {
 				if(!empty($number)) {
-					$extens[] = array('destination' => 'ext-contactmanager,'.$number.',1', 'description' => $name . "(" . $type . ")");
+					if(is_array($number)) {
+						foreach($number as $n) {
+							$extens[] = array('destination' => 'ext-contactmanager,'.$n.',1', 'description' => $name . "(" . $type . ")", 'edit_url' => '');
+						}
+					} else {
+						$extens[] = array('destination' => 'ext-contactmanager,'.$number.',1', 'description' => $name . "(" . $type . ")", 'edit_url' => '');
+					}
 				}
 			}
 		}
