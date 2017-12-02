@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-14 14:50-0400\n"
-"PO-Revision-Date: 2017-12-01 20:56+0200\n"
+"PO-Revision-Date: 2017-12-01 23:47+0200\n"
 "Last-Translator: CATTAN Jérémie <jeremie@famillecattan.com>\n"
 "Language-Team: French "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/fr_FR/>\n"
@@ -657,7 +657,7 @@ msgstr ""
 
 #: Contactmanager.class.php:1078 Contactmanager.class.php:1097
 msgid "Submit"
-msgstr "Soumettre"
+msgstr "Valider"
 
 #: Contactmanager.class.php:694 ucp/Contactmanager.class.php:197
 msgid ""
