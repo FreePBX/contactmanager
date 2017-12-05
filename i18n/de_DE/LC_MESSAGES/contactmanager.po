@@ -10,14 +10,14 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-14 14:50-0400\n"
-"PO-Revision-Date: 2017-03-07 02:13+0200\n"
+"PO-Revision-Date: 2017-10-15 22:20+0200\n"
 "Last-Translator: hammer125 <auswertung@aon.at>\n"
-"Language-Team: German <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/de_DE/>\n"
+"Language-Team: German "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/de_DE/>\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.4\n"
 
@@ -147,7 +147,7 @@ msgstr "Mobil"
 
 #: Contactmanager.class.php:174
 msgid "Checking for uuid index.."
-msgstr ""
+msgstr "UUID-Index suchen.."
 
 #: Contactmanager.class.php:2877 Contactmanager.class.php:2889
 #: Contactmanager.class.php:2901
@@ -312,8 +312,9 @@ msgid "FAX"
 msgstr "FAX"
 
 #: ucp/assets/js/global.js:29
+#, fuzzy
 msgid "Facetime"
-msgstr ""
+msgstr "persönliches Gespräch"
 
 #: Contactmanager.class.php:706 ucp/Contactmanager.class.php:209
 msgid "Failed to write file to disk"
@@ -669,7 +670,7 @@ msgstr "Kurzwahlen"
 
 #: Contactmanager.class.php:1078 Contactmanager.class.php:1097
 msgid "Submit"
-msgstr "absenden"
+msgstr "Senden"
 
 #: Contactmanager.class.php:694 ucp/Contactmanager.class.php:197
 msgid ""
@@ -784,7 +785,7 @@ msgstr "Webseite darf nicht leer sein."
 
 #: views/userman_hook.php:23
 msgid "What internal groups to show this user in"
-msgstr ""
+msgstr "Welche internen Gruppen werden diesem Benutzer gezeigt in"
 
 #: Contactmanager.class.php:1006 Contactmanager.class.php:2870
 #: Contactmanager.class.php:2882 Contactmanager.class.php:2894
@@ -808,7 +809,7 @@ msgstr "besteht bereits"
 
 #: Contactmanager.class.php:181
 msgid "already indexed"
-msgstr ""
+msgstr "bereits indiziert"
 
 #: Contactmanager.class.php:1524
 msgid "cell"
@@ -832,7 +833,7 @@ msgstr "Überprüfen des Titelfeldes.."
 
 #: Contactmanager.class.php:158
 msgid "checking for uuid field.."
-msgstr ""
+msgstr "prüfe auf UUID-Feld.."
 
 #: Contactmanager.class.php:1523
 msgid "extension"
@@ -844,7 +845,7 @@ msgstr "fax"
 
 #: Contactmanager.class.php:179
 msgid "found"
-msgstr ""
+msgstr "gefunden"
 
 #: Contactmanager.class.php:1526
 msgid "home"
