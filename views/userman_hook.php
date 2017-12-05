@@ -12,7 +12,6 @@
 							<?php foreach($visiblegroups as $group) { ?>
 								<option value="<?php echo $group['id']?>" <?php echo in_array($group['id'],$showingroups) ? 'selected' : '' ?>><?php echo $group['name']?></option>
 							<?php } ?>
-							<option value=''>None</option>
 						</select>
 					</div>
 				</div>
@@ -39,8 +38,6 @@
 							<?php foreach($groups as $group) { ?>
 								<option value="<?php echo $group['id']?>" <?php echo $group['selected'] ? 'selected' : '' ?>><?php echo $group['name']?></option>
 							<?php } ?>
-							 <option value=''>None</option>
-
 						</select>
 					</div>
 				</div>
