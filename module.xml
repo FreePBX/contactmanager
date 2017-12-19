@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>14.0.3.1</version>
+	<version>14.0.3.2</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*14.0.3.2* Use Google libphonenumber
 		*14.0.3.1* Abiltiy to select None in User Manager
 		*14.0.3* FREEPBX-15461 FREEPBX-15465
 		*14.0.2* Merge in changes from 13
