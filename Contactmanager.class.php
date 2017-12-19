@@ -359,11 +359,11 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				if(!empty($_POST['ext'])) {
 					$user = $this->userman->getUserByDefaultExtension($_POST['ext']);
 					if(!empty($user)) {
-						$data = $this->lookupByUserID($user['id'], $did,"/\D/");
+						$data = $this->lookupNumberByUserID($user['id'], $did);
 					}
 				}
 				if(empty($data)) {
-					$data = $this->lookupByUserID(-1, $did,"/\D/");
+					$data = $this->lookupNumberByUserID(-1, $did);
 				}
 				if(!empty($data) && !empty($data['image'])) {
 					$data = $this->getImageByID($data['id'],$data['email'], $data['type']);
@@ -2978,7 +2978,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	}
 
 	public function getNamebyNumber($number, $group = array()){
-		$result = $this->lookupByUserID(-1, $number,"/\D/");
+		$result = $this->lookupNumberByUserID(-1, $number);
 		if($result && !empty($group)){
 			if(!in_array($result['groupid'], $group)){
 				$result = array();
