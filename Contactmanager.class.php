@@ -4,6 +4,7 @@
 //	Copyright 2014 Schmooze Com Inc.
 //
 namespace FreePBX\modules;
+include __DIR__.'/vendor/autoload.php';
 class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	private $message = '';
 	private $lookupCache = array();
@@ -2648,6 +2649,58 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		return $this->contactsCache;
 	}
 
+	public function lookupNumberByUserID($id, $number) {
+		$phoneUtil = \libphonenumber\PhoneNumberUtil::getInstance();
+		$number = trim($number);
+		if($number == "") {
+			return false;
+		}
+		$contacts = $this->getContactsByUserID($id);
+		$skip = array(
+			"uid",
+			"groupid",
+			"user",
+			"id",
+			"auth",
+			"authid",
+			"password",
+			"primary_group",
+			"permissions",
+			"type",
+			"image"
+		);
+		$iterator = new \RecursiveIteratorIterator(new \RecursiveArrayIterator($contacts));
+		$lookuplen = (int)$this->freepbx->Config->get('CONTACTMANLOOKUPLENGTH');
+		foreach($iterator as $key => $value) {
+			if(in_array($key,$skip)) {
+				continue;
+			}
+			$value = preg_replace('/\D/','',$value);
+			$value = trim($value);
+			if(empty($value)) {
+				continue;
+			}
+			switch($phoneUtil->isNumberMatch((string)$number,(string)$value)) {
+				case \libphonenumber\MatchType::NSN_MATCH:
+				case \libphonenumber\MatchType::EXACT_MATCH:
+				break;
+				case \libphonenumber\MatchType::SHORT_NSN_MATCH:
+					if(strlen($number) <= $lookuplen) {
+						continue 2;
+					}
+				break;
+				case \libphonenumber\MatchType::NOT_A_NUMBER:
+				case \libphonenumber\MatchType::NO_MATCH:
+				default:
+					continue 2;
+				break;
+			}
+			$k = $iterator->getSubIterator(0)->key();
+			return $contacts[$k];
+		}
+		return false;
+	}
+
 	/**
 	 * Lookup a contact in the global and local directory
 	 * @param {int} $id The userman user id
@@ -2666,7 +2719,6 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			"id",
 			"auth",
 			"authid",
-			"username",
 			"password",
 			"primary_group",
 			"permissions",
@@ -2716,7 +2768,6 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			"id",
 			"auth",
 			"authid",
-			"username",
 			"password",
 			"primary_group",
 			"permissions",
