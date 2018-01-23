@@ -1747,6 +1747,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 		$this->updateImageByID($id, $entry['image'], $entry['gravatar'], 'external');
 
+		dbug($entry);
+
 		$ret = $this->deleteNumbersByEntryID($id);
 		$this->addNumbersByEntryID($id, $entry['numbers']);
 
@@ -2182,6 +2184,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "INSERT INTO contactmanager_entry_xmpps (entryid, xmpp) VALUES (:entryid, :xmpp)";
 		$sth = $this->db->prepare($sql);
 		foreach ($xmpps as $xmpp) {
+			if(empty($xmpp['xmpp'])) {
+				continue;
+			}
 			$sth->execute(array(
 			':entryid' => $entryid,
 			':xmpp' => $xmpp['xmpp'],
@@ -2278,6 +2283,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "INSERT INTO contactmanager_entry_emails (entryid, email) VALUES (:entryid, :email)";
 		$sth = $this->db->prepare($sql);
 		foreach ($emails as $email) {
+			if(empty($email['email'])) {
+				continue;
+			}
 			$sth->execute(array(
 			':entryid' => $entryid,
 			':email' => $email['email'],
@@ -2370,6 +2378,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "INSERT INTO contactmanager_entry_websites (entryid, website) VALUES (:entryid, :website)";
 		$sth = $this->db->prepare($sql);
 		foreach ($websites as $website) {
+			if(empty($website['website'])) {
+				continue;
+			}
 			$sth->execute(array(
 			':entryid' => $entryid,
 			':website' => $website['website'],

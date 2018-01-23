@@ -110,12 +110,12 @@
 			<?php foreach($contact['xmpps'] as $xmpp) {?>
 				<div class="form-inline item-container" >
 					<i class="fa fa-ban fa-fw delete" data-type="xmpp"></i>
-					<input type="text" class="form-control special" data-name="xmpp" style="width: 96%;" value="<?php echo $xmpp['xmpp']?>">
+					<input type="text" class="form-control special" data-name="xmpps" data-type="xmpp" style="width: 96%;" value="<?php echo $xmpp['xmpp']?>">
 				</div>
 			<?php } ?>
 			<div class="form-inline item-container" >
 				<i class="fa fa-ban fa-fw delete" data-type="xmpp"></i>
-				<input type="text" class="form-control special" data-name="xmpp" style="width: 96%;">
+				<input type="text" class="form-control special" data-name="xmpps" data-type="xmpp" style="width: 96%;">
 			</div>
 			<button class="btn btn-default btn-xs add-additional" data-type="xmpp"><i class="fa fa-plus fa-fw"></i><?php echo _('Add XMPP')?></button>
 			</br>
@@ -125,12 +125,12 @@
 			<?php foreach($contact['emails'] as $email) {?>
 				<div class="form-inline item-container" >
 					<i class="fa fa-ban fa-fw delete" data-type="email"></i>
-					<input type="text" class="form-control special" data-name="email" style="width: 96%;" value="<?php echo $email['email']?>">
+					<input type="text" class="form-control special" data-name="emails" data-type="email" style="width: 96%;" value="<?php echo $email['email']?>">
 				</div>
 			<?php } ?>
 			<div class="form-inline item-container" >
 				<i class="fa fa-ban fa-fw delete" data-type="email"></i>
-				<input type="text" class="form-control special" data-name="email" style="width: 96%;">
+				<input type="text" class="form-control special" data-name="emails" data-type="email" style="width: 96%;">
 			</div>
 			<button class="btn btn-default btn-xs add-additional" data-type="email"><i class="fa fa-plus fa-fw"></i><?php echo _('Add Email')?></button>
 		</br>
@@ -140,12 +140,12 @@
 		<?php foreach($contact['websites'] as $website) {?>
 			<div class="form-inline item-container" >
 				<i class="fa fa-ban fa-fw delete" data-type="website"></i>
-				<input type="text" class="form-control special" data-name="email" style="width: 96%;" value="<?php echo $website['website']?>">
+				<input type="text" class="form-control special" data-name="websites" data-type="website" style="width: 96%;" value="<?php echo $website['website']?>">
 			</div>
 		<?php } ?>
 		<div class="form-inline item-container" >
 			<i class="fa fa-ban fa-fw delete" data-type="website"></i>
-			<input type="text" class="form-control special" data-name="website" style="width: 96%;">
+			<input type="text" class="form-control special" data-name="websites" data-type="website" style="width: 96%;">
 		</div>
 		<button class="btn btn-default btn-xs add-additional" data-type="website"><i class="fa fa-plus fa-fw"></i><?php echo _('Add Website')?></button>
 			<!--

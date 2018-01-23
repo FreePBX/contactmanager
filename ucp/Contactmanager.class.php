@@ -311,6 +311,10 @@ class Contactmanager extends Modules{
 
 				$entry = $this->cm->getEntryByID($contact['id']);
 				if(!empty($entry) && !empty($contact)) {
+					$types = array('emails','xmpps','websites','numbers');
+					foreach($types as $type) {
+						$contact[$type] = isset($contact[$type]) ? $contact[$type] : array();
+					}
 					$contact = array_merge($entry, $contact);
 					$return = $this->cm->updateEntry($contact['id'], $contact);
 					break;

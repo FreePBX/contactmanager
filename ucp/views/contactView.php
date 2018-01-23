@@ -63,7 +63,7 @@
 					</ul>
 				</div>
 			<?php } ?>
-			<?php if(!empty($contact['emails']) && !empty($contact['emails'][0]['email'])) { ?>
+			<?php if(!empty($contact['emails'])) { ?>
 				<div class="form-group">
 					<label><?php echo ('Emails')?></label><br/>
 					<ul>

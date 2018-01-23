@@ -109,6 +109,11 @@ var ContactmanagerC = UCPMC.extend({
 						data.message,
 						'<button type="button" class="btn btn-secondary" data-dismiss="modal">'+_("Close")+'</button><button type="button" class="btn btn-primary" id="save">'+ _("Save changes")+'</button>',
 						function() {
+							$("#groupname").focus();
+							$('#contactmanager-addgroup').submit(function() {
+								$('#save').click();
+								return false;
+							});
 							$('#save').one('click',function() {
 								$.ajax({
 									type: 'POST',
@@ -337,13 +342,16 @@ var ContactmanagerC = UCPMC.extend({
 					speeddial: speeddial
 				});
 			});
-			$("input[data-name=websites], input[data-name=email], input[data-name=xmpp]").each(function() {
+			$("input[data-name=websites], input[data-name=emails], input[data-name=xmpps]").each(function() {
 				var val = $(this).val(),
-						name = $(this).data("name");
+						name = $(this).data("name"),
+						type = $(this).data("type");
 				if(val === "") {
 					return true;
 				}
-				data[name].push(val);
+				var obj = {};
+				obj[type] = val;
+				data[name].push(obj);
 			});
 
 			var group = $(".grid-stack-item[data-id='"+widget_id+"'] .group-list .group.active").data("group");
