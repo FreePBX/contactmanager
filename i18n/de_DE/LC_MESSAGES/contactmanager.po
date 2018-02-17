@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-18 20:12-0500\n"
-"PO-Revision-Date: 2018-02-16 18:10+0200\n"
+"PO-Revision-Date: 2018-02-16 20:01+0200\n"
 "Last-Translator: Nils <Nils@heckenkamp.info>\n"
 "Language-Team: German "
 "<http://weblate.freepbx.org/projects/freepbx/contactmanager/de_DE/>\n"
@@ -95,7 +95,7 @@ msgstr "Adresse"
 
 #: contactmanager.i18n.php:6
 msgid "Admin"
-msgstr "Admin"
+msgstr "Administrator"
 
 #: Contactmanager.class.php:2822
 msgid "All Internal Groups"
@@ -664,7 +664,7 @@ msgstr "Kurzwahlen"
 
 #: Contactmanager.class.php:1079 Contactmanager.class.php:1098
 msgid "Submit"
-msgstr "Bestätigen"
+msgstr "Absenden"
 
 #: Contactmanager.class.php:695 ucp/Contactmanager.class.php:197
 msgid ""
