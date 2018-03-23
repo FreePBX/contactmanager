@@ -2939,9 +2939,6 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		case 'contacts':
 			$groups = $this->getGroups();
 			foreach ($groups as $group) {
-				if ($group['type'] != 'external') {
-					continue;
-				}
 
 				$entries = $this->getEntriesByGroupID($group['id']);
 				foreach ($entries as $entry) {
