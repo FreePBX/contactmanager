@@ -2883,38 +2883,40 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				);
 
 				$grep = preg_grep('/^\D+_\d+/', array_keys($data));
-				foreach ($grep as $key) {
-					if (preg_match('/^(.*)_(\d+)_(.*)$/', $key, $matches)) {
-						$extras[$matches[1]][$matches[2] - 1][$matches[3]] = $data[$key];
-					} else if (preg_match('/^(.*)_(\d+)$/', $key, $matches)) {
-						$extras[$matches[1]][$matches[2] - 1] = $data[$key];
+				if(!empty($grep) && is_array($grep)){
+					foreach ($grep as $key) {
+						if (preg_match('/^(.*)_(\d+)_(.*)$/', $key, $matches)) {
+							$extras[$matches[1]][$matches[2] - 1][$matches[3]] = $data[$key];
+						} else if (preg_match('/^(.*)_(\d+)$/', $key, $matches)) {
+							$extras[$matches[1]][$matches[2] - 1] = $data[$key];
+						}
 					}
-				}
 
-				foreach ($extras as $key => $type) {
-					foreach ($type as $value) {
-						switch ($key) {
-						case 'phone':
-							$contact['numbers'][] = array(
-								'number' => $value['number'],
-								'type' => isset($value['type']) ? $value['type'] : 'other',
-								'extension' => isset($value['extension']) ? $value['extension'] : '',
-								'flags' => isset($value['flags']) ? explode(',', $value['flags']) : array(),
-							);
-							break;
-						case 'email':
-							$contact['emails'][] = array(
-								'email' => $value,
-							);
-							break;
-						case 'website':
-							$contact['websites'][] = array(
-								'website' => $value,
-							);
-							break;
-						default:
-							return array("status" => false, "message" => _("Unknown data type."));
-							break;
+					foreach ($extras as $key => $type) {
+						foreach ($type as $value) {
+							switch ($key) {
+							case 'phone':
+								$contact['numbers'][] = array(
+									'number' => $value['number'],
+									'type' => isset($value['type']) ? $value['type'] : 'other',
+									'extension' => isset($value['extension']) ? $value['extension'] : '',
+									'flags' => isset($value['flags']) ? explode(',', $value['flags']) : array(),
+								);
+								break;
+							case 'email':
+								$contact['emails'][] = array(
+									'email' => $value,
+								);
+								break;
+							case 'website':
+								$contact['websites'][] = array(
+									'website' => $value,
+								);
+								break;
+							default:
+								return array("status" => false, "message" => _("Unknown data type."));
+								break;
+							}
 						}
 					}
 				}
