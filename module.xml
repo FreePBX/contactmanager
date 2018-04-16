@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>14.0.3.5</version>
+	<version>14.0.3.6</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*14.0.3.6* FREEPBX-17278 Import Contacts with Bulk Handler not working 
 		*14.0.3.5* FREEPBX-13543 Bulk handler exporting blank files
 		*14.0.3.4* FREEPBX-16656 Cannot save contact once if email field
 		*14.0.3.3* Add number lookup in more places
