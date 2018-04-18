@@ -39,6 +39,15 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					"numbers" => _("Numbers"),
 					"actions" => _("Actions")
 				)
+			),
+			"private" => array(
+				"name" => _("Private"),
+				"fields" => array(
+					"displayname" => _("Display Name"),
+					"company" => _("Company"),
+					"numbers" => _("Numbers"),
+					"actions" => _("Actions")
+				)
 			)
 		);
 
@@ -497,11 +506,12 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						$data = $this->freepbx->Userman->getUserByID($entryid);
 						$data = $this->getImageByID($data['id'], $data['email'], 'internal');
 					break;
-					case "external";
+					case "private" :
+					case "external":
 						$data = $this->getEntryByID($entryid);
 						$email = !empty($data['email']) ? $data['email'] : (!empty($data['emails'][0]) ? $data['emails'][0] : '');
 						$id = ($data['type'] == "internal") ? $data['user'] : $data['id'];
-						$data = $this->getImageByID($id, $email, 'external');
+						$data = $this->getImageByID($id, $email, $type);
 					break;
 				}
 			} else {
@@ -618,6 +628,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$type = !empty($_POST['grouptype']) ? $_POST['grouptype'] : "";
 				$id = !empty($_POST['id']) ? $_POST['id'] : "";
 				switch($type) {
+					case "private" :
 					case "external":
 						$email = $_POST['email'];
 					break;
@@ -733,6 +744,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 							$i++;
 						}
 					break;
+					case "private":
 					case "external":
 						$i = 0;
 						foreach($entries as $entry) {
@@ -951,6 +963,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						return false;
 					}
 					break;
+					case "private":
 					case "external":
 					if (count($entry['numbers']) < 1) {
 						$this->message = array(
@@ -1281,6 +1294,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		if(!empty($this->groupsCache)) {
 			return $this->groupsCache;
 		}
+		$sql = "UPDATE contactmanager_groups SET `type` = 'private' WHERE owner != -1;";
+		$sth = $this->db->prepare($sql);
+		$sth->execute();
 		$sql = "SELECT * FROM contactmanager_groups ORDER BY `id`";
 		$sth = $this->db->prepare($sql);
 		$sth->execute();
@@ -1290,6 +1306,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 	public function getGroupsGroupedByType() {
 		$final = array();
+		$sql = "UPDATE contactmanager_groups SET `type` = 'private' WHERE owner != -1;";
+		$sth = $this->db->prepare($sql);
+		$sth->execute();
 		$sql = "SELECT * FROM contactmanager_groups ORDER BY id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute();
@@ -1474,6 +1493,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 		$group = $this->getGroupByID($entry['groupid']);
 		switch($group['type']) {
+			case "private" :
 			case "external":
 			$numbers = $this->getNumbersByEntryID($id);
 			if ($numbers) {
@@ -1623,6 +1643,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				}
 
 			break;
+			case "private" :
 			case "external":
 			default:
 				$entries = $e;
@@ -1768,11 +1789,18 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
 		}
 
+		$sql = "SELECT owner FROM contactmanager_groups WHERE id = :groupid ;";
+		$sth = $this->db->prepare($sql);		
+		$sth->execute(array(
+		':groupid' => $groupid,
+		));	
+		$own = $sth->fetch(\PDO::FETCH_ASSOC);	
+		
 		$sql = "SELECT * FROM contactmanager_group_entries WHERE `user` = :user AND `groupid` = :groupid";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(
 		':groupid' => $groupid,
-		':user' => $entry['user']
+		':user' => $own['owner']
 		));
 		$data = $sth->fetch(\PDO::FETCH_ASSOC);
 		if(empty($data)) {
@@ -1783,7 +1811,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(
 		':groupid' => $groupid,
-		':user' => $entry['user'],
+		':user' => $own['owner'],
 		':displayname' => !empty($entry['displayname']) ? $data['displayname'] : '',
 		':fname' => !empty($entry['fname']) ? $data['fname'] : '',
 		':lname' => !empty($entry['lname']) ? $data['lname'] : '',
@@ -1815,12 +1843,19 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		if (!$group) {
 			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
 		}
+	
+		$sql = "SELECT owner FROM contactmanager_groups WHERE id = :groupid ;";
+		$sth = $this->db->prepare($sql);		
+		$sth->execute(array(
+		':groupid' => $groupid,
+		));	
+		$own = $sth->fetch(\PDO::FETCH_ASSOC);	
 
 		$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`, `displayname`, `fname`, `lname`, `title`, `company`, `address`, `uuid`) VALUES (:groupid, :user, :displayname, :fname, :lname, :title, :company, :address, UUID())";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(
 		':groupid' => $groupid,
-		':user' => $entry['user'],
+		':user' => $own['owner'],
 		':displayname' => isset($entry['displayname']) ? $entry['displayname'] : "",
 		':fname' => isset($entry['fname']) ? $entry['fname'] : "",
 		':lname' => isset($entry['lname']) ? $entry['lname'] : "",
@@ -1895,6 +1930,13 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		if (!$group) {
 			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
 		}
+		
+		$sql = "SELECT owner FROM contactmanager_groups WHERE id = :groupid ;";
+		$sth = $this->db->prepare($sql);		
+		$sth->execute(array(
+		':groupid' => $entry['groupid'],
+		));	
+		$own = $sth->fetch(\PDO::FETCH_ASSOC);
 
 		if (!$this->getEntryByID($id)) {
 			return array("status" => false, "type" => "danger", "message" => _("Group entry does not exist"));
@@ -1904,7 +1946,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(
 		':groupid' => $entry['groupid'],
-		':user' => $entry['user'],
+		':user' => $own['owner'],
 		':displayname' => $entry['displayname'],
 		':fname' => $entry['fname'],
 		':lname' => $entry['lname'],
@@ -1964,7 +2006,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 * @param {int} $groupid The group ID
 	 */
 	public function getImagesByGroupID($groupid,$type="internal") {
-		if($type == "external") {
+		if($type == "external" || $type == "private") {
 			$fields = array(
 			'e.id',
 			'n.entryid',
@@ -2099,7 +2141,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		if(!file_exists($this->tmp."/".$name)) {
 			return;
 		}
-		if($type == "external") {
+		if($type == "external" || $type == "private" ) {
 			$sql = "REPLACE INTO contactmanager_entry_images (entryid, image, format, gravatar) VALUES (:id, :image, 'image/png', :gravatar)";
 		} else {
 			$sql = "REPLACE INTO contactmanager_entry_userman_images (uid, image, format, gravatar) VALUES (:id, :image, 'image/png', :gravatar)";
@@ -2202,7 +2244,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 * @return array          Array of information about the image
 	 */
 	public function getImageByID($id, $email=false, $type='external') {
-		if($type == 'external') {
+		if($type == 'external' || $type == 'private') {
 			$sql = "SELECT image, format, gravatar FROM contactmanager_entry_images WHERE `entryid` = :id";
 		} else {
 			$sql = "SELECT image, format, gravatar FROM contactmanager_entry_userman_images WHERE `uid` = :id";
@@ -2233,7 +2275,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 * @param  int $type    The entry type
 	 */
 	public function delImageByID($id, $type='external') {
-		if($type == "external") {
+		if($type == "external" || $type == "private") {
 			$sql = "DELETE FROM contactmanager_entry_images WHERE `entryid` = :id";
 		} else {
 			$sql = "DELETE FROM contactmanager_entry_userman_images WHERE `uid` = :id";
@@ -2601,6 +2643,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						}
 					}
 				break;
+				case "private" :
 				case "external":
 					$entries = $this->getEntriesByGroupID($group['id']);
 					if(!empty($entries) && is_array($entries)) {
@@ -2635,7 +2678,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 							$entry['xmpps'] = $xmpps;
 							$entry['numbers'] = $numbers;
 							$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
-							$entry['type'] = "external";
+							$entry['type'] = $group['type'];
 							$entry['groupid'] = $group['id'];
 							$entry['groupname'] = $group['name'];
 							$entry['id'] = $entry['uid'];
@@ -2928,7 +2971,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					'description' => _('Type of group for contact.'),
 					'values' => array(
 						'internal' => _('Internal'),
-						'external' => _('External')
+						'external' => _('External'),
+						'private' => _('Private'),
 					),
 				),
 				'displayname' => array(
@@ -3102,7 +3146,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		case 'contacts':
 			$groups = $this->getGroups();
 			foreach ($groups as $group) {
-				if ($group['type'] != 'external') {
+				if ($group['type'] != 'external' && $group['type'] != 'private' ) {
 					continue;
 				}
 
