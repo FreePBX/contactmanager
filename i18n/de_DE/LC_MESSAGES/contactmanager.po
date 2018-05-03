@@ -10,10 +10,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-18 20:12-0500\n"
-"PO-Revision-Date: 2017-12-15 18:54+0200\n"
-"Last-Translator: tranlsated <noemi@translated.net>\n"
-"Language-Team: German <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/de_DE/>\n"
+"PO-Revision-Date: 2018-02-16 20:01+0200\n"
+"Last-Translator: Nils <Nils@heckenkamp.info>\n"
+"Language-Team: German "
+"<http://weblate.freepbx.org/projects/freepbx/contactmanager/de_DE/>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: Contactmanager.class.php:710 ucp/Contactmanager.class.php:212
 msgid "A PHP extension stopped the file upload"
-msgstr "Eine PHP-Erweiterung hat den Datei-Upload gestoppt"
+msgstr "Eine PHP Erweiterung hat den Datei Upload gestoppt"
 
 #: views/entry.php:344
 msgid "A list of E-Mail addresses belonging to this entry"
@@ -95,7 +95,7 @@ msgstr "Adresse"
 
 #: contactmanager.i18n.php:6
 msgid "Admin"
-msgstr "Admin"
+msgstr "Administrator"
 
 #: Contactmanager.class.php:2822
 msgid "All Internal Groups"
@@ -582,7 +582,7 @@ msgstr "Es wurde keine Datei hochgeladen"
 
 #: Contactmanager.class.php:2828 Contactmanager.class.php:2840
 msgid "None"
-msgstr "Keine"
+msgstr "Nichts"
 
 #: ucp/Contactmanager.class.php:359 ucp/Contactmanager.class.php:381
 msgid "Not Authorized"
@@ -664,7 +664,7 @@ msgstr "Kurzwahlen"
 
 #: Contactmanager.class.php:1079 Contactmanager.class.php:1098
 msgid "Submit"
-msgstr "Senden"
+msgstr "Absenden"
 
 #: Contactmanager.class.php:695 ucp/Contactmanager.class.php:197
 msgid ""
@@ -799,7 +799,7 @@ msgstr "XMPP Adresse darf nicht leer sein."
 #: Contactmanager.class.php:214 Contactmanager.class.php:230
 #: Contactmanager.class.php:246
 msgid "already exists"
-msgstr "besteht bereits"
+msgstr "bereits vorhanden"
 
 #: Contactmanager.class.php:182
 msgid "already indexed"
