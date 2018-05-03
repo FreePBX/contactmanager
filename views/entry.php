@@ -225,6 +225,7 @@ foreach ($users as $u) {
 				</div>
 			</div>
 			<?php switch ($group['type']) {
+						case "private" :
 						case "external":?>
 						<div class="element-container">
 							<div class="row">
