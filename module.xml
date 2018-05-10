@@ -7,13 +7,13 @@
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
-		*13.0.42.13* Feature/FREEPBX-17213 
+		*13.0.42.13* Feature/FREEPBX-17213
 		*13.0.42.12* Better number lookup
 		*13.0.42.11* Use libphonenumber from google for number lookups
 		*13.0.42.10* Fix selecting none
 		*13.0.42.9* FREEPBX-15465 FREEPBX-15461
 		*13.0.42.8* FREEPBX-15393
-		*13.0.42.7* FREEPBX-14653 
+		*13.0.42.7* FREEPBX-14653
 		*13.0.42.6* Require UUIDs on contacts
 		*13.0.42.5* FREEPBX-13970 Fix lookup
 		*13.0.42.4* FREEPBX-14233 SpeedDials werent working
@@ -111,7 +111,85 @@
 			<method callingMethod="myShowPage" class="Contactmanager" namespace="FreePBX\modules">usermanShowPage</method>
 			<method callingMethod="getExtraUserDetailsDisplay" class="Contactmanager" namespace="FreePBX\modules">usermanUserDetails</method>
 			<method callingMethod="getExtraContactInfo" class="Contactmanager" namespace="FreePBX\modules">usermanAddContactInfo</method>
-
 		</userman>
+		<ucp class="Ucp">
+			<method callingMethod="constructModuleConfigPages" class="Contactmanager" namespace="FreePBX\modules">ucpConfigPage</method>
+			<method callingMethod="addUser" class="Contactmanager" namespace="FreePBX\modules">ucpAddUser</method>
+			<method callingMethod="updateUser" class="Contactmanager" namespace="FreePBX\modules">ucpUpdateUser</method>
+			<method callingMethod="delUser" class="Contactmanager" namespace="FreePBX\modules">ucpDelUser</method>
+			<method callingMethod="addGroup" class="Contactmanager" namespace="FreePBX\modules">ucpAddGroup</method>
+			<method callingMethod="updateGroup" class="Contactmanager" namespace="FreePBX\modules">ucpUpdateGroup</method>
+			<method callingMethod="delGroup" class="Contactmanager" namespace="FreePBX\modules">ucpDelGroup</method>
+		</ucp>
 	</hooks>
+	<database>
+		<table name="contactmanager_groups">
+			<field name="id" type="integer" primaryKey="true" autoincrement="true"/>
+			<field name="owner" type="integer"/>
+			<field name="name" type="string" length="80"/>
+			<field name="type" type="string" length="25"/>
+		</table>
+		<table name="contactmanager_group_entries">
+			<field name="id" type="integer" primaryKey="true" autoincrement="true"/>
+			<field name="groupid" type="integer"/>
+			<field name="user" type="integer"/>
+			<field name="displayname" type="string" length="100" notnull="false"/>
+			<field name="fname" type="string" length="100" notnull="false"/>
+			<field name="lname" type="string" length="100" notnull="false"/>
+			<field name="title" type="string" length="100" notnull="false"/>
+			<field name="company" type="string" length="100" notnull="false"/>
+			<field name="address" type="string" length="200" notnull="false"/>
+			<field name="uuid" type="string" length="36" notnull="false"/>
+			<key name="uuid_index" type="unique">
+				<column name="uuid"/>
+			</key>
+		</table>
+		<table name="contactmanager_entry_speeddials">
+			<field name="id" type="integer" primaryKey="true"/>
+			<field name="entryid" type="integer"/>
+			<field name="numberid" type="integer"/>
+		</table>
+		<table name="contactmanager_entry_numbers">
+			<field name="id" type="integer" primaryKey="true" autoincrement="true"/>
+	    <field name="entryid" type="integer"/>
+	    <field name="number" type="string" length="100" notnull="false"/>
+	    <field name="extension" type="string" length="100" notnull="false"/>
+	    <field name="countrycode" type="string" length="4" notnull="false"/>
+	    <field name="nationalnumber" type="string" length="100" notnull="false"/>
+	    <field name="regioncode" type="string" length="2" notnull="false"/>
+			<field name="locale" type="string" length="2" notnull="false"/>
+			<field name="stripped" type="string" length="100" notnull="false"/>
+	    <field name="type" type="string" length="100" notnull="false"/>
+	    <field name="flags" type="string" length="100" notnull="false"/>
+	    <field name="E164" type="string" length="100" notnull="false"/>
+			<field name="possibleshort" type="boolean" notnull="false"/>
+		</table>
+		<table name="contactmanager_entry_images">
+			<field name="entryid" type="integer" primaryKey="true"/>
+			<field name="image" type="blob" notnull="false"/>
+			<field name="format" type="string" length="45"/>
+			<field name="gravatar" type="boolean" default="0"/>
+		</table>
+		<table name="contactmanager_entry_userman_images">
+			<field name="uid" type="integer" primaryKey="true"/>
+			<field name="image" type="blob" notnull="false"/>
+			<field name="format" type="string" length="45"/>
+			<field name="gravatar" type="boolean" default="0"/>
+		</table>
+		<table name="contactmanager_entry_xmpps">
+			<field name="id" type="integer" primaryKey="true" autoincrement="true"/>
+			<field name="entryid" type="integer"/>
+			<field name="xmpp" type="string" length="100" notnull="false"/>
+		</table>
+		<table name="contactmanager_entry_emails">
+			<field name="id" type="integer" primaryKey="true" autoincrement="true"/>
+			<field name="entryid" type="integer"/>
+			<field name="email" type="string" length="100" notnull="false"/>
+		</table>
+		<table name="contactmanager_entry_websites">
+			<field name="id" type="integer" primaryKey="true" autoincrement="true"/>
+			<field name="entryid" type="integer"/>
+			<field name="website" type="string" length="100" notnull="false"/>
+		</table>
+	</database>
 </module>

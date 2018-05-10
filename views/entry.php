@@ -253,6 +253,16 @@ foreach ($users as $u) {
 																		<option value="<?php echo $key?>" <?php echo $selected?>><?php echo $val?></option>
 																	<?php } ?>
 																</select>
+																<br>
+																<br>
+																<label><?php echo _("Dialing From Region")?></label>
+																<select class="form-control number locale" name="numberlocale[<?php echo $numcount?>]" data-locale="<?php echo !empty($number['locale']) ? $number['locale'] : ''?>" data-id="<?php echo $numcount?>">
+																	<?php foreach($regionlist as $key => $val) {
+																		$selected = ($number['locale'] == $key)?'SELECTED':'';
+																	?>
+																		<option value="<?php echo $key?>" <?php echo $selected?>><?php echo $val?></option>
+																	<?php } ?>
+																</select>
 																<?php if($speeddialcode['enabled']) { ?>
 																	<br>
 																	<br>

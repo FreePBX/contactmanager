@@ -4,6 +4,34 @@
 			<div class="row">
 				<div class="form-group">
 					<div class="col-md-3">
+						<label class="control-label" for="contactmanager_dialinglocale"><?php echo _('Dialing Locale')?></label>
+						<i class="fa fa-question-circle fpbx-help-icon" data-for="contactmanager_dialinglocale"></i>
+					</div>
+					<div class="col-md-9">
+						<select class="form-control number locale" name="contactmanager_dialinglocale" data-locale="<?php echo !empty($dialinglocale) ? $dialinglocale : ''?>">
+							<?php foreach($regionlist as $key => $val) {
+								$selected = ($dialinglocale == $key)?'SELECTED':'';
+							?>
+								<option value="<?php echo $key?>" <?php echo $selected?>><?php echo $val?></option>
+							<?php } ?>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<span id="contactmanager_dialinglocale-help" class="help-block fpbx-help-block"><?php echo _('Used in Contact Manager to determine phone number representations. Select the region for the numbers you have entered above.')?></span>
+		</div>
+	</div>
+</div>
+<div class="element-container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-3">
 						<label class="control-label" for="contactmanager_imageupload"><?php echo _('Contact Image')?></label>
 						<i class="fa fa-question-circle fpbx-help-icon" data-for="contactmanager_image"></i>
 					</div>
@@ -73,6 +101,11 @@
 }
 </style>
 <script>
+var cmlocale = navigator.language.split('-')[1];
+cmlocale = cmlocale ? cmlocale : navigator.language.split('-')[0]
+$("select.number.locale[data-locale='']").each(function() {
+	$(this).val(cmlocale);
+});
 /**
  * Drag/Drop/Upload Files
  */

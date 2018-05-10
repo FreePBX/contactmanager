@@ -127,9 +127,17 @@ var ContactmanagerC = UCPMC.extend({
 		$(".enable-sd").change(changeSpeedDial);
 		$(".add-additional").click(function(e) {
 			e.preventDefault();
+
+			var cmlocale = navigator.language.split('-')[1];
+			cmlocale = cmlocale ? cmlocale : navigator.language.split('-')[0]
+
 			var type = $(this).data("type");
 			$("." + type + " table").append("<tr>" + $("." + type + " .template").html() + "</tr>");
 			var tr = $(".numbers tr").not(".template");
+			tr.find(".locale-template").each(function() {
+				$(this).val(cmlocale)
+				$(this).removeClass("locale-template");
+			})
 			tr.find(".smsenable-template").each(function() {
 				var input = $(this).find("input"),
 						label = $(this).find("label"),
@@ -154,9 +162,38 @@ var ContactmanagerC = UCPMC.extend({
 		$("#addContact .additional").on("click", ".delete", function() {
 			$(this).parents("tr").remove();
 		});
+		var saveNumbers = function() {
+			var count = 0, type = "numbers", data = [],  id = $("#id").val();
+			$(".numbers tr").filter(":visible").each(function(i, v) {
+				var obj = {};
+				obj.number = $(this).find("input[data-name='number']").val();
+				obj.type = $(this).find("select[data-name='type']").val();
+				obj.locale = $(this).find("select[data-name='locale']").val();
+				if($(this).find("input[data-name='numbersd']:enabled").length) {
+					obj.speeddial = $(this).find("input[data-name='numbersd']:enabled").val();
+				} else {
+					obj.speeddial = '';
+				}
+				data.push(obj);
+			});
+			$.post( "?quietmode=1&module=contactmanager&command=updatecontact", { id: id, key: type, value: data }, function( data ) {
+				if (data.status) {
+					$(".alert").text(data.message).addClass("alert-success").fadeIn("fast", function() {
+						$(this).delay(2000).fadeOut("fast");
+					});
+				}
+			});
+		};
 		$("#editContact .additional").on("click", ".delete", function() {
-			var table = $(this).parents("table"), count = 0, type = table.data("type"), data = [],  id = $("#id").val();
+
 			$(this).parents("tr").remove();
+
+			if($(this).data("number")) {
+				saveNumbers();
+				return;
+			}
+
+			var table = $(this).parents("table"), count = 0, type = table.data("type"), data = [],  id = $("#id").val();
 			table.find("tr").not(".template").find("input[type!=checkbox]").each(function(i, v) {
 				var obj = {};
 				obj[$(this).data("name")] = $(this).val();
@@ -205,27 +242,6 @@ var ContactmanagerC = UCPMC.extend({
 				}
 			});
 		});
-		var saveNumbers = function() {
-			var count = 0, type = "numbers", data = [],  id = $("#id").val();
-			$(".numbers tr").filter(":visible").each(function(i, v) {
-				var obj = {};
-				obj.number = $(this).find("input[data-name='number']").val();
-				obj.type = $(this).find("select[data-name='type']").val();
-				if($(this).find("input[data-name='numbersd']:enabled").length) {
-					obj.speeddial = $(this).find("input[data-name='numbersd']:enabled").val();
-				} else {
-					obj.speeddial = '';
-				}
-				data.push(obj);
-			});
-			$.post( "?quietmode=1&module=contactmanager&command=updatecontact", { id: id, key: type, value: data }, function( data ) {
-				if (data.status) {
-					$(".alert").text(data.message).addClass("alert-success").fadeIn("fast", function() {
-						$(this).delay(2000).fadeOut("fast");
-					});
-				}
-			});
-		};
 		$("#editContact .numbers").on("blur", "input:not(.number-sd)", function(e) {
 			saveNumbers();
 		});
@@ -268,6 +284,7 @@ var ContactmanagerC = UCPMC.extend({
 				var obj = {};
 				obj.number = $(this).find("input[data-name='number']").val();
 				obj.type = $(this).find("select[data-name='type']").val();
+				obj.locale = $(this).find("select[data-name='locale']").val();
 				obj.flags = [];
 				if($(this).find("input[type=checkbox].smsenable").is(":checked")) {
 					obj.flags.push("sms");
@@ -342,6 +359,7 @@ var ContactmanagerC = UCPMC.extend({
 				var obj = {};
 				obj.number = $(this).find("input[data-name='number']").val();
 				obj.type = $(this).find("select[data-name='type']").val();
+				obj.locale = $(this).find("select[data-name='locale']").val();
 				if($(this).find("input[data-name='numbersd']:enabled").length) {
 					obj.speeddial = $(this).find("input[data-name='numbersd']:enabled").val();
 				} else {
