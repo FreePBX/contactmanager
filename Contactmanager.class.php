@@ -322,7 +322,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	}
 
 	public static function myDialplanHooks() {
-		return 500;
+		return 400;
 	}
 
 	/**
