@@ -532,7 +532,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				switch($type) {
 					case "private" :
 					case "external":
-						$email = $_POST['email'];
+						$email = !empty($_POST['email']) ? $_POST['email'] : '';
 					break;
 					case "userman":
 					case "internal":
