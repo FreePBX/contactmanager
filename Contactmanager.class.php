@@ -846,12 +846,12 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					'xmpps' => $xmpps,
 					'emails' => $emails,
 					'websites' => $websites,
-					'displayname' => $_POST['displayname'] ? $_POST['displayname'] : NULL,
-					'fname' => $_POST['fname'] ? $_POST['fname'] : NULL,
-					'lname' => $_POST['lname'] ? $_POST['lname'] : NULL,
-					'title' => $_POST['title'] ? $_POST['title'] : NULL,
-					'company' => $_POST['company'] ? $_POST['company'] : NULL,
-					'address' => $_POST['address'] ? $_POST['address'] : NULL,
+					'displayname' => $_POST['displayname'] ? $_POST['displayname'] : '',
+					'fname' => $_POST['fname'] ? $_POST['fname'] : '',
+					'lname' => $_POST['lname'] ? $_POST['lname'] : '',
+					'title' => $_POST['title'] ? $_POST['title'] : '',
+					'company' => $_POST['company'] ? $_POST['company'] : '',
+					'address' => $_POST['address'] ? $_POST['address'] : '',
 					'image' => $image,
 					'gravatar' => $gravatar
 				);
