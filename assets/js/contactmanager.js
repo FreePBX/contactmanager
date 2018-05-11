@@ -152,7 +152,7 @@ function addNumber() {
 
 	row+= "<br>";
 	row+= "<br>";
-	row+= "<label>"+_("Dialing From Region")+"</label> ";
+	row+= "<label>"+_("Dialing Country")+"</label> ";
 	row+= '<select class="form-control number locale" name="numberlocale['+ index +']" data-locale="" data-id="'+index+'">';
 	row+= $("select.locale").first().html();
 	row+= '</select>';
