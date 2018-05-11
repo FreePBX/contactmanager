@@ -62,6 +62,8 @@
 									<option value="cell"><?php echo _('Cell')?></option>
 									<option value="other"><?php echo _('Other')?></option>
 								</select>
+								<br>
+								<label><u>Dialing Country<u/></label><br>
 								<select class="form-control number locale-template" data-name="locale" data-locale="">
 									<?php foreach($regionlist as $key => $val) {?>
 										<option value="<?php echo $key?>"><?php echo $val?></option>
@@ -113,6 +115,8 @@
 										<option value="cell" <?php echo ($number['type'] == "cell") ? 'selected' : ''?>><?php echo _('Cell')?></option>
 										<option value="other" <?php echo ($number['type'] == "other") ? 'selected' : ''?>><?php echo _('Other')?></option>
 									</select>
+									<br>
+									<label><u>Dialing Country<u/></label><br>
 									<select class="form-control number" data-name="locale" data-locale="<?php echo $number['locale']?>">
 										<?php foreach($regionlist as $key => $val) {
 											$selected = ($number['locale'] == $key)?'SELECTED':'';

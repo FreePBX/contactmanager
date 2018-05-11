@@ -255,7 +255,7 @@ foreach ($users as $u) {
 																</select>
 																<br>
 																<br>
-																<label><?php echo _("Dialing From Region")?></label>
+																<label><?php echo _("Dialing Country")?></label>
 																<select class="form-control number locale" name="numberlocale[<?php echo $numcount?>]" data-locale="<?php echo !empty($number['locale']) ? $number['locale'] : ''?>" data-id="<?php echo $numcount?>">
 																	<?php foreach($regionlist as $key => $val) {
 																		$selected = ($number['locale'] == $key)?'SELECTED':'';

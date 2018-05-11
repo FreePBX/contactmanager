@@ -264,13 +264,13 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				if(empty($entry['numbers'])) {
 					continue;
 				}
-				//$this->deleteNumbersByEntryID($entry['uid']);
+				$this->deleteNumbersByEntryID($entry['uid']);
 				foreach($entry['numbers'] as $number) {
 					if(empty($number['locale']) && $number['type'] !== 'internal') {
-						//needs to be updated
+						$number['locale'] = 'AUTO';
 					}
 				}
-				//$this->addNumbersByEntryID($entry['uid'], $entry['numbers']);
+				$this->addNumbersByEntryID($entry['uid'], $entry['numbers']);
 			}
 		}
 
@@ -2122,17 +2122,17 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				':flags' => !empty($number['flags']) ? implode('|', $number['flags']) : "",
 			);
 
-			if($number['type'] === 'internal') {
+			if($number['type'] === 'internal' || empty($number['locale'])) {
 				$data[':countrycode'] = null;
 				$data[':nationalnumber'] = null;
 				$data[':E164'] = null;
 				$data[':regioncode'] = null;
 				$data[':stripped'] = preg_replace("/\D/","",$data[':number']);
-				$data[':locale'] = null;
+				$data[':locale'] = '';
 				$data[':possibleshort'] = null;
 			} else {
 				try {
-					if(empty($number['locale']) || $number['locale'] === 'auto') {
+					if($number['locale'] === 'AUTO') {
 						$info = $phoneUtil->parse($number['number']);
 					} else {
 						$info = $phoneUtil->parse($number['number'], $number['locale']);
@@ -2151,7 +2151,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					$data[':E164'] = null;
 					$data[':regioncode'] = null;
 					$data[':stripped'] = preg_replace("/\D/","",$data[':number']);
-					$data[':locale'] = null;
+					$data[':locale'] = '';
 					$data[':possibleshort'] = null;
 				}
 			}
@@ -3227,6 +3227,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 	public function getRegionList() {
 		return array(
+			"AUTO" => _("Automatically Determine"),
+			"" => _("Unknown"),
 			"AF" => "Afghanistan",
 			"AL" => "Albania",
 			"DZ" => "Algeria",
