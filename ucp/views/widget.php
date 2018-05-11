@@ -5,7 +5,7 @@
 				<input type="hidden" id="group"/>
 				<div class="group active" data-name="" data-group=""><a href="#" class="group-inner"><?php echo _('My Contacts')?><span class="badge"><?php echo isset($total) ? $total : 0?></span></a></div>
 				<?php foreach($groups as $g) {?>
-					<div class="group" data-name="<?php echo $g['name']?>" data-group="<?php echo $g['id']?>"><a href="#" class="group-inner"><?php echo $g['name']?><span class="badge"><?php echo isset($g['count']) ? $g['count'] : 0?></span></a></div>
+					<div class="group" data-name="<?php echo $g['name']?>" data-group="<?php echo $g['id']?>" data-readonly="<?php echo $g['readonly'] ? 'true' : 'false'?>"><a href="#" class="group-inner"><?php echo $g['name']?><span class="badge"><?php echo isset($g['count']) ? $g['count'] : 0?></span></a></div>
 				<?php }?>
 			</div>
 			<div class="group-actions">

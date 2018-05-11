@@ -12,6 +12,7 @@
 
 return array (
   99620 => 'Aktel',
+  99622 => 'Sky mobile',
   99650 => 'Nur Telecom',
   99651 => 'Katel',
   99654 => 'Aktel',
@@ -19,5 +20,6 @@ return array (
   99656 => 'Winline',
   99657 => 'Sotel',
   99670 => 'Nur Telecom',
+  996755 => 'ALFA Telecom',
   99677 => 'Sky mobile',
 );

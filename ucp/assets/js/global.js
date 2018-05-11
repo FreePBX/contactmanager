@@ -16,14 +16,14 @@ var ContactmanagerC = UCPMC.extend({
 		$(el).addClass("active");
 		var group = $(el).data("group");
 
-		if (group.length === 0) {
+		if ($(el).data('readonly') || group.length === 0) {
 			$(".grid-stack-item[data-id="+widget_id+"] .deletegroup").prop("disabled",true);
 			$(".grid-stack-item[data-id="+widget_id+"] .addcontact").prop("disabled",true);
 		} else {
 			$(".grid-stack-item[data-id="+widget_id+"] .deletegroup").prop("disabled",false);
 			$(".grid-stack-item[data-id="+widget_id+"] .addcontact").prop("disabled",false);
 		}
-		$('.grid-stack-item[data-id='+widget_id+'] .contacts-grid').bootstrapTable('refresh', {url: UCP.ajaxUrl+'?module=contactmanager&command=grid&group=' + group});
+		$('.grid-stack-item[data-id='+widget_id+'] .contacts-grid').bootstrapTable("refreshOptions", {url: UCP.ajaxUrl+'?module=contactmanager&command=grid&group=' + group});
 	},
 	displayWidget: function(widget_id, dashboard_id) {
 		var self = this;
@@ -65,7 +65,7 @@ var ContactmanagerC = UCPMC.extend({
 										id: row.uid
 									}, function( data ) {
 										if (data.status) {
-											$('.grid-stack-item[data-id='+widget_id+'] .contacts-grid').bootstrapTable('refresh', {url: UCP.ajaxUrl+'?module=contactmanager&command=grid&group=' + row.groupid});
+											$('.grid-stack-item[data-id='+widget_id+'] .contacts-grid').bootstrapTable("refreshOptions", {url: UCP.ajaxUrl+'?module=contactmanager&command=grid&group=' + group});
 											UCP.closeDialog();
 										} else {
 											UCP.showAlert(_("Error deleting user"),'danger');
@@ -120,7 +120,7 @@ var ContactmanagerC = UCPMC.extend({
 									url: UCP.ajaxUrl+'?module=contactmanager&command=addgroup',
 									data: $('#contactmanager-addgroup').serialize(),
 									success: function (data) {
-										$(".grid-stack-item[data-id='"+widget_id+"'] .group-list").append('<div class="group" data-name="' + $("#groupname").val() + '" data-group="' + data.id + '"><a href="#" class="group-inner">' + $("#groupname").val() + '<span class="badge">0</span></a></div>');
+										$(".grid-stack-item[data-id='"+widget_id+"'] .group-list").append('<div class="group" data-name="' + $("#groupname").val() + '" data-group="' + data.id + '" data-readonly="false"><a href="#" class="group-inner">' + $("#groupname").val() + '<span class="badge">0</span></a></div>');
 										$(".grid-stack-item[data-id='"+widget_id+"'] .group[data-group=" + data.id + "]").click(function() {
 											self.groupClick(this, widget_id);
 										});
@@ -143,7 +143,7 @@ var ContactmanagerC = UCPMC.extend({
 				$.post( UCP.ajaxUrl+"?module=contactmanager&command=deletegroup", { id: group }, function( data ) {
 					if (data.status) {
 						$(".group[data-group='']").trigger("click");
-						$(".grid-stack-item[data-id='"+widget_id+"'] .group-list .group[data-group='" + group + "'").remove();
+						$(".grid-stack-item[data-id='"+widget_id+"'] .group-list .group[data-group='" + group + "']").remove();
 					}
 				}).fail(function() {
 					UCP.showAlert(_("There was an error removing this group"),"danger");
@@ -326,6 +326,8 @@ var ContactmanagerC = UCPMC.extend({
 						type = parent.find("select[data-name=type]").val(),
 						sms = parent.find("input[data-name=smsflag]").is(":checked"),
 						fax = parent.find("input[data-name=faxflag]").is(":checked"),
+						locale = parent.find("select[data-name=locale]").val(),
+						flags = [],
 						speeddial = '';
 				if(val === "") {
 					return true;
@@ -334,12 +336,20 @@ var ContactmanagerC = UCPMC.extend({
 					speeddial = parent.find("input[data-name=numbersd]:enabled").val();
 				}
 
+				if(sms) {
+					flags.push('sms')
+				}
+
+				if(fax) {
+					flags.push('fax')
+				}
+
 				data.numbers.push({
 					number: val,
 					type: type,
-					smsflag: sms,
-					faxflag: fax,
-					speeddial: speeddial
+					flags: flags,
+					speeddial: speeddial,
+					locale: locale
 				});
 			});
 			$("input[data-name=websites], input[data-name=emails], input[data-name=xmpps]").each(function() {
@@ -368,7 +378,7 @@ var ContactmanagerC = UCPMC.extend({
 				data: params,
 				success: function (data) {
 					if(data.status) {
-						$(".grid-stack-item[data-id='"+widget_id+"'] .contacts-grid").bootstrapTable('refresh', {url: UCP.ajaxUrl+'?module=contactmanager&command=grid&group=' + group});
+						$(".grid-stack-item[data-id='"+widget_id+"'] .contacts-grid").bootstrapTable("refreshOptions", {url: UCP.ajaxUrl+'?module=contactmanager&command=grid&group=' + group});
 						UCP.closeDialog();
 					} else {
 						UCP.showAlert(data.message, 'danger');
@@ -394,20 +404,23 @@ var ContactmanagerC = UCPMC.extend({
 			e.preventDefault();
 			e.stopPropagation();
 			var name = $(this).data("type"),
-					type = $("button[data-type="+name+"]"),
-					container = $("input[data-name="+name+"]").one().parents(".item-container").last();
+					container = $("input[data-name="+name+"]").one().parents(".item-container").first();
 
 			if(name === "number") {
 				$('#globalModal input[data-name=smsflag], #globalModal input[data-name=faxflag]').bootstrapToggle('destroy');
 			}
 			var html = container.clone();
 			html.find("input").val("");
-			container.last().after(html);
+			var cmlocale = navigator.language.split('-')[1];
+			cmlocale = cmlocale ? cmlocale : navigator.language.split('-')[0]
+			html.find("select[data-name=locale]").val(cmlocale)
+			container.after(html);
 			if(name === "number") {
 				$('#globalModal input[data-name=smsflag], #globalModal input[data-name=faxflag]').bootstrapToggle();
 			}
 			$(".enable-sd").off("change");
 			$(".enable-sd").change(changeSpeedDial);
+
 		});
 		$(document).on("click",".item-container .delete",function() {
 			var name = $(this).data("type");

@@ -1,79 +1,55 @@
 <?php
 function contactmanager_destinations() {
 	$cm = \FreePBX::Contactmanager();
-	$entries = $cm->getContactsByUserID(-1);
+	$entries = $cm->getAllSpeedDials();
+
+	$contextname = 'ext-contactmanager-sd';
+	$fcc = new \featurecode('contactmanager', 'app-contactmanager-sd');
+	$code = $fcc->getCodeActive();
+	if (empty($code)) {
+		return array();
+	}
+
 	$destinations = array();
 	$extens = array();
 	foreach($entries as $entry) {
 		$name = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
-		if(!empty($entry['numbers'])) {
-			foreach($entry['numbers'] as $type => $number) {
-				if(!empty($number)) {
-					if(is_array($number)) {
-						foreach($number as $n) {
-							$extens[] = array('destination' => 'ext-contactmanager,'.$n.',1', 'description' => $name . "(" . $type . ")", 'edit_url' => '');
-						}
-					} else {
-						$extens[] = array('destination' => 'ext-contactmanager,'.$number.',1', 'description' => $name . "(" . $type . ")", 'edit_url' => '');
-					}
-				}
-			}
-		}
+		$extens[] = array('destination' => 'ext-contactmanager-sd,'.$entry['speeddial'].',1', 'category' => 'Contact Manager Speed Dials', 'description' => sprintf(_("%s (Speed Dial: %s) [%s]"),$name,$code.$entry['speeddial'],$entry['number']));
 	}
 	return $extens;
 }
 
-function contactmanager_getdest($number) {
-	return array('ext-contactmanager,'.$number.',1');
+function contactmanager_getdest($id) {
+	return array('ext-contactmanager-sd,'.$id.',1');
 }
 
 function contactmanager_getdestinfo($dest) {
-	if (substr(trim($dest),0,19) == 'ext-contactmanager,') {
-		$exten = explode(',',$dest);
-		$exten = $exten[1];
-		$cm = \FreePBX::Contactmanager();
-		$entries = $cm->getContactsByUserID(-1);
-		$destinations = array();
-		foreach($entries as $entry) {
-			$name = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
-			if(!empty($entry['numbers'])) {
-				foreach($entry['numbers'] as $type => $number) {
-					if($number == $exten) {
-						switch($entry['type']) {
-							case "internal":
-							case "external":
-								return array('description' => sprintf(_("Contact Manager: %s"),$name . "(" . $type . ")"),'edit_url' => 'config.php?display=contactmanager&action=showentry&group='.urlencode($entry['groupid']).'&entry='.urlencode($entry['uid']));
-							break;
-							case "userman":
-								return array('description' => sprintf(_("Contact Manager: %s"),$name . "(" . $type . ")"),'edit_url' => 'display=userman&action=showuser&user='.urlencode($entry['id']));
-							break;
-						}
-						break;
-					}
-				}
-			}
+	if (substr(trim($dest),0,22) == 'ext-contactmanager-sd,') {
+		$fcc = new \featurecode('contactmanager', 'app-contactmanager-sd');
+		$code = $fcc->getCodeActive();
+
+		if (empty($code)) {
+			return false;
 		}
-		return array();
-	} else {
+
+		$parts = explode(',',$dest);
+		$id = $parts[1];
+		$cm = \FreePBX::Contactmanager();
+		$speeddial = $cm->getSpeedDialByID($id);
+		if(!empty($speeddial)) {
+			$name = !empty($speeddial['displayname']) ? $speeddial['displayname'] : $speeddial['fname'] . " " . $speeddial['lname'];
+			switch($speeddial['grouptype']) {
+				case "private":
+				case "internal":
+				case "external":
+					return array('description' => sprintf(_("Contact Manager: %s (Speed Dial: %s) [%s]"),$name,$code.$speeddial['id'],$speeddial['number']),'edit_url' => 'config.php?display=contactmanager&action=showentry&group='.urlencode($speeddial['groupid']).'&entry='.urlencode($speeddial['entryid']));
+				break;
+				case "userman":
+					return array('description' => sprintf(_("Contact Manager: %s (Speed Dial: %s) [%s]"),$name,$code.$speeddial['id'],$speeddial['number']),'edit_url' => 'display=userman&action=showuser&user='.urlencode($speeddial['entryid']));
+				break;
+			}
+			return false;
+		}
 		return false;
 	}
-	/*
-	global $active_modules;
-
-	if (substr(trim($dest),0,14) == 'ext-miscdests,') {
-		$exten = explode(',',$dest);
-		$exten = $exten[1];
-		$thisexten = miscdests_get($exten);
-		if (empty($thisexten)) {
-			return array();
-		} else {
-			//$type = isset($active_modules['announcement']['type'])?$active_modules['announcement']['type']:'setup';
-			return array('description' => sprintf(_("Misc Destination: %s"),$thisexten['description']),
-			'edit_url' => 'config.php?display=miscdests&id='.urlencode($exten),
-		);
-	}
-} else {
-	return false;
-}
-*/
 }

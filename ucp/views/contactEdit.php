@@ -49,8 +49,8 @@
 			<label><?php echo _('Numbers')?></label>
 			<?php $contact['numbers'] = is_array($contact['numbers']) ? $contact['numbers'] : array(); ?>
 			<?php foreach($contact['numbers'] as $c => $number) {?>
-				<div class="form-inline item-container" >
-					<div class="pull-left">
+				<div class="form-inline item-container item-container-number row">
+					<div class="col-md-7">
 						<i class="fa fa-ban fa-fw delete" data-type="number"></i>
 						<input type="text" class="form-control number" data-name="number" value="<?php echo $number['number']?>">
 						<select class="form-control number" data-name="type">
@@ -59,8 +59,17 @@
 							<option value="cell" <?php echo ($number['type'] == "cell") ? 'selected' : ''?>><?php echo _('Cell')?></option>
 							<option value="other" <?php echo ($number['type'] == "other") ? 'selected' : ''?>><?php echo _('Other')?></option>
 						</select>
+						<label style="margin-left: 21px;">Dialing Country</label>
+						<select class="form-control number locale-template" data-name="locale" data-locale="<?php echo $number['locale']?>">
+							<?php foreach($regionlist as $key => $val) {
+								$selected = ($number['locale'] == $key)?'SELECTED':'';
+							?>
+								<option value="<?php echo $key?>" <?php echo $selected?>><?php echo $val?></option>
+							<?php } ?>
+						</select>
 					</div>
-					<div class="pull-right">
+					<div class="col-md-5">
+						<div class="<?php echo !$speeddialmodifications ? 'hidden' : ''?>">
 						<?php if($featurecode['enabled']) { ?>
 							<label><?php echo _('Speed Dial')?>:</label>
 							<div class="input-group">
@@ -71,13 +80,14 @@
 								</span>
 							</div>
 						<?php } ?>
-						<?php echo _('SMS')?>: <input type="checkbox" data-name="smsflag" data-toggle="toggle" data-size="small" data-on="<?php echo  _('Yes')?>" data-off="<?php echo  _('No')?>" <?php echo in_array("sms",$number['flags']) ? 'checked' : ''?>>
-						<?php echo _('Fax')?>: <input type="checkbox" data-name="faxflag" data-toggle="toggle" data-size="small" data-on="<?php echo  _('Yes')?>" data-off="<?php echo  _('No')?>" <?php echo in_array("fax",$number['flags']) ? 'checked' : ''?>>
+						</div>
+						<label><?php echo _('SMS')?>:</label> <input type="checkbox" data-name="smsflag" data-toggle="toggle" data-size="small" data-on="<?php echo  _('Yes')?>" data-off="<?php echo  _('No')?>" <?php echo in_array("sms",$number['flags']) ? 'checked' : ''?>>
+						<label><?php echo _('Fax')?>:</label> <input type="checkbox" data-name="faxflag" data-toggle="toggle" data-size="small" data-on="<?php echo  _('Yes')?>" data-off="<?php echo  _('No')?>" <?php echo in_array("fax",$number['flags']) ? 'checked' : ''?>>
 					</div>
 				</div>
 			<?php } ?>
-			<div class="form-inline item-container" >
-				<div class="pull-left">
+			<div class="form-inline item-container item-container-number row" >
+				<div class="col-md-7">
 					<i class="fa fa-ban fa-fw delete" data-type="number"></i>
 					<input type="text" class="form-control number" data-name="number" value="">
 					<select class="form-control number" data-name="type">
@@ -86,8 +96,15 @@
 						<option value="cell"><?php echo _('Cell')?></option>
 						<option value="other"><?php echo _('Other')?></option>
 					</select>
+					<label style="margin-left: 21px;">Dialing Country</label>
+					<select class="form-control number" data-name="locale" data-locale="">
+						<?php foreach($regionlist as $key => $val) {?>
+							<option value="<?php echo $key?>" <?php echo ($key == $defaultlocale) ? 'SELECTED' : ''?>><?php echo $val?></option>
+						<?php } ?>
+					</select>
 				</div>
-				<div class="pull-right">
+				<div class="col-md-5">
+					<div class="<?php echo !$speeddialmodifications ? 'hidden' : ''?>">
 					<?php if($featurecode['enabled']) { ?>
 						<label><?php echo _('Speed Dial')?>:</label>
 						<div class="input-group">
@@ -98,8 +115,9 @@
 							</span>
 						</div>
 					<?php } ?>
-					<?php echo _('SMS')?>: <input type="checkbox" data-name="smsflag" data-toggle="toggle" data-size="small" data-on="Yes" data-off="No">
-					<?php echo _('Fax')?>: <input type="checkbox" data-name="faxflag" data-toggle="toggle" data-size="small" data-on="Yes" data-off="No">
+					</div>
+					<label><?php echo _('SMS')?>:</label> <input type="checkbox" data-name="smsflag" data-toggle="toggle" data-size="small" data-on="Yes" data-off="No">
+					<label><?php echo _('Fax')?>:</label> <input type="checkbox" data-name="faxflag" data-toggle="toggle" data-size="small" data-on="Yes" data-off="No">
 				</div>
 			</div>
 			<button class="btn btn-default btn-xs add-additional" data-type="number"><i class="fa fa-plus fa-fw"></i><?php echo _('Add Number')?></button>

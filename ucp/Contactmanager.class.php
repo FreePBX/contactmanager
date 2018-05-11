@@ -308,7 +308,6 @@ class Contactmanager extends Modules{
 				if(!$this->editEntry($contact['id'])) {
 					$return = array("status" => false, "message" => _("Unauthorized"));
 				}
-
 				$entry = $this->cm->getEntryByID($contact['id']);
 				if(!empty($entry) && !empty($contact)) {
 					$types = array('emails','xmpps','websites','numbers');
@@ -352,10 +351,20 @@ class Contactmanager extends Modules{
 				if(!empty($g)) {
 					$displayvars['contact'] = $this->cm->getEntryByID($_REQUEST['id']);
 				}
+				$currentLocal = setlocale(LC_ALL, 0);
+				$locale = preg_split("/[_|\.]/", $currentLocal);
+				$locale = !empty($locale[1]) ? $locale[1] : 'US';
+				$displayvars['defaultlocale'] = $locale;
+				$displayvars['regionlist'] = $this->cm->getRegionList();
 				$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 				$return = $this->load_view(__DIR__.'/views/contactEdit.php',$displayvars);
 			break;
 			case "addcontactmodal":
+				$currentLocal = setlocale(LC_ALL, 0);
+				$locale = preg_split("/[_|\.]/", $currentLocal);
+				$locale = !empty($locale[1]) ? $locale[1] : 'US';
+				$displayvars['defaultlocale'] = $locale;
+				$displayvars['regionlist'] = $this->cm->getRegionList();
 				$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 				$return = $this->load_view(__DIR__.'/views/contactEdit.php',$displayvars);
 			break;
@@ -452,6 +461,8 @@ class Contactmanager extends Modules{
 				$g = $this->cm->getGroupByID($_REQUEST['group']);
 				if(!empty($g)) {
 					if($g['owner'] != -1) {
+						$displayvars['regionlist'] = $this->cm->getRegionList();
+						$displayvars['speeddialmodifications'] = $this->UCP->getCombinedSettingByID($this->user['id'],$this->module,'speeddial');
 						$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 						$displayvars['activeList'] = $g['name'];
 						$displayvars['add'] = true;
@@ -469,12 +480,15 @@ class Contactmanager extends Modules{
 			case "contact":
 				$g = $this->cm->getGroupByID($_REQUEST['group']);
 				if(!empty($g)) {
+					$displayvars['speeddialmodifications'] = $this->UCP->getCombinedSettingByID($this->user['id'],$this->module,'speeddial');
+					$displayvars['speeddialmodifications'] = false;
 					$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 					$displayvars['contact'] = $this->cm->getEntryByID($_REQUEST['id']);
 					if($g['owner'] == -1) {
 						$mainDisplay = $this->load_view(__DIR__.'/views/contactro.php',$displayvars);
 					} else {
 						if(!empty($_REQUEST['mode']) && $_REQUEST['mode'] == 'edit') {
+							$displayvars['regionlist'] = $this->cm->getRegionList();
 							$mainDisplay = $this->load_view(__DIR__.'/views/contact.php',$displayvars);
 						} else {
 							$displayvars['editable'] = true;
