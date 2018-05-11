@@ -265,7 +265,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					continue;
 				}
 				$this->deleteNumbersByEntryID($entry['uid']);
-				foreach($entry['numbers'] as $number) {
+				foreach($entry['numbers'] as &$number) {
 					if(empty($number['locale']) && $number['type'] !== 'internal') {
 						$number['locale'] = 'AUTO';
 					}
