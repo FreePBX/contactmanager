@@ -154,7 +154,9 @@ function addNumber() {
 	row+= "<br>";
 	row+= "<label>"+_("Dialing Country")+"</label> ";
 	row+= '<select class="form-control number locale" name="numberlocale['+ index +']" data-locale="" data-id="'+index+'">';
-	row+= $("select.locale").first().html();
+	$.each(regionlist, function(k,v) {
+		row+= "<option value=\"" + k + "\">" + v + "</option>";
+	});
 	row+= '</select>';
 
 	if(speeddialcode.enabled) {

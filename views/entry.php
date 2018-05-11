@@ -18,7 +18,7 @@ foreach ($users as $u) {
 	$userlist[$u['id']] = ($desc ? $desc . ' ' : '') . '(' . $u['username'] . ')';
 }
 ?>
-<script language="javascript">var users = <?php echo json_encode($users)?>, numbertypes = <?php echo json_encode($numbertypes)?>;</script>
+<script language="javascript">var users = <?php echo json_encode($users)?>, numbertypes = <?php echo json_encode($numbertypes)?>, regionlist = <?php echo json_encode($regionlist)?>;</script>
 <div class="fpbx-container">
 	<div class="display full-border">
 		<form name="entry" class="fpbx-submit" method="post" action="config.php?display=contactmanager" <?php if(isset($entry['id'])) {?>data-fpbx-delete="config.php?display=contactmanager&amp;group=<?php echo $group['id']?>&amp;entry=<?php echo $entry['id']?>&amp;action=delentry<?php }?>">
