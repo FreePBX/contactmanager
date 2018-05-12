@@ -254,9 +254,6 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 		$groups = $this->getGroups();
 
-		$currentLocal = setlocale(LC_ALL, 0);
-		$locale = preg_split("/[_|\.]/", $currentLocal);
-		$locale = !empty($locale[1]) ? $locale[1] : 'US';
 		$phoneUtil = PhoneNumberUtil::getInstance();
 		foreach($groups as $group) {
 			$entries = $this->getEntriesByGroupID($group['id']);
@@ -267,7 +264,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$this->deleteNumbersByEntryID($entry['uid']);
 				foreach($entry['numbers'] as &$number) {
 					if(empty($number['locale']) && $number['type'] !== 'internal') {
-						$number['locale'] = 'AUTO';
+						$number['locale'] = '';
 					}
 				}
 				$this->addNumbersByEntryID($entry['uid'], $entry['numbers']);
