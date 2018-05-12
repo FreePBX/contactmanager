@@ -252,25 +252,26 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			$sth1->execute(array("id" => $entry['entryid']));
 		}
 
-		$groups = $this->getGroups();
-
-		$phoneUtil = PhoneNumberUtil::getInstance();
-		foreach($groups as $group) {
-			$entries = $this->getEntriesByGroupID($group['id']);
-			foreach($entries as $entry) {
-				if(empty($entry['numbers'])) {
-					continue;
-				}
-				$this->deleteNumbersByEntryID($entry['uid']);
-				foreach($entry['numbers'] as &$number) {
-					if(empty($number['locale']) && $number['type'] !== 'internal') {
-						$number['locale'] = '';
+		if(!$this->getConfig("strippedUpgrade")) {
+			$groups = $this->getGroups();
+			$phoneUtil = PhoneNumberUtil::getInstance();
+			foreach($groups as $group) {
+				$entries = $this->getEntriesByGroupID($group['id']);
+				foreach($entries as $entry) {
+					if(empty($entry['numbers'])) {
+						continue;
 					}
+					$this->deleteNumbersByEntryID($entry['uid']);
+					foreach($entry['numbers'] as &$number) {
+						if(empty($number['locale']) && $number['type'] !== 'internal') {
+							$number['locale'] = '';
+						}
+					}
+					$this->addNumbersByEntryID($entry['uid'], $entry['numbers']);
 				}
-				$this->addNumbersByEntryID($entry['uid'], $entry['numbers']);
 			}
+			$this->getConfig("strippedUpgrade",true);
 		}
-
 
 		// CONTACTMANLOOKUPLENGTH in Advanced Settings of FreePBX
 		//
