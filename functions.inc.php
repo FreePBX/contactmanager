@@ -29,7 +29,7 @@ function contactmanager_getdestinfo($dest) {
 		$code = $fcc->getCodeActive();
 
 		if (empty($code)) {
-			return false;
+			return array();
 		}
 
 		$parts = explode(',',$dest);
@@ -48,8 +48,10 @@ function contactmanager_getdestinfo($dest) {
 					return array('description' => sprintf(_("Contact Manager: %s (Speed Dial: %s) [%s]"),$name,$code.$speeddial['id'],$speeddial['number']),'edit_url' => 'display=userman&action=showuser&user='.urlencode($speeddial['entryid']));
 				break;
 			}
-			return false;
+			return array();
 		}
+		return array();
+	} else {
 		return false;
 	}
 }
