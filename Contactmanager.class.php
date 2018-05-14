@@ -252,7 +252,31 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			$sth1->execute(array("id" => $entry['entryid']));
 		}
 
-		if(!$this->getConfig("strippedUpgrade")) {
+		if(!$this->getConfig("strippedUpgrade2")) {
+			$users = $this->userman->getAllUsers();
+			$groups = $this->getGroups();
+			foreach($users as $user) {
+				$showingroups = $this->freepbx->Userman->getCombinedModuleSettingByID($user['id'],'contactmanager','showingroups');
+				$showingroups = is_array($showingroups) ? $showingroups : array();
+				foreach ($groups as $group) {
+					if ($group['type'] != 'internal') {
+						continue;
+					}
+					if (in_array($group['id'],$showingroups) || in_array("*",$showingroups)) {
+						$user['extraData'] = $user;
+						$user['user'] = $user['id'];
+						$this->updateUsermanEntryByGroupID($group['id'], $this->transformUsermanDataToEntry($user));
+					} else {
+						$entries = $this->getEntriesByGroupID($group['id']);
+						foreach ($entries as $entryid => $entry) {
+							if ($entry['user'] == $user['id']) {
+								$this->deleteEntryByID($entryid);
+							}
+						}
+					}
+				}
+			}
+
 			$groups = $this->getGroups();
 			$phoneUtil = PhoneNumberUtil::getInstance();
 			foreach($groups as $group) {
@@ -270,7 +294,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					$this->addNumbersByEntryID($entry['uid'], $entry['numbers']);
 				}
 			}
-			$this->getConfig("strippedUpgrade",true);
+			$this->getConfig("strippedUpgrade2",true);
 		}
 
 		// CONTACTMANLOOKUPLENGTH in Advanced Settings of FreePBX
@@ -1018,7 +1042,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			if($this->freepbx->Userman->getCombinedModuleSettingByID($user,'contactmanager','show')) {
 				foreach ($groups as $group) {
 					if ($group['type'] == 'internal') {
-						$data = $this->Userman->getUserByID($user);
+						$data = $this->userman->getUserByID($user);
 						$data['extraData'] = $data;
 						$data['user'] = $user;
 						$this->updateUsermanEntryByGroupID($group['id'], $this->transformUsermanDataToEntry($data));
@@ -1054,13 +1078,12 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		foreach($data['users'] as $user) {
 			$showingroups = $this->freepbx->Userman->getCombinedModuleSettingByID($user,'contactmanager','showingroups');
 			$showingroups = is_array($showingroups) ? $showingroups : array();
-			$groups = $this->getGroups();
 			foreach ($groups as $group) {
 				if ($group['type'] != 'internal') {
 					continue;
 				}
 				if (in_array($group['id'],$showingroups) || in_array("*",$showingroups)) {
-					$data = $this->Userman->getUserByID($user);
+					$data = $this->userman->getUserByID($user);
 					$data['extraData'] = $data;
 					$data['user'] = $user;
 					$this->updateUsermanEntryByGroupID($group['id'], $this->transformUsermanDataToEntry($data));
@@ -1544,16 +1567,20 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$e = array();
 		foreach($ents as $uid => $entry) {
 			$entry = array_merge($entry,array(
-				'xmpp' => array(
+				'xmpps' => array(
 
 				),
-				'email' => array(
+				'emails' => array(
 
 				),
-				'website' => array(
+				'websites' => array(
+
+				),
+				'numbers' => array(
 
 				),
 				'image' => false,
+				'default_extension' => null,
 				'internal' => $entry['type'] === 'internal' ? true : false
 			));
 
@@ -1618,6 +1645,14 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				foreach($images as $image) {
 					if($image['uid'] == $entry['user']) {
 						$entries[$image['entryid']]['image'] = true; //we do this to not explode the size of the json
+					}
+				}
+				$users = $this->userman->getAllUsers();
+				foreach($users as $user) {
+					foreach($entries as &$entry) {
+						if($entry['user'] === $user['id']) {
+							$entry['default_extension'] = $user['default_extension'];
+						}
 					}
 				}
 			break;
@@ -2586,34 +2621,6 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		foreach($groups as $group) {
 			switch($group['type']) {
 				case "internal":
-					$entries = $this->getEntriesByGroupID($group['id']);
-					if(!empty($entries) && is_array($entries)) {
-						$final = array();
-						foreach($entries as $entry) {
-							$entry['type'] = "internal";
-							//standardize all phone numbers, digits only
-							$entry['numbers'] = array(
-							'cell' => preg_replace('/\D/','',$entry['cell']),
-							'work' => preg_replace('/\D/','',$entry['work']),
-							'home' => preg_replace('/\D/','',$entry['home']),
-							'fax' => preg_replace('/\D/','',$entry['fax']),
-							);
-							unset($entry['cell']);
-							unset($entry['work']);
-							unset($entry['home']);
-							unset($entry['fax']);
-							if(isset($entry['xmpp'])) {
-								$entry['xmpps']['xmpp'] = $entry['xmpp'];
-								unset($entry['xmpp']);
-							}
-							$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
-							$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['username'];
-							$entry['groupid'] = $group['id'];
-							$entry['groupname'] = $group['name'];
-							$contacts[] = $entry;
-						}
-					}
-				break;
 				case "private" :
 				case "external":
 					$entries = $this->getEntriesByGroupID($group['id']);
