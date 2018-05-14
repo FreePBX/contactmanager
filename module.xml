@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.43.1</version>
+	<version>13.0.43.2</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.43.2* Fix bad destinations
 		*13.0.43* FREEPBX-11723 FREEPBX-16310 FREEPBX-16360 FREEPBX-16643 FREEPBX-17376 FREEPBX-17467 FREEPBX-17468 FREEPBX-17471
 		*13.0.42.13* Feature/FREEPBX-17213
 		*13.0.42.12* Better number lookup
