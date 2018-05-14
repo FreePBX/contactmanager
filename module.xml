@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>14.0.4.1</version>
+	<version>14.0.4.2</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*14.0.4.2* Fix bad destinations
 		*14.0.4* FREEPBX-11723 FREEPBX-16310 FREEPBX-16360 FREEPBX-16643 FREEPBX-17376 FREEPBX-17467 FREEPBX-17468 FREEPBX-17471
 		*14.0.3.7* FREEPBX-17213
 		*14.0.3.6* FREEPBX-17278 Import Contacts with Bulk Handler not working
