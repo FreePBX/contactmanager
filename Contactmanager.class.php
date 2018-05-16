@@ -459,7 +459,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			$parts = explode(".",$_REQUEST['did']);
 			$did = $parts[0];
 			if(!empty($did)) {
-				$did = preg_replace("/\D/","",$parts[0]);
+				$did = preg_replace("/[^0-9\*#]/","",$parts[0]);
 				if(!empty($_POST['ext'])) {
 					$user = $this->userman->getUserByDefaultExtension($_POST['ext']);
 					if(!empty($user)) {
@@ -1644,7 +1644,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$images = $this->getImagesByGroupID($groupid,'internal');
 				foreach($images as $image) {
 					if($image['uid'] == $entry['user']) {
-						$entries[$image['entryid']]['image'] = true; //we do this to not explode the size of the json
+						$entries[$entry['uid']]['image'] = true; //we do this to not explode the size of the json
 					}
 				}
 				$users = $this->userman->getAllUsers();
@@ -2160,7 +2160,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$data[':nationalnumber'] = null;
 				$data[':E164'] = null;
 				$data[':regioncode'] = null;
-				$data[':stripped'] = preg_replace("/\D/","",$data[':number']);
+				$data[':stripped'] = preg_replace("/[^0-9\*#]/","",$data[':number']);
 				$data[':locale'] = '';
 				$data[':possibleshort'] = null;
 			} else {
@@ -2176,14 +2176,14 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					$data[':E164'] = $phoneUtil->format($info, PhoneNumberFormat::E164);
 					$data[':regioncode'] = $phoneUtil->getRegionCodeForNumber($info);
 					$data[':possibleshort'] = $shortUtil->isPossibleShortNumber($info) ? 1 : 0;
-					$data[':stripped'] = !empty($data[':possibleshort']) ? preg_replace("/\D/","",$data[':number'])  : preg_replace("/\D/","",$data[':E164']);
+					$data[':stripped'] = !empty($data[':possibleshort']) ? preg_replace("/[^0-9\*#]/","",$data[':number'])  : preg_replace("/[^0-9\*#]/","",$data[':E164']);
 					$data[':locale'] = $number['locale'];
 				} catch (NumberParseException $e) {
 					$data[':countrycode'] = null;
 					$data[':nationalnumber'] = null;
 					$data[':E164'] = null;
 					$data[':regioncode'] = null;
-					$data[':stripped'] = preg_replace("/\D/","",$data[':number']);
+					$data[':stripped'] = preg_replace("/[^0-9\*#]/","",$data[':number']);
 					$data[':locale'] = '';
 					$data[':possibleshort'] = null;
 				}
@@ -2647,9 +2647,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 										if(!is_array($numbers[$number['type']])) {
 											$numbers[$number['type']] = array($numbers[$number['type']]);
 										}
-										$numbers[$number['type']][] = preg_replace("/\D/","",$number['number']);
+										$numbers[$number['type']][] = preg_replace("/[^0-9\*#]/","",$number['number']);
 									} else {
-										$numbers[$number['type']] = preg_replace("/\D/","",$number['number']);
+										$numbers[$number['type']] = preg_replace("/[^0-9\*#]/","",$number['number']);
 									}
 								}
 							}
@@ -2682,7 +2682,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	}
 
 	public function lookupNumberByUserID($id, $number) {
-		$number = preg_replace("/\D/","",$number);
+		$number = preg_replace("/[^0-9\*#]/","",$number);
 		$number = trim($number);
 		if($number == "") {
 			return false;
@@ -3068,6 +3068,10 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 		switch ($type) {
 		case 'contacts':
+			$ret = array(
+				'status' => true,
+			);
+			return $ret;
 			foreach ($rawData as $data) {
 				if (empty($data['groupname'])) {
 					return array(
