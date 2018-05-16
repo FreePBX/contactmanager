@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-14 15:22-0400\n"
+"POT-Creation-Date: 2018-05-15 21:05-0400\n"
 "PO-Revision-Date: 2016-09-02 15:22+0200\n"
 "Last-Translator: Kenichi <k.kitani@qloog.com>\n"
 "Language-Team: Japanese <http://weblate.freepbx.org/projects/freepbx/"
@@ -132,7 +132,7 @@ msgstr "このグループとグループ内の連絡先をすべて削除して
 msgid "Are you sure you wish to delete this contact?"
 msgstr ""
 
-#: Contactmanager.class.php:3246
+#: Contactmanager.class.php:3250
 msgid "Automatically Determine"
 msgstr ""
 
@@ -484,11 +484,11 @@ msgstr "グループを更新しました"
 msgid "Group name can not be blank"
 msgstr "グループ名は空にできません"
 
-#: Contactmanager.class.php:3075
+#: Contactmanager.class.php:3079
 msgid "Group name is required."
 msgstr "グループ名は必須です。"
 
-#: Contactmanager.class.php:3108
+#: Contactmanager.class.php:3112
 msgid "Group not found and could not be created."
 msgstr "グループは見つからず、作成できませんでした。"
 
@@ -504,7 +504,7 @@ msgstr "グループを削除しました"
 msgid "Group successfully updated"
 msgstr "グループを更新しました"
 
-#: Contactmanager.class.php:3082
+#: Contactmanager.class.php:3086
 msgid "Group type is required."
 msgstr "グループの種類を入力してください。"
 
@@ -793,11 +793,11 @@ msgstr ""
 msgid "Unauthorized"
 msgstr "非表示"
 
-#: Contactmanager.class.php:3247
+#: Contactmanager.class.php:3251
 msgid "Unknown"
 msgstr ""
 
-#: Contactmanager.class.php:3158
+#: Contactmanager.class.php:3162
 msgid "Unknown data type."
 msgstr "不明なデータタイプ。"
 

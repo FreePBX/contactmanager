@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-14 15:22-0400\n"
+"POT-Creation-Date: 2018-05-15 21:05-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -144,7 +144,7 @@ msgstr ""
 msgid "Are you sure you wish to delete this contact?"
 msgstr ""
 
-#: Contactmanager.class.php:3246
+#: Contactmanager.class.php:3250
 msgid "Automatically Determine"
 msgstr ""
 
@@ -567,11 +567,11 @@ msgstr ""
 msgid "Group name can not be blank"
 msgstr ""
 
-#: Contactmanager.class.php:3075
+#: Contactmanager.class.php:3079
 msgid "Group name is required."
 msgstr ""
 
-#: Contactmanager.class.php:3108
+#: Contactmanager.class.php:3112
 msgid "Group not found and could not be created."
 msgstr ""
 
@@ -587,7 +587,7 @@ msgstr ""
 msgid "Group successfully updated"
 msgstr ""
 
-#: Contactmanager.class.php:3082
+#: Contactmanager.class.php:3086
 msgid "Group type is required."
 msgstr ""
 
@@ -926,11 +926,11 @@ msgstr ""
 msgid "Unauthorized"
 msgstr ""
 
-#: Contactmanager.class.php:3247
+#: Contactmanager.class.php:3251
 msgid "Unknown"
 msgstr ""
 
-#: Contactmanager.class.php:3158
+#: Contactmanager.class.php:3162
 msgid "Unknown data type."
 msgstr ""
 
