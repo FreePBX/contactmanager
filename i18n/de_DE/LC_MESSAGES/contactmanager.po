@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-14 15:18-0400\n"
+"POT-Creation-Date: 2018-05-15 21:02-0400\n"
 "PO-Revision-Date: 2018-02-16 20:01+0200\n"
 "Last-Translator: Nils <Nils@heckenkamp.info>\n"
 "Language-Team: German <http://weblate.freepbx.org/projects/freepbx/"
@@ -134,7 +134,7 @@ msgstr ""
 "Sind Sie sicher, dass Sie diese Gruppe und alle darin enthaltenen Kontakte "
 "wirklich löschen wollen?"
 
-#: Contactmanager.class.php:3235
+#: Contactmanager.class.php:3239
 msgid "Automatically Determine"
 msgstr ""
 
@@ -473,11 +473,11 @@ msgstr "Gruppeneintrag erfolgreich aktualisiert"
 msgid "Group name can not be blank"
 msgstr "Gruppenname darf nicht leer sein"
 
-#: Contactmanager.class.php:3066
+#: Contactmanager.class.php:3070
 msgid "Group name is required."
 msgstr "Gruppenname ist erforderlich."
 
-#: Contactmanager.class.php:3099
+#: Contactmanager.class.php:3103
 msgid "Group not found and could not be created."
 msgstr "Gruppe wurde nicht gefunden und konnte nicht erstellt werden."
 
@@ -493,7 +493,7 @@ msgstr "Gruppe erfolgreich gelöscht"
 msgid "Group successfully updated"
 msgstr "Gruppe erfolgreich aktualisiert"
 
-#: Contactmanager.class.php:3073
+#: Contactmanager.class.php:3077
 msgid "Group type is required."
 msgstr "Gruppentyp ist erforderlich."
 
@@ -755,11 +755,11 @@ msgstr "Der Gravatar für %s konnte nicht gefunden werden"
 msgid "Unauthorized"
 msgstr "Keine Berechtigung"
 
-#: Contactmanager.class.php:3236
+#: Contactmanager.class.php:3240
 msgid "Unknown"
 msgstr ""
 
-#: Contactmanager.class.php:3148
+#: Contactmanager.class.php:3152
 msgid "Unknown data type."
 msgstr "Unbekannter Datentyp."
 

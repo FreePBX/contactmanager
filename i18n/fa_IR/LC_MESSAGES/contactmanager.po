@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-14 15:18-0400\n"
+"POT-Creation-Date: 2018-05-15 21:02-0400\n"
 "PO-Revision-Date: 2016-10-08 12:16+0200\n"
 "Last-Translator: psdk <hyavari26@gmail.com>\n"
 "Language-Team: Persian (Iran) <http://weblate.freepbx.org/projects/freepbx/"
@@ -132,7 +132,7 @@ msgstr "آیا از حذف این مخاطب مطمئن هستید؟"
 msgid "Are you sure you want to delete this group and all of it's contacts?"
 msgstr "آیا از حذف این گروه و تمام مخاطبین آن مطمئن هستید؟"
 
-#: Contactmanager.class.php:3235
+#: Contactmanager.class.php:3239
 msgid "Automatically Determine"
 msgstr ""
 
@@ -467,11 +467,11 @@ msgstr "ورودی گروه با موفقیت به روز شد"
 msgid "Group name can not be blank"
 msgstr "نام گروه نمیتواند خالی باشد"
 
-#: Contactmanager.class.php:3066
+#: Contactmanager.class.php:3070
 msgid "Group name is required."
 msgstr "نام گروه مورد نیاز است."
 
-#: Contactmanager.class.php:3099
+#: Contactmanager.class.php:3103
 msgid "Group not found and could not be created."
 msgstr "گروه یافت نشد و نمیتوان آن را ایجاد کرد."
 
@@ -487,7 +487,7 @@ msgstr "گروه با موفقیت حذف شد"
 msgid "Group successfully updated"
 msgstr "گروه با موفقیت به روز شد"
 
-#: Contactmanager.class.php:3073
+#: Contactmanager.class.php:3077
 msgid "Group type is required."
 msgstr "نوع گروه مورد نیاز است."
 
@@ -739,11 +739,11 @@ msgstr "آواتاری برای %s یافت نشد"
 msgid "Unauthorized"
 msgstr "ناشناخته"
 
-#: Contactmanager.class.php:3236
+#: Contactmanager.class.php:3240
 msgid "Unknown"
 msgstr ""
 
-#: Contactmanager.class.php:3148
+#: Contactmanager.class.php:3152
 msgid "Unknown data type."
 msgstr "نوع دیتا نامشخص."
 

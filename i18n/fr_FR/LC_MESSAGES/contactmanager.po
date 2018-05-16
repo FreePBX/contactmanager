@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-14 15:18-0400\n"
+"POT-Creation-Date: 2018-05-15 21:02-0400\n"
 "PO-Revision-Date: 2017-12-11 23:27+0200\n"
 "Last-Translator: JCattan <jeremie@famillecattan.com>\n"
 "Language-Team: French <http://weblate.freepbx.org/projects/freepbx/"
@@ -132,7 +132,7 @@ msgstr ""
 msgid "Are you sure you want to delete this group and all of it's contacts?"
 msgstr ""
 
-#: Contactmanager.class.php:3235
+#: Contactmanager.class.php:3239
 msgid "Automatically Determine"
 msgstr ""
 
@@ -465,11 +465,11 @@ msgstr ""
 msgid "Group name can not be blank"
 msgstr ""
 
-#: Contactmanager.class.php:3066
+#: Contactmanager.class.php:3070
 msgid "Group name is required."
 msgstr ""
 
-#: Contactmanager.class.php:3099
+#: Contactmanager.class.php:3103
 msgid "Group not found and could not be created."
 msgstr ""
 
@@ -485,7 +485,7 @@ msgstr ""
 msgid "Group successfully updated"
 msgstr ""
 
-#: Contactmanager.class.php:3073
+#: Contactmanager.class.php:3077
 msgid "Group type is required."
 msgstr ""
 
@@ -739,11 +739,11 @@ msgstr ""
 msgid "Unauthorized"
 msgstr ""
 
-#: Contactmanager.class.php:3236
+#: Contactmanager.class.php:3240
 msgid "Unknown"
 msgstr ""
 
-#: Contactmanager.class.php:3148
+#: Contactmanager.class.php:3152
 msgid "Unknown data type."
 msgstr ""
 
