@@ -1644,7 +1644,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$images = $this->getImagesByGroupID($groupid,'internal');
 				foreach($images as $image) {
 					if($image['uid'] == $entry['user']) {
-						$entries[$image['entryid']]['image'] = true; //we do this to not explode the size of the json
+						$entries[$entry['uid']]['image'] = true; //we do this to not explode the size of the json
 					}
 				}
 				$users = $this->userman->getAllUsers();
