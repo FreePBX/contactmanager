@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.43.4</version>
+	<version>13.0.43.5</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.43.5* Correctly assign internal images
 		*13.0.43.4* Fix bug with internal images
 		*13.0.43.3* Fix bugs with internal contacts
 		*13.0.43.2* Fix bad destinations
