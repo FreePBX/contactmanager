@@ -1642,16 +1642,18 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		switch($group['type']) {
 			case "internal":
 				$images = $this->getImagesByGroupID($groupid,'internal');
+				$hasImages = array();
 				foreach($images as $image) {
-					if($image['uid'] == $entry['user']) {
-						$entries[$entry['uid']]['image'] = true; //we do this to not explode the size of the json
-					}
+					$hasImages[] = $image['uid'];
 				}
 				$users = $this->userman->getAllUsers();
 				foreach($users as $user) {
 					foreach($entries as &$entry) {
 						if($entry['user'] === $user['id']) {
 							$entry['default_extension'] = $user['default_extension'];
+						}
+						if(in_array($entry['user'],$hasImages)) {
+							$entry['image'] = true; //we do this to not explode the size of the json
 						}
 					}
 				}
@@ -3186,7 +3188,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		case 'contacts':
 			$groups = $this->getGroups();
 			foreach ($groups as $group) {
-				if ($group['type'] === 'external' || $group['type'] === 'private' ) {
+				if ($group['type'] === 'internal') {
 					continue;
 				}
 
