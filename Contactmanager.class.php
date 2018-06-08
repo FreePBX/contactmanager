@@ -19,6 +19,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	private $token = null;
 	private $cachedSpeedDials = array();
 	public $tmp;
+	private $maxAvatar = 200; //this needs to be set in advanced settings (1-2048)
 
 	public function __construct($freepbx = null) {
 		$this->db = $freepbx->Database;
@@ -693,11 +694,10 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 * Resize and image using constraints
 	 * @param  string  $data         Binary image data
 	 * @param  string  $filename     The final filename
-	 * @param  integer $thumb_width  The max width
-	 * @param  integer $thumb_height The max height
 	 * @return string                The basename of the filepath
 	 */
-	public function resizeImage($data, $filename, $thumb_width=90, $thumb_height=75) {
+	public function resizeImage($data, $filename) {
+		$thumb_width = $thumb_height = $this->maxAvatar;
 		$image = imagecreatefromstring($data);
 		$filename = $this->tmp.'/'.$filename.'.png';
 		$width = imagesx($image);
@@ -733,7 +733,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 * @source https://gravatar.com/site/implement/images/php/
 	 */
 	function getGravatar($email) {
-		$s = 75; //Size in pixels, defaults to 80px [ 1 - 2048 ]
+		$s = $this->maxAvatar; //Size in pixels, defaults to 80px [ 1 - 2048 ]
 		$d = '404'; //Default imageset to use [ 404 | mm | identicon | monsterid | wavatar ]
 		$r = 'g'; //Maximum rating (inclusive) [ g | pg | r | x ]
 		$pest = new \Pest('https://www.gravatar.com/avatar/');
