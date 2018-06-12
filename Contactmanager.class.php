@@ -5,11 +5,16 @@
 //
 namespace FreePBX\modules;
 include __DIR__.'/vendor/autoload.php';
+use BMO;
+use FreePBX_Helpers;
+use Exception;
+use UnexpectedValueException;
+use PDO;
 use libphonenumber\PhoneNumberUtil;
 use libphonenumber\NumberParseException;
 use libphonenumber\PhoneNumberFormat;
 use libphonenumber\ShortNumberInfo;
-class Contactmanager extends \FreePBX_Helpers implements \BMO {
+class Contactmanager extends FreePBX_Helpers implements BMO {
 	private $message = '';
 	private $lookupCache = array();
 	private $contactsCache = array();
@@ -140,7 +145,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			$sql = "SELECT * FROM contactmanager_entry_userman_images";
 			$sth = $this->db->prepare($sql);
 			$sth->execute();
-			$tmp = $sth->fetchAll(\PDO::FETCH_ASSOC);
+			$tmp = $sth->fetchAll(PDO::FETCH_ASSOC);
 			$this->allImages = array();
 			foreach($tmp as $t) {
 				$this->allImages[$t['uid']] = true;
@@ -165,7 +170,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "SELECT * FROM contactmanager_groups WHERE type = 'userman'";
 		$sth = $this->db->prepare($sql);
 		$sth->execute();
-		$oldgrps = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$oldgrps = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 		$sql = "UPDATE contactmanager_groups SET type = 'internal' WHERE type = 'userman'";
 		$sth = $this->db->prepare($sql);
@@ -188,7 +193,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			$sql = "SELECT e.* FROM contactmanager_group_entries e, contactmanager_groups g WHERE type = 'internal' AND e.groupid = g.id";
 			$sth = $this->db->prepare($sql);
 			$sth->execute();
-			$entries = $sth->fetchAll(\PDO::FETCH_ASSOC);
+			$entries = $sth->fetchAll(PDO::FETCH_ASSOC);
 			foreach($entries as $entry) {
 				$uid = $entry['user'];
 				$gs = $this->userman->getModuleSettingByID($uid,"contactmanager","showingroups");
@@ -236,7 +241,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "SELECT i.*, e.user FROM contactmanager_entry_images i, contactmanager_group_entries e, contactmanager_groups g WHERE i.entryid = e.id AND e.groupid = g.id AND g.type = 'internal'";
 		$sth = $this->db->prepare($sql);
 		$sth->execute();
-		$entries = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$entries = $sth->fetchAll(PDO::FETCH_ASSOC);
 		$sql = "INSERT INTO contactmanager_entry_userman_images (`uid`,`image`,`format`,`gravatar`) VALUES (:uid, :image, :format, :gravatar)";
 		$sth = $this->db->prepare($sql);
 		$sql1 = "DELETE FROM contactmanager_entry_images WHERE entryid = :id";
@@ -249,7 +254,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					"format" => $entry['format'],
 					"gravatar" => $entry['gravatar']
 				));
-			} catch(\Exception $e) {}
+			} catch(Exception $e) {}
 			$sth1->execute(array("id" => $entry['entryid']));
 		}
 
@@ -496,7 +501,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "SELECT e.*, s.id as speeddial, n.number, n.type as numbertype, g.type as grouptype FROM contactmanager_entry_speeddials s, contactmanager_group_entries e, contactmanager_entry_numbers n, contactmanager_groups g WHERE e.groupid = g.id AND e.id = s.entryid AND n.id = s.numberid ORDER BY s.id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute();
-		$this->cachedSpeedDials = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$this->cachedSpeedDials = $sth->fetchAll(PDO::FETCH_ASSOC);
 		return $this->cachedSpeedDials;
 	}
 
@@ -532,7 +537,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			));
 		}
 
-		$ret = $sth->fetch(\PDO::FETCH_ASSOC);
+		$ret = $sth->fetch(PDO::FETCH_ASSOC);
 		return empty($ret);
 	}
 
@@ -621,34 +626,25 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 								return array("status" => true, "name" => $dname, "filename" => $dname.".png");
 							} else {
 								return array("status" => false, "message" => _("Unsupported file format"));
-								break;
 							}
 						break;
 						case UPLOAD_ERR_INI_SIZE:
 							return array("status" => false, "message" => _("The uploaded file exceeds the upload_max_filesize directive in php.ini"));
-						break;
 						case UPLOAD_ERR_FORM_SIZE:
 							return array("status" => false, "message" => _("The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form"));
-						break;
 						case UPLOAD_ERR_PARTIAL:
 							return array("status" => false, "message" => _("The uploaded file was only partially uploaded"));
-						break;
 						case UPLOAD_ERR_NO_FILE:
 							return array("status" => false, "message" => _("No file was uploaded"));
-						break;
 						case UPLOAD_ERR_NO_TMP_DIR:
 							return array("status" => false, "message" => _("Missing a temporary folder"));
-						break;
 						case UPLOAD_ERR_CANT_WRITE:
 							return array("status" => false, "message" => _("Failed to write file to disk"));
-						break;
 						case UPLOAD_ERR_EXTENSION:
 							return array("status" => false, "message" => _("A PHP extension stopped the file upload"));
-						break;
 					}
 				}
 				return array("status" => false, "message" => _("Can Not Find Uploaded Files"));
-			break;
 			case 'grid':
 				$group = $this->getGroupByID($_REQUEST['group']);
 				$entries = $this->getEntriesByGroupID($_REQUEST['group']);
@@ -686,7 +682,6 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					break;
 				}
 				return $final;
-			break;
 		}
 	}
 
@@ -740,17 +735,10 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$email = md5( strtolower( trim( $email ) ) );
 		try{
 			return $pest->get($email.'?s='.$s.'&d='.$d.'&r='.$r);
-		} catch(\Exception $e) {
-			switch(get_class($e)) {
-				case "Pest_NotFound":
-					return false;
-				break;
-				default:
-					return false;
-				break;
-			}
-		}
+		} catch(Exception $e) {
+            return false;
 
+		}
 	}
 
 	/**
@@ -880,7 +868,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 				switch ($grouptype) {
 					case "internal":
-						throw new \Exception("Cant add users this way");
+						throw new UnexpectedValueException("Cant add users this way");
 					break;
 					case "private":
 					case "external":
@@ -943,7 +931,6 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		);
 
 		$content = '';
-		//
 
 		switch($action) {
 			case "speeddials":
@@ -1288,7 +1275,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "SELECT * FROM contactmanager_groups ORDER BY `id`";
 		$sth = $this->db->prepare($sql);
 		$sth->execute();
-		$this->groupsCache = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$this->groupsCache = $sth->fetchAll(PDO::FETCH_ASSOC);
 		return $this->groupsCache;
 	}
 
@@ -1300,7 +1287,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "SELECT * FROM contactmanager_groups ORDER BY id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute();
-		$array = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$array = $sth->fetchAll(PDO::FETCH_ASSOC);
 		foreach($array as $a) {
 			$final[$a['type']][] = $a;
 		}
@@ -1330,7 +1317,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql .= " ORDER BY id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $owner));
-		$ret = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$ret = $sth->fetchAll(PDO::FETCH_ASSOC);
 		return $ret;
 	}
 
@@ -1343,7 +1330,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "SELECT * FROM contactmanager_groups WHERE `owner` = :id ORDER BY id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $owner));
-		return $sth->fetchAll(\PDO::FETCH_ASSOC);
+		return $sth->fetchAll(PDO::FETCH_ASSOC);
 	}
 
 	/**
@@ -1361,7 +1348,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "SELECT * FROM contactmanager_groups WHERE `id` = :id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $id));
-		$group = $sth->fetch(\PDO::FETCH_ASSOC);
+		$group = $sth->fetch(PDO::FETCH_ASSOC);
 		$this->groupCache[$id] = $group;
 		return $group;
 	}
@@ -1478,7 +1465,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_group_entries as e, contactmanager_groups as g WHERE e.id = :id AND e.groupid = g.id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $id));
-		$entry = $sth->fetch(\PDO::FETCH_ASSOC);
+		$entry = $sth->fetch(PDO::FETCH_ASSOC);
 
 		$numbers = $this->getNumbersByEntryID($id);
 		if ($numbers) {
@@ -1548,7 +1535,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$entry['default_extension'] = $user['default_extension'];
 			break;
 			default:
-				throw new \Exception("Unknown type of {$group['type']}");
+				throw new UnexpectedValueException("Unknown type of {$group['type']}");
 			break;
 		}
 		return $entry;
@@ -1563,7 +1550,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "SELECT e.id, e.id as uid, e.groupid, e.user, e.displayname, e.fname, e.lname, e.title, e.company, e.address, g.type FROM contactmanager_group_entries e, contactmanager_groups g WHERE g.id = e.groupid AND e.groupid = :groupid ORDER BY e.id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
-		$ents = $sth->fetchAll(\PDO::FETCH_ASSOC | \PDO::FETCH_UNIQUE);
+		$ents = $sth->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
 		$e = array();
 		foreach($ents as $uid => $entry) {
 			$entry = array_merge($entry,array(
@@ -1683,7 +1670,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "SELECT e.groupid, e.user FROM contactmanager_group_entries as e, contactmanager_groups as g WHERE e.id = :id AND e.groupid = g.id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $id));
-		$entry = $sth->fetch(\PDO::FETCH_ASSOC);
+		$entry = $sth->fetch(PDO::FETCH_ASSOC);
 		if(empty($entry)) {
 			return true;
 		}
@@ -1771,7 +1758,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		':groupid' => $groupid,
 		':user' => $entry['userid']
 		));
-		$data = $sth->fetch(\PDO::FETCH_ASSOC);
+		$data = $sth->fetch(PDO::FETCH_ASSOC);
 		if(empty($data)) {
 			return $this->addEntryByGroupID($groupid, $entry);
 		}
@@ -1891,7 +1878,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sth->execute(array(
 		':groupid' => $entry['groupid'],
 		));
-		$own = $sth->fetch(\PDO::FETCH_ASSOC);
+		$own = $sth->fetch(PDO::FETCH_ASSOC);
 
 		if (!$this->getEntryByID($id)) {
 			return array("status" => false, "type" => "danger", "message" => _("Group entry does not exist"));
@@ -1958,7 +1945,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		LEFT JOIN contactmanager_entry_speeddials as s ON (s.numberid = n.id) WHERE n.entryid = :entryid ORDER BY n.id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':entryid' => $entryid));
-		$numbers = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$numbers = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 		return $numbers;
 	}
@@ -1989,7 +1976,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		}
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
-		$numbers = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$numbers = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 		return $numbers;
 	}
@@ -2018,7 +2005,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		LEFT JOIN contactmanager_group_entries as e ON (n.entryid = e.id) WHERE `groupid` = :groupid ORDER BY e.id, n.id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
-		$numbers = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$numbers = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 		return $numbers;
 	}
@@ -2213,7 +2200,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sth->execute(array(
 			':id' => $id
 		));
-		return $sth->fetch(\PDO::FETCH_ASSOC);
+		return $sth->fetch(PDO::FETCH_ASSOC);
 	}
 
 	public function addSpeedDialNumber($entryid, $numberid,$speeddial) {
@@ -2260,7 +2247,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $id));
-		$image = $sth->fetch(\PDO::FETCH_ASSOC);
+		$image = $sth->fetch(PDO::FETCH_ASSOC);
 		if(!empty($image['gravatar']) && !empty($email)) {
 			$data = $this->getGravatar($email);
 			if(empty($data)) {
@@ -2306,7 +2293,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_xmpps WHERE `entryid` = :entryid ORDER BY id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':entryid' => $entryid));
-		$xmpps = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$xmpps = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 		return $xmpps;
 	}
@@ -2325,7 +2312,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		LEFT JOIN contactmanager_group_entries as e ON (x.entryid = e.id) WHERE `groupid` = :groupid ORDER BY e.id, x.id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
-		$xmpps = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$xmpps = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 		return $xmpps;
 	}
@@ -2431,7 +2418,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_emails WHERE `entryid` = :entryid ORDER BY id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':entryid' => $entryid));
-		$emails = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$emails = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 		return $emails;
 	}
@@ -2446,7 +2433,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		LEFT JOIN contactmanager_group_entries as e ON (m.entryid = e.id) WHERE `groupid` = :groupid ORDER BY e.id, m.id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
-		$emails = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$emails = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 		return $emails;
 	}
@@ -2526,7 +2513,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_websites WHERE `entryid` = :entryid ORDER BY id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':entryid' => $entryid));
-		$websites = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$websites = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 		return $websites;
 	}
@@ -2541,7 +2528,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		LEFT JOIN contactmanager_group_entries as e ON (w.entryid = e.id) WHERE `groupid` = :groupid ORDER BY e.id, w.id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
-		$websites = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$websites = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 		return $websites;
 	}
@@ -2713,7 +2700,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		}
 
 
-		$quickResults = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$quickResults = $sth->fetchAll(PDO::FETCH_ASSOC);
 		$phoneUtil = PhoneNumberUtil::getInstance();
 		if(!empty($quickResults)) {
 			if(count($quickResults) === 1 && $number === $quickResults[0]['stripped']) {

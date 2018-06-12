@@ -2,29 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>14.0.4.6</version>
+	<version>15.0.1</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
-		*14.0.4.6* FREEPBX-17601
-		*14.0.4.5* Correctly assign internal images
-		*14.0.4.4* Fix bug with internal images
-		*14.0.4.3* Fix bad internal contacts
-		*14.0.4.2* Fix bad destinations
-		*14.0.4* FREEPBX-11723 FREEPBX-16310 FREEPBX-16360 FREEPBX-16643 FREEPBX-17376 FREEPBX-17467 FREEPBX-17468 FREEPBX-17471
-		*14.0.3.7* FREEPBX-17213
-		*14.0.3.6* FREEPBX-17278 Import Contacts with Bulk Handler not working
-		*14.0.3.5* FREEPBX-13543 Bulk handler exporting blank files
-		*14.0.3.4* FREEPBX-16656 Cannot save contact once if email field
-		*14.0.3.3* Add number lookup in more places
-		*14.0.3.2* Use Google libphonenumber
-		*14.0.3.1* Abiltiy to select None in User Manager
-		*14.0.3* FREEPBX-15461 FREEPBX-15465
-		*14.0.2* Merge in changes from 13
-		*14.0.1.1* FREEPBX-14407 Cant exclude contact from showing in contact groups
-		*14.0.1beta3* Merge in changes from 13
-		*14.0.1alpha1* Add number search by group
+		*15.0.1* Impliment 15 backup
 	</changelog>
 	<category>Admin</category>
 	<description>
@@ -38,7 +21,7 @@
 		<module>userman ge 13.0.70</module>
 	</depends>
 	<supported>
-		<version>14.0</version>
+		<version>15.0</version>
 	</supported>
 	<hooks>
 		<bulkhandler class="Bulkhandler" namespace="FreePBX\modules">
@@ -76,20 +59,20 @@
 			<field name="type" type="string" length="25"/>
 		</table>
 		<table name="contactmanager_group_entries">
-	    <field name="id" type="integer" primarykey="true" autoincrement="true"/>
-	    <field name="groupid" type="integer"/>
-	    <field name="user" type="integer"/>
-	    <field name="displayname" type="string" length="100" default=""/>
-	    <field name="fname" type="string" length="100" default=""/>
-	    <field name="lname" type="string" length="100" default=""/>
-	    <field name="title" type="string" length="100" default=""/>
-	    <field name="company" type="string" length="100" default=""/>
-	    <field name="address" type="string" length="200" default=""/>
-	    <field name="uuid" type="string" length="36" notnull="false"/>
-	    <key name="uuid_index" type="unique">
-	      <column name="uuid"/>
-	    </key>
-	  </table>
+            <field name="id" type="integer" primarykey="true" autoincrement="true"/>
+            <field name="groupid" type="integer"/>
+            <field name="user" type="integer"/>
+            <field name="displayname" type="string" length="100" default=""/>
+            <field name="fname" type="string" length="100" default=""/>
+            <field name="lname" type="string" length="100" default=""/>
+            <field name="title" type="string" length="100" default=""/>
+            <field name="company" type="string" length="100" default=""/>
+            <field name="address" type="string" length="200" default=""/>
+            <field name="uuid" type="string" length="36" notnull="false"/>
+            <key name="uuid_index" type="unique">
+            <column name="uuid"/>
+            </key>
+	    </table>
 		<table name="contactmanager_entry_speeddials">
 			<field name="id" type="integer" primaryKey="true"/>
 			<field name="entryid" type="integer"/>
@@ -97,17 +80,17 @@
 		</table>
 		<table name="contactmanager_entry_numbers">
 			<field name="id" type="integer" primaryKey="true" autoincrement="true"/>
-	    <field name="entryid" type="integer"/>
-	    <field name="number" type="string" length="100" notnull="false"/>
-	    <field name="extension" type="string" length="100" notnull="false"/>
-	    <field name="countrycode" type="string" length="4" notnull="false"/>
-	    <field name="nationalnumber" type="string" length="100" notnull="false"/>
-	    <field name="regioncode" type="string" length="2" notnull="false"/>
+            <field name="entryid" type="integer"/>
+            <field name="number" type="string" length="100" notnull="false"/>
+            <field name="extension" type="string" length="100" notnull="false"/>
+            <field name="countrycode" type="string" length="4" notnull="false"/>
+            <field name="nationalnumber" type="string" length="100" notnull="false"/>
+            <field name="regioncode" type="string" length="2" notnull="false"/>
 			<field name="locale" type="string" length="2" notnull="false"/>
 			<field name="stripped" type="string" length="100" notnull="false"/>
-	    <field name="type" type="string" length="100" notnull="false"/>
-	    <field name="flags" type="string" length="100" notnull="false"/>
-	    <field name="E164" type="string" length="100" notnull="false"/>
+    	    <field name="type" type="string" length="100" notnull="false"/>
+	        <field name="flags" type="string" length="100" notnull="false"/>
+	        <field name="E164" type="string" length="100" notnull="false"/>
 			<field name="possibleshort" type="boolean" notnull="false"/>
 		</table>
 		<table name="contactmanager_entry_images">
