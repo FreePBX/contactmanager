@@ -3061,10 +3061,6 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 		switch ($type) {
 		case 'contacts':
-			$ret = array(
-				'status' => true,
-			);
-			return $ret;
 			foreach ($rawData as $data) {
 				if (empty($data['groupname'])) {
 					return array(
