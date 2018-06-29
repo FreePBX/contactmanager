@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>14.0.4.6</version>
+	<version>14.0.4.7</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*14.0.4.7* FREEPBX-17663 Import contacts not showing in contact manager 
 		*14.0.4.6* FREEPBX-17601
 		*14.0.4.5* Correctly assign internal images
 		*14.0.4.4* Fix bug with internal images
