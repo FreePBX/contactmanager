@@ -322,12 +322,6 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	public function uninstall() {
 
 	}
-	public function backup(){
-
-	}
-	public function restore($backup){
-
-	}
 
 	public function doDialplanHook(&$ext, $engine, $priority) {
 		$contextname = 'app-contactmanager-sd';
