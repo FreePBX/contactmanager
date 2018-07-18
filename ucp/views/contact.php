@@ -52,24 +52,27 @@
 					<table data-type="numbers">
 						<tr class="template">
 							<td>
-								<a><i class="fa fa-ban fa-fw delete"></i></a>
+								<a><i class="fa fa-ban fa-fw delete" data-number="true"></i></a>
 							</td>
 							<td>
 								<input type="text" class="form-control number" data-name="number" value="">
-							</td>
-							<td>
 								<select class="form-control number" data-name="type">
 									<option value="work" selected="selected"><?php echo _('Work')?></option>
 									<option value="home"><?php echo _('Home')?></option>
 									<option value="cell"><?php echo _('Cell')?></option>
 									<option value="other"><?php echo _('Other')?></option>
 								</select>
+								<br>
+								<label><u>Dialing Country<u/></label><br>
+								<select class="form-control number locale-template" data-name="locale" data-locale="">
+									<?php foreach($regionlist as $key => $val) {?>
+										<option value="<?php echo $key?>"><?php echo $val?></option>
+									<?php } ?>
+								</select>
 							</td>
 							<?php if($featurecode['enabled']) { ?>
-								<td style="text-align: right;">
+								<td class="<?php $speeddialmodifications ? 'hidden' : ''?>">
 									<label><?php echo _('Speed Dial')?>:</label>
-								</td>
-								<td>
 									<div class="input-group">
 										<span class="input-group-addon" style="padding: 4px;"><?php echo $featurecode['code']?></span>
 										<input type="number" class="form-control number-sd skip" value="" style="width: 50px;padding: 3px;" min="0" data-name="numbersd" disabled>
@@ -79,10 +82,8 @@
 									</div>
 								</td>
 							<?php } ?>
-							<td style="text-align: right;">
-								<label><?php echo _('SMS')?>:</label>
-							</td>
 							<td>
+								<label><?php echo _('SMS')?>:</label>
 								<div class="onoffswitch flag smsenable smsenable-template">
 									<input type="checkbox" data-name="flag" class="onoffswitch-checkbox number" id="smsenable1">
 									<label class="onoffswitch-label" for="smsenable1">
@@ -90,11 +91,7 @@
 										<div class="onoffswitch-switch"></div>
 									</label>
 								</div>
-							</td>
-							<td style="text-align: right;">
 								<label><?php echo _('Fax')?>:</label>
-							</td>
-							<td>
 								<div class="onoffswitch flag faxenable faxenable-template">
 									<input type="checkbox" data-name="flag" class="onoffswitch-checkbox number" id="faxenable1">
 									<label class="onoffswitch-label" for="faxenable1">
@@ -108,24 +105,29 @@
 						<?php foreach($contact['numbers'] as $c => $number) {?>
 							<tr>
 								<td>
-									<a><i class="fa fa-ban fa-fw delete"></i></a>
+									<a><i class="fa fa-ban fa-fw delete" data-number="true"></i></a>
 								</td>
 								<td>
 									<input type="text" class="form-control number" data-name="number" value="<?php echo $number['number']?>">
-								</td>
-								<td>
 									<select class="form-control number" data-name="type">
 										<option value="work" <?php echo ($number['type'] == "work") ? 'selected' : ''?>><?php echo _('Work')?></option>
 										<option value="home" <?php echo ($number['type'] == "home") ? 'selected' : ''?>><?php echo _('Home')?></option>
 										<option value="cell" <?php echo ($number['type'] == "cell") ? 'selected' : ''?>><?php echo _('Cell')?></option>
 										<option value="other" <?php echo ($number['type'] == "other") ? 'selected' : ''?>><?php echo _('Other')?></option>
 									</select>
+									<br>
+									<label><u>Dialing Country<u/></label><br>
+									<select class="form-control number" data-name="locale" data-locale="<?php echo $number['locale']?>">
+										<?php foreach($regionlist as $key => $val) {
+											$selected = ($number['locale'] == $key)?'SELECTED':'';
+										?>
+											<option value="<?php echo $key?>" <?php echo $selected?>><?php echo $val?></option>
+										<?php } ?>
+									</select>
 								</td>
 								<?php if($featurecode['enabled']) { ?>
-									<td style="text-align: right;">
+									<td class="<?php $speeddialmodifications ? 'hidden' : ''?>">
 										<label><?php echo _('Speed Dial')?>:</label>
-									</td>
-									<td>
 										<div class="input-group">
 											<span class="input-group-addon" style="padding: 4px;"><?php echo $featurecode['code']?></span>
 											<input type="number" class="form-control number-sd skip" value="<?php echo $number['speeddial']?>" data-value="<?php echo $number['speeddial']?>" style="width: 50px;padding: 3px;" min="0" data-name="numbersd" <?php echo (trim($number['speeddial']) == "") ? 'disabled' : ''?>>
@@ -135,10 +137,8 @@
 										</div>
 									</td>
 								<?php } ?>
-								<td style="text-align: right;">
-									<label><?php echo _('SMS')?>:</label>
-								</td>
 								<td>
+									<label><?php echo _('SMS')?>:</label>
 									<div class="onoffswitch">
 										<input type="checkbox" data-name="flag" class="onoffswitch-checkbox flag smsenable" id="smsenable_<?php echo $number['number']?>_<?php echo $c?>" <?php echo in_array("sms",$number['flags']) ? 'checked' : ''?>>
 										<label class="onoffswitch-label" for="smsenable_<?php echo $number['number']?>_<?php echo $c?>">
@@ -146,11 +146,7 @@
 											<div class="onoffswitch-switch"></div>
 										</label>
 									</div>
-								</td>
-								<td style="text-align: right;">
 									<label><?php echo _('Fax')?>:</label>
-								</td>
-								<td>
 									<div class="onoffswitch">
 										<input type="checkbox" data-name="flag" class="onoffswitch-checkbox flag faxenable" id="faxenable_<?php echo $number['number']?>_<?php echo $c?>" <?php echo in_array("fax",$number['flags']) ? 'checked' : ''?>>
 										<label class="onoffswitch-label" for="faxenable_<?php echo $number['number']?>_<?php echo $c?>">

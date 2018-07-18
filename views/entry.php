@@ -18,7 +18,7 @@ foreach ($users as $u) {
 	$userlist[$u['id']] = ($desc ? $desc . ' ' : '') . '(' . $u['username'] . ')';
 }
 ?>
-<script language="javascript">var users = <?php echo json_encode($users)?>, numbertypes = <?php echo json_encode($numbertypes)?>;</script>
+<script language="javascript">var users = <?php echo json_encode($users)?>, numbertypes = <?php echo json_encode($numbertypes)?>, regionlist = <?php echo json_encode($regionlist)?>;</script>
 <div class="fpbx-container">
 	<div class="display full-border">
 		<form name="entry" class="fpbx-submit" method="post" action="config.php?display=contactmanager" <?php if(isset($entry['id'])) {?>data-fpbx-delete="config.php?display=contactmanager&amp;group=<?php echo $group['id']?>&amp;entry=<?php echo $entry['id']?>&amp;action=delentry<?php }?>">
@@ -225,6 +225,7 @@ foreach ($users as $u) {
 				</div>
 			</div>
 			<?php switch ($group['type']) {
+						case "private" :
 						case "external":?>
 						<div class="element-container">
 							<div class="row">
@@ -248,6 +249,16 @@ foreach ($users as $u) {
 																<select class="form-control" name="numbertype[<?php echo $numcount?>]">
 																	<?php foreach($numbertypes as $key => $val) {
 																		$selected = ($number['type'] == $key)?'SELECTED':'';
+																	?>
+																		<option value="<?php echo $key?>" <?php echo $selected?>><?php echo $val?></option>
+																	<?php } ?>
+																</select>
+																<br>
+																<br>
+																<label><?php echo _("Dialing Country")?></label>
+																<select class="form-control number locale" name="numberlocale[<?php echo $numcount?>]" data-locale="<?php echo !empty($number['locale']) ? $number['locale'] : ''?>" data-id="<?php echo $numcount?>">
+																	<?php foreach($regionlist as $key => $val) {
+																		$selected = ($number['locale'] == $key)?'SELECTED':'';
 																	?>
 																		<option value="<?php echo $key?>" <?php echo $selected?>><?php echo $val?></option>
 																	<?php } ?>

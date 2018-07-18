@@ -1,5 +1,10 @@
 var timeout = null;
+var cmlocale = navigator.language.split('-')[1];
+cmlocale = cmlocale ? cmlocale : navigator.language.split('-')[0]
 $(function() {
+	$("select.number.locale[data-locale='']").each(function() {
+		$(this).val(cmlocale);
+	});
 	$(document).on("change",".enable-sd",function() {
 		var id = $(this).data("id");
 		$(".number-sd[data-id="+id+"]").prop("disabled",!$(this).is(":checked"));
@@ -144,6 +149,16 @@ function addNumber() {
 		row+= "<option value=\"" + k + "\">" + v + "</option>";
 	});
 	row+= "</select>";
+
+	row+= "<br>";
+	row+= "<br>";
+	row+= "<label>"+_("Dialing Country")+"</label> ";
+	row+= '<select class="form-control number locale" name="numberlocale['+ index +']" data-locale="" data-id="'+index+'">';
+	$.each(regionlist, function(k,v) {
+		row+= "<option value=\"" + k + "\">" + v + "</option>";
+	});
+	row+= '</select>';
+
 	if(speeddialcode.enabled) {
 		row+= "<br>";
 		row+= "<br>";
@@ -164,6 +179,8 @@ function addNumber() {
 	row+= "</td>";
 
 	$("#numbers").append(row);
+
+	$("select.number.locale[data-id="+index+"]").val(cmlocale);
 }
 
 function delNumber(index) {

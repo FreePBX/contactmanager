@@ -255,7 +255,7 @@ class Contactmanager extends Modules{
 					$return = array("status" => false, "message" => _("Unauthorized"));
 				}
 				$entry = $this->cm->getEntryByID($_REQUEST['id']);
-				if(!empty($entry)) {
+				if(!empty($entry) && !empty($_REQUEST['key'])) {
 					$entry[$_REQUEST['key']] = $_REQUEST['value'];
 					$return = $this->cm->updateEntry($_REQUEST['id'], $entry);
 					break;
@@ -348,6 +348,8 @@ class Contactmanager extends Modules{
 				$g = $this->cm->getGroupByID($_REQUEST['group']);
 				if(!empty($g)) {
 					if($g['owner'] != -1) {
+						$displayvars['regionlist'] = $this->cm->getRegionList();
+						$displayvars['speeddialmodifications'] = $this->UCP->getCombinedSettingByID($this->user['id'],$this->module,'speeddial');
 						$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 						$displayvars['activeList'] = $g['name'];
 						$displayvars['add'] = true;
@@ -365,12 +367,14 @@ class Contactmanager extends Modules{
 			case "contact":
 				$g = $this->cm->getGroupByID($_REQUEST['group']);
 				if(!empty($g)) {
+					$displayvars['speeddialmodifications'] = $this->UCP->getCombinedSettingByID($this->user['id'],$this->module,'speeddial');
 					$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 					$displayvars['contact'] = $this->cm->getEntryByID($_REQUEST['id']);
 					if($g['owner'] == -1) {
 						$mainDisplay = $this->load_view(__DIR__.'/views/contactro.php',$displayvars);
 					} else {
 						if(!empty($_REQUEST['mode']) && $_REQUEST['mode'] == 'edit') {
+							$displayvars['regionlist'] = $this->cm->getRegionList();
 							$mainDisplay = $this->load_view(__DIR__.'/views/contact.php',$displayvars);
 						} else {
 							$displayvars['editable'] = true;

@@ -1,5 +1,8 @@
 {
-    "require": {
-        "giggsey/libphonenumber-for-php": "^8.8"
-    }
+	"require": {
+		"giggsey/libphonenumber-for-php": "^8.8"
+	},
+	"config": {
+		"optimize-autoloader": true
+	}
 }
