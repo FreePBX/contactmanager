@@ -17,6 +17,56 @@ class Contactmanager extends Modules{
 		$this->user = $this->UCP->User->getUser();
 	}
 
+	public function getWidgetList() {
+		$widgets = array();
+
+		$widgets['contactmanager'] = array(
+			"display" => _("Contacts"),
+			"defaultsize" => array("height" => 7, "width" => 6),
+			"minsize" => array("height" => 6, "width" => 5),
+			'description' => _("PBX Contacts")
+		);
+
+		if (empty($widgets)) {
+			return array();
+		}
+
+		return array(
+			"rawname" => "contactmanager",
+			"display" => _("Contacts"),
+			"icon" => "fa fa-address-card",
+			"list" => $widgets
+		);
+	}
+
+	public function getWidgetDisplay($id) {
+		$displayvars = array();
+		$displayvars['groups'] = $this->cm->getGroupsByOwner($this->user['id']);
+		$displayvars['total'] = 0;
+
+		foreach($displayvars['groups'] as &$group) {
+			$group['readonly'] = ($group['owner'] == -1);
+			$group['contacts'] = $this->cm->getEntriesByGroupID($group['id']);
+			$group['count'] = count($group['contacts']);
+			if ($_REQUEST['id'] == $group['id']) {
+				$displayvars['group'] = $group['name'];
+			}
+
+			$displayvars['total'] = $displayvars['total'] + $group['count'];
+		}
+
+		$mainDisplay = $this->load_view(__DIR__.'/views/widget.php',$displayvars);
+
+		$html .= $mainDisplay;
+
+		$display = array(
+			'title' => _("Contacts"),
+			'html' => $html
+		);
+
+		return $display;
+	}
+
 	/**
 	* Determine what commands are allowed
 	*
@@ -31,13 +81,17 @@ class Contactmanager extends Modules{
 			case 'updatecontact':
 			case 'deletecontact':
 			case 'addcontact':
+			case 'editcontactmodal':
+			case 'addcontactmodal':
 			case 'deletegroup':
 			case 'addgroup':
+			case 'addgroupmodal':
 			case 'grid':
 			case 'limage':
 			case 'uploadimage':
 			case 'delimage':
 			case 'getgravatar':
+			case 'showcontact':
 			case 'checksd':
 				return true;
 			default:
@@ -216,8 +270,7 @@ class Contactmanager extends Modules{
 				return array("status" => false, "message" => _("Can Not Find Uploaded Files"));
 			break;
 			case 'grid':
-				//$limit = $_REQUEST['limit'];
-				$group = $_REQUEST['id'];
+				$group = $_REQUEST['group'];
 				$order = $_REQUEST['order'];
 				$orderby = !empty($_REQUEST['sort']) ? $_REQUEST['sort'] : "displayname";
 				$search = !empty($_REQUEST['search']) ? $_REQUEST['search'] : "";
@@ -251,13 +304,18 @@ class Contactmanager extends Modules{
 				return $contacts;
 			break;
 			case 'updatecontact':
-				if(!$this->editEntry($_REQUEST['id'])) {
+				$contact = $_REQUEST['contact'];
+				if(!$this->editEntry($contact['id'])) {
 					$return = array("status" => false, "message" => _("Unauthorized"));
 				}
-				$entry = $this->cm->getEntryByID($_REQUEST['id']);
-				if(!empty($entry) && !empty($_REQUEST['key'])) {
-					$entry[$_REQUEST['key']] = $_REQUEST['value'];
-					$return = $this->cm->updateEntry($_REQUEST['id'], $entry);
+				$entry = $this->cm->getEntryByID($contact['id']);
+				if(!empty($entry) && !empty($contact)) {
+					$types = array('emails','xmpps','websites','numbers');
+					foreach($types as $type) {
+						$contact[$type] = isset($contact[$type]) ? $contact[$type] : array();
+					}
+					$contact = array_merge($entry, $contact);
+					$return = $this->cm->updateEntry($contact['id'], $contact);
 					break;
 				}
 				$return = array("status" => false, "message" => _("Unauthorized"));
@@ -277,13 +335,65 @@ class Contactmanager extends Modules{
 				$return = array("status" => false, "message" => _("Unauthorized"));
 			break;
 			case 'addcontact':
-				$g = $this->cm->getGroupByID($_REQUEST['id']);
+				$data = $_POST;
+				$g = $this->cm->getGroupByID($data['group']);
 				if($g['owner'] == $this->user['id']) {
-					$contact = $_REQUEST['contact'];
+					$contact = $data['contact'];
 					$contact['user'] = -1;
-					$return = $this->cm->addEntryByGroupID($_REQUEST['id'], $contact);
+					$return = $this->cm->addEntryByGroupID($data['group'], $contact);
 				} else {
 					$return = array("status" => false, "message" => _("Unauthorized"));
+				}
+			break;
+			case "editcontactmodal":
+				$g = $this->cm->getGroupByID($_REQUEST['group']);
+				$displayvars = array();
+				if(!empty($g)) {
+					$displayvars['contact'] = $this->cm->getEntryByID($_REQUEST['id']);
+				}
+				$currentLocal = setlocale(LC_ALL, 0);
+				$locale = preg_split("/[_|\.]/", $currentLocal);
+				$locale = !empty($locale[1]) ? $locale[1] : 'US';
+				$displayvars['defaultlocale'] = $locale;
+				$displayvars['regionlist'] = $this->cm->getRegionList();
+				$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
+				$return = $this->load_view(__DIR__.'/views/contactEdit.php',$displayvars);
+			break;
+			case "addcontactmodal":
+				$currentLocal = setlocale(LC_ALL, 0);
+				$locale = preg_split("/[_|\.]/", $currentLocal);
+				$locale = !empty($locale[1]) ? $locale[1] : 'US';
+				$displayvars['defaultlocale'] = $locale;
+				$displayvars['regionlist'] = $this->cm->getRegionList();
+				$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
+				$return = $this->load_view(__DIR__.'/views/contactEdit.php',$displayvars);
+			break;
+			case "showcontact":
+				$g = $this->cm->getGroupByID($_REQUEST['group']);
+				$displayvars = array();
+				$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
+				if(!empty($g)) {
+					$displayvars['contact'] = $this->cm->getEntryByID($_REQUEST['id']);
+					if($g['owner'] == -1) {
+						$return = array(
+							"status" => true,
+							"title" => _("View Contact"),
+							"body" => $this->load_view(__DIR__.'/views/contactView.php',$displayvars),
+							"footer" => '<button type="button" class="btn btn-secondary" data-dismiss="modal">'._("Close").'</button>'
+						);
+					} else {
+						$return = array(
+							"status" => true,
+							"title" => _("View Contact"),
+							"body" => $this->load_view(__DIR__.'/views/contactView.php',$displayvars),
+							"footer" => '<button id="deletecontact" class="btn btn-danger">'._('Delete Contact').'</button><button type="button" class="btn btn-secondary" data-dismiss="modal">'._("Close").'</button><button type="button" class="btn btn-primary" id="editcontact">'._("Edit").'</button>'
+						);
+					}
+				} else {
+					$return = array(
+						"status" => true,
+						"message" => _("Not Authorized")
+					);
 				}
 			break;
 			case 'deletegroup':
@@ -296,7 +406,10 @@ class Contactmanager extends Modules{
 				}
 			break;
 			case 'addgroup':
-				$return = $this->cm->addGroup($_POST['name'], 'external', $this->user['id']);
+				$return = $this->cm->addGroup($_POST['groupname'], 'external', $this->user['id']);
+			break;
+			case "addgroupmodal":
+				$return = $this->load_view(__DIR__.'/views/groupCreate.php',$displayvars);
 			break;
 			default:
 				return false;
@@ -368,6 +481,7 @@ class Contactmanager extends Modules{
 				$g = $this->cm->getGroupByID($_REQUEST['group']);
 				if(!empty($g)) {
 					$displayvars['speeddialmodifications'] = $this->UCP->getCombinedSettingByID($this->user['id'],$this->module,'speeddial');
+					$displayvars['speeddialmodifications'] = false;
 					$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 					$displayvars['contact'] = $this->cm->getEntryByID($_REQUEST['id']);
 					if($g['owner'] == -1) {
@@ -445,7 +559,6 @@ class Contactmanager extends Modules{
 
 	public function editEntry($id) {
 		$contacts = $this->cm->getContactsByUserID($this->user['id']);
-		$allowed = false;
 		foreach($contacts as $contact) {
 			if($contact['uid'] == $id) {
 				return true;

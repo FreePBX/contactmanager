@@ -1,5 +1,5 @@
-#module-page-contactmanager {
-	#contacts-grid {
+div[data-rawname='contactmanager'] {
+	.contacts-grid {
 		tr {
 			cursor: pointer;
 		}
@@ -58,55 +58,43 @@
 		}
 	}
 
-	.contact-group-list {
-		background-color: aliceblue;
-		.contact-group {
-			background-color: #fff;
-		}
-		.contact-group.active {
-			background-color: #428bca;
-			border-radius: 2px;
-			a {
-				color: #ffffff;
-				background-color: #428bca;
-			}
-			a:hover {
-				text-decoration: none;
-				background-color: #428bca;
-				color: #ffffff;
-			}
-		}
-		.contact-group-inner {
-			i {
-				font-size: 120%;
-				color: #999999;
-				float: right;
-				margin-top: 1px;
-			}
+	.group-list, .group-actions {
+		background-color: #f3f5f6;
+		.group, .group-action {
+			margin-bottom: 1px;
+			font-size: 85%;
 			.badge {
-				font-size: 80%;
 				float: right;
 			}
-		}
-		.contact-group.sub {
-			margin-left: 15px;
-			background-color: rgb(252, 253, 255);
-			.contact-group-inner {
-				font-size: 85%;
+			i {
+				float: right;
+				font-size: 120%;
 			}
-		}
-		.contact-group {
 			a {
 				position: relative;
 				display: block;
 				padding: 3px 8px;
 				border-radius: 2px;
+				color: #000000;
+				text-decoration:none;
 			}
 			a:hover {
 				text-decoration: none;
 				background-color: #eeeeee;
-				color: #2a6496;
 			}
+		}
+		.group.active, .group-action.active {
+			background-color: #2f4050;
+			border-radius: 2px;
+			a {
+	        color: #ffffff;
+					text-decoration:none;
+	    }
+	    a:hover {
+	        text-decoration: none;
+	        background-color: #000000;
+	        color: #ffffff;
+	    }
 		}
 	}
 
@@ -153,6 +141,34 @@
 			}
 		}
 	}
+}
+
+.contact-container {
+	.item-container-number {
+		margin-left: 0px;
+		border: 1px solid #c9c9c9;
+		padding: 2px;
+		input.number[data-name=number] {
+			width: 165px;
+		}
+		select.number[data-name=locale] {
+			width: 254px;
+			margin-left: 21px;
+		}
+		input.number.number-sd.skip {
+			width: 50px;padding: 3px;
+		}
+		.col-md-7,.col-md-5 {
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+	}
+	.item-container {
+		display: inline-block;width: 100%;
+		.delete {
+			cursor: pointer;
+		}
+	}
 	#contactmanager_dropzone {
 		min-height: 75px;
 		width: 90px;
@@ -178,7 +194,6 @@
 	#contactmanager_dropzone.activate {
 		border-color: black;
 	}
-
 	#contactmanager_dropzone.activate .message {
 		opacity: .5;
 	}

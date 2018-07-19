@@ -2,91 +2,31 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.43.8</version>
+	<version>14.0.4.8</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
-		*13.0.43.8* FREEPBX-17869
-		*13.0.43.7* FREEPBX-17663
-		*13.0.43.6* Fixes FREEPBX-17601
-		*13.0.43.5* Correctly assign internal images
-		*13.0.43.4* Fix bug with internal images
-		*13.0.43.3* Fix bugs with internal contacts
-		*13.0.43.2* Fix bad destinations
-		*13.0.43* FREEPBX-11723 FREEPBX-16310 FREEPBX-16360 FREEPBX-16643 FREEPBX-17376 FREEPBX-17467 FREEPBX-17468 FREEPBX-17471
-		*13.0.42.13* Feature/FREEPBX-17213
-		*13.0.42.12* Better number lookup
-		*13.0.42.11* Use libphonenumber from google for number lookups
-		*13.0.42.10* Fix selecting none
-		*13.0.42.9* FREEPBX-15465 FREEPBX-15461
-		*13.0.42.8* FREEPBX-15393
-		*13.0.42.7* FREEPBX-14653
-		*13.0.42.6* Require UUIDs on contacts
-		*13.0.42.5* FREEPBX-13970 Fix lookup
-		*13.0.42.4* FREEPBX-14233 SpeedDials werent working
-		*13.0.42.3* Issues releated to FREEPBX-14212 and quick create
-		*13.0.42.2* Add group information to getContactsByUserID
-		*13.0.42.1* Always give data back to user manager entries when added or updated
-		*13.0.42* FREEPBX-13829 Speed Dial functionality
-		*13.0.41.14* FREEPBX-14021 Segmentation Fault when deleting a user
-		*13.0.41.13* FREEPBX-13847 Error when deleting users
-		*13.0.41.12* FREEPBX-13635 Rename Add User to Add Contact for external contact groups
-		*13.0.41.11* FREEPBX-13634 adding external contacts fail if you dont define a phone number
-		*13.0.41.10* Add strict number matching followed by partial
-		*13.0.41.9* FREEPBX-13114 fix bad user manager data
-		*13.0.41.8* FREEPBX-13035 fix contact type select boxes
-		*13.0.41.7* FREEPBX-13165 Fix error during contact search
-		*13.0.41.6* FREEPBX-13146 error on upgrade when usermanager contacts already exist
-		*13.0.41.5* FREEPBX-13129 again
-		*13.0.41.4* FREEPBX-13129 again
-		*13.0.41.3* FREEPBX-13129 Userman contact image not functional in userman nor UCP
-		*13.0.41.2* FREEPBX-13144 Cannot see details on users despite permissions
-		*13.0.41.1* FREEPBX-13143 Display Name is populated getting automatically populated by extension
-		*13.0.41* Contact Image Lookup issues
-		*13.0.40* Fix more issues
-		*13.0.39* Fix numbers in UCP
-		*13.0.37-38* Bug fix
-		*13.0.36* Drop support for 'User Manager' groups, add them to internal. Make internal groups read-only (from User Manager)
-		*13.0.35* Fix bug in contacts merge function
-		*13.0.34* Fix issue with looking up wrong user information
-		*13.0.33* Fix a whoops error when modifying contacts externally
-		*13.0.32* Get rid of extra characters from URL on images
-		*13.0.31* Further work on contact images
-		*13.0.30* Support contact images (uploaded or from gravatar)
-		*13.0.29* FREEPBX-12561 Cannot see personal External Contact Manager Groups in Phone Apps that were created in UCP
-		*13.0.28* Remove dialing code that would never work correctly
-		*13.0.27* Fix bug when trying to clean up corruption
-		*13.0.26* Fix undefined id in updateGroupEntryByID
-		*13.0.25* Allow assigning all public groups
-		*13.0.24* FREEPBX-11972 FREEPBX-11686
-		*13.0.23* Remove CoS functionality, this is now controlled in User Manager
-		*13.0.22* Reference contact manager
-		*13.0.21* Dont reference old userman callbacks
-		*13.0.20* FREEPBX-11557 Primary number deletes if more than one number entered when saving edit
-		*13.0.19* Remove en_US Translations
-		*13.0.18* Remove en_US Translations
-		*13.0.17* FREEPBX-11267 bulk handler issues
-		*13.0.16* FREEPBX-11133
-		*13.0.15* FREEPBX-10845
-		*13.0.14* FREEPBX-10889
-		*13.0.13* FREEPBX-10057 FREEPBX-10845
-		*13.0.12* FREEPBX-10480
-		*13.0.11* Remove beta
-		*13.0.10* Use boostrap tables
-		*13.0.9* FREEPBX-10303 Allow apostrophes in group names
-		*13.0.8* FREEPBX-10304 unable to create/view groups in UCP
-		*13.0.7* FREEPBX-10283, FREEPBX-10226
-		*13.0.6* "FREEPBX-10211 - Make external use display name.
-		*13.0.5* Invalid arrays
-		*13.0.4* Remove old import/export code, as this functionality has been moved into the Bulk Handler module
-		*13.0.3* FREEPBX-9531 Cannot add user to Internal Contact Group, FREEPBX-9538 Display and Navigation issues if there are multiple Contact Groups
-		*13.0.2* Fix up visuals.. again
-		*13.0.1* Visual updates and release
-		*13.0.beta4-5* Invalid array loops
-		*13.0.beta3* Group support in Usermanager
-		*13.0.0beta2* FREEPBX-9098
-		*13.0.0beta1* First beta release.
+		*14.0.4.8* FREEPBX-17869
+		*14.0.4.7* FREEPBX-17663 Import contacts not showing in contact manager 
+		*14.0.4.6* FREEPBX-17601
+		*14.0.4.5* Correctly assign internal images
+		*14.0.4.4* Fix bug with internal images
+		*14.0.4.3* Fix bad internal contacts
+		*14.0.4.2* Fix bad destinations
+		*14.0.4* FREEPBX-11723 FREEPBX-16310 FREEPBX-16360 FREEPBX-16643 FREEPBX-17376 FREEPBX-17467 FREEPBX-17468 FREEPBX-17471
+		*14.0.3.7* FREEPBX-17213
+		*14.0.3.6* FREEPBX-17278 Import Contacts with Bulk Handler not working
+		*14.0.3.5* FREEPBX-13543 Bulk handler exporting blank files
+		*14.0.3.4* FREEPBX-16656 Cannot save contact once if email field
+		*14.0.3.3* Add number lookup in more places
+		*14.0.3.2* Use Google libphonenumber
+		*14.0.3.1* Abiltiy to select None in User Manager
+		*14.0.3* FREEPBX-15461 FREEPBX-15465
+		*14.0.2* Merge in changes from 13
+		*14.0.1.1* FREEPBX-14407 Cant exclude contact from showing in contact groups
+		*14.0.1beta3* Merge in changes from 13
+		*14.0.1alpha1* Add number search by group
 	</changelog>
 	<category>Admin</category>
 	<description>
@@ -96,11 +36,11 @@
 		<contactmanager needsenginedb="yes">Contact Manager</contactmanager>
 	</menuitems>
 	<depends>
-		<version>13.0.0</version>
-		<module>userman ge 13.0.75.4</module>
+		<version>14.0.0</version>
+		<module>userman ge 13.0.70</module>
 	</depends>
 	<supported>
-		<version>13.0</version>
+		<version>14.0</version>
 	</supported>
 	<hooks>
 		<bulkhandler class="Bulkhandler" namespace="FreePBX\modules">
@@ -109,7 +49,7 @@
 			<method callingMethod="import" class="Contactmanager" namespace="FreePBX\modules">bulkhandlerImport</method>
 			<method callingMethod="export" class="Contactmanager" namespace="FreePBX\modules">bulkhandlerExport</method>
 		</bulkhandler>
-		<userman class="Userman" namespace="FreePBX\modules">
+	<userman class="Userman" namespace="FreePBX\modules">
 			<method callingMethod="delGroup" class="Contactmanager" namespace="FreePBX\modules">usermanDelGroup</method>
 			<method callingMethod="addGroup" class="Contactmanager" namespace="FreePBX\modules">usermanAddGroup</method>
 			<method callingMethod="updateGroup" class="Contactmanager" namespace="FreePBX\modules">usermanUpdateGroup</method>
