@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-19 18:02-0400\n"
-"PO-Revision-Date: 2018-06-26 13:59+0000\n"
+"PO-Revision-Date: 2018-07-27 10:00+0000\n"
 "Last-Translator: Bastian Mertgen <b.mertgen@bastian-mertgen.de>\n"
 "Language-Team: German <http://*/projects/freepbx/contactmanager/de/>\n"
 "Language: de_DE\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.19.1\n"
+"X-Generator: Weblate 3.0.1\n"
 
 #: functions.inc.php:17
 #, php-format
 msgid "%s (Speed Dial: %s) [%s]"
-msgstr ""
+msgstr "%s (Kurzwahl: %s) [%s]"
 
 #: Contactmanager.class.php:655 ucp/Contactmanager.class.php:266
 msgid "A PHP extension stopped the file upload"
@@ -117,6 +117,8 @@ msgstr ""
 msgid ""
 "Allow the user to modify and change speeddials for contacts they can edit"
 msgstr ""
+"Benutzern erlauben, die Kurzwahlen für Kontakte, die sie bearbeiten dürfen, "
+"zu ändern"
 
 #: Contactmanager.class.php:898
 msgid "An entry must have numbers."
@@ -130,11 +132,11 @@ msgstr ""
 
 #: ucp/assets/js/global.js:61
 msgid "Are you sure you wish to delete this contact?"
-msgstr ""
+msgstr "Sind Sie sicher, dass Sie diesen Kontakt löschen wollen?"
 
 #: Contactmanager.class.php:3257
 msgid "Automatically Determine"
-msgstr ""
+msgstr "Automatisch bestimmen"
 
 #: ucp/views/contact.php:36 ucp/views/contactEdit.php:36 views/entry.php:162
 #: views/user_details_hook.php:49
@@ -161,7 +163,7 @@ msgstr "Mobil"
 #: ucp/assets/js/global.js:86 ucp/assets/js/global.js:110
 #: ucp/assets/js/global.js:133 ucp/assets/js/global.js:165
 msgid "Close"
-msgstr ""
+msgstr "Schließen"
 
 #: Contactmanager.class.php:3043 Contactmanager.class.php:3055
 #: Contactmanager.class.php:3067
@@ -218,7 +220,7 @@ msgstr "Kontaktmanager-Kurzwahlen"
 #: functions.inc.php:45 functions.inc.php:48
 #, php-format
 msgid "Contact Manager: %s (Speed Dial: %s) [%s]"
-msgstr ""
+msgstr "Kontaktmanager: %s (Kurzwahl: %s) [%s]"
 
 #: Contactmanager.class.php:2997 ucp/Contactmanager.class.php:24
 #: ucp/Contactmanager.class.php:36 ucp/Contactmanager.class.php:63
@@ -283,7 +285,7 @@ msgstr "E-Mail Adresse. Nur externe Kontakte."
 
 #: ucp/Contactmanager.class.php:389
 msgid "Edit"
-msgstr ""
+msgstr "Bearbeiten"
 
 #: ucp/assets/js/global.js:84
 msgid "Edit Contact"
@@ -309,7 +311,7 @@ msgstr "Aktivieren"
 
 #: ucp/assets/js/global.js:71
 msgid "Error deleting user"
-msgstr ""
+msgstr "Fehler beim Löschen des Benutzers"
 
 #: ucp/assets/js/global.js:92 ucp/assets/js/global.js:96
 #: ucp/assets/js/global.js:133 ucp/assets/js/global.js:171
@@ -367,7 +369,7 @@ msgstr "Funktionsaufruf existiert nicht!"
 
 #: views/grid.php:38
 msgid "Group"
-msgstr ""
+msgstr "Gruppe"
 
 #: Contactmanager.class.php:1451
 #, php-format
@@ -531,11 +533,11 @@ msgstr ""
 
 #: views/ucp_config.php:17
 msgid "Inherit"
-msgstr ""
+msgstr "Erben"
 
 #: ucp/assets/js/global.js:253
 msgid "Initiate"
-msgstr ""
+msgstr "Initiieren"
 
 #: Contactmanager.class.php:31 Contactmanager.class.php:3017 views/group.php:46
 msgid "Internal"
@@ -597,7 +599,7 @@ msgstr ""
 #: ucp/views/contactEdit.php:84 ucp/views/contactEdit.php:85
 #: views/ucp_config.php:14
 msgid "No"
-msgstr ""
+msgstr "Nein"
 
 #: Contactmanager.class.php:2507
 msgid "No E-Mails to add"
@@ -660,7 +662,7 @@ msgstr ""
 
 #: ucp/Contactmanager.class.php:27
 msgid "PBX Contacts"
-msgstr ""
+msgstr "PBX-Kontakte"
 
 #: contactmanager.i18n.php:12
 msgid "Partial Match Length"
@@ -692,7 +694,7 @@ msgstr "SMS"
 #: ucp/assets/js/global.js:86 ucp/assets/js/global.js:110
 #: ucp/assets/js/global.js:165
 msgid "Save changes"
-msgstr ""
+msgstr "Änderungen speichern"
 
 #: ucp/assets/js/global.js:251
 msgid "Select an Action"
@@ -750,11 +752,11 @@ msgstr "Es gibt keine Aktionen für diesen Typ"
 
 #: ucp/assets/js/global.js:388
 msgid "There was an error"
-msgstr ""
+msgstr "Es ist ein Fehler aufgetreten"
 
 #: ucp/assets/js/global.js:149
 msgid "There was an error removing this group"
-msgstr ""
+msgstr "Beim Entfernen dieser Gruppe ist ein Fehler aufgetreten"
 
 #: views/userman_hook.php:49
 msgid ""
@@ -766,11 +768,11 @@ msgstr ""
 
 #: ucp/assets/js/global.js:300
 msgid "This speed dial id conflicts with another contact"
-msgstr ""
+msgstr "Die Kurzwahl-ID kollidiert mit einem anderen Kontakt"
 
 #: ucp/assets/js/global.js:288
 msgid "This speed dial id conflicts with another speed dial on this page"
-msgstr ""
+msgstr "Die Kurzwahl-ID kollidiert mit einer anderen Kurzwahl auf diese Seite"
 
 #: Contactmanager.class.php:3028 ucp/views/contact.php:18
 #: ucp/views/contactEdit.php:18 ucp/views/widget.php:50 views/entry.php:128
@@ -811,7 +813,7 @@ msgstr "Keine Berechtigung"
 
 #: Contactmanager.class.php:3258
 msgid "Unknown"
-msgstr ""
+msgstr "Unbekannt"
 
 #: Contactmanager.class.php:3169
 msgid "Unknown data type."
@@ -835,6 +837,9 @@ msgid ""
 "Used in Contact Manager to determine phone number representations. Select "
 "the region for the numbers you have entered above."
 msgstr ""
+"Wird im Kontaktmanager verwendet, um die Darstellung von Telefonnummern zu "
+"bestimmen. Wählen Sie die Region für die Nummern, die sie oben eingegeben "
+"haben."
 
 #: Contactmanager.class.php:36 views/entry.php:41 views/group.php:87
 #: views/group.php:97
@@ -854,7 +859,7 @@ msgstr ""
 
 #: ucp/Contactmanager.class.php:380 ucp/Contactmanager.class.php:387
 msgid "View Contact"
-msgstr ""
+msgstr "Kontakt anschauen"
 
 #: views/userman_hook.php:33
 msgid "Viewable Contact Manager Groups"
@@ -892,7 +897,7 @@ msgstr "XMPP Adresse darf nicht leer sein."
 #: ucp/views/contactEdit.php:84 ucp/views/contactEdit.php:85
 #: views/ucp_config.php:12
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #~ msgid "Adding..."
 #~ msgstr "Hinzufügen..."
