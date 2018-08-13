@@ -65,6 +65,15 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$this->tmp = $this->freepbx->Config->get("ASTSPOOLDIR") . "/tmp";
 	}
 
+	public function setDatabase($database){
+		$this->db = $database;
+	}
+
+	public function resetDatabase(){
+		$this->db = $this->FreePBX->Database;
+		return $this;
+	}
+
 	public function ucpDelGroup($id,$display,$data) {
 	}
 
