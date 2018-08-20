@@ -424,9 +424,13 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	}
 
 	/**
-	 * Get and Display Contact Image
+	 * Lookup a Contact Image
+	 * @method getContactImage
+	 * @param  integer              $entryid The EntryID in Contact Manager
+	 * @param  string               $type    Type of Entry, Internal or External
+	 * @return string                   The image binary
 	 */
-	public function displayContactImage($entryid=null,$type=null) {
+	public function getContactImage($entryid=null,$type=null) {
 		$buffer = '';
 		if(!empty($entryid)) {
 			if(!empty($type)) {
@@ -438,16 +442,16 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					case "private" :
 					case "external":
 						$data = $this->getEntryByID($entryid);
-						$email = !empty($data['email']) ? $data['email'] : (!empty($data['emails'][0]) ? $data['emails'][0] : '');
-						$id = ($data['type'] == "internal") ? $data['user'] : $data['id'];
-						$data = $this->getImageByID($id, $email, $type);
+						if(!empty($data['image']['image'])) {
+							$data['image'] = $data['image']['image'];
+						}
 					break;
 				}
 			} else {
 				$data = $this->getEntryByID($entryid);
-				$email = !empty($data['email']) ? $data['email'] : (!empty($data['emails'][0]) ? $data['emails'][0] : '');
-				$id = ($data['type'] == "internal") ? $data['user'] : $data['id'];
-				$data = $this->getImageByID($id, $email, $data['type']);
+				if(!empty($data['image']['image'])) {
+					$data['image'] = $data['image']['image'];
+				}
 			}
 
 			if(!empty($data['image'])) {
@@ -458,11 +462,8 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			$buffer = file_get_contents($this->tmp."/".$name);
 		} elseif(!empty($_REQUEST['entryid'])) {
 			$data = $this->getEntryByID($_REQUEST['entryid']);
-			$email = !empty($data['email']) ? $data['email'] : (!empty($data['emails'][0]) ? $data['emails'][0] : '');
-			$id = ($data['type'] == "internal") ? $data['user'] : $data['id'];
-			$data = $this->getImageByID($id, $email, $data['type']);
-			if(!empty($data['image'])) {
-				$buffer = $data['image'];
+			if(!empty($data['image']['image'])) {
+				$buffer = $data['image']['image'];
 			}
 		} elseif(!empty($_REQUEST['did'])) {
 			$parts = explode(".",$_REQUEST['did']);
@@ -478,14 +479,22 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				if(empty($data)) {
 					$data = $this->lookupNumberByUserID(-1, $did);
 				}
-				if(!empty($data) && !empty($data['image'])) {
-					$data = $this->getImageByID($data['id'],$data['email'], $data['type']);
-					if(!empty($data['image'])) {
-						$buffer = $data['image'];
-					}
+				if(!empty($data) && !empty($data['image']['image'])) {
+					$buffer = $data['image']['image'];
 				}
 			}
 		}
+		return $buffer;
+	}
+
+	/**
+	 * Display Contact Image in browser
+	 * @method displayContactImage
+	 * @param  integer              $entryid The EntryID in Contact Manager
+	 * @param  string              $type    Type of Entry, Internal or External
+	 */
+	public function displayContactImage($entryid=null,$type=null) {
+		$buffer = $this->getContactImage($entryid,$type);
 		if(!empty($buffer)) {
 			$finfo = new \finfo(FILEINFO_MIME);
 			header("Cache-Control: no-cache, must-revalidate");
