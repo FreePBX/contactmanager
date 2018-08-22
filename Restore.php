@@ -9,7 +9,7 @@ class Restore Extends Base\RestoreBase{
 
   public function processLegacy($pdo, $data, $tables, $unknownTables, $tmpfiledir){
     $tables = array_flip($tables + $unknownTables);
-    if (!isset($tables['meetme'])) {
+    if (!isset($tables['contactmanager_groups'])) {
       return $this;
     }
     $cb = $this->FreePBX->Contactmanager;

@@ -65,15 +65,16 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$this->tmp = $this->freepbx->Config->get("ASTSPOOLDIR") . "/tmp";
 	}
 
-	public function setDatabase($database){
-		$this->db = $database;
-	}
-
-	public function resetDatabase(){
-		$this->db = $this->FreePBX->Database;
+	public function setDatabase($pdo){
+		$this->db = $pdo;
 		return $this;
 	}
-
+	
+	public function resetDatabase(){
+		$this->db = $this->freepbx->Database;
+		return $this;
+	}
+    
 	public function ucpDelGroup($id,$display,$data) {
 	}
 
@@ -1464,7 +1465,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$fields = array(
 		'e.id',
 		'e.id as uid',
-		'e.groupid',
+		'e.groupid as groupid',
 		'e.user',
 		'e.displayname',
 		'e.fname',
@@ -1478,6 +1479,10 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $id));
 		$entry = $sth->fetch(PDO::FETCH_ASSOC);
+
+		if (empty($entry)) {
+			return NULL;
+		}
 
 		$numbers = $this->getNumbersByEntryID($id);
 		if ($numbers) {
@@ -3177,7 +3182,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	}
 
 	public function bulkhandlerExport($type) {
-		$data = NULL;
+		$data = array();
 
 		switch ($type) {
 		case 'contacts':
