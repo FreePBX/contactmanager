@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-19 18:02-0400\n"
-"PO-Revision-Date: 2018-07-27 10:00+0000\n"
+"PO-Revision-Date: 2018-08-25 15:00+0000\n"
 "Last-Translator: Bastian Mertgen <b.mertgen@bastian-mertgen.de>\n"
 "Language-Team: German <http://*/projects/freepbx/contactmanager/de/>\n"
 "Language: de_DE\n"
@@ -27,7 +27,7 @@ msgstr "%s (Kurzwahl: %s) [%s]"
 
 #: Contactmanager.class.php:655 ucp/Contactmanager.class.php:266
 msgid "A PHP extension stopped the file upload"
-msgstr "Eine PHP Erweiterung hat den Datei Upload gestoppt"
+msgstr "Eine PHP-Erweiterung hat den Datei Upload gestoppt"
 
 #: views/entry.php:355
 msgid "A list of E-Mail addresses belonging to this entry"
@@ -99,7 +99,7 @@ msgstr "Adresse"
 
 #: contactmanager.i18n.php:6
 msgid "Admin"
-msgstr "Admin"
+msgstr "Administrator"
 
 #: Contactmanager.class.php:2909
 msgid "All Internal Groups"
@@ -317,7 +317,7 @@ msgstr "Fehler beim Löschen des Benutzers"
 #: ucp/assets/js/global.js:133 ucp/assets/js/global.js:171
 #: ucp/assets/js/global.js:176
 msgid "Error getting form"
-msgstr ""
+msgstr "Fehler beim Abruf des Formulars"
 
 #: views/entry.php:247 assets/js/contactmanager.js:145
 msgid "Ext."
@@ -733,14 +733,14 @@ msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
 msgstr ""
-"Die hochgeladene Datei überschreitet die Maximal zulässige Dateigröße welche "
-"als Wert \"MAX_FILE_SIZE\" in der HTML definiert wurde"
+"Die hochgeladene Datei überschreitet die maximal zulässige Dateigröße, die "
+"als Wert \"MAX_FILE_SIZE\" im HTML-Formular festgelegt wurde"
 
 #: Contactmanager.class.php:637 ucp/Contactmanager.class.php:248
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr ""
-"Die hochgeladene Datei überschreitet die maximal zulässige Dateigröße welche "
-"als Wert \"upload_max_filesize\" in der php.ini definiert wurde"
+"Die hochgeladene Datei überschreitet die maximal zulässige Dateigröße, die "
+"in der 'upload_max_filesize'-Direktive in der php.ini festgelegt wurde"
 
 #: Contactmanager.class.php:643 ucp/Contactmanager.class.php:254
 msgid "The uploaded file was only partially uploaded"
