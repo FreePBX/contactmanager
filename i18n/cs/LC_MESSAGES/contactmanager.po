@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-19 18:02-0400\n"
-"PO-Revision-Date: 2018-08-29 14:00+0000\n"
+"PO-Revision-Date: 2018-09-05 12:00+0000\n"
 "Last-Translator: Petr Varvarovsky <petrv@atlantis.cz>\n"
 "Language-Team: Czech <http://*/projects/freepbx/contactmanager/cs/>\n"
 "Language: cs\n"
@@ -58,7 +58,7 @@ msgstr ""
 #: Contactmanager.class.php:46
 #: Contactmanager.class.php:55
 msgid "Actions"
-msgstr ""
+msgstr "Akce"
 
 #: ucp/views/contact.php:247
 #: ucp/views/widget.php:22
@@ -115,7 +115,7 @@ msgstr ""
 
 #: contactmanager.i18n.php:6
 msgid "Admin"
-msgstr ""
+msgstr "Admin"
 
 #: Contactmanager.class.php:2909
 msgid "All Internal Groups"
@@ -266,7 +266,7 @@ msgstr ""
 #: Contactmanager.class.php:1007
 #: Contactmanager.class.php:1026
 msgid "Delete"
-msgstr ""
+msgstr "Smazat"
 
 #: ucp/Contactmanager.class.php:389
 #: ucp/views/contact.php:250
@@ -330,7 +330,7 @@ msgstr ""
 
 #: ucp/Contactmanager.class.php:389
 msgid "Edit"
-msgstr ""
+msgstr "Upravit"
 
 #: ucp/assets/js/global.js:84
 msgid "Edit Contact"
@@ -930,7 +930,7 @@ msgstr ""
 
 #: Contactmanager.class.php:3258
 msgid "Unknown"
-msgstr ""
+msgstr "Neznámý"
 
 #: Contactmanager.class.php:3169
 msgid "Unknown data type."
@@ -1011,7 +1011,7 @@ msgstr ""
 
 #: views/entry.php:301
 msgid "XMPP"
-msgstr ""
+msgstr "XMPP"
 
 #: assets/js/contactmanager.js:79
 msgid "XMPP address cannot be blank."
