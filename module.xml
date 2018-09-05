@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.3</version>
+	<version>15.0.4</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*15.0.4* Rest Api 
 		*15.0.3* Packaging of ver 15.0.3
 		*15.0.2* FREEPBX-17663 Import contacts not showing in contact manager 
 		*15.0.1* Impliment 15 backup
