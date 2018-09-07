@@ -69,12 +69,12 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$this->db = $pdo;
 		return $this;
 	}
-	
+
 	public function resetDatabase(){
 		$this->db = $this->freepbx->Database;
 		return $this;
 	}
-    
+
 	public function ucpDelGroup($id,$display,$data) {
 	}
 
