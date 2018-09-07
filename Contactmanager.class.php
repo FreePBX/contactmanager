@@ -333,7 +333,10 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		if (!empty($code)) {
 			$this->syncSpeedDials();
 
-			$ext->add('ext-contactmanager-sd', "_".$code."X!", '', new \ext_goto($contextname.',${EXTEN},1'));
+			$entries = $this->getAllSpeedDials();
+			foreach($entries as $entry) {
+				$ext->add('ext-contactmanager-sd', $code.$entry['speeddial'], '', new \ext_goto($contextname.',${EXTEN},1'));
+			}
 
 			$ext->add($contextname, "_".$code."X!", '', new \ext_answer());
 			$ext->add($contextname, "_".$code."X!", '', new \ext_macro('user-callerid'));
