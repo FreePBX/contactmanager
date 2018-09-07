@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>14.0.4.8</version>
+	<version>14.0.4.9</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*14.0.4.9* FREEPBX-17601 
 		*14.0.4.8* FREEPBX-17869
 		*14.0.4.7* FREEPBX-17663 Import contacts not showing in contact manager 
 		*14.0.4.6* FREEPBX-17601
