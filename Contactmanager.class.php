@@ -1616,7 +1616,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					'E164' => $number['E164'],
 					'possibleshort' => $number['possibleshort'],
 					'type' => $number['type'],
-					'flags' => $number['flags'] ? explode('|', $number['flags']) : array()
+					'flags' => $number['flags'] ? explode('|', $number['flags']) : array(),
+					'sp_dial' => $number['sp_dial']
 				);
 				if($number['type'] === 'internal') {
 					$entries[$number['entryid']]['default_extension'] = $number['number'];
@@ -1858,7 +1859,16 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 		$this->deleteWebsitesByEntryID($id);
 
-		$this->addNumbersByEntryID($id, !empty($entry['numbers']) ? $entry['numbers'] : '');
+		if(!empty($entry['numbers'])){
+			foreach($entry['numbers'] as $numbers){
+				if (empty($numbers['speeddial'])){
+						unset($numbers['speeddial']);
+				}
+				$entrynum[] = $numbers;
+			}
+		}
+
+		$this->addNumbersByEntryID($id, !empty($entrynum) ? $entrynum : '');
 
 		$this->addXMPPsByEntryID($id, !empty($entry['xmpps']) ? $entry['xmpps'] : '');
 
@@ -2024,10 +2034,10 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		'n.E164',
 		'n.possibleshort',
 		'n.type',
-		'n.flags'
+		'n.flags',
+		's.id as sp_dial'
 		);
-		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_numbers as n
-		LEFT JOIN contactmanager_group_entries as e ON (n.entryid = e.id) WHERE `groupid` = :groupid ORDER BY e.id, n.id";
+		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_numbers as n LEFT JOIN contactmanager_group_entries as e ON (n.entryid = e.id) LEFT JOIN contactmanager_entry_speeddials as s ON(n.id = s.numberid) WHERE `groupid` = :groupid ORDER BY e.id, n.id ";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
 		$numbers = $sth->fetchAll(\PDO::FETCH_ASSOC);
@@ -3044,6 +3054,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				),
 				'phone_1_extension' => array('description' => _('Extension.  External contacts only.')),
 				'phone_1_flags' => array('description' => _('Comma-delimited list of flags.  (Example: sms,fax)  External contacts only.')),
+				'phone_1_speeddial' => array('description' => _('Speed Dial')),
 				'phone_2_number' => array('description' => _('Phone number.  External contacts only.')),
 				'phone_2_type' => array(
 					'description' => _('Type of phone number.  External contacts only.'),
@@ -3056,6 +3067,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				),
 				'phone_2_extension' => array('description' => _('Extension.  External contacts only.')),
 				'phone_2_flags' => array('description' => _('Comma-delimited list of flags.  (Example: sms,fax)  External contacts only.')),
+				'phone_2_speeddial' => array('description' => _('Speed Dial')),
 				'phone_3_number' => array('description' => _('Phone number.  External contacts only.')),
 				'phone_3_type' => array(
 					'description' => _('Type of phone number.  External contacts only.'),
@@ -3068,6 +3080,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				),
 				'phone_3_extension' => array('description' => _('Extension.  External contacts only.')),
 				'phone_3_flags' => array('description' => _('Comma-delimited list of flags.  (Example: sms,fax)  External contacts only.')),
+				'phone_3_speeddial' => array('description' => _('Speed Dial')),
 				'email_1' => array('description' => _('E-mail address.  External contacts only.')),
 				'email_2' => array('description' => _('E-mail address.  External contacts only.')),
 				'email_3' => array('description' => _('E-mail address.  External contacts only.')),
@@ -3147,31 +3160,31 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						}
 					}
 
-					foreach ($extras as $key => $type) {
-						foreach ($type as $value) {
-							switch ($key) {
-							case 'phone':
-								$contact['numbers'][] = array(
-									'number' => $value['number'],
-									'type' => isset($value['type']) ? $value['type'] : 'other',
-									'extension' => isset($value['extension']) ? $value['extension'] : '',
-									'flags' => isset($value['flags']) ? explode(',', $value['flags']) : array(),
-								);
-								break;
-							case 'email':
-								$contact['emails'][] = array(
-									'email' => $value,
-								);
-								break;
-							case 'website':
-								$contact['websites'][] = array(
-									'website' => $value,
-								);
-								break;
-							default:
-								return array("status" => false, "message" => _("Unknown data type."));
-								break;
-							}
+				foreach ($extras as $key => $type) {
+					foreach ($type as $value) {
+						switch ($key) {
+						case 'phone':
+							$contact['numbers'][] = array(
+								'number' => $value['number'],
+								'type' => isset($value['type']) ? $value['type'] : 'other',
+								'extension' => isset($value['extension']) ? $value['extension'] : '',
+								'flags' => isset($value['flags']) ? explode(',', $value['flags']) : array(),
+								'speeddial' => isset($value['speeddial']) ? $value['speeddial'] : '',
+							);
+							break;
+						case 'email':
+							$contact['emails'][] = array(
+								'email' => $value,
+							);
+							break;
+						case 'website':
+							$contact['websites'][] = array(
+								'website' => $value,
+							);
+							break;
+						default:
+							return array("status" => false, "message" => _("Unknown data type."));
+							break;
 						}
 					}
 				}
@@ -3223,6 +3236,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						$contact["phone_" . $id . "_number"] = $value['number'];
 						$contact["phone_" . $id . "_extension"] = $value['extension'];
 						$contact["phone_" . $id . "_flags"] = implode(',', $value['flags']);
+						$contact["phone_" . $id . "_speeddial"] = $value['sp_dial'];
 					}
 
 					foreach ($entry['emails'] as $key => $value) {
