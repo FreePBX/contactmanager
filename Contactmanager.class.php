@@ -3098,16 +3098,16 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			foreach ($rawData as $data) {
 				if (empty($data['groupname'])) {
 					return array(
-						'status' => false,
-						'message' => _('Group name is required.'),
-					);
+							'status' => false,
+							'message' => _('Group name is required.'),
+						    );
 				}
 
 				if (empty($data['grouptype'])) {
 					return array(
-						'status' => false,
-						'message' => _('Group type is required.'),
-					);
+							'status' => false,
+							'message' => _('Group type is required.'),
+						    );
 				}
 
 				if($data['grouptype'] === 'internal') {
@@ -3131,24 +3131,24 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						$group = $this->getGroupByID($res['id']);
 					} else {
 						$ret = array(
-							'status' => false,
-							'message' => _('Group not found and could not be created.'),
-						);
+								'status' => false,
+								'message' => _('Group not found and could not be created.'),
+							    );
 					}
 				}
 
 				$contact = array(
-					'id' => '',
-					'groupid' => $group['id'],
-					'user' => -1,
-					'displayname' => $data['displayname'],
-					'fname' => $data['fname'],
-					'lname' => $data['lname'],
-					'title' => $data['title'],
-					'company' => $data['company'],
-					'address' => $data['address'],
-					'image' => ''
-				);
+						'id' => '',
+						'groupid' => $group['id'],
+						'user' => -1,
+						'displayname' => $data['displayname'],
+						'fname' => $data['fname'],
+						'lname' => $data['lname'],
+						'title' => $data['title'],
+						'company' => $data['company'],
+						'address' => $data['address'],
+						'image' => ''
+						);
 
 				$grep = preg_grep('/^\D+_\d+/', array_keys($data));
 				if(!empty($grep) && is_array($grep)){
@@ -3160,31 +3160,32 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						}
 					}
 
-				foreach ($extras as $key => $type) {
-					foreach ($type as $value) {
-						switch ($key) {
-						case 'phone':
-							$contact['numbers'][] = array(
-								'number' => $value['number'],
-								'type' => isset($value['type']) ? $value['type'] : 'other',
-								'extension' => isset($value['extension']) ? $value['extension'] : '',
-								'flags' => isset($value['flags']) ? explode(',', $value['flags']) : array(),
-								'speeddial' => isset($value['speeddial']) ? $value['speeddial'] : '',
-							);
-							break;
-						case 'email':
-							$contact['emails'][] = array(
-								'email' => $value,
-							);
-							break;
-						case 'website':
-							$contact['websites'][] = array(
-								'website' => $value,
-							);
-							break;
-						default:
-							return array("status" => false, "message" => _("Unknown data type."));
-							break;
+					foreach ($extras as $key => $type) {
+						foreach ($type as $value) {
+							switch ($key) {
+								case 'phone':
+									$contact['numbers'][] = array(
+											'number' => $value['number'],
+											'type' => isset($value['type']) ? $value['type'] : 'other',
+											'extension' => isset($value['extension']) ? $value['extension'] : '',
+											'flags' => isset($value['flags']) ? explode(',', $value['flags']) : array(),
+											'speeddial' => isset($value['speeddial']) ? $value['speeddial'] : '',
+											);
+									break;
+								case 'email':
+									$contact['emails'][] = array(
+											'email' => $value,
+											);
+									break;
+								case 'website':
+									$contact['websites'][] = array(
+											'website' => $value,
+											);
+									break;
+								default:
+									return array("status" => false, "message" => _("Unknown data type."));
+									break;
+							}
 						}
 					}
 				}
@@ -3192,8 +3193,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				$this->addEntryByGroupID($group['id'], $contact);
 
 				$ret = array(
-					'status' => true,
-				);
+						'status' => true,
+					    );
 			}
 
 			break;
