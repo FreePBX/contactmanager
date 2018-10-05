@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-07 17:41-0400\n"
-"PO-Revision-Date: 2018-08-25 15:00+0000\n"
+"PO-Revision-Date: 2018-09-19 14:00+0000\n"
 "Last-Translator: Bastian Mertgen <b.mertgen@bastian-mertgen.de>\n"
 "Language-Team: German <http://*/projects/freepbx/contactmanager/de/>\n"
 "Language: de_DE\n"
@@ -111,7 +111,7 @@ msgstr "Alle öffentlichen Gruppen"
 
 #: views/ucp_config.php:7
 msgid "Allow Speed Dial Modifications"
-msgstr ""
+msgstr "Änderungen an der Kurzwahl zulassen"
 
 #: views/ucp_config.php:26
 msgid ""
@@ -163,7 +163,7 @@ msgstr "Mobil"
 #: ucp/assets/js/global.js:86 ucp/assets/js/global.js:110
 #: ucp/assets/js/global.js:133 ucp/assets/js/global.js:165
 msgid "Close"
-msgstr "Schließen"
+msgstr "schließen"
 
 #: Contactmanager.class.php:3046 Contactmanager.class.php:3058
 #: Contactmanager.class.php:3070
@@ -197,9 +197,9 @@ msgid ""
 "Contact Image for this user. Image will be deleted if \"Show in Contact "
 "Manager\" is set to no or inherits no under the \"Contact Manager\" tab"
 msgstr ""
-"Kontaktbild für diesen Benutzer. Das Bild wird gelöscht, wenn \"Zeige im "
-"Kontakt Manager\" auf nein gesetzt ist oder unter der Registerkarte "
-"\"Kontakt Manager\" nicht vererben steht"
+"Kontaktbild für diesen Benutzer. Das Bild wird gelöscht, wenn unter der "
+"Registerkarte 'Kontaktverwaltung' die Option 'Zeige in der "
+"Kontaktverwaltung' auf 'nein' gesetzt ist oder 'nein' geerbt wird"
 
 #: Console/Contactmanager.class.php:14 Contactmanager.class.php:131
 #: Contactmanager.class.php:2944 Contactmanager.class.php:2956
@@ -207,20 +207,20 @@ msgstr ""
 #: contactmanager.i18n.php:4 contactmanager.i18n.php:8
 #: contactmanager.i18n.php:10 views/grid.php:1
 msgid "Contact Manager"
-msgstr "Kontakt-Manager"
+msgstr "Kontaktverwaltung"
 
 #: contactmanager.i18n.php:14
 msgid "Contact Manager Module"
-msgstr "Kontakt-Manager-Modul"
+msgstr "Kontaktverwaltungsmodul"
 
 #: contactmanager.i18n.php:18
 msgid "Contact Manager Speed Dials"
-msgstr "Kontaktmanager-Kurzwahlen"
+msgstr "Kontaktverwaltung-Kurzwahlen"
 
 #: functions.inc.php:45 functions.inc.php:48
 #, php-format
 msgid "Contact Manager: %s (Speed Dial: %s) [%s]"
-msgstr "Kontaktmanager: %s (Kurzwahl: %s) [%s]"
+msgstr "Kontaktverwaltung: %s (Kurzwahl: %s) [%s]"
 
 #: Contactmanager.class.php:3000 ucp/Contactmanager.class.php:24
 #: ucp/Contactmanager.class.php:36 ucp/Contactmanager.class.php:63
@@ -230,7 +230,7 @@ msgstr "Kontakte"
 
 #: Contactmanager.class.php:3001
 msgid "Contacts and internal/external groups from the Contact Manager module."
-msgstr "Kontakte und interne / externe Gruppen aus dem Kontakt-Manager-Modul."
+msgstr "Kontakte und interne / externe Gruppen aus dem Kontaktverwaltungsmodul."
 
 #: Contactmanager.class.php:1010 Contactmanager.class.php:1029
 msgid "Delete"
@@ -627,7 +627,7 @@ msgstr "Es wurde keine Datei hochgeladen"
 
 #: Contactmanager.class.php:2918 Contactmanager.class.php:2930
 msgid "None"
-msgstr "Keine"
+msgstr "Keine*r"
 
 #: ucp/Contactmanager.class.php:395 ucp/Contactmanager.class.php:474
 #: ucp/Contactmanager.class.php:499
@@ -658,7 +658,7 @@ msgstr "Andere"
 
 #: views/grid.php:38
 msgid "Owner"
-msgstr ""
+msgstr "Eigentümer"
 
 #: ucp/Contactmanager.class.php:27
 msgid "PBX Contacts"
@@ -702,7 +702,7 @@ msgstr "Wählen Sie eine Aktion"
 
 #: views/userman_hook.php:7
 msgid "Show In Contact Manager Groups"
-msgstr "In Kontakt-Manager-Gruppen Anzeigen"
+msgstr "In den Gruppen der Kontaktverwaltung anzeigen"
 
 #: ucp/views/contact.php:75 ucp/views/contact.php:130
 #: ucp/views/contactEdit.php:74 ucp/views/contactEdit.php:109
@@ -763,8 +763,8 @@ msgid ""
 "These are the viewable contact manager groups which will show up for this "
 "user in UCP and RestApps (If purchased)"
 msgstr ""
-"Dies sind die sichtbaren Kontakt-Manager-Gruppen, die für diesen Benutzer in "
-"UCP und RestApps angezeigt werden (falls gekauft)"
+"Dies sind die sichtbaren Gruppen in der Kontaktverwaltung, die für diesen "
+"Benutzer in UCP und RestApps angezeigt werden (falls gekauft)"
 
 #: ucp/assets/js/global.js:300
 msgid "This speed dial id conflicts with another contact"
@@ -837,9 +837,9 @@ msgid ""
 "Used in Contact Manager to determine phone number representations. Select "
 "the region for the numbers you have entered above."
 msgstr ""
-"Wird im Kontaktmanager verwendet, um die Darstellung von Telefonnummern zu "
-"bestimmen. Wählen Sie die Region für die Nummern, die sie oben eingegeben "
-"haben."
+"Wird in der Kontaktverwaltungr verwendet, um die Darstellung von "
+"Telefonnummern zu bestimmen. Wählen Sie die Region für die Nummern, die sie "
+"oben eingegeben haben."
 
 #: Contactmanager.class.php:36 views/entry.php:41 views/group.php:87
 #: views/group.php:97
@@ -848,14 +848,14 @@ msgstr "Benutzer"
 
 #: Contactmanager.class.php:181
 msgid "User Manager Group"
-msgstr "Benutzer-Manager-Gruppe"
+msgstr "Gruppe aus der Benutzerverwaltung"
 
 #: Contactmanager.class.php:3034
 msgid ""
 "User Manager username this contact should point to.  Internal contacts only."
 msgstr ""
-"Benutzer-Manager Benutzername, auf den dieser Kontakt verweisen soll. Nur "
-"interne Kontakte."
+"Benutzername aus der Benutzerverwaltung, auf den dieser Kontakt verweisen "
+"soll. Nur interne Kontakte."
 
 #: ucp/Contactmanager.class.php:380 ucp/Contactmanager.class.php:387
 msgid "View Contact"
@@ -863,7 +863,7 @@ msgstr "Kontakt anschauen"
 
 #: views/userman_hook.php:33
 msgid "Viewable Contact Manager Groups"
-msgstr "Sichtbare Kontakt-Manager-Gruppen"
+msgstr "Sichtbare Gruppen der Kontaktverwaltung"
 
 #: ucp/views/contact.php:219 ucp/views/contactEdit.php:156
 #: ucp/views/contactEdit.php:172 views/entry.php:365
