@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-05 12:32+0530\n"
-"PO-Revision-Date: 2018-09-19 14:00+0000\n"
+"PO-Revision-Date: 2018-10-09 21:00+0000\n"
 "Last-Translator: Bastian Mertgen <b.mertgen@bastian-mertgen.de>\n"
 "Language-Team: German <http://*/projects/freepbx/contactmanager/de/>\n"
 "Language: de_DE\n"
@@ -574,6 +574,8 @@ msgstr ""
 #: Console/Contactmanager.class.php:16
 msgid "Lookup number and get a contact back as a result"
 msgstr ""
+"Schlagen Sie eine Nummer nach und erhalten Sie einen Kontakt als Ergebnis "
+"zurück"
 
 #: Contactmanager.class.php:652 ucp/Contactmanager.class.php:260
 msgid "Missing a temporary folder"
@@ -680,7 +682,7 @@ msgstr "Bitte geben Sie ein gültige E-Mail Adresse ein"
 
 #: Contactmanager.class.php:50 Contactmanager.class.php:3032
 msgid "Private"
-msgstr ""
+msgstr "Nichtöffentlich"
 
 #: Contactmanager.class.php:1017 Contactmanager.class.php:1036
 msgid "Reset"
