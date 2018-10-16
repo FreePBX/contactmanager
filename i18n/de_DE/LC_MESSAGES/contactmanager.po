@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-05 12:32+0530\n"
-"PO-Revision-Date: 2018-10-09 21:00+0000\n"
+"PO-Revision-Date: 2018-10-17 14:00+0000\n"
 "Last-Translator: Bastian Mertgen <b.mertgen@bastian-mertgen.de>\n"
 "Language-Team: German <http://*/projects/freepbx/contactmanager/de/>\n"
 "Language: de_DE\n"
@@ -163,7 +163,7 @@ msgstr "Mobil"
 #: ucp/assets/js/global.js:86 ucp/assets/js/global.js:110
 #: ucp/assets/js/global.js:133 ucp/assets/js/global.js:165
 msgid "Close"
-msgstr "schließen"
+msgstr "Schließen"
 
 #: Contactmanager.class.php:3056 Contactmanager.class.php:3069
 #: Contactmanager.class.php:3082
