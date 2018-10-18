@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-05 12:32+0530\n"
-"PO-Revision-Date: 2018-10-17 14:00+0000\n"
+"PO-Revision-Date: 2018-10-18 11:50+0000\n"
 "Last-Translator: Bastian Mertgen <b.mertgen@bastian-mertgen.de>\n"
 "Language-Team: German <http://*/projects/freepbx/contactmanager/de/>\n"
 "Language: de_DE\n"
@@ -252,11 +252,11 @@ msgstr "Bild löschen"
 
 #: views/entry.php:258 assets/js/contactmanager.js:155
 msgid "Dialing Country"
-msgstr ""
+msgstr "Wähl-Region"
 
 #: views/user_details_hook.php:7
 msgid "Dialing Locale"
-msgstr ""
+msgstr "Wähl-Region"
 
 #: Contactmanager.class.php:33 Contactmanager.class.php:43
 #: Contactmanager.class.php:52 Contactmanager.class.php:3036
@@ -569,7 +569,7 @@ msgstr "Zeige alle Kurzwahlen"
 
 #: Console/Contactmanager.class.php:17
 msgid "Lookup backed on User Manager Users View"
-msgstr ""
+msgstr "Suche stützt sich auf die Benutzersicht der Benutzerverwaltung"
 
 #: Console/Contactmanager.class.php:16
 msgid "Lookup number and get a contact back as a result"
