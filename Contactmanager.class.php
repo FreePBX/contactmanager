@@ -1617,7 +1617,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					'possibleshort' => $number['possibleshort'],
 					'type' => $number['type'],
 					'flags' => $number['flags'] ? explode('|', $number['flags']) : array(),
-					'sp_dial' => $number['sp_dial']
+					'speeddial' => $number['speeddial']
 				);
 				if($number['type'] === 'internal') {
 					$entries[$number['entryid']]['default_extension'] = $number['number'];
@@ -2035,7 +2035,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		'n.possibleshort',
 		'n.type',
 		'n.flags',
-		's.id as sp_dial'
+		's.id as speeddial'
 		);
 		$sql = "SELECT " . implode(', ', $fields) . " FROM contactmanager_entry_numbers as n LEFT JOIN contactmanager_group_entries as e ON (n.entryid = e.id) LEFT JOIN contactmanager_entry_speeddials as s ON(n.id = s.numberid) WHERE `groupid` = :groupid ORDER BY e.id, n.id ";
 		$sth = $this->db->prepare($sql);
@@ -3237,7 +3237,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						$contact["phone_" . $id . "_number"] = $value['number'];
 						$contact["phone_" . $id . "_extension"] = $value['extension'];
 						$contact["phone_" . $id . "_flags"] = implode(',', $value['flags']);
-						$contact["phone_" . $id . "_speeddial"] = $value['sp_dial'];
+						$contact["phone_" . $id . "_speeddial"] = $value['speeddial'];
 					}
 
 					foreach ($entry['emails'] as $key => $value) {
