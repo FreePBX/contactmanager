@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-05 12:32+0530\n"
-"PO-Revision-Date: 2018-09-19 14:00+0000\n"
+"PO-Revision-Date: 2018-10-19 13:00+0000\n"
 "Last-Translator: Bastian Mertgen <b.mertgen@bastian-mertgen.de>\n"
 "Language-Team: German <http://*/projects/freepbx/contactmanager/de/>\n"
 "Language: de_DE\n"
@@ -47,7 +47,7 @@ msgstr "Eine Liste von Webseiten, die zu diesem Eintrag gehören"
 
 #: views/entry.php:57
 msgid "A user from the User Management module"
-msgstr "Ein Benutzer aus dem Benutzer-Management-Modul"
+msgstr "Ein Benutzer aus dem Benutzerverwaltungsmodul"
 
 #: views/speeddial-grid.php:16
 msgid "Action"
@@ -122,7 +122,7 @@ msgstr ""
 
 #: Contactmanager.class.php:901
 msgid "An entry must have numbers."
-msgstr "Es muss eine Nummer eingetragen sein."
+msgstr "Ein Eintrag muss Nummern haben."
 
 #: ucp/assets/js/global.js:140
 msgid "Are you sure you want to delete this group and all of it's contacts?"
@@ -163,7 +163,7 @@ msgstr "Mobil"
 #: ucp/assets/js/global.js:86 ucp/assets/js/global.js:110
 #: ucp/assets/js/global.js:133 ucp/assets/js/global.js:165
 msgid "Close"
-msgstr "schließen"
+msgstr "Schließen"
 
 #: Contactmanager.class.php:3056 Contactmanager.class.php:3069
 #: Contactmanager.class.php:3082
@@ -182,7 +182,7 @@ msgstr "Firma"
 
 #: views/entry.php:201
 msgid "Company (overrides Company from User Manager)"
-msgstr "Firma (Überschreibt die Firma vom Benutzermanager)"
+msgstr "Firma (überschreibt die Firma aus der Benutzerverwaltung)"
 
 #: views/entry.php:148 views/user_details_hook.php:35
 msgid "Contact Image"
@@ -252,11 +252,11 @@ msgstr "Bild löschen"
 
 #: views/entry.php:258 assets/js/contactmanager.js:155
 msgid "Dialing Country"
-msgstr ""
+msgstr "Wähl-Region"
 
 #: views/user_details_hook.php:7
 msgid "Dialing Locale"
-msgstr ""
+msgstr "Wähl-Region"
 
 #: Contactmanager.class.php:33 Contactmanager.class.php:43
 #: Contactmanager.class.php:52 Contactmanager.class.php:3036
@@ -339,7 +339,7 @@ msgstr "FAX"
 
 #: ucp/assets/js/global.js:198
 msgid "Facetime"
-msgstr "persönliches Gespräch"
+msgstr "Persönliches Gespräch"
 
 #: Contactmanager.class.php:655 ucp/Contactmanager.class.php:263
 msgid "Failed to write file to disk"
@@ -362,7 +362,7 @@ msgstr "Vorname"
 
 #: views/entry.php:98
 msgid "First Name (overrides First Name from User Manager)"
-msgstr "Vorname (Überschreibt den Vornamen vom Benutzer-Manager)"
+msgstr "Vorname (überschreibt den Vornamen aus der Benutzerverwaltung)"
 
 #: ucp/assets/js/global.js:263
 msgid "Function call does not exist!"
@@ -557,7 +557,7 @@ msgstr "Nachname"
 
 #: views/entry.php:118
 msgid "Last Name (overrides Last Name from User Manager)"
-msgstr "Nachname (Überschreibt den Nachnamen vom Benutzer-Manager)"
+msgstr "Nachname (überschreibt den Nachnamen aus der Benutzerverwaltung)"
 
 #: views/rnav.php:2
 msgid "List All Groups"
@@ -569,11 +569,13 @@ msgstr "Zeige alle Kurzwahlen"
 
 #: Console/Contactmanager.class.php:17
 msgid "Lookup backed on User Manager Users View"
-msgstr ""
+msgstr "Suche stützt sich auf die Benutzersicht der Benutzerverwaltung"
 
 #: Console/Contactmanager.class.php:16
 msgid "Lookup number and get a contact back as a result"
 msgstr ""
+"Schlagen Sie eine Nummer nach und erhalten Sie einen Kontakt als Ergebnis "
+"zurück"
 
 #: Contactmanager.class.php:652 ucp/Contactmanager.class.php:260
 msgid "Missing a temporary folder"
@@ -604,7 +606,7 @@ msgstr "Nein"
 
 #: Contactmanager.class.php:2520
 msgid "No E-Mails to add"
-msgstr "Keine E-Mails zum hinzufügen"
+msgstr "Keine E-Mails hinzuzufügen"
 
 #: views/grid.php:64
 msgid "No Groups for this type"
@@ -628,7 +630,7 @@ msgstr "Es wurde keine Datei hochgeladen"
 
 #: Contactmanager.class.php:2928 Contactmanager.class.php:2940
 msgid "None"
-msgstr "Keine*r"
+msgstr "Kein*e"
 
 #: ucp/Contactmanager.class.php:395 ucp/Contactmanager.class.php:474
 #: ucp/Contactmanager.class.php:499
@@ -680,7 +682,7 @@ msgstr "Bitte geben Sie ein gültige E-Mail Adresse ein"
 
 #: Contactmanager.class.php:50 Contactmanager.class.php:3032
 msgid "Private"
-msgstr ""
+msgstr "Nichtöffentlich"
 
 #: Contactmanager.class.php:1017 Contactmanager.class.php:1036
 msgid "Reset"
