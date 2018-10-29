@@ -1429,7 +1429,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				}
 			}
 		}
-
+		$this->FreePBX->Hooks->processHooks($id);
 		return array("status" => true, "type" => "success", "message" => _("Group successfully added"), "id" => $id);
 	}
 
@@ -1457,6 +1457,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 		$this->groupCache[$id] = null;
 		$this->groupsCache = null;
+		$this->FreePBX->Hooks->processHooks($id);
 		return array("status" => true, "type" => "success", "message" => _("Group successfully updated"), "id" => $id);
 	}
 
@@ -1725,7 +1726,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$sql = "DELETE FROM contactmanager_group_entries WHERE `id` = :id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $id));
-
+		$this->FreePBX->Hooks->processHooks($id);
 		return array("status" => true, "type" => "success", "message" => _("Group entry successfully deleted"));
 	}
 
@@ -1757,7 +1758,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$sql = "DELETE FROM contactmanager_group_entries WHERE `groupid` = :groupid";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
-
+		$this->FreePBX->Hooks->processHooks($id);
 		return array("status" => true, "type" => "success", "message" => _("Group entries successfully deleted"));
 	}
 
@@ -1814,7 +1815,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$this->addEmailsByEntryID($data['id'], !empty($entry['emails']) ? $entry['emails'] : '');
 
 		$this->addWebsitesByEntryID($data['id'], !empty($entry['websites']) ? $entry['websites'] : '');
-
+		$this->FreePBX->Hooks->processHooks($id);
 		return array("status" => true, "type" => "success", "message" => _("Group entry successfully updated"), "id" => $data['id']);
 	}
 
@@ -1870,7 +1871,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$this->addEmailsByEntryID($id, !empty($entry['emails']) ? $entry['emails'] : '');
 
 		$this->addWebsitesByEntryID($id, !empty($entry['websites']) ? $entry['websites'] : '');
-
+		$this->FreePBX->Hooks->processHooks($id, $entry);
 		return array("status" => true, "type" => "success", "message" => _("Group entry successfully added"), "id" => $id);
 	}
 
@@ -1946,7 +1947,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 		$ret = $this->deleteWebsitesByEntryID($id);
 		$this->addWebsitesByEntryID($id, $entry['websites']);
-
+		$this->FreePBX->Hooks->processHooks($id, $entry);
 		return array("status" => true, "type" => "success", "message" => _("Group entry successfully updated"), "id" => $id);
 	}
 
