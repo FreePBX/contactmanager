@@ -3025,6 +3025,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					),
 				),
 				'displayname' => array(
+					'required' => true,
 					'identifier' => _('Display Name'),
 					'description' => _('Display Name'),
 				),
@@ -3034,8 +3035,12 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				'company' => array('description' => _('Company')),
 				'address' => array('description' => _('Address')),
 				'userman_username' => array('description' => _('User Manager username this contact should point to.  Internal contacts only.')),
-				'phone_1_number' => array('description' => _('Phone number.  External contacts only.')),
+				'phone_1_number' => array(
+						'required' => true,
+						'description' => _('Phone number.  External contacts only.')
+						),
 				'phone_1_type' => array(
+					'required' => true,
 					'description' => _('Type of phone number.  External contacts only.'),
 					'values' => array(
 						'work' => _('Work'),
@@ -3130,17 +3135,17 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				}
 
 				$contact = array(
-					'id' => '',
-					'groupid' => $group['id'],
-					'user' => -1,
-					'displayname' => $data['displayname'],
-					'fname' => $data['fname'],
-					'lname' => $data['lname'],
-					'title' => $data['title'],
-					'company' => $data['company'],
-					'address' => $data['address'],
-					'image' => ''
-				);
+						'id' => '',
+						'groupid' => $group['id'],
+						'user' => -1,
+						'displayname' => $data['displayname'],
+						'fname' => isset($data['fname'])?$data['fname']:'',
+						'lname' => isset($data['lname'])?$data['lname']:'',
+						'title' => isset($data['title'])?$data['title']:'',
+						'company' => isset($data['company'])?$data['company']:'',
+						'address' => isset($data['address'])?$data['address']:'',
+						'image' => ''
+						);
 
 				$grep = preg_grep('/^\D+_\d+/', array_keys($data));
 				foreach ($grep as $key) {
