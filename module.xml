@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.43.12</version>
+	<version>13.0.43.13</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.43.13* Fixing FREEPBX-18843 Bulkhandler contact import fields issue 
 		*13.0.43.12* FREEPBX-18502 
 		*13.0.43.11* FREEPBX-18427
 		*13.0.43.10* FREEPBX-18258 Need ability to use bulkhandler to export and import contact speed dials 
