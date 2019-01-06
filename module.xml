@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.6</version>
+	<version>15.0.7</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*15.0.7* Fixing FREEPBX-18843 Bulkhandler contact import fields issue 
 		*15.0.6* FREEPBX-18427 Speed dials for external contacts disappear when contact manager is updated 
 		*15.0.5* FREEPBX-17601 
 		*15.0.4* Rest Api 
