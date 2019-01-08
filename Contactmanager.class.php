@@ -426,56 +426,66 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 	 * @return string                   The image binary
 	 */
 	public function getContactImage($entryid=null,$type=null) {
-		$buffer = '';
-		if(!empty($entryid)) {
-			if(!empty($type)) {
-				switch($type) {
-					case "internal":
-						$data = $this->freepbx->Userman->getUserByID($entryid);
-						$data = $this->getImageByID($data['id'], $data['email'], 'internal');
-					break;
-					case "private" :
-					case "external":
-						$data = $this->getEntryByID($entryid);
-						if(!empty($data['image']['image'])) {
-							$data['image'] = $data['image']['image'];
-						}
-					break;
-				}
-			} else {
-				$data = $this->getEntryByID($entryid);
-				if(!empty($data['image']['image'])) {
-					$data['image'] = $data['image']['image'];
-				}
+		$mods = $this->freepbx->Hooks->processHooks($entryid,$type);
+		foreach($mods as $mod => $contents) {
+			if(!empty($contents)) {
+				$buffer = $contents;
+				break;
 			}
+		}
 
-			if(!empty($data['image'])) {
-				$buffer = $data['image'];
-			}
-		} elseif(!empty($_REQUEST['temporary'])) {
-			$name = basename($_REQUEST['name']);
-			$buffer = file_get_contents($this->tmp."/".$name);
-		} elseif(!empty($_REQUEST['entryid'])) {
-			$data = $this->getEntryByID($_REQUEST['entryid']);
-			if(!empty($data['image']['image'])) {
-				$buffer = $data['image']['image'];
-			}
-		} elseif(!empty($_REQUEST['did'])) {
-			$parts = explode(".",$_REQUEST['did']);
-			$did = $parts[0];
-			if(!empty($did)) {
-				$did = preg_replace("/[^0-9\*#]/","",$parts[0]);
-				if(!empty($_POST['ext'])) {
-					$user = $this->userman->getUserByDefaultExtension($_POST['ext']);
-					if(!empty($user)) {
-						$data = $this->lookupNumberByUserID($user['id'], $did);
+		if(empty($buffer)) {
+			$buffer = '';
+			if(!empty($entryid)) {
+				if(!empty($type)) {
+					switch($type) {
+						case "internal":
+							$data = $this->freepbx->Userman->getUserByID($entryid);
+							$data = $this->getImageByID($data['id'], $data['email'], 'internal');
+						break;
+						case "private" :
+						case "external":
+							$data = $this->getEntryByID($entryid);
+							if(!empty($data['image']['image'])) {
+								$data['image'] = $data['image']['image'];
+							}
+						break;
+					}
+				} else {
+					$data = $this->getEntryByID($entryid);
+					if(!empty($data['image']['image'])) {
+						$data['image'] = $data['image']['image'];
 					}
 				}
-				if(empty($data)) {
-					$data = $this->lookupNumberByUserID(-1, $did);
+
+				if(!empty($data['image'])) {
+					$buffer = $data['image'];
 				}
-				if(!empty($data) && !empty($data['image']['image'])) {
+			} elseif(!empty($_REQUEST['temporary'])) {
+				$name = basename($_REQUEST['name']);
+				$buffer = file_get_contents($this->tmp."/".$name);
+			} elseif(!empty($_REQUEST['entryid'])) {
+				$data = $this->getEntryByID($_REQUEST['entryid']);
+				if(!empty($data['image']['image'])) {
 					$buffer = $data['image']['image'];
+				}
+			} elseif(!empty($_REQUEST['did'])) {
+				$parts = explode(".",$_REQUEST['did']);
+				$did = $parts[0];
+				if(!empty($did)) {
+					$did = preg_replace("/[^0-9\*#]/","",$parts[0]);
+					if(!empty($_POST['ext'])) {
+						$user = $this->userman->getUserByDefaultExtension($_POST['ext']);
+						if(!empty($user)) {
+							$data = $this->lookupNumberByUserID($user['id'], $did);
+						}
+					}
+					if(empty($data)) {
+						$data = $this->lookupNumberByUserID(-1, $did);
+					}
+					if(!empty($data) && !empty($data['image']['image'])) {
+						$buffer = $data['image']['image'];
+					}
 				}
 			}
 		}
