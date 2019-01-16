@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>14.0.5</version>
+	<version>14.0.5.1</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*14.0.5.1* FREEPBX-18959
 		*14.0.5* Add hook to change contact image
 		*14.0.4.13* Fixing FREEPBX-18843 Bulkhandler contact import fields issue 
 		*14.0.4.12* FREEPBX-18502 
