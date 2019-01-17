@@ -307,7 +307,7 @@ foreach ($users as $u) {
 													$entry['xmpps'] = !empty($entry['xmpps']) ? $entry['xmpps'] : array();
 													foreach ($entry['xmpps'] as $number) {?>
 														<tr id="xmpp_<?php echo $numcount?>">
-															<td><a class="clickable" onclick="delXMPP(' . $numcount . ')"><i class="fa fa-ban fa-fw"></i></a></td>
+															<td><a class="clickable" onclick="delXMPP('<?php echo $numcount?>')"><i class="fa fa-ban fa-fw"></i></a></td>
 															<td><input type="text" class="form-control" name="xmpp[<?php echo $numcount?>]" value="<?php echo $number['xmpp']?>"></td>
 														</tr>
 													<?php $numcount++;} ?>
@@ -339,7 +339,7 @@ foreach ($users as $u) {
 													$entry['emails'] = !empty($entry['emails']) ? $entry['emails'] : array();
 													foreach ($entry['emails'] as $number) {?>
 														<tr id="email_<?php echo $numcount?>">
-															<td><a class="clickable" onclick="delEmail(' . $numcount . ')"><i class="fa fa-ban fa-fw"></i></a></td>
+															<td><a class="clickable" onclick="delEmail('<?php echo $numcount?>')"><i class="fa fa-ban fa-fw"></i></a></td>
 															<td><input type="text" class="form-control" name="email[<?php echo $numcount?>]" value="<?php echo $number['email']?>"></td>
 														</tr>
 													<?php $numcount++;} ?>
@@ -371,7 +371,7 @@ foreach ($users as $u) {
 													$entry['websites'] = !empty($entry['websites']) ? $entry['websites'] : array();
 													foreach ($entry['websites'] as $number) {?>
 														<tr id="website_<?php echo $numcount?>">
-															<td><a class="clickable" onclick="delWebsite(' . $numcount . ')"><i class="fa fa-ban fa-fw"></i></a></td>
+															<td><a class="clickable" onclick="delWebsite('<?php echo $numcount?>')"><i class="fa fa-ban fa-fw"></i></a></td>
 															<td><input type="text" class="form-control" name="website[<?php echo $numcount?>]" value="<?php echo $number['website']?>"></td>
 														</tr>
 													<?php $numcount++;} ?>
