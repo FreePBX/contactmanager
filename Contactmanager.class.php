@@ -1830,7 +1830,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$this->addEmailsByEntryID($data['id'], !empty($entry['emails']) ? $entry['emails'] : '');
 
 		$this->addWebsitesByEntryID($data['id'], !empty($entry['websites']) ? $entry['websites'] : '');
-		$this->freepbx->Hooks->processHooks($id, $entry);
+		$this->freepbx->Hooks->processHooks($data['id'], $entry);
 		return array("status" => true, "type" => "success", "message" => _("Group entry successfully updated"), "id" => $data['id']);
 	}
 
