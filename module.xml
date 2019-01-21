@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.8.1</version>
+	<version>15.0.8.2</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*15.0.8.2* FREEPBX-18912 Unable to remove the XMPP, Email and Website details under contact manager once the details is filled and submitted 
 		*15.0.8.1* FREEPBX-18963
 		*15.0.8* Support hooks for contact images
 		*15.0.7* Fixing FREEPBX-18843 Bulkhandler contact import fields issue 
