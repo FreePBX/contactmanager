@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-07 22:04-0500\n"
-"PO-Revision-Date: 2019-01-25 15:29+0000\n"
+"PO-Revision-Date: 2019-01-26 21:00+0000\n"
 "Last-Translator: Media Mousavi <mousavi.media@gmail.com>\n"
 "Language-Team: Persian <http://*/projects/freepbx/contactmanager/fa/>\n"
 "Language: fa_IR\n"
@@ -312,7 +312,7 @@ msgstr "خطا حذف کاربر"
 #: ucp/assets/js/global.js:133 ucp/assets/js/global.js:171
 #: ucp/assets/js/global.js:176
 msgid "Error getting form"
-msgstr "خطا گرفتن فرم"
+msgstr "خطا در گرفتن فرم"
 
 #: views/entry.php:247 assets/js/contactmanager.js:145
 msgid "Ext."
@@ -677,7 +677,7 @@ msgstr "شخصی"
 
 #: Contactmanager.class.php:1027 Contactmanager.class.php:1046
 msgid "Reset"
-msgstr "بازنشانی"
+msgstr "بازیابی"
 
 #: ucp/views/contact.php:86 ucp/views/contact.php:141
 #: ucp/views/contactEdit.php:84 ucp/views/contactEdit.php:119
@@ -720,7 +720,7 @@ msgstr "شماره گیر های سریع"
 
 #: Contactmanager.class.php:1032 Contactmanager.class.php:1051
 msgid "Submit"
-msgstr "ثبت"
+msgstr "ارسال"
 
 #: Contactmanager.class.php:653 ucp/Contactmanager.class.php:251
 msgid ""
