@@ -4,11 +4,13 @@ use FreePBX\modules\Backup as Base;
 class Restore Extends Base\RestoreBase{
 	public function runRestore($jobid){
 		$configs = $this->getConfigs();
-		$this->FreePBX->Contactmanager->bulkhandlerImport('contacts', $configs, true);
+		$this->importKVStore($configs['kvstore']);
+		$this->FreePBX->Contactmanager->bulkhandlerImport('contacts', $configs['data'], true);
+		$this->importFeatureCodes($config['features']);
+		$this->importAdvancedSettings($config['settings']);
 	}
 
 	public function processLegacy($pdo, $data, $tables, $unknownTables){
-		$this->restoreLegacyDatabaseKvstore($pdo);
+		$this->restoreLegacyAll($pdo);
 	}
-
 }

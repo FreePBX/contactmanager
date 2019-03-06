@@ -2,23 +2,24 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.8.5</version>
+	<version>15.0.8.6</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
-		*15.0.8.5* fixing legacy restore 
-		*15.0.8.4* fixing legacy restore 
-		*15.0.8.3* fixing legacy restore 
-		*15.0.8.2* FREEPBX-18912 Unable to remove the XMPP, Email and Website details under contact manager once the details is filled and submitted 
+		*15.0.8.6* Add feature codes to backup
+		*15.0.8.5* fixing legacy restore
+		*15.0.8.4* fixing legacy restore
+		*15.0.8.3* fixing legacy restore
+		*15.0.8.2* FREEPBX-18912 Unable to remove the XMPP, Email and Website details under contact manager once the details is filled and submitted
 		*15.0.8.1* FREEPBX-18963
 		*15.0.8* Support hooks for contact images
-		*15.0.7* Fixing FREEPBX-18843 Bulkhandler contact import fields issue 
-		*15.0.6* FREEPBX-18427 Speed dials for external contacts disappear when contact manager is updated 
-		*15.0.5* FREEPBX-17601 
-		*15.0.4* Rest Api 
+		*15.0.7* Fixing FREEPBX-18843 Bulkhandler contact import fields issue
+		*15.0.6* FREEPBX-18427 Speed dials for external contacts disappear when contact manager is updated
+		*15.0.5* FREEPBX-17601
+		*15.0.4* Rest Api
 		*15.0.3* Packaging of ver 15.0.3
-		*15.0.2* FREEPBX-17663 Import contacts not showing in contact manager 
+		*15.0.2* FREEPBX-17663 Import contacts not showing in contact manager
 		*15.0.1* Impliment 15 backup
 	</changelog>
 	<category>Admin</category>
