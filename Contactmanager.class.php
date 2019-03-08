@@ -123,9 +123,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			if(!empty($_POST['contactmanager_speeddial_enable']) && $_POST['contactmanager_speeddial_enable'] == "yes") {
 				$this->freepbx->Ucp->setSettingByID($id,'Contactmanager','speeddial',true);
 			} elseif(!empty($_POST['contactmanager_speeddial_enable']) && $_POST['contactmanager_speeddial_enable'] == "no") {
-				$this->freepbx->Ucp->setSettingByID($id,'Contactmanager','speeddial',true);
+				$this->freepbx->Ucp->setSettingByID($id,'Contactmanager','speeddial',false);
 			} elseif(!empty($_POST['contactmanager_speeddial_enable']) && $_POST['contactmanager_speeddial_enable'] == "inherit") {
-				$this->freepbx->Ucp->setSettingByID($id,'Contactmanager','speeddial',true);
+				$this->freepbx->Ucp->setSettingByID($id,'Contactmanager','speeddial',null);
 			}
 		}
 	}
