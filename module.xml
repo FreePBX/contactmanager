@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.8.7</version>
+	<version>15.0.8.8</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*15.0.8.8* Bump
 		*15.0.8.7* FREEPBX-19580 
 		*15.0.8.6* Add feature codes to backup
 		*15.0.8.5* fixing legacy restore
