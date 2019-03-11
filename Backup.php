@@ -7,7 +7,7 @@ class Backup Extends Base\BackupBase{
 		$this->addConfigs([
 			'data' => $this->FreePBX->Contactmanager->bulkHandlerExport('contacts'),
 			'kvstore' => $this->dumpKVStore(),
-			'features' => dumpFeatureCodes(),
+			'features' => $this->dumpFeatureCodes(),
 			'settings' => $this->dumpAdvancedSettings()
 		]);
 	}
