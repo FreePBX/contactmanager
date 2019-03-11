@@ -10,21 +10,20 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-07 22:04-0500\n"
-"PO-Revision-Date: 2016-10-08 12:16+0200\n"
-"Last-Translator: psdk <hyavari26@gmail.com>\n"
-"Language-Team: Persian (Iran) <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/fa_IR/>\n"
+"PO-Revision-Date: 2019-01-26 21:00+0000\n"
+"Last-Translator: Media Mousavi <mousavi.media@gmail.com>\n"
+"Language-Team: Persian <http://*/projects/freepbx/contactmanager/fa/>\n"
 "Language: fa_IR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.4\n"
+"X-Generator: Weblate 3.0.1\n"
 
 #: functions.inc.php:17
 #, php-format
 msgid "%s (Speed Dial: %s) [%s]"
-msgstr ""
+msgstr "%s1 (Speed Dial: %s2) [%s3]"
 
 #: Contactmanager.class.php:668 ucp/Contactmanager.class.php:266
 msgid "A PHP extension stopped the file upload"
@@ -52,7 +51,7 @@ msgstr "یک کاربر از ماژول مدیریت کاربر"
 
 #: views/speeddial-grid.php:16
 msgid "Action"
-msgstr ""
+msgstr "عمل"
 
 #: Contactmanager.class.php:37 Contactmanager.class.php:46
 #: Contactmanager.class.php:55
@@ -104,7 +103,7 @@ msgstr "مدیر"
 
 #: Contactmanager.class.php:2933
 msgid "All Internal Groups"
-msgstr ""
+msgstr "همه گروه های داخلی"
 
 #: Contactmanager.class.php:2945
 msgid "All Public Groups"
@@ -112,12 +111,14 @@ msgstr "تمام گروههای عمومی"
 
 #: views/ucp_config.php:7
 msgid "Allow Speed Dial Modifications"
-msgstr ""
+msgstr "اجازه تغییر شماره گیری سریع"
 
 #: views/ucp_config.php:26
 msgid ""
 "Allow the user to modify and change speeddials for contacts they can edit"
 msgstr ""
+"اجازه دهید کاربر برای اصلاح و تغییر فرم های سرعت برای مخاطبین که می توانند "
+"ویرایش کنند"
 
 #: Contactmanager.class.php:911
 msgid "An entry must have numbers."
@@ -129,11 +130,11 @@ msgstr "آیا از حذف این گروه و تمام مخاطبین آن مط�
 
 #: ucp/assets/js/global.js:61
 msgid "Are you sure you wish to delete this contact?"
-msgstr ""
+msgstr "آیا از حذف این اکانت مطمئن هستید؟"
 
 #: Contactmanager.class.php:3291
 msgid "Automatically Determine"
-msgstr ""
+msgstr "تعیین خودکار"
 
 #: ucp/views/contact.php:36 ucp/views/contactEdit.php:36 views/entry.php:162
 #: views/user_details_hook.php:49
@@ -160,7 +161,7 @@ msgstr "موبایل"
 #: ucp/assets/js/global.js:86 ucp/assets/js/global.js:110
 #: ucp/assets/js/global.js:133 ucp/assets/js/global.js:165
 msgid "Close"
-msgstr ""
+msgstr "بستن"
 
 #: Contactmanager.class.php:3072 Contactmanager.class.php:3085
 #: Contactmanager.class.php:3098
@@ -201,20 +202,20 @@ msgstr ""
 #: contactmanager.i18n.php:4 contactmanager.i18n.php:8
 #: contactmanager.i18n.php:10 views/grid.php:1
 msgid "Contact Manager"
-msgstr "مدیریت مخاطب"
+msgstr "مدیر تماس"
 
 #: contactmanager.i18n.php:14
 msgid "Contact Manager Module"
-msgstr ""
+msgstr "تماس با ماژول مدیریت"
 
 #: contactmanager.i18n.php:18
 msgid "Contact Manager Speed Dials"
-msgstr ""
+msgstr "تماس با مدیر شماره گیری سریع"
 
 #: functions.inc.php:45 functions.inc.php:48
 #, php-format
 msgid "Contact Manager: %s (Speed Dial: %s) [%s]"
-msgstr ""
+msgstr "Contact Manager: %s1 (Speed Dial: %s2) [%s3]"
 
 #: Contactmanager.class.php:3021 ucp/Contactmanager.class.php:24
 #: ucp/Contactmanager.class.php:36 ucp/Contactmanager.class.php:63
@@ -245,11 +246,11 @@ msgstr "حذف تصویر"
 
 #: views/entry.php:258 assets/js/contactmanager.js:155
 msgid "Dialing Country"
-msgstr ""
+msgstr "کشور شماره گیری"
 
 #: views/user_details_hook.php:7
 msgid "Dialing Locale"
-msgstr ""
+msgstr "محل شماره گیری"
 
 #: Contactmanager.class.php:33 Contactmanager.class.php:43
 #: Contactmanager.class.php:52 Contactmanager.class.php:3048
@@ -257,7 +258,7 @@ msgstr ""
 #: ucp/views/contactEdit.php:6 ucp/views/widget.php:47 views/entry.php:68
 #: views/speeddial-grid.php:13
 msgid "Display Name"
-msgstr "نام قابل نمایش"
+msgstr "نام نمایشی"
 
 #: views/entry.php:78
 msgid "Display Name (overrides Display Name from User Manager)"
@@ -279,7 +280,7 @@ msgstr "آدرس ایمیل. تنها مخاطبین خارجی."
 
 #: ucp/Contactmanager.class.php:389
 msgid "Edit"
-msgstr ""
+msgstr "ویرایش"
 
 #: ucp/assets/js/global.js:84
 msgid "Edit Contact"
@@ -301,17 +302,17 @@ msgstr "ایمیل"
 #: ucp/views/contactEdit.php:79 ucp/views/contactEdit.php:114
 #: views/entry.php:274 assets/js/contactmanager.js:170
 msgid "Enable"
-msgstr ""
+msgstr "فعال"
 
 #: ucp/assets/js/global.js:71
 msgid "Error deleting user"
-msgstr ""
+msgstr "خطا حذف کاربر"
 
 #: ucp/assets/js/global.js:92 ucp/assets/js/global.js:96
 #: ucp/assets/js/global.js:133 ucp/assets/js/global.js:171
 #: ucp/assets/js/global.js:176
 msgid "Error getting form"
-msgstr ""
+msgstr "خطا در گرفتن فرم"
 
 #: views/entry.php:247 assets/js/contactmanager.js:145
 msgid "Ext."
@@ -363,7 +364,7 @@ msgstr "تابع تماس وجود ندارد!"
 
 #: views/grid.php:38
 msgid "Group"
-msgstr ""
+msgstr "گروه"
 
 #: Contactmanager.class.php:1464
 #, php-format
@@ -522,14 +523,16 @@ msgid ""
 "How many digits should a number be before a partial match is used when "
 "looking up a contact"
 msgstr ""
+"چندین رقم باید یک عدد باشد قبل از یک بازی جزئی در هنگام جستجوی یک تماس "
+"استفاده شود"
 
 #: views/ucp_config.php:17
 msgid "Inherit"
-msgstr "موروثی"
+msgstr "وارث"
 
 #: ucp/assets/js/global.js:253
 msgid "Initiate"
-msgstr ""
+msgstr "ورودی"
 
 #: Contactmanager.class.php:31 Contactmanager.class.php:3041 views/group.php:46
 msgid "Internal"
@@ -556,15 +559,15 @@ msgstr "فهرست تمام گروه ها"
 
 #: views/rnav.php:3
 msgid "List All Speeddials"
-msgstr ""
+msgstr "فهرست تمام تماس های سریع"
 
 #: Console/Contactmanager.class.php:17
 msgid "Lookup backed on User Manager Users View"
-msgstr ""
+msgstr "نگاهی به پشتیبانی کاربر در مدیریت کاربران مشاهده"
 
 #: Console/Contactmanager.class.php:16
 msgid "Lookup number and get a contact back as a result"
-msgstr ""
+msgstr "مشاهده شماره و به عنوان یک نتیجه تماس بگیرید"
 
 #: Contactmanager.class.php:662 ucp/Contactmanager.class.php:260
 msgid "Missing a temporary folder"
@@ -618,7 +621,7 @@ msgstr "فایلی بارگذاری نشد"
 
 #: Contactmanager.class.php:2939 Contactmanager.class.php:2951
 msgid "None"
-msgstr ""
+msgstr "هیچکدام"
 
 #: ucp/Contactmanager.class.php:395 ucp/Contactmanager.class.php:474
 #: ucp/Contactmanager.class.php:499
@@ -627,7 +630,7 @@ msgstr "شناخته نشده"
 
 #: views/speeddial-grid.php:12
 msgid "Number"
-msgstr ""
+msgstr "شماره"
 
 #: assets/js/contactmanager.js:58
 msgid "Number cannot be blank."
@@ -649,15 +652,15 @@ msgstr "سایر"
 
 #: views/grid.php:38
 msgid "Owner"
-msgstr ""
+msgstr "مالک"
 
 #: ucp/Contactmanager.class.php:27
 msgid "PBX Contacts"
-msgstr ""
+msgstr "تماس های PBX"
 
 #: contactmanager.i18n.php:12
 msgid "Partial Match Length"
-msgstr ""
+msgstr "طول بازی جزئی"
 
 #: Contactmanager.class.php:3059 Contactmanager.class.php:3074
 #: Contactmanager.class.php:3087
@@ -670,11 +673,11 @@ msgstr "لطفا یک آدرس ایمیل معتبر وارد کنید"
 
 #: Contactmanager.class.php:50 Contactmanager.class.php:3043
 msgid "Private"
-msgstr ""
+msgstr "شخصی"
 
 #: Contactmanager.class.php:1027 Contactmanager.class.php:1046
 msgid "Reset"
-msgstr "بازنشانی"
+msgstr "بازیابی"
 
 #: ucp/views/contact.php:86 ucp/views/contact.php:141
 #: ucp/views/contactEdit.php:84 ucp/views/contactEdit.php:119
@@ -685,7 +688,7 @@ msgstr "پیامک"
 #: ucp/assets/js/global.js:86 ucp/assets/js/global.js:110
 #: ucp/assets/js/global.js:165
 msgid "Save changes"
-msgstr ""
+msgstr "ذخیره تغییرات"
 
 #: ucp/assets/js/global.js:251
 msgid "Select an Action"
@@ -693,7 +696,7 @@ msgstr "انتخاب یک عملکرد"
 
 #: views/userman_hook.php:7
 msgid "Show In Contact Manager Groups"
-msgstr ""
+msgstr "نمایش در گروه مدیریت تماس"
 
 #: Contactmanager.class.php:3073 Contactmanager.class.php:3086
 #: Contactmanager.class.php:3099 ucp/views/contact.php:75
@@ -701,23 +704,23 @@ msgstr ""
 #: ucp/views/contactEdit.php:109 views/entry.php:269
 #: assets/js/contactmanager.js:165
 msgid "Speed Dial"
-msgstr ""
+msgstr "شماره گیر سریع"
 
 #: views/speeddial-grid.php:11
 msgid "Speed Dial Feature Code"
-msgstr ""
+msgstr "کد ویژه شماره گیر سریع"
 
 #: views/speeddial-grid.php:3
 msgid "Speed Dial Feature code has been disabled in Feature Code Admin"
-msgstr ""
+msgstr "کد ویژه شماره گیر سریع غیر فعال شده"
 
 #: views/speeddial-grid.php:1
 msgid "Speed Dials"
-msgstr ""
+msgstr "شماره گیر های سریع"
 
 #: Contactmanager.class.php:1032 Contactmanager.class.php:1051
 msgid "Submit"
-msgstr "ثبت"
+msgstr "ارسال"
 
 #: Contactmanager.class.php:653 ucp/Contactmanager.class.php:251
 msgid ""
@@ -740,25 +743,27 @@ msgstr "عملکردی برای این نوع وجود ندارد"
 
 #: ucp/assets/js/global.js:388
 msgid "There was an error"
-msgstr ""
+msgstr "خطایی رخ داد"
 
 #: ucp/assets/js/global.js:149
 msgid "There was an error removing this group"
-msgstr ""
+msgstr "در حذف این گروه خطایی رخ داد"
 
 #: views/userman_hook.php:49
 msgid ""
 "These are the viewable contact manager groups which will show up for this "
 "user in UCP and RestApps (If purchased)"
 msgstr ""
+"این گروه های مدیریت تماس قابل مشاهده است که برای این کاربر در UCP و RestApps "
+"نشان داده می شود (اگر خرید شده باشد)"
 
 #: ucp/assets/js/global.js:300
 msgid "This speed dial id conflicts with another contact"
-msgstr ""
+msgstr "این شناسه شماره گیر سریع با یک مخاطب دیگر درگیر است"
 
 #: ucp/assets/js/global.js:288
 msgid "This speed dial id conflicts with another speed dial on this page"
-msgstr ""
+msgstr "این شناسه شماره گیر سریع با یک شماره گیر سریع دیگر درگیر است"
 
 #: Contactmanager.class.php:3053 ucp/views/contact.php:18
 #: ucp/views/contactEdit.php:18 ucp/views/widget.php:50 views/entry.php:128
@@ -799,7 +804,7 @@ msgstr "ناشناخته"
 
 #: Contactmanager.class.php:3292
 msgid "Unknown"
-msgstr ""
+msgstr "ناشناخته"
 
 #: Contactmanager.class.php:3202
 msgid "Unknown data type."
@@ -823,6 +828,8 @@ msgid ""
 "Used in Contact Manager to determine phone number representations. Select "
 "the region for the numbers you have entered above."
 msgstr ""
+"مورد استفاده در مدیر تماس برای تعیین شماره نمایندگی تلفن. منطقه ای را برای "
+"شماره هایی که در بالا وارد کرده اید انتخاب کنید."
 
 #: Contactmanager.class.php:36 views/entry.php:41 views/group.php:87
 #: views/group.php:97
@@ -840,11 +847,11 @@ msgstr "نام کاربری که مخاطب باید به آن اشاره کند
 
 #: ucp/Contactmanager.class.php:380 ucp/Contactmanager.class.php:387
 msgid "View Contact"
-msgstr ""
+msgstr "مشاهده تماس"
 
 #: views/userman_hook.php:33
 msgid "Viewable Contact Manager Groups"
-msgstr ""
+msgstr "تماس با مدیر گروه قابل مشاهده"
 
 #: ucp/views/contact.php:219 ucp/views/contactEdit.php:156
 #: ucp/views/contactEdit.php:172 views/entry.php:365
@@ -857,7 +864,7 @@ msgstr "وب سایت نمیتواند خالی باشد."
 
 #: views/userman_hook.php:23
 msgid "What internal groups to show this user in"
-msgstr ""
+msgstr "چه گروه های داخلی برای نشان دادن این کاربر در"
 
 #: Contactmanager.class.php:961 Contactmanager.class.php:3065
 #: Contactmanager.class.php:3078 Contactmanager.class.php:3091
