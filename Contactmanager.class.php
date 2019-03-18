@@ -2207,7 +2207,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					$data[':regioncode'] = $phoneUtil->getRegionCodeForNumber($info);
 					$data[':possibleshort'] = $shortUtil->isPossibleShortNumber($info) ? 1 : 0;
 					$data[':stripped'] = !empty($data[':possibleshort']) ? preg_replace("/[^0-9\*#]/","",$data[':number'])  : preg_replace("/[^0-9\*#]/","",$data[':E164']);
-					$data[':locale'] = $number['locale'];
+					$data[':locale'] = $phoneUtil->getRegionCodeForNumber($info);
 				} catch (NumberParseException $e) {
 					$data[':countrycode'] = null;
 					$data[':nationalnumber'] = null;
@@ -3066,6 +3066,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				'phone_1_extension' => array('description' => _('Extension.  External contacts only.')),
 				'phone_1_flags' => array('description' => _('Comma-delimited list of flags.  (Example: sms,fax)  External contacts only.')),
 				'phone_1_speeddial' => array('description' => _('Speed Dial')),
+				'phone_1_locale' => array('description' => _('Country Code  Or you can put AUTO , which will fill the Country code automatically. External contacts only. ')),
 				'phone_2_number' => array('description' => _('Phone number.  External contacts only.')),
 				'phone_2_type' => array(
 					'description' => _('Type of phone number.  External contacts only.'),
@@ -3079,6 +3080,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				'phone_2_extension' => array('description' => _('Extension.  External contacts only.')),
 				'phone_2_flags' => array('description' => _('Comma-delimited list of flags.  (Example: sms,fax)  External contacts only.')),
 				'phone_2_speeddial' => array('description' => _('Speed Dial')),
+				'phone_2_locale' => array('description' => _('Country Code  Or you can put AUTO , which will fill the Country code automatically. External contacts only. ')),
 				'phone_3_number' => array('description' => _('Phone number.  External contacts only.')),
 				'phone_3_type' => array(
 					'description' => _('Type of phone number.  External contacts only.'),
@@ -3092,6 +3094,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				'phone_3_extension' => array('description' => _('Extension.  External contacts only.')),
 				'phone_3_flags' => array('description' => _('Comma-delimited list of flags.  (Example: sms,fax)  External contacts only.')),
 				'phone_3_speeddial' => array('description' => _('Speed Dial')),
+				'phone_3_locale' => array('description' => _('Country Code  Or you can put AUTO , which will fill the Country code automatically. External contacts only. ')),
 				'email_1' => array('description' => _('E-mail address.  External contacts only.')),
 				'email_2' => array('description' => _('E-mail address.  External contacts only.')),
 				'email_3' => array('description' => _('E-mail address.  External contacts only.')),
@@ -3181,6 +3184,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 											'extension' => isset($value['extension']) ? $value['extension'] : '',
 											'flags' => isset($value['flags']) ? explode(',', $value['flags']) : array(),
 											'speeddial' => isset($value['speeddial']) ? $value['speeddial'] : '',
+											'locale' => isset($value['locale']) ? $value['locale'] : '',
 											);
 									break;
 								case 'email':
