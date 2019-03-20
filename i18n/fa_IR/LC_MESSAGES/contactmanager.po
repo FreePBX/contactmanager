@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-07 22:07-0500\n"
+"POT-Creation-Date: 2019-03-20 09:05+0530\n"
 "PO-Revision-Date: 2016-10-08 12:16+0200\n"
 "Last-Translator: psdk <hyavari26@gmail.com>\n"
 "Language-Team: Persian (Iran) <http://weblate.freepbx.org/projects/freepbx/"
@@ -131,7 +131,7 @@ msgstr "آیا از حذف این گروه و تمام مخاطبین آن مط�
 msgid "Are you sure you wish to delete this contact?"
 msgstr ""
 
-#: Contactmanager.class.php:3286
+#: Contactmanager.class.php:3290
 msgid "Automatically Determine"
 msgstr ""
 
@@ -149,7 +149,7 @@ msgid "Can Not Find Uploaded Files"
 msgstr "فایلهای بارگذاری شده پیدا نشد"
 
 #: Contactmanager.class.php:955 Contactmanager.class.php:3062
-#: Contactmanager.class.php:3075 Contactmanager.class.php:3088
+#: Contactmanager.class.php:3076 Contactmanager.class.php:3090
 #: ucp/views/contact.php:62 ucp/views/contact.php:115
 #: ucp/views/contactEdit.php:59 ucp/views/contactEdit.php:96
 #: views/group.php:105
@@ -162,8 +162,8 @@ msgstr "موبایل"
 msgid "Close"
 msgstr ""
 
-#: Contactmanager.class.php:3067 Contactmanager.class.php:3080
-#: Contactmanager.class.php:3093
+#: Contactmanager.class.php:3067 Contactmanager.class.php:3081
+#: Contactmanager.class.php:3095
 msgid ""
 "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
 msgstr "تنها مخاطبین خارجی. (مانند： پیامک,فکس)."
@@ -226,6 +226,13 @@ msgstr "مخاطبین"
 msgid "Contacts and internal/external groups from the Contact Manager module."
 msgstr "مخاطبین و گروه های ورودی/خروجی از ماژول مدیریت مخاطب."
 
+#: Contactmanager.class.php:3069 Contactmanager.class.php:3083
+#: Contactmanager.class.php:3097
+msgid ""
+"Country Code  Or you can put AUTO , which will fill the Country code "
+"automatically. External contacts only. "
+msgstr ""
+
 #: Contactmanager.class.php:1011 Contactmanager.class.php:1030
 msgid "Delete"
 msgstr "حذف"
@@ -272,8 +279,8 @@ msgstr "یک تصویر جدید به اینجا منتقل کنید"
 msgid "E-Mail address cannot be blank."
 msgstr "آدرس ایمیل نمیتواند خالی باشد."
 
-#: Contactmanager.class.php:3095 Contactmanager.class.php:3096
-#: Contactmanager.class.php:3097
+#: Contactmanager.class.php:3098 Contactmanager.class.php:3099
+#: Contactmanager.class.php:3100
 msgid "E-mail address.  External contacts only."
 msgstr "آدرس ایمیل. تنها مخاطبین خارجی."
 
@@ -317,8 +324,8 @@ msgstr ""
 msgid "Ext."
 msgstr "داخلی."
 
-#: Contactmanager.class.php:3066 Contactmanager.class.php:3079
-#: Contactmanager.class.php:3092
+#: Contactmanager.class.php:3066 Contactmanager.class.php:3080
+#: Contactmanager.class.php:3094
 msgid "Extension.  External contacts only."
 msgstr "داخلی. تنها مخاطبین خارجی."
 
@@ -485,11 +492,11 @@ msgstr "ورودی گروه با موفقیت به روز شد"
 msgid "Group name can not be blank"
 msgstr "نام گروه نمیتواند خالی باشد"
 
-#: Contactmanager.class.php:3113
+#: Contactmanager.class.php:3116
 msgid "Group name is required."
 msgstr "نام گروه مورد نیاز است."
 
-#: Contactmanager.class.php:3146
+#: Contactmanager.class.php:3149
 msgid "Group not found and could not be created."
 msgstr "گروه یافت نشد و نمیتوان آن را ایجاد کرد."
 
@@ -505,12 +512,12 @@ msgstr "گروه با موفقیت حذف شد"
 msgid "Group successfully updated"
 msgstr "گروه با موفقیت به روز شد"
 
-#: Contactmanager.class.php:3120
+#: Contactmanager.class.php:3123
 msgid "Group type is required."
 msgstr "نوع گروه مورد نیاز است."
 
 #: Contactmanager.class.php:954 Contactmanager.class.php:3061
-#: Contactmanager.class.php:3074 Contactmanager.class.php:3087
+#: Contactmanager.class.php:3075 Contactmanager.class.php:3089
 #: ucp/views/contact.php:61 ucp/views/contact.php:114
 #: ucp/views/contactEdit.php:58 ucp/views/contactEdit.php:95
 #: views/group.php:104
@@ -640,7 +647,7 @@ msgid "Numbers"
 msgstr "شماره ها"
 
 #: Contactmanager.class.php:956 Contactmanager.class.php:3063
-#: Contactmanager.class.php:3076 Contactmanager.class.php:3089
+#: Contactmanager.class.php:3077 Contactmanager.class.php:3091
 #: ucp/views/contact.php:63 ucp/views/contact.php:116
 #: ucp/views/contactEdit.php:60 ucp/views/contactEdit.php:97
 #: views/group.php:106
@@ -659,8 +666,8 @@ msgstr ""
 msgid "Partial Match Length"
 msgstr ""
 
-#: Contactmanager.class.php:3054 Contactmanager.class.php:3069
-#: Contactmanager.class.php:3082
+#: Contactmanager.class.php:3054 Contactmanager.class.php:3070
+#: Contactmanager.class.php:3084
 msgid "Phone number.  External contacts only."
 msgstr "شماره تلفن. فقط تماس خارجی."
 
@@ -695,8 +702,8 @@ msgstr "انتخاب یک عملکرد"
 msgid "Show In Contact Manager Groups"
 msgstr ""
 
-#: Contactmanager.class.php:3068 Contactmanager.class.php:3081
-#: Contactmanager.class.php:3094 ucp/views/contact.php:75
+#: Contactmanager.class.php:3068 Contactmanager.class.php:3082
+#: Contactmanager.class.php:3096 ucp/views/contact.php:75
 #: ucp/views/contact.php:130 ucp/views/contactEdit.php:74
 #: ucp/views/contactEdit.php:109 views/entry.php:269
 #: assets/js/contactmanager.js:165
@@ -781,8 +788,8 @@ msgstr "نوع گروه"
 msgid "Type of group for contact."
 msgstr "نوع گروه برای مخاطب."
 
-#: Contactmanager.class.php:3058 Contactmanager.class.php:3071
-#: Contactmanager.class.php:3084
+#: Contactmanager.class.php:3058 Contactmanager.class.php:3072
+#: Contactmanager.class.php:3086
 msgid "Type of phone number.  External contacts only."
 msgstr "نوع شماره تلفن. تنها مخاطبین خارجی."
 
@@ -797,11 +804,11 @@ msgstr "آواتاری برای %s یافت نشد"
 msgid "Unauthorized"
 msgstr "ناشناخته"
 
-#: Contactmanager.class.php:3287
+#: Contactmanager.class.php:3291
 msgid "Unknown"
 msgstr ""
 
-#: Contactmanager.class.php:3197
+#: Contactmanager.class.php:3201
 msgid "Unknown data type."
 msgstr "نوع دیتا نامشخص."
 
@@ -860,7 +867,7 @@ msgid "What internal groups to show this user in"
 msgstr ""
 
 #: Contactmanager.class.php:953 Contactmanager.class.php:3060
-#: Contactmanager.class.php:3073 Contactmanager.class.php:3086
+#: Contactmanager.class.php:3074 Contactmanager.class.php:3088
 #: ucp/views/contact.php:60 ucp/views/contact.php:113
 #: ucp/views/contactEdit.php:57 ucp/views/contactEdit.php:94
 #: views/group.php:103
