@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>14.0.5.3</version>
+	<version>14.0.5.4</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*14.0.5.4* fixing FREEI-439 bulk import of contacts strips intl and defaults to USA numbers 
 		*14.0.5.3* FREEPBX-19580 
 		*14.0.5.2* FREEPBX-18912 Unable to remove the XMPP, Email and Website details under contact manager once the details is filled and submitted 
 		*14.0.5.1* FREEPBX-18959
