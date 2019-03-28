@@ -10,16 +10,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-20 09:03+0530\n"
-"PO-Revision-Date: 2017-12-11 23:27+0200\n"
-"Last-Translator: JCattan <jeremie@famillecattan.com>\n"
-"Language-Team: French <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/fr_FR/>\n"
+"PO-Revision-Date: 2019-03-29 17:00+0000\n"
+"Last-Translator: jeremie cattan <freepbx@famillecattan.com>\n"
+"Language-Team: French <http://*/projects/freepbx/contactmanager/fr/>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.4\n"
+"X-Generator: Weblate 3.0.1\n"
 
 #: functions.inc.php:17
 #, php-format
@@ -679,7 +678,7 @@ msgstr ""
 
 #: Contactmanager.class.php:1027 Contactmanager.class.php:1046
 msgid "Reset"
-msgstr "Reset"
+msgstr "Réinitialiser"
 
 #: ucp/views/contact.php:86 ucp/views/contact.php:141
 #: ucp/views/contactEdit.php:84 ucp/views/contactEdit.php:119
