@@ -2,14 +2,15 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.8.9</version>
+	<version>15.0.8.10</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
-		*15.0.8.9* fixing FREEI-439 bulk import of contacts strips intl and defaults to USA numbers 
+		*15.0.8.10* Use lazy loading console commands
+		*15.0.8.9* fixing FREEI-439 bulk import of contacts strips intl and defaults to USA numbers
 		*15.0.8.8* Bump
-		*15.0.8.7* FREEPBX-19580 
+		*15.0.8.7* FREEPBX-19580
 		*15.0.8.6* Add feature codes to backup
 		*15.0.8.5* fixing legacy restore
 		*15.0.8.4* fixing legacy restore
@@ -33,7 +34,7 @@
 		<contactmanager needsenginedb="yes">Contact Manager</contactmanager>
 	</menuitems>
 	<depends>
-		<version>14.0.0</version>
+		<version>15.0.6.18</version>
 		<module>userman ge 13.0.70</module>
 	</depends>
 	<supported>
@@ -137,4 +138,9 @@
 			<field name="website" type="string" length="100" notnull="false"/>
 		</table>
 	</database>
+	<console>
+		<command>
+			<name>contactmanager</name>
+		</command>
+	</console>
 </module>
