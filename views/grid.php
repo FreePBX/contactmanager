@@ -14,7 +14,7 @@
 						<div class="scroller scroller-left"><i class="glyphicon glyphicon-chevron-left"></i></div>
 						<div class="scroller scroller-right"><i class="glyphicon glyphicon-chevron-right"></i></div>
 						<div class="wrapper">
-							<ul class="nav nav-tabs list" role="tablist">
+							<ul class="nav nav-tabs list" role="tablist" style="min-width: 10000px;">
 							<?php foreach($groups[$type] as $k => $group) { 
 									$_Owner 	= FreePBX::Userman()->getUserByID($group["owner"]);
 									$owner 		= '<i class="fa fa-users" ></i>';
