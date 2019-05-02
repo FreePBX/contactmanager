@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-20 09:03+0530\n"
-"PO-Revision-Date: 2018-10-19 13:00+0000\n"
-"Last-Translator: Bastian Mertgen <b.mertgen@bastian-mertgen.de>\n"
+"PO-Revision-Date: 2019-04-17 10:00+0000\n"
+"Last-Translator: florian alberts <alberts@ar-systems.de>\n"
 "Language-Team: German <http://*/projects/freepbx/contactmanager/de/>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
@@ -239,6 +239,8 @@ msgid ""
 "Country Code  Or you can put AUTO , which will fill the Country code "
 "automatically. External contacts only. "
 msgstr ""
+"Länderkennung – oder wählen Sie „Automatisch“, um die Länderkennung "
+"automatish erkennen zu lassen. Nur für externe Kontakte. "
 
 #: Contactmanager.class.php:1020 Contactmanager.class.php:1039
 msgid "Delete"
@@ -350,7 +352,7 @@ msgstr "Persönliches Gespräch"
 
 #: Contactmanager.class.php:665 ucp/Contactmanager.class.php:263
 msgid "Failed to write file to disk"
-msgstr "Fehler beim Speichern der Datei"
+msgstr "Konnte Datei nicht auf die Festplatte schreiben"
 
 #: ucp/views/contact.php:94 ucp/views/contact.php:149
 #: ucp/views/contactEdit.php:85 ucp/views/contactEdit.php:120
