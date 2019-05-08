@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-21 09:04+0530\n"
+"POT-Creation-Date: 2019-03-20 09:12+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -140,7 +140,7 @@ msgstr ""
 msgid "Are you sure you want to delete this group and all of it's contacts?"
 msgstr ""
 
-#: Contactmanager.class.php:3280
+#: Contactmanager.class.php:3284
 msgid "Automatically Determine"
 msgstr ""
 
@@ -161,8 +161,8 @@ msgstr ""
 
 #: Contactmanager.class.php:963
 #: Contactmanager.class.php:3058
-#: Contactmanager.class.php:3071
-#: Contactmanager.class.php:3084
+#: Contactmanager.class.php:3072
+#: Contactmanager.class.php:3086
 #: ucp/views/contact.php:62
 #: ucp/views/contact.php:115
 #: views/group.php:105
@@ -170,8 +170,8 @@ msgid "Cell"
 msgstr ""
 
 #: Contactmanager.class.php:3063
-#: Contactmanager.class.php:3076
-#: Contactmanager.class.php:3089
+#: Contactmanager.class.php:3077
+#: Contactmanager.class.php:3091
 msgid ""
 "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
 msgstr ""
@@ -241,6 +241,14 @@ msgstr ""
 msgid "Contacts and internal/external groups from the Contact Manager module."
 msgstr ""
 
+#: Contactmanager.class.php:3065
+#: Contactmanager.class.php:3079
+#: Contactmanager.class.php:3093
+msgid ""
+"Country Code  Or you can put AUTO , which will fill the Country code "
+"automatically. External contacts only. "
+msgstr ""
+
 #: Contactmanager.class.php:1020
 #: Contactmanager.class.php:1039
 msgid "Delete"
@@ -300,9 +308,9 @@ msgstr ""
 msgid "E-Mail address cannot be blank."
 msgstr ""
 
-#: Contactmanager.class.php:3091
-#: Contactmanager.class.php:3092
-#: Contactmanager.class.php:3093
+#: Contactmanager.class.php:3094
+#: Contactmanager.class.php:3095
+#: Contactmanager.class.php:3096
 msgid "E-mail address.  External contacts only."
 msgstr ""
 
@@ -337,8 +345,8 @@ msgid "Ext."
 msgstr ""
 
 #: Contactmanager.class.php:3062
-#: Contactmanager.class.php:3075
-#: Contactmanager.class.php:3088
+#: Contactmanager.class.php:3076
+#: Contactmanager.class.php:3090
 msgid "Extension.  External contacts only."
 msgstr ""
 
@@ -533,11 +541,11 @@ msgstr ""
 msgid "Group name can not be blank"
 msgstr ""
 
-#: Contactmanager.class.php:3109
+#: Contactmanager.class.php:3112
 msgid "Group name is required."
 msgstr ""
 
-#: Contactmanager.class.php:3142
+#: Contactmanager.class.php:3145
 msgid "Group not found and could not be created."
 msgstr ""
 
@@ -553,14 +561,14 @@ msgstr ""
 msgid "Group successfully updated"
 msgstr ""
 
-#: Contactmanager.class.php:3116
+#: Contactmanager.class.php:3119
 msgid "Group type is required."
 msgstr ""
 
 #: Contactmanager.class.php:962
 #: Contactmanager.class.php:3057
-#: Contactmanager.class.php:3070
-#: Contactmanager.class.php:3083
+#: Contactmanager.class.php:3071
+#: Contactmanager.class.php:3085
 #: ucp/views/contact.php:61
 #: ucp/views/contact.php:114
 #: views/group.php:104
@@ -700,8 +708,8 @@ msgstr ""
 
 #: Contactmanager.class.php:964
 #: Contactmanager.class.php:3059
-#: Contactmanager.class.php:3072
-#: Contactmanager.class.php:3085
+#: Contactmanager.class.php:3073
+#: Contactmanager.class.php:3087
 #: ucp/views/contact.php:63
 #: ucp/views/contact.php:116
 #: views/group.php:106
@@ -717,8 +725,8 @@ msgid "Partial Match Length"
 msgstr ""
 
 #: Contactmanager.class.php:3050
-#: Contactmanager.class.php:3065
-#: Contactmanager.class.php:3078
+#: Contactmanager.class.php:3066
+#: Contactmanager.class.php:3080
 msgid "Phone number.  External contacts only."
 msgstr ""
 
@@ -752,8 +760,8 @@ msgid "Show In Contact Manager Groups"
 msgstr ""
 
 #: Contactmanager.class.php:3064
-#: Contactmanager.class.php:3077
-#: Contactmanager.class.php:3090
+#: Contactmanager.class.php:3078
+#: Contactmanager.class.php:3092
 #: ucp/views/contact.php:75
 #: ucp/views/contact.php:130
 #: views/entry.php:269
@@ -831,8 +839,8 @@ msgid "Type of group for contact."
 msgstr ""
 
 #: Contactmanager.class.php:3054
-#: Contactmanager.class.php:3067
-#: Contactmanager.class.php:3080
+#: Contactmanager.class.php:3068
+#: Contactmanager.class.php:3082
 msgid "Type of phone number.  External contacts only."
 msgstr ""
 
@@ -851,11 +859,11 @@ msgstr ""
 msgid "Unauthorized"
 msgstr ""
 
-#: Contactmanager.class.php:3281
+#: Contactmanager.class.php:3285
 msgid "Unknown"
 msgstr ""
 
-#: Contactmanager.class.php:3192
+#: Contactmanager.class.php:3196
 msgid "Unknown data type."
 msgstr ""
 
@@ -915,8 +923,8 @@ msgstr ""
 
 #: Contactmanager.class.php:961
 #: Contactmanager.class.php:3056
-#: Contactmanager.class.php:3069
-#: Contactmanager.class.php:3082
+#: Contactmanager.class.php:3070
+#: Contactmanager.class.php:3084
 #: ucp/views/contact.php:60
 #: ucp/views/contact.php:113
 #: views/group.php:103
