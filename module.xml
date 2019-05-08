@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.8.11</version>
+	<version>15.0.8.12</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*15.0.8.12* FREEI-511 contactmanager not installing issue fix 
 		*15.0.8.11* FREEI-498 Contact manager module doesn't display all groups 
 		*15.0.8.10* Use lazy loading console commands
 		*15.0.8.9* fixing FREEI-439 bulk import of contacts strips intl and defaults to USA numbers
