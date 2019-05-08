@@ -254,6 +254,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		}
 
 		if(!$this->getConfig("strippedUpgrade2")) {
+			set_time_limit(0);
 			$users = $this->userman->getAllUsers();
 			$groups = $this->getGroups();
 			foreach($users as $user) {
@@ -295,7 +296,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					$this->addNumbersByEntryID($entry['uid'], $entry['numbers']);
 				}
 			}
-			$this->getConfig("strippedUpgrade2",true);
+			$this->setConfig("strippedUpgrade2",true);
 		}
 
 		// CONTACTMANLOOKUPLENGTH in Advanced Settings of FreePBX
