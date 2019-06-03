@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-08 06:40+0530\n"
+"POT-Creation-Date: 2019-06-03 16:12+0530\n"
 "PO-Revision-Date: 2017-08-08 16:34+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese <http://weblate.freepbx.org/projects/freepbx/"
@@ -156,7 +156,7 @@ msgstr "Không tìm thấy các tệp đã tải lên"
 msgid "Cell"
 msgstr "Vùng phủ sóng"
 
-#: ucp/Contactmanager.class.php:382 ucp/Contactmanager.class.php:389
+#: ucp/Contactmanager.class.php:384 ucp/Contactmanager.class.php:391
 #: ucp/assets/js/global.js:86 ucp/assets/js/global.js:110
 #: ucp/assets/js/global.js:133 ucp/assets/js/global.js:165
 msgid "Close"
@@ -222,7 +222,7 @@ msgstr ""
 
 #: Contactmanager.class.php:3022 ucp/Contactmanager.class.php:24
 #: ucp/Contactmanager.class.php:36 ucp/Contactmanager.class.php:63
-#: ucp/Contactmanager.class.php:528
+#: ucp/Contactmanager.class.php:530
 msgid "Contacts"
 msgstr "Các liên lạc"
 
@@ -242,7 +242,7 @@ msgstr ""
 msgid "Delete"
 msgstr "Xóa"
 
-#: ucp/Contactmanager.class.php:389 ucp/views/contact.php:250
+#: ucp/Contactmanager.class.php:391 ucp/views/contact.php:250
 msgid "Delete Contact"
 msgstr "Xóa liên lạc"
 
@@ -289,7 +289,7 @@ msgstr "Không thể để trống địa chỉ Email."
 msgid "E-mail address.  External contacts only."
 msgstr "Địa chỉ E-mail. Chỉ các liên lạc bên ngoài."
 
-#: ucp/Contactmanager.class.php:389
+#: ucp/Contactmanager.class.php:391
 msgid "Edit"
 msgstr ""
 
@@ -635,8 +635,8 @@ msgstr "Không có tệp nào được tải lên"
 msgid "None"
 msgstr ""
 
-#: ucp/Contactmanager.class.php:395 ucp/Contactmanager.class.php:474
-#: ucp/Contactmanager.class.php:499
+#: ucp/Contactmanager.class.php:397 ucp/Contactmanager.class.php:476
+#: ucp/Contactmanager.class.php:501
 msgid "Not Authorized"
 msgstr "Không được cho phép"
 
@@ -813,7 +813,7 @@ msgstr ""
 
 #: ucp/Contactmanager.class.php:309 ucp/Contactmanager.class.php:321
 #: ucp/Contactmanager.class.php:325 ucp/Contactmanager.class.php:335
-#: ucp/Contactmanager.class.php:345 ucp/Contactmanager.class.php:405
+#: ucp/Contactmanager.class.php:345 ucp/Contactmanager.class.php:407
 msgid "Unauthorized"
 msgstr "Không được phép"
 
@@ -860,7 +860,7 @@ msgstr ""
 "Tên người dùng của trình quản lý người dùng mà liên lạc hướng đến. Chỉ các "
 "liên lạc nội bộ."
 
-#: ucp/Contactmanager.class.php:380 ucp/Contactmanager.class.php:387
+#: ucp/Contactmanager.class.php:382 ucp/Contactmanager.class.php:389
 msgid "View Contact"
 msgstr ""
 
