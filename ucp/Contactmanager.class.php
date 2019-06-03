@@ -356,6 +356,7 @@ class Contactmanager extends Modules{
 				$locale = !empty($locale[1]) ? $locale[1] : 'US';
 				$displayvars['defaultlocale'] = $locale;
 				$displayvars['regionlist'] = $this->cm->getRegionList();
+				$displayvars['speeddialmodifications'] = $this->UCP->getCombinedSettingByID($this->user['id'],$this->module,'speeddial');
 				$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 				$return = $this->load_view(__DIR__.'/views/contactEdit.php',$displayvars);
 			break;
@@ -365,6 +366,7 @@ class Contactmanager extends Modules{
 				$locale = !empty($locale[1]) ? $locale[1] : 'US';
 				$displayvars['defaultlocale'] = $locale;
 				$displayvars['regionlist'] = $this->cm->getRegionList();
+				$displayvars['speeddialmodifications'] = $this->UCP->getCombinedSettingByID($this->user['id'],$this->module,'speeddial');
 				$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 				$return = $this->load_view(__DIR__.'/views/contactEdit.php',$displayvars);
 			break;
