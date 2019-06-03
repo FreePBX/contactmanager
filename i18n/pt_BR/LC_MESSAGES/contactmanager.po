@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-08 06:44+0530\n"
+"POT-Creation-Date: 2019-06-03 16:14+0530\n"
 "PO-Revision-Date: 2015-05-02 20:56+0200\n"
 "Last-Translator: Renato <fiuza@tecnologia.inf.br>\n"
 "Language-Team: Portuguese (Brazil) <http://weblate.freepbx.org/projects/"
@@ -156,7 +156,7 @@ msgstr "Não é Possível Localizar Arquivos Carregados"
 msgid "Cell"
 msgstr "Celular"
 
-#: ucp/Contactmanager.class.php:382 ucp/Contactmanager.class.php:389
+#: ucp/Contactmanager.class.php:384 ucp/Contactmanager.class.php:391
 #: ucp/assets/js/global.js:86 ucp/assets/js/global.js:110
 #: ucp/assets/js/global.js:133 ucp/assets/js/global.js:165
 msgid "Close"
@@ -221,7 +221,7 @@ msgstr ""
 
 #: Contactmanager.class.php:3017 ucp/Contactmanager.class.php:24
 #: ucp/Contactmanager.class.php:36 ucp/Contactmanager.class.php:63
-#: ucp/Contactmanager.class.php:528
+#: ucp/Contactmanager.class.php:530
 msgid "Contacts"
 msgstr "Contatos"
 
@@ -240,7 +240,7 @@ msgstr ""
 msgid "Delete"
 msgstr "Apagar"
 
-#: ucp/Contactmanager.class.php:389 ucp/views/contact.php:250
+#: ucp/Contactmanager.class.php:391 ucp/views/contact.php:250
 msgid "Delete Contact"
 msgstr "Apagar Contato"
 
@@ -288,7 +288,7 @@ msgstr "O endereço de e-mail não pode estar em branco."
 msgid "E-mail address.  External contacts only."
 msgstr "Endereço de e-mail.  Somente contatos externos."
 
-#: ucp/Contactmanager.class.php:389
+#: ucp/Contactmanager.class.php:391
 msgid "Edit"
 msgstr ""
 
@@ -633,8 +633,8 @@ msgstr "Nenhum arquivo foi carregado"
 msgid "None"
 msgstr ""
 
-#: ucp/Contactmanager.class.php:395 ucp/Contactmanager.class.php:474
-#: ucp/Contactmanager.class.php:499
+#: ucp/Contactmanager.class.php:397 ucp/Contactmanager.class.php:476
+#: ucp/Contactmanager.class.php:501
 msgid "Not Authorized"
 msgstr "Não Autorizado"
 
@@ -809,7 +809,7 @@ msgstr "Não é possível encontrar um gravatar para %s"
 
 #: ucp/Contactmanager.class.php:309 ucp/Contactmanager.class.php:321
 #: ucp/Contactmanager.class.php:325 ucp/Contactmanager.class.php:335
-#: ucp/Contactmanager.class.php:345 ucp/Contactmanager.class.php:405
+#: ucp/Contactmanager.class.php:345 ucp/Contactmanager.class.php:407
 msgid "Unauthorized"
 msgstr "Não Autorizado"
 
@@ -856,7 +856,7 @@ msgstr ""
 "Nome de usuário do Gerenciador de Usuários que esse contato deve apontar. "
 "Somente contatos internos."
 
-#: ucp/Contactmanager.class.php:380 ucp/Contactmanager.class.php:387
+#: ucp/Contactmanager.class.php:382 ucp/Contactmanager.class.php:389
 msgid "View Contact"
 msgstr ""
 

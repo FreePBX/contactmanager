@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-08 06:44+0530\n"
+"POT-Creation-Date: 2019-06-03 16:14+0530\n"
 "PO-Revision-Date: 2016-10-08 12:16+0200\n"
 "Last-Translator: psdk <hyavari26@gmail.com>\n"
 "Language-Team: Persian (Iran) <http://weblate.freepbx.org/projects/freepbx/"
@@ -156,7 +156,7 @@ msgstr "فایلهای بارگذاری شده پیدا نشد"
 msgid "Cell"
 msgstr "موبایل"
 
-#: ucp/Contactmanager.class.php:382 ucp/Contactmanager.class.php:389
+#: ucp/Contactmanager.class.php:384 ucp/Contactmanager.class.php:391
 #: ucp/assets/js/global.js:86 ucp/assets/js/global.js:110
 #: ucp/assets/js/global.js:133 ucp/assets/js/global.js:165
 msgid "Close"
@@ -218,7 +218,7 @@ msgstr ""
 
 #: Contactmanager.class.php:3017 ucp/Contactmanager.class.php:24
 #: ucp/Contactmanager.class.php:36 ucp/Contactmanager.class.php:63
-#: ucp/Contactmanager.class.php:528
+#: ucp/Contactmanager.class.php:530
 msgid "Contacts"
 msgstr "مخاطبین"
 
@@ -237,7 +237,7 @@ msgstr ""
 msgid "Delete"
 msgstr "حذف"
 
-#: ucp/Contactmanager.class.php:389 ucp/views/contact.php:250
+#: ucp/Contactmanager.class.php:391 ucp/views/contact.php:250
 msgid "Delete Contact"
 msgstr "حذف مخاطب"
 
@@ -284,7 +284,7 @@ msgstr "آدرس ایمیل نمیتواند خالی باشد."
 msgid "E-mail address.  External contacts only."
 msgstr "آدرس ایمیل. تنها مخاطبین خارجی."
 
-#: ucp/Contactmanager.class.php:389
+#: ucp/Contactmanager.class.php:391
 msgid "Edit"
 msgstr ""
 
@@ -627,8 +627,8 @@ msgstr "فایلی بارگذاری نشد"
 msgid "None"
 msgstr ""
 
-#: ucp/Contactmanager.class.php:395 ucp/Contactmanager.class.php:474
-#: ucp/Contactmanager.class.php:499
+#: ucp/Contactmanager.class.php:397 ucp/Contactmanager.class.php:476
+#: ucp/Contactmanager.class.php:501
 msgid "Not Authorized"
 msgstr "شناخته نشده"
 
@@ -800,7 +800,7 @@ msgstr "آواتاری برای %s یافت نشد"
 
 #: ucp/Contactmanager.class.php:309 ucp/Contactmanager.class.php:321
 #: ucp/Contactmanager.class.php:325 ucp/Contactmanager.class.php:335
-#: ucp/Contactmanager.class.php:345 ucp/Contactmanager.class.php:405
+#: ucp/Contactmanager.class.php:345 ucp/Contactmanager.class.php:407
 msgid "Unauthorized"
 msgstr "ناشناخته"
 
@@ -845,7 +845,7 @@ msgid ""
 "User Manager username this contact should point to.  Internal contacts only."
 msgstr "نام کاربری که مخاطب باید به آن اشاره کند. تنها مخاطبین داخلی."
 
-#: ucp/Contactmanager.class.php:380 ucp/Contactmanager.class.php:387
+#: ucp/Contactmanager.class.php:382 ucp/Contactmanager.class.php:389
 msgid "View Contact"
 msgstr ""
 
