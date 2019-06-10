@@ -23,7 +23,15 @@ var ContactmanagerC = UCPMC.extend({
 			$(".grid-stack-item[data-id="+widget_id+"] .deletegroup").prop("disabled",false);
 			$(".grid-stack-item[data-id="+widget_id+"] .addcontact").prop("disabled",false);
 		}
-		$('.grid-stack-item[data-id='+widget_id+'] .contacts-grid').bootstrapTable("refreshOptions", {url: UCP.ajaxUrl+'?module=contactmanager&command=grid&group=' + group});
+      
+      	$.ajax({
+			url: UCP.ajaxUrl+'?module=contactmanager&command=grid&group=' + group,
+			type: "POST",
+			async: false,
+			success: function(data){
+				$('.grid-stack-item[data-id='+widget_id+'] .contacts-grid').bootstrapTable("refreshOptions", {url: UCP.ajaxUrl+'?module=contactmanager&command=grid&group=' + group});
+			}
+		});
 	},
 	displayWidget: function(widget_id, dashboard_id) {
 		var self = this;
