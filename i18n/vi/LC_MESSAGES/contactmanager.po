@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-10 18:01+0530\n"
+"POT-Creation-Date: 2019-07-03 11:16+0530\n"
 "PO-Revision-Date: 2017-08-08 16:34+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese <http://weblate.freepbx.org/projects/freepbx/"
@@ -131,7 +131,7 @@ msgstr "Bạn có chắc chắn muốn xóa nhóm này và toàn bộ liên lạ
 msgid "Are you sure you wish to delete this contact?"
 msgstr ""
 
-#: Contactmanager.class.php:3296
+#: Contactmanager.class.php:3303
 msgid "Automatically Determine"
 msgstr ""
 
@@ -497,11 +497,11 @@ msgstr "Mục nhập nhóm đã được cập nhật thành công"
 msgid "Group name can not be blank"
 msgstr "Tên nhóm không thể để trống"
 
-#: Contactmanager.class.php:3122
+#: Contactmanager.class.php:3123
 msgid "Group name is required."
 msgstr "Yêu cầu phải có Tên nhóm."
 
-#: Contactmanager.class.php:3155
+#: Contactmanager.class.php:3157
 msgid "Group not found and could not be created."
 msgstr "Không tìm thấy nhóm và có thể nó đã không được tạo."
 
@@ -517,7 +517,7 @@ msgstr "Nhóm đã được xóa thành công"
 msgid "Group successfully updated"
 msgstr "Nhóm đã được cập nhật thành công"
 
-#: Contactmanager.class.php:3129
+#: Contactmanager.class.php:3130
 msgid "Group type is required."
 msgstr "Yêu cầu phải Kiểu nhóm."
 
@@ -817,11 +817,11 @@ msgstr ""
 msgid "Unauthorized"
 msgstr "Không được phép"
 
-#: Contactmanager.class.php:3297
+#: Contactmanager.class.php:3304
 msgid "Unknown"
 msgstr ""
 
-#: Contactmanager.class.php:3207
+#: Contactmanager.class.php:3209
 msgid "Unknown data type."
 msgstr "Kiểu dữ liệu không xác định."
 

@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>14.0.5.8</version>
+	<version>14.0.5.9</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*14.0.5.9* Fixing FREEI-605 adding replaceExisting bulk handler logic while importing contacts 
 		*14.0.5.8* FREEI-544 Getting below error when we double click contact in UCP 
 		*14.0.5.7* FREEI-545 User speeddial option missing on UCP 
 		*14.0.5.6* FREEI-511 contactmanager not installing issue fix 
