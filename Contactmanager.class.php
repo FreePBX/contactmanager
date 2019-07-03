@@ -1950,7 +1950,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$entry['emails'] = !empty($entry['emails']) ? $entry['emails'] : array();
 		$entry['websites'] = !empty($entry['websites']) ? $entry['websites'] : array();
 
-		$this->updateImageByID($id, $entry['image'], $entry['gravatar'], 'external');
+		$this->updateImageByID($id, !empty($entry['image']) ? $entry['image'] : '', !empty($entry['gravatar']) ? $entry['gravatar'] : '', 'external');
 
 		$ret = $this->deleteNumbersByEntryID($id);
 		$this->addNumbersByEntryID($id, $entry['numbers']);
@@ -2232,7 +2232,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				if(trim($number['speeddial']) !== "") {
 					$this->addSpeedDialNumber($entryid,$numberid,$number['speeddial']);
 				} else {
-					$this->removeSpeedDialNumberByNumberID($id);
+					$this->removeSpeedDialNumberByNumberID($numberid);
 				}
 			}
 
@@ -2265,7 +2265,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "DELETE FROM contactmanager_entry_speeddials WHERE numberid = :id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(
-			":id" => $entryid
+			":id" => $numberid
 		));
 		$this->syncSpeedDials();
 	}
@@ -3112,6 +3112,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 
 	public function bulkhandlerImport($type, $rawData, $replaceExisting = true) {
 		$ret = NULL;
+		$g_found = false;
 
 		switch ($type) {
 		case 'contacts':
@@ -3141,6 +3142,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					if ($g['name'] == $data['groupname'] && $g['type'] == $data['grouptype']) {
 						/* Found an existing group.  Let's bail. */
 						$group = $g;
+						$g_found= true;
 						break;
 					}
 				}
@@ -3211,7 +3213,12 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					}
 				}
 
-				$this->addEntryByGroupID($group['id'], $contact);
+				// If its existing group and $replaceExisting is true then replace the  entity then adding again. 
+				if ($replaceExisting && $g_found) {
+					$this->updateEntry($group['id'], $contact);
+				} else {
+					$this->addEntryByGroupID($group['id'], $contact);
+				}
 
 				$ret = array(
 						'status' => true,
