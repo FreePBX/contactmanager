@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-10 18:03+0530\n"
+"POT-Creation-Date: 2019-07-03 11:18+0530\n"
 "PO-Revision-Date: 2018-09-05 12:00+0000\n"
 "Last-Translator: Petr Varvarovsky <petrv@atlantis.cz>\n"
 "Language-Team: Czech <http://*/projects/freepbx/contactmanager/cs/>\n"
@@ -130,7 +130,7 @@ msgstr ""
 msgid "Are you sure you wish to delete this contact?"
 msgstr ""
 
-#: Contactmanager.class.php:3291
+#: Contactmanager.class.php:3298
 msgid "Automatically Determine"
 msgstr ""
 
@@ -489,11 +489,11 @@ msgstr ""
 msgid "Group name can not be blank"
 msgstr ""
 
-#: Contactmanager.class.php:3117
+#: Contactmanager.class.php:3118
 msgid "Group name is required."
 msgstr ""
 
-#: Contactmanager.class.php:3150
+#: Contactmanager.class.php:3152
 msgid "Group not found and could not be created."
 msgstr ""
 
@@ -509,7 +509,7 @@ msgstr ""
 msgid "Group successfully updated"
 msgstr ""
 
-#: Contactmanager.class.php:3124
+#: Contactmanager.class.php:3125
 msgid "Group type is required."
 msgstr ""
 
@@ -800,11 +800,11 @@ msgstr ""
 msgid "Unauthorized"
 msgstr ""
 
-#: Contactmanager.class.php:3292
+#: Contactmanager.class.php:3299
 msgid "Unknown"
 msgstr "Neznámý"
 
-#: Contactmanager.class.php:3202
+#: Contactmanager.class.php:3204
 msgid "Unknown data type."
 msgstr ""
 
