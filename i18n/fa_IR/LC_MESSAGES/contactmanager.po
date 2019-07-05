@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-03 11:16+0530\n"
+"POT-Creation-Date: 2019-07-05 15:18+0530\n"
 "PO-Revision-Date: 2019-01-26 21:00+0000\n"
 "Last-Translator: Media Mousavi <mousavi.media@gmail.com>\n"
 "Language-Team: Persian <http://*/projects/freepbx/contactmanager/fa/>\n"
@@ -132,7 +132,7 @@ msgstr "آیا از حذف این گروه و تمام مخاطبین آن مط�
 msgid "Are you sure you wish to delete this contact?"
 msgstr "آیا از حذف این اکانت مطمئن هستید؟"
 
-#: Contactmanager.class.php:3303
+#: Contactmanager.class.php:3298
 msgid "Automatically Determine"
 msgstr "تعیین خودکار"
 
@@ -809,7 +809,7 @@ msgstr "آواتاری برای %s یافت نشد"
 msgid "Unauthorized"
 msgstr "ناشناخته"
 
-#: Contactmanager.class.php:3304
+#: Contactmanager.class.php:3299
 msgid "Unknown"
 msgstr "ناشناخته"
 
