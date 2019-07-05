@@ -3213,12 +3213,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 					}
 				}
 
-				// If its existing group and $replaceExisting is true then replace the  entity then adding again. 
-				if ($replaceExisting && $g_found) {
-					$this->updateEntry($group['id'], $contact);
-				} else {
-					$this->addEntryByGroupID($group['id'], $contact);
-				}
+				$this->addEntryByGroupID($group['id'], $contact);
 
 				$ret = array(
 						'status' => true,
