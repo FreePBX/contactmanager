@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 15:22+0530\n"
+"POT-Creation-Date: 2019-07-11 11:50+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -660,6 +660,10 @@ msgstr ""
 msgid "List All Speeddials"
 msgstr ""
 
+#: ucp/assets/js/global.js:533
+msgid "Loading..."
+msgstr ""
+
 #: Console/Contactmanager.class.php:17
 msgid "Lookup backed on User Manager Users View"
 msgstr ""
@@ -716,6 +720,10 @@ msgstr ""
 
 #: Contactmanager.class.php:2428
 msgid "No XMPPs to add"
+msgstr ""
+
+#: ucp/assets/js/global.js:528
+msgid "No email defined"
 msgstr ""
 
 #: Contactmanager.class.php:665
@@ -868,7 +876,7 @@ msgstr ""
 msgid "There are no actions for this type"
 msgstr ""
 
-#: ucp/assets/js/global.js:396
+#: ucp/assets/js/global.js:397
 msgid "There was an error"
 msgstr ""
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 15:22+0530\n"
+"POT-Creation-Date: 2019-07-11 11:50+0530\n"
 "PO-Revision-Date: 2017-08-08 16:34+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese <http://weblate.freepbx.org/projects/freepbx/"
@@ -572,6 +572,10 @@ msgstr "Danh sách tất các nhóm"
 msgid "List All Speeddials"
 msgstr "Dang sách tất cả các quay số nhanh"
 
+#: ucp/assets/js/global.js:533
+msgid "Loading..."
+msgstr "Đang tải..."
+
 #: Console/Contactmanager.class.php:17
 msgid "Lookup backed on User Manager Users View"
 msgstr ""
@@ -626,6 +630,10 @@ msgstr "Không có trang Web nào để thêm"
 #: Contactmanager.class.php:2428
 msgid "No XMPPs to add"
 msgstr "Không có XMPP nào để thêm"
+
+#: ucp/assets/js/global.js:528
+msgid "No email defined"
+msgstr "Không có email được xác định"
 
 #: Contactmanager.class.php:665 ucp/Contactmanager.class.php:257
 msgid "No file was uploaded"
@@ -754,7 +762,7 @@ msgstr "Tệp đã tải lên chỉ được tải lên từng phần"
 msgid "There are no actions for this type"
 msgstr "Không có thao tác nào đối với kiểu này"
 
-#: ucp/assets/js/global.js:396
+#: ucp/assets/js/global.js:397
 msgid "There was an error"
 msgstr ""
 
@@ -952,12 +960,6 @@ msgstr ""
 
 #~ msgid "Group Name Can Not Be Blank"
 #~ msgstr "Không thể để trống tên nhóm"
-
-#~ msgid "Loading..."
-#~ msgstr "Đang tải..."
-
-#~ msgid "No email defined"
-#~ msgstr "Không có email được xác định"
 
 #~ msgid "OK"
 #~ msgstr "OK"
