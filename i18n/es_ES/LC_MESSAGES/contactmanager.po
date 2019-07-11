@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 15:18+0530\n"
+"POT-Creation-Date: 2019-07-11 11:46+0530\n"
 "PO-Revision-Date: 2016-06-08 06:15+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
@@ -572,6 +572,10 @@ msgstr "Lista Todos los Grupos"
 msgid "List All Speeddials"
 msgstr ""
 
+#: ucp/assets/js/global.js:533
+msgid "Loading..."
+msgstr "Cargando..."
+
 #: Console/Contactmanager.class.php:17
 msgid "Lookup backed on User Manager Users View"
 msgstr ""
@@ -626,6 +630,10 @@ msgstr "No hay sitios Web que agregar"
 #: Contactmanager.class.php:2433
 msgid "No XMPPs to add"
 msgstr "No hay XMPP's que agregar"
+
+#: ucp/assets/js/global.js:528
+msgid "No email defined"
+msgstr "No se definió email"
 
 #: Contactmanager.class.php:660 ucp/Contactmanager.class.php:257
 msgid "No file was uploaded"
@@ -754,7 +762,7 @@ msgstr "El archivo subido se ha subido sólo parcialmente"
 msgid "There are no actions for this type"
 msgstr "No hay acciones para este tipo"
 
-#: ucp/assets/js/global.js:396
+#: ucp/assets/js/global.js:397
 msgid "There was an error"
 msgstr ""
 
@@ -971,12 +979,6 @@ msgstr "Si"
 
 #~ msgid "Adding..."
 #~ msgstr "Añadiendo..."
-
-#~ msgid "Loading..."
-#~ msgstr "Cargando..."
-
-#~ msgid "No email defined"
-#~ msgstr "No se definió email"
 
 #~ msgid "Add New Contact"
 #~ msgstr "Agregar Nuevo Contacto"

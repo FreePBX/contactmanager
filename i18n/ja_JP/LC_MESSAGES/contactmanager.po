@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 15:18+0530\n"
+"POT-Creation-Date: 2019-07-11 11:46+0530\n"
 "PO-Revision-Date: 2016-09-02 15:22+0200\n"
 "Last-Translator: Kenichi <k.kitani@qloog.com>\n"
 "Language-Team: Japanese <http://weblate.freepbx.org/projects/freepbx/"
@@ -564,6 +564,10 @@ msgstr "グループを一覧表示"
 msgid "List All Speeddials"
 msgstr ""
 
+#: ucp/assets/js/global.js:533
+msgid "Loading..."
+msgstr ""
+
 #: Console/Contactmanager.class.php:17
 msgid "Lookup backed on User Manager Users View"
 msgstr ""
@@ -617,6 +621,10 @@ msgstr "追加できるホームページがありません"
 #: Contactmanager.class.php:2433
 msgid "No XMPPs to add"
 msgstr "追加できるXMPPがありません"
+
+#: ucp/assets/js/global.js:528
+msgid "No email defined"
+msgstr "Emailが設定されていません"
 
 #: Contactmanager.class.php:660 ucp/Contactmanager.class.php:257
 msgid "No file was uploaded"
@@ -743,7 +751,7 @@ msgstr ""
 msgid "There are no actions for this type"
 msgstr "この種類のアクションがありません"
 
-#: ucp/assets/js/global.js:396
+#: ucp/assets/js/global.js:397
 msgid "There was an error"
 msgstr ""
 
@@ -965,9 +973,6 @@ msgstr "はい"
 
 #~ msgid "Import CSV"
 #~ msgstr "CSVをインポート"
-
-#~ msgid "No email defined"
-#~ msgstr "Emailが設定されていません"
 
 #~ msgid "Note: Max file size is "
 #~ msgstr "注意: ファイルサイズの上限は "

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 15:18+0530\n"
+"POT-Creation-Date: 2019-07-11 11:46+0530\n"
 "PO-Revision-Date: 2019-05-29 15:00+0000\n"
 "Last-Translator: florian alberts <alberts@ar-systems.de>\n"
 "Language-Team: German <http://*/projects/freepbx/contactmanager/de/>\n"
@@ -576,6 +576,10 @@ msgstr "Alle Gruppen anzeigen"
 msgid "List All Speeddials"
 msgstr "Zeige alle Kurzwahlen"
 
+#: ucp/assets/js/global.js:533
+msgid "Loading..."
+msgstr "Laden..."
+
 #: Console/Contactmanager.class.php:17
 msgid "Lookup backed on User Manager Users View"
 msgstr "Suche stützt sich auf die Benutzersicht der Benutzerverwaltung"
@@ -632,6 +636,10 @@ msgstr "Keine Webseiten zum hinzufügen"
 #: Contactmanager.class.php:2433
 msgid "No XMPPs to add"
 msgstr "Keine XMPPs zum hinzufügen"
+
+#: ucp/assets/js/global.js:528
+msgid "No email defined"
+msgstr "Keine E-Mail definiert"
 
 #: Contactmanager.class.php:660 ucp/Contactmanager.class.php:257
 msgid "No file was uploaded"
@@ -764,7 +772,7 @@ msgstr "Die hochgeladene Datei wurde nur teilweise hochgeladen"
 msgid "There are no actions for this type"
 msgstr "Es gibt keine Aktionen für diesen Typ"
 
-#: ucp/assets/js/global.js:396
+#: ucp/assets/js/global.js:397
 msgid "There was an error"
 msgstr "Es ist ein Fehler aufgetreten"
 
@@ -993,12 +1001,6 @@ msgstr "Ja"
 
 #~ msgid "work"
 #~ msgstr "Arbeit"
-
-#~ msgid "Loading..."
-#~ msgstr "Laden..."
-
-#~ msgid "No email defined"
-#~ msgstr "Keine E-Mail definiert"
 
 #~ msgid "Add User"
 #~ msgstr "Benutzer hinzufügen"
