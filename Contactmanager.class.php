@@ -2756,14 +2756,14 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 						break;
 						case \libphonenumber\MatchType::SHORT_NSN_MATCH:
 							if(strlen($number) < $lookuplen) {
-								continue;
+								continue 2;
 							}
 							return $this->getEntryByID($result['entryid']);
 						break;
 						case \libphonenumber\MatchType::NOT_A_NUMBER:
 						case \libphonenumber\MatchType::NO_MATCH:
 						default:
-							continue;
+							continue 2;
 						break;
 					}
 				}
@@ -2794,14 +2794,14 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				break;
 				case \libphonenumber\MatchType::SHORT_NSN_MATCH:
 					if(strlen($number) < $lookuplen) {
-						continue;
+						continue 2;
 					}
 					return $contacts[$contactnumber['key']];
 				break;
 				case \libphonenumber\MatchType::NOT_A_NUMBER:
 				case \libphonenumber\MatchType::NO_MATCH:
 				default:
-					continue;
+					continue 2;
 				break;
 			}
 		}
