@@ -436,7 +436,7 @@ class Contactmanager extends Modules{
 	/**
 	* Generate the display in UCP
 	*/
-	public function getDisplay() {
+	public function getDisplay($var=NULL) {
 		$view = !empty($_REQUEST['view']) ? $_REQUEST['view'] : '';
 
 		$displayvars = array();
