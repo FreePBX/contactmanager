@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-11 11:46+0530\n"
-"PO-Revision-Date: 2019-01-26 21:00+0000\n"
+"PO-Revision-Date: 2019-08-13 11:59+0000\n"
 "Last-Translator: Media Mousavi <mousavi.media@gmail.com>\n"
 "Language-Team: Persian <http://*/projects/freepbx/contactmanager/fa/>\n"
 "Language: fa_IR\n"
@@ -233,6 +233,8 @@ msgid ""
 "Country Code  Or you can put AUTO , which will fill the Country code "
 "automatically. External contacts only. "
 msgstr ""
+"Country Code  Or you can put AUTO, which will fill the Country code "
+"automatically. External contacts only. "
 
 #: Contactmanager.class.php:1021 Contactmanager.class.php:1040
 msgid "Delete"
@@ -819,7 +821,7 @@ msgstr "ناشناخته"
 
 #: Contactmanager.class.php:3299
 msgid "Unknown"
-msgstr "ناشناخته"
+msgstr "ناشنلس"
 
 #: Contactmanager.class.php:3209
 msgid "Unknown data type."
