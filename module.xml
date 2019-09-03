@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.45.2</version>
+	<version>13.0.45.3</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.45.3* FREEPBX-20437 XSS vulnerability in contactmanager module 
 		*13.0.45.2* During upgrade set time limit to 0 and make sure to set flag correctly
 		*13.0.45.1* FREEPBX-18963
 		*13.0.45* FREEPBX-18912 Unable to remove the XMPP, Email and Website details under contact manager once the details is filled and submitted
