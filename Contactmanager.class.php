@@ -673,8 +673,8 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 				return array("status" => false, "message" => _("Can Not Find Uploaded Files"));
 			break;
 			case 'grid':
-				$group = $this->getGroupByID($_REQUEST['group']);
-				$entries = $this->getEntriesByGroupID($_REQUEST['group']);
+				$group = $this->getGroupByID((int) $_REQUEST['group']);
+				$entries = $this->getEntriesByGroupID((int) $_REQUEST['group']);
 				$entries = array_values($entries);
 				$final = array();
 				switch($group['type']) {
@@ -688,7 +688,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 							$final[$i] = $user;
 							$final[$i]['displayname'] = !empty($user['displayname']) ? $user['displayname'] : $user['fname'] . " " . $user['lname'];
 							$final[$i]['displayname'] = !empty($user['displayname']) ? $user['displayname'] . " (".$user['username'].")" : $user['username'];
-							$final[$i]['actions'] = '<a href="config.php?display=userman&action=showuser&user='.$user['id'].'"><i class="fa fa-edit fa-fw"></i></a><a href="config.php?display=contactmanager&amp;action=delentry&amp;group='.$_REQUEST['group'].'&amp;entry='.$entry['uid'].'"><i class="fa fa-ban fa-fw"></i></a>';
+							$final[$i]['actions'] = '<a href="config.php?display=userman&action=showuser&user='.$user['id'].'"><i class="fa fa-edit fa-fw"></i></a><a href="config.php?display=contactmanager&amp;action=delentry&amp;group='.(int) $_REQUEST['group'].'&amp;entry='.$entry['uid'].'"><i class="fa fa-ban fa-fw"></i></a>';
 							$i++;
 						}
 					break;
@@ -702,7 +702,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 								$nums[] = $number['number'] . "(".$number['type'].")";
 							}
 							$entry['numbers'] = !empty($entry['numbers']) ? implode("<br>",$nums) : "";
-							$entry['actions'] = '<a href="config.php?display=contactmanager&amp;action=showentry&amp;group='.$_REQUEST['group'].'&amp;entry='.$entry['uid'].'"><i class="fa fa-edit fa-fw"></i></a><a href="config.php?display=contactmanager&amp;action=delentry&amp;group='.$_REQUEST['group'].'&amp;entry='.$entry['uid'].'"><i class="fa fa-ban fa-fw"></i></a>';
+							$entry['actions'] = '<a href="config.php?display=contactmanager&amp;action=showentry&amp;group='.(int) $_REQUEST['group'].'&amp;entry='.$entry['uid'].'"><i class="fa fa-edit fa-fw"></i></a><a href="config.php?display=contactmanager&amp;action=delentry&amp;group='.(int) $_REQUEST['group'].'&amp;entry='.$entry['uid'].'"><i class="fa fa-ban fa-fw"></i></a>';
 							$final[$i] = $entry;
 							$i++;
 						}
@@ -784,7 +784,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		if (isset($_REQUEST['action'])) {
 			switch ($_REQUEST['action']) {
 			case "delgroup":
-				$ret = $this->deleteGroupByID($_REQUEST['group']);
+				$ret = $this->deleteGroupByID((int) $_REQUEST['group']);
 				$this->message = array(
 					'message' => $ret['message'],
 					'type' => $ret['type']
@@ -975,17 +975,17 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			break;
 			case "showgroup":
 			case "addgroup":
-				if ($action == "showgroup" && !empty($_REQUEST['group'])) {
-					$group = $this->getGroupByID($_REQUEST['group']);
-					$entries = $this->getEntriesByGroupID($_REQUEST['group']);
+				if ($action == "showgroup" && !empty((int) $_REQUEST['group'])) {
+					$group = $this->getGroupByID((int) $_REQUEST['group']);
+					$entries = $this->getEntriesByGroupID((int) $_REQUEST['group']);
 				}
 
 				$content = load_view(dirname(__FILE__).'/views/group.php', array("group" => $group, "entries" => $entries, "users" => $users, "message" => $this->message));
 			break;
 			case "showentry":
 			case "addentry":
-				if (!empty($_REQUEST['group'])) {
-					$group = $this->getGroupByID($_REQUEST['group']);
+				if (!empty((int) $_REQUEST['group'])) {
+					$group = $this->getGroupByID((int) $_REQUEST['group']);
 
 					if ($action == "showentry" && !empty($_REQUEST['entry'])) {
 						$entry = $this->getEntryByID($_REQUEST['entry']);
@@ -2954,9 +2954,9 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 			);
 			switch($_REQUEST['action']) {
 				case 'showgroup':
-					$showingroups = $this->freepbx->Userman->getModuleSettingByGID($_REQUEST['group'],"contactmanager","showingroups",true);
+					$showingroups = $this->freepbx->Userman->getModuleSettingByGID((int) $_REQUEST['group'],"contactmanager","showingroups",true);
 					$showingroups = is_array($showingroups) ? $showingroups : array();
-					$assigned = $this->freepbx->Userman->getModuleSettingByGID($_REQUEST['group'],"contactmanager","groups",true);
+					$assigned = $this->freepbx->Userman->getModuleSettingByGID((int) $_REQUEST['group'],"contactmanager","groups",true);
 					$assigned = is_array($assigned) ? $assigned : array();
 					foreach($groups as $k=>$group) {
 						$groups[$k]['selected'] = in_array($group['id'],$assigned);
@@ -2965,7 +2965,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 						array(
 							"title" => _("Contact Manager"),
 							"rawname" => "contactmanager",
-							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("visiblegroups" => $visiblegroups, "showingroups" => $showingroups, "mode" => "group", "groups" => $groups, "enabled" => $this->userman->getModuleSettingByGID($_REQUEST['group'],'contactmanager','show')))
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("visiblegroups" => $visiblegroups, "showingroups" => $showingroups, "mode" => "group", "groups" => $groups, "enabled" => $this->userman->getModuleSettingByGID((int) $_REQUEST['group'],'contactmanager','show')))
 						)
 					);
 				case 'addgroup':
