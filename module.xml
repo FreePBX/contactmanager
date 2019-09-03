@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.8.20</version>
+	<version>15.0.8.21</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*15.0.8.21* FREEPBX-20437 XSS vulnerability in contactmanager module 
 		*15.0.8.20* FREEPBX-20206 fix for PHP7.3, FREEPBX-20215
 		*15.0.8.19* bump 
 		*15.0.8.17* FREEPBX-19917 Adding, Editing or deleting the Contact Image to the private contact from UCP is not working. 
