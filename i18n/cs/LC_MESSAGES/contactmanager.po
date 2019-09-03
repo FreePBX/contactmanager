@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-11 11:46+0530\n"
-"PO-Revision-Date: 2018-09-05 12:00+0000\n"
+"PO-Revision-Date: 2019-07-24 12:00+0000\n"
 "Last-Translator: Petr Varvarovsky <petrv@atlantis.cz>\n"
 "Language-Team: Czech <http://*/projects/freepbx/contactmanager/cs/>\n"
 "Language: cs\n"
@@ -23,35 +23,35 @@ msgstr ""
 #: functions.inc.php:17
 #, php-format
 msgid "%s (Speed Dial: %s) [%s]"
-msgstr ""
+msgstr "%s (Rychlá volba: %s) [%s]"
 
 #: Contactmanager.class.php:669 ucp/Contactmanager.class.php:266
 msgid "A PHP extension stopped the file upload"
-msgstr ""
+msgstr "Nahrávání souboru zastavilo rozšíření PHP"
 
 #: views/entry.php:355
 msgid "A list of E-Mail addresses belonging to this entry"
-msgstr ""
+msgstr "Seznam e-mailových adres patřících této položce"
 
 #: views/entry.php:323
 msgid "A list of XMPP addresses belonging to this entry"
-msgstr ""
+msgstr "Seznam adres XMPP patřících do této položky"
 
 #: views/entry.php:291
 msgid "A list of numbers belonging to this entry"
-msgstr ""
+msgstr "Seznam čísel patřících k této položce"
 
 #: views/entry.php:387
 msgid "A list of websites belonging to this entry"
-msgstr ""
+msgstr "Seznam webových stránek patřících k této položce"
 
 #: views/entry.php:57
 msgid "A user from the User Management module"
-msgstr ""
+msgstr "Uživatel z modulu Správa uživatelů"
 
 #: views/speeddial-grid.php:16
 msgid "Action"
-msgstr ""
+msgstr "Akce"
 
 #: Contactmanager.class.php:37 Contactmanager.class.php:46
 #: Contactmanager.class.php:55
@@ -61,41 +61,41 @@ msgstr "Akce"
 #: ucp/views/contact.php:247 ucp/views/widget.php:22 views/grid.php:46
 #: views/group.php:166 ucp/assets/js/global.js:171
 msgid "Add Contact"
-msgstr ""
+msgstr "Přidat kontakt"
 
 #: ucp/views/contact.php:216 ucp/views/contactEdit.php:153 views/entry.php:347
 msgid "Add Email"
-msgstr ""
+msgstr "Přidat email"
 
 #: views/entry.php:32
 msgid "Add Entry"
-msgstr ""
+msgstr "Přidat položku"
 
 #: ucp/views/widget.php:12 views/group.php:11 ucp/assets/js/global.js:116
 #: ucp/assets/js/global.js:141
 msgid "Add Group"
-msgstr ""
+msgstr "Přidat skupinu"
 
 #: views/grid.php:11
 msgid "Add New Group"
-msgstr ""
+msgstr "Přidat novou skupinu"
 
 #: ucp/views/contact.php:162 ucp/views/contactEdit.php:123
 msgid "Add Number"
-msgstr ""
+msgstr "Přidat číslo"
 
 #: ucp/views/contact.php:243 ucp/views/contactEdit.php:168
 #: ucp/views/contactEdit.php:196 views/entry.php:379
 msgid "Add Website"
-msgstr ""
+msgstr "Přidat web"
 
 #: ucp/views/contact.php:189 ucp/views/contactEdit.php:138 views/entry.php:315
 msgid "Add XMPP"
-msgstr ""
+msgstr "Přidat XMPP"
 
 #: Contactmanager.class.php:3056 views/entry.php:211 views/entry.php:223
 msgid "Address"
-msgstr ""
+msgstr "Adresa"
 
 #: contactmanager.i18n.php:6
 msgid "Admin"
@@ -103,49 +103,51 @@ msgstr "Admin"
 
 #: Contactmanager.class.php:2934
 msgid "All Internal Groups"
-msgstr ""
+msgstr "Všechny interní skupiny"
 
 #: Contactmanager.class.php:2946
 msgid "All Public Groups"
-msgstr ""
+msgstr "Všechny veřejně skupiny"
 
 #: views/ucp_config.php:7
 msgid "Allow Speed Dial Modifications"
-msgstr ""
+msgstr "Povolit úpravy rychlé volby"
 
 #: views/ucp_config.php:26
 msgid ""
 "Allow the user to modify and change speeddials for contacts they can edit"
 msgstr ""
+"Umožněte uživateli upravovat a měnit rychlé volby kontaktů, které mohou "
+"upravovat"
 
 #: Contactmanager.class.php:912
 msgid "An entry must have numbers."
-msgstr ""
+msgstr "Záznam musí mít čísla."
 
 #: ucp/assets/js/global.js:148
 msgid "Are you sure you want to delete this group and all of it's contacts?"
-msgstr ""
+msgstr "Opravdu chcete smazat tuto skupinu a všechny její kontakty?"
 
 #: ucp/assets/js/global.js:69
 msgid "Are you sure you wish to delete this contact?"
-msgstr ""
+msgstr "Opravdu chcete tento kontakt smazat?"
 
 #: Contactmanager.class.php:3298
 msgid "Automatically Determine"
-msgstr ""
+msgstr "Automaticky určit"
 
 #: ucp/views/contact.php:36 ucp/views/contactEdit.php:36 views/entry.php:162
 #: views/user_details_hook.php:49
 msgid "Browse"
-msgstr ""
+msgstr "Procházet"
 
 #: ucp/assets/js/global.js:204
 msgid "Call To"
-msgstr ""
+msgstr "Zavolat"
 
 #: Contactmanager.class.php:673 ucp/Contactmanager.class.php:270
 msgid "Can Not Find Uploaded Files"
-msgstr ""
+msgstr "Nahrané soubory nelze najít"
 
 #: Contactmanager.class.php:964 Contactmanager.class.php:3068
 #: Contactmanager.class.php:3082 Contactmanager.class.php:3096
@@ -153,7 +155,7 @@ msgstr ""
 #: ucp/views/contactEdit.php:59 ucp/views/contactEdit.php:96
 #: views/group.php:105
 msgid "Cell"
-msgstr ""
+msgstr "Buňka"
 
 #: ucp/Contactmanager.class.php:384 ucp/Contactmanager.class.php:391
 #: ucp/assets/js/global.js:94 ucp/assets/js/global.js:118
@@ -166,25 +168,27 @@ msgstr "Zavřít"
 msgid ""
 "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
 msgstr ""
+"Seznam příznaků oddělených čárkami. (Příklad: sms, fax) Pouze externí "
+"kontakty."
 
 #: Contactmanager.class.php:44 Contactmanager.class.php:53
 #: Contactmanager.class.php:3055 ucp/views/contact.php:22
 #: ucp/views/contactEdit.php:22 ucp/views/widget.php:51 views/entry.php:191
 #: views/group.php:92
 msgid "Company"
-msgstr ""
+msgstr "Společnost"
 
 #: views/entry.php:201
 msgid "Company (overrides Company from User Manager)"
-msgstr ""
+msgstr "Společnost (přepíše společnost ze Správce uživatelů)"
 
 #: views/entry.php:148 views/user_details_hook.php:35
 msgid "Contact Image"
-msgstr ""
+msgstr "Obrázek kontaktu"
 
 #: views/entry.php:181
 msgid "Contact Image for this user"
-msgstr ""
+msgstr "Obrázek kontaktu pro tohoto uživatele"
 
 #: views/user_details_hook.php:68
 msgid ""
