@@ -966,7 +966,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			break;
 			case "showgroup":
 			case "addgroup":
-				if ($action == "showgroup" && !empty((int) $_REQUEST['group'])) {
+				if ($action == "showgroup" && !empty($_REQUEST['group'])) {
 					$group = $this->getGroupByID((int) $_REQUEST['group']);
 					$entries = $this->getEntriesByGroupID((int) $_REQUEST['group']);
 				}
@@ -975,7 +975,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			break;
 			case "showentry":
 			case "addentry":
-				if (!empty((int) $_REQUEST['group'])) {
+				if (!empty($_REQUEST['group'])) {
 					$group = $this->getGroupByID((int) $_REQUEST['group']);
 
 					if ($action == "showentry" && !empty($_REQUEST['entry'])) {
