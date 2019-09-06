@@ -1774,7 +1774,7 @@ class Contactmanager extends \FreePBX_Helpers implements \BMO {
 		$sql = "DELETE FROM contactmanager_group_entries WHERE `groupid` = :groupid";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
-		$this->freepbx->Hooks->processHooks($id);
+		$this->freepbx->Hooks->processHooks($groupid);
 		return array("status" => true, "type" => "success", "message" => _("Group entries successfully deleted"));
 	}
 
