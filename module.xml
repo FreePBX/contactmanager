@@ -2,41 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.8.23</version>
+	<version>16.0.1</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
-		*15.0.8.23* FREEI-736 Undefined variable in contactmanager 
-		*15.0.8.22* Related to FREEPBX-20414: removed $jobid from runRestore() 
-		*15.0.8.21* FREEPBX-20437 XSS vulnerability in contactmanager module 
-		*15.0.8.20* FREEPBX-20206 fix for PHP7.3, FREEPBX-20215
-		*15.0.8.19* bump 
-		*15.0.8.17* FREEPBX-19917 Adding, Editing or deleting the Contact Image to the private contact from UCP is not working. 
-		*15.0.8.16* Bump
-		*15.0.8.15* Fixing FREEI-605 adding replaceExisting bulk handler logic while importing contacts 
-		*15.0.8.14* FREEI-544 Getting below error when we double click contact in UCP 
-		*15.0.8.13* FREEI-545 User speeddial option missing on UCP 
-		*15.0.8.12* FREEI-511 contactmanager not installing issue fix 
-		*15.0.8.11* FREEI-498 Contact manager module doesn't display all groups 
-		*15.0.8.10* Use lazy loading console commands
-		*15.0.8.9* fixing FREEI-439 bulk import of contacts strips intl and defaults to USA numbers
-		*15.0.8.8* Bump
-		*15.0.8.7* FREEPBX-19580
-		*15.0.8.6* Add feature codes to backup
-		*15.0.8.5* fixing legacy restore
-		*15.0.8.4* fixing legacy restore
-		*15.0.8.3* fixing legacy restore
-		*15.0.8.2* FREEPBX-18912 Unable to remove the XMPP, Email and Website details under contact manager once the details is filled and submitted
-		*15.0.8.1* FREEPBX-18963
-		*15.0.8* Support hooks for contact images
-		*15.0.7* Fixing FREEPBX-18843 Bulkhandler contact import fields issue
-		*15.0.6* FREEPBX-18427 Speed dials for external contacts disappear when contact manager is updated
-		*15.0.5* FREEPBX-17601
-		*15.0.4* Rest Api
-		*15.0.3* Packaging of ver 15.0.3
-		*15.0.2* FREEPBX-17663 Import contacts not showing in contact manager
-		*15.0.1* Impliment 15 backup
+		*16.0.1alpha* 16.0.1 alpha release
 	</changelog>
 	<category>Admin</category>
 	<description>
@@ -50,7 +21,7 @@
 		<module>userman ge 13.0.70</module>
 	</depends>
 	<supported>
-		<version>15.0</version>
+		<version>16.0</version>
 	</supported>
 	<hooks>
 		<bulkhandler class="Bulkhandler" namespace="FreePBX\modules">
