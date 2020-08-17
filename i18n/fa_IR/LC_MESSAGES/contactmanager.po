@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-13 14:42+0530\n"
+"POT-Creation-Date: 2020-08-17 02:56+0000\n"
 "PO-Revision-Date: 2019-08-13 11:59+0000\n"
 "Last-Translator: Media Mousavi <mousavi.media@gmail.com>\n"
 "Language-Team: Persian <http://*/projects/freepbx/contactmanager/fa/>\n"
@@ -199,16 +199,11 @@ msgstr ""
 #: Console/Contactmanager.class.php:14 Contactmanager.class.php:131
 #: Contactmanager.class.php:2972 Contactmanager.class.php:2984
 #: Contactmanager.class.php:2996 Contactmanager.class.php:3013
-#: contactmanager.i18n.php:4 contactmanager.i18n.php:8
-#: contactmanager.i18n.php:10 views/grid.php:1
+#: contactmanager.i18n.php:4 contactmanager.i18n.php:10 views/grid.php:1
 msgid "Contact Manager"
 msgstr "مدیر تماس"
 
-#: contactmanager.i18n.php:14
-msgid "Contact Manager Module"
-msgstr "تماس با ماژول مدیریت"
-
-#: contactmanager.i18n.php:18
+#: contactmanager.i18n.php:12
 msgid "Contact Manager Speed Dials"
 msgstr "تماس با مدیر شماره گیری سریع"
 
@@ -527,14 +522,6 @@ msgstr "نوع گروه مورد نیاز است."
 msgid "Home"
 msgstr "خانه"
 
-#: contactmanager.i18n.php:16
-msgid ""
-"How many digits should a number be before a partial match is used when "
-"looking up a contact"
-msgstr ""
-"چندین رقم باید یک عدد باشد قبل از یک بازی جزئی در هنگام جستجوی یک تماس "
-"استفاده شود"
-
 #: views/ucp_config.php:17
 msgid "Inherit"
 msgstr "وارث"
@@ -675,10 +662,6 @@ msgstr "مالک"
 msgid "PBX Contacts"
 msgstr "تماس های PBX"
 
-#: contactmanager.i18n.php:12
-msgid "Partial Match Length"
-msgstr "طول بازی جزئی"
-
 #: Contactmanager.class.php:3066 Contactmanager.class.php:3082
 #: Contactmanager.class.php:3096
 msgid "Phone number.  External contacts only."
@@ -738,6 +721,10 @@ msgstr "شماره گیر های سریع"
 #: Contactmanager.class.php:1033 Contactmanager.class.php:1052
 msgid "Submit"
 msgstr "ارسال"
+
+#: contactmanager.i18n.php:8
+msgid "The Contact Manager module lets you add contacts to groups."
+msgstr ""
 
 #: Contactmanager.class.php:654 ucp/Contactmanager.class.php:251
 msgid ""
@@ -903,6 +890,19 @@ msgstr "آدرس XMPP نمیتواند خالی باشد."
 #: views/ucp_config.php:12
 msgid "Yes"
 msgstr "بله"
+
+#~ msgid "Contact Manager Module"
+#~ msgstr "تماس با ماژول مدیریت"
+
+#~ msgid ""
+#~ "How many digits should a number be before a partial match is used when "
+#~ "looking up a contact"
+#~ msgstr ""
+#~ "چندین رقم باید یک عدد باشد قبل از یک بازی جزئی در هنگام جستجوی یک تماس "
+#~ "استفاده شود"
+
+#~ msgid "Partial Match Length"
+#~ msgstr "طول بازی جزئی"
 
 #~ msgid "An entry must have a user"
 #~ msgstr "ورودی باید کاربر داشته باشد"
