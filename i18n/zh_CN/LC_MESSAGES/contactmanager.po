@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreePBX 2.5 Chinese Translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-13 12:26+0530\n"
+"POT-Creation-Date: 2020-08-17 02:53+0000\n"
 "PO-Revision-Date: 2018-03-14 14:52+0200\n"
 "Last-Translator: james <zhulizhong@gmail.com>\n"
 "Language-Team: Simplified Chinese <http://weblate.freepbx.org/projects/"
@@ -187,16 +187,11 @@ msgstr ""
 #: Console/Contactmanager.class.php:14 Contactmanager.class.php:131
 #: Contactmanager.class.php:2963 Contactmanager.class.php:2975
 #: Contactmanager.class.php:2987 Contactmanager.class.php:3004
-#: contactmanager.i18n.php:4 contactmanager.i18n.php:8
-#: contactmanager.i18n.php:10 views/grid.php:1
+#: contactmanager.i18n.php:4 contactmanager.i18n.php:10 views/grid.php:1
 msgid "Contact Manager"
 msgstr ""
 
-#: contactmanager.i18n.php:14
-msgid "Contact Manager Module"
-msgstr ""
-
-#: contactmanager.i18n.php:18
+#: contactmanager.i18n.php:12
 msgid "Contact Manager Speed Dials"
 msgstr ""
 
@@ -502,12 +497,6 @@ msgstr ""
 msgid "Home"
 msgstr "主页"
 
-#: contactmanager.i18n.php:16
-msgid ""
-"How many digits should a number be before a partial match is used when "
-"looking up a contact"
-msgstr ""
-
 #: views/ucp_config.php:17
 msgid "Inherit"
 msgstr "继承"
@@ -627,10 +616,6 @@ msgstr ""
 msgid "Owner"
 msgstr ""
 
-#: contactmanager.i18n.php:12
-msgid "Partial Match Length"
-msgstr ""
-
 #: Contactmanager.class.php:3057 Contactmanager.class.php:3073
 #: Contactmanager.class.php:3087
 msgid "Phone number.  External contacts only."
@@ -683,6 +668,10 @@ msgstr ""
 #: Contactmanager.class.php:1033 Contactmanager.class.php:1052
 msgid "Submit"
 msgstr "提交"
+
+#: contactmanager.i18n.php:8
+msgid "The Contact Manager module lets you add contacts to groups."
+msgstr ""
 
 #: Contactmanager.class.php:654 ucp/Contactmanager.class.php:197
 msgid ""
