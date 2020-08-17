@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.8.23</version>
+	<version>15.0.8.24</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*15.0.8.24* Packaging of ver 15.0.8.24
 		*15.0.8.23* FREEI-736 Undefined variable in contactmanager 
 		*15.0.8.22* Related to FREEPBX-20414: removed $jobid from runRestore() 
 		*15.0.8.21* FREEPBX-20437 XSS vulnerability in contactmanager module 
@@ -40,8 +41,9 @@
 	</changelog>
 	<category>Admin</category>
 	<description>
-		Contact Manager
+		The Contact Manager module lets you add contacts to groups.
 	</description>
+	<more-info>https://wiki.freepbx.org/display/F2/Contact+Manager+Module</more-info>
 	<menuitems>
 		<contactmanager needsenginedb="yes">Contact Manager</contactmanager>
 	</menuitems>
