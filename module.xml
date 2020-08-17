@@ -2,17 +2,19 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>16.0.1</version>
+	<version>16.0.2</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*16.0.2* Packaging of ver 16.0.2
 		*16.0.1alpha* 16.0.1 alpha release
 	</changelog>
 	<category>Admin</category>
 	<description>
-		Contact Manager
+		The Contact Manager module lets you add contacts to groups.
 	</description>
+	<more-info>https://wiki.freepbx.org/display/F2/Contact+Manager+Module</more-info>
 	<menuitems>
 		<contactmanager needsenginedb="yes">Contact Manager</contactmanager>
 	</menuitems>
