@@ -10,16 +10,15 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-17 02:56+0000\n"
-"PO-Revision-Date: 2016-06-08 06:15+0200\n"
-"Last-Translator: Ernesto <ecasas@sangoma.com>\n"
-"Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/es_ES/>\n"
+"PO-Revision-Date: 2020-09-03 12:00+0000\n"
+"Last-Translator: Javier Pastor <jpastor@cerebelum.net>\n"
+"Language-Team: Spanish <http://*/projects/freepbx/contactmanager/es/>\n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.4\n"
+"X-Generator: Weblate 3.0.1\n"
 
 #: functions.inc.php:17
 #, php-format
@@ -234,7 +233,7 @@ msgstr ""
 
 #: Contactmanager.class.php:1021 Contactmanager.class.php:1040
 msgid "Delete"
-msgstr "Borrar"
+msgstr "Eliminar"
 
 #: ucp/Contactmanager.class.php:391 ucp/views/contact.php:250
 msgid "Delete Contact"
@@ -286,7 +285,7 @@ msgstr "Dirección de correo electrónico. Los contactos externos solamente."
 
 #: ucp/Contactmanager.class.php:391
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: ucp/assets/js/global.js:92
 msgid "Edit Contact"
@@ -308,7 +307,7 @@ msgstr "Correo"
 #: ucp/views/contactEdit.php:79 ucp/views/contactEdit.php:114
 #: views/entry.php:274 assets/js/contactmanager.js:170
 msgid "Enable"
-msgstr ""
+msgstr "Activar"
 
 #: ucp/assets/js/global.js:79
 msgid "Error deleting user"
@@ -680,7 +679,7 @@ msgstr ""
 
 #: Contactmanager.class.php:1028 Contactmanager.class.php:1047
 msgid "Reset"
-msgstr "Reinicio"
+msgstr "Restaura"
 
 #: ucp/views/contact.php:86 ucp/views/contact.php:141
 #: ucp/views/contactEdit.php:84 ucp/views/contactEdit.php:119
