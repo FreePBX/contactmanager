@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-17 02:56+0000\n"
-"PO-Revision-Date: 2020-09-03 12:00+0000\n"
+"PO-Revision-Date: 2020-10-01 16:00+0000\n"
 "Last-Translator: Javier Pastor <jpastor@cerebelum.net>\n"
 "Language-Team: Spanish <http://*/projects/freepbx/contactmanager/es/>\n"
 "Language: es_ES\n"
@@ -627,7 +627,7 @@ msgstr "Archivo NO fue subido"
 
 #: Contactmanager.class.php:2946 Contactmanager.class.php:2958
 msgid "None"
-msgstr ""
+msgstr "Ninguna"
 
 #: ucp/Contactmanager.class.php:397 ucp/Contactmanager.class.php:476
 #: ucp/Contactmanager.class.php:501
