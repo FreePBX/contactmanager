@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.8.24</version>
+	<version>15.0.8.25</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*15.0.8.25* Packaging of ver 15.0.8.25
 		*15.0.8.24* Packaging of ver 15.0.8.24
 		*15.0.8.23* FREEI-736 Undefined variable in contactmanager 
 		*15.0.8.22* Related to FREEPBX-20414: removed $jobid from runRestore() 
