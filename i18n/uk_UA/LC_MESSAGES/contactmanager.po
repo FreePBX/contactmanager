@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-12 09:03+0000\n"
+"POT-Creation-Date: 2020-10-16 09:35+0000\n"
 "PO-Revision-Date: 2016-12-12 18:54+0200\n"
 "Last-Translator: Maxim <maxim@ua.fm>\n"
 "Language-Team: Ukrainian <http://weblate.freepbx.org/projects/freepbx/"
@@ -201,11 +201,7 @@ msgstr ""
 msgid "Contact Manager"
 msgstr "Менеджер контактів"
 
-#: contactmanager.i18n.php:14
-msgid "Contact Manager Module"
-msgstr ""
-
-#: contactmanager.i18n.php:18
+#: contactmanager.i18n.php:12
 msgid "Contact Manager Speed Dials"
 msgstr ""
 
@@ -522,12 +518,6 @@ msgstr ""
 msgid "Home"
 msgstr "До дому"
 
-#: contactmanager.i18n.php:16
-msgid ""
-"How many digits should a number be before a partial match is used when "
-"looking up a contact"
-msgstr ""
-
 #: views/ucp_config.php:17
 msgid "Inherit"
 msgstr ""
@@ -666,10 +656,6 @@ msgstr ""
 
 #: ucp/Contactmanager.class.php:27
 msgid "PBX Contacts"
-msgstr ""
-
-#: contactmanager.i18n.php:12
-msgid "Partial Match Length"
 msgstr ""
 
 #: Contactmanager.class.php:3061 Contactmanager.class.php:3077

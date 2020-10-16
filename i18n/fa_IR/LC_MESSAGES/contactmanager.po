@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-12 09:03+0000\n"
+"POT-Creation-Date: 2020-10-16 09:35+0000\n"
 "PO-Revision-Date: 2016-10-08 12:16+0200\n"
 "Last-Translator: psdk <hyavari26@gmail.com>\n"
 "Language-Team: Persian (Iran) <http://weblate.freepbx.org/projects/freepbx/"
@@ -202,11 +202,7 @@ msgstr ""
 msgid "Contact Manager"
 msgstr "مدیریت مخاطب"
 
-#: contactmanager.i18n.php:14
-msgid "Contact Manager Module"
-msgstr ""
-
-#: contactmanager.i18n.php:18
+#: contactmanager.i18n.php:12
 msgid "Contact Manager Speed Dials"
 msgstr ""
 
@@ -523,12 +519,6 @@ msgstr "نوع گروه مورد نیاز است."
 msgid "Home"
 msgstr "خانه"
 
-#: contactmanager.i18n.php:16
-msgid ""
-"How many digits should a number be before a partial match is used when "
-"looking up a contact"
-msgstr ""
-
 #: views/ucp_config.php:17
 msgid "Inherit"
 msgstr "موروثی"
@@ -667,10 +657,6 @@ msgstr ""
 
 #: ucp/Contactmanager.class.php:27
 msgid "PBX Contacts"
-msgstr ""
-
-#: contactmanager.i18n.php:12
-msgid "Partial Match Length"
 msgstr ""
 
 #: Contactmanager.class.php:3061 Contactmanager.class.php:3077

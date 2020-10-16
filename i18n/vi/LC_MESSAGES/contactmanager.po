@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-12 09:03+0000\n"
+"POT-Creation-Date: 2020-10-16 09:35+0000\n"
 "PO-Revision-Date: 2017-08-08 16:34+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese <http://weblate.freepbx.org/projects/freepbx/"
@@ -206,11 +206,7 @@ msgstr ""
 msgid "Contact Manager"
 msgstr "Trình quản lý liên lạc"
 
-#: contactmanager.i18n.php:14
-msgid "Contact Manager Module"
-msgstr "Mô đun trình quản lý liên lạc"
-
-#: contactmanager.i18n.php:18
+#: contactmanager.i18n.php:12
 msgid "Contact Manager Speed Dials"
 msgstr "Trình quản lý liên lạc quay số nhanh"
 
@@ -528,14 +524,6 @@ msgstr "Yêu cầu phải Kiểu nhóm."
 msgid "Home"
 msgstr "Trang chủ"
 
-#: contactmanager.i18n.php:16
-msgid ""
-"How many digits should a number be before a partial match is used when "
-"looking up a contact"
-msgstr ""
-"Một số cần có bao nhiêu chữ số trước khi so khớp từng phần được sử dụng để "
-"tra cứu một liên lạc"
-
 #: views/ucp_config.php:17
 msgid "Inherit"
 msgstr ""
@@ -676,10 +664,6 @@ msgstr ""
 #: ucp/Contactmanager.class.php:27
 msgid "PBX Contacts"
 msgstr ""
-
-#: contactmanager.i18n.php:12
-msgid "Partial Match Length"
-msgstr "Độ dài so khớp từng phần"
 
 #: Contactmanager.class.php:3061 Contactmanager.class.php:3077
 #: Contactmanager.class.php:3091
@@ -912,6 +896,19 @@ msgstr "Địa chỉ XMPP không thể để trống."
 #: views/ucp_config.php:12
 msgid "Yes"
 msgstr ""
+
+#~ msgid "Contact Manager Module"
+#~ msgstr "Mô đun trình quản lý liên lạc"
+
+#~ msgid ""
+#~ "How many digits should a number be before a partial match is used when "
+#~ "looking up a contact"
+#~ msgstr ""
+#~ "Một số cần có bao nhiêu chữ số trước khi so khớp từng phần được sử dụng "
+#~ "để tra cứu một liên lạc"
+
+#~ msgid "Partial Match Length"
+#~ msgstr "Độ dài so khớp từng phần"
 
 #~ msgid "An entry must have a user"
 #~ msgstr "Một mục nhập phải có một người dùng"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-12 09:03+0000\n"
+"POT-Creation-Date: 2020-10-16 09:35+0000\n"
 "PO-Revision-Date: 2018-10-19 13:00+0000\n"
 "Last-Translator: Bastian Mertgen <b.mertgen@bastian-mertgen.de>\n"
 "Language-Team: German <http://*/projects/freepbx/contactmanager/de/>\n"
@@ -208,11 +208,7 @@ msgstr ""
 msgid "Contact Manager"
 msgstr "Kontaktverwaltung"
 
-#: contactmanager.i18n.php:14
-msgid "Contact Manager Module"
-msgstr "Kontaktverwaltungsmodul"
-
-#: contactmanager.i18n.php:18
+#: contactmanager.i18n.php:12
 msgid "Contact Manager Speed Dials"
 msgstr "Kontaktverwaltung-Kurzwahlen"
 
@@ -530,14 +526,6 @@ msgstr "Gruppentyp ist erforderlich."
 msgid "Home"
 msgstr "Privat"
 
-#: contactmanager.i18n.php:16
-msgid ""
-"How many digits should a number be before a partial match is used when "
-"looking up a contact"
-msgstr ""
-"Wieviele Ziffern muss eine Nummer haben, bevor eine teilweise "
-"Übereinstimmung verwendet wird, um einen Kontakt zu suchen"
-
 #: views/ucp_config.php:17
 msgid "Inherit"
 msgstr "Erben"
@@ -680,10 +668,6 @@ msgstr "Eigentümer"
 #: ucp/Contactmanager.class.php:27
 msgid "PBX Contacts"
 msgstr "PBX-Kontakte"
-
-#: contactmanager.i18n.php:12
-msgid "Partial Match Length"
-msgstr "Länge der teilweisen Übereinstimmung"
 
 #: Contactmanager.class.php:3061 Contactmanager.class.php:3077
 #: Contactmanager.class.php:3091
@@ -921,6 +905,19 @@ msgstr "XMPP Adresse darf nicht leer sein."
 #: views/ucp_config.php:12
 msgid "Yes"
 msgstr "Ja"
+
+#~ msgid "Contact Manager Module"
+#~ msgstr "Kontaktverwaltungsmodul"
+
+#~ msgid ""
+#~ "How many digits should a number be before a partial match is used when "
+#~ "looking up a contact"
+#~ msgstr ""
+#~ "Wieviele Ziffern muss eine Nummer haben, bevor eine teilweise "
+#~ "Übereinstimmung verwendet wird, um einen Kontakt zu suchen"
+
+#~ msgid "Partial Match Length"
+#~ msgstr "Länge der teilweisen Übereinstimmung"
 
 #~ msgid "Adding..."
 #~ msgstr "Hinzufügen..."
