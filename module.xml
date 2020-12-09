@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>14.0.5.15</version>
+	<version>14.0.5.16</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*14.0.5.16* Fixing FREEI-2470 and FREEI-2374 
 		*14.0.5.15* Packaging of ver 14.0.5.15
 		*14.0.5.14* Packaging of ver 14.0.5.14
 		*14.0.5.13* FREEI-736 Undefined variable in contactmanager
