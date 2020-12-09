@@ -118,6 +118,9 @@
 			<field name="id" type="integer" primaryKey="true"/>
 			<field name="entryid" type="integer"/>
 			<field name="numberid" type="integer"/>
+			<key name="index2" type="index">
+				<column name="numberid"/>
+			</key>
 		</table>
 		<table name="contactmanager_entry_numbers">
 			<field name="id" type="integer" primaryKey="true" autoincrement="true"/>
@@ -132,7 +135,11 @@
 	    <field name="type" type="string" length="100" notnull="false"/>
 	    <field name="flags" type="string" length="100" notnull="false"/>
 	    <field name="E164" type="string" length="100" notnull="false"/>
-			<field name="possibleshort" type="boolean" notnull="false"/>
+		<field name="possibleshort" type="boolean" notnull="false"/>
+			<key name="index" type="index">
+				<column name="entryid"/>
+			</key>
+
 		</table>
 		<table name="contactmanager_entry_images">
 			<field name="entryid" type="integer" primaryKey="true"/>
