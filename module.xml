@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>16.0.2</version>
+	<version>16.0.3</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*16.0.3* FREEPBX-21227 Remove Contact Mgr Speeddial as destination 
 		*16.0.2* Packaging of ver 16.0.2
 		*16.0.1alpha* 16.0.1 alpha release
 	</changelog>

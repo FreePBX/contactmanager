@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-17 03:02+0000\n"
+"POT-Creation-Date: 2020-12-15 07:46+0000\n"
 "PO-Revision-Date: 2017-12-11 23:27+0200\n"
 "Last-Translator: JCattan <jeremie@famillecattan.com>\n"
 "Language-Team: French <http://weblate.freepbx.org/projects/freepbx/"
@@ -20,11 +20,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 2.4\n"
-
-#: functions.inc.php:17
-#, php-format
-msgid "%s (Speed Dial: %s) [%s]"
-msgstr ""
 
 #: Contactmanager.class.php:671 ucp/Contactmanager.class.php:266
 msgid "A PHP extension stopped the file upload"
@@ -204,7 +199,7 @@ msgstr ""
 msgid "Contact Manager Speed Dials"
 msgstr ""
 
-#: functions.inc.php:45 functions.inc.php:48
+#: functions.inc.php:27 functions.inc.php:30
 #, php-format
 msgid "Contact Manager: %s (Speed Dial: %s) [%s]"
 msgstr ""
