@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-17 02:56+0000\n"
+"POT-Creation-Date: 2020-12-15 07:42+0000\n"
 "PO-Revision-Date: 2020-02-12 11:00+0000\n"
 "Last-Translator: florian alberts <alberts@ar-systems.de>\n"
 "Language-Team: German <http://*/projects/freepbx/contactmanager/de/>\n"
@@ -19,11 +19,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 3.0.1\n"
-
-#: functions.inc.php:17
-#, php-format
-msgid "%s (Speed Dial: %s) [%s]"
-msgstr "%s (Kurzwahl: %s) [%s]"
 
 #: Contactmanager.class.php:669 ucp/Contactmanager.class.php:266
 msgid "A PHP extension stopped the file upload"
@@ -212,7 +207,7 @@ msgstr "Kontaktverwaltung"
 msgid "Contact Manager Speed Dials"
 msgstr "Kontaktverwaltung-Kurzwahlen"
 
-#: functions.inc.php:45 functions.inc.php:48
+#: functions.inc.php:27 functions.inc.php:30
 #, php-format
 msgid "Contact Manager: %s (Speed Dial: %s) [%s]"
 msgstr "Kontaktverwaltung: %s (Kurzwahl: %s) [%s]"
@@ -907,6 +902,9 @@ msgstr "XMPP Adresse darf nicht leer sein."
 #: views/ucp_config.php:12
 msgid "Yes"
 msgstr "Ja"
+
+#~ msgid "%s (Speed Dial: %s) [%s]"
+#~ msgstr "%s (Kurzwahl: %s) [%s]"
 
 #~ msgid "Contact Manager Module"
 #~ msgstr "Kontaktverwaltungsmodul"

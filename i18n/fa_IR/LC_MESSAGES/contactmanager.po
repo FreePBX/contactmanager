@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-17 02:56+0000\n"
+"POT-Creation-Date: 2020-12-15 07:42+0000\n"
 "PO-Revision-Date: 2019-08-13 11:59+0000\n"
 "Last-Translator: Media Mousavi <mousavi.media@gmail.com>\n"
 "Language-Team: Persian <http://*/projects/freepbx/contactmanager/fa/>\n"
@@ -19,11 +19,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 3.0.1\n"
-
-#: functions.inc.php:17
-#, php-format
-msgid "%s (Speed Dial: %s) [%s]"
-msgstr "%s1 (Speed Dial: %s2) [%s3]"
 
 #: Contactmanager.class.php:669 ucp/Contactmanager.class.php:266
 msgid "A PHP extension stopped the file upload"
@@ -207,7 +202,7 @@ msgstr "مدیر تماس"
 msgid "Contact Manager Speed Dials"
 msgstr "تماس با مدیر شماره گیری سریع"
 
-#: functions.inc.php:45 functions.inc.php:48
+#: functions.inc.php:27 functions.inc.php:30
 #, php-format
 msgid "Contact Manager: %s (Speed Dial: %s) [%s]"
 msgstr "Contact Manager: %s1 (Speed Dial: %s2) [%s3]"
@@ -890,6 +885,9 @@ msgstr "آدرس XMPP نمیتواند خالی باشد."
 #: views/ucp_config.php:12
 msgid "Yes"
 msgstr "بله"
+
+#~ msgid "%s (Speed Dial: %s) [%s]"
+#~ msgstr "%s1 (Speed Dial: %s2) [%s3]"
 
 #~ msgid "Contact Manager Module"
 #~ msgstr "تماس با ماژول مدیریت"
