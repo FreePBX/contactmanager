@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-15 07:42+0000\n"
+"POT-Creation-Date: 2020-12-22 05:35+0000\n"
 "PO-Revision-Date: 2019-08-13 11:59+0000\n"
 "Last-Translator: Media Mousavi <mousavi.media@gmail.com>\n"
 "Language-Team: Persian <http://*/projects/freepbx/contactmanager/fa/>\n"
@@ -198,7 +198,11 @@ msgstr ""
 msgid "Contact Manager"
 msgstr "مدیر تماس"
 
-#: contactmanager.i18n.php:12
+#: contactmanager.i18n.php:14
+msgid "Contact Manager Module"
+msgstr "تماس با ماژول مدیریت"
+
+#: contactmanager.i18n.php:18
 msgid "Contact Manager Speed Dials"
 msgstr "تماس با مدیر شماره گیری سریع"
 
@@ -517,6 +521,14 @@ msgstr "نوع گروه مورد نیاز است."
 msgid "Home"
 msgstr "خانه"
 
+#: contactmanager.i18n.php:16
+msgid ""
+"How many digits should a number be before a partial match is used when "
+"looking up a contact"
+msgstr ""
+"چندین رقم باید یک عدد باشد قبل از یک بازی جزئی در هنگام جستجوی یک تماس "
+"استفاده شود"
+
 #: views/ucp_config.php:17
 msgid "Inherit"
 msgstr "وارث"
@@ -656,6 +668,10 @@ msgstr "مالک"
 #: ucp/Contactmanager.class.php:27
 msgid "PBX Contacts"
 msgstr "تماس های PBX"
+
+#: contactmanager.i18n.php:12
+msgid "Partial Match Length"
+msgstr "طول بازی جزئی"
 
 #: Contactmanager.class.php:3066 Contactmanager.class.php:3082
 #: Contactmanager.class.php:3096
@@ -888,19 +904,6 @@ msgstr "بله"
 
 #~ msgid "%s (Speed Dial: %s) [%s]"
 #~ msgstr "%s1 (Speed Dial: %s2) [%s3]"
-
-#~ msgid "Contact Manager Module"
-#~ msgstr "تماس با ماژول مدیریت"
-
-#~ msgid ""
-#~ "How many digits should a number be before a partial match is used when "
-#~ "looking up a contact"
-#~ msgstr ""
-#~ "چندین رقم باید یک عدد باشد قبل از یک بازی جزئی در هنگام جستجوی یک تماس "
-#~ "استفاده شود"
-
-#~ msgid "Partial Match Length"
-#~ msgstr "طول بازی جزئی"
 
 #~ msgid "An entry must have a user"
 #~ msgstr "ورودی باید کاربر داشته باشد"
