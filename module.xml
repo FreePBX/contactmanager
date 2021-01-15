@@ -113,6 +113,9 @@
 	    <field name="company" type="string" length="100" default=""/>
 	    <field name="address" type="string" length="200" default=""/>
 	    <field name="uuid" type="string" length="36" notnull="false"/>
+		<key name="index" type="index">
+				<column name="displayname"/>
+		</key>
 	    <key name="uuid_index" type="unique">
 	      <column name="uuid"/>
 	    </key>
