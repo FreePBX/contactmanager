@@ -3213,9 +3213,16 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 						}
 					}
 				}
-
-				$this->addEntryByGroupID($group['id'], $contact);
-
+				if($replaceExisting){
+					$entityid = $this->getDuplicateContactId($group['id'], $contact);
+					if($entityid !=''){
+						$this->updateEntry($entityid, $contact);
+					}else {
+						$this->addEntryByGroupID($group['id'], $contact);
+					}
+				} else{
+					$this->addEntryByGroupID($group['id'], $contact);
+				}
 				$ret = array(
 						'status' => true,
 					    );
@@ -3225,6 +3232,30 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		}
 
 		return $ret;
+	}
+
+	public function getDuplicateContactId($groupid, $contact){
+		$displayname = $contact['displayname'];
+		$number = $contact['numbers'][0]['number'];
+		$matchedentryid ='';
+		$entries = array();
+		$sql = "SELECT id, displayname, fname, lname FROM contactmanager_group_entries WHERE `groupid` =:groupid and `displayname` = :displayname ";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':groupid' => $groupid,':displayname'=>$displayname));
+		$matched = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		foreach($matched as $uid => $entry) {
+			$entryid = $entry['id'];
+			$sql = "SELECT `id` FROM contactmanager_entry_numbers WHERE `entryid` = :entryid And `number` =:number";
+			$sth = $this->db->prepare($sql);
+			$sth->execute(array(':entryid' => $entryid,':number' => $number));
+			$colcount = $sth->columnCount();
+			if($colcount > 0) {
+				//we found the matching number
+				$matchedentryid = $entryid;
+				break;
+			}
+		}
+		return $matchedentryid;
 	}
 
 	public function bulkhandlerExport($type) {
