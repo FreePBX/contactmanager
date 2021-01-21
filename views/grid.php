@@ -42,15 +42,19 @@
 							
 								<?php echo $owner?>
 								<div id="toolbar-<?php echo $type?>-<?php echo $group['id']?>">
+									<button id="remove-<?php echo $type?>" class="btn btn-danger btn-remove" data-type="<?php echo $type?>" disabled data-section="<?php echo $type?>-<?php echo $group['id']?>-grid">
+                                        <i class="fa fa-user-times"></i> <span><?php echo _('Delete')?></span>
+                                    </button>
 									<?php if($type != "internal") {?>
 										<a class="btn btn-primary" href="?display=contactmanager&amp;action=addentry&amp;group=<?php echo $group['id']?>"><i class="fa fa-plus"></i> <?php echo _("Add Contact")?></a>
 									<?php } ?>
 									<a class="btn btn-primary" href="?display=contactmanager&amp;action=showgroup&amp;group=<?php echo $group['id']?>"><i class="fa fa-pencil"></i> <?php echo _('Edit Group')?></a>
 									<a class="btn btn-primary" href="?display=contactmanager&amp;action=delgroup&amp;group=<?php echo $group['id']?>"><i class="glyphicon glyphicon-remove"></i> <?php echo _('Delete Group')?></a>
 								</div>
-								<table id="<?php echo $type?>-<?php echo $group['id']?>-grid" data-url="ajax.php?module=contactmanager&amp;command=grid&amp;group=<?php echo $group['id']?>" data-cache="false" data-toolbar="#toolbar-<?php echo $type?>-<?php echo $group['id']?>" data-maintain-selected="true" data-show-columns="true" data-show-toggle="true" data-toggle="table" data-pagination="true" data-search="true" class="table table-striped">
+								<table id="<?php echo $type?>-<?php echo $group['id']?>-grid" data-url="ajax.php?module=contactmanager&amp;command=grid&amp;group=<?php echo $group['id']?>" data-cache="false" data-toolbar="#toolbar-<?php echo $type?>-<?php echo $group['id']?>" data-type="<?php echo $type?>" data-maintain-selected="true" data-show-columns="true" data-show-toggle="true" data-toggle="table" data-pagination="true" data-search="true" class="table table-striped table-<?php echo $type?>">
 									<thead>
 										<tr>
+											<th data-checkbox="true"></th>
 											<?php foreach($data['fields'] as $id => $name) {?>
 												<th data-field="<?php echo $id?>" <?php if($id != "actions") {?>data-sortable="true"<?php } ?>><?php echo $name?></th>
 											<?php } ?>

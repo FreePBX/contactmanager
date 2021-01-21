@@ -1,7 +1,51 @@
 var timeout = null;
 var cmlocale = navigator.language.split('-')[1];
 cmlocale = cmlocale ? cmlocale : navigator.language.split('-')[0]
+var deleteExts = {
+	'internal': [],
+	'external': [],
+	'private': []
+}
+translations = {
+	'internal': _('internal contacts'),
+	'external': _('external contacts'),
+	'private': _('private contacts'),
+};
 $(function() {
+
+	$("table").on('check.bs.table uncheck.bs.table check-all.bs.table uncheck-all.bs.table', function () {
+		var toolbar = $(this).data("toolbar"),
+			button = $(toolbar).find(".btn-remove"),
+			id = $(this).prop("id"),
+			type = $(this).data("type");
+		button.prop('disabled', !$("#"+id).bootstrapTable('getSelections').length);
+	});
+	$(document).on('click', "button.btn-remove", function() {
+		var type = $(this).data("type"), btn = $(this), section = $(this).data("section");
+		var chosen = $("#"+section).bootstrapTable("getSelections");
+		deleteExts[type] = [];
+		$(chosen).each(function(){
+			id = (type === 'internal') ? this.id : this.uid;
+			deleteExts[type].push(id);
+		});
+		if(confirm(sprintf(_("Are you sure you wish to delete these %s?"),translations[type]))) {
+			btn.find("span").text(_("Deleting..."));
+			btn.prop("disabled", true);
+			$.post( "ajax.php", {command: "delete", module: "contactmanager", extensions: deleteExts[type], type: type}, function(data) {
+				if(data.type) {
+					btn.find("span").text(_("Delete"));
+					$("#"+section).bootstrapTable('remove', {
+						field: (type === 'internal') ? "id" : "uid",
+						values: deleteExts[type]
+					});
+					alert(data.message);
+				} else {
+					btn.find("span").text(_("Delete"));
+					alert(data.message);
+				}
+			});
+		}
+	});
 	$("select.number.locale[data-locale='']").each(function() {
 		$(this).val(cmlocale);
 	});
@@ -125,6 +169,7 @@ $(function() {
 		});
 
 	});
+
 });
 
 function addNumber() {
