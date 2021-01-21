@@ -404,6 +404,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			case 'getgravatar':
 			case 'checksd':
 			case 'sdgrid':
+			case 'delete':
 				return true;
 			break;
 		}
@@ -709,6 +710,11 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					break;
 				}
 				return $final;
+			case 'delete':
+			    foreach($_POST['extensions'] as $id => $name) {
+                    $ret = $this->deleteEntryByID($name);
+			    }
+			    return array('message' => count($_POST['extensions']).' Contacts entries successfully deleted','type' => $ret['type']);
 		}
 	}
 
@@ -791,7 +797,6 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				return true;
 			}
 		}
-
 		if (isset($_POST['group'])) {
 
 			$group = !empty($_POST['group']) ? $_POST['group'] : '';
