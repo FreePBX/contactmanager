@@ -161,7 +161,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				$this->allImages[$t['uid']] = true;
 			}
 		}
-		if(!empty($this->allImages[$user['id']])) {
+		if(isset($user['id']) && !empty($this->allImages[$user['id']])) {
 			$user['image'] = true;
 		}
 		return $user;
