@@ -3600,4 +3600,13 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			"AX" => "Åland Islands",
 		);
 	}
+
+	public function getDetailByUserid($id) {
+		$sql = "SELECT * FROM contactmanager_group_entries WHERE user = :user ;";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':user' => $id));
+		$result = $sth->fetchAll(\PDO::FETCH_ASSOC);
+
+		return $result;
+	}
 }
