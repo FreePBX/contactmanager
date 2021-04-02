@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-22 05:35+0000\n"
+"POT-Creation-Date: 2021-04-02 05:21+0000\n"
 "PO-Revision-Date: 2017-08-08 16:34+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese <http://weblate.freepbx.org/projects/freepbx/"
@@ -126,7 +126,7 @@ msgstr "Bạn có chắc chắn muốn xóa nhóm này và toàn bộ liên lạ
 msgid "Are you sure you wish to delete this contact?"
 msgstr ""
 
-#: Contactmanager.class.php:3304
+#: Contactmanager.class.php:3335
 msgid "Automatically Determine"
 msgstr ""
 
@@ -823,7 +823,7 @@ msgstr ""
 msgid "Unauthorized"
 msgstr "Không được phép"
 
-#: Contactmanager.class.php:3305
+#: Contactmanager.class.php:3336
 msgid "Unknown"
 msgstr ""
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-22 05:35+0000\n"
+"POT-Creation-Date: 2021-04-02 05:21+0000\n"
 "PO-Revision-Date: 2020-10-01 16:00+0000\n"
 "Last-Translator: Javier Pastor <jpastor@cerebelum.net>\n"
 "Language-Team: Spanish <http://*/projects/freepbx/contactmanager/es/>\n"
@@ -125,7 +125,7 @@ msgstr "Esta seguro que quiere eliminar este grupo y todos sus contactos?"
 msgid "Are you sure you wish to delete this contact?"
 msgstr ""
 
-#: Contactmanager.class.php:3304
+#: Contactmanager.class.php:3335
 msgid "Automatically Determine"
 msgstr ""
 
@@ -820,7 +820,7 @@ msgstr "No se encontró un gravatar para %s"
 msgid "Unauthorized"
 msgstr "No autorizado"
 
-#: Contactmanager.class.php:3305
+#: Contactmanager.class.php:3336
 msgid "Unknown"
 msgstr ""
 
