@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-17 02:53+0000\n"
+"POT-Creation-Date: 2021-04-02 05:18+0000\n"
 "PO-Revision-Date: 2017-03-20 13:15+0200\n"
 "Last-Translator: Kingvoice <suporte@kingvoice.com.br>\n"
 "Language-Team: Portuguese (Brazil) <http://weblate.freepbx.org/projects/"
@@ -196,7 +196,11 @@ msgstr ""
 msgid "Contact Manager"
 msgstr "Gerenciador de Contatos"
 
-#: contactmanager.i18n.php:12
+#: contactmanager.i18n.php:14
+msgid "Contact Manager Module"
+msgstr "Módulo de gerenciador de Contatos"
+
+#: contactmanager.i18n.php:18
 msgid "Contact Manager Speed Dials"
 msgstr "Discagens Rápidas do Gerenciador de Contatos"
 
@@ -503,6 +507,14 @@ msgstr "Tipo de grupo é necessário."
 msgid "Home"
 msgstr "Início"
 
+#: contactmanager.i18n.php:16
+msgid ""
+"How many digits should a number be before a partial match is used when "
+"looking up a contact"
+msgstr ""
+"Quantos dígitos deve haver em um número antes que uma correspondência "
+"parcial seja usada ao procurar um contato"
+
 #: views/ucp_config.php:17
 msgid "Inherit"
 msgstr ""
@@ -621,6 +633,10 @@ msgstr "Outros"
 #: views/grid.php:38
 msgid "Owner"
 msgstr ""
+
+#: contactmanager.i18n.php:12
+msgid "Partial Match Length"
+msgstr "Comprimento de Correspondência Parcial"
 
 #: Contactmanager.class.php:3057 Contactmanager.class.php:3073
 #: Contactmanager.class.php:3087
@@ -820,19 +836,6 @@ msgstr "O endereço XMPP não pode ficar em branco."
 #: views/ucp_config.php:12
 msgid "Yes"
 msgstr ""
-
-#~ msgid "Contact Manager Module"
-#~ msgstr "Módulo de gerenciador de Contatos"
-
-#~ msgid ""
-#~ "How many digits should a number be before a partial match is used when "
-#~ "looking up a contact"
-#~ msgstr ""
-#~ "Quantos dígitos deve haver em um número antes que uma correspondência "
-#~ "parcial seja usada ao procurar um contato"
-
-#~ msgid "Partial Match Length"
-#~ msgstr "Comprimento de Correspondência Parcial"
 
 #~ msgid "An entry must have a user"
 #~ msgstr "Uma entrada deve ter um usuário"

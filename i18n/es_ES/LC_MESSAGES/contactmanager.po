@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-17 02:53+0000\n"
+"POT-Creation-Date: 2021-04-02 05:18+0000\n"
 "PO-Revision-Date: 2016-12-12 04:50+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
@@ -196,7 +196,11 @@ msgstr ""
 msgid "Contact Manager"
 msgstr "Gestor de Contactos"
 
-#: contactmanager.i18n.php:12
+#: contactmanager.i18n.php:14
+msgid "Contact Manager Module"
+msgstr "Modulo Gestor de Contactos"
+
+#: contactmanager.i18n.php:18
 msgid "Contact Manager Speed Dials"
 msgstr ""
 
@@ -504,6 +508,14 @@ msgstr "Tipo de Grupo es requerido."
 msgid "Home"
 msgstr "Inicio"
 
+#: contactmanager.i18n.php:16
+msgid ""
+"How many digits should a number be before a partial match is used when "
+"looking up a contact"
+msgstr ""
+"Cuántos dígitos debe tener un número antes de utilizar una coincidencia "
+"parcial al buscar un contacto"
+
 #: views/ucp_config.php:17
 msgid "Inherit"
 msgstr "heredado"
@@ -623,6 +635,10 @@ msgstr "Otro"
 #: views/grid.php:38
 msgid "Owner"
 msgstr ""
+
+#: contactmanager.i18n.php:12
+msgid "Partial Match Length"
+msgstr "Longitud de coincidencia parcial"
 
 #: Contactmanager.class.php:3057 Contactmanager.class.php:3073
 #: Contactmanager.class.php:3087
@@ -821,19 +837,6 @@ msgstr "Direccion XMPP no puede estar en balno."
 #: views/ucp_config.php:12
 msgid "Yes"
 msgstr "Si"
-
-#~ msgid "Contact Manager Module"
-#~ msgstr "Modulo Gestor de Contactos"
-
-#~ msgid ""
-#~ "How many digits should a number be before a partial match is used when "
-#~ "looking up a contact"
-#~ msgstr ""
-#~ "Cuántos dígitos debe tener un número antes de utilizar una coincidencia "
-#~ "parcial al buscar un contacto"
-
-#~ msgid "Partial Match Length"
-#~ msgstr "Longitud de coincidencia parcial"
 
 #~ msgid "An entry must have a user"
 #~ msgstr "Debe contener un usuario"

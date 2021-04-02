@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-17 02:53+0000\n"
+"POT-Creation-Date: 2021-04-02 05:18+0000\n"
 "PO-Revision-Date: 2018-02-16 20:01+0200\n"
 "Last-Translator: Nils <Nils@heckenkamp.info>\n"
 "Language-Team: German <http://weblate.freepbx.org/projects/freepbx/"
@@ -198,7 +198,11 @@ msgstr ""
 msgid "Contact Manager"
 msgstr "Kontakt-Manager"
 
-#: contactmanager.i18n.php:12
+#: contactmanager.i18n.php:14
+msgid "Contact Manager Module"
+msgstr "Kontakt-Manager-Modul"
+
+#: contactmanager.i18n.php:18
 msgid "Contact Manager Speed Dials"
 msgstr "Kontaktmanager-Kurzwahlen"
 
@@ -505,6 +509,14 @@ msgstr "Gruppentyp ist erforderlich."
 msgid "Home"
 msgstr "Privat"
 
+#: contactmanager.i18n.php:16
+msgid ""
+"How many digits should a number be before a partial match is used when "
+"looking up a contact"
+msgstr ""
+"Wieviele Ziffern muss eine Nummer haben, bevor eine teilweise "
+"Übereinstimmung verwendet wird, um einen Kontakt zu suchen"
+
 #: views/ucp_config.php:17
 msgid "Inherit"
 msgstr ""
@@ -624,6 +636,10 @@ msgstr "Andere"
 #: views/grid.php:38
 msgid "Owner"
 msgstr ""
+
+#: contactmanager.i18n.php:12
+msgid "Partial Match Length"
+msgstr "Länge der teilweisen Übereinstimmung"
 
 #: Contactmanager.class.php:3057 Contactmanager.class.php:3073
 #: Contactmanager.class.php:3087
@@ -826,19 +842,6 @@ msgstr "XMPP Adresse darf nicht leer sein."
 #: views/ucp_config.php:12
 msgid "Yes"
 msgstr ""
-
-#~ msgid "Contact Manager Module"
-#~ msgstr "Kontakt-Manager-Modul"
-
-#~ msgid ""
-#~ "How many digits should a number be before a partial match is used when "
-#~ "looking up a contact"
-#~ msgstr ""
-#~ "Wieviele Ziffern muss eine Nummer haben, bevor eine teilweise "
-#~ "Übereinstimmung verwendet wird, um einen Kontakt zu suchen"
-
-#~ msgid "Partial Match Length"
-#~ msgstr "Länge der teilweisen Übereinstimmung"
 
 #~ msgid "An entry must have a user"
 #~ msgstr "Es muss ein Benutzer eingetragen sein"

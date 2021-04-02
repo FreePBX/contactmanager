@@ -3,13 +3,13 @@
 # For licensing information, please see the file named LICENSE located in the module directory
 #
 # FreePBX language template for contactmanager
-# Copyright (C) 2008-2020 Sangoma Technologies, Inc.
+# Copyright (C) 2008-2021 Sangoma Technologies, Inc.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-17 02:53+0000\n"
+"POT-Creation-Date: 2021-04-02 05:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -217,7 +217,11 @@ msgstr ""
 msgid "Contact Manager"
 msgstr ""
 
-#: contactmanager.i18n.php:12
+#: contactmanager.i18n.php:14
+msgid "Contact Manager Module"
+msgstr ""
+
+#: contactmanager.i18n.php:18
 msgid "Contact Manager Speed Dials"
 msgstr ""
 
@@ -570,6 +574,12 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
+#: contactmanager.i18n.php:16
+msgid ""
+"How many digits should a number be before a partial match is used when "
+"looking up a contact"
+msgstr ""
+
 #: views/ucp_config.php:17
 msgid "Inherit"
 msgstr ""
@@ -707,6 +717,10 @@ msgstr ""
 
 #: views/grid.php:38
 msgid "Owner"
+msgstr ""
+
+#: contactmanager.i18n.php:12
+msgid "Partial Match Length"
 msgstr ""
 
 #: Contactmanager.class.php:3057

@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>13.0.45.5</version>
+	<version>13.0.45.6</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*13.0.45.6* FREEI-2992 CallLog App - add method: pbx.users.callLogs.getList 
 		*13.0.45.5* Packaging of ver 13.0.45.5
 		*13.0.45.4* FREEI-736 Undefined variable in contactmanager 
 		*13.0.45.3* FREEPBX-20437 XSS vulnerability in contactmanager module 
