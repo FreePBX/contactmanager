@@ -5,6 +5,26 @@ class Restore Extends Base\RestoreBase{
 	public function runRestore(){
 		$configs = $this->getConfigs();
 		$this->importKVStore($configs['kvstore']);
+		if ( array_key_exists('contactmanager_groups', $configs) ) {
+			$sql = "Truncate contactmanager_groups";
+			$sth = $this->FreePBX->Database->prepare($sql);
+			$sth->execute();
+			foreach($configs['contactmanager_groups'] as $entry){
+				$sql = "INSERT INTO contactmanager_groups (`id`,`owner`, `name`,`type`) VALUES(?,?,?,?)";
+				$sth = $this->FreePBX->Database->prepare($sql);
+				$sth->execute(array($entry['id'],$entry['owner'],$entry['name'],$entry['type']));
+			}
+		}
+		if ( array_key_exists('contactmanager_group_entries', $configs) ) {
+			$sql = "Delete From contactmanager_group_entries WHERE user !='-1' ";
+			$sth = $this->FreePBX->Database->prepare($sql);
+			$sth->execute();
+			foreach($configs['contactmanager_group_entries'] as $entry){
+				$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`,`uuid`) VALUES(?,?,?)";
+				$sth = $this->FreePBX->Database->prepare($sql);
+				$sth->execute(array($entry['groupid'],$entry['user'],$entry['uuid']));
+			}
+		}
 		$this->FreePBX->Contactmanager->bulkhandlerImport('contacts', $configs['data'], true);
 		$this->importFeatureCodes($config['features']);
 		$this->importAdvancedSettings($config['settings']);
