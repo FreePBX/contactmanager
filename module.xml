@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.8.33</version>
+	<version>15.0.8.34</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*15.0.8.34* bugfix/FREEPBX-22581-restore-fails-when-no-values-in-contact-manager 
 		*15.0.8.33* FREEI-3238 Contact manager not restoring internal contacts 
 		*15.0.8.32* Packaging of ver 15.0.8.32
 		*15.0.8.31* FREEI-2676-bulk-delete-feature-contactmanager 
