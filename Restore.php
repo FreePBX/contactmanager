@@ -5,7 +5,7 @@ class Restore Extends Base\RestoreBase{
 	public function runRestore(){
 		$configs = $this->getConfigs();
 		$this->importKVStore($configs['kvstore']);
-		if ( array_key_exists('contactmanager_groups', $configs) ) {
+		if ( array_key_exists('contactmanager_groups', $configs) && isset($configs['contactmanager_groups']) ) {
 			$sql = "Truncate contactmanager_groups";
 			$sth = $this->FreePBX->Database->prepare($sql);
 			$sth->execute();
@@ -15,7 +15,7 @@ class Restore Extends Base\RestoreBase{
 				$sth->execute(array($entry['id'],$entry['owner'],$entry['name'],$entry['type']));
 			}
 		}
-		if ( array_key_exists('contactmanager_group_entries', $configs) ) {
+		if ( array_key_exists('contactmanager_group_entries', $configs) && isset($configs['contactmanager_group_entries']) ) {
 			$sql = "Delete From contactmanager_group_entries WHERE user !='-1' ";
 			$sth = $this->FreePBX->Database->prepare($sql);
 			$sth->execute();
