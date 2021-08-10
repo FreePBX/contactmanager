@@ -686,6 +686,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 								continue;
 							}
 							$user = $this->freepbx->Userman->getUserByID($entry['user']);
+							if($user['username'] =='FreePBXUCPTemplateCreator') {
+								continue;
+							}
 							$final[$i] = $user;
 							$final[$i]['displayname'] = !empty($user['displayname']) ? $user['displayname'] : $user['fname'] . " " . $user['lname'];
 							$final[$i]['displayname'] = !empty($user['displayname']) ? $user['displayname'] . " (".$user['username'].")" : $user['username'];
@@ -1589,7 +1592,11 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$sth->execute(array(':groupid' => $groupid));
 		$ents = $sth->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
 		$e = array();
+		$tempcreatorid ='';
 		foreach($ents as $uid => $entry) {
+			if($entry['displayname'] == 'Template Creator'){
+				$tempcreatorid = $uid;
+			}
 			$entry = array_merge($entry,array(
 				'xmpps' => array(
 
@@ -1694,8 +1701,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				}
 			break;
 		}
-
-
+		if(is_numeric($tempcreatorid)){
+			unset($entries[$tempcreatorid]);
+		}
 		return $entries;
 	}
 
