@@ -717,7 +717,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			    foreach($_POST['extensions'] as $id => $name) {
                     $ret = $this->deleteEntryByID($name);
 			    }
-			    return array('message' => count($_POST['extensions']).' Contacts entries successfully deleted','type' => $ret['type']);
+			    return array('message' => count($_POST['extensions']).' Contacts entries successfully deleted','type' => $_POST['type']);
 		}
 	}
 
@@ -1300,9 +1300,12 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 *
 	 * @return array
 	 */
-	public function getGroups() {
-		if(!empty($this->groupsCache)) {
-			return $this->groupsCache;
+	public function getGroups($bypassCache = false)
+	{
+		if (!$bypassCache) {
+			if (!empty($this->groupsCache)) {
+				return $this->groupsCache;
+			}
 		}
 		$sql = "UPDATE contactmanager_groups SET `type` = 'private' WHERE owner != -1;";
 		$sth = $this->db->prepare($sql);
@@ -3151,7 +3154,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 				$group = NULL;
 
-				$groups = $this->getGroups();
+				$groups = $this->getGroups(true);
 				foreach ($groups as $g) {
 					if ($g['name'] == $data['groupname'] && $g['type'] == $data['grouptype']) {
 						/* Found an existing group.  Let's bail. */
