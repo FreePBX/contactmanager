@@ -26,8 +26,8 @@ class Restore Extends Base\RestoreBase{
 			}
 		}
 		$this->FreePBX->Contactmanager->bulkhandlerImport('contacts', $configs['data'], true);
-		$this->importFeatureCodes($config['features']);
-		$this->importAdvancedSettings($config['settings']);
+		$this->importFeatureCodes($configs['features']);
+		$this->importAdvancedSettings($configs['settings']);
 	}
 
 	public function processLegacy($pdo, $data, $tables, $unknownTables){
