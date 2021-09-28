@@ -1451,7 +1451,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				}
 			}
 		}
+		$this->updateContactUpdatedDetails($owner);
 		$this->freepbx->Hooks->processHooks($id);
+
 		return array("status" => true, "type" => "success", "message" => _("Group successfully added"), "id" => $id);
 	}
 
@@ -1479,7 +1481,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 		$this->groupCache[$id] = null;
 		$this->groupsCache = null;
+		$this->updateContactUpdatedDetails($owner);
 		$this->freepbx->Hooks->processHooks($id);
+
 		return array("status" => true, "type" => "success", "message" => _("Group successfully updated"), "id" => $id);
 	}
 
@@ -1590,7 +1594,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 */
 	public function getEntriesByGroupID($groupid) {
 		$entries = array();
-		$sql = "SELECT e.id, e.id as uid, e.groupid, e.user, e.displayname, e.fname, e.lname, e.title, e.company, e.address, g.type FROM contactmanager_group_entries e, contactmanager_groups g WHERE g.id = e.groupid AND e.groupid = :groupid ORDER BY e.id";
+		$sql = "SELECT e.id, e.id as uid, e.groupid, e.user, e.displayname, e.fname, e.lname, e.title, e.company, e.address, e.uuid as server_uuid, g.type, g.name as group_name FROM contactmanager_group_entries e, contactmanager_groups g WHERE g.id = e.groupid AND e.groupid = :groupid ORDER BY e.id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
 		$ents = $sth->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
@@ -1753,7 +1757,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$sql = "DELETE FROM contactmanager_group_entries WHERE `id` = :id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $id));
+		$this->updateContactUpdatedDetails($group['owner']);
 		$this->freepbx->Hooks->processHooks($id);
+
 		return array("status" => true, "type" => "success", "message" => _("Group entry successfully deleted"));
 	}
 
@@ -1791,6 +1797,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				return $ret;
 			}
         }
+
+		$group = $this->getGroupByID($groupid);
+		$this->updateContactUpdatedDetails($group['owner']);
 
 		return array("status" => true, "type" => "success", "message" => _("Group entries successfully deleted"));
 	}
@@ -1848,7 +1857,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$this->addEmailsByEntryID($data['id'], !empty($entry['emails']) ? $entry['emails'] : '');
 
 		$this->addWebsitesByEntryID($data['id'], !empty($entry['websites']) ? $entry['websites'] : '');
+		$this->updateContactUpdatedDetails($group['owner']);
 		$this->freepbx->Hooks->processHooks($data['id'], $entry);
+		
 		return array("status" => true, "type" => "success", "message" => _("Group entry successfully updated"), "id" => $data['id']);
 	}
 
@@ -1904,7 +1915,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$this->addEmailsByEntryID($id, !empty($entry['emails']) ? $entry['emails'] : '');
 
 		$this->addWebsitesByEntryID($id, !empty($entry['websites']) ? $entry['websites'] : '');
+		$this->updateContactUpdatedDetails($group['owner']);
 		$this->freepbx->Hooks->processHooks($id, $entry);
+
 		return array("status" => true, "type" => "success", "message" => _("Group entry successfully added"), "id" => $id);
 	}
 
@@ -1980,7 +1993,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 		$ret = $this->deleteWebsitesByEntryID($id);
 		$this->addWebsitesByEntryID($id, $entry['websites']);
+		$this->updateContactUpdatedDetails($group['owner']);
 		$this->freepbx->Hooks->processHooks($id, $entry);
+		
 		return array("status" => true, "type" => "success", "message" => _("Group entry successfully updated"), "id" => $id);
 	}
 
@@ -3619,5 +3634,192 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$result = $sth->fetchAll(\PDO::FETCH_ASSOC);
 
 		return $result;
+	}
+	
+	/**
+	 * update the table to indicate any changes to internal/external or private contacts
+	 *
+	 * @param  {string} $userId
+	 * @return void
+	 */
+	public function updateContactUpdatedDetails($userId) {
+
+		if($userId == -1) {
+			$this->setConfig("PUBLIC_CONTACTS_UPDATED",time());
+		} else {
+			$userIdArray = $this->getConfig("PRIVATE_CONTACTS_UPDATED");
+			if(!in_array($userId, $userIdArray)) {
+				$userIdArray[] = $userId;
+				$this->setConfig("PRIVATE_CONTACTS_UPDATED",$userIdArray);
+			}
+		}
+	}
+	
+	/**
+	 * function to get the md5sum and the url for the contact file of the user
+	 *
+	 * @param  {string} $userId
+	 * @return {array}
+	 */
+	public function getContactFileDetails($userId) {
+
+		//check if contact file exists against the user
+		$fileInfo = $this->getSCDContactFileLocation($userId);
+		$fileloc = $fileInfo['fileLoc'];
+		if(file_exists($fileloc)) {
+
+			//check if there has been any updates in the inernal/external contacts
+			$lastUpdatedTime = $this->getConfig("PUBLIC_CONTACTS_UPDATED");
+			if(!empty($lastUpdatedTime)) {
+
+				if(filemtime($fileloc) <= $lastUpdatedTime) {
+					//generate contact file of the user
+					$this->generateUserContacts($userId);
+				}
+			}
+			//check if there has been any updates in the private contacts
+			$userIdArray = $this->getConfig("PRIVATE_CONTACTS_UPDATED");
+			if(($key = array_search($userId,$userIdArray)) !== false) {
+
+				//generate contact file of the user
+				$this->generateUserContacts($userId);
+
+				//remove user id from the array
+				unset($userIdArray[$key]);
+				//update the details
+				$this->setConfig("PRIVATE_CONTACTS_UPDATED",$userIdArray);
+			}
+		} else {
+			//generate contact file of the user
+			$this->generateUserContacts($userId);
+		}
+
+		//generate md5sum of the file
+		$checkSum = explode(' ', exec("/usr/bin/md5sum " . $fileloc, $retval))[0];
+		$contactURL = $this->getContactFileURL($fileInfo['fileName']);
+
+		return [
+			'url' => $contactURL,
+			'md5' => $checkSum
+		];
+
+	}
+	
+	/**
+	 * generate contact file url based on the configuration
+	 *
+	 * @param  {string} $fileName
+	 * @return {string} $contactURL
+	 */
+	public function getContactFileURL($fileName) {
+
+		$authString = "://";
+		$fileLoc = '/tftpboot/scd_contacts/' . $fileName;
+		$IpConfig = $this->freepbx->Sangomaconnect->getScdIpConfig();
+		$portInfo = $this->freepbx->Sysadmin->getAllNetworkInfo();
+		$protocol = array(
+			"1" => "tftp",
+			"0" => "ftp",
+			"2" => "http",
+			"3" => "https"
+		);
+		$protocolString = $portName = $protocol[$IpConfig['scdProtocol']];
+
+		if(in_array($protocolString, ["http","https"])) {
+
+			$fileLoc = '/scd_contacts/' . $fileName;
+			$portName = ($protocolString == "https") ? "sslhpro" : "hpro";
+
+			$provisauth = $this->freepbx->Sysadmin->getProvisioningAuth();
+			if (!empty($provisauth) && $provisauth['authtype'] != 'none') {
+				$authString = "://" . $portInfo['protocols'][$portName]['user'] . ":" . $portInfo['protocols'][$portName]['password'] . "@";
+			}
+		} else if($protocol[$IpConfig['scdProtocol']] == "ftp") {
+			$authString = "://" . $portInfo['protocols'][$portName]['username'] . ":" . $portInfo['protocols'][$portName]['password'] . "@";
+		}
+
+		$port = $portInfo['protocols'][$portName]['port'];
+		$contactURL = $protocolString . $authString . $IpConfig['scdIpAddress'] . ":" . $port . $fileLoc;
+
+		return $contactURL;
+	}
+	
+	/**
+	 * generate User Contacts and save it to the file
+	 *
+	 * @param  {string} $userId
+	 * @return void
+	 */
+	public function generateUserContacts($userId) {
+	
+		$allContacts = array();
+		$merged_contacts["contacts"] = [];
+		$groups = $this->freepbx->Contactmanager->getGroupsByOwner($userId);
+		foreach($groups as $group) {
+			$contacts = $this->freepbx->Contactmanager->getEntriesByGroupID($group['id']);
+			$allContacts = array_merge($allContacts,$contacts);
+			$merged_contacts["contacts"][] = [
+			"group_name" => $group["name"],
+			"editable" => "0",
+			"id" => $group["id"]
+			];
+		}
+		$contacts = array_values($allContacts);
+	
+		$resultArray = [];
+		foreach($contacts as $contact) {
+			$contactArray = [
+			"group"=> [],
+			"actions"=> ["action" => []],
+			"contact_type"=> $contact["type"],
+			"id"=> $contact["uid"],
+			"server_uuid"=> $contact["server_uuid"],
+			"account_id"=> $userId,
+			"first_name"=> $contact["fname"],
+			"last_name"=> $contact["lname"],
+			];
+			$contactArray["group"][] = ["group_name" => $contact["group_name"]];
+			$contactArray["actions"]["action"] = [];
+			foreach($contact['numbers'] as $numberId => $number) {
+			$contactArray["actions"]["action"][] = [
+				"dial_prefix"=> $number["countrycode"],
+				"dial"=> $number["number"],
+				"name"=> "",
+				"id"=> $numberId,
+				"label"=> $number["type"],
+				"transfer_name"=> ""
+			];
+			}
+			$resultArray[] = $contactArray;
+		}
+		
+		$merged_contacts["contacts"][] = ["contact" => $resultArray];
+		$results = ["merged_contacts" => $merged_contacts];
+	
+		$fileInfo = $this->getSCDContactFileLocation($userId);
+		file_put_contents($fileInfo['fileLoc'], json_encode($results));
+		$chmods = exec("/bin/chmod 755 " . $fileInfo['fileLoc'], $retval);
+	}
+  	
+	/**
+	 * getSCDContactFileLocation
+	 *
+	 * @param  {string} $userId
+	 * @return {array} file location and file name
+	 */
+	public function getSCDContactFileLocation($userId) {
+  
+		$contactFolder = '/tftpboot/scd_contacts/';
+		if (!file_exists($contactFolder)) {
+			mkdir($contactFolder, 0755, true);
+		}
+	
+		$user = $this->Userman->getUserByID($userId);
+		$fileName = "user-contacts-";
+		$fileName .= $user['default_extension'] ? $user['id'] . '-' . $user['default_extension'] : $user['id'];
+		$fileName .= '.json';
+		$fileLoc = $contactFolder . $fileName;
+	
+		return ['fileLoc' => $fileLoc, 'fileName' => $fileName];
 	}
 }
