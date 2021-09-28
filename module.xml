@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.8.36</version>
+	<version>15.0.8.37</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*15.0.8.37* SCD-3 added method to generate user contact file and return the access URL 
 		*15.0.8.36* FREEI-3834 restore issue 
 		*15.0.8.35* FREEI-3745 Can we remove the 'template creator' user from contacts 
 		*15.0.8.34* bugfix/FREEPBX-22581-restore-fails-when-no-values-in-contact-manager 
