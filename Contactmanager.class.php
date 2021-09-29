@@ -3679,7 +3679,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			}
 			//check if there has been any updates in the private contacts
 			$userIdArray = $this->getConfig("PRIVATE_CONTACTS_UPDATED");
-			if(($key = array_search($userId,$userIdArray)) !== false) {
+			if($userIdArray && ($key = array_search($userId,$userIdArray)) !== false) {
 
 				//generate contact file of the user
 				$this->generateUserContacts($userId);
