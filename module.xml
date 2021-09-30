@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>16.0.10</version>
+	<version>16.0.11</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*16.0.11* SCD-20 added validation for case in which key 'PRIVATE_CONTACTS_UPDATED' is not set 
 		*16.0.10* SCD-3 added method to generate user contact file and return the access URL 
 		*16.0.9* FREEI-3834 Fixed restoring issue by bypassing cache datails in getGroups function and also fixed error while deleting multiple contacts - 'Trying to access array offset on value of type boolean' 
 		*16.0.8* FREEI-3745 Can we remove the 'template creator' user from contacts 
