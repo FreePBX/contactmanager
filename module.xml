@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.8.38</version>
+	<version>15.0.8.39</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*15.0.8.39* SCD-31 changed the contents of the contact file generated 
 		*15.0.8.38* SCD-20 added validation for case in which key 'PRIVATE_CONTACTS_UPDATED' is not set 
 		*15.0.8.37* SCD-3 added method to generate user contact file and return the access URL 
 		*15.0.8.36* FREEI-3834 restore issue 
