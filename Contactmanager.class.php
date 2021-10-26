@@ -3647,7 +3647,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		if($userId == -1) {
 			$this->setConfig("PUBLIC_CONTACTS_UPDATED",time());
 		} else {
-			$userIdArray = $this->getConfig("PRIVATE_CONTACTS_UPDATED");
+			$userIdArray = $this->getConfig("PRIVATE_CONTACTS_UPDATED") ? $this->getConfig("PRIVATE_CONTACTS_UPDATED") : [];
 			if(!in_array($userId, $userIdArray)) {
 				$userIdArray[] = $userId;
 				$this->setConfig("PRIVATE_CONTACTS_UPDATED",$userIdArray);
@@ -3754,9 +3754,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	
 		$allContacts = array();
 		$merged_contacts["contacts"] = [];
-		$groups = $this->freepbx->Contactmanager->getGroupsByOwner($userId);
+		$groups = $this->getGroupsByOwner($userId);
 		foreach($groups as $group) {
-			$contacts = $this->freepbx->Contactmanager->getEntriesByGroupID($group['id']);
+			$contacts = $this->getEntriesByGroupID($group['id']);
 			$allContacts = array_merge($allContacts,$contacts);
 			$merged_contacts["contacts"][] = [
 			"group_name" => $group["name"],
@@ -3767,28 +3767,50 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$contacts = array_values($allContacts);
 	
 		$resultArray = [];
+		exec("hostname -I | awk '{print $1}'", $output, $result_code);
+		$internalIP = $output[0];
+		$pjsipPort = $this->getPJSIPPort();
 		foreach($contacts as $contact) {
+			$userInfo = $this->freepbx->Userman->getUserByID($contact['user']);
+			$keyVal = 'AMPUSER/'.$userInfo['default_extension'].'/voicemail';
+			$voiceMailStatus = $this->freepbx->astman->database_show($keyVal)['/'.$keyVal];
 			$contactArray = [
 			"group"=> [],
 			"actions"=> ["action" => []],
-			"contact_type"=> $contact["type"],
-			"id"=> $contact["uid"],
+			//The Softphone will show a voicemail-direct-dial icon if this contact_type is sip.
+			//The icon will still show even if the user has a default_extension without having voicemail enabled,
+			//because other behaviors rely on this value being "sip".
+			//When no voicemail is enabled, the icon will call ring the extension as a regular direct call instead.
+			"contact_type"=> (!empty($userInfo['default_extension']) && $contact["type"] == "internal") ? "sip" : $contact["type"],
+			"id"=> ($contact["type"] == "external") ? "external_" . $contact["uid"] : $contact["uid"],
 			"server_uuid"=> $contact["server_uuid"],
-			"account_id"=> $userId,
-			"first_name"=> $contact["fname"],
+			"first_name"=> (empty($contact["fname"]) && empty($contact["lname"])) ? "-" :$contact["fname"],
 			"last_name"=> $contact["lname"],
 			];
+			if($contact["type"] != "external") {
+				$contactArray["account_id"] = (string)$contact['user'];
+			}
 			$contactArray["group"][] = ["group_name" => $contact["group_name"]];
 			$contactArray["actions"]["action"] = [];
 			foreach($contact['numbers'] as $numberId => $number) {
-			$contactArray["actions"]["action"][] = [
-				"dial_prefix"=> $number["countrycode"],
-				"dial"=> $number["number"],
-				"name"=> "",
-				"id"=> $numberId,
-				"label"=> $number["type"],
-				"transfer_name"=> ""
-			];
+				$contactArray["actions"]["action"][] = [
+					"dial_prefix"=> $number["countrycode"] ?  $number["countrycode"] : "",
+					"dial"=> $number["number"],
+					"name"=> "CN_ACTN_DIAL",
+					"id"=> "primary",
+					"label"=> ($contact["type"] == "internal") ? "CL_ACTN_SIP" : $number["type"],
+					"transfer_name"=> "CN_ACTN_TRANSFER"
+				];
+			}
+			if(isset($voiceMailStatus) && !empty($voiceMailStatus) && $voiceMailStatus != "novm" && !empty($pjsipPort)) {
+				$contactArray["actions"]["action"][] = [
+					"headers" => ["header" => [["value" => "<sip:".$userInfo['default_extension']."@".$internalIP.":".$pjsipPort.">;reason=send_to_vm", "key" => "Diversion"]]],
+					"dial_prefix"=> "",
+					"dial"=> $userInfo['default_extension'],
+					"name"=> "CONTACT_ACT_DIAL_VM",
+					"id"=> "dial_vm",
+					"label"=> "CL_ACTN_SIP"
+				];
 			}
 			$resultArray[] = $contactArray;
 		}
@@ -3821,5 +3843,28 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$fileLoc = $contactFolder . $fileName;
 	
 		return ['fileLoc' => $fileLoc, 'fileName' => $fileName];
+	}
+	
+	/**
+	 * getPJSIPPort
+	 *
+	 * @return void
+	 */
+	public function getPJSIPPort() {
+		$pjsipPort = '';
+		if($this->freepbx->Modules->moduleHasMethod("sipsettings","getBinds")) {
+			$out = $this->freepbx->Sipsettings->getBinds();
+			if (isset($out['pjsip'])) {
+				foreach($out['pjsip'] as $ip => $data1) {
+					foreach($data1 as $protocol => $port) {
+						if ($protocol == "ws" || $protocol == "wss") {
+							continue;
+						}
+						$pjsipPort = $port;
+					}
+				}
+			}
+		}
+		return $pjsipPort;
 	}
 }
