@@ -3745,7 +3745,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	}
 	
 	/**
-	 * generate User Contacts and save it to the file
+	 * generate contact file for the Sangoma Connect Desktop Softphone
 	 *
 	 * @param  {string} $userId
 	 * @return void
@@ -3767,13 +3767,20 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$contacts = array_values($allContacts);
 	
 		$resultArray = [];
-		exec("hostname -I | awk '{print $1}'", $output, $result_code);
-		$internalIP = $output[0];
+		$internalIP = '';
+		if($this->freepbx->Modules->checkStatus("sysadmin")) {
+			$interfaces = $this->freepbx->Sysadmin->Network()->discoverInterfaces();
+			$internalIP = $interfaces['eth0']['addresses']['0']['0'];
+		}
 		$pjsipPort = $this->getPJSIPPort();
 		foreach($contacts as $contact) {
 			$userInfo = $this->freepbx->Userman->getUserByID($contact['user']);
 			$keyVal = 'AMPUSER/'.$userInfo['default_extension'].'/voicemail';
 			$voiceMailStatus = $this->freepbx->astman->database_show($keyVal)['/'.$keyVal];
+			$firstName = $contact["fname"];
+			if(empty($contact["fname"]) && empty($contact["lname"])) {
+				$firstName = empty($contact["displayname"]) ? "-" : $contact["displayname"];
+			}
 			$contactArray = [
 			"group"=> [],
 			"actions"=> ["action" => []],
@@ -3784,7 +3791,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			"contact_type"=> (!empty($userInfo['default_extension']) && $contact["type"] == "internal") ? "sip" : $contact["type"],
 			"id"=> ($contact["type"] == "external") ? "external_" . $contact["uid"] : $contact["uid"],
 			"server_uuid"=> $contact["server_uuid"],
-			"first_name"=> (empty($contact["fname"]) && empty($contact["lname"])) ? "-" :$contact["fname"],
+			"first_name"=> $firstName,
 			"last_name"=> $contact["lname"],
 			];
 			if($contact["type"] != "external") {
@@ -3802,7 +3809,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					"transfer_name"=> "CN_ACTN_TRANSFER"
 				];
 			}
-			if(isset($voiceMailStatus) && !empty($voiceMailStatus) && $voiceMailStatus != "novm" && !empty($pjsipPort)) {
+			if(isset($voiceMailStatus) && !empty($voiceMailStatus) && $voiceMailStatus != "novm" && !empty($internalIP) && !empty($pjsipPort)) {
 				$contactArray["actions"]["action"][] = [
 					"headers" => ["header" => [["value" => "<sip:".$userInfo['default_extension']."@".$internalIP.":".$pjsipPort.">;reason=send_to_vm", "key" => "Diversion"]]],
 					"dial_prefix"=> "",
