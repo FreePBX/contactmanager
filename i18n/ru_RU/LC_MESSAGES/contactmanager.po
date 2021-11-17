@@ -10,21 +10,21 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2017-05-17 02:01+0200\n"
-"Last-Translator: Evgeniy <yen81@mail.ru>\n"
+"PO-Revision-Date: 2021-11-19 16:02+0000\n"
+"Last-Translator: Dmitriy Kuznetsov <krotesk@ya.ru>\n"
 "Language-Team: Russian <http://weblate.freepbx.org/projects/freepbx/"
-"contactmanager/ru_RU/>\n"
+"contactmanager/ru/>\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.4\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.0.1\n"
 
 #: Contactmanager.class.php:669 ucp/Contactmanager.class.php:266
 msgid "A PHP extension stopped the file upload"
-msgstr ""
+msgstr "Расширение PHP остановило загрузку файла"
 
 #: views/entry.php:355
 msgid "A list of E-Mail addresses belonging to this entry"
@@ -142,7 +142,7 @@ msgstr "Позвонить"
 
 #: Contactmanager.class.php:673 ucp/Contactmanager.class.php:270
 msgid "Can Not Find Uploaded Files"
-msgstr "Не могу найти загруженные файлы"
+msgstr "Загружаемые файлы не обнаружены"
 
 #: Contactmanager.class.php:964 Contactmanager.class.php:3074
 #: Contactmanager.class.php:3088 Contactmanager.class.php:3102
@@ -156,7 +156,7 @@ msgstr "Мобильный"
 #: ucp/assets/js/global.js:94 ucp/assets/js/global.js:118
 #: ucp/assets/js/global.js:141 ucp/assets/js/global.js:173
 msgid "Close"
-msgstr ""
+msgstr "Закрыть"
 
 #: Contactmanager.class.php:3079 Contactmanager.class.php:3093
 #: Contactmanager.class.php:3107
@@ -281,7 +281,7 @@ msgstr ""
 
 #: ucp/Contactmanager.class.php:391
 msgid "Edit"
-msgstr ""
+msgstr "Редактировать"
 
 #: ucp/assets/js/global.js:92
 msgid "Edit Contact"
@@ -297,7 +297,7 @@ msgstr ""
 
 #: ucp/views/contact.php:192 ucp/views/contactEdit.php:141 views/entry.php:333
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #: ucp/views/contact.php:80 ucp/views/contact.php:135
 #: ucp/views/contactEdit.php:79 ucp/views/contactEdit.php:114
@@ -338,7 +338,7 @@ msgstr ""
 
 #: Contactmanager.class.php:666 ucp/Contactmanager.class.php:263
 msgid "Failed to write file to disk"
-msgstr ""
+msgstr "Ошибка записи файла на диск"
 
 #: ucp/views/contact.php:94 ucp/views/contact.php:149
 #: ucp/views/contactEdit.php:85 ucp/views/contactEdit.php:120
@@ -365,7 +365,7 @@ msgstr ""
 
 #: views/grid.php:38
 msgid "Group"
-msgstr ""
+msgstr "Группа"
 
 #: Contactmanager.class.php:1465
 #, php-format
@@ -527,7 +527,7 @@ msgstr ""
 
 #: views/ucp_config.php:17
 msgid "Inherit"
-msgstr ""
+msgstr "Наследовать"
 
 #: ucp/assets/js/global.js:261
 msgid "Initiate"
@@ -574,7 +574,7 @@ msgstr ""
 
 #: Contactmanager.class.php:663 ucp/Contactmanager.class.php:260
 msgid "Missing a temporary folder"
-msgstr ""
+msgstr "Отсутствует временная папка"
 
 #: ucp/views/widget.php:6
 msgid "My Contacts"
@@ -582,7 +582,7 @@ msgstr "Мои контакты"
 
 #: views/group.php:19 views/group.php:86 views/group.php:91
 msgid "Name"
-msgstr ""
+msgstr "Название"
 
 #: views/group.php:29
 msgid "Name of group"
@@ -597,7 +597,7 @@ msgstr ""
 #: ucp/views/contactEdit.php:84 ucp/views/contactEdit.php:85
 #: views/ucp_config.php:14
 msgid "No"
-msgstr ""
+msgstr "Нет"
 
 #: Contactmanager.class.php:2538
 msgid "No E-Mails to add"
@@ -625,7 +625,7 @@ msgstr ""
 
 #: Contactmanager.class.php:660 ucp/Contactmanager.class.php:257
 msgid "No file was uploaded"
-msgstr ""
+msgstr "Файл не загружен"
 
 #: Contactmanager.class.php:2946 Contactmanager.class.php:2958
 msgid "None"
@@ -696,7 +696,7 @@ msgstr ""
 #: ucp/assets/js/global.js:94 ucp/assets/js/global.js:118
 #: ucp/assets/js/global.js:173
 msgid "Save changes"
-msgstr ""
+msgstr "Сохранить изменения"
 
 #: ucp/assets/js/global.js:259
 msgid "Select an Action"
@@ -728,7 +728,7 @@ msgstr ""
 
 #: Contactmanager.class.php:1033 Contactmanager.class.php:1052
 msgid "Submit"
-msgstr "Сохранить"
+msgstr "Применить"
 
 #: contactmanager.i18n.php:8
 msgid "The Contact Manager module lets you add contacts to groups."
@@ -739,14 +739,18 @@ msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
 msgstr ""
+"Размер загруженного файла превысил значение директивы MAX_FILE_SIZE, "
+"указанной в HTML-форме"
 
 #: Contactmanager.class.php:651 ucp/Contactmanager.class.php:248
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr ""
+"Размер загруженного файла превысил значение директивы upload_max_filesize, "
+"указанной в php.ini"
 
 #: Contactmanager.class.php:657 ucp/Contactmanager.class.php:254
 msgid "The uploaded file was only partially uploaded"
-msgstr ""
+msgstr "Файл загружен частично"
 
 #: ucp/assets/js/global.js:253
 msgid "There are no actions for this type"
@@ -785,7 +789,7 @@ msgstr ""
 
 #: views/entry.php:248 views/group.php:40 assets/js/contactmanager.js:146
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: views/group.php:55
 msgid "Type of group"
@@ -821,7 +825,7 @@ msgstr ""
 
 #: Contactmanager.class.php:646 ucp/Contactmanager.class.php:243
 msgid "Unsupported file format"
-msgstr ""
+msgstr "Неподдерживаемый формат файла"
 
 #: assets/js/contactmanager.js:287
 msgid "Unsupported file type"
@@ -892,7 +896,7 @@ msgstr ""
 #: ucp/views/contactEdit.php:84 ucp/views/contactEdit.php:85
 #: views/ucp_config.php:12
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 #~ msgid "An entry must have a user"
 #~ msgstr "Запись должна содержать пользователя"
