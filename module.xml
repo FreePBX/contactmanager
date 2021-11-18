@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.8.40</version>
+	<version>15.0.8.41</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*15.0.8.41* SCD-74 removed all other protocol configurations from contact file url except for https 
 		*15.0.8.40* SCD-31 change fetching internal IP, show display name as first name if both first and last name are empty 
 		*15.0.8.39* SCD-31 changed the contents of the contact file generated 
 		*15.0.8.38* SCD-20 added validation for case in which key 'PRIVATE_CONTACTS_UPDATED' is not set 
