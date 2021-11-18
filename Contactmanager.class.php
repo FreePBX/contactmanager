@@ -3713,29 +3713,16 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 */
 	public function getContactFileURL($fileName) {
 
-		$authString = "://";
-		$fileLoc = '/tftpboot/scd_contacts/' . $fileName;
 		$IpConfig = $this->freepbx->Sangomaconnect->getScdIpConfig();
 		$portInfo = $this->freepbx->Sysadmin->getAllNetworkInfo();
-		$protocol = array(
-			"1" => "tftp",
-			"0" => "ftp",
-			"2" => "http",
-			"3" => "https"
-		);
-		$protocolString = $portName = $protocol[$IpConfig['scdProtocol']];
+		$provisauth = $this->freepbx->Sysadmin->getProvisioningAuth();
+		$protocolString = "https";
+		$authString = "://";
+		$portName = "sslhpro";
+		$fileLoc = '/scd_contacts/' . $fileName;
 
-		if(in_array($protocolString, ["http","https"])) {
-
-			$fileLoc = '/scd_contacts/' . $fileName;
-			$portName = ($protocolString == "https") ? "sslhpro" : "hpro";
-
-			$provisauth = $this->freepbx->Sysadmin->getProvisioningAuth();
-			if (!empty($provisauth) && $provisauth['authtype'] != 'none') {
-				$authString = "://" . $portInfo['protocols'][$portName]['user'] . ":" . $portInfo['protocols'][$portName]['password'] . "@";
-			}
-		} else if($protocol[$IpConfig['scdProtocol']] == "ftp") {
-			$authString = "://" . $portInfo['protocols'][$portName]['username'] . ":" . $portInfo['protocols'][$portName]['password'] . "@";
+		if (!empty($provisauth) && $provisauth['authtype'] != 'none') {
+			$authString = "://" . $portInfo['protocols'][$portName]['user'] . ":" . $portInfo['protocols'][$portName]['password'] . "@";
 		}
 
 		$port = $portInfo['protocols'][$portName]['port'];
