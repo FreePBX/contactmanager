@@ -3721,7 +3721,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$portName = "sslhpro";
 		$fileLoc = '/scd_contacts/' . $fileName;
 
-		if (!empty($provisauth) && $provisauth['authtype'] != 'none') {
+		if (!empty($provisauth) && ($provisauth['authtype'] == 'both' || $provisauth['authtype'] == 'https')) {
 			$authString = "://" . $portInfo['protocols'][$portName]['user'] . ":" . $portInfo['protocols'][$portName]['password'] . "@";
 		}
 
