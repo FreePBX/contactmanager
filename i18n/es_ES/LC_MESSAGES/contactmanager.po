@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2021-11-21 13:00+0000\n"
+"PO-Revision-Date: 2021-11-23 22:00+0000\n"
 "Last-Translator: Javier Pastor <jpastor@cerebelum.net>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/es/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: Contactmanager.class.php:669 ucp/Contactmanager.class.php:266
 msgid "A PHP extension stopped the file upload"
-msgstr "Una extensión de PHP detuvo la subida del archivo"
+msgstr "Una extensión de PHP detuvo la carga del archivo"
 
 #: views/entry.php:355
 msgid "A list of E-Mail addresses belonging to this entry"
@@ -95,7 +95,7 @@ msgstr "Dirección"
 
 #: contactmanager.i18n.php:6
 msgid "Admin"
-msgstr "Administ"
+msgstr "Admin"
 
 #: Contactmanager.class.php:2940
 msgid "All Internal Groups"
@@ -133,7 +133,7 @@ msgstr ""
 #: ucp/views/contact.php:36 ucp/views/contactEdit.php:36 views/entry.php:162
 #: views/user_details_hook.php:49
 msgid "Browse"
-msgstr "Vistazo"
+msgstr "Explorar"
 
 #: ucp/assets/js/global.js:204
 msgid "Call To"
@@ -155,7 +155,7 @@ msgstr "Cel"
 #: ucp/assets/js/global.js:94 ucp/assets/js/global.js:118
 #: ucp/assets/js/global.js:141 ucp/assets/js/global.js:173
 msgid "Close"
-msgstr ""
+msgstr "Cerrar"
 
 #: Contactmanager.class.php:3079 Contactmanager.class.php:3093
 #: Contactmanager.class.php:3107
@@ -342,7 +342,7 @@ msgstr "FaceTime"
 
 #: Contactmanager.class.php:666 ucp/Contactmanager.class.php:263
 msgid "Failed to write file to disk"
-msgstr "Error al escribir el archivo en el disco"
+msgstr "No se pudo escribir el archivo en el disco"
 
 #: ucp/views/contact.php:94 ucp/views/contact.php:149
 #: ucp/views/contactEdit.php:85 ucp/views/contactEdit.php:120
@@ -580,7 +580,7 @@ msgstr ""
 
 #: Contactmanager.class.php:663 ucp/Contactmanager.class.php:260
 msgid "Missing a temporary folder"
-msgstr "Falta una carpeta temporal"
+msgstr "Falta la carpeta temporal"
 
 #: ucp/views/widget.php:6
 msgid "My Contacts"
@@ -631,7 +631,7 @@ msgstr "No se definió email"
 
 #: Contactmanager.class.php:660 ucp/Contactmanager.class.php:257
 msgid "No file was uploaded"
-msgstr "Archivo NO fue subido"
+msgstr "No se subió ningún archivo"
 
 #: Contactmanager.class.php:2946 Contactmanager.class.php:2958
 msgid "None"
@@ -702,7 +702,7 @@ msgstr "SMS"
 #: ucp/assets/js/global.js:94 ucp/assets/js/global.js:118
 #: ucp/assets/js/global.js:173
 msgid "Save changes"
-msgstr ""
+msgstr "Guardar cambios"
 
 #: ucp/assets/js/global.js:259
 msgid "Select an Action"
@@ -754,7 +754,7 @@ msgstr "El archivo subido excede la directiva upload_max_filesize en php.ini"
 
 #: Contactmanager.class.php:657 ucp/Contactmanager.class.php:254
 msgid "The uploaded file was only partially uploaded"
-msgstr "El archivo subido se ha subido sólo parcialmente"
+msgstr "El archivo fue sólo parcialmente subido"
 
 #: ucp/assets/js/global.js:253
 msgid "There are no actions for this type"
@@ -831,7 +831,7 @@ msgstr "Tipo de datos desconocido."
 
 #: Contactmanager.class.php:646 ucp/Contactmanager.class.php:243
 msgid "Unsupported file format"
-msgstr "formato de archivo no soportado"
+msgstr "Formato de archivo no soportado"
 
 #: assets/js/contactmanager.js:287
 msgid "Unsupported file type"
@@ -904,7 +904,7 @@ msgstr "Direccion XMPP no puede estar en balno."
 #: ucp/views/contactEdit.php:84 ucp/views/contactEdit.php:85
 #: views/ucp_config.php:12
 msgid "Yes"
-msgstr "Si"
+msgstr "Sí"
 
 #~ msgid "An entry must have a user"
 #~ msgstr "Debe contener un usuario"
