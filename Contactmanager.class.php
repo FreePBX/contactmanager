@@ -3761,6 +3761,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		}
 		$pjsipPort = $this->getPJSIPPort();
 		foreach($contacts as $contact) {
+			if(empty($contact['numbers'])) {
+				continue;
+			}
 			$userInfo = $this->freepbx->Userman->getUserByID($contact['user']);
 			$keyVal = 'AMPUSER/'.$userInfo['default_extension'].'/voicemail';
 			$voiceMailStatus = $this->freepbx->astman->database_show($keyVal)['/'.$keyVal];
