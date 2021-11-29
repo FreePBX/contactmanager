@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2021-11-24 14:00+0000\n"
+"PO-Revision-Date: 2021-11-30 15:00+0000\n"
 "Last-Translator: Dmitriy Q <krotesk@ya.ru>\n"
 "Language-Team: Russian <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/ru/>\n"
@@ -338,7 +338,7 @@ msgstr ""
 
 #: Contactmanager.class.php:666 ucp/Contactmanager.class.php:263
 msgid "Failed to write file to disk"
-msgstr "Не удалось записать файл на диск"
+msgstr "Ошибка записи файла на диск"
 
 #: ucp/views/contact.php:94 ucp/views/contact.php:149
 #: ucp/views/contactEdit.php:85 ucp/views/contactEdit.php:120
@@ -574,7 +574,7 @@ msgstr ""
 
 #: Contactmanager.class.php:663 ucp/Contactmanager.class.php:260
 msgid "Missing a temporary folder"
-msgstr "Временная папка не найдена"
+msgstr "Отсутствует временная папка"
 
 #: ucp/views/widget.php:6
 msgid "My Contacts"
@@ -739,14 +739,13 @@ msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
 msgstr ""
-"Размер загруженного файла превысил значение директивы MAX_FILE_SIZE, "
-"указанной в HTML-форме"
+"Размер загруженного файла превышает директиву MAX_FILE_SIZE, указанную в "
+"HTML-форме"
 
 #: Contactmanager.class.php:651 ucp/Contactmanager.class.php:248
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr ""
-"Размер загруженного файла превысил значение директивы upload_max_filesize, "
-"указанной в php.ini"
+"Размер загруженного файла превышает значение upload_max_filesize в php.ini"
 
 #: Contactmanager.class.php:657 ucp/Contactmanager.class.php:254
 msgid "The uploaded file was only partially uploaded"
