@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2021-11-30 15:00+0000\n"
+"PO-Revision-Date: 2021-12-02 12:00+0000\n"
 "Last-Translator: Dmitriy Q <krotesk@ya.ru>\n"
 "Language-Team: Russian <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/ru/>\n"
@@ -749,7 +749,7 @@ msgstr ""
 
 #: Contactmanager.class.php:657 ucp/Contactmanager.class.php:254
 msgid "The uploaded file was only partially uploaded"
-msgstr "Файл загружен частично"
+msgstr "Файл был загружен частично"
 
 #: ucp/assets/js/global.js:253
 msgid "There are no actions for this type"
@@ -828,12 +828,12 @@ msgstr "Неподдерживаемый формат файла"
 
 #: assets/js/contactmanager.js:287
 msgid "Unsupported file type"
-msgstr ""
+msgstr "Неподдерживаемый тип файла"
 
 #: ucp/views/contact.php:45 ucp/views/contactEdit.php:45
 #: views/user_details_hook.php:58
 msgid "Use Gravatar"
-msgstr ""
+msgstr "Использовать Gravatar"
 
 #: views/user_details_hook.php:25
 msgid ""
