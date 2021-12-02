@@ -170,6 +170,14 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	public function install() {
 		global $db;
 
+		$logdir = $this->freepbx->Config->get("ASTLOGDIR");
+		if(file_exists($logdir . "/contactmanager_module_hook.log")){
+			unlink($logdir . "/contactmanager_module_hook.log");
+		}
+		touch($logdir . "/contactmanager_module_hook.log");
+		chown($logdir . "/contactmanager_module_hook.log", "asterisk");
+		out("log file created " . $logdir . "/contactmanager_module_hook.log");
+
 		$fcc = new \featurecode('contactmanager', 'app-contactmanager-sd');
 		$fcc->setDescription('Contact Manager Speed Dials');
 		$fcc->setDefault('*10');
@@ -1867,8 +1875,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 * Add Entry to Group
 	 * @param {int} $groupid The group ID
 	 * @param {array} $entry   Array of Entry information
+	 * @param {boolean} $updateContactFile   Flag for regenerating user contact file
 	 */
-	public function addEntryByGroupID($groupid, $entry) {
+	public function addEntryByGroupID($groupid, $entry, $updateContactFile = true) {
 		$group = $this->getGroupByID($groupid);
 		if (!$group) {
 			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
@@ -1915,7 +1924,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$this->addEmailsByEntryID($id, !empty($entry['emails']) ? $entry['emails'] : '');
 
 		$this->addWebsitesByEntryID($id, !empty($entry['websites']) ? $entry['websites'] : '');
-		$this->updateContactUpdatedDetails($group['owner']);
+		if($updateContactFile) {
+			$this->updateContactUpdatedDetails($group['owner']);
+		}
 		$this->freepbx->Hooks->processHooks($id, $entry);
 
 		return array("status" => true, "type" => "success", "message" => _("Group entry successfully added"), "id" => $id);
@@ -1943,8 +1954,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 * Update Entry
 	 * @param {int} $id    The entry ID
 	 * @param {array} $entry Array of Entry Data
+	 * @param {boolean} $updateContactFile   Flag for regenerating user contact file
 	 */
-	public function updateEntry($id, $entry) {
+	public function updateEntry($id, $entry, $updateContactFile = true) {
 		$group = $this->getGroupByID($entry['groupid']);
 		if (!$group) {
 			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
@@ -1993,7 +2005,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 		$ret = $this->deleteWebsitesByEntryID($id);
 		$this->addWebsitesByEntryID($id, $entry['websites']);
-		$this->updateContactUpdatedDetails($group['owner']);
+		if($updateContactFile) {
+			$this->updateContactUpdatedDetails($group['owner']);
+		}
 		$this->freepbx->Hooks->processHooks($id, $entry);
 		
 		return array("status" => true, "type" => "success", "message" => _("Group entry successfully updated"), "id" => $id);
@@ -3244,15 +3258,26 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 						}
 					}
 				}
+				
+				if ($group['owner'] == -1 || $this->getConfig("USER_IDS") == -1) {
+					$this->setConfig("USER_IDS", -1);
+				} else {
+					$userIdArray = $this->getConfig("USER_IDS") ? $this->getConfig("USER_IDS") : [];
+					if(!in_array($group['owner'], $userIdArray)) {
+						$userIdArray[] = $group['owner'];
+						$this->setConfig("USER_IDS",$userIdArray);
+					}
+				}
+				
 				if($replaceExisting){
 					$entityid = $this->getDuplicateContactId($group['id'], $contact);
 					if($entityid !=''){
-						$this->updateEntry($entityid, $contact);
+						$this->updateEntry($entityid, $contact, false);
 					}else {
-						$this->addEntryByGroupID($group['id'], $contact);
+						$this->addEntryByGroupID($group['id'], $contact, false);
 					}
 				} else{
-					$this->addEntryByGroupID($group['id'], $contact);
+					$this->addEntryByGroupID($group['id'], $contact, false);
 				}
 				$ret = array(
 						'status' => true,
@@ -3637,22 +3662,13 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	}
 	
 	/**
-	 * update the table to indicate any changes to internal/external or private contacts
+	 * run the hook to reflect changes to internal/external or private contacts
 	 *
 	 * @param  {string} $userId
 	 * @return void
 	 */
 	public function updateContactUpdatedDetails($userId) {
-
-		if($userId == -1) {
-			$this->setConfig("PUBLIC_CONTACTS_UPDATED",time());
-		} else {
-			$userIdArray = $this->getConfig("PRIVATE_CONTACTS_UPDATED") ? $this->getConfig("PRIVATE_CONTACTS_UPDATED") : [];
-			if(!in_array($userId, $userIdArray)) {
-				$userIdArray[] = $userId;
-				$this->setConfig("PRIVATE_CONTACTS_UPDATED",$userIdArray);
-			}
-		}
+		$this->runHook('update-contacts', $userId);
 	}
 	
 	/**
@@ -3666,30 +3682,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		//check if contact file exists against the user
 		$fileInfo = $this->getSCDContactFileLocation($userId);
 		$fileloc = $fileInfo['fileLoc'];
-		if(file_exists($fileloc)) {
-
-			//check if there has been any updates in the inernal/external contacts
-			$lastUpdatedTime = $this->getConfig("PUBLIC_CONTACTS_UPDATED");
-			if(!empty($lastUpdatedTime)) {
-
-				if(filemtime($fileloc) <= $lastUpdatedTime) {
-					//generate contact file of the user
-					$this->generateUserContacts($userId);
-				}
-			}
-			//check if there has been any updates in the private contacts
-			$userIdArray = $this->getConfig("PRIVATE_CONTACTS_UPDATED");
-			if($userIdArray && ($key = array_search($userId,$userIdArray)) !== false) {
-
-				//generate contact file of the user
-				$this->generateUserContacts($userId);
-
-				//remove user id from the array
-				unset($userIdArray[$key]);
-				//update the details
-				$this->setConfig("PRIVATE_CONTACTS_UPDATED",$userIdArray);
-			}
-		} else {
+		if(!file_exists($fileloc)) {
 			//generate contact file of the user
 			$this->generateUserContacts($userId);
 		}
@@ -3863,5 +3856,40 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			}
 		}
 		return $pjsipPort;
+	}
+
+	public function regenerateAllContactFiles($type, $rawData) {
+		switch ($type) {
+			case 'contacts':
+			$userIds = $this->getConfig("USER_IDS");
+			$this->runHook('update-contacts', is_array($userIds) ? implode(',', $userIds) : $userIds);
+			$this->delConfig("USER_IDS");
+			break;
+		}
+	}
+
+	public function runHook($hookname, $params = false) {
+		$basedir = "/var/spool/asterisk/incron";
+		if (!is_dir($basedir)) {
+			throw new \Exception("$basedir is not a directory");
+		}
+		if (!file_exists(__DIR__."/hooks/$hookname")) {
+			throw new \Exception("Hook $hookname doesn't exist");
+		}
+		$filename = "$basedir/contactmanager.$hookname";
+		if ($params) {
+			$filename .= ".".preg_replace("/[[:blank:]]+/", "", (string) $params);
+		}
+		@unlink($filename);
+		$fh = fopen($filename, "w+");
+		if ($fh === false) {
+			return false;
+		}
+		fclose($fh);
+		usleep(500000);
+		if (!file_exists($filename)) {
+			return true;
+		}
+		return false;
 	}
 }
