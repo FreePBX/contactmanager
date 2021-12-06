@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>16.0.16</version>
+	<version>16.0.17</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*16.0.17* SCD-97 modified code to regenerate SCD contact file upon contact update 
 		*16.0.16* SCD-101 
 		*16.0.15*  
 		*16.0.14* SCD-74 removed all other protocol configurations from contact file url except for https 
