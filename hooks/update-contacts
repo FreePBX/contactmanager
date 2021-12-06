@@ -1,0 +1,75 @@
+#!/usr/bin/php -q
+<?php
+    require '/usr/lib/sysadmin/includes.php';
+    if (!@include_once(getenv('FREEPBX_CONF') ? getenv('FREEPBX_CONF') : '/etc/freepbx.conf')) {
+        include_once('/etc/asterisk/freepbx.conf');
+    }
+    $freepbx = \FreePBX::Create();
+    $astman = $freepbx->astman;
+
+    $logfd = fopen($freepbx->Config->get('ASTLOGDIR') . "/contactmanager_module_hook.log", "a+");
+    fwrite($logfd, "\n\n" . "Reload Contacts Hook Started..." . "\n");
+    if (isset($argv[1])) {
+        if (strpos($argv[1], ',') !== false) {
+            foreach (explode(',', $argv[1]) as $index => $userId) {
+                $user = $freepbx->userman->getUserByID($userId);
+                //generate contact file of the user
+                fwrite($logfd, "\n" . date('d/m/Y H:i:s') . " - Generating contact file for the user " . $user['username'] . "\n");
+                $freepbx->Contactmanager->generateUserContacts($user['id']);
+                fwrite($logfd, "Contact file generated" . "\n");
+                fwrite($logfd, "Event dispatched for the user " . $user['username'] . "\n");
+                //This user event is for Sangoma Connect Desktop Clients.
+                //SwitchboardAlert-reloadContacts UserEvents will trigger the clients to redownload their contacts file.
+                $res =  $astman->send_request("UserEvent", array(
+                    "UserEvent" => "SwitchboardAlert",
+                    "Alert" => 'reloadContacts',
+                    "AccountID" => $user['id'],
+                    "ActionID" => $user['id'] . time()
+                ));
+                fwrite($logfd, json_encode($res) . "\n");
+                if ($index % 100 == 0) {
+                    sleep(2);
+                }
+            }
+        } else if ($argv[1] == -1) {
+            $users = $freepbx->userman->getAllUsers();
+            foreach ($users as $index => $user) {
+                //generate contact file of the user
+                fwrite($logfd, "\n" . date('d/m/Y H:i:s') . " - Generating contact file for the user " . $user['username'] . "\n");
+                $freepbx->Contactmanager->generateUserContacts($user['id']);
+                fwrite($logfd, "Contact file generated" . "\n");
+                fwrite($logfd, "Event dispatched for the user " . $user['username'] . "\n");
+                //This user event is for Sangoma Connect Desktop Clients.
+                //SwitchboardAlert-reloadContacts UserEvents will trigger the clients to redownload their contacts file.
+                $res =  $astman->send_request("UserEvent", array(
+                    "UserEvent" => "SwitchboardAlert",
+                    "Alert" => 'reloadContacts',
+                    "AccountID" => $user['id'],
+                    "ActionID" => $user['id'] . time()
+                ));
+                fwrite($logfd, json_encode($res) . "\n");
+                if ($index % 100 == 0) {
+                    sleep(2);
+                }
+            }
+        } else {
+            $user = $freepbx->userman->getUserByID($argv[1]);
+            //generate contact file of the user
+            fwrite($logfd, "\n" . date('d/m/Y H:i:s') . " - Generating contact file for the user " . $user['username'] . "\n");
+            $freepbx->Contactmanager->generateUserContacts($user['id']);
+            fwrite($logfd, "Contact file generated" . "\n");
+            fwrite($logfd, "Event dispatched for the user " . $user['username'] . "\n");
+            //This user event is for Sangoma Connect Desktop Clients.
+            //SwitchboardAlert-reloadContacts UserEvents will trigger the clients to redownload their contacts file.
+            $res =  $astman->send_request("UserEvent", array(
+                "UserEvent" => "SwitchboardAlert",
+                "Alert" => 'reloadContacts',
+                "AccountID" => $user['id'],
+                "ActionID" => $user['id'] . time()
+            ));
+            fwrite($logfd, json_encode($res) ."\n");
+        }
+    } else {
+        fwrite($logfd, "No user id found " . "\n");
+    }
+?>
