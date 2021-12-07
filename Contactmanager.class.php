@@ -1409,7 +1409,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
 		}
 
-		$ret = $this->deleteEntriesByGroupID($id);
+		$ret = $this->deleteEntriesByGroupID($id, false);
 		if (!$ret['status']) {
 			return $ret;
 		}
@@ -1420,6 +1420,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 		$this->groupCache[$id] = null;
 		$this->groupsCache = null;
+		$this->updateContactUpdatedDetails($group['owner']);
 		return array("status" => true, "type" => "success", "message" => _("Group successfully deleted"));
 	}
 
@@ -1428,8 +1429,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 * @param {string} $name            The group name
 	 * @param {string} $type='internal' The type of group, can be internal or external
 	 * @param {int} $owner           =             -1 The group owner, if -1 then everyone owns
+	 * @param {boolean} $updateContactFile   Flag for regenerating user contact file
 	 */
-	public function addGroup($name, $type='internal', $owner = -1) {
+	public function addGroup($name, $type='internal', $owner = -1, $updateContactFile = true) {
 		if (!$name || empty($name)) {
 			return array("status" => false, "type" => "danger", "message" => _("Group name can not be blank"));
 		}
@@ -1459,7 +1461,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				}
 			}
 		}
-		$this->updateContactUpdatedDetails($owner);
+		if($updateContactFile) {
+			$this->updateContactUpdatedDetails($owner);
+		}
 		$this->freepbx->Hooks->processHooks($id);
 
 		return array("status" => true, "type" => "success", "message" => _("Group successfully added"), "id" => $id);
@@ -1725,8 +1729,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	/**
 	 * Delete Entry by ID
 	 * @param {int} $id The entry ID
+	 * @param {boolean} $updateContactFile   Flag for regenerating user contact file
 	 */
-	public function deleteEntryByID($id) {
+	public function deleteEntryByID($id, $updateContactFile = true) {
 		//getEntryByID loops back here dont use it
 		$sql = "SELECT e.groupid, e.user FROM contactmanager_group_entries as e, contactmanager_groups as g WHERE e.id = :id AND e.groupid = g.id";
 		$sth = $this->db->prepare($sql);
@@ -1765,7 +1770,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$sql = "DELETE FROM contactmanager_group_entries WHERE `id` = :id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $id));
-		$this->updateContactUpdatedDetails($group['owner']);
+		if($updateContactFile) {
+			$this->updateContactUpdatedDetails($group['owner']);
+		}
 		$this->freepbx->Hooks->processHooks($id);
 
 		return array("status" => true, "type" => "success", "message" => _("Group entry successfully deleted"));
@@ -1774,8 +1781,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	/**
 	 * Delete Entries by Group ID
 	 * @param {int} $groupid The group ID
+	 * @param {boolean} $updateContactFile   Flag for regenerating user contact file
 	 */
-	public function deleteEntriesByGroupID($groupid) {
+	public function deleteEntriesByGroupID($groupid, $updateContactFile = true) {
 		$ret = $this->deleteNumbersByGroupID($groupid);
 		if (!$ret['status']) {
 			return $ret;
@@ -1800,14 +1808,13 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':groupid' => $groupid));
         while($idg = $sth->fetch(\PDO::FETCH_ASSOC)){
-            $ret = $this->deleteEntryByID($idg['id']);
+            $ret = $this->deleteEntryByID($idg['id'], $updateContactFile);
     		if (!$ret['status']) {
 				return $ret;
 			}
         }
 
 		$group = $this->getGroupByID($groupid);
-		$this->updateContactUpdatedDetails($group['owner']);
 
 		return array("status" => true, "type" => "success", "message" => _("Group entries successfully deleted"));
 	}
@@ -3194,7 +3201,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				}
 
 				if (!$group) {
-					$res = $this->addGroup($data['groupname'], $data['grouptype']);
+					$res = $this->addGroup($data['groupname'], $data['grouptype'], -1, false);
 					if ($res['status'] && $res['id']) {
 						$group = $this->getGroupByID($res['id']);
 					} else {
@@ -3860,7 +3867,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		return $pjsipPort;
 	}
 
-	public function regenerateAllContactFiles($type, $rawData) {
+	public function regenerateAllContactFiles($type) {
 		switch ($type) {
 			case 'contacts':
 			$userIds = $this->getConfig("USER_IDS");
