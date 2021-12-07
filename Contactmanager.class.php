@@ -3753,6 +3753,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			$internalIP = $interfaces['eth0']['addresses']['0']['0'];
 		}
 		$pjsipPort = $this->getPJSIPPort();
+		$server_uuid = $this->getInstallId();
 		foreach($contacts as $contact) {
 			if(empty($contact['numbers'])) {
 				continue;
@@ -3773,7 +3774,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			//When no voicemail is enabled, the icon will call ring the extension as a regular direct call instead.
 			"contact_type"=> (!empty($userInfo['default_extension']) && $contact["type"] == "internal") ? "sip" : $contact["type"],
 			"id"=> ($contact["type"] == "external") ? "external_" . $contact["uid"] : $contact["uid"],
-			"server_uuid"=> $contact["server_uuid"],
+			"server_uuid"=> $server_uuid['data'],
 			"first_name"=> $firstName,
 			"last_name"=> $contact["lname"],
 			];
@@ -3891,5 +3892,19 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			return true;
 		}
 		return false;
+	}
+	
+	/**
+	 * getInstallId
+	 *
+	 * @return void
+	 */
+	public function getInstallId() {
+		$query = "SELECT `data` FROM module_xml WHERE `id` = 'installid'";
+		$stmt = $this->Database->prepare($query);
+		$stmt->execute();
+		$data = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+		return $data;
 	}
 }
