@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.8.44</version>
+	<version>15.0.8.45</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*15.0.8.45* SCD-97 when a group with multiple contacts is deleted, multiple reload event is triggered 
 		*15.0.8.44* SCD-97 modified code to regenerate SCD contact file upon contact update 
 		*15.0.8.43* SCD-101 
 		*15.0.8.42*  
