@@ -7,53 +7,24 @@
     $freepbx = \FreePBX::Create();
     $astman = $freepbx->astman;
 
+    // Make sure we have a param
+    if (empty($argv[1])) {
+        throw new \Exception("Needs a param");
+    }
+    
+    // Underp the base64 that the param is using.
+    $b = str_replace('_', '/', $argv[1]);
+    $userIdArray = @json_decode(gzuncompress(@base64_decode($b)), true);
+    
+    if (!is_array($userIdArray)) {
+        throw new \Exception("Invalid param");
+    }
+
     $logfd = fopen($freepbx->Config->get('ASTLOGDIR') . "/contactmanager_module_hook.log", "a+");
     fwrite($logfd, "\n\n" . "Reload Contacts Hook Started..." . "\n");
-    if (isset($argv[1])) {
-        if (strpos($argv[1], ',') !== false) {
-            foreach (explode(',', $argv[1]) as $index => $userId) {
-                $user = $freepbx->userman->getUserByID($userId);
-                //generate contact file of the user
-                fwrite($logfd, "\n" . date('d/m/Y H:i:s') . " - Generating contact file for the user " . $user['username'] . "\n");
-                $freepbx->Contactmanager->generateUserContacts($user['id']);
-                fwrite($logfd, "Contact file generated" . "\n");
-                fwrite($logfd, "Event dispatched for the user " . $user['username'] . "\n");
-                //This user event is for Sangoma Connect Desktop Clients.
-                //SwitchboardAlert-reloadContacts UserEvents will trigger the clients to redownload their contacts file.
-                $res =  $astman->send_request("UserEvent", array(
-                    "UserEvent" => "SwitchboardAlert",
-                    "Alert" => 'reloadContacts',
-                    "AccountID" => $user['id'],
-                    "ActionID" => $user['id'] . time()
-                ));
-                fwrite($logfd, json_encode($res) . "\n");
-                if ($index % 100 == 0) {
-                    sleep(2);
-                }
-            }
-        } else if ($argv[1] == -1) {
-            $users = $freepbx->userman->getAllUsers();
-            foreach ($users as $index => $user) {
-                //generate contact file of the user
-                fwrite($logfd, "\n" . date('d/m/Y H:i:s') . " - Generating contact file for the user " . $user['username'] . "\n");
-                $freepbx->Contactmanager->generateUserContacts($user['id']);
-                fwrite($logfd, "Contact file generated" . "\n");
-                fwrite($logfd, "Event dispatched for the user " . $user['username'] . "\n");
-                //This user event is for Sangoma Connect Desktop Clients.
-                //SwitchboardAlert-reloadContacts UserEvents will trigger the clients to redownload their contacts file.
-                $res =  $astman->send_request("UserEvent", array(
-                    "UserEvent" => "SwitchboardAlert",
-                    "Alert" => 'reloadContacts',
-                    "AccountID" => $user['id'],
-                    "ActionID" => $user['id'] . time()
-                ));
-                fwrite($logfd, json_encode($res) . "\n");
-                if ($index % 100 == 0) {
-                    sleep(2);
-                }
-            }
-        } else {
-            $user = $freepbx->userman->getUserByID($argv[1]);
+    if (count($userIdArray) == 1 && $userIdArray[0] == -1) {
+        $users = $freepbx->userman->getAllUsers();
+        foreach ($users as $index => $user) {
             //generate contact file of the user
             fwrite($logfd, "\n" . date('d/m/Y H:i:s') . " - Generating contact file for the user " . $user['username'] . "\n");
             $freepbx->Contactmanager->generateUserContacts($user['id']);
@@ -67,9 +38,31 @@
                 "AccountID" => $user['id'],
                 "ActionID" => $user['id'] . time()
             ));
-            fwrite($logfd, json_encode($res) ."\n");
+            fwrite($logfd, json_encode($res) . "\n");
+            if ($index % 100 == 0) {
+                sleep(2);
+            }
         }
     } else {
-        fwrite($logfd, "No user id found " . "\n");
+        foreach ($userIdArray as $index => $userId) {
+            $user = $freepbx->userman->getUserByID($userId);
+            //generate contact file of the user
+            fwrite($logfd, "\n" . date('d/m/Y H:i:s') . " - Generating contact file for the user " . $user['username'] . "\n");
+            $freepbx->Contactmanager->generateUserContacts($user['id']);
+            fwrite($logfd, "Contact file generated" . "\n");
+            fwrite($logfd, "Event dispatched for the user " . $user['username'] . "\n");
+            //This user event is for Sangoma Connect Desktop Clients.
+            //SwitchboardAlert-reloadContacts UserEvents will trigger the clients to redownload their contacts file.
+            $res =  $astman->send_request("UserEvent", array(
+                "UserEvent" => "SwitchboardAlert",
+                "Alert" => 'reloadContacts',
+                "AccountID" => $user['id'],
+                "ActionID" => $user['id'] . time()
+            ));
+            fwrite($logfd, json_encode($res) . "\n");
+            if ($index % 100 == 0) {
+                sleep(2);
+            }
+        }
     }
 ?>
