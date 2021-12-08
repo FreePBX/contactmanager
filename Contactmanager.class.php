@@ -3675,7 +3675,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 * @return void
 	 */
 	public function updateContactUpdatedDetails($userId) {
-		$this->runHook('update-contacts', $userId);
+		if($this->freepbx->Modules->checkStatus("sysadmin")) {
+			$this->freepbx->Sysadmin->ApiHooks()->runModuleSystemHook('contactmanager', 'update-contacts', [$userId]);
+		}
 	}
 	
 	/**
@@ -3869,34 +3871,11 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		switch ($type) {
 			case 'contacts':
 			$userIds = $this->getConfig("USER_IDS");
-			$this->runHook('update-contacts', is_array($userIds) ? implode(',', $userIds) : $userIds);
+			if($this->freepbx->Modules->checkStatus("sysadmin")) {
+				$this->freepbx->Sysadmin->ApiHooks()->runModuleSystemHook('contactmanager', 'update-contacts', is_array($userIds) ? $userIds : [$userIds]);
+			}
 			$this->delConfig("USER_IDS");
 			break;
 		}
-	}
-
-	public function runHook($hookname, $params = false) {
-		$basedir = "/var/spool/asterisk/incron";
-		if (!is_dir($basedir)) {
-			throw new \Exception("$basedir is not a directory");
-		}
-		if (!file_exists(__DIR__."/hooks/$hookname")) {
-			throw new \Exception("Hook $hookname doesn't exist");
-		}
-		$filename = "$basedir/contactmanager.$hookname";
-		if ($params) {
-			$filename .= ".".preg_replace("/[[:blank:]]+/", "", (string) $params);
-		}
-		@unlink($filename);
-		$fh = fopen($filename, "w+");
-		if ($fh === false) {
-			return false;
-		}
-		fclose($fh);
-		usleep(500000);
-		if (!file_exists($filename)) {
-			return true;
-		}
-		return false;
 	}
 }
