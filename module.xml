@@ -82,7 +82,6 @@
 			<method callingMethod="getTypes" class="Contactmanager" namespace="FreePBX\modules">bulkhandlerGetTypes</method>
 			<method callingMethod="import" class="Contactmanager" namespace="FreePBX\modules">bulkhandlerImport</method>
 			<method callingMethod="export" class="Contactmanager" namespace="FreePBX\modules">bulkhandlerExport</method>
-			<method callingMethod="importFinished" class="Contactmanager" namespace="FreePBX\modules">regenerateAllContactFiles</method>
 		</bulkhandler>
 	<userman class="Userman" namespace="FreePBX\modules">
 			<method callingMethod="delGroup" class="Contactmanager" namespace="FreePBX\modules">usermanDelGroup</method>
