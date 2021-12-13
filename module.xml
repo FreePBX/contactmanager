@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>16.0.17.1</version>
+	<version>16.0.17.2</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*16.0.17.2* SCD-120 
 		*16.0.17.1* SCD-116 corrected server_uuid value in scd contact file
 		*16.0.17* SCD-97 modified code to regenerate SCD contact file upon contact update 
 		*16.0.16* SCD-101 

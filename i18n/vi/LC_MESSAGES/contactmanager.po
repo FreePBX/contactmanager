@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-09 04:45+0000\n"
+"POT-Creation-Date: 2021-12-13 04:45+0000\n"
 "PO-Revision-Date: 2017-08-08 16:34+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese <http://weblate.freepbx.org/projects/freepbx/"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 2.4\n"
 
-#: Contactmanager.class.php:680 ucp/Contactmanager.class.php:266
+#: Contactmanager.class.php:672 ucp/Contactmanager.class.php:266
 msgid "A PHP extension stopped the file upload"
 msgstr "Một máy nhánh PHP vừa dừng việc tải tệp lên"
 
@@ -89,7 +89,7 @@ msgstr "Thêm trang web"
 msgid "Add XMPP"
 msgstr "Thêm XMPP"
 
-#: Contactmanager.class.php:3109 views/entry.php:211 views/entry.php:223
+#: Contactmanager.class.php:3101 views/entry.php:211 views/entry.php:223
 msgid "Address"
 msgstr "Địa chỉ"
 
@@ -97,11 +97,11 @@ msgstr "Địa chỉ"
 msgid "Admin"
 msgstr "Quản trị viên"
 
-#: Contactmanager.class.php:2987
+#: Contactmanager.class.php:2979
 msgid "All Internal Groups"
 msgstr "Tất cả các nhóm nội bộ"
 
-#: Contactmanager.class.php:2999
+#: Contactmanager.class.php:2991
 msgid "All Public Groups"
 msgstr "Tất cả các nhóm công khai"
 
@@ -118,7 +118,7 @@ msgstr ""
 msgid "An entry must have a user"
 msgstr "Một mục nhập phải có một người dùng"
 
-#: Contactmanager.class.php:920
+#: Contactmanager.class.php:912
 msgid "An entry must have numbers."
 msgstr "Một mục nhập phải có các số."
 
@@ -135,7 +135,7 @@ msgstr ""
 msgid "Are you sure you wish to delete this contact?"
 msgstr ""
 
-#: Contactmanager.class.php:3393
+#: Contactmanager.class.php:3385
 msgid "Automatically Determine"
 msgstr ""
 
@@ -148,12 +148,12 @@ msgstr "Trình duyệt"
 msgid "Call To"
 msgstr "Gọi tới"
 
-#: Contactmanager.class.php:683 ucp/Contactmanager.class.php:270
+#: Contactmanager.class.php:675 ucp/Contactmanager.class.php:270
 msgid "Can Not Find Uploaded Files"
 msgstr "Không tìm thấy các tệp đã tải lên"
 
-#: Contactmanager.class.php:972 Contactmanager.class.php:3121
-#: Contactmanager.class.php:3135 Contactmanager.class.php:3149
+#: Contactmanager.class.php:964 Contactmanager.class.php:3113
+#: Contactmanager.class.php:3127 Contactmanager.class.php:3141
 #: ucp/views/contact.php:62 ucp/views/contact.php:115
 #: ucp/views/contactEdit.php:59 ucp/views/contactEdit.php:96
 #: views/group.php:105
@@ -166,8 +166,8 @@ msgstr "Vùng phủ sóng"
 msgid "Close"
 msgstr ""
 
-#: Contactmanager.class.php:3126 Contactmanager.class.php:3140
-#: Contactmanager.class.php:3154
+#: Contactmanager.class.php:3118 Contactmanager.class.php:3132
+#: Contactmanager.class.php:3146
 msgid ""
 "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
 msgstr ""
@@ -175,7 +175,7 @@ msgstr ""
 "các liên lạc bên ngoài."
 
 #: Contactmanager.class.php:49 Contactmanager.class.php:58
-#: Contactmanager.class.php:3108 ucp/views/contact.php:22
+#: Contactmanager.class.php:3100 ucp/views/contact.php:22
 #: ucp/views/contactEdit.php:22 ucp/views/widget.php:51 views/entry.php:191
 #: views/group.php:92
 msgid "Company"
@@ -204,8 +204,8 @@ msgstr ""
 "Manager' ( trình quản lý liên lạc)"
 
 #: Console/Contactmanager.class.php:14 Contactmanager.class.php:146
-#: Contactmanager.class.php:3019 Contactmanager.class.php:3031
-#: Contactmanager.class.php:3043 Contactmanager.class.php:3060
+#: Contactmanager.class.php:3011 Contactmanager.class.php:3023
+#: Contactmanager.class.php:3035 Contactmanager.class.php:3052
 #: contactmanager.i18n.php:4 contactmanager.i18n.php:10 views/grid.php:1
 msgid "Contact Manager"
 msgstr "Trình quản lý liên lạc"
@@ -223,25 +223,25 @@ msgstr "Trình quản lý liên lạc quay số nhanh"
 msgid "Contact Manager: %s (Speed Dial: %s) [%s]"
 msgstr ""
 
-#: Contactmanager.class.php:3075 ucp/Contactmanager.class.php:24
+#: Contactmanager.class.php:3067 ucp/Contactmanager.class.php:24
 #: ucp/Contactmanager.class.php:36 ucp/Contactmanager.class.php:63
 #: ucp/Contactmanager.class.php:530
 msgid "Contacts"
 msgstr "Các liên lạc"
 
-#: Contactmanager.class.php:3076
+#: Contactmanager.class.php:3068
 msgid "Contacts and internal/external groups from the Contact Manager module."
 msgstr ""
 "Các liên lạc và các nhóm nội bộ/ bên ngoài từ mô đun trình quản lý liên lạc."
 
-#: Contactmanager.class.php:3128 Contactmanager.class.php:3142
-#: Contactmanager.class.php:3156
+#: Contactmanager.class.php:3120 Contactmanager.class.php:3134
+#: Contactmanager.class.php:3148
 msgid ""
 "Country Code  Or you can put AUTO , which will fill the Country code "
 "automatically. External contacts only. "
 msgstr ""
 
-#: Contactmanager.class.php:1028 Contactmanager.class.php:1047
+#: Contactmanager.class.php:1020 Contactmanager.class.php:1039
 #: views/grid.php:46 assets/js/contactmanager.js:36
 #: assets/js/contactmanager.js:43
 msgid "Delete"
@@ -273,8 +273,8 @@ msgid "Dialing Locale"
 msgstr ""
 
 #: Contactmanager.class.php:38 Contactmanager.class.php:48
-#: Contactmanager.class.php:57 Contactmanager.class.php:3102
-#: Contactmanager.class.php:3103 ucp/views/contact.php:6
+#: Contactmanager.class.php:57 Contactmanager.class.php:3094
+#: Contactmanager.class.php:3095 ucp/views/contact.php:6
 #: ucp/views/contactEdit.php:6 ucp/views/widget.php:47 views/entry.php:68
 #: views/speeddial-grid.php:13
 msgid "Display Name"
@@ -293,8 +293,8 @@ msgstr "Thả một hình ảnh mới ở đây"
 msgid "E-Mail address cannot be blank."
 msgstr "Không thể để trống địa chỉ Email."
 
-#: Contactmanager.class.php:3157 Contactmanager.class.php:3158
-#: Contactmanager.class.php:3159
+#: Contactmanager.class.php:3149 Contactmanager.class.php:3150
+#: Contactmanager.class.php:3151
 msgid "E-mail address.  External contacts only."
 msgstr "Địa chỉ E-mail. Chỉ các liên lạc bên ngoài."
 
@@ -338,12 +338,12 @@ msgstr ""
 msgid "Ext."
 msgstr "Máy nhánh."
 
-#: Contactmanager.class.php:3125 Contactmanager.class.php:3139
-#: Contactmanager.class.php:3153
+#: Contactmanager.class.php:3117 Contactmanager.class.php:3131
+#: Contactmanager.class.php:3145
 msgid "Extension.  External contacts only."
 msgstr "Máy nhánh. Chỉ các liên lạc bên ngoài."
 
-#: Contactmanager.class.php:46 Contactmanager.class.php:3096 views/group.php:45
+#: Contactmanager.class.php:46 Contactmanager.class.php:3088 views/group.php:45
 msgid "External"
 msgstr "Bên ngoài"
 
@@ -355,7 +355,7 @@ msgstr "máy FAX"
 msgid "Facetime"
 msgstr "Ứng dụng gọi video miễn phí facetime"
 
-#: Contactmanager.class.php:678 ucp/Contactmanager.class.php:263
+#: Contactmanager.class.php:670 ucp/Contactmanager.class.php:263
 msgid "Failed to write file to disk"
 msgstr "Ghi tệp vào đĩa không thành công"
 
@@ -364,11 +364,11 @@ msgstr "Ghi tệp vào đĩa không thành công"
 msgid "Fax"
 msgstr "Fax"
 
-#: Contactmanager.class.php:647 ucp/Contactmanager.class.php:216
+#: Contactmanager.class.php:639 ucp/Contactmanager.class.php:216
 msgid "File upload failed"
 msgstr "Tải tệp lên không thành công"
 
-#: Contactmanager.class.php:39 Contactmanager.class.php:3105
+#: Contactmanager.class.php:39 Contactmanager.class.php:3097
 #: ucp/views/contact.php:10 ucp/views/contactEdit.php:10
 #: ucp/views/widget.php:48 views/entry.php:88 views/speeddial-grid.php:14
 msgid "First Name"
@@ -386,152 +386,152 @@ msgstr "Chức năng gọi không tồn tại!"
 msgid "Group"
 msgstr ""
 
-#: Contactmanager.class.php:1481
+#: Contactmanager.class.php:1473
 #, php-format
 msgid "Group '%s' does not exist"
 msgstr "Nhóm '%s' không tồn tại"
 
-#: Contactmanager.class.php:3087 ucp/views/groupCreate.php:4
+#: Contactmanager.class.php:3079 ucp/views/groupCreate.php:4
 msgid "Group Name"
 msgstr "Tên nhóm"
 
-#: Contactmanager.class.php:3092
+#: Contactmanager.class.php:3084
 msgid "Group Type"
 msgstr "Kiểu nhóm"
 
-#: Contactmanager.class.php:1409 Contactmanager.class.php:1831
-#: Contactmanager.class.php:1890 Contactmanager.class.php:1950
-#: Contactmanager.class.php:1969
+#: Contactmanager.class.php:1401 Contactmanager.class.php:1823
+#: Contactmanager.class.php:1882 Contactmanager.class.php:1942
+#: Contactmanager.class.php:1961
 msgid "Group does not exist"
 msgstr "Nhóm không tồn tại"
 
-#: Contactmanager.class.php:1957
+#: Contactmanager.class.php:1949
 msgid "Group entries successfully added"
 msgstr "Các mục nhập nhóm đã thêm thành công"
 
-#: Contactmanager.class.php:1819
+#: Contactmanager.class.php:1811
 msgid "Group entries successfully deleted"
 msgstr "Các mục nhập nhóm đã xóa thành công"
 
-#: Contactmanager.class.php:2580
+#: Contactmanager.class.php:2572
 msgid "Group entry E-Mail successfully added"
 msgstr "E-mail mục nhập nhóm đã được thêm thành công"
 
-#: Contactmanager.class.php:2546
+#: Contactmanager.class.php:2538
 msgid "Group entry E-Mail successfully deleted"
 msgstr "E-mail mục nhập nhóm đã được xóa thành công"
 
-#: Contactmanager.class.php:2604
+#: Contactmanager.class.php:2596
 msgid "Group entry E-Mails successfully added"
 msgstr "Các E-mai mục nhập nhóm đã được thêm thành công"
 
-#: Contactmanager.class.php:2554 Contactmanager.class.php:2563
+#: Contactmanager.class.php:2546 Contactmanager.class.php:2555
 msgid "Group entry E-Mails successfully deleted"
 msgstr "Các E-mail mục nhập nhóm đa được xóa thành công"
 
-#: Contactmanager.class.php:2675
+#: Contactmanager.class.php:2667
 msgid "Group entry Website successfully added"
 msgstr "Trang web mục nhập nhóm đã được thêm thành công"
 
-#: Contactmanager.class.php:2641
+#: Contactmanager.class.php:2633
 msgid "Group entry Website successfully deleted"
 msgstr "Trang web mục nhập nhóm đã được xóa thành công"
 
-#: Contactmanager.class.php:2699
+#: Contactmanager.class.php:2691
 msgid "Group entry Websites successfully added"
 msgstr "Các trang web mục nhập nhóm đã được thêm thành công"
 
-#: Contactmanager.class.php:2649 Contactmanager.class.php:2658
+#: Contactmanager.class.php:2641 Contactmanager.class.php:2650
 msgid "Group entry Websites successfully deleted"
 msgstr "Các trang web mục nhập nhóm đã được xóa thành công"
 
-#: Contactmanager.class.php:2476
+#: Contactmanager.class.php:2468
 msgid "Group entry XMPP successfully added"
 msgstr "XMPP mục nhập nhóm đã được thêm thành công"
 
-#: Contactmanager.class.php:2429
+#: Contactmanager.class.php:2421
 msgid "Group entry XMPP successfully deleted"
 msgstr "XMPP mục nhập nhóm đã được xóa thành công"
 
-#: Contactmanager.class.php:2505
+#: Contactmanager.class.php:2497
 msgid "Group entry XMPPs successfully added"
 msgstr "Các XMPP mục nhập nhóm đã được thêm thành công"
 
-#: Contactmanager.class.php:2441 Contactmanager.class.php:2454
+#: Contactmanager.class.php:2433 Contactmanager.class.php:2446
 msgid "Group entry XMPPs successfully deleted"
 msgstr "Các XMPP mục nhập nhóm đã được xóa thành công"
 
-#: Contactmanager.class.php:1980 Contactmanager.class.php:2169
-#: Contactmanager.class.php:2230 Contactmanager.class.php:2465
-#: Contactmanager.class.php:2490 Contactmanager.class.php:2569
-#: Contactmanager.class.php:2589 Contactmanager.class.php:2664
-#: Contactmanager.class.php:2684
+#: Contactmanager.class.php:1972 Contactmanager.class.php:2161
+#: Contactmanager.class.php:2222 Contactmanager.class.php:2457
+#: Contactmanager.class.php:2482 Contactmanager.class.php:2561
+#: Contactmanager.class.php:2581 Contactmanager.class.php:2656
+#: Contactmanager.class.php:2676
 msgid "Group entry does not exist"
 msgstr "Mục nhập nhóm không tồn tại"
 
-#: Contactmanager.class.php:2216
+#: Contactmanager.class.php:2208
 msgid "Group entry image successfully added"
 msgstr "Hình ảnh mục nhập nhóm đã được thêm thành công"
 
-#: Contactmanager.class.php:2183
+#: Contactmanager.class.php:2175
 msgid "Group entry number successfully added"
 msgstr "Số mục nhập nhóm đã được thêm thành công"
 
-#: Contactmanager.class.php:2124
+#: Contactmanager.class.php:2116
 msgid "Group entry number successfully deleted"
 msgstr "Số mục nhập nhóm đã được xóa thành công"
 
-#: Contactmanager.class.php:2294
+#: Contactmanager.class.php:2286
 msgid "Group entry numbers successfully added"
 msgstr "Các số mục nhập nhóm được thêm thành công"
 
-#: Contactmanager.class.php:2138 Contactmanager.class.php:2158
+#: Contactmanager.class.php:2130 Contactmanager.class.php:2150
 msgid "Group entry numbers successfully deleted"
 msgstr "Các số mục nhập nhóm đã được xóa thành công"
 
-#: Contactmanager.class.php:1939
+#: Contactmanager.class.php:1931
 msgid "Group entry successfully added"
 msgstr "Mục nhập nhóm đã được thêm thành công"
 
-#: Contactmanager.class.php:1778
+#: Contactmanager.class.php:1770
 msgid "Group entry successfully deleted"
 msgstr "Mục nhập nhóm đã được xóa thành công"
 
-#: Contactmanager.class.php:1878 Contactmanager.class.php:2020
+#: Contactmanager.class.php:1870 Contactmanager.class.php:2012
 msgid "Group entry successfully updated"
 msgstr "Mục nhập nhóm đã được cập nhật thành công"
 
-#: Contactmanager.class.php:835 Contactmanager.class.php:1436
-#: Contactmanager.class.php:1484
+#: Contactmanager.class.php:827 Contactmanager.class.php:1428
+#: Contactmanager.class.php:1476
 msgid "Group name can not be blank"
 msgstr "Tên nhóm không thể để trống"
 
-#: Contactmanager.class.php:3176
+#: Contactmanager.class.php:3168
 msgid "Group name is required."
 msgstr "Yêu cầu phải có Tên nhóm."
 
-#: Contactmanager.class.php:3210
+#: Contactmanager.class.php:3202
 msgid "Group not found and could not be created."
 msgstr "Không tìm thấy nhóm và có thể nó đã không được tạo."
 
-#: Contactmanager.class.php:1469
+#: Contactmanager.class.php:1461
 msgid "Group successfully added"
 msgstr "Nhóm đã được thêm thành công"
 
-#: Contactmanager.class.php:1424
+#: Contactmanager.class.php:1416
 msgid "Group successfully deleted"
 msgstr "Nhóm đã được xóa thành công"
 
-#: Contactmanager.class.php:1499
+#: Contactmanager.class.php:1491
 msgid "Group successfully updated"
 msgstr "Nhóm đã được cập nhật thành công"
 
-#: Contactmanager.class.php:3183
+#: Contactmanager.class.php:3175
 msgid "Group type is required."
 msgstr "Yêu cầu phải Kiểu nhóm."
 
-#: Contactmanager.class.php:971 Contactmanager.class.php:3120
-#: Contactmanager.class.php:3134 Contactmanager.class.php:3148
+#: Contactmanager.class.php:963 Contactmanager.class.php:3112
+#: Contactmanager.class.php:3126 Contactmanager.class.php:3140
 #: ucp/views/contact.php:61 ucp/views/contact.php:114
 #: ucp/views/contactEdit.php:58 ucp/views/contactEdit.php:95
 #: views/group.php:104
@@ -554,16 +554,16 @@ msgstr ""
 msgid "Initiate"
 msgstr ""
 
-#: Contactmanager.class.php:36 Contactmanager.class.php:3095 views/group.php:46
+#: Contactmanager.class.php:36 Contactmanager.class.php:3087 views/group.php:46
 msgid "Internal"
 msgstr "Nội bộ"
 
-#: Contactmanager.class.php:635 ucp/Contactmanager.class.php:173
+#: Contactmanager.class.php:627 ucp/Contactmanager.class.php:173
 #: ucp/Contactmanager.class.php:193 ucp/Contactmanager.class.php:204
 msgid "Invalid"
 msgstr "Không hợp lệ"
 
-#: Contactmanager.class.php:40 Contactmanager.class.php:3106
+#: Contactmanager.class.php:40 Contactmanager.class.php:3098
 #: ucp/views/contact.php:14 ucp/views/contactEdit.php:14
 #: ucp/views/widget.php:49 views/entry.php:108 views/speeddial-grid.php:15
 msgid "Last Name"
@@ -593,7 +593,7 @@ msgstr ""
 msgid "Lookup number and get a contact back as a result"
 msgstr ""
 
-#: Contactmanager.class.php:676 ucp/Contactmanager.class.php:260
+#: Contactmanager.class.php:668 ucp/Contactmanager.class.php:260
 msgid "Missing a temporary folder"
 msgstr "Thiếu một tệp tạm thời"
 
@@ -609,7 +609,7 @@ msgstr "Tên"
 msgid "Name of group"
 msgstr "Tên của nhóm"
 
-#: Contactmanager.class.php:3088
+#: Contactmanager.class.php:3080
 msgid ""
 "Name of group for contact.  If group does not exist, it will be created."
 msgstr ""
@@ -620,7 +620,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: Contactmanager.class.php:2585
+#: Contactmanager.class.php:2577
 msgid "No E-Mails to add"
 msgstr "Không có E-Mail nào để thêm"
 
@@ -628,15 +628,15 @@ msgstr "Không có E-Mail nào để thêm"
 msgid "No Groups for this type"
 msgstr "Không có nhóm nào cho kiểu này"
 
-#: Contactmanager.class.php:2226
+#: Contactmanager.class.php:2218
 msgid "No Numbers to add"
 msgstr "Không có số nào để thêm"
 
-#: Contactmanager.class.php:2680
+#: Contactmanager.class.php:2672
 msgid "No Websites to add"
 msgstr "Không có trang Web nào để thêm"
 
-#: Contactmanager.class.php:2486
+#: Contactmanager.class.php:2478
 msgid "No XMPPs to add"
 msgstr "Không có XMPP nào để thêm"
 
@@ -644,11 +644,11 @@ msgstr "Không có XMPP nào để thêm"
 msgid "No email defined"
 msgstr "Không có email được xác định"
 
-#: Contactmanager.class.php:674 ucp/Contactmanager.class.php:257
+#: Contactmanager.class.php:666 ucp/Contactmanager.class.php:257
 msgid "No file was uploaded"
 msgstr "Không có tệp nào được tải lên"
 
-#: Contactmanager.class.php:2993 Contactmanager.class.php:3005
+#: Contactmanager.class.php:2985 Contactmanager.class.php:2997
 msgid "None"
 msgstr ""
 
@@ -671,8 +671,8 @@ msgstr "Số không được để trống."
 msgid "Numbers"
 msgstr "Các số"
 
-#: Contactmanager.class.php:973 Contactmanager.class.php:3122
-#: Contactmanager.class.php:3136 Contactmanager.class.php:3150
+#: Contactmanager.class.php:965 Contactmanager.class.php:3114
+#: Contactmanager.class.php:3128 Contactmanager.class.php:3142
 #: ucp/views/contact.php:63 ucp/views/contact.php:116
 #: ucp/views/contactEdit.php:60 ucp/views/contactEdit.php:97
 #: views/group.php:106
@@ -691,20 +691,20 @@ msgstr ""
 msgid "Partial Match Length"
 msgstr "Độ dài so khớp từng phần"
 
-#: Contactmanager.class.php:3113 Contactmanager.class.php:3129
-#: Contactmanager.class.php:3143
+#: Contactmanager.class.php:3105 Contactmanager.class.php:3121
+#: Contactmanager.class.php:3135
 msgid "Phone number.  External contacts only."
 msgstr "Số điện thoại. Chỉ liên lạc bên ngoài."
 
-#: Contactmanager.class.php:611 ucp/Contactmanager.class.php:164
+#: Contactmanager.class.php:603 ucp/Contactmanager.class.php:164
 msgid "Please enter a valid email address"
 msgstr "Vui lòng nhập địa chỉ email hợp lệ"
 
-#: Contactmanager.class.php:55 Contactmanager.class.php:3097
+#: Contactmanager.class.php:55 Contactmanager.class.php:3089
 msgid "Private"
 msgstr ""
 
-#: Contactmanager.class.php:1035 Contactmanager.class.php:1054
+#: Contactmanager.class.php:1027 Contactmanager.class.php:1046
 msgid "Reset"
 msgstr "Cài đặt lại"
 
@@ -727,8 +727,8 @@ msgstr "Chọn một thao tác"
 msgid "Show In Contact Manager Groups"
 msgstr "Hiển thị các nhóm trình quản lý liên lạc"
 
-#: Contactmanager.class.php:3127 Contactmanager.class.php:3141
-#: Contactmanager.class.php:3155 ucp/views/contact.php:75
+#: Contactmanager.class.php:3119 Contactmanager.class.php:3133
+#: Contactmanager.class.php:3147 ucp/views/contact.php:75
 #: ucp/views/contact.php:130 ucp/views/contactEdit.php:74
 #: ucp/views/contactEdit.php:109 views/entry.php:269
 #: assets/js/contactmanager.js:210
@@ -747,7 +747,7 @@ msgstr "Mã tính năng quay số nhanh bị vô hiệu trong Mã tính năn qu�
 msgid "Speed Dials"
 msgstr "Quay số nhanh"
 
-#: Contactmanager.class.php:1040 Contactmanager.class.php:1059
+#: Contactmanager.class.php:1032 Contactmanager.class.php:1051
 msgid "Submit"
 msgstr "Gửi đi"
 
@@ -755,19 +755,19 @@ msgstr "Gửi đi"
 msgid "The Contact Manager module lets you add contacts to groups."
 msgstr ""
 
-#: Contactmanager.class.php:670 ucp/Contactmanager.class.php:251
+#: Contactmanager.class.php:662 ucp/Contactmanager.class.php:251
 msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
 msgstr ""
 "Tệp được tải lên quá dung lượng tệp tối đa được quy định trong mẫu HTML"
 
-#: Contactmanager.class.php:668 ucp/Contactmanager.class.php:248
+#: Contactmanager.class.php:660 ucp/Contactmanager.class.php:248
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr ""
 "Tệp được tải lên vượt quá dung lượng tệp tối đa đã quy định trong php.ini"
 
-#: Contactmanager.class.php:672 ucp/Contactmanager.class.php:254
+#: Contactmanager.class.php:664 ucp/Contactmanager.class.php:254
 msgid "The uploaded file was only partially uploaded"
 msgstr "Tệp đã tải lên chỉ được tải lên từng phần"
 
@@ -799,7 +799,7 @@ msgstr ""
 msgid "This speed dial id conflicts with another speed dial on this page"
 msgstr ""
 
-#: Contactmanager.class.php:3107 ucp/views/contact.php:18
+#: Contactmanager.class.php:3099 ucp/views/contact.php:18
 #: ucp/views/contactEdit.php:18 ucp/views/widget.php:50 views/entry.php:128
 msgid "Title"
 msgstr "Tiêu đề"
@@ -816,16 +816,16 @@ msgstr "Kiểu"
 msgid "Type of group"
 msgstr "Kiểu của nhóm"
 
-#: Contactmanager.class.php:3093
+#: Contactmanager.class.php:3085
 msgid "Type of group for contact."
 msgstr "Kiểu của nhóm cho liên lạc."
 
-#: Contactmanager.class.php:3117 Contactmanager.class.php:3131
-#: Contactmanager.class.php:3145
+#: Contactmanager.class.php:3109 Contactmanager.class.php:3123
+#: Contactmanager.class.php:3137
 msgid "Type of phone number.  External contacts only."
 msgstr "Kiểu của số điện thoại. Chỉ  các liên lạc bên ngoài."
 
-#: Contactmanager.class.php:619 ucp/Contactmanager.class.php:186
+#: Contactmanager.class.php:611 ucp/Contactmanager.class.php:186
 #, php-format
 msgid "Unable to find gravatar for %s"
 msgstr ""
@@ -838,15 +838,15 @@ msgstr ""
 msgid "Unauthorized"
 msgstr "Không được phép"
 
-#: Contactmanager.class.php:3394
+#: Contactmanager.class.php:3386
 msgid "Unknown"
 msgstr ""
 
-#: Contactmanager.class.php:3262
+#: Contactmanager.class.php:3254
 msgid "Unknown data type."
 msgstr "Kiểu dữ liệu không xác định."
 
-#: Contactmanager.class.php:664 ucp/Contactmanager.class.php:243
+#: Contactmanager.class.php:656 ucp/Contactmanager.class.php:243
 msgid "Unsupported file format"
 msgstr "Định dạng tệp không được hỗ trợ"
 
@@ -870,11 +870,11 @@ msgstr ""
 msgid "User"
 msgstr "Người dùng"
 
-#: Contactmanager.class.php:204
+#: Contactmanager.class.php:196
 msgid "User Manager Group"
 msgstr "Nhóm trình quản lý người dùng"
 
-#: Contactmanager.class.php:3110
+#: Contactmanager.class.php:3102
 msgid ""
 "User Manager username this contact should point to.  Internal contacts only."
 msgstr ""
@@ -902,8 +902,8 @@ msgstr "Trang Web này không thể để trống."
 msgid "What internal groups to show this user in"
 msgstr "Nhóm nội bộ nào hiển thị người dùng trong đó"
 
-#: Contactmanager.class.php:970 Contactmanager.class.php:3119
-#: Contactmanager.class.php:3133 Contactmanager.class.php:3147
+#: Contactmanager.class.php:962 Contactmanager.class.php:3111
+#: Contactmanager.class.php:3125 Contactmanager.class.php:3139
 #: ucp/views/contact.php:60 ucp/views/contact.php:113
 #: ucp/views/contactEdit.php:57 ucp/views/contactEdit.php:94
 #: views/group.php:103
