@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.8.47</version>
+	<version>15.0.8.48</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*15.0.8.48* SCD-119 Recent changes for updating contacts is crashing the mysql with "Too many mysql connections" error in larger system while updating the userman group. 
 		*15.0.8.47* Packaging of ver 15.0.8.47
 		*15.0.8.46* SCD-116 corrected server_uuid value in scd contact file 
 		*15.0.8.45* SCD-97 when a group with multiple contacts is deleted, multiple reload event is triggered 
