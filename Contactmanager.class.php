@@ -1108,7 +1108,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					$data = $this->userman->getUserByID($user);
 					$data['extraData'] = $data;
 					$data['user'] = $user;
-					$this->updateUsermanEntryByGroupID($group['id'], $this->transformUsermanDataToEntry($data));
+					$this->updateUsermanEntryByGroupID($group['id'], $this->transformUsermanDataToEntry($data),false);
 				} else {
 					$entries = $this->getEntriesByGroupID($group['id']);
 					foreach ($entries as $entryid => $entry) {
@@ -1119,6 +1119,8 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				}
 			}
 		}
+		//call update contact hook
+		$this->updateContactUpdatedDetails($group['owner']);
 	}
 
 	/**
@@ -1817,7 +1819,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 * @param  array $entry   Array of entry data
 	 * @return [type]          [description]
 	 */
-	public function updateUsermanEntryByGroupID($groupid, $entry) {
+	public function updateUsermanEntryByGroupID($groupid, $entry,$contactupdate =true) {
 		$group = $this->getGroupByID($groupid);
 		if (!$group) {
 			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
@@ -1864,7 +1866,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$this->addEmailsByEntryID($data['id'], !empty($entry['emails']) ? $entry['emails'] : '');
 
 		$this->addWebsitesByEntryID($data['id'], !empty($entry['websites']) ? $entry['websites'] : '');
-		$this->updateContactUpdatedDetails($group['owner']);
+		if($contactupdate){
+			$this->updateContactUpdatedDetails($group['owner']);
+		}
 		$this->freepbx->Hooks->processHooks($data['id'], $entry);
 		
 		return array("status" => true, "type" => "success", "message" => _("Group entry successfully updated"), "id" => $data['id']);
