@@ -1117,10 +1117,10 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 						}
 					}
 				}
+				//call update contact hook
+				$this->updateContactUpdatedDetails($group['owner']);
 			}
 		}
-		//call update contact hook
-		$this->updateContactUpdatedDetails($group['owner']);
 	}
 
 	/**
