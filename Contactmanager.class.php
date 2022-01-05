@@ -25,6 +25,8 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	private $cachedSpeedDials = array();
 	public $tmp;
 	private $maxAvatar = 200; //this needs to be set in advanced settings (1-2048)
+	private $displayNameTemplateCreator = 'Template Creator';
+	private $userNameTemplateCreator = 'FreePBXUCPTemplateCreator';
 
 	public function __construct($freepbx = null) {
 		$this->db = $freepbx->Database;
@@ -686,7 +688,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 								continue;
 							}
 							$user = $this->freepbx->Userman->getUserByID($entry['user']);
-							if($user['username'] =='FreePBXUCPTemplateCreator') {
+							if($user['username'] == $this->userNameTemplateCreator) {
 								continue;
 							}
 							$final[$i] = $user;
@@ -1130,19 +1132,27 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 * @param {array} $data    Array of data about the user
 	 */
 	public function usermanDelUser($id, $display, $data) {
-		$groups = $this->getGroups();
-		foreach ($groups as $group) {
-			if ($group['owner'] == $id) {
-				/* Remove groups owned by user. */
-				$this->deleteGroupByID($group['id']);
-				continue;
-			}
+		if ($data['username'] == $this->userNameTemplateCreator) {
+			$sql = "DELETE FROM contactmanager_group_entries WHERE `user` = :user";
+			$sth = $this->db->prepare($sql);
+			$sth->execute(array(':user' => $id));
+		}
+		else
+		{
+			$groups = $this->getGroups();
+			foreach ($groups as $group) {
+				if ($group['owner'] == $id) {
+					/* Remove groups owned by user. */
+					$this->deleteGroupByID($group['id']);
+					continue;
+				}
 
-			/* Remove user from all groups they're in. */
-			$entries = $this->getEntriesByGroupID($group['id']);
-			foreach ($entries as $entryid => $entry) {
-				if ($entry['user'] == $id) {
-					$this->deleteEntryByID($entryid);
+				/* Remove user from all groups they're in. */
+				$entries = $this->getEntriesByGroupID($group['id']);
+				foreach ($entries as $entryid => $entry) {
+					if ($entry['user'] == $id) {
+						$this->deleteEntryByID($entryid);
+					}
 				}
 			}
 		}
@@ -1605,10 +1615,11 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$sth->execute(array(':groupid' => $groupid));
 		$ents = $sth->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_UNIQUE);
 		$e = array();
-		$tempcreatorid ='';
+		$userSkipId = array();
 		foreach($ents as $uid => $entry) {
-			if($entry['displayname'] == 'Template Creator'){
-				$tempcreatorid = $uid;
+			$userInfo = $this->freepbx->Userman->getUserByID($entry['user']);
+			if ((empty($userInfo['username'])) || ($userInfo['username'] == $this->userNameTemplateCreator)){
+				$userSkipId[] = $uid;
 			}
 			$entry = array_merge($entry,array(
 				'xmpps' => array(
@@ -1714,8 +1725,13 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				}
 			break;
 		}
-		if(is_numeric($tempcreatorid)){
-			unset($entries[$tempcreatorid]);
+
+		if (! empty($userSkipId)){
+			foreach($userSkipId as $uid_skip) {
+				if(is_numeric($uid_skip)){
+					unset($entries[$uid_skip]);
+				}
+			}
 		}
 		return $entries;
 	}
