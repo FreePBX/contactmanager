@@ -25,8 +25,8 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	private $cachedSpeedDials = array();
 	public $tmp;
 	private $maxAvatar = 200; //this needs to be set in advanced settings (1-2048)
-	private $displayNameTemplateCreator = 'Template Creator';
-	private $userNameTemplateCreator = 'FreePBXUCPTemplateCreator';
+	private $displayNameTemplateCreator = '';
+	private $userNameTemplateCreator = '';
 
 	public function __construct($freepbx = null) {
 		$this->db = $freepbx->Database;
@@ -65,6 +65,11 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		);
 
 		$this->tmp = $this->freepbx->Config->get("ASTSPOOLDIR") . "/tmp";
+
+		// method_exists it is necessary for compatibility with previous versions
+		// of the userman module 15.0.68 or 16.0.25.31
+		$this->displayNameTemplateCreator = (method_exists($this->userman, 'getDispalyNameTemplateCreator')) ? $this->userman->getDispalyNameTemplateCreator() : 'Template Creator';
+		$this->userNameTemplateCreator 	  = (method_exists($this->userman, 'getUserNameTemplateCreator')) 	 ? $this->userman->getUserNameTemplateCreator() : 'FreePBXUCPTemplateCreator';
 	}
 
 	public function setDatabase($pdo){
