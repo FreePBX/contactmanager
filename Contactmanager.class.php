@@ -1927,12 +1927,13 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 		$this->deleteWebsitesByEntryID($id);
 
+		$entrynum = array();
 		if(!empty($entry['numbers'])){
-			foreach($entry['numbers'] as $numbers){
-				if (empty($numbers['speeddial'])){
-						unset($numbers['speeddial']);
+			foreach($entry['numbers'] as $number){
+				if (empty($number['speeddial'])){
+					unset($number['speeddial']);
 				}
-				$entrynum[] = $numbers;
+				$entrynum[] = $number;
 			}
 		}
 
