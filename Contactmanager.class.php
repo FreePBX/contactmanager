@@ -693,6 +693,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 								continue;
 							}
 							$user = $this->freepbx->Userman->getUserByID($entry['user']);
+							if (empty($user['username'])) {
+								continue;
+							}
 							if($user['username'] == $this->userNameTemplateCreator) {
 								continue;
 							}
@@ -1623,7 +1626,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$userSkipId = array();
 		foreach($ents as $uid => $entry) {
 			$userInfo = $this->freepbx->Userman->getUserByID($entry['user']);
-			if ((empty($userInfo['username'])) || ($userInfo['username'] == $this->userNameTemplateCreator)){
+			$userName = isset($userInfo['username']) ? $userInfo['username'] : "";
+
+			if (($entry['displayname'] == $this->displayNameTemplateCreator) && ( $userName == $this->userNameTemplateCreator) ) {
 				$userSkipId[] = $uid;
 			}
 			$entry = array_merge($entry,array(
@@ -1641,7 +1646,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				),
 				'image' => false,
 				'default_extension' => null,
-				'internal' => $entry['type'] === 'internal' ? true : false
+				'internal' => ($entry['type'] === 'internal' && !empty($userName)) ? true : false
 			));
 
 			$e[$uid] = $entry;
