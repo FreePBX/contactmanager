@@ -1623,7 +1623,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$userSkipId = array();
 		foreach($ents as $uid => $entry) {
 			$userInfo = $this->freepbx->Userman->getUserByID($entry['user']);
-			if ((empty($userInfo['username'])) || ($userInfo['username'] == $this->userNameTemplateCreator)){
+			if ((!$entry['type'] == 'external') && (empty($userInfo['username'])) || ($userInfo['username'] == $this->userNameTemplateCreator)){
 				$userSkipId[] = $uid;
 			}
 			$entry = array_merge($entry,array(
