@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.8.50</version>
+	<version>15.0.8.51</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*15.0.8.51* FREEPBX-23205 
 		*15.0.8.50* FREEPBX-23203: Trying to access array offset on value of type bool 
 		*15.0.8.49* FREEI-4342 Moved update contact hook function inside foreach loop because the scope of the group variable is inside loop 
 		*15.0.8.48* SCD-119 Recent changes for updating contacts is crashing the mysql with "Too many mysql connections" error in larger system while updating the userman group. 
