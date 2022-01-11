@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>16.0.17.7</version>
+	<version>16.0.17.8</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*16.0.17.8* Packaging of ver 16.0.17.8
 		*16.0.17.7* FREEPBX-23205 
 		*16.0.17.6* FREEPBX-23208 
 		*16.0.17.5* FREEPBX-23203: Trying to access array offset on value of type bool 
