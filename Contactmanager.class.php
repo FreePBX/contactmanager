@@ -408,6 +408,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			case 'uploadimage':
 			case 'delimage':
 			case 'grid':
+			case 'favorite_list':
 			case 'getgravatar':
 			case 'checksd':
 			case 'sdgrid':
@@ -720,6 +721,12 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					break;
 				}
 				return $final;
+			case 'favorite_list':
+				$favoriteList = $this->getFavoriteContactList();
+				foreach($favoriteList as &$list) {
+					$list['actions'] = '<a href="config.php?display=contactmanager&action=edit_list&list_id='.$list['id'].'"><i class="fa fa-edit fa-fw"></i></a><a href="config.php?display=contactmanager&amp;action=dellist&amp;list_id='.$list['id'].'"><i class="fa fa-ban fa-fw"></i></a>';
+				}
+				return $favoriteList;
 			case 'delete':
 			    foreach($_POST['extensions'] as $id => $name) {
                     $ret = $this->deleteEntryByID($name);
@@ -800,6 +807,13 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				return true;
 			case "delentry":
 				$ret = $this->deleteEntryByID($_REQUEST['entry']);
+				$this->message = array(
+					'message' => $ret['message'],
+					'type' => $ret['type']
+				);
+				return true;
+			case "dellist":
+				$ret = $this->deleteFavoriteContactListByID((int) $_REQUEST['list_id']);
 				$this->message = array(
 					'message' => $ret['message'],
 					'type' => $ret['type']
@@ -937,6 +951,29 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				return true;
 			}
 		}
+		if (isset($_POST['list_name'])) {
+			if(empty($_POST['list_name'])) {
+				$this->message = array(
+					'message' => _('List name can not be blank'),
+					'type' => 'danger'
+				);
+				return false;
+			}
+			if(empty($_POST['included_contacts'])) {
+				$this->message = array(
+					'message' => _('Pelase include atleast one contact'),
+					'type' => 'danger'
+				);
+				return false;
+			}
+			$listName = $_POST['list_name'];
+			$includedContacts = $_POST['included_contacts'];
+			if (isset($_POST['list_id'])) {
+				$this->updateFavoriteContactList($_POST['list_id'], $listName, $includedContacts);
+			} else {
+				$this->addFavoriteContactList($listName, $includedContacts);
+			}
+		}
 	}
 
 	public function getFeatureCodeStatus() {
@@ -1002,6 +1039,37 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					$content = load_view(dirname(__FILE__).'/views/entry.php', array("regionlist" => $this->getRegionList(), "speeddialcode" => $speeddialcode, "numbertypes" => $numbertypes, "group" => $group, "entry" => $entry, "users" => $users, "message" => $this->message));
 				}
 			break;
+			case "edit_list":
+			case "add_list":
+				$list = $includedContacts = $excludedContacts = $contactIdArray = [];
+				$contacts = $this->getAllInternalAndExternalContacts();
+				if ($action == "edit_list" && !empty($_REQUEST['list_id'])) {
+					$list = $this->getFavoriteContactListByID((int) $_REQUEST['list_id']);
+					$contactIdArray = json_decode($list['contact_ids']) ? json_decode($list['contact_ids']) : [];
+				}
+				foreach ($contacts as $contact) {
+					if (empty($contact['numbers'])) {
+						continue;
+					}
+					if (empty($contact["displayname"])) {
+						$contact["displayname"] = (empty($contact["fname"]) && empty($contact["lname"])) ? "-" : $contact["fname"] . " " . $contact["lname"];
+					}
+					if (in_array($contact['uid'], $contactIdArray)) {
+						$index = array_search($contact['uid'], $contactIdArray);
+						$includedContacts[$index] = $contact;
+					} else {
+						$excludedContacts[] = $contact;
+					}
+				}
+				ksort($includedContacts);
+				array_multisort(
+					array_column($excludedContacts, 'displayname'), SORT_ASC, SORT_NATURAL|SORT_FLAG_CASE,
+					$excludedContacts
+				);
+
+				$subContent = load_view(dirname(__FILE__).'/views/favorite_view.php', array("includedContacts" => $includedContacts, "excludedContacts" => $excludedContacts));
+				$content = load_view(dirname(__FILE__).'/views/favorites.php', array("list" => $list, "subContent" => $subContent, "message" => $this->message));
+			break;
 			default:
 				$file['post'] = ini_get('post_max_size');
 				$file['upload'] = ini_get('upload_max_filesize');
@@ -1058,6 +1126,24 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					'value' => _('Submit')
 				);
 				break;
+			case 'edit_list':
+			case 'add_list':
+				$buttons['reset'] = array(
+					'name' => 'reset',
+					'id' => 'reset',
+					'value' => _('Reset')
+				);
+				$buttons['submit'] = array(
+					'name' => 'submit',
+					'id' => 'submit',
+					'value' => _('Submit')
+				);
+				$buttons['delete'] = array(
+					'name' => 'delete',
+					'id' => 'delete',
+					'value' => _('Delete')
+				);
+				break;
 			}
 			break;
 		}
@@ -1102,6 +1188,17 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			} else {
 				$this->freepbx->Userman->setModuleSettingByGID($id,'contactmanager','groups',null);
 			}
+			
+			$enableFavoriteContacts = ($_POST['enable_favorite_contacts'] === 'true') ? true : false;
+			$favoriteContactEditEnabled = false;
+			$favoriteContactListId = '';
+			if($enableFavoriteContacts) {
+				$favoriteContactEditEnabled = ($_POST['favorite_contact_edit_enabled'] === 'true') ? true : false;
+				$favoriteContactListId = $_POST['favorite_contact'];
+			}
+			$this->freepbx->Userman->setModuleSettingByGID($id,'contactmanager','enable_favorite_contacts',$enableFavoriteContacts);
+			$this->freepbx->Userman->setModuleSettingByGID($id,'contactmanager','favorite_contact_list_id',$favoriteContactListId);
+			$this->freepbx->Userman->setModuleSettingByGID($id,'contactmanager','favorite_contact_edit_enabled',$favoriteContactEditEnabled);
 		}
 		$groups = $this->getGroups();
 		foreach($data['users'] as $user) {
@@ -1222,6 +1319,19 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				$this->updateImageByID($id, $_POST['contactmanager_image'], ($_POST['contactmanager_gravatar'] == "on" ? 1 : 0), 'internal');
 			}
 			$this->setConfig('userLocale', $_POST['contactmanager_dialinglocale'], $id);
+
+			$enableFavoriteContacts = ($_POST['enable_favorite_contacts'] === 'true') ? true : (($_POST['enable_favorite_contacts'] === 'false') ? false : null);
+			$favoriteContactEditEnabled = false;
+			$favoriteContactListId = '';
+			if($enableFavoriteContacts) {
+				$favoriteContactEditEnabled = ($_POST['favorite_contact_edit_enabled'] === 'true') ? true : false;
+				$favoriteContactListId = $_POST['favorite_contact'];
+			} else if (is_null($enableFavoriteContacts)) {
+				$favoriteContactListId = $favoriteContactEditEnabled = null;
+			}
+			$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','enable_favorite_contacts',$enableFavoriteContacts);
+			$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','favorite_contact_list_id',$favoriteContactListId);
+			$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','favorite_contact_edit_enabled',$favoriteContactEditEnabled);
 		}
 
 		$showingroups = $this->freepbx->Userman->getCombinedModuleSettingByID($id,'contactmanager','showingroups');
@@ -1443,6 +1553,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	public function addGroup($name, $type='internal', $owner = -1, $updateContactFile = true) {
 		if (!$name || empty($name)) {
 			return array("status" => false, "type" => "danger", "message" => _("Group name can not be blank"));
+		}
+		if ($name == 'PBX_RAPID_DIAL') {
+			return array("status" => false, "type" => "danger", "message" => _("This group name is reserved. Please choose a different name."));
 		}
 		$sql = "INSERT INTO contactmanager_groups (`name`, `owner`, `type`) VALUES (:name, :owner, :type)";
 		$sth = $this->db->prepare($sql);
@@ -3031,11 +3144,16 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					foreach($groups as $k=>$group) {
 						$groups[$k]['selected'] = in_array($group['id'],$assigned);
 					}
+					
+					$enableFavoriteContacts = $this->freepbx->Userman->getModuleSettingByGID($_REQUEST['group'],"contactmanager","enable_favorite_contacts");
+					$favoriteContactListId = $this->freepbx->Userman->getModuleSettingByGID($_REQUEST['group'],"contactmanager","favorite_contact_list_id",true);
+					$favoriteContactEditEnabled = $this->freepbx->Userman->getModuleSettingByGID($_REQUEST['group'],"contactmanager","favorite_contact_edit_enabled");
+					$favoriteList = $this->getFavoriteContactList();
 					return array(
 						array(
 							"title" => _("Contact Manager"),
 							"rawname" => "contactmanager",
-							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("visiblegroups" => $visiblegroups, "showingroups" => $showingroups, "mode" => "group", "groups" => $groups, "enabled" => $this->userman->getModuleSettingByGID((int) $_REQUEST['group'],'contactmanager','show')))
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("visiblegroups" => $visiblegroups, "showingroups" => $showingroups, "mode" => "group", "groups" => $groups, "enabled" => $this->userman->getModuleSettingByGID((int) $_REQUEST['group'],'contactmanager','show'), "favoriteList" => $favoriteList, "favoriteContactEditEnabled" => $favoriteContactEditEnabled, "enableFavoriteContacts" => $enableFavoriteContacts, "favoriteContactListId" => $favoriteContactListId))
 						)
 					);
 				case 'addgroup':
@@ -3043,11 +3161,16 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					foreach($groups as $k=>$group) {
 						$groups[$k]['selected'] = in_array($group['id'],$assigned);
 					}
+					
+					$enableFavoriteContacts = $this->freepbx->Userman->getModuleSettingByGID($_REQUEST['group'],"contactmanager","enable_favorite_contacts");
+					$favoriteContactListId = $this->freepbx->Userman->getModuleSettingByGID($_REQUEST['group'],"contactmanager","favorite_contact_list_id",true);
+					$favoriteContactEditEnabled = $this->freepbx->Userman->getModuleSettingByGID($_REQUEST['group'],"contactmanager","favorite_contact_edit_enabled");
+					$favoriteList = $this->getFavoriteContactList();
 					return array(
 						array(
 							"title" => _("Contact Manager"),
 							"rawname" => "contactmanager",
-							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("visiblegroups" => $visiblegroups, "showingroups" => array(), "mode" => "group", "groups" => $groups, "enabled" => true))
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("visiblegroups" => $visiblegroups, "showingroups" => array(), "mode" => "group", "groups" => $groups, "enabled" => true, "favoriteList" => $favoriteList, "favoriteContactEditEnabled" => $favoriteContactEditEnabled, "enableFavoriteContacts" => $enableFavoriteContacts, "favoriteContactListId" => $favoriteContactListId))
 						)
 					);
 				break;
@@ -3055,11 +3178,19 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					foreach($groups as $k=>$group) {
 						$groups[$k]['selected'] = false;
 					}
+					
+					$enableFavoriteContacts = $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","enable_favorite_contacts",true);
+					$favoriteContactListId = $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","favorite_contact_list_id",true);
+					if (is_null($favoriteContactListId)) {
+						$favoriteContactListId = 'inherit';
+					}
+					$favoriteContactEditEnabled = $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","favorite_contact_edit_enabled");
+					$favoriteList = $this->getFavoriteContactList();
 					return array(
 						array(
 							"title" => _("Contact Manager"),
 							"rawname" => "contactmanager",
-							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("visiblegroups" => $visiblegroups, "showingroups" => array(), "mode" => "user", "groups" => $groups, "enabled" => true))
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("visiblegroups" => $visiblegroups, "showingroups" => array(), "mode" => "user", "groups" => $groups, "enabled" => true, "favoriteList" => $favoriteList, "favoriteContactEditEnabled" => $favoriteContactEditEnabled, "enableFavoriteContacts" => $enableFavoriteContacts, "favoriteContactListId" => $favoriteContactListId))
 						)
 					);
 				break;
@@ -3071,12 +3202,20 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					foreach($groups as $k=>$group) {
 						$groups[$k]['selected'] = in_array($group['id'],$assigned);
 					}
+					
+					$enableFavoriteContacts = $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","enable_favorite_contacts",true);
+					$favoriteContactListId = $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","favorite_contact_list_id",true);
+					if (is_null($favoriteContactListId)) {
+						$favoriteContactListId = 'inherit';
+					}
+					$favoriteContactEditEnabled = $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","favorite_contact_edit_enabled");
+					$favoriteList = $this->getFavoriteContactList();
 
 					return array(
 						array(
 							"title" => _("Contact Manager"),
 							"rawname" => "contactmanager",
-							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("visiblegroups" => $visiblegroups, "showingroups" => $showingroups, "mode" => "user", "groups" => $groups))
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("visiblegroups" => $visiblegroups, "showingroups" => $showingroups, "mode" => "user", "groups" => $groups, "favoriteList" => $favoriteList, "favoriteContactEditEnabled" => $favoriteContactEditEnabled, "enableFavoriteContacts" => $enableFavoriteContacts, "favoriteContactListId" => $favoriteContactListId))
 						)
 					);
 				break;
@@ -3692,5 +3831,164 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 */
 	public function updateContactUpdatedDetails($userId) {
 		$this->freepbx->Hooks->processHooks($userId);
+	}
+	
+	/**
+	 * get all internal and external contacts
+	 *
+	 * @return {array} all contacts
+	 */
+	public function getAllInternalAndExternalContacts() {
+
+		$sql = "UPDATE contactmanager_groups SET `type` = 'private' WHERE owner != -1;";
+		$sth = $this->db->prepare($sql);
+		$sth->execute();
+
+		$sql = "SELECT * FROM contactmanager_groups WHERE owner = -1 ORDER BY id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute();
+		$groups = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+		$allContacts = array();
+		foreach ($groups as $group) {
+			$contacts = $this->getEntriesByGroupID($group['id']);
+			$allContacts = array_merge($allContacts,$contacts);
+		}
+
+		return array_values($allContacts);
+	}
+	
+	/**
+	 * get all the general favorite contact list created by the admin
+	 *
+	 * @return {array} $favoriteList favorite contact list
+	 */
+	public function getFavoriteContactList() {
+
+		$sql = "SELECT * FROM contactmanager_general_favorites";
+		$sth = $this->db->prepare($sql);
+		$sth->execute();
+		$favoriteList = $sth->fetchAll(PDO::FETCH_ASSOC);
+
+		return $favoriteList;
+	}
+	
+	/**
+	 * get a single favorite contact list by id
+	 *
+	 * @param  {integer} $id
+	 * @return {array} $favoriteList favorite contact list
+	 */
+	public function getFavoriteContactListByID($id) {
+
+		$sql = "SELECT * FROM contactmanager_general_favorites WHERE id = :id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':id' => $id));
+		$favoriteList = $sth->fetch(PDO::FETCH_ASSOC);
+
+		return $favoriteList;
+	}
+	
+	/**
+	 * create a new favorite contact list
+	 *
+	 * @param  {string} $listName
+	 * @param  {array} $includedContacts
+	 */
+	public function addFavoriteContactList($listName, $includedContacts) {
+		$sql = "INSERT INTO contactmanager_general_favorites (`list_name`,`contact_ids`) VALUES (:list_name, :contact_ids)";
+		$sth = $this->db->prepare($sql);
+		try {
+			$sth->execute(array(
+				"list_name" => $listName,
+				"contact_ids" => json_encode($includedContacts)
+			));
+		} catch(Exception $e) {}
+	}
+	
+	/**
+	 * update a favorite contact list
+	 *
+	 * @param  {integer} $id
+	 * @param  {string} $listName
+	 * @param  {array} $includedContacts
+	 */
+	public function updateFavoriteContactList($id, $listName, $includedContacts) {
+		$sql = "UPDATE contactmanager_general_favorites SET `list_name` = :list_name, `contact_ids` = :contact_ids WHERE `id` = :id";
+		$sth = $this->db->prepare($sql);
+		try {
+			$sth->execute(array(
+				"list_name" => $listName,
+				"contact_ids" => json_encode($includedContacts),
+				"id" => $id,
+			));
+		} catch(Exception $e) {}
+
+	}
+	
+	/**
+	 * delete a favorite contact list by id
+	 *
+	 * @param  {integer} $id
+	 * @return {array}
+	 */
+	public function deleteFavoriteContactListByID($id) {
+
+		$sql = "DELETE FROM contactmanager_general_favorites WHERE id = :id";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':id' => $id));
+
+		return array("status" => true, "type" => "success", "message" => _("Favorite Contact List successfully deleted"));;
+	}
+	
+	/**
+	 * it will return the favorite contact list of the user
+	 * the function will first check if the user has a favorite contact list
+	 * if not, it will return the favorite contact list mapped under the Contactmanager tab in User Management
+	 *
+	 * @param  {integer} $uid
+	 * @return {array} $favoriteList favorite contact list
+	 */
+	public function getUserFavoriteContacts($uid) {
+		
+		$sql = "SELECT * FROM contactmanager_user_favorites WHERE uid = :uid";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':uid' => $uid));
+		$favoriteList = $sth->fetch(PDO::FETCH_ASSOC);
+		if (empty($favoriteList)) {
+			$favoriteContactListId = $this->freepbx->Userman->getCombinedModuleSettingByID($uid,"contactmanager",'favorite_contact_list_id');
+			$favoriteList = $this->getFavoriteContactListByID($favoriteContactListId);
+		}
+
+		return $favoriteList;
+	}
+	
+	/**
+	 * create/update favorite contact list for a user
+	 *
+	 * @param  {integer} $uid
+	 * @param  {array} $includedContacts
+	 */
+	public function updateUserFavoriteContacts($uid, $includedContacts) {
+
+		$sql = "SELECT * FROM contactmanager_user_favorites WHERE uid = :uid";
+		$sth = $this->db->prepare($sql);
+		$sth->execute(array(':uid' => $uid));
+		$userFavorite = $sth->fetch(PDO::FETCH_ASSOC);
+
+		if(!empty($userFavorite)) {
+			$sql = "UPDATE contactmanager_user_favorites SET `contact_ids` = :contact_ids WHERE `uid` = :uid";
+		} else {
+			$sql = "INSERT INTO contactmanager_user_favorites (uid, contact_ids) VALUES (:uid, :contact_ids)";
+		}
+		$sth = $this->db->prepare($sql);
+		try {
+			$sth->execute(array(
+				"uid" => $uid,
+				"contact_ids" => json_encode($includedContacts)
+			));
+		} catch(Exception $e) {}
+
+		$this->updateContactUpdatedDetails($uid);
 	}
 }
