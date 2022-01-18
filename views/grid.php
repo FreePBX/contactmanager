@@ -4,6 +4,7 @@
 		<?php foreach($types as $type => $data) { ?>
 			<li data-name="<?php echo $type?>" class="change-tab <?php echo $type == "internal" ? "active" : ""?>"><a href="#<?php echo $type?>" aria-controls="<?php echo $type?>" role="tab" data-toggle="tab"><?php echo $data['name']?></a></li>
 		<?php } ?>
+		<li data-name="favorites" class="change-tab"><a href="#favorites" aria-controls="favorites" role="tab" data-toggle="tab">Favorites</a></li>
 	</ul>
 	<div class="tab-content display">
 		<?php foreach($types as $type => $data) {?>
@@ -69,5 +70,24 @@
 				<?php } ?>
 			</div>
 		<?php } ?>
+		<div id="favorites" class="tab-pane">
+			<div class="tab-content display">
+				<div id="favorites-pane" class="tab-pane active">
+					<div id="toolbar-favorites">
+						<a href="?display=contactmanager&amp;action=add_list" class="btn btn-primary"><i class="fa fa-plus"></i> <?php echo _("Add New List")?></a>
+					</div>
+				
+					<table id="favorites-grid" data-url="ajax.php?module=contactmanager&amp;command=favorite_list" data-cache="false" data-toolbar="#toolbar-favorites" data-type="favorites" data-maintain-selected="true" data-show-columns="true" data-show-toggle="true" data-toggle="table" data-pagination="true" data-search="true" class="table table-striped table-favorites">
+						<thead>
+							<tr>
+								<th data-checkbox="true"></th>
+								<th data-field="list_name" data-sortable="true">List Name</th>
+								<th data-field="actions">Actions</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
