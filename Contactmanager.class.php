@@ -700,6 +700,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 								continue;
 							}
 							$final[$i] = $user;
+							$final[$i]['id'] = $entry['uid'];
 							$final[$i]['displayname'] = !empty($user['displayname']) ? $user['displayname'] : $user['fname'] . " " . $user['lname'];
 							$final[$i]['displayname'] = !empty($user['displayname']) ? $user['displayname'] . " (".$user['username'].")" : $user['username'];
 							$final[$i]['actions'] = '<a href="config.php?display=userman&action=showuser&user='.$user['id'].'"><i class="fa fa-edit fa-fw"></i></a><a href="config.php?display=contactmanager&amp;action=delentry&amp;group='.(int) $_REQUEST['group'].'&amp;entry='.$entry['uid'].'"><i class="fa fa-ban fa-fw"></i></a>';
