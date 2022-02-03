@@ -187,6 +187,15 @@
 			<field name="entryid" type="integer"/>
 			<field name="website" type="string" length="100" notnull="false"/>
 		</table>
+		<table name="contactmanager_general_favorites">
+			<field name="id" type="integer" primaryKey="true" autoincrement="true"/>
+			<field name="list_name" type="string" length="100" notnull="true"/>
+			<field name="contact_ids" type="blob"/>
+		</table>
+		<table name="contactmanager_user_favorites">
+			<field name="uid" type="integer"/>
+			<field name="contact_ids" type="blob"/>
+		</table>
 	</database>
 	<console>
 		<command>

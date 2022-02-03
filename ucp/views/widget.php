@@ -1,6 +1,11 @@
 <div class="widget">
 	<div class="row">
 		<div class="col-md-3">
+			<?php if ($favoriteContactsEnabled) { ?>
+				<div class="group-actions">
+					<div class="group-action show-favorites"><a href="#" class="group-inner"><span class="badges"><i class="fa fa-star" style="float:left;color: #f6cf00;"></i>&nbsp;</span><?php echo _('Favorites')?><span class="badge" id="fav_contact_count"><?php echo $favoriteContactsCount ?></span></a></div>
+				</div>
+			<?php } ?>
 			<div class="group-list">
 				<input type="hidden" id="group"/>
 				<div class="group active" data-name="" data-group=""><a href="#" class="group-inner"><?php echo _('My Contacts')?><span class="badge"><?php echo isset($total) ? $total : 0?></span></a></div>
@@ -12,7 +17,7 @@
 				<div class="group-action addgroup"><a href="#" class="group-inner"><?php echo _('Add Group')?><span class="badges"><i class="fa fa-plus"></i></span></a></div>
 			</div>
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-9 contacts-div">
 			<div id="contacts-toolbar">
 				<?php if(!isset($readonly) || !$readonly) { ?>
 					<button class="btn btn-danger deletegroup" disabled>
@@ -52,6 +57,8 @@
 					</tr>
 				</thead>
 			</table>
+		</div>
+		<div class="col-md-9 favorite-div" style="display: none;">
 		</div>
 	</div>
 </div>

@@ -10,8 +10,16 @@ var ContactmanagerC = UCPMC.extend({
 	},
 	resize: function(widget_id) {
 		$(".grid-stack-item[data-id='"+widget_id+"'] .contacts-grid").bootstrapTable('resetView',{height: $(".grid-stack-item[data-id='"+widget_id+"'] .widget-content").height()});
+		if ($(".favorite-div .fav-tab").length) {
+			var elem = $(".favorite-div");
+			var h = parseInt( elem.parents(".widget-content").outerHeight()) - (parseInt(elem.find(".contact_list").offset().top));
+			elem.find(".contact_list").height(parseInt(h));
+		}
 	},
 	groupClick: function(el, widget_id) {
+		$(".contacts-div").show();
+		$(".favorite-div").hide();
+		$(".show-favorites").removeClass("active");
 		$(".grid-stack-item[data-id="+widget_id+"] .group").removeClass("active");
 		$(el).addClass("active");
 		var group = $(el).data("group");
@@ -128,17 +136,36 @@ var ContactmanagerC = UCPMC.extend({
 									url: UCP.ajaxUrl+'?module=contactmanager&command=addgroup',
 									data: $('#contactmanager-addgroup').serialize(),
 									success: function (data) {
-										$(".grid-stack-item[data-id='"+widget_id+"'] .group-list").append('<div class="group" data-name="' + $("#groupname").val() + '" data-group="' + data.id + '" data-readonly="false"><a href="#" class="group-inner">' + $("#groupname").val() + '<span class="badge">0</span></a></div>');
-										$(".grid-stack-item[data-id='"+widget_id+"'] .group[data-group=" + data.id + "]").click(function() {
-											self.groupClick(this, widget_id);
-										});
-										UCP.closeDialog();
+										if (data.status === true) {
+											$(".grid-stack-item[data-id='"+widget_id+"'] .group-list").append('<div class="group" data-name="' + $("#groupname").val() + '" data-group="' + data.id + '" data-readonly="false"><a href="#" class="group-inner">' + $("#groupname").val() + '<span class="badge">0</span></a></div>');
+											$(".grid-stack-item[data-id='"+widget_id+"'] .group[data-group=" + data.id + "]").click(function() {
+												self.groupClick(this, widget_id);
+											});
+											UCP.closeDialog();
+										} else {
+											UCP.showAlert(data.message,'danger');
+										}
 									}
 								});
 							});
 						});
 				} else {
 					UCP.showDialog(_("Add Group"),_("Error getting form"),'<button type="button" class="btn btn-secondary" data-dismiss="modal">'+_("Close"));
+				}
+			});
+		});
+
+		$(".show-favorites").click(function() {
+			$.getJSON(UCP.ajaxUrl+'?module=contactmanager&command=favorite_contacts', function(data) {
+				if (data.status === true) {
+					$(".favorite-div").html(data.body);
+					$("#fav_contact_count").text(data.favoriteContactsCount);
+					$(".grid-stack-item .group").removeClass("active");
+					$(".show-favorites").addClass("active");
+					$(".contacts-div").hide();
+					$(".favorite-div").show();
+				} else {
+					UCP.showAlert(_("There was an error loading favorite contacts"),"danger");
 				}
 			});
 		});
@@ -602,3 +629,22 @@ var ContactmanagerC = UCPMC.extend({
 		return false;
 	}
 });
+
+var obj = new UCPC();
+$(document).on("click", "#save_favorites", function () {
+	if($("#favorite_contact_edit_enabled").val() == '1') {
+		var included_contacts = [];
+		$('#included_contacts>span').each(function() {
+			included_contacts.push($(this).attr('data-contactId'));
+		});
+		$.ajax({
+			url: 'ajax.php?module=contactmanager&command=update_favorite_contacts',
+			type: "POST",
+			data: {'included_contacts': included_contacts},
+			success: function(data){
+				$("#fav_contact_count").text(data.favoriteContactsCount);
+				obj.showAlert(data.message, 'success');
+			}
+		});
+	}
+})
