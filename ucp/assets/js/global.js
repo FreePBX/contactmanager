@@ -165,7 +165,8 @@ var ContactmanagerC = UCPMC.extend({
 					$(".contacts-div").hide();
 					$(".favorite-div").show();
 				} else {
-					UCP.showAlert(_("There was an error loading favorite contacts"),"danger");
+					var message = data.message ? data.message : _("There was an error loading favorite contacts");
+					UCP.showAlert(message,"danger");
 				}
 			});
 		});

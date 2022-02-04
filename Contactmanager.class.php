@@ -1045,33 +1045,14 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			break;
 			case "edit_list":
 			case "add_list":
-				$list = $includedContacts = $excludedContacts = $contactIdArray = [];
+				$list = $contactIdArray = [];
 				$contacts = $this->getAllInternalAndExternalContacts();
 				if ($action == "edit_list" && !empty($_REQUEST['list_id'])) {
 					$list = $this->getFavoriteContactListByID((int) $_REQUEST['list_id']);
 					$contactIdArray = json_decode($list['contact_ids']) ? json_decode($list['contact_ids']) : [];
 				}
-				foreach ($contacts as $contact) {
-					if (empty($contact['numbers'])) {
-						continue;
-					}
-					if (empty($contact["displayname"])) {
-						$contact["displayname"] = (empty($contact["fname"]) && empty($contact["lname"])) ? "-" : $contact["fname"] . " " . $contact["lname"];
-					}
-					if (in_array($contact['uid'], $contactIdArray)) {
-						$index = array_search($contact['uid'], $contactIdArray);
-						$includedContacts[$index] = $contact;
-					} else {
-						$excludedContacts[] = $contact;
-					}
-				}
-				ksort($includedContacts);
-				array_multisort(
-					array_column($excludedContacts, 'displayname'), SORT_ASC, SORT_NATURAL|SORT_FLAG_CASE,
-					$excludedContacts
-				);
-
-				$subContent = load_view(dirname(__FILE__).'/views/favorite_view.php', array("includedContacts" => $includedContacts, "excludedContacts" => $excludedContacts));
+				$res = $this->processContacts($contacts, $contactIdArray);
+				$subContent = load_view(dirname(__FILE__).'/views/favorite_view.php', array("includedContacts" => $res['includedContacts'], "excludedContacts" => $res['excludedContacts']));
 				$content = load_view(dirname(__FILE__).'/views/favorites.php', array("list" => $list, "subContent" => $subContent, "message" => $this->message));
 			break;
 			default:
@@ -3996,5 +3977,47 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		} catch(Exception $e) {}
 
 		$this->updateContactUpdatedDetails($uid);
+	}
+
+	/**
+	 * sort the contacts into included and excluded list
+	 *
+	 * @param  {array} $contacts contacts array
+	 * @param  {array} $contactIdArray array of the included contact ids
+	 * @return {array} included and excluded contact list
+	 */
+	public function processContacts($contacts, $contactIdArray) {
+		
+		$includedContacts = $excludedContacts = $userIdArray = [];
+		foreach ($contacts as $contact) {
+			if (empty($contact['numbers'])) {
+				continue;
+			}
+			//skip duplicate contacts in case of internal users
+			if ($contact["type"] == "internal") {
+				if (in_array($contact['user'], $userIdArray)) {
+					continue;
+				}
+				$userIdArray[] = $contact['user'];
+			}
+			if (empty($contact["displayname"])) {
+				$contact["displayname"] = (empty($contact["fname"]) && empty($contact["lname"])) ? "-" : $contact["fname"] . " " . $contact["lname"];
+			}
+			if (in_array($contact['uid'], $contactIdArray)) {
+				$index = array_search($contact['uid'], $contactIdArray);
+				$includedContacts[$index] = $contact;
+			} else {
+				$excludedContacts[] = $contact;
+			}
+		}
+		//sort contacts by the sort order
+		ksort($includedContacts);
+		//sort contacts by display name
+		array_multisort(
+			array_column($excludedContacts, 'displayname'), SORT_ASC, SORT_NATURAL|SORT_FLAG_CASE,
+			$excludedContacts
+		);
+
+		return ['includedContacts' => $includedContacts, 'excludedContacts' => $excludedContacts];
 	}
 }
