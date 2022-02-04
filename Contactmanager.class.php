@@ -3999,6 +3999,8 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					continue;
 				}
 				$userIdArray[] = $contact['user'];
+				$user = $this->freepbx->Userman->getUserByID($contact['user']);
+				$contact['displayname'] = !empty($user['displayname']) ? $user['displayname'] : $user['fname'] . " " . $user['lname'];
 			}
 			if (empty($contact["displayname"])) {
 				$contact["displayname"] = (empty($contact["fname"]) && empty($contact["lname"])) ? "-" : $contact["fname"] . " " . $contact["lname"];
