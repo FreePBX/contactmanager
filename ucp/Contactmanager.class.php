@@ -61,13 +61,10 @@ class Contactmanager extends Modules{
 			$contactIdArray = json_decode($list['contact_ids']) ? json_decode($list['contact_ids']) : [];
 			$displayvars['favoriteContactsCount'] = count($contactIdArray);
 		}
-		$mainDisplay = $this->load_view(__DIR__.'/views/widget.php',$displayvars);
-
-		$html = $mainDisplay;
 
 		$display = array(
 			'title' => _("Contacts"),
-			'html' => $html
+			'html' => $this->load_view(__DIR__.'/views/widget.php',$displayvars)
 		);
 
 		return $display;
@@ -423,19 +420,13 @@ class Contactmanager extends Modules{
 			break;
 			case "favorite_contacts":
 				$allContacts = [];
-				$list = $this->cm->getUserFavoriteContacts($this->user['id']);
-				if (empty($list)) {
-					return array(
-						"status" => false,
-						"message" => "The Favorite Contacts is enabled but the Favorite Contact List is not selected. Please contact the System Administrator to make the changes."
-					);
-				}
 				$groups = $this->cm->getGroupsByOwner($this->user['id']);
 				foreach ($groups as $group) {
 					$contacts = $this->cm->getEntriesByGroupID($group['id']);
 					$allContacts = array_merge($allContacts,$contacts);
 				}
 				$contacts = array_values($allContacts);
+				$list = $this->cm->getUserFavoriteContacts($this->user['id']);
 				$contactIdArray = json_decode($list['contact_ids']) ? json_decode($list['contact_ids']) : [];
 				$res = $this->cm->processContacts($contacts, $contactIdArray);
 				$favoriteContactEditEnabled = $this->UCP->FreePBX->Userman->getCombinedModuleSettingByID($this->user['id'],'contactmanager','favorite_contact_edit_enabled');
