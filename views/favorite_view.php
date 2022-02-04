@@ -13,9 +13,21 @@
 <div class="tab-content display fav-tab">
     <div id='users' class='tab-pane active'>
         <div class="row">
-			<?php $contactClass = (!isset($favoriteContactEditEnabled) || (isset($favoriteContactEditEnabled) && $favoriteContactEditEnabled)) ? 'col-sm-5' : 'col-sm-6' ?>
+			<?php if (isset($favoriteContactEditEnabled) && !$favoriteContactEditEnabled) { ?>
+				<div class="alert alert-warning" role="alert">
+					<p>
+						<strong><i class="glyphicon glyphicon-info-sign"></i> <?php echo _('Favorite Contact List Edit privilege is disabled.'); ?></strong>
+					</p>
+					<p>
+						<?php echo _("You don't have the privilege to edit the Favorite Contact List. Please contact the System Administrator to make changes to the list or to enable the Edit option.") ?>
+					</p>
+				</div>
+			<?php } ?>
+			<?php $contactClass = (!isset($favoriteContactEditEnabled) || (isset($favoriteContactEditEnabled) && $favoriteContactEditEnabled)) ? 'col-sm-5' : 'col-sm-10' ?>
             <fieldset class='contact_list ui-sortable left <?php echo $contactClass; ?>' id='included_contacts' data-otherid='excluded_contacts'>
-                <legend> <?php echo _("Include") ?> </legend>
+				<?php if (!isset($favoriteContactEditEnabled) || (isset($favoriteContactEditEnabled) && $favoriteContactEditEnabled)) { ?>
+                	<legend> <?php echo _("Include") ?> </legend>
+				<?php } ?>
                 <?php
                 foreach ($includedContacts as $contact) {
                     echo "<span class='dragitem' data-contactId='" . $contact['uid'] . "'>" . $contact['displayname'] . " (" . reset($contact['numbers'])['number'] . ")" . "</span>\n";
@@ -25,13 +37,15 @@
 			<?php if (!isset($favoriteContactEditEnabled) || (isset($favoriteContactEditEnabled) && $favoriteContactEditEnabled)) { ?>
             	<?php echo showMiddle(); ?>
 			<?php } ?>
+			<?php if (!isset($favoriteContactEditEnabled) || (isset($favoriteContactEditEnabled) && $favoriteContactEditEnabled)) { ?>    
             <fieldset class='contact_list ui-sortable right <?php echo $contactClass; ?>' id='excluded_contacts' data-otherid='included_contacts'>
-                <legend> <?php echo _("Exclude") ?> </legend>
-                <?php
+				<legend> <?php echo _("Exclude") ?> </legend>
+				<?php
                 foreach ($excludedContacts as $contact) {
-                    echo "<span class='dragitem' data-contactId='" . $contact['uid'] . "'>" . $contact['displayname'] . " (" . reset($contact['numbers'])['number'] . ")" . "</span>\n";
+					echo "<span class='dragitem' data-contactId='" . $contact['uid'] . "'>" . $contact['displayname'] . " (" . reset($contact['numbers'])['number'] . ")" . "</span>\n";
                 }
                 ?>
+			<?php } ?>
             </fieldset>
         </div>
     </div>
