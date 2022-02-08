@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.8.54</version>
+	<version>15.0.8.55</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*15.0.8.55* SCD-186 favorite contact changes 
 		*15.0.8.54* SCD-104 Add fav contacts 
 		*15.0.8.53* FREEI-4498 fixed the issue of unable to remove a selected contact from contact manager 
 		*15.0.8.52* Packaging of ver 15.0.8.52
