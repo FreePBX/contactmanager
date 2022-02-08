@@ -61,13 +61,10 @@ class Contactmanager extends Modules{
 			$contactIdArray = json_decode($list['contact_ids']) ? json_decode($list['contact_ids']) : [];
 			$displayvars['favoriteContactsCount'] = count($contactIdArray);
 		}
-		$mainDisplay = $this->load_view(__DIR__.'/views/widget.php',$displayvars);
-
-		$html .= $mainDisplay;
 
 		$display = array(
 			'title' => _("Contacts"),
-			'html' => $html
+			'html' => $this->load_view(__DIR__.'/views/widget.php',$displayvars)
 		);
 
 		return $display;
@@ -422,7 +419,7 @@ class Contactmanager extends Modules{
 				$return = $this->load_view(__DIR__.'/views/groupCreate.php',$displayvars);
 			break;
 			case "favorite_contacts":
-				$allContacts  = $includedContacts = $excludedContacts = [];
+				$allContacts = [];
 				$groups = $this->cm->getGroupsByOwner($this->user['id']);
 				foreach ($groups as $group) {
 					$contacts = $this->cm->getEntriesByGroupID($group['id']);
@@ -431,31 +428,13 @@ class Contactmanager extends Modules{
 				$contacts = array_values($allContacts);
 				$list = $this->cm->getUserFavoriteContacts($this->user['id']);
 				$contactIdArray = json_decode($list['contact_ids']) ? json_decode($list['contact_ids']) : [];
-				foreach ($contacts as $contact) {
-					if (empty($contact['numbers'])) {
-						continue;
-					}
-					if (empty($contact["displayname"])) {
-						$contact["displayname"] = (empty($contact["fname"]) && empty($contact["lname"])) ? "-" : $contact["fname"] . " " . $contact["lname"];
-					}
-					if (in_array($contact['uid'], $contactIdArray)) {
-						$index = array_search($contact['uid'], $contactIdArray);
-						$includedContacts[$index] = $contact;
-					} else {
-						$excludedContacts[] = $contact;
-					}
-				}
-				ksort($includedContacts);
-				array_multisort(
-					array_column($excludedContacts, 'displayname'), SORT_ASC, SORT_NATURAL|SORT_FLAG_CASE,
-					$excludedContacts
-				);
+				$res = $this->cm->processContacts($contacts, $contactIdArray);
 				$favoriteContactEditEnabled = $this->UCP->FreePBX->Userman->getCombinedModuleSettingByID($this->user['id'],'contactmanager','favorite_contact_edit_enabled');
 
 				$return = array(
 					"status" => true,
 					"favoriteContactsCount" => count($contactIdArray),
-					"body" => load_view(__DIR__.'/../views/favorite_view.php', array("includedContacts" => $includedContacts, "excludedContacts" => $excludedContacts, "favoriteContactEditEnabled" => $favoriteContactEditEnabled))
+					"body" => load_view(__DIR__.'/../views/favorite_view.php', array("includedContacts" => $res['includedContacts'], "excludedContacts" => $res['excludedContacts'], "favoriteContactEditEnabled" => $favoriteContactEditEnabled))
 				);
 			break;
 			case "update_favorite_contacts":
