@@ -44,4 +44,8 @@ $('form').submit(function() {
 	});
 });
 
+$(document).on('click', 'input[name="reset"]', function() {
+	location.reload();
+});
+
 </script>
