@@ -4,7 +4,9 @@
 		<?php foreach($types as $type => $data) { ?>
 			<li data-name="<?php echo $type?>" class="change-tab <?php echo $type == "internal" ? "active" : ""?>"><a href="#<?php echo $type?>" aria-controls="<?php echo $type?>" role="tab" data-toggle="tab"><?php echo $data['name']?></a></li>
 		<?php } ?>
-		<li data-name="favorites" class="change-tab"><a href="#favorites" aria-controls="favorites" role="tab" data-toggle="tab">Favorites</a></li>
+		<?php if ($enableFavoriteContacts) { ?>
+			<li data-name="favorites" class="change-tab"><a href="#favorites" aria-controls="favorites" role="tab" data-toggle="tab">Favorites</a></li>
+		<?php } ?>
 	</ul>
 	<div class="tab-content display">
 		<?php foreach($types as $type => $data) {?>
@@ -70,6 +72,7 @@
 				<?php } ?>
 			</div>
 		<?php } ?>
+		<?php if ($enableFavoriteContacts) { ?>
 		<div id="favorites" class="tab-pane">
 			<div class="tab-content display">
 				<div id="favorites-pane" class="tab-pane active">
@@ -89,5 +92,6 @@
 				</div>
 			</div>
 		</div>
+		<?php } ?>
 	</div>
 </div>
