@@ -322,20 +322,31 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		}
 
 		// CONTACTMANLOOKUPLENGTH in Advanced Settings of FreePBX
-		//
+		$set['module'] = 'contactmanager'; //This will help delete the settings when module is uninstalled
+		$set['category'] = 'Contact Manager Module';
+
 		$set['value'] = 7;
 		$set['defaultval'] =& $set['value'];
 		$set['readonly'] = 0;
 		$set['hidden'] = 0;
 		$set['level'] = 1;
-		$set['module'] = 'contactmanager'; //This will help delete the settings when module is uninstalled
-		$set['category'] = 'Contact Manager Module';
 		$set['emptyok'] = 0;
 		$set['name'] = 'Partial Match Length';
 		$set['description'] = 'How many digits should a number be before a partial match is used when looking up a contact';
 		$set['type'] = CONF_TYPE_INT;
 		$set['options'] = array(1,86400);
-		$this->freepbx->Config->define_conf_setting('CONTACTMANLOOKUPLENGTH',$set,true);
+		
+		$set['value'] = false;
+		$set['defaultval'] =& $set['value'];
+		$set['options'] = '';
+		$set['name'] = 'Enable Favorite Contacts';
+		$set['description'] = 'When Enabled, Admin can configure multiple Favorite Contact Lists under Favorites tab in Contact Manager and Sangoma Phone users can see a list of their favorite contacts when viewing the Contacts panel on the desktop client. Users will be able to manage their Favorites through UCP, based on the settings they have set in User Manager -> Contact Manager. When Disabled, the Favorites section will be hidden on Admin Panel, desktop clients and Contacts panel in UCP. In either case, the user will still be able to Search among the system contacts.';
+		$set['emptyok'] = 0;
+		$set['level'] = 1;
+		$set['readonly'] = 0;
+		$set['type'] = CONF_TYPE_BOOL;
+		$set['hidden'] = 0;
+		$this->freepbx->Config->define_conf_setting('ENABLE_FAVORITE_CONTACTS',$set,true);
 	}
 	public function uninstall() {
 
@@ -1058,7 +1069,8 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			default:
 				$file['post'] = ini_get('post_max_size');
 				$file['upload'] = ini_get('upload_max_filesize');
-				$content = load_view(dirname(__FILE__).'/views/grid.php', array("groups" => $groups, "types" => $this->types, "file" => $file));
+				$enableFavoriteContacts = $this->getEnableFavoriteContacts();
+				$content = load_view(dirname(__FILE__).'/views/grid.php', array("groups" => $groups, "types" => $this->types, "file" => $file, "enableFavoriteContacts" => $enableFavoriteContacts));
 			break;
 		}
 
@@ -1173,17 +1185,13 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			} else {
 				$this->freepbx->Userman->setModuleSettingByGID($id,'contactmanager','groups',null);
 			}
-			
-			$enableFavoriteContacts = ($_POST['enable_favorite_contacts'] === 'true') ? true : false;
-			$favoriteContactEditEnabled = false;
+
+			$enableFavoriteContacts = $this->getEnableFavoriteContacts();
 			$favoriteContactListId = '';
 			if($enableFavoriteContacts) {
-				$favoriteContactEditEnabled = ($_POST['favorite_contact_edit_enabled'] === 'true') ? true : false;
 				$favoriteContactListId = $_POST['favorite_contact'];
 			}
-			$this->freepbx->Userman->setModuleSettingByGID($id,'contactmanager','enable_favorite_contacts',$enableFavoriteContacts);
 			$this->freepbx->Userman->setModuleSettingByGID($id,'contactmanager','favorite_contact_list_id',$favoriteContactListId);
-			$this->freepbx->Userman->setModuleSettingByGID($id,'contactmanager','favorite_contact_edit_enabled',$favoriteContactEditEnabled);
 		}
 		$groups = $this->getGroups();
 		foreach($data['users'] as $user) {
@@ -1267,6 +1275,13 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				$this->updateImageByID($id, $_POST['contactmanager_image'], ($_POST['contactmanager_gravatar'] == "on" ? 1 : 0), 'internal');
 			}
 			$this->setConfig('userLocale', $_POST['contactmanager_dialinglocale'], $id);
+
+			$enableFavoriteContacts = $this->getEnableFavoriteContacts();
+			$favoriteContactListId = '';
+			if($enableFavoriteContacts) {
+				$favoriteContactListId = $_POST['favorite_contact'] == 'inherit' ? null : $_POST['favorite_contact'];
+			}
+			$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','favorite_contact_list_id',$favoriteContactListId);
 		}
 
 
@@ -1306,18 +1321,12 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			}
 			$this->setConfig('userLocale', $_POST['contactmanager_dialinglocale'], $id);
 
-			$enableFavoriteContacts = ($_POST['enable_favorite_contacts'] === 'true') ? true : (($_POST['enable_favorite_contacts'] === 'false') ? false : null);
-			$favoriteContactEditEnabled = false;
+			$enableFavoriteContacts = $this->getEnableFavoriteContacts();
 			$favoriteContactListId = '';
 			if($enableFavoriteContacts) {
-				$favoriteContactEditEnabled = ($_POST['favorite_contact_edit_enabled'] === 'true') ? true : false;
-				$favoriteContactListId = $_POST['favorite_contact'];
-			} else if (is_null($enableFavoriteContacts)) {
-				$favoriteContactListId = $favoriteContactEditEnabled = null;
+				$favoriteContactListId = $_POST['favorite_contact'] == 'inherit' ? null : $_POST['favorite_contact'];
 			}
-			$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','enable_favorite_contacts',$enableFavoriteContacts);
 			$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','favorite_contact_list_id',$favoriteContactListId);
-			$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','favorite_contact_edit_enabled',$favoriteContactEditEnabled);
 		}
 
 		$showingroups = $this->freepbx->Userman->getCombinedModuleSettingByID($id,'contactmanager','showingroups');
@@ -3134,15 +3143,14 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 						$groups[$k]['selected'] = in_array($group['id'],$assigned);
 					}
 					
-					$enableFavoriteContacts = $this->freepbx->Userman->getModuleSettingByGID($_REQUEST['group'],"contactmanager","enable_favorite_contacts");
-					$favoriteContactListId = $this->freepbx->Userman->getModuleSettingByGID($_REQUEST['group'],"contactmanager","favorite_contact_list_id",true);
-					$favoriteContactEditEnabled = $this->freepbx->Userman->getModuleSettingByGID($_REQUEST['group'],"contactmanager","favorite_contact_edit_enabled");
+					$enableFavoriteContacts = $this->getEnableFavoriteContacts();
+					$favoriteContactListId = $this->freepbx->Userman->getModuleSettingByGID($_REQUEST['group'],"contactmanager","favorite_contact_list_id");
 					$favoriteList = $this->getFavoriteContactList();
 					return array(
 						array(
 							"title" => _("Contact Manager"),
 							"rawname" => "contactmanager",
-							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("visiblegroups" => $visiblegroups, "showingroups" => $showingroups, "mode" => "group", "groups" => $groups, "enabled" => $this->userman->getModuleSettingByGID((int) $_REQUEST['group'],'contactmanager','show'), "favoriteList" => $favoriteList, "favoriteContactEditEnabled" => $favoriteContactEditEnabled, "enableFavoriteContacts" => $enableFavoriteContacts, "favoriteContactListId" => $favoriteContactListId))
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("visiblegroups" => $visiblegroups, "showingroups" => $showingroups, "mode" => "group", "groups" => $groups, "enabled" => $this->userman->getModuleSettingByGID((int) $_REQUEST['group'],'contactmanager','show'), "favoriteList" => $favoriteList, "enableFavoriteContacts" => $enableFavoriteContacts, "favoriteContactListId" => $favoriteContactListId))
 						)
 					);
 				case 'addgroup':
@@ -3151,15 +3159,13 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 						$groups[$k]['selected'] = in_array($group['id'],$assigned);
 					}
 					
-					$enableFavoriteContacts = $this->freepbx->Userman->getModuleSettingByGID($_REQUEST['group'],"contactmanager","enable_favorite_contacts");
-					$favoriteContactListId = $this->freepbx->Userman->getModuleSettingByGID($_REQUEST['group'],"contactmanager","favorite_contact_list_id",true);
-					$favoriteContactEditEnabled = $this->freepbx->Userman->getModuleSettingByGID($_REQUEST['group'],"contactmanager","favorite_contact_edit_enabled");
+					$enableFavoriteContacts = $this->getEnableFavoriteContacts();
 					$favoriteList = $this->getFavoriteContactList();
 					return array(
 						array(
 							"title" => _("Contact Manager"),
 							"rawname" => "contactmanager",
-							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("visiblegroups" => $visiblegroups, "showingroups" => array(), "mode" => "group", "groups" => $groups, "enabled" => true, "favoriteList" => $favoriteList, "favoriteContactEditEnabled" => $favoriteContactEditEnabled, "enableFavoriteContacts" => $enableFavoriteContacts, "favoriteContactListId" => $favoriteContactListId))
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("visiblegroups" => $visiblegroups, "showingroups" => array(), "mode" => "group", "groups" => $groups, "enabled" => true, "favoriteList" => $favoriteList, "enableFavoriteContacts" => $enableFavoriteContacts, "favoriteContactListId" => ""))
 						)
 					);
 				break;
@@ -3168,18 +3174,13 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 						$groups[$k]['selected'] = false;
 					}
 					
-					$enableFavoriteContacts = $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","enable_favorite_contacts",true);
-					$favoriteContactListId = $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","favorite_contact_list_id",true);
-					if (is_null($favoriteContactListId)) {
-						$favoriteContactListId = 'inherit';
-					}
-					$favoriteContactEditEnabled = $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","favorite_contact_edit_enabled");
+					$enableFavoriteContacts = $this->getEnableFavoriteContacts();
 					$favoriteList = $this->getFavoriteContactList();
 					return array(
 						array(
 							"title" => _("Contact Manager"),
 							"rawname" => "contactmanager",
-							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("visiblegroups" => $visiblegroups, "showingroups" => array(), "mode" => "user", "groups" => $groups, "enabled" => true, "favoriteList" => $favoriteList, "favoriteContactEditEnabled" => $favoriteContactEditEnabled, "enableFavoriteContacts" => $enableFavoriteContacts, "favoriteContactListId" => $favoriteContactListId))
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("visiblegroups" => $visiblegroups, "showingroups" => array(), "mode" => "user", "groups" => $groups, "enabled" => true, "favoriteList" => $favoriteList, "enableFavoriteContacts" => $enableFavoriteContacts, "favoriteContactListId" => ""))
 						)
 					);
 				break;
@@ -3192,19 +3193,18 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 						$groups[$k]['selected'] = in_array($group['id'],$assigned);
 					}
 					
-					$enableFavoriteContacts = $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","enable_favorite_contacts",true);
+					$enableFavoriteContacts = $this->getEnableFavoriteContacts();
 					$favoriteContactListId = $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","favorite_contact_list_id",true);
 					if (is_null($favoriteContactListId)) {
 						$favoriteContactListId = 'inherit';
 					}
-					$favoriteContactEditEnabled = $this->freepbx->Userman->getModuleSettingByID($_REQUEST['user'],"contactmanager","favorite_contact_edit_enabled");
 					$favoriteList = $this->getFavoriteContactList();
 
 					return array(
 						array(
 							"title" => _("Contact Manager"),
 							"rawname" => "contactmanager",
-							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("visiblegroups" => $visiblegroups, "showingroups" => $showingroups, "mode" => "user", "groups" => $groups, "favoriteList" => $favoriteList, "favoriteContactEditEnabled" => $favoriteContactEditEnabled, "enableFavoriteContacts" => $enableFavoriteContacts, "favoriteContactListId" => $favoriteContactListId))
+							"content" => load_view(dirname(__FILE__).'/views/userman_hook.php',array("visiblegroups" => $visiblegroups, "showingroups" => $showingroups, "mode" => "user", "groups" => $groups, "favoriteList" => $favoriteList, "enableFavoriteContacts" => $enableFavoriteContacts, "favoriteContactListId" => $favoriteContactListId))
 						)
 					);
 				break;
@@ -4023,5 +4023,14 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		);
 
 		return ['includedContacts' => $includedContacts, 'excludedContacts' => $excludedContacts];
+	}
+
+	/**
+	 * check if favorite contacts is enabled
+	 * @method getEnableFavoriteContacts
+     * @return {boolean}			
+	 */
+	public function getEnableFavoriteContacts() {
+		return $this->freepbx->Config->get('ENABLE_FAVORITE_CONTACTS');
 	}
 }
