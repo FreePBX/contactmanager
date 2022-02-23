@@ -632,19 +632,17 @@ var ContactmanagerC = UCPMC.extend({
 
 var obj = new UCPC();
 $(document).on("click", "#save_favorites", function () {
-	if($("#favorite_contact_edit_enabled").val() == '1') {
-		var included_contacts = [];
-		$('#included_contacts>span').each(function() {
-			included_contacts.push($(this).attr('data-contactId'));
-		});
-		$.ajax({
-			url: 'ajax.php?module=contactmanager&command=update_favorite_contacts',
-			type: "POST",
-			data: {'included_contacts': included_contacts},
-			success: function(data){
-				$("#fav_contact_count").text(data.favoriteContactsCount);
-				obj.showAlert(data.message, 'success');
-			}
-		});
-	}
+	var included_contacts = [];
+	$('#included_contacts>span').each(function() {
+		included_contacts.push($(this).attr('data-contactId'));
+	});
+	$.ajax({
+		url: 'ajax.php?module=contactmanager&command=update_favorite_contacts',
+		type: "POST",
+		data: {'included_contacts': included_contacts},
+		success: function(data){
+			$("#fav_contact_count").text(data.favoriteContactsCount);
+			obj.showAlert(data.message, 'success');
+		}
+	});
 })

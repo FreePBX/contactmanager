@@ -9,57 +9,37 @@
 		return $ret;
 	}
 ?>
-<input type="hidden" id="favorite_contact_edit_enabled" value="<?php echo isset($favoriteContactEditEnabled) ? $favoriteContactEditEnabled : false; ?>" />
 <div class="tab-content display fav-tab">
     <div id='users' class='tab-pane active'>
         <div class="row">
-			<?php if (isset($favoriteContactEditEnabled) && !$favoriteContactEditEnabled) { ?>
-				<div class="alert alert-warning" role="alert">
-					<p>
-						<strong><i class="glyphicon glyphicon-info-sign"></i> <?php echo _('Favorite Contact List Edit privilege is disabled.'); ?></strong>
-					</p>
-					<p>
-						<?php echo _("You don't have the privilege to edit the Favorite Contact List. Please contact the System Administrator to make changes to the list or to enable the Edit option.") ?>
-					</p>
-				</div>
-			<?php } ?>
-			<?php $contactClass = (!isset($favoriteContactEditEnabled) || (isset($favoriteContactEditEnabled) && $favoriteContactEditEnabled)) ? 'col-sm-5' : 'col-sm-10' ?>
-            <fieldset class='contact_list ui-sortable left <?php echo $contactClass; ?>' id='included_contacts' data-otherid='excluded_contacts'>
-				<?php if (!isset($favoriteContactEditEnabled) || (isset($favoriteContactEditEnabled) && $favoriteContactEditEnabled)) { ?>
-                	<legend> <?php echo _("Include") ?> </legend>
-				<?php } ?>
+            <fieldset class='contact_list ui-sortable left col-sm-5' id='included_contacts' data-otherid='excluded_contacts'>
+				<legend> <?php echo _("Include") ?> </legend>
                 <?php
                 foreach ($includedContacts as $contact) {
                     echo "<span class='dragitem' data-contactId='" . $contact['uid'] . "'>" . $contact['displayname'] . " (" . reset($contact['numbers'])['number'] . ")" . "</span>\n";
                 }
                 ?>
             </fieldset>
-			<?php if (!isset($favoriteContactEditEnabled) || (isset($favoriteContactEditEnabled) && $favoriteContactEditEnabled)) { ?>
-            	<?php echo showMiddle(); ?>
-			<?php } ?>
-			<?php if (!isset($favoriteContactEditEnabled) || (isset($favoriteContactEditEnabled) && $favoriteContactEditEnabled)) { ?>    
-            <fieldset class='contact_list ui-sortable right <?php echo $contactClass; ?>' id='excluded_contacts' data-otherid='included_contacts'>
+			<?php echo showMiddle(); ?>
+            <fieldset class='contact_list ui-sortable right col-sm-5' id='excluded_contacts' data-otherid='included_contacts'>
 				<legend> <?php echo _("Exclude") ?> </legend>
 				<?php
                 foreach ($excludedContacts as $contact) {
 					echo "<span class='dragitem' data-contactId='" . $contact['uid'] . "'>" . $contact['displayname'] . " (" . reset($contact['numbers'])['number'] . ")" . "</span>\n";
                 }
                 ?>
-			<?php } ?>
             </fieldset>
         </div>
     </div>
-	<?php if (isset($favoriteContactEditEnabled) && $favoriteContactEditEnabled) { ?>
-		<div class="fav-save-bar">
-			<button type="button" class="btn btn-primary fav-save" id="save_favorites">Save changes</button>
-		</div>
-	<?php } ?>
+	<div class="fav-save-bar">
+		<button type="button" class="btn btn-primary fav-save" id="save_favorites">Save changes</button>
+	</div>
 </div>
 <script type='text/javascript'>
 
 $(document).ready(function() {
 	// Make everything draggable.
-	<?php if (isset($favoriteContactEditEnabled)) { ?>
+	<?php if (isset($isUCP)) { ?>
 		var elem = $(".favorite-div");
 		var h = parseInt( elem.parents(".widget-content").outerHeight()) - (parseInt(elem.find(".contact_list").offset().top));
 		elem.find(".contact_list").height(parseInt(h));
@@ -68,45 +48,43 @@ $(document).ready(function() {
 		var h = parseInt($( window ).height()) - (parseInt(elem.find(".contact_list").offset().top) + parseInt(elem.find(".contact_list legend").outerHeight(true)));
 		elem.find(".contact_list").height(parseInt(h));
 	<?php } ?>
-	<?php if (!isset($favoriteContactEditEnabled) || (isset($favoriteContactEditEnabled) && $favoriteContactEditEnabled)) { ?>
-		Sortable.create(included_contacts, {
-			group: 'usr',
-			multiDrag: true,
-			selectedClass: "selected",
-		});
+	Sortable.create(included_contacts, {
+		group: 'usr',
+		multiDrag: true,
+		selectedClass: "selected",
+	});
 
-		Sortable.create(excluded_contacts, {
-			group: 'usr',
-			multiDrag: true,
-			selectedClass: "selected",
-		});
+	Sortable.create(excluded_contacts, {
+		group: 'usr',
+		multiDrag: true,
+		selectedClass: "selected",
+	});
 
-		$(window).resize(function() { set_height(); });
-		function set_height() {
-			var height = 0;
-			$("#tabs>.tab:visible").height('auto').each(function(){
-				height = $(this).height() > height ? $(this).height() : height;
-			}).height(height);
+	$(window).resize(function() { set_height(); });
+	function set_height() {
+		var height = 0;
+		$("#tabs>.tab:visible").height('auto').each(function(){
+			height = $(this).height() > height ? $(this).height() : height;
+		}).height(height);
+	}
+	
+	// Enable 'Move All' buttons
+	$('.toggle').click(function(e) {
+		e.preventDefault();
+		var cmd=$(this).data('cmd');
+		var thistab = $('#users').children();
+		var left = thistab.children('.left');
+		var right = thistab.children('.right');
+		if (cmd == 'allleft') {
+			right.children('span').each(function() { $(this).appendTo(left); });
+		} else if (cmd == 'allright') {
+			left.children('span').each(function() { $(this).appendTo(right); });
+		} else {
+			oldleft = left.children('span');
+			right.children('span').each(function() { $(this).appendTo(left); });
+			oldleft.each(function() { $(this).appendTo(right); });
 		}
-		
-		// Enable 'Move All' buttons
-		$('.toggle').click(function(e) {
-			e.preventDefault();
-			var cmd=$(this).data('cmd');
-			var thistab = $('#users').children();
-			var left = thistab.children('.left');
-			var right = thistab.children('.right');
-			if (cmd == 'allleft') {
-				right.children('span').each(function() { $(this).appendTo(left); });
-			} else if (cmd == 'allright') {
-				left.children('span').each(function() { $(this).appendTo(right); });
-			} else {
-				oldleft = left.children('span');
-				right.children('span').each(function() { $(this).appendTo(left); });
-				oldleft.each(function() { $(this).appendTo(right); });
-			}
-		});
-	<?php } ?>
+	});
 });
 
 </script>
