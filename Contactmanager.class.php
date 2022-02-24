@@ -321,10 +321,10 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			$this->setConfig("strippedUpgrade2",true);
 		}
 
-		// CONTACTMANLOOKUPLENGTH in Advanced Settings of FreePBX
 		$set['module'] = 'contactmanager'; //This will help delete the settings when module is uninstalled
 		$set['category'] = 'Contact Manager Module';
-
+		
+		// CONTACTMANLOOKUPLENGTH in Advanced Settings of FreePBX
 		$set['value'] = 7;
 		$set['defaultval'] =& $set['value'];
 		$set['readonly'] = 0;
@@ -335,7 +335,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$set['description'] = 'How many digits should a number be before a partial match is used when looking up a contact';
 		$set['type'] = CONF_TYPE_INT;
 		$set['options'] = array(1,86400);
+		$this->freepbx->Config->define_conf_setting('CONTACTMANLOOKUPLENGTH',$set,true);
 		
+		// ENABLE_FAVORITE_CONTACTS in Advanced Settings of FreePBX
 		$set['value'] = false;
 		$set['defaultval'] =& $set['value'];
 		$set['options'] = '';
