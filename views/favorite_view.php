@@ -2,9 +2,9 @@
 <?php 
 	function showMiddle() {
 		$ret = "<span class='col-sm-2 middle'>\n";
-		$ret .= "<button class='btn toggle' data-toggle='tooltip' title='All Left' data-cmd='allleft'> <i class='fa fa-arrow-left' ></i></button><br/>";
-		$ret .= "<button class='btn toggle' data-toggle='tooltip' title='Swap' data-cmd='swap'> <i class='fa fa-arrows-h'></i></button><br/>";
-		$ret .= "<button class='btn toggle' data-toggle='tooltip' title='All Right' data-cmd='allright'><i class='fa fa-arrow-right'></i></button><br/>";
+		$ret .= "<button class='btn toggle' data-toggle='tooltip' title='" . _("Move selected items to the left") . "' data-cmd='allleft'> <i class='fa fa-arrow-left' ></i></button><br/>";
+		$ret .= "<button class='btn toggle' data-toggle='tooltip' title='" . _("Swap items") . "' data-cmd='swap'> <i class='fa fa-arrows-h'></i></button><br/>";
+		$ret .= "<button class='btn toggle' data-toggle='tooltip' title='" . _("Move selected items to the right") . "' data-cmd='allright'><i class='fa fa-arrow-right'></i></button><br/>";
 		$ret .= "</span>\n";
 		return $ret;
 	}
@@ -52,12 +52,14 @@ $(document).ready(function() {
 		group: 'usr',
 		multiDrag: true,
 		selectedClass: "selected",
+		avoidImplicitDeselect: true
 	});
 
 	Sortable.create(excluded_contacts, {
 		group: 'usr',
 		multiDrag: true,
 		selectedClass: "selected",
+		avoidImplicitDeselect: true
 	});
 
 	$(window).resize(function() { set_height(); });
@@ -76,9 +78,9 @@ $(document).ready(function() {
 		var left = thistab.children('.left');
 		var right = thistab.children('.right');
 		if (cmd == 'allleft') {
-			right.children('span').each(function() { $(this).appendTo(left); });
+			right.children('span.selected').each(function() { $(this).appendTo(left); });
 		} else if (cmd == 'allright') {
-			left.children('span').each(function() { $(this).appendTo(right); });
+			left.children('span.selected').each(function() { $(this).appendTo(right); });
 		} else {
 			oldleft = left.children('span');
 			right.children('span').each(function() { $(this).appendTo(left); });
