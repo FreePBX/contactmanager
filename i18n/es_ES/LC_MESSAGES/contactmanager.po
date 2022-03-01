@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-24 12:13+0000\n"
+"POT-Creation-Date: 2022-03-01 10:33+0000\n"
 "PO-Revision-Date: 2016-06-08 06:15+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
@@ -143,7 +143,7 @@ msgstr ""
 msgid "Are you sure you wish to delete this contact?"
 msgstr ""
 
-#: Contactmanager.class.php:3540
+#: Contactmanager.class.php:3542
 msgid "Automatically Determine"
 msgstr ""
 
@@ -379,7 +379,7 @@ msgstr "Error al escribir el archivo en el disco"
 msgid "Favorite Contact List"
 msgstr ""
 
-#: Contactmanager.class.php:3932
+#: Contactmanager.class.php:3934
 msgid "Favorite Contact List successfully deleted"
 msgstr ""
 
@@ -641,6 +641,14 @@ msgstr ""
 msgid "Missing a temporary folder"
 msgstr "Falta una carpeta temporal"
 
+#: views/favorite_view.php:5
+msgid "Move selected items to the left"
+msgstr ""
+
+#: views/favorite_view.php:7
+msgid "Move selected items to the right"
+msgstr ""
+
 #: ucp/views/widget.php:11
 msgid "My Contacts"
 msgstr "Mis Contactos"
@@ -806,6 +814,10 @@ msgstr ""
 msgid "Submit"
 msgstr "Enviar"
 
+#: views/favorite_view.php:6
+msgid "Swap items"
+msgstr ""
+
 #: contactmanager.i18n.php:8
 msgid "The Contact Manager module lets you add contacts to groups."
 msgstr ""
@@ -906,11 +918,11 @@ msgstr "No se encontró un gravatar para %s"
 msgid "Unauthorized"
 msgstr "No autorizado"
 
-#: Contactmanager.class.php:3541
+#: Contactmanager.class.php:3543
 msgid "Unknown"
 msgstr ""
 
-#: Contactmanager.class.php:3409
+#: Contactmanager.class.php:3411
 msgid "Unknown data type."
 msgstr "Tipo de datos desconocido."
 

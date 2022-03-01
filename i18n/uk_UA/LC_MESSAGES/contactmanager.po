@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-24 12:13+0000\n"
+"POT-Creation-Date: 2022-03-01 10:33+0000\n"
 "PO-Revision-Date: 2016-12-12 18:54+0200\n"
 "Last-Translator: Maxim <maxim@ua.fm>\n"
 "Language-Team: Ukrainian <http://weblate.freepbx.org/projects/freepbx/"
@@ -144,7 +144,7 @@ msgstr ""
 msgid "Are you sure you wish to delete this contact?"
 msgstr ""
 
-#: Contactmanager.class.php:3540
+#: Contactmanager.class.php:3542
 msgid "Automatically Determine"
 msgstr ""
 
@@ -373,7 +373,7 @@ msgstr "Не вдалося записати файл на диск"
 msgid "Favorite Contact List"
 msgstr ""
 
-#: Contactmanager.class.php:3932
+#: Contactmanager.class.php:3934
 msgid "Favorite Contact List successfully deleted"
 msgstr ""
 
@@ -633,6 +633,14 @@ msgstr ""
 msgid "Missing a temporary folder"
 msgstr "Відсутня тимчасова папка"
 
+#: views/favorite_view.php:5
+msgid "Move selected items to the left"
+msgstr ""
+
+#: views/favorite_view.php:7
+msgid "Move selected items to the right"
+msgstr ""
+
 #: ucp/views/widget.php:11
 msgid "My Contacts"
 msgstr "Мої контакти"
@@ -798,6 +806,10 @@ msgstr ""
 msgid "Submit"
 msgstr "Застосувати"
 
+#: views/favorite_view.php:6
+msgid "Swap items"
+msgstr ""
+
 #: contactmanager.i18n.php:8
 msgid "The Contact Manager module lets you add contacts to groups."
 msgstr ""
@@ -894,11 +906,11 @@ msgstr "Неможливо знайти граватар для %s"
 msgid "Unauthorized"
 msgstr "Недозволено"
 
-#: Contactmanager.class.php:3541
+#: Contactmanager.class.php:3543
 msgid "Unknown"
 msgstr ""
 
-#: Contactmanager.class.php:3409
+#: Contactmanager.class.php:3411
 msgid "Unknown data type."
 msgstr "Невідомий тип даних."
 
