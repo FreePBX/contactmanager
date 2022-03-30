@@ -12,7 +12,11 @@ var ContactmanagerC = UCPMC.extend({
 		$(".grid-stack-item[data-id='"+widget_id+"'] .contacts-grid").bootstrapTable('resetView',{height: $(".grid-stack-item[data-id='"+widget_id+"'] .widget-content").height()});
 		if ($(".favorite-div .fav-tab").length) {
 			var elem = $(".favorite-div");
-			var h = parseInt( elem.parents(".widget-content").outerHeight()) - (parseInt(elem.find(".contact_list").offset().top));
+			var padding1 = parseInt(elem.find(".fav-tab").outerHeight(true) - elem.find(".fav-tab").height())/2;
+			var padding2 = parseInt(elem.find(".fav-tab #users").outerHeight(true) - elem.find(".fav-tab #users").height())/2;
+			var buttonHeight = parseInt(elem.find(".fav-save-bar").outerHeight(true));
+			var legendHeigh = parseInt(elem.find(".fav-tab legend").outerHeight(true));
+			var h = parseInt( elem.parents(".widget-content").height()) + parseInt(padding1+padding2+buttonHeight+legendHeigh);
 			elem.find(".contact_list").height(parseInt(h));
 		}
 	},
@@ -158,7 +162,10 @@ var ContactmanagerC = UCPMC.extend({
 		$(".show-favorites").click(function() {
 			$.getJSON(UCP.ajaxUrl+'?module=contactmanager&command=favorite_contacts', function(data) {
 				if (data.status === true) {
+					var elem = $(".favorite-div");
+					var h = parseInt(elem.parents(".widget-content").height());
 					$(".favorite-div").html(data.body);
+					$("#widget_content_height").val(h);
 					$("#fav_contact_count").text(data.favoriteContactsCount);
 					$(".grid-stack-item .group").removeClass("active");
 					$(".show-favorites").addClass("active");

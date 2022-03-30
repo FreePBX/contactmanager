@@ -9,6 +9,9 @@
 		return $ret;
 	}
 ?>
+<?php if (isset($isUCP)) { ?>
+	<input type="hidden" id="widget_content_height" value="0"/>
+<?php } ?>
 <div class="tab-content display fav-tab">
     <div id='users' class='tab-pane active'>
         <div class="row">
@@ -41,7 +44,11 @@ $(document).ready(function() {
 	// Make everything draggable.
 	<?php if (isset($isUCP)) { ?>
 		var elem = $(".favorite-div");
-		var h = parseInt( elem.parents(".widget-content").outerHeight()) - (parseInt(elem.find(".contact_list").offset().top));
+		var padding1 = parseInt(elem.find(".fav-tab").outerHeight(true) - elem.find(".fav-tab").height())/2;
+		var padding2 = parseInt(elem.find(".fav-tab #users").outerHeight(true) - elem.find(".fav-tab #users").height())/2;
+		var buttonHeight = parseInt(elem.find(".fav-save-bar").outerHeight(true));
+		var legendHeigh = parseInt(elem.find(".fav-tab legend").outerHeight(true));
+		h = parseInt($("#widget_content_height").val()) + parseInt(padding1+padding2+buttonHeight+legendHeigh);
 		elem.find(".contact_list").height(parseInt(h));
 	<?php } else { ?>
 		var elem = $(".fav-tab");
