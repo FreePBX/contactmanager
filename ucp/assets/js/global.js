@@ -11,13 +11,31 @@ var ContactmanagerC = UCPMC.extend({
 	resize: function(widget_id) {
 		$(".grid-stack-item[data-id='"+widget_id+"'] .contacts-grid").bootstrapTable('resetView',{height: $(".grid-stack-item[data-id='"+widget_id+"'] .widget-content").height()});
 		if ($(".favorite-div .fav-tab").length) {
-			var elem = $(".favorite-div");
-			var padding1 = parseInt(elem.find(".fav-tab").outerHeight(true) - elem.find(".fav-tab").height())/2;
-			var padding2 = parseInt(elem.find(".fav-tab #users").outerHeight(true) - elem.find(".fav-tab #users").height())/2;
-			var buttonHeight = parseInt(elem.find(".fav-save-bar").outerHeight(true));
-			var legendHeigh = parseInt(elem.find(".fav-tab legend").outerHeight(true));
-			var h = parseInt( elem.parents(".widget-content").height()) + parseInt(padding1+padding2+buttonHeight+legendHeigh);
-			elem.find(".contact_list").height(parseInt(h));
+			setTimeout(function() {
+				var elem = $(".favorite-div");
+				elem.parents(".widget-content .row:first").height(elem.parents(".widget-content").prop("scrollHeight"));
+				
+				var padding1 = parseInt(elem.outerHeight(true) - elem.height());
+				var padding2 = parseInt(elem.find(".fav-tab").outerHeight(true) - elem.find(".fav-tab").height());
+				var padding3 = parseInt(elem.find(".fav-tab #users").outerHeight(true) - elem.find(".fav-tab #users").height());
+				var buttonHeight = parseInt(elem.find(".fav-save-bar").outerHeight(true));
+				var rowHeight = parseInt(elem.parents(".widget-content .row:first").height());
+				var h = rowHeight - (padding1+padding2+padding3+buttonHeight);
+	
+				var h1 = 0;
+				elem.find("#included_contacts > span").each(function(){
+					h1 += $(this).outerHeight(true);
+				});
+				var h2 = 0;
+				elem.find("#excluded_contacts > span").each(function(){
+					h2 += $(this).outerHeight(true);
+				});
+				var legendHeigh = parseInt(elem.find(".fav-tab legend").outerHeight(true));
+				var contactListHeight = (parseInt(h1) > parseInt(h2) ? parseInt(h1) : parseInt(h2)) + legendHeigh;
+	
+				h = h > contactListHeight ? contactListHeight : h;
+				elem.find(".contact_list").height(parseInt(h));
+			},250);
 		}
 	},
 	groupClick: function(el, widget_id) {
@@ -163,7 +181,8 @@ var ContactmanagerC = UCPMC.extend({
 			$.getJSON(UCP.ajaxUrl+'?module=contactmanager&command=favorite_contacts', function(data) {
 				if (data.status === true) {
 					var elem = $(".favorite-div");
-					var h = parseInt(elem.parents(".widget-content").height());
+					elem.parents(".widget-content .row:first").height(elem.parents(".widget-content").prop("scrollHeight"));
+					var h = parseInt(elem.parents(".widget-content .row:first").height());
 					$(".favorite-div").html(data.body);
 					$("#widget_content_height").val(h);
 					$("#fav_contact_count").text(data.favoriteContactsCount);

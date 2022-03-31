@@ -42,13 +42,27 @@
 
 $(document).ready(function() {
 	// Make everything draggable.
-	<?php if (isset($isUCP)) { ?>
+	<?php if (isset($isUCP)) { ?>		
 		var elem = $(".favorite-div");
-		var padding1 = parseInt(elem.find(".fav-tab").outerHeight(true) - elem.find(".fav-tab").height())/2;
-		var padding2 = parseInt(elem.find(".fav-tab #users").outerHeight(true) - elem.find(".fav-tab #users").height())/2;
+		var padding1 = parseInt(elem.outerHeight(true) - elem.height());
+		var padding2 = parseInt(elem.find(".fav-tab").outerHeight(true) - elem.find(".fav-tab").height());
+		var padding3 = parseInt(elem.find(".fav-tab #users").outerHeight(true) - elem.find(".fav-tab #users").height());
 		var buttonHeight = parseInt(elem.find(".fav-save-bar").outerHeight(true));
+		var rowHeight = parseInt($("#widget_content_height").val());
+		var h = rowHeight - (padding1+padding2+padding3+buttonHeight);
+
+		var h1 = 0;
+		elem.find("#included_contacts > span").each(function(){
+			h1 += $(this).outerHeight(true);
+		});
+		var h2 = 0;
+		elem.find("#excluded_contacts > span").each(function(){
+			h2 += $(this).outerHeight(true);
+		});
 		var legendHeigh = parseInt(elem.find(".fav-tab legend").outerHeight(true));
-		h = parseInt($("#widget_content_height").val()) + parseInt(padding1+padding2+buttonHeight+legendHeigh);
+		var contactListHeight = (parseInt(h1) > parseInt(h2) ? parseInt(h1) : parseInt(h2)) + legendHeigh;
+
+		h = h > contactListHeight ? contactListHeight : h;
 		elem.find(".contact_list").height(parseInt(h));
 	<?php } else { ?>
 		var elem = $(".fav-tab");
