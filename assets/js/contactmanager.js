@@ -46,6 +46,7 @@ $(function() {
 			});
 		}
 	});
+
 	$("select.number.locale[data-locale='']").each(function() {
 		$(this).val(cmlocale);
 	});
@@ -450,3 +451,9 @@ function userActions(value, row, index) {
 	var html = '<a href="?display=contactmanager&action=showentry&group='+row.groupid+'&entry='+row.id+'"><i class="fa fa-edit"></i></a>';
 	return html;
 }
+
+
+$(document).on('click', 'a.delcontact', function() {
+    return confirm("Are you sure you wish to delete this contact?");
+});
+
