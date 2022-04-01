@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-30 07:41+0000\n"
+"POT-Creation-Date: 2022-04-01 05:50+0000\n"
 "PO-Revision-Date: 2015-05-02 20:56+0200\n"
 "Last-Translator: Renato <fiuza@tecnologia.inf.br>\n"
 "Language-Team: Portuguese (Brazil) <http://weblate.freepbx.org/projects/"
@@ -55,7 +55,7 @@ msgid "Actions"
 msgstr "Ações"
 
 #: ucp/views/contact.php:247 ucp/views/widget.php:27 views/grid.php:52
-#: views/group.php:166 ucp/assets/js/global.js:205
+#: views/group.php:166 ucp/assets/js/global.js:224
 msgid "Add Contact"
 msgstr "Adicionar Contato"
 
@@ -67,8 +67,7 @@ msgstr "Adicionar Email"
 msgid "Add Entry"
 msgstr "Adicionar Entrada"
 
-#: ucp/views/widget.php:17 views/group.php:11 ucp/assets/js/global.js:128
-#: ucp/assets/js/global.js:157
+#: ucp/views/widget.php:17 views/group.php:11 ucp/assets/js/global.js:175
 msgid "Add Group"
 msgstr "Adicionar Grupo"
 
@@ -130,17 +129,13 @@ msgstr "Uma entrada deve ter um usuário"
 msgid "An entry must have numbers."
 msgstr "Uma entrada deve ter números."
 
-#: ucp/assets/js/global.js:182
+#: ucp/assets/js/global.js:201
 msgid "Are you sure you want to delete this group and all of it's contacts?"
 msgstr "Tem certeza de que deseja excluir este grupo e todos os seus contatos?"
 
 #: assets/js/contactmanager.js:31
 #, perl-format
 msgid "Are you sure you wish to delete these %s?"
-msgstr ""
-
-#: ucp/assets/js/global.js:81
-msgid "Are you sure you wish to delete this contact?"
 msgstr ""
 
 #: Contactmanager.class.php:3542
@@ -152,7 +147,7 @@ msgstr ""
 msgid "Browse"
 msgstr "Visualizar"
 
-#: ucp/assets/js/global.js:238
+#: ucp/assets/js/global.js:257
 msgid "Call To"
 msgstr "Ligar Para"
 
@@ -169,8 +164,7 @@ msgid "Cell"
 msgstr "Celular"
 
 #: ucp/Contactmanager.class.php:389 ucp/Contactmanager.class.php:396
-#: ucp/assets/js/global.js:106 ucp/assets/js/global.js:130
-#: ucp/assets/js/global.js:157 ucp/assets/js/global.js:207
+#: ucp/assets/js/global.js:175 ucp/assets/js/global.js:226
 msgid "Close"
 msgstr ""
 
@@ -309,10 +303,6 @@ msgstr "Endereço de e-mail.  Somente contatos externos."
 msgid "Edit"
 msgstr ""
 
-#: ucp/assets/js/global.js:104
-msgid "Edit Contact"
-msgstr "Editar Contato"
-
 #: views/entry.php:29
 msgid "Edit Entry"
 msgstr "Editar Entrada"
@@ -335,13 +325,8 @@ msgstr "Email"
 msgid "Enable"
 msgstr ""
 
-#: ucp/assets/js/global.js:91
-msgid "Error deleting user"
-msgstr ""
-
-#: ucp/assets/js/global.js:112 ucp/assets/js/global.js:116
-#: ucp/assets/js/global.js:157 ucp/assets/js/global.js:213
-#: ucp/assets/js/global.js:218
+#: ucp/assets/js/global.js:175 ucp/assets/js/global.js:232
+#: ucp/assets/js/global.js:237
 msgid "Error getting form"
 msgstr ""
 
@@ -366,7 +351,7 @@ msgstr "Externo"
 msgid "FAX"
 msgstr "FAX"
 
-#: ucp/assets/js/global.js:240
+#: ucp/assets/js/global.js:259
 msgid "Facetime"
 msgstr "Facetime"
 
@@ -409,7 +394,7 @@ msgstr "Primeiro Nome"
 msgid "First Name (overrides First Name from User Manager)"
 msgstr "Primeiro Nome (substitui o primeiro nome do Gerenciador de Usuários)"
 
-#: ucp/assets/js/global.js:305
+#: ucp/assets/js/global.js:324
 msgid "Function call does not exist!"
 msgstr "Chamada de função não existe!"
 
@@ -585,7 +570,7 @@ msgstr ""
 msgid "Inherit"
 msgstr ""
 
-#: ucp/assets/js/global.js:295
+#: ucp/assets/js/global.js:314
 msgid "Initiate"
 msgstr ""
 
@@ -624,7 +609,7 @@ msgstr ""
 msgid "List name can not be blank"
 msgstr ""
 
-#: ucp/assets/js/global.js:567
+#: ucp/assets/js/global.js:586
 msgid "Loading..."
 msgstr "Carregando..."
 
@@ -695,7 +680,7 @@ msgstr "Não há sites para adicionar"
 msgid "No XMPPs to add"
 msgstr "Não há XMPPs para adicionar"
 
-#: ucp/assets/js/global.js:562
+#: ucp/assets/js/global.js:581
 msgid "No email defined"
 msgstr "Nenhum e-mail definido"
 
@@ -774,12 +759,11 @@ msgstr "Reiniciar"
 msgid "SMS"
 msgstr "SMS"
 
-#: ucp/assets/js/global.js:106 ucp/assets/js/global.js:130
-#: ucp/assets/js/global.js:207
+#: ucp/assets/js/global.js:226
 msgid "Save changes"
 msgstr ""
 
-#: ucp/assets/js/global.js:293
+#: ucp/assets/js/global.js:312
 msgid "Select an Action"
 msgstr "Selecione uma Ação"
 
@@ -843,19 +827,19 @@ msgstr "O arquivo carregado excede a diretiva upload_max_filesize no php.ini"
 msgid "The uploaded file was only partially uploaded"
 msgstr "O arquivo enviado foi carregado parcialmente"
 
-#: ucp/assets/js/global.js:287
+#: ucp/assets/js/global.js:306
 msgid "There are no actions for this type"
 msgstr "Não existem ações para este tipo"
 
-#: ucp/assets/js/global.js:431
+#: ucp/assets/js/global.js:450
 msgid "There was an error"
 msgstr ""
 
-#: ucp/assets/js/global.js:175
+#: ucp/assets/js/global.js:194
 msgid "There was an error loading favorite contacts"
 msgstr ""
 
-#: ucp/assets/js/global.js:191
+#: ucp/assets/js/global.js:210
 msgid "There was an error removing this group"
 msgstr ""
 
@@ -871,11 +855,11 @@ msgstr ""
 msgid "This group name is reserved. Please choose a different name."
 msgstr ""
 
-#: ucp/assets/js/global.js:342
+#: ucp/assets/js/global.js:361
 msgid "This speed dial id conflicts with another contact"
 msgstr ""
 
-#: ucp/assets/js/global.js:330
+#: ucp/assets/js/global.js:349
 msgid "This speed dial id conflicts with another speed dial on this page"
 msgstr ""
 
@@ -1000,6 +984,9 @@ msgstr "O endereço XMPP não pode ficar em branco."
 #: views/ucp_config.php:12
 msgid "Yes"
 msgstr ""
+
+#~ msgid "Edit Contact"
+#~ msgstr "Editar Contato"
 
 #~ msgid "An entry must have a user."
 #~ msgstr "Uma entrada deve ter um usuário."
