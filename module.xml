@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>16.0.18.3</version>
+	<version>16.0.18.4</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*16.0.18.4* FREEI-616 Contact manager does not ask for confirmation before deleting 
 		*16.0.18.3* SCD-227 
 		*16.0.18.2* SCD-227 
 		*16.0.18.1* FREEPBX-23229 and FREEI-4572 

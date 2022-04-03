@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:50+0000\n"
+"POT-Creation-Date: 2022-04-03 16:20+0000\n"
 "PO-Revision-Date: 2017-05-17 02:01+0200\n"
 "Last-Translator: Evgeniy <yen81@mail.ru>\n"
 "Language-Team: Russian <http://weblate.freepbx.org/projects/freepbx/"
@@ -122,7 +122,7 @@ msgid ""
 "Allow the user to modify and change speeddials for contacts they can edit"
 msgstr ""
 
-#: assets/js/contactmanager.js:91
+#: assets/js/contactmanager.js:92
 msgid "An entry must have a user"
 msgstr "Запись должна содержать пользователя"
 
@@ -262,7 +262,7 @@ msgstr "Удалить изображение"
 msgid "Deleting..."
 msgstr "Удаление..."
 
-#: views/entry.php:258 assets/js/contactmanager.js:200
+#: views/entry.php:258 assets/js/contactmanager.js:201
 msgid "Dialing Country"
 msgstr ""
 
@@ -287,7 +287,7 @@ msgstr ""
 msgid "Drop a new image here"
 msgstr "Перетащите изображение сюда"
 
-#: assets/js/contactmanager.js:134
+#: assets/js/contactmanager.js:135
 msgid "E-Mail address cannot be blank."
 msgstr ""
 
@@ -318,7 +318,7 @@ msgstr ""
 
 #: ucp/views/contact.php:80 ucp/views/contact.php:135
 #: ucp/views/contactEdit.php:79 ucp/views/contactEdit.php:114
-#: views/entry.php:274 assets/js/contactmanager.js:215
+#: views/entry.php:274 assets/js/contactmanager.js:216
 msgid "Enable"
 msgstr ""
 
@@ -331,7 +331,7 @@ msgstr ""
 msgid "Exclude"
 msgstr ""
 
-#: views/entry.php:247 assets/js/contactmanager.js:190
+#: views/entry.php:247 assets/js/contactmanager.js:191
 msgid "Ext."
 msgstr ""
 
@@ -344,7 +344,7 @@ msgstr ""
 msgid "External"
 msgstr ""
 
-#: assets/js/contactmanager.js:223
+#: assets/js/contactmanager.js:224
 msgid "FAX"
 msgstr ""
 
@@ -697,7 +697,7 @@ msgstr ""
 msgid "Number"
 msgstr ""
 
-#: assets/js/contactmanager.js:102
+#: assets/js/contactmanager.js:103
 msgid "Number cannot be blank."
 msgstr ""
 
@@ -751,7 +751,7 @@ msgstr "Сброс"
 
 #: ucp/views/contact.php:86 ucp/views/contact.php:141
 #: ucp/views/contactEdit.php:84 ucp/views/contactEdit.php:119
-#: assets/js/contactmanager.js:221
+#: assets/js/contactmanager.js:222
 msgid "SMS"
 msgstr ""
 
@@ -771,7 +771,7 @@ msgstr ""
 #: Contactmanager.class.php:3302 ucp/views/contact.php:75
 #: ucp/views/contact.php:130 ucp/views/contactEdit.php:74
 #: ucp/views/contactEdit.php:109 views/entry.php:269
-#: assets/js/contactmanager.js:210
+#: assets/js/contactmanager.js:211
 msgid "Speed Dial"
 msgstr ""
 
@@ -864,7 +864,7 @@ msgstr ""
 msgid "Title (overrides Title from User Manager)"
 msgstr ""
 
-#: views/entry.php:248 views/group.php:40 assets/js/contactmanager.js:191
+#: views/entry.php:248 views/group.php:40 assets/js/contactmanager.js:192
 msgid "Type"
 msgstr ""
 
@@ -904,7 +904,7 @@ msgstr ""
 msgid "Unsupported file format"
 msgstr ""
 
-#: assets/js/contactmanager.js:332
+#: assets/js/contactmanager.js:333
 msgid "Unsupported file type"
 msgstr ""
 
@@ -946,7 +946,7 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: assets/js/contactmanager.js:145
+#: assets/js/contactmanager.js:146
 msgid "Website cannot be blank."
 msgstr ""
 
@@ -966,7 +966,7 @@ msgstr ""
 msgid "XMPP"
 msgstr ""
 
-#: assets/js/contactmanager.js:123
+#: assets/js/contactmanager.js:124
 msgid "XMPP address cannot be blank."
 msgstr ""
 
