@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:47+0000\n"
+"POT-Creation-Date: 2022-04-03 16:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,7 +134,7 @@ msgid ""
 "Allow the user to modify and change speeddials for contacts they can edit"
 msgstr ""
 
-#: assets/js/contactmanager.js:91
+#: assets/js/contactmanager.js:92
 msgid "An entry must have a user"
 msgstr ""
 
@@ -304,7 +304,7 @@ msgid "Deleting..."
 msgstr ""
 
 #: views/entry.php:258
-#: assets/js/contactmanager.js:200
+#: assets/js/contactmanager.js:201
 msgid "Dialing Country"
 msgstr ""
 
@@ -336,7 +336,7 @@ msgstr ""
 msgid "Drop a new image here"
 msgstr ""
 
-#: assets/js/contactmanager.js:134
+#: assets/js/contactmanager.js:135
 msgid "E-Mail address cannot be blank."
 msgstr ""
 
@@ -374,7 +374,7 @@ msgstr ""
 #: ucp/views/contactEdit.php:79
 #: ucp/views/contactEdit.php:114
 #: views/entry.php:274
-#: assets/js/contactmanager.js:215
+#: assets/js/contactmanager.js:216
 msgid "Enable"
 msgstr ""
 
@@ -393,7 +393,7 @@ msgid "Exclude"
 msgstr ""
 
 #: views/entry.php:247
-#: assets/js/contactmanager.js:190
+#: assets/js/contactmanager.js:191
 msgid "Ext."
 msgstr ""
 
@@ -409,7 +409,7 @@ msgstr ""
 msgid "External"
 msgstr ""
 
-#: assets/js/contactmanager.js:223
+#: assets/js/contactmanager.js:224
 msgid "FAX"
 msgstr ""
 
@@ -802,7 +802,7 @@ msgstr ""
 msgid "Number"
 msgstr ""
 
-#: assets/js/contactmanager.js:102
+#: assets/js/contactmanager.js:103
 msgid "Number cannot be blank."
 msgstr ""
 
@@ -869,7 +869,7 @@ msgstr ""
 #: ucp/views/contact.php:141
 #: ucp/views/contactEdit.php:84
 #: ucp/views/contactEdit.php:119
-#: assets/js/contactmanager.js:221
+#: assets/js/contactmanager.js:222
 msgid "SMS"
 msgstr ""
 
@@ -893,7 +893,7 @@ msgstr ""
 #: ucp/views/contactEdit.php:74
 #: ucp/views/contactEdit.php:109
 #: views/entry.php:269
-#: assets/js/contactmanager.js:210
+#: assets/js/contactmanager.js:211
 msgid "Speed Dial"
 msgstr ""
 
@@ -995,7 +995,7 @@ msgstr ""
 
 #: views/entry.php:248
 #: views/group.php:40
-#: assets/js/contactmanager.js:191
+#: assets/js/contactmanager.js:192
 msgid "Type"
 msgstr ""
 
@@ -1041,7 +1041,7 @@ msgstr ""
 msgid "Unsupported file format"
 msgstr ""
 
-#: assets/js/contactmanager.js:332
+#: assets/js/contactmanager.js:333
 msgid "Unsupported file type"
 msgstr ""
 
@@ -1089,7 +1089,7 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: assets/js/contactmanager.js:145
+#: assets/js/contactmanager.js:146
 msgid "Website cannot be blank."
 msgstr ""
 
@@ -1125,7 +1125,7 @@ msgstr ""
 msgid "XMPP"
 msgstr ""
 
-#: assets/js/contactmanager.js:123
+#: assets/js/contactmanager.js:124
 msgid "XMPP address cannot be blank."
 msgstr ""
 

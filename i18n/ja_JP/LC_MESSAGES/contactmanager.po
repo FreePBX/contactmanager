@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:47+0000\n"
+"POT-Creation-Date: 2022-04-03 16:20+0000\n"
 "PO-Revision-Date: 2016-09-02 15:22+0200\n"
 "Last-Translator: Kenichi <k.kitani@qloog.com>\n"
 "Language-Team: Japanese <http://weblate.freepbx.org/projects/freepbx/"
@@ -122,7 +122,7 @@ msgid ""
 "Allow the user to modify and change speeddials for contacts they can edit"
 msgstr ""
 
-#: assets/js/contactmanager.js:91
+#: assets/js/contactmanager.js:92
 msgid "An entry must have a user"
 msgstr "エントリにユーザを指定する必要があります"
 
@@ -260,7 +260,7 @@ msgstr "画像を削除"
 msgid "Deleting..."
 msgstr "削除中..."
 
-#: views/entry.php:258 assets/js/contactmanager.js:200
+#: views/entry.php:258 assets/js/contactmanager.js:201
 msgid "Dialing Country"
 msgstr ""
 
@@ -285,7 +285,7 @@ msgstr "表示名（ユーザー管理の表示名を上書きします）"
 msgid "Drop a new image here"
 msgstr "新しい画像をここにドロップしてください"
 
-#: assets/js/contactmanager.js:134
+#: assets/js/contactmanager.js:135
 msgid "E-Mail address cannot be blank."
 msgstr "メールアドレスは空にできません。"
 
@@ -316,7 +316,7 @@ msgstr "メール"
 
 #: ucp/views/contact.php:80 ucp/views/contact.php:135
 #: ucp/views/contactEdit.php:79 ucp/views/contactEdit.php:114
-#: views/entry.php:274 assets/js/contactmanager.js:215
+#: views/entry.php:274 assets/js/contactmanager.js:216
 msgid "Enable"
 msgstr ""
 
@@ -333,7 +333,7 @@ msgstr ""
 msgid "Exclude"
 msgstr ""
 
-#: views/entry.php:247 assets/js/contactmanager.js:190
+#: views/entry.php:247 assets/js/contactmanager.js:191
 msgid "Ext."
 msgstr "内線番号"
 
@@ -346,7 +346,7 @@ msgstr "内線番号。※外部の連絡先のみ"
 msgid "External"
 msgstr "外部"
 
-#: assets/js/contactmanager.js:223
+#: assets/js/contactmanager.js:224
 msgid "FAX"
 msgstr "FAX"
 
@@ -698,7 +698,7 @@ msgstr "非表示"
 msgid "Number"
 msgstr ""
 
-#: assets/js/contactmanager.js:102
+#: assets/js/contactmanager.js:103
 msgid "Number cannot be blank."
 msgstr "番号を空にできません。"
 
@@ -752,7 +752,7 @@ msgstr "リセット"
 
 #: ucp/views/contact.php:86 ucp/views/contact.php:141
 #: ucp/views/contactEdit.php:84 ucp/views/contactEdit.php:119
-#: assets/js/contactmanager.js:221
+#: assets/js/contactmanager.js:222
 msgid "SMS"
 msgstr "SMS"
 
@@ -772,7 +772,7 @@ msgstr ""
 #: Contactmanager.class.php:3301 ucp/views/contact.php:75
 #: ucp/views/contact.php:130 ucp/views/contactEdit.php:74
 #: ucp/views/contactEdit.php:109 views/entry.php:269
-#: assets/js/contactmanager.js:210
+#: assets/js/contactmanager.js:211
 msgid "Speed Dial"
 msgstr ""
 
@@ -865,7 +865,7 @@ msgstr "肩書"
 msgid "Title (overrides Title from User Manager)"
 msgstr "役職 (ユーザ管理で設定した役職を上書きします)"
 
-#: views/entry.php:248 views/group.php:40 assets/js/contactmanager.js:191
+#: views/entry.php:248 views/group.php:40 assets/js/contactmanager.js:192
 msgid "Type"
 msgstr "種類"
 
@@ -905,7 +905,7 @@ msgstr "不明なデータタイプ。"
 msgid "Unsupported file format"
 msgstr ""
 
-#: assets/js/contactmanager.js:332
+#: assets/js/contactmanager.js:333
 msgid "Unsupported file type"
 msgstr "サポートされていないファイル形式"
 
@@ -947,7 +947,7 @@ msgstr ""
 msgid "Website"
 msgstr "ホームページ"
 
-#: assets/js/contactmanager.js:145
+#: assets/js/contactmanager.js:146
 msgid "Website cannot be blank."
 msgstr "ホームページは必須項目です。"
 
@@ -979,7 +979,7 @@ msgstr "勤務先"
 msgid "XMPP"
 msgstr "XMPP"
 
-#: assets/js/contactmanager.js:123
+#: assets/js/contactmanager.js:124
 msgid "XMPP address cannot be blank."
 msgstr "XMPPアドレスは必須項目です。"
 

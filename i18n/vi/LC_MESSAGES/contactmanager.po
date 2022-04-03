@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-01 05:47+0000\n"
+"POT-Creation-Date: 2022-04-03 16:20+0000\n"
 "PO-Revision-Date: 2017-08-08 16:34+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese <http://weblate.freepbx.org/projects/freepbx/"
@@ -121,7 +121,7 @@ msgid ""
 "Allow the user to modify and change speeddials for contacts they can edit"
 msgstr ""
 
-#: assets/js/contactmanager.js:91
+#: assets/js/contactmanager.js:92
 msgid "An entry must have a user"
 msgstr "Một mục nhập phải có một người dùng"
 
@@ -266,7 +266,7 @@ msgstr "Xóa hình ảnh"
 msgid "Deleting..."
 msgstr "Đang xóa..."
 
-#: views/entry.php:258 assets/js/contactmanager.js:200
+#: views/entry.php:258 assets/js/contactmanager.js:201
 msgid "Dialing Country"
 msgstr ""
 
@@ -291,7 +291,7 @@ msgstr "Tên hiển thị ( ghi đè tên hiển thị từ trình quản lý ng
 msgid "Drop a new image here"
 msgstr "Thả một hình ảnh mới ở đây"
 
-#: assets/js/contactmanager.js:134
+#: assets/js/contactmanager.js:135
 msgid "E-Mail address cannot be blank."
 msgstr "Không thể để trống địa chỉ Email."
 
@@ -322,7 +322,7 @@ msgstr "Thư điện tử"
 
 #: ucp/views/contact.php:80 ucp/views/contact.php:135
 #: ucp/views/contactEdit.php:79 ucp/views/contactEdit.php:114
-#: views/entry.php:274 assets/js/contactmanager.js:215
+#: views/entry.php:274 assets/js/contactmanager.js:216
 msgid "Enable"
 msgstr "Kích hoạt"
 
@@ -339,7 +339,7 @@ msgstr ""
 msgid "Exclude"
 msgstr ""
 
-#: views/entry.php:247 assets/js/contactmanager.js:190
+#: views/entry.php:247 assets/js/contactmanager.js:191
 msgid "Ext."
 msgstr "Máy nhánh."
 
@@ -352,7 +352,7 @@ msgstr "Máy nhánh. Chỉ các liên lạc bên ngoài."
 msgid "External"
 msgstr "Bên ngoài"
 
-#: assets/js/contactmanager.js:223
+#: assets/js/contactmanager.js:224
 msgid "FAX"
 msgstr "máy FAX"
 
@@ -707,7 +707,7 @@ msgstr "Không được cho phép"
 msgid "Number"
 msgstr "Số điện thoại"
 
-#: assets/js/contactmanager.js:102
+#: assets/js/contactmanager.js:103
 msgid "Number cannot be blank."
 msgstr "Số không được để trống."
 
@@ -761,7 +761,7 @@ msgstr "Cài đặt lại"
 
 #: ucp/views/contact.php:86 ucp/views/contact.php:141
 #: ucp/views/contactEdit.php:84 ucp/views/contactEdit.php:119
-#: assets/js/contactmanager.js:221
+#: assets/js/contactmanager.js:222
 msgid "SMS"
 msgstr "SMS"
 
@@ -781,7 +781,7 @@ msgstr "Hiển thị các nhóm trình quản lý liên lạc"
 #: Contactmanager.class.php:3301 ucp/views/contact.php:75
 #: ucp/views/contact.php:130 ucp/views/contactEdit.php:74
 #: ucp/views/contactEdit.php:109 views/entry.php:269
-#: assets/js/contactmanager.js:210
+#: assets/js/contactmanager.js:211
 msgid "Speed Dial"
 msgstr "Quay số nhanh"
 
@@ -878,7 +878,7 @@ msgstr "Tiêu đề"
 msgid "Title (overrides Title from User Manager)"
 msgstr "Tiêu đề ( ghi đè Tiêu đề từ trình quản lý người dùng)"
 
-#: views/entry.php:248 views/group.php:40 assets/js/contactmanager.js:191
+#: views/entry.php:248 views/group.php:40 assets/js/contactmanager.js:192
 msgid "Type"
 msgstr "Kiểu"
 
@@ -920,7 +920,7 @@ msgstr "Kiểu dữ liệu không xác định."
 msgid "Unsupported file format"
 msgstr "Định dạng tệp không được hỗ trợ"
 
-#: assets/js/contactmanager.js:332
+#: assets/js/contactmanager.js:333
 msgid "Unsupported file type"
 msgstr "Kiểu tệp không được hỗ trợ"
 
@@ -964,7 +964,7 @@ msgstr "Các nhóm trình quản lý liên lạc có thể xem được"
 msgid "Website"
 msgstr "Trang Web"
 
-#: assets/js/contactmanager.js:145
+#: assets/js/contactmanager.js:146
 msgid "Website cannot be blank."
 msgstr "Trang Web này không thể để trống."
 
@@ -996,7 +996,7 @@ msgstr "Làm việc"
 msgid "XMPP"
 msgstr "XMPP"
 
-#: assets/js/contactmanager.js:123
+#: assets/js/contactmanager.js:124
 msgid "XMPP address cannot be blank."
 msgstr "Địa chỉ XMPP không thể để trống."
 
