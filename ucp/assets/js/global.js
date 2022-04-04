@@ -88,6 +88,7 @@ var ContactmanagerC = UCPMC.extend({
 										}
 									});
 								});
+								$("#deletecontact").prop("disabled",false);
 							});
 							$("#editcontact").click(function() {
 								$.getJSON(UCP.ajaxUrl, {

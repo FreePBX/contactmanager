@@ -452,8 +452,10 @@ function userActions(value, row, index) {
 	return html;
 }
 
-
 $(document).on('click', 'a.delcontact', function() {
     return confirm("Are you sure you wish to delete this contact?");
 });
 
+$(document).on('click', 'a.delgroup', function() {
+    return confirm("Are you sure you wish to delete this group and all of it's contacts?");
+});
