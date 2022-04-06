@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.9.4</version>
+	<version>15.0.9.5</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*15.0.9.5* Packaging of ver 15.0.9.5
 		*15.0.9.4* FREEI-616 Contact manager does not ask for confirmation before deleting 
 		*15.0.9.3* SCD-227 fixed favorite contacts resize issue in contacts widget in UCP 
 		*15.0.9.2* SCD-227 
