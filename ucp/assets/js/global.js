@@ -110,6 +110,7 @@ var ContactmanagerC = UCPMC.extend({
 										}
 									});
 								});
+								$("#deletecontact").prop("disabled",false);
 							});
 							$("#editcontact").click(function() {
 								$.getJSON(UCP.ajaxUrl, {
@@ -198,7 +199,7 @@ var ContactmanagerC = UCPMC.extend({
 
 		$(".grid-stack-item[data-id="+widget_id+"] .deletegroup").click(function(e) {
 			e.preventDefault();
-			UCP.showConfirm(_("Are you sure you want to delete this group and all of it's contacts?"), 'info', function() {
+			UCP.showConfirm(_("Are you sure you want to delete this group and all of its contacts?"), 'info', function() {
 				var group = $(".grid-stack-item[data-id='"+widget_id+"'] .group-list .group.active").data("group");
 
 				$.post( UCP.ajaxUrl+"?module=contactmanager&command=deletegroup", { id: group }, function( data ) {

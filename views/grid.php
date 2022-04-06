@@ -52,7 +52,7 @@
 										<a class="btn btn-primary" href="?display=contactmanager&amp;action=addentry&amp;group=<?php echo $group['id']?>"><i class="fa fa-plus"></i> <?php echo _("Add Contact")?></a>
 									<?php } ?>
 									<a class="btn btn-primary" href="?display=contactmanager&amp;action=showgroup&amp;group=<?php echo $group['id']?>"><i class="fa fa-pencil"></i> <?php echo _('Edit Group')?></a>
-									<a class="btn btn-primary" href="?display=contactmanager&amp;action=delgroup&amp;group=<?php echo $group['id']?>"><i class="glyphicon glyphicon-remove"></i> <?php echo _('Delete Group')?></a>
+									<a class="btn btn-primary delgroup" href="?display=contactmanager&amp;action=delgroup&amp;group=<?php echo $group['id']?>"><i class="glyphicon glyphicon-remove"></i> <?php echo _('Delete Group')?></a>
 								</div>
 								<table id="<?php echo $type?>-<?php echo $group['id']?>-grid" data-url="ajax.php?module=contactmanager&amp;command=grid&amp;group=<?php echo $group['id']?>" data-cache="false" data-toolbar="#toolbar-<?php echo $type?>-<?php echo $group['id']?>" data-type="<?php echo $type?>" data-maintain-selected="true" data-show-columns="true" data-show-toggle="true" data-toggle="table" data-pagination="true" data-search="true" class="table table-striped table-<?php echo $type?>">
 									<thead>
