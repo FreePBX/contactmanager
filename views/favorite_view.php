@@ -34,9 +34,11 @@
             </fieldset>
         </div>
     </div>
-	<div class="fav-save-bar">
-		<button type="button" class="btn btn-primary fav-save" id="save_favorites">Save changes</button>
-	</div>
+	<?php if (isset($isUCP)) { ?>	
+		<div class="fav-save-bar">
+			<button type="button" class="btn btn-primary fav-save" id="save_favorites">Save changes</button>
+		</div>
+	<?php } ?>
 </div>
 <script type='text/javascript'>
 
