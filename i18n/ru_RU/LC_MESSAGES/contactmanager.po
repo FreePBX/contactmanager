@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2021-12-08 06:03+0000\n"
+"PO-Revision-Date: 2022-04-12 13:00+0000\n"
 "Last-Translator: Dmitriy Q <krotesk@ya.ru>\n"
 "Language-Team: Russian <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/ru/>\n"
@@ -638,7 +638,7 @@ msgstr ""
 
 #: views/speeddial-grid.php:12
 msgid "Number"
-msgstr ""
+msgstr "Номер"
 
 #: assets/js/contactmanager.js:58
 msgid "Number cannot be blank."
