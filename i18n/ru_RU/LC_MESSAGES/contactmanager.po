@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2022-04-19 15:26+0000\n"
+"PO-Revision-Date: 2022-04-21 09:00+0000\n"
 "Last-Translator: Dmitriy Q <krotesk@ya.ru>\n"
 "Language-Team: Russian <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/ru/>\n"
@@ -728,7 +728,7 @@ msgstr ""
 
 #: Contactmanager.class.php:1033 Contactmanager.class.php:1052
 msgid "Submit"
-msgstr "Применить"
+msgstr "Принять"
 
 #: contactmanager.i18n.php:8
 msgid "The Contact Manager module lets you add contacts to groups."
