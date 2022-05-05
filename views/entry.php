@@ -35,8 +35,8 @@ foreach ($users as $u) {
 				<div class="element-container">
 					<div class="row">
 						<div class="col-md-12">
-							<div class="row">
-								<div class="form-group">
+							<div class="">
+								<div class="row form-group">
 									<div class="col-md-3">
 										<label class="control-label" for="user"><?php echo _('User')?></label>
 										<i class="fa fa-question-circle fpbx-help-icon" data-for="user"></i>
@@ -62,8 +62,8 @@ foreach ($users as $u) {
 			<div class="element-container">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="row">
-							<div class="form-group">
+						<div class="">
+							<div class="row form-group">
 								<div class="col-md-3">
 									<label class="control-label" for="displayname"><?php echo _('Display Name')?></label>
 									<i class="fa fa-question-circle fpbx-help-icon" data-for="displayname"></i>
@@ -82,8 +82,8 @@ foreach ($users as $u) {
 			<div class="element-container">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="row">
-							<div class="form-group">
+						<div class="">
+							<div class="row form-group">
 								<div class="col-md-3">
 									<label class="control-label" for="fname"><?php echo _('First Name')?></label>
 									<i class="fa fa-question-circle fpbx-help-icon" data-for="fname"></i>
@@ -102,8 +102,8 @@ foreach ($users as $u) {
 			<div class="element-container">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="row">
-							<div class="form-group">
+						<div class="">
+							<div class="row form-group">
 								<div class="col-md-3">
 									<label class="control-label" for="lname"><?php echo _('Last Name')?></label>
 									<i class="fa fa-question-circle fpbx-help-icon" data-for="lname"></i>
@@ -122,8 +122,8 @@ foreach ($users as $u) {
 			<div class="element-container">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="row">
-							<div class="form-group">
+						<div class="">
+							<div class="row form-group">
 								<div class="col-md-3">
 									<label class="control-label" for="title"><?php echo _('Title')?></label>
 									<i class="fa fa-question-circle fpbx-help-icon" data-for="title"></i>
@@ -142,8 +142,8 @@ foreach ($users as $u) {
 			<div class="element-container">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="row">
-							<div class="form-group">
+						<div class="">
+							<div class="row form-group">
 								<div class="col-md-3">
 									<label class="control-label" for="imageupload"><?php echo _('Contact Image')?></label>
 									<i class="fa fa-question-circle fpbx-help-icon" data-for="image"></i>
@@ -154,7 +154,7 @@ foreach ($users as $u) {
 											<div class="message"><?php echo _("Drop a new image here")?></div>
 											<img class="<?php echo (!empty($entry) && !empty($entry['image'])) ? '' : 'hidden'?>" src="<?php echo (!empty($entry) && !empty($entry['image'])) ? 'ajax.php?module=contactmanager&amp;command=limage&amp;entryid='.$entry['id'] : ''?>">
 										</div>
-										<button id="del-image" data-entryid="<?php echo !empty($entry) ? $entry['id'] : ''?>" class="btn btn-danger btn-sm <?php echo (!empty($entry) && !empty($entry['image'])) ? '' : 'hidden'?>"><?php echo _("Delete Image")?></button>
+										<button id="del-image" data-entryid="<?php echo !empty($entry) ? $entry['id'] : ''?>" class="btn btn-danger btn-sm <?php echo (!empty($entry) && !empty($entry['image'])) ? '' : 'd-none'?>"><?php echo _("Delete Image")?></button>
 									</div>
 									<div class="col-md-8">
 										<input type="hidden" name="image" id="image">
@@ -185,8 +185,8 @@ foreach ($users as $u) {
 			<div class="element-container">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="row">
-							<div class="form-group">
+						<div class="">
+							<div class="row form-group">
 								<div class="col-md-3">
 									<label class="control-label" for="company"><?php echo _('Company')?></label>
 									<i class="fa fa-question-circle fpbx-help-icon" data-for="company"></i>
@@ -205,8 +205,8 @@ foreach ($users as $u) {
 			<div class="element-container">
 				<div class="row">
 					<div class="col-md-12">
-						<div class="row">
-							<div class="form-group">
+						<div class="">
+							<div class="row form-group">
 								<div class="col-md-3">
 									<label class="control-label" for="address"><?php echo _('Address')?></label>
 									<i class="fa fa-question-circle fpbx-help-icon" data-for="address"></i>
@@ -230,8 +230,8 @@ foreach ($users as $u) {
 						<div class="element-container">
 							<div class="row">
 								<div class="col-md-12">
-									<div class="row">
-										<div class="form-group">
+									<div class="">
+										<div class="row form-group">
 											<div class="col-md-3">
 												<label class="control-label" for="numbers"><?php echo _('Numbers')?></label>
 												<i class="fa fa-question-circle fpbx-help-icon" data-for="numbers"></i>
@@ -295,8 +295,8 @@ foreach ($users as $u) {
 						<div class="element-container">
 							<div class="row">
 								<div class="col-md-12">
-									<div class="row">
-										<div class="form-group">
+									<div class="">
+										<div class="row form-group">
 											<div class="col-md-3">
 												<label class="control-label" for="xmpps"><?php echo _('XMPP')?></label>
 												<i class="fa fa-question-circle fpbx-help-icon" data-for="xmpps"></i>
@@ -327,8 +327,8 @@ foreach ($users as $u) {
 						<div class="element-container">
 							<div class="row">
 								<div class="col-md-12">
-									<div class="row">
-										<div class="form-group">
+									<div class="">
+										<div class="row form-group">
 											<div class="col-md-3">
 												<label class="control-label" for="emails"><?php echo _('Email')?></label>
 												<i class="fa fa-question-circle fpbx-help-icon" data-for="emails"></i>
@@ -359,8 +359,8 @@ foreach ($users as $u) {
 						<div class="element-container">
 							<div class="row">
 								<div class="col-md-12">
-									<div class="row">
-										<div class="form-group">
+									<div class="">
+										<div class="row form-group">
 											<div class="col-md-3">
 												<label class="control-label" for="websites"><?php echo _('Website')?></label>
 												<i class="fa fa-question-circle fpbx-help-icon" data-for="websites"></i>
