@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2022-04-21 09:00+0000\n"
+"PO-Revision-Date: 2022-05-13 07:00+0000\n"
 "Last-Translator: Dmitriy Q <krotesk@ya.ru>\n"
 "Language-Team: Russian <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/ru/>\n"
@@ -540,25 +540,25 @@ msgstr ""
 #: Contactmanager.class.php:617 ucp/Contactmanager.class.php:173
 #: ucp/Contactmanager.class.php:193 ucp/Contactmanager.class.php:204
 msgid "Invalid"
-msgstr ""
+msgstr "Недействительный"
 
 #: Contactmanager.class.php:35 Contactmanager.class.php:3059
 #: ucp/views/contact.php:14 ucp/views/contactEdit.php:14
 #: ucp/views/widget.php:49 views/entry.php:108 views/speeddial-grid.php:15
 msgid "Last Name"
-msgstr ""
+msgstr "Фамилия"
 
 #: views/entry.php:118
 msgid "Last Name (overrides Last Name from User Manager)"
-msgstr ""
+msgstr "Фамилия (переопределяет фамилию в Управлении пользователями)"
 
 #: views/rnav.php:2
 msgid "List All Groups"
-msgstr ""
+msgstr "Список всех групп"
 
 #: views/rnav.php:3
 msgid "List All Speeddials"
-msgstr ""
+msgstr "Список всех быстрых наборов"
 
 #: ucp/assets/js/global.js:533
 msgid "Loading..."
