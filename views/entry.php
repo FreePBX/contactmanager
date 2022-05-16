@@ -149,26 +149,28 @@ foreach ($users as $u) {
 									<i class="fa fa-question-circle fpbx-help-icon" data-for="image"></i>
 								</div>
 								<div class="col-md-9">
-									<div class="col-md-4">
-										<div id="dropzone" class="image">
-											<div class="message"><?php echo _("Drop a new image here")?></div>
-											<img class="<?php echo (!empty($entry) && !empty($entry['image'])) ? '' : 'hidden'?>" src="<?php echo (!empty($entry) && !empty($entry['image'])) ? 'ajax.php?module=contactmanager&amp;command=limage&amp;entryid='.$entry['id'] : ''?>">
+									<div class="row">
+										<div class="col-md-4">
+											<div id="dropzone" class="image">
+												<div class="message"><?php echo _("Drop a new image here")?></div>
+												<img class="<?php echo (!empty($entry) && !empty($entry['image'])) ? '' : 'hidden'?>" src="<?php echo (!empty($entry) && !empty($entry['image'])) ? 'ajax.php?module=contactmanager&amp;command=limage&amp;entryid='.$entry['id'] : ''?>">
+											</div>
+											<button id="del-image" data-entryid="<?php echo !empty($entry) ? $entry['id'] : ''?>" class="btn btn-danger btn-sm <?php echo (!empty($entry) && !empty($entry['image'])) ? '' : 'd-none'?>"><?php echo _("Delete Image")?></button>
 										</div>
-										<button id="del-image" data-entryid="<?php echo !empty($entry) ? $entry['id'] : ''?>" class="btn btn-danger btn-sm <?php echo (!empty($entry) && !empty($entry['image'])) ? '' : 'd-none'?>"><?php echo _("Delete Image")?></button>
-									</div>
-									<div class="col-md-8">
-										<input type="hidden" name="image" id="image">
-										<span class="btn btn-default btn-file">
-											<?php echo _("Browse")?>
-											<input id="imageupload" type="file" class="form-control" name="files[]" data-url="ajax.php?module=contactmanager&amp;command=uploadimage" class="form-control" multiple>
-										</span>
-										<span class="filename"></span>
-										<div id="upload-progress" class="progress">
-											<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
-										</div>
-										<div class="radioset">
-											<input name="gravatar" id="gravatar" data-entryid="<?php echo !empty($entry) ? $entry['id'] : ''?>" type="checkbox" value="on" <?php echo (!empty($entry) && !empty($entry['image'])) && !empty($entry['image']['gravatar']) ? 'checked' : ''?>>
-											<label for="gravatar">Use Gravatar</label>
+										<div class="col-md-8">
+											<input type="hidden" name="image" id="image">
+											<span class="btn btn-default btn-file">
+												<?php echo _("Browse")?>
+												<input id="imageupload" type="file" class="form-control" name="files[]" data-url="ajax.php?module=contactmanager&amp;command=uploadimage" class="form-control" multiple>
+											</span>
+											<span class="filename"></span>
+											<div id="upload-progress" class="progress">
+												<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+											</div>
+											<div class="radioset">
+												<input name="gravatar" id="gravatar" data-entryid="<?php echo !empty($entry) ? $entry['id'] : ''?>" type="checkbox" value="on" <?php echo (!empty($entry) && !empty($entry['image'])) && !empty($entry['image']['gravatar']) ? 'checked' : ''?>>
+												<label for="gravatar">Use Gravatar</label>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -243,36 +245,38 @@ foreach ($users as $u) {
 													foreach ($entry['numbers'] as $number) {?>
 														<tr id="number_<?php echo $numcount?>">
 															<td><a class="clickable" onclick="delNumber('<?php echo $numcount?>')"><i class="fa fa-ban fa-fw"></i></a></td>
-															<td class="form-inline">
-																<input type="text" class="form-control" name="number[<?php echo $numcount?>]" value="<?php echo $number['number']?>"> <label><?php echo _("Ext.")?></label> <input type="text" class="form-control" name="extension[<?php echo $numcount?>]" value="<?php echo $number['extension']?>">
-																<label><?php echo _("Type")?></label>
-																<select class="form-control" name="numbertype[<?php echo $numcount?>]">
-																	<?php foreach($numbertypes as $key => $val) {
-																		$selected = ($number['type'] == $key)?'SELECTED':'';
-																	?>
-																		<option value="<?php echo $key?>" <?php echo $selected?>><?php echo $val?></option>
-																	<?php } ?>
-																</select>
-																<br>
-																<br>
-																<label><?php echo _("Dialing Country")?></label>
-																<select class="form-control number locale" name="numberlocale[<?php echo $numcount?>]" data-locale="<?php echo !empty($number['locale']) ? $number['locale'] : ''?>" data-id="<?php echo $numcount?>">
-																	<?php foreach($regionlist as $key => $val) {
-																		$selected = ($number['locale'] == $key)?'SELECTED':'';
-																	?>
-																		<option value="<?php echo $key?>" <?php echo $selected?>><?php echo $val?></option>
-																	<?php } ?>
-																</select>
+															<td class="form-group">
+																<div class="form-inline mt-3">
+																	<input type="text" class="form-control" name="number[<?php echo $numcount?>]" value="<?php echo $number['number']?>"> <label><?php echo _("Ext.")?></label> <input type="text" class="form-control" name="extension[<?php echo $numcount?>]" value="<?php echo $number['extension']?>">
+																	<label><?php echo _("Type")?></label>
+																	<select class="form-control" name="numbertype[<?php echo $numcount?>]">
+																		<?php foreach($numbertypes as $key => $val) {
+																			$selected = ($number['type'] == $key)?'SELECTED':'';
+																		?>
+																			<option value="<?php echo $key?>" <?php echo $selected?>><?php echo $val?></option>
+																		<?php } ?>
+																	</select>
+																</div>
+																<div class="form-inline mt-3">
+																	<label><?php echo _("Dialing Country")?></label>
+																	<select class="form-control number locale" name="numberlocale[<?php echo $numcount?>]" data-locale="<?php echo !empty($number['locale']) ? $number['locale'] : ''?>" data-id="<?php echo $numcount?>">
+																		<?php foreach($regionlist as $key => $val) {
+																			$selected = ($number['locale'] == $key)?'SELECTED':'';
+																		?>
+																			<option value="<?php echo $key?>" <?php echo $selected?>><?php echo $val?></option>
+																		<?php } ?>
+																	</select>
+																</div>
 																<?php if($speeddialcode['enabled']) { ?>
-																	<br>
-																	<br>
-																	<label><?php echo _("Speed Dial")?></label>
-																	<div class="input-group">
-																		<span class="input-group-addon"><?php echo $speeddialcode['code']?></span>
-																		<input type="number" class="form-control number-sd" name="numbersd[<?php echo $numcount?>]" min="0" data-id="<?php echo $numcount?>" <?php echo (trim($number['speeddial']) == "") ? "disabled" : ""?> value="<?php echo $number['speeddial']?>">
-																		<span class="input-group-addon">
-																			<input type="checkbox" name="numbersde[<?php echo $numcount?>]" id="numbersde[<?php echo $numcount?>]" data-id="<?php echo $numcount?>" class="enable-sd" <?php echo (trim($number['speeddial']) == "") ? "" : "checked"?>><label for="numbersde[<?php echo $numcount?>]" style="margin-bottom: 0px;"><?php echo _("Enable")?></label>
-																		</span>
+																	<div class="form-inline mt-3">
+																		<label><?php echo _("Speed Dial")?></label>
+																		<div class="input-group">
+																			<span class="input-group-addon"><?php echo $speeddialcode['code']?></span>
+																			<input type="number" class="form-control number-sd" name="numbersd[<?php echo $numcount?>]" min="0" data-id="<?php echo $numcount?>" <?php echo (trim($number['speeddial']) == "") ? "disabled" : ""?> value="<?php echo $number['speeddial']?>">
+																			<span class="input-group-addon">
+																				<input type="checkbox" name="numbersde[<?php echo $numcount?>]" id="numbersde[<?php echo $numcount?>]" data-id="<?php echo $numcount?>" class="enable-sd" <?php echo (trim($number['speeddial']) == "") ? "" : "checked"?>><label for="numbersde[<?php echo $numcount?>]" style="margin-bottom: 0px;"><?php echo _("Enable")?></label>
+																			</span>
+																		</div>
 																	</div>
 																<?php } ?>
 															</td>
