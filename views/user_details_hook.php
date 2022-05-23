@@ -35,7 +35,7 @@
 						<label class="control-label" for="contactmanager_imageupload"><?php echo _('Contact Image')?></label>
 						<i class="fa fa-question-circle fpbx-help-icon" data-for="contactmanager_image"></i>
 					</div>
-					<div class="col-md-9 row">
+					<div class="col-md-9">
 						<div class="col-md-4">
 							<div id="contactmanager_dropzone" class="image">
 								<div class="message"><?php echo _("Drop a new image here");?></div>
