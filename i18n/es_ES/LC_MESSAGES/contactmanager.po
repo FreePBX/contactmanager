@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2022-04-13 13:00+0000\n"
+"PO-Revision-Date: 2022-05-25 01:00+0000\n"
 "Last-Translator: Santiago Pioli <spioli@sangoma.com>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/es/>\n"
@@ -307,7 +307,7 @@ msgstr "Correo"
 #: ucp/views/contactEdit.php:79 ucp/views/contactEdit.php:114
 #: views/entry.php:274 assets/js/contactmanager.js:170
 msgid "Enable"
-msgstr "Activar"
+msgstr "Habilita"
 
 #: ucp/assets/js/global.js:79
 msgid "Error deleting user"
@@ -533,7 +533,7 @@ msgstr ""
 
 #: views/ucp_config.php:17
 msgid "Inherit"
-msgstr "heredado"
+msgstr "Heredar"
 
 #: ucp/assets/js/global.js:261
 msgid "Initiate"
@@ -691,7 +691,7 @@ msgstr ""
 
 #: Contactmanager.class.php:1028 Contactmanager.class.php:1047
 msgid "Reset"
-msgstr "Restaurar"
+msgstr "Reiniciar"
 
 #: ucp/views/contact.php:86 ucp/views/contact.php:141
 #: ucp/views/contactEdit.php:84 ucp/views/contactEdit.php:119
