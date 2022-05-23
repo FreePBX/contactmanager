@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-16 13:28+0000\n"
+"POT-Creation-Date: 2022-05-23 09:33+0000\n"
 "PO-Revision-Date: 2016-12-12 18:54+0200\n"
 "Last-Translator: Maxim <maxim@ua.fm>\n"
 "Language-Team: Ukrainian <http://weblate.freepbx.org/projects/freepbx/"
@@ -26,19 +26,19 @@ msgstr ""
 msgid "A PHP extension stopped the file upload"
 msgstr ""
 
-#: views/entry.php:359
+#: views/entry.php:355
 msgid "A list of E-Mail addresses belonging to this entry"
 msgstr ""
 
-#: views/entry.php:327
+#: views/entry.php:323
 msgid "A list of XMPP addresses belonging to this entry"
 msgstr ""
 
-#: views/entry.php:295
+#: views/entry.php:291
 msgid "A list of numbers belonging to this entry"
 msgstr ""
 
-#: views/entry.php:391
+#: views/entry.php:387
 msgid "A list of websites belonging to this entry"
 msgstr ""
 
@@ -60,7 +60,7 @@ msgstr "Дії"
 msgid "Add Contact"
 msgstr "Додати контакт"
 
-#: ucp/views/contact.php:216 ucp/views/contactEdit.php:153 views/entry.php:351
+#: ucp/views/contact.php:216 ucp/views/contactEdit.php:153 views/entry.php:347
 msgid "Add Email"
 msgstr "Додати електронну пошту"
 
@@ -89,15 +89,15 @@ msgid "Add Number"
 msgstr "Додати номер"
 
 #: ucp/views/contact.php:243 ucp/views/contactEdit.php:168
-#: ucp/views/contactEdit.php:196 views/entry.php:383
+#: ucp/views/contactEdit.php:196 views/entry.php:379
 msgid "Add Website"
 msgstr "Додати web-сторінку"
 
-#: ucp/views/contact.php:189 ucp/views/contactEdit.php:138 views/entry.php:319
+#: ucp/views/contact.php:189 ucp/views/contactEdit.php:138 views/entry.php:315
 msgid "Add XMPP"
 msgstr "Додати XMPP"
 
-#: Contactmanager.class.php:3256 views/entry.php:213 views/entry.php:225
+#: Contactmanager.class.php:3256 views/entry.php:211 views/entry.php:223
 msgid "Address"
 msgstr "Адреса"
 
@@ -143,7 +143,7 @@ msgstr ""
 msgid "Automatically Determine"
 msgstr ""
 
-#: ucp/views/contact.php:36 ucp/views/contactEdit.php:36 views/entry.php:163
+#: ucp/views/contact.php:36 ucp/views/contactEdit.php:36 views/entry.php:162
 #: views/user_details_hook.php:49
 msgid "Browse"
 msgstr "Перегляд"
@@ -177,12 +177,12 @@ msgstr ""
 
 #: Contactmanager.class.php:51 Contactmanager.class.php:60
 #: Contactmanager.class.php:3255 ucp/views/contact.php:22
-#: ucp/views/contactEdit.php:22 ucp/views/widget.php:56 views/entry.php:193
+#: ucp/views/contactEdit.php:22 ucp/views/widget.php:56 views/entry.php:191
 #: views/group.php:92
 msgid "Company"
 msgstr "Компанія"
 
-#: views/entry.php:203
+#: views/entry.php:201
 msgid "Company (overrides Company from User Manager)"
 msgstr "Компанія (перевизначає компанію з диспетчера користувачів)"
 
@@ -190,7 +190,7 @@ msgstr "Компанія (перевизначає компанію з дисп�
 msgid "Contact Image"
 msgstr "Зображення контакту"
 
-#: views/entry.php:183
+#: views/entry.php:181
 msgid "Contact Image for this user"
 msgstr "Зображення контакту для цього користувача"
 
@@ -251,7 +251,7 @@ msgstr "Видалити контакт"
 msgid "Delete Group"
 msgstr "Видалити групу"
 
-#: ucp/views/contact.php:31 ucp/views/contactEdit.php:31 views/entry.php:158
+#: ucp/views/contact.php:31 ucp/views/contactEdit.php:31 views/entry.php:157
 #: views/user_details_hook.php:44
 msgid "Delete Image"
 msgstr "Видалити зображення"
@@ -260,7 +260,7 @@ msgstr "Видалити зображення"
 msgid "Deleting..."
 msgstr "Видалення..."
 
-#: views/entry.php:261 assets/js/contactmanager.js:202
+#: views/entry.php:258 assets/js/contactmanager.js:201
 msgid "Dialing Country"
 msgstr ""
 
@@ -280,7 +280,7 @@ msgstr "Відображене ім'я"
 msgid "Display Name (overrides Display Name from User Manager)"
 msgstr ""
 
-#: ucp/views/contact.php:28 ucp/views/contactEdit.php:28 views/entry.php:155
+#: ucp/views/contact.php:28 ucp/views/contactEdit.php:28 views/entry.php:154
 #: views/user_details_hook.php:41
 msgid "Drop a new image here"
 msgstr "Киньте нове зображення тут"
@@ -310,13 +310,13 @@ msgstr "Редагувати групу"
 msgid "Edit List"
 msgstr ""
 
-#: ucp/views/contact.php:192 ucp/views/contactEdit.php:141 views/entry.php:337
+#: ucp/views/contact.php:192 ucp/views/contactEdit.php:141 views/entry.php:333
 msgid "Email"
 msgstr "Електронна пошта"
 
 #: ucp/views/contact.php:80 ucp/views/contact.php:135
 #: ucp/views/contactEdit.php:79 ucp/views/contactEdit.php:114
-#: views/entry.php:277 assets/js/contactmanager.js:217
+#: views/entry.php:274 assets/js/contactmanager.js:216
 msgid "Enable"
 msgstr ""
 
@@ -329,7 +329,7 @@ msgstr ""
 msgid "Exclude"
 msgstr ""
 
-#: views/entry.php:250 assets/js/contactmanager.js:192
+#: views/entry.php:247 assets/js/contactmanager.js:191
 msgid "Ext."
 msgstr "Дод."
 
@@ -342,7 +342,7 @@ msgstr ""
 msgid "External"
 msgstr ""
 
-#: assets/js/contactmanager.js:226
+#: assets/js/contactmanager.js:224
 msgid "FAX"
 msgstr "Факс"
 
@@ -699,7 +699,7 @@ msgid "Number cannot be blank."
 msgstr ""
 
 #: Contactmanager.class.php:52 Contactmanager.class.php:61
-#: ucp/views/contact.php:50 ucp/views/contactEdit.php:49 views/entry.php:238
+#: ucp/views/contact.php:50 ucp/views/contactEdit.php:49 views/entry.php:236
 #: views/group.php:93
 msgid "Numbers"
 msgstr ""
@@ -748,7 +748,7 @@ msgstr "Скинути"
 
 #: ucp/views/contact.php:86 ucp/views/contact.php:141
 #: ucp/views/contactEdit.php:84 ucp/views/contactEdit.php:119
-#: assets/js/contactmanager.js:224
+#: assets/js/contactmanager.js:222
 #, fuzzy
 msgid "SMS"
 msgstr "SMS"
@@ -768,8 +768,8 @@ msgstr ""
 #: Contactmanager.class.php:3274 Contactmanager.class.php:3288
 #: Contactmanager.class.php:3302 ucp/views/contact.php:75
 #: ucp/views/contact.php:130 ucp/views/contactEdit.php:74
-#: ucp/views/contactEdit.php:109 views/entry.php:272
-#: assets/js/contactmanager.js:212
+#: ucp/views/contactEdit.php:109 views/entry.php:269
+#: assets/js/contactmanager.js:211
 msgid "Speed Dial"
 msgstr ""
 
@@ -862,7 +862,7 @@ msgstr "Назва"
 msgid "Title (overrides Title from User Manager)"
 msgstr ""
 
-#: views/entry.php:251 views/group.php:40 assets/js/contactmanager.js:193
+#: views/entry.php:248 views/group.php:40 assets/js/contactmanager.js:192
 msgid "Type"
 msgstr "Тип"
 
@@ -902,7 +902,7 @@ msgstr "Невідомий тип даних."
 msgid "Unsupported file format"
 msgstr "Непідтримуваний формат файлу"
 
-#: assets/js/contactmanager.js:335
+#: assets/js/contactmanager.js:333
 msgid "Unsupported file type"
 msgstr "Непідтримуваний тип файлу"
 
@@ -940,7 +940,7 @@ msgid "Viewable Contact Manager Groups"
 msgstr ""
 
 #: ucp/views/contact.php:219 ucp/views/contactEdit.php:156
-#: ucp/views/contactEdit.php:172 views/entry.php:369
+#: ucp/views/contactEdit.php:172 views/entry.php:365
 msgid "Website"
 msgstr "Веб-сторінка"
 
@@ -960,7 +960,7 @@ msgstr ""
 msgid "Work"
 msgstr ""
 
-#: views/entry.php:305
+#: views/entry.php:301
 #, fuzzy
 msgid "XMPP"
 msgstr "XMPP"
