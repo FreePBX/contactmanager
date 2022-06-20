@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-23 09:33+0000\n"
+"POT-Creation-Date: 2022-06-20 04:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -243,7 +243,7 @@ msgstr ""
 msgid "Contact Manager Module"
 msgstr ""
 
-#: contactmanager.i18n.php:18
+#: contactmanager.i18n.php:22
 msgid "Contact Manager Speed Dials"
 msgstr ""
 
@@ -376,6 +376,10 @@ msgstr ""
 #: views/entry.php:274
 #: assets/js/contactmanager.js:216
 msgid "Enable"
+msgstr ""
+
+#: contactmanager.i18n.php:12
+msgid "Enable Favorite Contacts"
 msgstr ""
 
 #: ucp/assets/js/global.js:176
@@ -637,7 +641,7 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: contactmanager.i18n.php:16
+#: contactmanager.i18n.php:20
 msgid ""
 "How many digits should a number be before a partial match is used when "
 "looking up a contact"
@@ -831,7 +835,7 @@ msgstr ""
 msgid "PBX Contacts"
 msgstr ""
 
-#: contactmanager.i18n.php:12
+#: contactmanager.i18n.php:18
 msgid "Partial Match Length"
 msgstr ""
 
@@ -1091,6 +1095,18 @@ msgstr ""
 
 #: views/userman_hook.php:23
 msgid "What internal groups to show this user in"
+msgstr ""
+
+#: contactmanager.i18n.php:16
+msgid ""
+"When Enabled, Admin can configure multiple Favorite Contact Lists under "
+"Favorites tab in Contact Manager and Sangoma Phone users can see a list of "
+"their favorite contacts when viewing the Contacts panel on the desktop "
+"client. Users will be able to manage their Favorites through UCP, based on "
+"the settings they have set in User Manager -> Contact Manager. When "
+"Disabled, the Favorites section will be hidden on Admin Panel, desktop "
+"clients and Contacts panel in UCP. In either case, the user will still be "
+"able to Search among the system contacts."
 msgstr ""
 
 #: Contactmanager.class.php:1023
