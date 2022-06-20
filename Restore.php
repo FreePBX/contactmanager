@@ -20,9 +20,9 @@ class Restore Extends Base\RestoreBase{
 			$sth = $this->FreePBX->Database->prepare($sql);
 			$sth->execute();
 			foreach($configs['contactmanager_group_entries'] as $entry){
-				$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`,`uuid`) VALUES(?,?,?)";
+				$sql = "INSERT INTO contactmanager_group_entries (`groupid`, `user`,`uuid`,`displayname`,`fname`,`lname`,`title`,`company`,`address`) VALUES(?,?,?,?,?,?,?,?,?)";
 				$sth = $this->FreePBX->Database->prepare($sql);
-				$sth->execute(array($entry['groupid'],$entry['user'],$entry['uuid']));
+				$sth->execute(array($entry['groupid'],$entry['user'],$entry['uuid'],$entry['displayname'],$entry['fname'],$entry['lname'],$entry['title'],$entry['company'],$entry['address']));
 			}
 		}
 		$this->FreePBX->Contactmanager->bulkhandlerImport('contacts', $configs['data'], true);
