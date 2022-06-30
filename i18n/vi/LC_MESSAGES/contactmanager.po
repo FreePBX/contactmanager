@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-20 04:58+0000\n"
+"POT-Creation-Date: 2022-06-30 16:07+0000\n"
 "PO-Revision-Date: 2017-08-08 16:34+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese <http://weblate.freepbx.org/projects/freepbx/"
@@ -216,7 +216,7 @@ msgstr "Trình quản lý liên lạc"
 msgid "Contact Manager Module"
 msgstr "Mô đun trình quản lý liên lạc"
 
-#: contactmanager.i18n.php:22
+#: contactmanager.i18n.php:18
 msgid "Contact Manager Speed Dials"
 msgstr "Trình quản lý liên lạc quay số nhanh"
 
@@ -325,10 +325,6 @@ msgstr "Thư điện tử"
 #: views/entry.php:274 assets/js/contactmanager.js:216
 msgid "Enable"
 msgstr "Kích hoạt"
-
-#: contactmanager.i18n.php:12
-msgid "Enable Favorite Contacts"
-msgstr ""
 
 #: ucp/assets/js/global.js:176 ucp/assets/js/global.js:233
 #: ucp/assets/js/global.js:238
@@ -559,7 +555,7 @@ msgstr "Yêu cầu phải Kiểu nhóm."
 msgid "Home"
 msgstr "Trang chủ"
 
-#: contactmanager.i18n.php:20
+#: contactmanager.i18n.php:16
 msgid ""
 "How many digits should a number be before a partial match is used when "
 "looking up a contact"
@@ -733,7 +729,7 @@ msgstr ""
 msgid "PBX Contacts"
 msgstr ""
 
-#: contactmanager.i18n.php:18
+#: contactmanager.i18n.php:12
 msgid "Partial Match Length"
 msgstr "Độ dài so khớp từng phần"
 
@@ -971,18 +967,6 @@ msgstr "Trang Web này không thể để trống."
 #: views/userman_hook.php:23
 msgid "What internal groups to show this user in"
 msgstr "Nhóm nội bộ nào hiển thị người dùng trong đó"
-
-#: contactmanager.i18n.php:16
-msgid ""
-"When Enabled, Admin can configure multiple Favorite Contact Lists under "
-"Favorites tab in Contact Manager and Sangoma Phone users can see a list of "
-"their favorite contacts when viewing the Contacts panel on the desktop "
-"client. Users will be able to manage their Favorites through UCP, based on "
-"the settings they have set in User Manager -> Contact Manager. When "
-"Disabled, the Favorites section will be hidden on Admin Panel, desktop "
-"clients and Contacts panel in UCP. In either case, the user will still be "
-"able to Search among the system contacts."
-msgstr ""
 
 #: Contactmanager.class.php:1023 Contactmanager.class.php:3266
 #: Contactmanager.class.php:3280 Contactmanager.class.php:3294
