@@ -3960,8 +3960,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 *
 	 * @param  {integer} $uid
 	 * @param  {array} $includedContacts
+	 * @param  {boolean} $runHook
 	 */
-	public function updateUserFavoriteContacts($uid, $includedContacts) {
+	public function updateUserFavoriteContacts($uid, $includedContacts, $runHook = true) {
 
 		$sql = "SELECT * FROM contactmanager_user_favorites WHERE uid = :uid";
 		$sth = $this->db->prepare($sql);
@@ -3981,7 +3982,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			));
 		} catch(Exception $e) {}
 
-		$this->updateContactUpdatedDetails($uid);
+		if ($runHook) {
+			$this->updateContactUpdatedDetails($uid);
+		}
 	}
 
 	/**
