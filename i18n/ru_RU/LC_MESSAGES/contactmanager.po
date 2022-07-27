@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2022-05-13 07:00+0000\n"
+"PO-Revision-Date: 2022-07-28 08:01+0000\n"
 "Last-Translator: Dmitriy Q <krotesk@ya.ru>\n"
 "Language-Team: Russian <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/ru/>\n"
@@ -886,7 +886,7 @@ msgstr ""
 
 #: views/entry.php:301
 msgid "XMPP"
-msgstr ""
+msgstr "XMPP"
 
 #: assets/js/contactmanager.js:79
 msgid "XMPP address cannot be blank."
