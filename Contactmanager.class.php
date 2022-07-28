@@ -3896,6 +3896,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				"list_name" => $listName,
 				"contact_ids" => json_encode($includedContacts)
 			));
+			$this->updateContactUpdatedDetails(-1);
 		} catch(Exception $e) {}
 	}
 	
@@ -3915,6 +3916,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				"contact_ids" => json_encode($includedContacts),
 				"id" => $id,
 			));
+			$this->updateContactUpdatedDetails(-1);
 		} catch(Exception $e) {}
 
 	}
