@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-06 05:59+0000\n"
+"POT-Creation-Date: 2022-08-01 04:28+0000\n"
 "PO-Revision-Date: 2018-10-19 13:00+0000\n"
 "Last-Translator: Bastian Mertgen <b.mertgen@bastian-mertgen.de>\n"
 "Language-Team: German <http://*/projects/freepbx/contactmanager/de/>\n"
@@ -368,7 +368,7 @@ msgstr "Fehler beim Speichern der Datei"
 msgid "Favorite Contact List"
 msgstr ""
 
-#: Contactmanager.class.php:3933
+#: Contactmanager.class.php:3935
 msgid "Favorite Contact List successfully deleted"
 msgstr ""
 
