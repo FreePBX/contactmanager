@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-30 16:07+0000\n"
+"POT-Creation-Date: 2022-08-01 04:29+0000\n"
 "PO-Revision-Date: 2015-05-02 20:56+0200\n"
 "Last-Translator: Renato <fiuza@tecnologia.inf.br>\n"
 "Language-Team: Portuguese (Brazil) <http://weblate.freepbx.org/projects/"
@@ -363,7 +363,7 @@ msgstr "Falha ao gravar o arquivo no disco"
 msgid "Favorite Contact List"
 msgstr ""
 
-#: Contactmanager.class.php:3934
+#: Contactmanager.class.php:3936
 msgid "Favorite Contact List successfully deleted"
 msgstr ""
 

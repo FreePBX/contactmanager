@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-30 16:07+0000\n"
+"POT-Creation-Date: 2022-08-01 04:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -422,7 +422,7 @@ msgstr ""
 msgid "Favorite Contact List"
 msgstr ""
 
-#: Contactmanager.class.php:3934
+#: Contactmanager.class.php:3936
 msgid "Favorite Contact List successfully deleted"
 msgstr ""
 
