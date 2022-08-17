@@ -2013,7 +2013,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 * @param {array} $entry   Array of Entry information
 	 * @param {boolean} $updateContactFile   Flag for regenerating user contact file
 	 */
-	public function addEntryByGroupID($groupid, $entry, $updateContactFile = true) {
+	public function addEntryByGroupID($groupid, $entry, $updateContactFile = true, $timeDelay = 0) {
 		$group = $this->getGroupByID($groupid);
 		if (!$group) {
 			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
@@ -2062,7 +2062,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 		$this->addWebsitesByEntryID($id, !empty($entry['websites']) ? $entry['websites'] : '');
 		if($updateContactFile) {
-			$this->updateContactUpdatedDetails($group['owner']);
+			$this->updateContactUpdatedDetails($group['owner'], $timeDelay);
 		}
 		$this->freepbx->Hooks->processHooks($id, $entry);
 
@@ -3822,8 +3822,8 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 * @param  {string} $userId
 	 * @return void
 	 */
-	public function updateContactUpdatedDetails($userId) {
-		$this->freepbx->Hooks->processHooks($userId);
+	public function updateContactUpdatedDetails($userId, $timeDelay = 0) {
+		$this->freepbx->Hooks->processHooks($userId, $timeDelay);
 	}
 	
 	/**
