@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2022-05-25 01:00+0000\n"
+"PO-Revision-Date: 2022-08-26 13:56+0000\n"
 "Last-Translator: Santiago Pioli <spioli@sangoma.com>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/es/>\n"
@@ -47,7 +47,7 @@ msgstr "Un usuario del modulo Gestor de Usuarios"
 
 #: views/speeddial-grid.php:16
 msgid "Action"
-msgstr ""
+msgstr "Acción"
 
 #: Contactmanager.class.php:37 Contactmanager.class.php:46
 #: Contactmanager.class.php:55
@@ -107,12 +107,14 @@ msgstr "Todos los Grupos Públicos"
 
 #: views/ucp_config.php:7
 msgid "Allow Speed Dial Modifications"
-msgstr ""
+msgstr "Permitir modificaciones de Discado Rápido"
 
 #: views/ucp_config.php:26
 msgid ""
 "Allow the user to modify and change speeddials for contacts they can edit"
 msgstr ""
+"Permitir que el usuario modifique y cambie los discados rápidos para los "
+"contactos que puede editar"
 
 #: Contactmanager.class.php:912
 msgid "An entry must have numbers."
@@ -124,11 +126,11 @@ msgstr "Esta seguro que quiere eliminar este grupo y todos sus contactos?"
 
 #: ucp/assets/js/global.js:69
 msgid "Are you sure you wish to delete this contact?"
-msgstr ""
+msgstr "¿Está seguro que desea eliminar este contacto?"
 
 #: Contactmanager.class.php:3335
 msgid "Automatically Determine"
-msgstr ""
+msgstr "Determinar automáticamente"
 
 #: ucp/views/contact.php:36 ucp/views/contactEdit.php:36 views/entry.php:162
 #: views/user_details_hook.php:49
@@ -149,7 +151,7 @@ msgstr "No se pueden encontrar los archivos subidos"
 #: ucp/views/contactEdit.php:59 ucp/views/contactEdit.php:96
 #: views/group.php:105
 msgid "Cell"
-msgstr "Cel"
+msgstr "Celular"
 
 #: ucp/Contactmanager.class.php:384 ucp/Contactmanager.class.php:391
 #: ucp/assets/js/global.js:94 ucp/assets/js/global.js:118
@@ -206,12 +208,12 @@ msgstr "Modulo Gestor de Contactos"
 
 #: contactmanager.i18n.php:18
 msgid "Contact Manager Speed Dials"
-msgstr ""
+msgstr "Discados Rápidos de Gestor de Contactos"
 
 #: functions.inc.php:27 functions.inc.php:30
 #, php-format
 msgid "Contact Manager: %s (Speed Dial: %s) [%s]"
-msgstr ""
+msgstr "Gestor de Contactos: %s (Discado Rápido: %s) [%s]"
 
 #: Contactmanager.class.php:3028 ucp/Contactmanager.class.php:24
 #: ucp/Contactmanager.class.php:36 ucp/Contactmanager.class.php:63
@@ -230,6 +232,8 @@ msgid ""
 "Country Code  Or you can put AUTO , which will fill the Country code "
 "automatically. External contacts only. "
 msgstr ""
+"Código de País - O puede colocar AUTO, que completará el Código de País "
+"automáticamente. Solo contactos externos. "
 
 #: Contactmanager.class.php:1021 Contactmanager.class.php:1040
 msgid "Delete"
@@ -250,11 +254,11 @@ msgstr "Borrar Imagen"
 
 #: views/entry.php:258 assets/js/contactmanager.js:155
 msgid "Dialing Country"
-msgstr ""
+msgstr "País de marcación"
 
 #: views/user_details_hook.php:7
 msgid "Dialing Locale"
-msgstr ""
+msgstr "Localización de marcación"
 
 #: Contactmanager.class.php:33 Contactmanager.class.php:43
 #: Contactmanager.class.php:52 Contactmanager.class.php:3055
@@ -307,17 +311,17 @@ msgstr "Correo"
 #: ucp/views/contactEdit.php:79 ucp/views/contactEdit.php:114
 #: views/entry.php:274 assets/js/contactmanager.js:170
 msgid "Enable"
-msgstr "Habilita"
+msgstr "Habilitar"
 
 #: ucp/assets/js/global.js:79
 msgid "Error deleting user"
-msgstr ""
+msgstr "Error al eliminar el usuario"
 
 #: ucp/assets/js/global.js:100 ucp/assets/js/global.js:104
 #: ucp/assets/js/global.js:141 ucp/assets/js/global.js:179
 #: ucp/assets/js/global.js:184
 msgid "Error getting form"
-msgstr ""
+msgstr "Error al obtener el formulario"
 
 #: views/entry.php:247 assets/js/contactmanager.js:145
 msgid "Ext."
@@ -365,11 +369,11 @@ msgstr "Primer Nombre (sustituye Primer Nombre del Gestor de Usuarios)"
 
 #: ucp/assets/js/global.js:271
 msgid "Function call does not exist!"
-msgstr "llamada Función no existe!"
+msgstr "¡ La llamada a función no existe!"
 
 #: views/grid.php:38
 msgid "Group"
-msgstr ""
+msgstr "Grupo"
 
 #: Contactmanager.class.php:1465
 #, php-format
@@ -392,11 +396,11 @@ msgstr "Grupo no existe"
 
 #: Contactmanager.class.php:1915
 msgid "Group entries successfully added"
-msgstr "Entradas de Grupos satisfactoriamente añadidas"
+msgstr "Entradas de Grupos añadidas satisfactoriamente"
 
 #: Contactmanager.class.php:1784
 msgid "Group entries successfully deleted"
-msgstr "Entradas de Grupos satisfactoriamente eliminadas"
+msgstr "Entradas de Grupos eliminadas satisfactoriamente"
 
 #: Contactmanager.class.php:2533
 msgid "Group entry E-Mail successfully added"
@@ -404,47 +408,47 @@ msgstr "Correos de Grupos satisfactoriamente añadidos"
 
 #: Contactmanager.class.php:2499
 msgid "Group entry E-Mail successfully deleted"
-msgstr "Entradas de Correos  de Grupo satisfactoriamente eliminados"
+msgstr "Entradas de Correos de Grupo eliminados satisfactoriamente"
 
 #: Contactmanager.class.php:2557
 msgid "Group entry E-Mails successfully added"
-msgstr "Entradas de Correos del Grupo satisfactoriamente agregados"
+msgstr "Entradas de Correos del Grupo agregados satisfactoriamente"
 
 #: Contactmanager.class.php:2507 Contactmanager.class.php:2516
 msgid "Group entry E-Mails successfully deleted"
-msgstr "Entradas de Grupo de Correos satisfactoriamente eliminados"
+msgstr "Entradas de Grupo de Correos eliminados satisfactoriamente"
 
 #: Contactmanager.class.php:2628
 msgid "Group entry Website successfully added"
-msgstr "Entradas de Grupo de sitios Web satisfactoriamente añadidos"
+msgstr "Entradas de Grupo de sitios Web añadidos satisfactoriamente"
 
 #: Contactmanager.class.php:2594
 msgid "Group entry Website successfully deleted"
-msgstr "Entradas de sitios Web de Grupos satisfactoriamente eliminados"
+msgstr "Entradas de sitios Web de Grupos eliminados satisfactoriamente"
 
 #: Contactmanager.class.php:2652
 msgid "Group entry Websites successfully added"
-msgstr "Entradas de sitios Web de Grupo satisfactoriamente añadidos"
+msgstr "Entradas de sitios Web de Grupo añadidos satisfactoriamente"
 
 #: Contactmanager.class.php:2602 Contactmanager.class.php:2611
 msgid "Group entry Websites successfully deleted"
-msgstr "Entrada de sitios Web de Grupo satisfactoriamente eliminados"
+msgstr "Entrada de sitios Web de Grupo eliminados satisfactoriamente"
 
 #: Contactmanager.class.php:2429
 msgid "Group entry XMPP successfully added"
-msgstr "Entrada de XMPP de grupo satisfactoriamente añadidos"
+msgstr "Entrada de XMPP de grupo añadidos satisfactoriamente"
 
 #: Contactmanager.class.php:2382
 msgid "Group entry XMPP successfully deleted"
-msgstr "Entrada de XMPP de Grupo satisfactoriamente eliminados"
+msgstr "Entrada de XMPP de Grupo eliminados satisfactoriamente"
 
 #: Contactmanager.class.php:2458
 msgid "Group entry XMPPs successfully added"
-msgstr "Entrada de XMPPs de Grupos satisfactoriamente añadidos"
+msgstr "Entrada de XMPPs de Grupos añadidos satisfactoriamente"
 
 #: Contactmanager.class.php:2394 Contactmanager.class.php:2407
 msgid "Group entry XMPPs successfully deleted"
-msgstr "Entrada de Grupos XMPPs satisfactoriamente eliminados"
+msgstr "Entrada de Grupos XMPPs eliminados satisfactoriamente"
 
 #: Contactmanager.class.php:1937 Contactmanager.class.php:2122
 #: Contactmanager.class.php:2183 Contactmanager.class.php:2418
@@ -460,31 +464,31 @@ msgstr "Imagen de entrada de grupo agregada correctamente"
 
 #: Contactmanager.class.php:2136
 msgid "Group entry number successfully added"
-msgstr "Entrada de numero de Grupo satisfactoriamente añadido"
+msgstr "Entrada de numero de Grupo añadido satisfactoriamente"
 
 #: Contactmanager.class.php:2077
 msgid "Group entry number successfully deleted"
-msgstr "Entrada de numero de Grupo satisfactoriamente eliminados"
+msgstr "Entrada de numero de Grupo eliminados satisfactoriamente"
 
 #: Contactmanager.class.php:2247
 msgid "Group entry numbers successfully added"
-msgstr "Entrada de números de Grupo satisfactoriamente añadidos"
+msgstr "Entrada de números de Grupo añadidos satisfactoriamente"
 
 #: Contactmanager.class.php:2091 Contactmanager.class.php:2111
 msgid "Group entry numbers successfully deleted"
-msgstr "Entrada de números de Grupo satisfactoriamente eliminados"
+msgstr "Entrada de números de Grupo eliminados satisfactoriamente"
 
 #: Contactmanager.class.php:1897
 msgid "Group entry successfully added"
-msgstr "Estrada de Grupo satisfactoriamente añadido"
+msgstr "Estrada de Grupo añadido satisfactoriamente"
 
 #: Contactmanager.class.php:1746
 msgid "Group entry successfully deleted"
-msgstr "Entrada de Grupo satisfactoriamente eliminado"
+msgstr "Entrada de Grupo eliminado satisfactoriamente"
 
 #: Contactmanager.class.php:1841 Contactmanager.class.php:1973
 msgid "Group entry successfully updated"
-msgstr "Entrada de Grupo satisfactoriamente actualizado"
+msgstr "Entrada de Grupo actualizado satisfactoriamente"
 
 #: Contactmanager.class.php:827 Contactmanager.class.php:1424
 #: Contactmanager.class.php:1468
@@ -501,15 +505,15 @@ msgstr "Grupo no encontrado y no puede ser creado."
 
 #: Contactmanager.class.php:1453
 msgid "Group successfully added"
-msgstr "Grupo satisfactoriamente añadido"
+msgstr "Grupo añadido satisfactoriamente"
 
 #: Contactmanager.class.php:1413
 msgid "Group successfully deleted"
-msgstr "Grupo satisfactoriamente eliminado"
+msgstr "Grupo eliminado satisfactoriamente"
 
 #: Contactmanager.class.php:1481
 msgid "Group successfully updated"
-msgstr "Grupo satisfactoriamente actualizado"
+msgstr "Grupo actualizado satisfactoriamente"
 
 #: Contactmanager.class.php:3136
 msgid "Group type is required."
@@ -537,7 +541,7 @@ msgstr "Heredar"
 
 #: ucp/assets/js/global.js:261
 msgid "Initiate"
-msgstr ""
+msgstr "Iniciar"
 
 #: Contactmanager.class.php:31 Contactmanager.class.php:3048 views/group.php:46
 msgid "Internal"
@@ -564,7 +568,7 @@ msgstr "Lista Todos los Grupos"
 
 #: views/rnav.php:3
 msgid "List All Speeddials"
-msgstr ""
+msgstr "Lista de todos los Discados Rápidos"
 
 #: ucp/assets/js/global.js:533
 msgid "Loading..."
@@ -572,15 +576,15 @@ msgstr "Cargando..."
 
 #: Console/Contactmanager.class.php:17
 msgid "Lookup backed on User Manager Users View"
-msgstr ""
+msgstr "Búsqueda basada en la Vista de Usuarios de Administración de Usuarios"
 
 #: Console/Contactmanager.class.php:16
 msgid "Lookup number and get a contact back as a result"
-msgstr ""
+msgstr "Busca el número y obtiene un contacto como resultado"
 
 #: Contactmanager.class.php:663 ucp/Contactmanager.class.php:260
 msgid "Missing a temporary folder"
-msgstr "Falta la carpeta temporal"
+msgstr "Falta una carpeta temporal"
 
 #: ucp/views/widget.php:6
 msgid "My Contacts"
@@ -644,17 +648,17 @@ msgstr "No Autorizado"
 
 #: views/speeddial-grid.php:12
 msgid "Number"
-msgstr ""
+msgstr "Número"
 
 #: assets/js/contactmanager.js:58
 msgid "Number cannot be blank."
-msgstr "Numero no puede estar en blanco."
+msgstr "El número no puede estar en blanco."
 
 #: Contactmanager.class.php:45 Contactmanager.class.php:54
 #: ucp/views/contact.php:50 ucp/views/contactEdit.php:49 views/entry.php:236
 #: views/group.php:93
 msgid "Numbers"
-msgstr "Numeros"
+msgstr "Números"
 
 #: Contactmanager.class.php:965 Contactmanager.class.php:3075
 #: Contactmanager.class.php:3089 Contactmanager.class.php:3103
@@ -666,11 +670,11 @@ msgstr "Otro"
 
 #: views/grid.php:38
 msgid "Owner"
-msgstr ""
+msgstr "Dueño"
 
 #: ucp/Contactmanager.class.php:27
 msgid "PBX Contacts"
-msgstr ""
+msgstr "Contactos de la PBX"
 
 #: contactmanager.i18n.php:12
 msgid "Partial Match Length"
@@ -687,7 +691,7 @@ msgstr "Pro Favor introduzca un email valido"
 
 #: Contactmanager.class.php:50 Contactmanager.class.php:3050
 msgid "Private"
-msgstr ""
+msgstr "Privado"
 
 #: Contactmanager.class.php:1028 Contactmanager.class.php:1047
 msgid "Reset"
@@ -718,19 +722,21 @@ msgstr "Mostrar en Grupos de Gestor de Contactos"
 #: ucp/views/contactEdit.php:109 views/entry.php:269
 #: assets/js/contactmanager.js:165
 msgid "Speed Dial"
-msgstr ""
+msgstr "Discado Rápido"
 
 #: views/speeddial-grid.php:11
 msgid "Speed Dial Feature Code"
-msgstr ""
+msgstr "Código de Característica de Discado Rápido"
 
 #: views/speeddial-grid.php:3
 msgid "Speed Dial Feature code has been disabled in Feature Code Admin"
 msgstr ""
+"Código de Característica de Discado Rápido ha sido deshabilitado en "
+"Administración de Códigos de Características"
 
 #: views/speeddial-grid.php:1
 msgid "Speed Dials"
-msgstr ""
+msgstr "Discados Rápidos"
 
 #: Contactmanager.class.php:1033 Contactmanager.class.php:1052
 msgid "Submit"
@@ -738,7 +744,7 @@ msgstr "Enviar"
 
 #: contactmanager.i18n.php:8
 msgid "The Contact Manager module lets you add contacts to groups."
-msgstr ""
+msgstr "El Gestor de Contactos le permite agregar contactos a grupos."
 
 #: Contactmanager.class.php:654 ucp/Contactmanager.class.php:251
 msgid ""
@@ -762,11 +768,11 @@ msgstr "No hay acciones para este tipo"
 
 #: ucp/assets/js/global.js:397
 msgid "There was an error"
-msgstr ""
+msgstr "Hubo un error"
 
 #: ucp/assets/js/global.js:157
 msgid "There was an error removing this group"
-msgstr ""
+msgstr "Hubo un error al eliminar este grupo"
 
 #: views/userman_hook.php:49
 msgid ""
@@ -778,11 +784,13 @@ msgstr ""
 
 #: ucp/assets/js/global.js:308
 msgid "This speed dial id conflicts with another contact"
-msgstr ""
+msgstr "Este ID de discado rápido está en conflicto con otro contacto"
 
 #: ucp/assets/js/global.js:296
 msgid "This speed dial id conflicts with another speed dial on this page"
 msgstr ""
+"Este ID de discado rápido está en conflicto con otro discado rápido en este "
+"página"
 
 #: Contactmanager.class.php:3060 ucp/views/contact.php:18
 #: ucp/views/contactEdit.php:18 ucp/views/widget.php:50 views/entry.php:128
@@ -823,7 +831,7 @@ msgstr "No autorizado"
 
 #: Contactmanager.class.php:3336
 msgid "Unknown"
-msgstr ""
+msgstr "Desconocido"
 
 #: Contactmanager.class.php:3215
 msgid "Unknown data type."
@@ -847,6 +855,9 @@ msgid ""
 "Used in Contact Manager to determine phone number representations. Select "
 "the region for the numbers you have entered above."
 msgstr ""
+"Utilizado en Gestor de Contactos para determinar las representaciones de "
+"números de teléfono. Seleccione la región para los números que ha ingresado "
+"arriba."
 
 #: Contactmanager.class.php:36 views/entry.php:41 views/group.php:87
 #: views/group.php:97
@@ -866,7 +877,7 @@ msgstr ""
 
 #: ucp/Contactmanager.class.php:382 ucp/Contactmanager.class.php:389
 msgid "View Contact"
-msgstr ""
+msgstr "Ver Contacto"
 
 #: views/userman_hook.php:33
 msgid "Viewable Contact Manager Groups"
