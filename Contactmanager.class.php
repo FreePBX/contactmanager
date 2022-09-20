@@ -2906,36 +2906,50 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			return false;
 		}
 
-		$lookuplen = (int)$this->freepbx->Config->get('CONTACTMANLOOKUPLENGTH');
-
-		//quickly look up the number in the database
-		if($id === -1) {
-			$sql = "SELECT * FROM contactmanager_entry_numbers n, contactmanager_group_entries e, contactmanager_groups g WHERE g.owner = -1 AND g.id = e.groupid AND n.entryid = e.id AND n.stripped AND ((n.stripped LIKE :strippedlike AND CHAR_LENGTH(n.stripped) >= :lookuplength) OR (n.stripped = :stripped))";
-			$sth = $this->freepbx->Database->prepare($sql);
-			$sth->execute(array(
-				":strippedlike" => '%'.$number.'%',
-				":stripped" => $number,
-				":lookuplength" => $lookuplen
-			));
+		
+		if($id == -1) {
+			$groups = $this->getGroups();
 		} else {
-			$sql = "SELECT * FROM contactmanager_entry_numbers n, contactmanager_group_entries e, contactmanager_groups g WHERE (g.owner = -1 OR g.owner = :id) AND g.id = e.groupid AND n.entryid = e.id AND ((n.stripped LIKE :strippedlike AND CHAR_LENGTH(n.stripped) >= :lookuplength) OR (n.stripped = :stripped))";
-			$sth = $this->freepbx->Database->prepare($sql);
-			$sth->execute(array(
-				":id" => $id,
-				":strippedlike" => '%'.$number.'%',
-				":stripped" => $number,
-				":lookuplength" => $lookuplen
-			));
+			$groups = $this->getGroupsByOwner($id);
 		}
 
+		if(empty($groups)){
+			return false;
+		}
 
-		$quickResults = $sth->fetchAll(PDO::FETCH_ASSOC);
+		$lookuplen = (int)$this->freepbx->Config->get('CONTACTMANLOOKUPLENGTH');
+		$quickResults = [];
+		//quickly look up the number in the database
+		foreach($groups as $group){
+			if($id === -1) {
+				$sql = "SELECT * FROM contactmanager_entry_numbers n, contactmanager_group_entries e, contactmanager_groups g WHERE g.owner = -1 AND g.id = :groupid AND n.entryid = e.id AND n.stripped AND ((n.stripped LIKE :strippedlike AND CHAR_LENGTH(n.stripped) >= :lookuplength) OR (n.stripped = :stripped))";
+				$sth = $this->freepbx->Database->prepare($sql);
+				$sth->execute(array(
+					":groupid" => $group["id"],
+					":strippedlike" => '%'.$number.'%',
+					":stripped" => $number,
+					":lookuplength" => $lookuplen
+				));
+			} else {
+				$sql = "SELECT * FROM contactmanager_entry_numbers n, contactmanager_group_entries e, contactmanager_groups g WHERE (g.owner = -1 OR g.owner = :id) AND g.id = :groupid AND n.entryid = e.id AND ((n.stripped LIKE :strippedlike AND CHAR_LENGTH(n.stripped) >= :lookuplength) OR (n.stripped = :stripped))";
+				$sth = $this->freepbx->Database->prepare($sql);
+				$sth->execute(array(
+					":groupid" => $group["id"],
+					":id" => $id,
+					":strippedlike" => '%'.$number.'%',
+					":stripped" => $number,
+					":lookuplength" => $lookuplen
+				));
+			}
+			$quickResults = array_merge($quickResults, $sth->fetchAll(PDO::FETCH_ASSOC));
+		}
+
 		$phoneUtil = PhoneNumberUtil::getInstance();
 		if(!empty($quickResults)) {
 			if(count($quickResults) === 1 && $number === $quickResults[0]['stripped']) {
 				return $this->getEntryByID($quickResults[0]['entryid']);
 			} else {
-				foreach($quickResults as $result) {
+				foreach($quickResults as $result) {					
 					switch($phoneUtil->isNumberMatch((string)$number,(string)$result['stripped'])) {
 						case \libphonenumber\MatchType::NSN_MATCH:
 						case \libphonenumber\MatchType::EXACT_MATCH:
