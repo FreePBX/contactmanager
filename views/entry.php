@@ -148,7 +148,7 @@ foreach ($users as $u) {
 									<label class="control-label" for="imageupload"><?php echo _('Contact Image')?></label>
 									<i class="fa fa-question-circle fpbx-help-icon" data-for="image"></i>
 								</div>
-								<div class="col-md-9">
+								<div class="col-md-9 row">
 									<div class="col-md-4">
 										<div id="dropzone" class="image">
 											<div class="message"><?php echo _("Drop a new image here")?></div>
@@ -242,8 +242,9 @@ foreach ($users as $u) {
 													$entry['numbers'] = !empty($entry['numbers']) ? $entry['numbers'] : array();
 													foreach ($entry['numbers'] as $number) {?>
 														<tr id="number_<?php echo $numcount?>">
-															<td><a class="clickable" onclick="delNumber('<?php echo $numcount?>')"><i class="fa fa-ban fa-fw"></i></a></td>
-															<td class="form-inline">
+															<td style="vertical-align: middle;"><a class="clickable" onclick="delNumber('<?php echo $numcount?>')"><i class="fa fa-ban fa-fw"></i></a></td>
+															<td class="form-group">
+																<div class="form-inline mt-3">
 																<input type="text" class="form-control" name="number[<?php echo $numcount?>]" value="<?php echo $number['number']?>"> <label><?php echo _("Ext.")?></label> <input type="text" class="form-control" name="extension[<?php echo $numcount?>]" value="<?php echo $number['extension']?>">
 																<label><?php echo _("Type")?></label>
 																<select class="form-control" name="numbertype[<?php echo $numcount?>]">
@@ -253,8 +254,8 @@ foreach ($users as $u) {
 																		<option value="<?php echo $key?>" <?php echo $selected?>><?php echo $val?></option>
 																	<?php } ?>
 																</select>
-																<br>
-																<br>
+																</div>
+																<div class="form-inline mt-3">
 																<label><?php echo _("Dialing Country")?></label>
 																<select class="form-control number locale" name="numberlocale[<?php echo $numcount?>]" data-locale="<?php echo !empty($number['locale']) ? $number['locale'] : ''?>" data-id="<?php echo $numcount?>">
 																	<?php foreach($regionlist as $key => $val) {
@@ -264,8 +265,7 @@ foreach ($users as $u) {
 																	<?php } ?>
 																</select>
 																<?php if($speeddialcode['enabled']) { ?>
-																	<br>
-																	<br>
+																	<div class="form-inline mt-3">
 																	<label><?php echo _("Speed Dial")?></label>
 																	<div class="input-group">
 																		<span class="input-group-addon"><?php echo $speeddialcode['code']?></span>
@@ -274,9 +274,10 @@ foreach ($users as $u) {
 																			<input type="checkbox" name="numbersde[<?php echo $numcount?>]" id="numbersde[<?php echo $numcount?>]" data-id="<?php echo $numcount?>" class="enable-sd" <?php echo (trim($number['speeddial']) == "") ? "" : "checked"?>><label for="numbersde[<?php echo $numcount?>]" style="margin-bottom: 0px;"><?php echo _("Enable")?></label>
 																		</span>
 																	</div>
+																	</div>
 																<?php } ?>
 															</td>
-															<td><input type="checkbox" name="sms[<?php echo $numcount?>]" value="1" <?php echo in_array('sms', $number['flags']) ? "checked" : ""?>>SMS<br><input type="checkbox" name="fax[<?php echo $numcount?>]" value="1" <?php echo in_array('fax', $number['flags']) ? "checked" : ""?>>FAX</td>
+															<td style="vertical-align: middle;"><input type="checkbox" name="sms[<?php echo $numcount?>]" value="1" <?php echo in_array('sms', $number['flags']) ? "checked" : ""?>>SMS<br><input type="checkbox" name="fax[<?php echo $numcount?>]" value="1" <?php echo in_array('fax', $number['flags']) ? "checked" : ""?>>FAX</td>
 														</tr>
 													<?php $numcount++;} ?>
 												</table>

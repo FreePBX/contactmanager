@@ -183,10 +183,11 @@ function addNumber() {
 	}
 
 	row = "<tr id=\"number_" + index + "\">";
-	row+= "<td>";
+	row += "<td style='vertical-align: middle;'>";
 	row+= "<a class=\"clickable\" onclick=\"delNumber(" + index + ")\"><i class=\"fa fa-ban fa-fw\"></i></a>";
 	row+= "</td>";
-	row+= "<td class='form-inline'>";
+	row += "<td class='form-group'>";
+	row += "<div class='form-inline mt-3'>";
 	row+= "<input class=\"form-control\" type=\"text\" name=\"number[" + index + "]\" value=\"\"/>";
 	row+= " <label>"+_('Ext.')+"</label> <input class=\"form-control\" type=\"text\" name=\"extension[" + index + "]\" value=\"\"/>";
 	row+= " <label>"+_("Type")+"</label> ";
@@ -196,18 +197,18 @@ function addNumber() {
 	});
 	row+= "</select>";
 
-	row+= "<br>";
-	row+= "<br>";
+	row += "</div>";
+	row += "<div class='form-inline mt-3'>";
 	row+= "<label>"+_("Dialing Country")+"</label> ";
 	row+= '<select class="form-control number locale" name="numberlocale['+ index +']" data-locale="" data-id="'+index+'">';
 	$.each(regionlist, function(k,v) {
 		row+= "<option value=\"" + k + "\">" + v + "</option>";
 	});
-	row+= '</select>';
+	row += '</select>';
+	row += "</div>";
 
 	if(speeddialcode.enabled) {
-		row+= "<br>";
-		row+= "<br>";
+		row += "<div class='form-inline mt-3'>";
 		row+= "<label>"+_("Speed Dial")+"</label> ";
 		row+= '<div class="input-group">';
 		row+= '<span class="input-group-addon">'+speeddialcode.code+'</span>';
@@ -215,10 +216,11 @@ function addNumber() {
 		row+= '<span class="input-group-addon">';
 		row+= '<input type="checkbox" name="numbersde['+index+']" id="numbersde['+index+']" data-id="'+index+'" class="enable-sd"><label for="numbersde['+index+']" style="margin-bottom: 0px;">'+_("Enable")+'</label>';
 		row+= "</span>";
-		row+= "</div>";
+		row += "</div>";
+		row += "</div>";
 	}
 	row+= "</td>";
-	row+= "<td>";
+	row += "<td style='vertical-align: middle;'>";
 	row+= "<input type=\"checkbox\" name=\"sms[" + index + "]\" value=\"1\"/>" + _('SMS');
 	row+= "<br>";
 	row+= "<input type=\"checkbox\" name=\"fax[" + index + "]\" value=\"1\"/>" + _('FAX');
