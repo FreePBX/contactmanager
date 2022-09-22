@@ -183,7 +183,7 @@ function addNumber() {
 	}
 
 	row = "<tr id=\"number_" + index + "\">";
-	row+= "<td>";
+	row += "<td style='vertical-align: middle;'>";
 	row+= "<a class=\"clickable\" onclick=\"delNumber(" + index + ")\"><i class=\"fa fa-ban fa-fw\"></i></a>";
 	row+= "</td>";
 	row += "<td class='form-group'>";
@@ -204,7 +204,7 @@ function addNumber() {
 	$.each(regionlist, function(k,v) {
 		row+= "<option value=\"" + k + "\">" + v + "</option>";
 	});
-	row+= '</select>';
+	row += '</select>';
 	row += "</div>";
 
 	if(speeddialcode.enabled) {
@@ -220,7 +220,7 @@ function addNumber() {
 		row += "</div>";
 	}
 	row+= "</td>";
-	row+= "<td>";
+	row += "<td style='vertical-align: middle;'>";
 	row+= "<input type=\"checkbox\" name=\"sms[" + index + "]\" value=\"1\"/>" + _('SMS');
 	row+= "<br>";
 	row+= "<input type=\"checkbox\" name=\"fax[" + index + "]\" value=\"1\"/>" + _('FAX');
