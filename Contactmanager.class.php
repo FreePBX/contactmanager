@@ -2013,7 +2013,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 * @param {array} $entry   Array of Entry information
 	 * @param {boolean} $updateContactFile   Flag for regenerating user contact file
 	 */
-	public function addEntryByGroupID($groupid, $entry, $updateContactFile = true) {
+	public function addEntryByGroupID($groupid, $entry, $updateContactFile = true, $timeDelay = 0) {
 		$group = $this->getGroupByID($groupid);
 		if (!$group) {
 			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
@@ -2062,7 +2062,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 		$this->addWebsitesByEntryID($id, !empty($entry['websites']) ? $entry['websites'] : '');
 		if($updateContactFile) {
-			$this->updateContactUpdatedDetails($group['owner']);
+			$this->updateContactUpdatedDetails($group['owner'], $timeDelay);
 		}
 		$this->freepbx->Hooks->processHooks($id, $entry);
 
@@ -3822,8 +3822,8 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 * @param  {string} $userId
 	 * @return void
 	 */
-	public function updateContactUpdatedDetails($userId) {
-		$this->freepbx->Hooks->processHooks($userId);
+	public function updateContactUpdatedDetails($userId, $timeDelay = 0) {
+		$this->freepbx->Hooks->processHooks($userId, $timeDelay);
 	}
 	
 	/**
@@ -3896,6 +3896,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				"list_name" => $listName,
 				"contact_ids" => json_encode($includedContacts)
 			));
+			$this->updateContactUpdatedDetails(-1);
 		} catch(Exception $e) {}
 	}
 	
@@ -3915,6 +3916,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				"contact_ids" => json_encode($includedContacts),
 				"id" => $id,
 			));
+			$this->updateContactUpdatedDetails(-1);
 		} catch(Exception $e) {}
 
 	}
@@ -3961,8 +3963,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 *
 	 * @param  {integer} $uid
 	 * @param  {array} $includedContacts
+	 * @param  {boolean} $runHook
 	 */
-	public function updateUserFavoriteContacts($uid, $includedContacts) {
+	public function updateUserFavoriteContacts($uid, $includedContacts, $runHook = true) {
 
 		$sql = "SELECT * FROM contactmanager_user_favorites WHERE uid = :uid";
 		$sth = $this->db->prepare($sql);
@@ -3982,7 +3985,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			));
 		} catch(Exception $e) {}
 
-		$this->updateContactUpdatedDetails($uid);
+		if ($runHook) {
+			$this->updateContactUpdatedDetails($uid);
+		}
 	}
 
 	/**

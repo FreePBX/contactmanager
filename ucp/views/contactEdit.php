@@ -59,7 +59,7 @@
 							<option value="cell" <?php echo ($number['type'] == "cell") ? 'selected' : ''?>><?php echo _('Cell')?></option>
 							<option value="other" <?php echo ($number['type'] == "other") ? 'selected' : ''?>><?php echo _('Other')?></option>
 						</select>
-						<label class="dialing__country__label">Dialing Country</label>
+						<label style="margin-left: 21px;">Dialing Country</label>
 						<select class="form-control number locale-template" data-name="locale" data-locale="<?php echo $number['locale']?>">
 							<?php foreach($regionlist as $key => $val) {
 								$selected = ($number['locale'] == $key)?'SELECTED':'';
@@ -68,7 +68,7 @@
 							<?php } ?>
 						</select>
 					</div>
-					<div class="col-md-5 form-inline align-self-baseline">
+					<div class="col-md-5">
 						<div class="<?php echo !$speeddialmodifications ? 'hidden' : ''?>">
 						<?php if($featurecode['enabled']) { ?>
 							<label><?php echo _('Speed Dial')?>:</label>
@@ -96,14 +96,14 @@
 						<option value="cell"><?php echo _('Cell')?></option>
 						<option value="other"><?php echo _('Other')?></option>
 					</select>
-					<label class="dialing__country__label">Dialing Country</label>
+					<label style="margin-left: 21px;">Dialing Country</label>
 					<select class="form-control number" data-name="locale" data-locale="">
 						<?php foreach($regionlist as $key => $val) {?>
 							<option value="<?php echo $key?>" <?php echo ($key == $defaultlocale) ? 'SELECTED' : ''?>><?php echo $val?></option>
 						<?php } ?>
 					</select>
 				</div>
-				<div class="col-md-5 form-inline align-self-baseline">
+				<div class="col-md-5">
 					<div class="<?php echo !$speeddialmodifications ? 'hidden' : ''?>">
 					<?php if($featurecode['enabled']) { ?>
 						<label><?php echo _('Speed Dial')?>:</label>

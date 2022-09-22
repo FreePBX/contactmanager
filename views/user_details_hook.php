@@ -1,8 +1,8 @@
 <div class="element-container">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="">
-				<div class="row form-group">
+			<div class="row">
+				<div class="form-group">
 					<div class="col-md-3">
 						<label class="control-label" for="contactmanager_dialinglocale"><?php echo _('Dialing Locale')?></label>
 						<i class="fa fa-question-circle fpbx-help-icon" data-for="contactmanager_dialinglocale"></i>
@@ -29,19 +29,19 @@
 <div class="element-container">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="">
-				<div class="row form-group">
+			<div class="row">
+				<div class="form-group">
 					<div class="col-md-3">
 						<label class="control-label" for="contactmanager_imageupload"><?php echo _('Contact Image')?></label>
 						<i class="fa fa-question-circle fpbx-help-icon" data-for="contactmanager_image"></i>
 					</div>
-					<div class="col-md-9 row">
+					<div class="col-md-9">
 						<div class="col-md-4">
 							<div id="contactmanager_dropzone" class="image">
 								<div class="message"><?php echo _("Drop a new image here");?></div>
-								<img class="<?php echo (!empty($cmdata) && !empty($cmdata['image'])) ? '' : 'd-none'?>" src="<?php echo (!empty($cmdata) && !empty($cmdata['image'])) ? 'ajax.php?module=contactmanager&amp;command=limage&amp;type=internal&amp;entryid='.$cmdata['id'] : ''?>">
+								<img class="<?php echo (!empty($cmdata) && !empty($cmdata['image'])) ? '' : 'hidden'?>" src="<?php echo (!empty($cmdata) && !empty($cmdata['image'])) ? 'ajax.php?module=contactmanager&amp;command=limage&amp;type=internal&amp;entryid='.$cmdata['id'] : ''?>">
 							</div>
-							<button id="contactmanager_del-image" data-entryid="<?php echo !empty($cmdata) ? $cmdata['id'] : ''?>" class="btn btn-danger btn-sm <?php echo (!empty($cmdata) && !empty($cmdata['image'])) ? '' : 'd-none'?>"><?php echo _("Delete Image")?></button>
+							<button id="contactmanager_del-image" data-entryid="<?php echo !empty($cmdata) ? $cmdata['id'] : ''?>" class="btn btn-danger btn-sm <?php echo (!empty($cmdata) && !empty($cmdata['image'])) ? '' : 'hidden'?>"><?php echo _("Delete Image")?></button>
 						</div>
 						<div class="col-md-8">
 							<input type="hidden" name="contactmanager_image" id="contactmanager_image">
@@ -154,8 +154,8 @@ $( document ).ready(function() {
 			if(data.result.status) {
 				$("#contactmanager_dropzone img").attr("src","ajax.php?module=contactmanager&command=limage&temporary=1&name="+data.result.filename);
 				$("#contactmanager_image").val(data.result.filename);
-				$("#contactmanager_dropzone img").removeClass("d-none");
-				$("#contactmanager_del-image").removeClass("d-none");
+				$("#contactmanager_dropzone img").removeClass("hidden");
+				$("#contactmanager_del-image").removeClass("hidden");
 				$("#contactmanager_gravatar").prop('checked', false);
 			} else {
 				alert(data.result.message);
@@ -179,9 +179,9 @@ $( document ).ready(function() {
 		$.post( "ajax.php?module=contactmanager&command=delimage", {id: id, img: $("#contactmanager_image").val(), type: "internal"}, function( data ) {
 			if(data.status) {
 				$("#contactmanager_image").val("");
-				$("#contactmanager_dropzone img").addClass("d-none");
+				$("#contactmanager_dropzone img").addClass("hidden");
 				$("#contactmanager_dropzone img").attr("src","");
-				$("#contactmanager_del-image").addClass("d-none");
+				$("#contactmanager_del-image").addClass("hidden");
 				$("#contactmanager_gravatar").prop('checked', false);
 			}
 		});
@@ -205,8 +205,8 @@ $( document ).ready(function() {
 					$("#contactmanager_dropzone img").attr("src","ajax.php?module=contactmanager&command=limage&temporary=1&name="+data.filename);
 					$("#contactmanager_image").data("old",$("#image").val());
 					$("#contactmanager_image").val(data.filename);
-					$("#contactmanager_dropzone img").removeClass("d-none");
-					$("#contactmanager_del-image").removeClass("d-none");
+					$("#contactmanager_dropzone img").removeClass("hidden");
+					$("#contactmanager_del-image").removeClass("hidden");
 				} else {
 					alert(data.message);
 					$("#contactmanager_gravatar").prop('checked', false);
@@ -219,9 +219,9 @@ $( document ).ready(function() {
 				$("#contactmanager_image").val($("#image").data("old"));
 			} else {
 				$("#contactmanager_image").val("");
-				$("#contactmanager_dropzone img").addClass("d-none");
+				$("#contactmanager_dropzone img").addClass("hidden");
 				$("#contactmanager_dropzone img").attr("src","");
-				$("#contactmanager_del-image").addClass("d-none");
+				$("#contactmanager_del-image").addClass("hidden");
 			}
 		}
 	});
