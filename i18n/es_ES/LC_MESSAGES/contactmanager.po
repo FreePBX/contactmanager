@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2022-08-26 13:56+0000\n"
+"PO-Revision-Date: 2022-10-13 01:00+0000\n"
 "Last-Translator: Santiago Pioli <spioli@sangoma.com>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/es/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: Contactmanager.class.php:669 ucp/Contactmanager.class.php:266
 msgid "A PHP extension stopped the file upload"
-msgstr "Una extensión de PHP detuvo la carga del archivo"
+msgstr "Una extensión PHP a detenido la subida del archivo"
 
 #: views/entry.php:355
 msgid "A list of E-Mail addresses belonging to this entry"
@@ -135,7 +135,7 @@ msgstr "Determinar automáticamente"
 #: ucp/views/contact.php:36 ucp/views/contactEdit.php:36 views/entry.php:162
 #: views/user_details_hook.php:49
 msgid "Browse"
-msgstr "Explorar"
+msgstr "Buscar"
 
 #: ucp/assets/js/global.js:204
 msgid "Call To"
@@ -143,7 +143,7 @@ msgstr "Llamar a"
 
 #: Contactmanager.class.php:673 ucp/Contactmanager.class.php:270
 msgid "Can Not Find Uploaded Files"
-msgstr "No se pueden encontrar los archivos subidos"
+msgstr "No puede encontrar los archivos subidos"
 
 #: Contactmanager.class.php:964 Contactmanager.class.php:3074
 #: Contactmanager.class.php:3088 Contactmanager.class.php:3102
@@ -346,7 +346,7 @@ msgstr "FaceTime"
 
 #: Contactmanager.class.php:666 ucp/Contactmanager.class.php:263
 msgid "Failed to write file to disk"
-msgstr "No se pudo escribir el archivo en el disco"
+msgstr "Error al escribir archivo al disco"
 
 #: ucp/views/contact.php:94 ucp/views/contact.php:149
 #: ucp/views/contactEdit.php:85 ucp/views/contactEdit.php:120
@@ -635,7 +635,7 @@ msgstr "No se definió email"
 
 #: Contactmanager.class.php:660 ucp/Contactmanager.class.php:257
 msgid "No file was uploaded"
-msgstr "No se subió ningún archivo"
+msgstr "Ningun archivo fue subido"
 
 #: Contactmanager.class.php:2946 Contactmanager.class.php:2958
 msgid "None"
@@ -751,16 +751,16 @@ msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
 msgstr ""
-"El archivo subido excede la directiva MAX_FILE_SIZE que se especificó en el "
-"formulario HTML"
+"El archivo subido excede la directiva MAX_FILE_SIZE que fue especificado en "
+"el formulario HTML"
 
 #: Contactmanager.class.php:651 ucp/Contactmanager.class.php:248
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
-msgstr "El archivo subido excede la directiva upload_max_filesize en php.ini"
+msgstr "EL archivo subido excede la directiva upload_max_filesize en php.ini"
 
 #: Contactmanager.class.php:657 ucp/Contactmanager.class.php:254
 msgid "The uploaded file was only partially uploaded"
-msgstr "El archivo fue sólo parcialmente subido"
+msgstr "El archivo subido fue subido solo parcialmente"
 
 #: ucp/assets/js/global.js:253
 msgid "There are no actions for this type"
@@ -915,7 +915,7 @@ msgstr "Direccion XMPP no puede estar en balno."
 #: ucp/views/contactEdit.php:84 ucp/views/contactEdit.php:85
 #: views/ucp_config.php:12
 msgid "Yes"
-msgstr "Sí"
+msgstr "Si"
 
 #~ msgid "An entry must have a user"
 #~ msgstr "Debe contener un usuario"
