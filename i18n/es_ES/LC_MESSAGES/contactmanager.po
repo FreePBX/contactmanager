@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2022-10-13 01:00+0000\n"
+"PO-Revision-Date: 2022-10-15 14:00+0000\n"
 "Last-Translator: Santiago Pioli <spioli@sangoma.com>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/es/>\n"
@@ -695,7 +695,7 @@ msgstr "Privado"
 
 #: Contactmanager.class.php:1028 Contactmanager.class.php:1047
 msgid "Reset"
-msgstr "Reiniciar"
+msgstr "Restablecer"
 
 #: ucp/views/contact.php:86 ucp/views/contact.php:141
 #: ucp/views/contactEdit.php:84 ucp/views/contactEdit.php:119
