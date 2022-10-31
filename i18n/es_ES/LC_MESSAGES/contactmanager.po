@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2022-10-15 14:00+0000\n"
+"PO-Revision-Date: 2022-11-01 14:01+0000\n"
 "Last-Translator: Santiago Pioli <spioli@sangoma.com>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/es/>\n"
@@ -237,7 +237,7 @@ msgstr ""
 
 #: Contactmanager.class.php:1021 Contactmanager.class.php:1040
 msgid "Delete"
-msgstr "Eliminar"
+msgstr "Borrar"
 
 #: ucp/Contactmanager.class.php:391 ucp/views/contact.php:250
 msgid "Delete Contact"
@@ -305,7 +305,7 @@ msgstr "Editar Grupo"
 
 #: ucp/views/contact.php:192 ucp/views/contactEdit.php:141 views/entry.php:333
 msgid "Email"
-msgstr "Correo"
+msgstr "Email"
 
 #: ucp/views/contact.php:80 ucp/views/contact.php:135
 #: ucp/views/contactEdit.php:79 ucp/views/contactEdit.php:114
@@ -695,7 +695,7 @@ msgstr "Privado"
 
 #: Contactmanager.class.php:1028 Contactmanager.class.php:1047
 msgid "Reset"
-msgstr "Restablecer"
+msgstr "Reiniciar"
 
 #: ucp/views/contact.php:86 ucp/views/contact.php:141
 #: ucp/views/contactEdit.php:84 ucp/views/contactEdit.php:119
