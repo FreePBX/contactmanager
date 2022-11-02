@@ -183,15 +183,15 @@ function addNumber() {
 	}
 
 	row = "<tr id=\"number_" + index + "\">";
-	row += "<td style='vertical-align: middle;'>";
+	row += "<td>";
 	row+= "<a class=\"clickable\" onclick=\"delNumber(" + index + ")\"><i class=\"fa fa-ban fa-fw\"></i></a>";
 	row+= "</td>";
 	row += "<td class='form-group'>";
-	row += "<div class='form-inline mt-3'>";
-	row+= "<input class=\"form-control\" type=\"text\" name=\"number[" + index + "]\" value=\"\"/>";
-	row+= " <label>"+_('Ext.')+"</label> <input class=\"form-control\" type=\"text\" name=\"extension[" + index + "]\" value=\"\"/>";
+	row += "<div class='form-inline mt-1'>";
+	row+= "<input class=\"form-control mr-sm-2\" type=\"text\" name=\"number[" + index + "]\" value=\"\"/>";
+	row+= " <label>"+_('Ext.')+"</label> <input class=\"form-control mr-sm-2\" type=\"text\" name=\"extension[" + index + "]\" value=\"\"/>";
 	row+= " <label>"+_("Type")+"</label> ";
-	row+= "<select class=\"form-control\" name=\"numbertype[" + index + "]\">";
+	row+= "<select class=\"custom-select mx-sm-1\" name=\"numbertype[" + index + "]\">";
 	$.each(numbertypes, function(k,v) {
 		row+= "<option value=\"" + k + "\">" + v + "</option>";
 	});
@@ -200,7 +200,7 @@ function addNumber() {
 	row += "</div>";
 	row += "<div class='form-inline mt-3'>";
 	row+= "<label>"+_("Dialing Country")+"</label> ";
-	row+= '<select class="form-control number locale" name="numberlocale['+ index +']" data-locale="" data-id="'+index+'">';
+	row+= '<select class="custom-select number locale mx-sm-2" name="numberlocale['+ index +']" data-locale="" data-id="'+index+'">';
 	$.each(regionlist, function(k,v) {
 		row+= "<option value=\"" + k + "\">" + v + "</option>";
 	});
@@ -210,7 +210,7 @@ function addNumber() {
 	if(speeddialcode.enabled) {
 		row += "<div class='form-inline mt-3'>";
 		row+= "<label>"+_("Speed Dial")+"</label> ";
-		row+= '<div class="input-group">';
+		row+= '<div class="input-group mx-sm-2">';
 		row+= '<span class="input-group-addon">'+speeddialcode.code+'</span>';
 		row+= '<input type="number" class="form-control number-sd" min="0" name="numbersd['+index+']" data-id="'+index+'" disabled>';
 		row+= '<span class="input-group-addon">';
@@ -220,10 +220,10 @@ function addNumber() {
 		row += "</div>";
 	}
 	row+= "</td>";
-	row += "<td style='vertical-align: middle;'>";
-	row+= "<input type=\"checkbox\" name=\"sms[" + index + "]\" value=\"1\"/>" + _('SMS');
+	row += "<td>";
+	row+= "<input type=\"checkbox\" class=\"form-check-input\" name=\"sms[" + index + "]\" value=\"1\"/>" + _('SMS');
 	row+= "<br>";
-	row+= "<input type=\"checkbox\" name=\"fax[" + index + "]\" value=\"1\"/>" + _('FAX');
+	row+= "<input type=\"checkbox\" class=\"form-check-input\" name=\"fax[" + index + "]\" value=\"1\"/>" + _('FAX');
 	row+= "</td>";
 
 	$("#numbers").append(row);

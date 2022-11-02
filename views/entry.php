@@ -242,12 +242,12 @@ foreach ($users as $u) {
 													$entry['numbers'] = !empty($entry['numbers']) ? $entry['numbers'] : array();
 													foreach ($entry['numbers'] as $number) {?>
 														<tr id="number_<?php echo $numcount?>">
-															<td style="vertical-align: middle;"><a class="clickable" onclick="delNumber('<?php echo $numcount?>')"><i class="fa fa-ban fa-fw"></i></a></td>
+															<td><a class="clickable" onclick="delNumber('<?php echo $numcount?>')"><i class="fa fa-ban fa-fw"></i></a></td>
 															<td class="form-group">
-																<div class="form-inline mt-3">
-																<input type="text" class="form-control" name="number[<?php echo $numcount?>]" value="<?php echo $number['number']?>"> <label><?php echo _("Ext.")?></label> <input type="text" class="form-control" name="extension[<?php echo $numcount?>]" value="<?php echo $number['extension']?>">
+																<div class="form-inline mt-1">
+																<input type="text" class="form-control mr-sm-2" name="number[<?php echo $numcount?>]" value="<?php echo $number['number']?>"> <label><?php echo _("Ext.")?></label> <input type="text" class="form-control mr-sm-2" name="extension[<?php echo $numcount?>]" value="<?php echo $number['extension']?>">
 																<label><?php echo _("Type")?></label>
-																<select class="form-control" name="numbertype[<?php echo $numcount?>]">
+																<select class="custom-select mx-sm-1" name="numbertype[<?php echo $numcount?>]">
 																	<?php foreach($numbertypes as $key => $val) {
 																		$selected = ($number['type'] == $key)?'SELECTED':'';
 																	?>
@@ -257,17 +257,18 @@ foreach ($users as $u) {
 																</div>
 																<div class="form-inline mt-3">
 																<label><?php echo _("Dialing Country")?></label>
-																<select class="form-control number locale" name="numberlocale[<?php echo $numcount?>]" data-locale="<?php echo !empty($number['locale']) ? $number['locale'] : ''?>" data-id="<?php echo $numcount?>">
+																<select class="custom-select number locale mx-sm-2" name="numberlocale[<?php echo $numcount?>]" data-locale="<?php echo !empty($number['locale']) ? $number['locale'] : ''?>" data-id="<?php echo $numcount?>">
 																	<?php foreach($regionlist as $key => $val) {
 																		$selected = ($number['locale'] == $key)?'SELECTED':'';
 																	?>
 																		<option value="<?php echo $key?>" <?php echo $selected?>><?php echo $val?></option>
 																	<?php } ?>
-																</select>
+															    </select>
+																</div>
 																<?php if($speeddialcode['enabled']) { ?>
 																	<div class="form-inline mt-3">
 																	<label><?php echo _("Speed Dial")?></label>
-																	<div class="input-group">
+																	<div class="input-group mx-sm-2">
 																		<span class="input-group-addon"><?php echo $speeddialcode['code']?></span>
 																		<input type="number" class="form-control number-sd" name="numbersd[<?php echo $numcount?>]" min="0" data-id="<?php echo $numcount?>" <?php echo (trim($number['speeddial']) == "") ? "disabled" : ""?> value="<?php echo $number['speeddial']?>">
 																		<span class="input-group-addon">
@@ -277,7 +278,9 @@ foreach ($users as $u) {
 																	</div>
 																<?php } ?>
 															</td>
-															<td style="vertical-align: middle;"><input type="checkbox" name="sms[<?php echo $numcount?>]" value="1" <?php echo in_array('sms', $number['flags']) ? "checked" : ""?>>SMS<br><input type="checkbox" name="fax[<?php echo $numcount?>]" value="1" <?php echo in_array('fax', $number['flags']) ? "checked" : ""?>>FAX</td>
+															<td style="vertical-align: top;">
+																<input type="checkbox" class="form-check-input" name="sms[<?php echo $numcount?>]" value="1" <?php echo in_array('sms', $number['flags']) ? "checked" : ""?>>SMS<br>
+																<input type="checkbox" class="form-check-input" name="fax[<?php echo $numcount?>]" value="1" <?php echo in_array('fax', $number['flags']) ? "checked" : ""?>>FAX</td>
 														</tr>
 													<?php $numcount++;} ?>
 												</table>
