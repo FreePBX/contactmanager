@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2022-11-01 14:01+0000\n"
+"PO-Revision-Date: 2022-11-04 13:00+0000\n"
 "Last-Translator: Santiago Pioli <spioli@sangoma.com>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/es/>\n"
@@ -95,7 +95,7 @@ msgstr "Dirección"
 
 #: contactmanager.i18n.php:6
 msgid "Admin"
-msgstr "Admin"
+msgstr "Administrador"
 
 #: Contactmanager.class.php:2940
 msgid "All Internal Groups"
@@ -250,7 +250,7 @@ msgstr "Eliminar Grupo"
 #: ucp/views/contact.php:31 ucp/views/contactEdit.php:31 views/entry.php:157
 #: views/user_details_hook.php:44
 msgid "Delete Image"
-msgstr "Borrar Imagen"
+msgstr "Eliminar Imagen"
 
 #: views/entry.php:258 assets/js/contactmanager.js:155
 msgid "Dialing Country"
@@ -276,7 +276,7 @@ msgstr ""
 #: ucp/views/contact.php:28 ucp/views/contactEdit.php:28 views/entry.php:154
 #: views/user_details_hook.php:41
 msgid "Drop a new image here"
-msgstr "Deje una nueva imagen aquí"
+msgstr "Arroje una nueva imagen aquí"
 
 #: assets/js/contactmanager.js:90
 msgid "E-Mail address cannot be blank."
