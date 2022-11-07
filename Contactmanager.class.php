@@ -369,7 +369,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			}
 
 			$ext->add($contextname, "_".$code."X!", '', new \ext_answer());
-			$ext->add($contextname, "_".$code."X!", '', new \ext_gosub('1','s','sub-user-callerid'));
+			$ext->add($contextname, "_".$code."X!", '', new \ext_macro('user-callerid'));
 			$ext->add($contextname, "_".$code."X!", '', new \ext_gotoif('$[${DB_EXISTS(CM/speeddial/${EXTEN:'.strlen($code).'})}=1]','from-internal,${DB(CM/speeddial/${EXTEN:'.strlen($code).'})},1'));
 			$ext->add($contextname, "_".$code."X!", '', new \ext_goto('bad-number,s,1'));
 
