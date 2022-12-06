@@ -3462,8 +3462,11 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 	public function getDuplicateContactId($groupid, $contact){
 		$displayname = $contact['displayname'];
-		$number = $contact['numbers'][0]['number'];
 		$matchedentryid ='';
+		if(!isset($contact['numbers'][0]['number'])) {
+			return $matchedentryid;
+		}
+		$number = $contact['numbers'][0]['number'];
 		$entries = array();
 		$sql = "SELECT id, displayname, fname, lname FROM contactmanager_group_entries WHERE `groupid` =:groupid and `displayname` = :displayname ";
 		$sth = $this->db->prepare($sql);
