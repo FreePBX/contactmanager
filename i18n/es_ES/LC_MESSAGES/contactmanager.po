@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-11 11:25+0000\n"
+"POT-Creation-Date: 2022-12-07 03:44+0000\n"
 "PO-Revision-Date: 2016-06-08 06:15+0200\n"
 "Last-Translator: Ernesto <ecasas@sangoma.com>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
@@ -100,6 +100,10 @@ msgstr "Agregar XMPP"
 msgid "Address"
 msgstr "Dirección"
 
+#: contactmanager.i18n.php:6
+msgid "Admin"
+msgstr "Administ"
+
 #: Contactmanager.class.php:3131
 msgid "All Internal Groups"
 msgstr "Todos los Grupos Internos"
@@ -134,7 +138,7 @@ msgstr ""
 msgid "Are you sure you wish to delete these %s?"
 msgstr ""
 
-#: Contactmanager.class.php:3556
+#: Contactmanager.class.php:3559
 msgid "Automatically Determine"
 msgstr ""
 
@@ -202,15 +206,16 @@ msgstr ""
 
 #: Console/Contactmanager.class.php:14 Contactmanager.class.php:153
 #: Contactmanager.class.php:3167 Contactmanager.class.php:3182
-#: Contactmanager.class.php:3197 Contactmanager.class.php:3221 views/grid.php:1
+#: Contactmanager.class.php:3197 Contactmanager.class.php:3221
+#: contactmanager.i18n.php:4 contactmanager.i18n.php:10 views/grid.php:1
 msgid "Contact Manager"
 msgstr "Gestor de Contactos"
 
-#: contactmanager.i18n.php:6
+#: contactmanager.i18n.php:14
 msgid "Contact Manager Module"
 msgstr "Modulo Gestor de Contactos"
 
-#: contactmanager.i18n.php:10
+#: contactmanager.i18n.php:18
 msgid "Contact Manager Speed Dials"
 msgstr ""
 
@@ -359,7 +364,7 @@ msgstr "Error al escribir el archivo en el disco"
 msgid "Favorite Contact List"
 msgstr ""
 
-#: Contactmanager.class.php:3950
+#: Contactmanager.class.php:3953
 msgid "Favorite Contact List successfully deleted"
 msgstr ""
 
@@ -550,7 +555,7 @@ msgstr "Tipo de Grupo es requerido."
 msgid "Home"
 msgstr "Inicio"
 
-#: contactmanager.i18n.php:8
+#: contactmanager.i18n.php:16
 msgid ""
 "How many digits should a number be before a partial match is used when "
 "looking up a contact"
@@ -724,7 +729,7 @@ msgstr ""
 msgid "PBX Contacts"
 msgstr ""
 
-#: contactmanager.i18n.php:4
+#: contactmanager.i18n.php:12
 msgid "Partial Match Length"
 msgstr "Longitud de coincidencia parcial"
 
@@ -795,6 +800,10 @@ msgstr "Enviar"
 
 #: views/favorite_view.php:6
 msgid "Swap items"
+msgstr ""
+
+#: contactmanager.i18n.php:8
+msgid "The Contact Manager module lets you add contacts to groups."
 msgstr ""
 
 #: views/userman_hook.php:81
@@ -893,7 +902,7 @@ msgstr "No se encontró un gravatar para %s"
 msgid "Unauthorized"
 msgstr "No autorizado"
 
-#: Contactmanager.class.php:3557
+#: Contactmanager.class.php:3560
 msgid "Unknown"
 msgstr ""
 
@@ -977,9 +986,6 @@ msgstr "Direccion XMPP no puede estar en balno."
 #: views/ucp_config.php:12
 msgid "Yes"
 msgstr "Si"
-
-#~ msgid "Admin"
-#~ msgstr "Administ"
 
 #~ msgid "Are you sure you want to delete this group and all of it's contacts?"
 #~ msgstr "Esta seguro que quiere eliminar este grupo y todos sus contactos?"

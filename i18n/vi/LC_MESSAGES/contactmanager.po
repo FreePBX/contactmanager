@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-11 11:25+0000\n"
+"POT-Creation-Date: 2022-12-07 03:44+0000\n"
 "PO-Revision-Date: 2017-08-08 16:34+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese <http://weblate.freepbx.org/projects/freepbx/"
@@ -100,6 +100,10 @@ msgstr "Thêm XMPP"
 msgid "Address"
 msgstr "Địa chỉ"
 
+#: contactmanager.i18n.php:6
+msgid "Admin"
+msgstr "Quản trị viên"
+
 #: Contactmanager.class.php:3131
 msgid "All Internal Groups"
 msgstr "Tất cả các nhóm nội bộ"
@@ -134,7 +138,7 @@ msgstr ""
 msgid "Are you sure you wish to delete these %s?"
 msgstr ""
 
-#: Contactmanager.class.php:3556
+#: Contactmanager.class.php:3559
 msgid "Automatically Determine"
 msgstr ""
 
@@ -203,15 +207,16 @@ msgstr ""
 
 #: Console/Contactmanager.class.php:14 Contactmanager.class.php:153
 #: Contactmanager.class.php:3167 Contactmanager.class.php:3182
-#: Contactmanager.class.php:3197 Contactmanager.class.php:3221 views/grid.php:1
+#: Contactmanager.class.php:3197 Contactmanager.class.php:3221
+#: contactmanager.i18n.php:4 contactmanager.i18n.php:10 views/grid.php:1
 msgid "Contact Manager"
 msgstr "Trình quản lý liên lạc"
 
-#: contactmanager.i18n.php:6
+#: contactmanager.i18n.php:14
 msgid "Contact Manager Module"
 msgstr "Mô đun trình quản lý liên lạc"
 
-#: contactmanager.i18n.php:10
+#: contactmanager.i18n.php:18
 msgid "Contact Manager Speed Dials"
 msgstr "Trình quản lý liên lạc quay số nhanh"
 
@@ -359,7 +364,7 @@ msgstr "Ghi tệp vào đĩa không thành công"
 msgid "Favorite Contact List"
 msgstr ""
 
-#: Contactmanager.class.php:3950
+#: Contactmanager.class.php:3953
 msgid "Favorite Contact List successfully deleted"
 msgstr ""
 
@@ -550,7 +555,7 @@ msgstr "Yêu cầu phải Kiểu nhóm."
 msgid "Home"
 msgstr "Trang chủ"
 
-#: contactmanager.i18n.php:8
+#: contactmanager.i18n.php:16
 msgid ""
 "How many digits should a number be before a partial match is used when "
 "looking up a contact"
@@ -724,7 +729,7 @@ msgstr ""
 msgid "PBX Contacts"
 msgstr ""
 
-#: contactmanager.i18n.php:4
+#: contactmanager.i18n.php:12
 msgid "Partial Match Length"
 msgstr "Độ dài so khớp từng phần"
 
@@ -795,6 +800,10 @@ msgstr "Gửi đi"
 
 #: views/favorite_view.php:6
 msgid "Swap items"
+msgstr ""
+
+#: contactmanager.i18n.php:8
+msgid "The Contact Manager module lets you add contacts to groups."
 msgstr ""
 
 #: views/userman_hook.php:81
@@ -895,7 +904,7 @@ msgstr ""
 msgid "Unauthorized"
 msgstr "Không được phép"
 
-#: Contactmanager.class.php:3557
+#: Contactmanager.class.php:3560
 msgid "Unknown"
 msgstr ""
 
@@ -979,9 +988,6 @@ msgstr "Địa chỉ XMPP không thể để trống."
 #: views/ucp_config.php:12
 msgid "Yes"
 msgstr ""
-
-#~ msgid "Admin"
-#~ msgstr "Quản trị viên"
 
 #~ msgid "Are you sure you want to delete this group and all of it's contacts?"
 #~ msgstr "Bạn có chắc chắn muốn xóa nhóm này và toàn bộ liên lạc của nó?"
