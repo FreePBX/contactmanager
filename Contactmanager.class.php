@@ -813,6 +813,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 * @param {string} $display The Page name
 	 */
 	public function doConfigPageInit($display) {
+		$_REQUEST = freepbxGetSanitizedRequest();
 		if (isset($_REQUEST['action'])) {
 			switch ($_REQUEST['action']) {
 			case "delgroup":
@@ -838,6 +839,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				return true;
 			}
 		}
+		$_POST = freepbxGetSanitizedRequest();
 		if (isset($_POST['group'])) {
 
 			$group = !empty($_POST['group']) ? $_POST['group'] : '';
@@ -1013,7 +1015,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	public function myShowPage() {
 		$groups = $this->getGroupsGroupedByType();
 		$users = $this->userman->getAllUsers();
-
+		$_REQUEST = freepbxGetSanitizedRequest();
 		$action = !empty($_REQUEST['action']) ? $_REQUEST['action'] : '';
 		if ($action == "delentry") {
 			$action = "";

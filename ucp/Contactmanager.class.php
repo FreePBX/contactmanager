@@ -275,6 +275,7 @@ class Contactmanager extends Modules{
 				return array("status" => false, "message" => _("Can Not Find Uploaded Files"));
 			break;
 			case 'grid':
+				$_REQUEST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING, true);
 				$group = $_REQUEST['group'];
 				$order = $_REQUEST['order'];
 				$orderby = !empty($_REQUEST['sort']) ? $_REQUEST['sort'] : "displayname";
@@ -309,6 +310,7 @@ class Contactmanager extends Modules{
 				return $contacts;
 			break;
 			case 'updatecontact':
+				$_REQUEST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING, true);
 				$contact = $_REQUEST['contact'];
 				if(!$this->editEntry($contact['id'])) {
 					$return = array("status" => false, "message" => _("Unauthorized"));
@@ -340,7 +342,7 @@ class Contactmanager extends Modules{
 				$return = array("status" => false, "message" => _("Unauthorized"));
 			break;
 			case 'addcontact':
-				$data = $_POST;
+				$data = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING, true);;
 				$g = $this->cm->getGroupByID($data['group']);
 				if($g['owner'] == $this->user['id']) {
 					$contact = $data['contact'];
