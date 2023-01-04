@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>15.0.9.11</version>
+	<version>15.0.9.12</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*15.0.9.12* FREEI-5019 
 		*15.0.9.11* FREEI-1261 
 		*15.0.9.10* Packaging of ver 15.0.9.10
 		*15.0.9.9* Packaging of ver 15.0.9.9
