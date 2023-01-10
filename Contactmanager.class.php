@@ -839,7 +839,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				return true;
 			}
 		}
-		$_POST = freepbxGetSanitizedRequest();
+		$_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 		if (isset($_POST['group'])) {
 
 			$group = !empty($_POST['group']) ? $_POST['group'] : '';
