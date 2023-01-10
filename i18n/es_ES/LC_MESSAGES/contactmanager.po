@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2022-11-04 13:00+0000\n"
+"PO-Revision-Date: 2023-01-11 12:01+0000\n"
 "Last-Translator: Santiago Pioli <spioli@sangoma.com>\n"
 "Language-Team: Spanish <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/es/>\n"
@@ -200,7 +200,7 @@ msgstr ""
 #: Contactmanager.class.php:2996 Contactmanager.class.php:3013
 #: contactmanager.i18n.php:4 contactmanager.i18n.php:10 views/grid.php:1
 msgid "Contact Manager"
-msgstr "Gestor de Contactos"
+msgstr "Administrador de Contactos"
 
 #: contactmanager.i18n.php:14
 msgid "Contact Manager Module"
@@ -266,7 +266,7 @@ msgstr "Localización de marcación"
 #: ucp/views/contactEdit.php:6 ucp/views/widget.php:47 views/entry.php:68
 #: views/speeddial-grid.php:13
 msgid "Display Name"
-msgstr "Nombre a Mostrar"
+msgstr "Nombre para mostrar"
 
 #: views/entry.php:78
 msgid "Display Name (overrides Display Name from User Manager)"
