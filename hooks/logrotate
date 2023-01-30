@@ -1,0 +1,17 @@
+#!/bin/bash
+cat <<- EOF > /etc/logrotate.d/contactmanager
+/var/log/asterisk/update-contact-hook.log  {
+	daily
+	missingok
+	notifempty
+	dateext
+	sharedscripts
+	dateformat -%d%m%Y
+	rotate 10
+	size 50M
+	create 0640 asterisk asterisk
+	su asterisk asterisk
+	endscript
+}
+
+EOF

@@ -1,0 +1,200 @@
+#!/usr/bin/php -q
+<?php
+	date_default_timezone_set('UTC');
+	require '/usr/lib/sysadmin/includes.php';
+	if (!@include_once(getenv('FREEPBX_CONF') ? getenv('FREEPBX_CONF') : '/etc/freepbx.conf')) {
+	include_once('/etc/asterisk/freepbx.conf');
+	}
+
+	$freepbx = \FreePBX::Create();
+	$db = $freepbx->Database();
+	$astman = $freepbx->astman;
+	$Obj = null;
+	$scd = false;
+	$epm = false;
+
+	if (\FreePBX::Modules()->checkStatus("sangomaconnect")) {
+		$scd = true;
+	}
+	if (\FreePBX::Modules()->checkStatus("endpoint")) {
+		$epm = true;
+	}
+
+	if($scd) {
+		$Obj = \FreePBX::Sangomaconnect();
+		$pjsipport = $Obj->getPJSIPPort();
+		$scdIp = $Obj->getScdIpConfig();
+	} else {
+		$Obj  = \FreePBX::Endpoint();
+	}
+
+	if(empty($Obj)) {
+		debug_log(" update-contacts hook failed. \n");
+		throw new \Exception(_("update-contacts hook failed."));
+	}
+
+	$logfd = fopen($freepbx->Config->get('ASTLOGDIR') . "/update-contact-hook.log", "a+");
+
+	debug_log(" Starting hook run now ".print_r($argv,true) . "\n");
+
+	// Make sure we have a param
+	if (empty($argv[1])) {
+		debug_log(" update-contacts hook failed with no argument \n");
+		throw new \Exception(_("update-contacts hook failed due to no argument"));
+	}
+
+	// Underp the base64 that the param is using.
+	$b = str_replace('_', '/', $argv[1]);
+	$params = @json_decode(gzuncompress(@base64_decode($b)), true);
+	$userIdArray = $params['userIdArray'];
+	$timeDelay = $params['timeDelay'];
+	debug_log("parameters: " . print_r($params,true));
+	debug_log("time delay for contact reload is " . $timeDelay . " seconds \n");
+
+	if (!is_array($userIdArray)) {
+		debug_log(" update-contacts hook failed due to invalid param");
+		throw new \Exception("update-contacts hook failed due to invalid param");
+	}
+
+	if (count($userIdArray) == 1 && $userIdArray[0] == -1) {
+		$Obj->setConfig("updatehookrunning",1);
+		debug_log(" update-contacts : Adding entry in DB updatehookrunning" . "\n");
+		$run = true;
+		while ($run) {
+			debug_log(" update-contacts : sleep for 60 sec to update all the contacts" . "\n");
+			/* When there are multiple add/deletes this hook will get called one after another
+			*  We want hook to run after all delete/update , 
+			* if there is no update in the past 60 seonds then only start executing this hook */
+
+			sleep(60);
+			$time = $Obj->getConfig('hookrunupdatetime');
+			debug_log(" Current time= ".time(). " Waited for 60 sec and got last update time from DB=".$time . "\n");
+			$timeifnoupdate = $time + 55;
+			if (time() > $timeifnoupdate) {
+				$run = false;
+			}
+		}
+	} else {
+		//The timeDelay value will be zero except when we add a new contact from
+		//the Sangoma Phone Desktop Client through the api 'pbx.users.contacts.add'.
+		//This is required for the rapid dial list to reload properly.
+		sleep($timeDelay);
+	}
+	debug_log("  Reload Contacts Hook Started...with userIdArray = ".print_r($userIdArray,true). "\n");
+	/* Single User when we want to update the group */
+	if (count($userIdArray) == 1 && $userIdArray[0] == -1) {
+		$users = array();
+		$extensions = array();
+		if($scd) {
+			if (method_exists($freepbx->Sangomartapi, 'getLoggedInUsers')) {
+				$users = $freepbx->Sangomartapi->getLoggedInUsers();
+			}
+			foreach ($users as $index => $user) {
+				/* We have user data so lets pass that also to avoid another getUserByID API call */
+				update_contact($user['uid'], $user);
+				add_breathing_period($index);
+			}
+		}
+		if($epm) {
+			// Let's update the P phone config
+			$extensions = $freepbx->Endpoint->listConfiguredPPhones('Digium', 'P%', 'account1');
+			foreach ($extensions as $extension) {
+				update_config_file($extension['ext']);
+				add_breathing_period('1');
+			}
+		}
+
+	} else {
+		/* case for fav contact editing */
+		if($scd) {
+			foreach ($userIdArray as $index => $userId) {
+				update_contact($userId);
+				add_breathing_period($index);
+			}
+		}
+		// Let's update the P phone config
+		if($epm) {
+			$extNum = array();
+			foreach ($userIdArray as $userId) {
+				$user = $freepbx->Userman->getUserByID($userId);
+				$extension = $user['default_extension'];
+				$extList = $freepbx->Endpoint->getExtensionListByExtNum('Digium', $extension, 'account1');
+				if(!empty($extList)) {
+					foreach ($extList as $eList) {
+						$extNum[] = $eList['ext'];
+					}
+				}
+				if(!empty($extNum)) {
+					foreach ($extNum as $rebuildExt) {
+						update_config_file($rebuildExt);
+						add_breathing_period('1');
+					}
+				}
+			}
+		}
+	}
+
+	debug_log(" Finished update-contacts hook ");
+	$Obj->delConfig("updatehookrunning");
+	$Obj->delConfig("hookrunupdatetime");
+	fclose($logfd);
+
+/* Just process 10 user at a time and then give breathing period of 1 sec
+* do not want to overload the asterisk/system because as soon as we 
+* initiate event to asterisk to desktop client, client will try to fetch the contacts */
+function add_breathing_period($index) {
+	if ($index % 10 == 0) {
+		sleep(2);
+	}
+}
+
+function update_contact($userId, $user = array()) {
+	global $freepbx;
+	global $astman;
+	global $Obj;
+	global $pjsipport;
+	global $scdIp;
+
+	$usersetting = $freepbx->Userman->getModuleSettingByID($userId,'sangomaconnect','sangomaconnect_enable_webrtc',true);
+	if ($usersetting !="1") {
+		return false;
+	}
+
+	if (empty($user)) {
+		$user = $freepbx->Userman->getUserByID($userId);
+	}
+
+	//generate contact file of the user
+	debug_log(" - Generating contact file for the user " . $userId . "\n");
+	if (!empty($user) && $user['default_extension']) {
+		$Obj->SCD->generateUserContacts($userId, $pjsipport, $scdIp['scdIpAddress'], $user['default_extension']);
+	} else {
+		$Obj->SCD->generateUserContacts($userId, $pjsipport, $scdIp['scdIpAddress']);
+	}
+	//This user event is for Sangoma Phone desktop clients.
+	//SwitchboardAlert-reloadContacts UserEvents will trigger the clients to redownload their contacts file.
+	$res =  $astman->send_request("UserEvent", array(
+				"UserEvent" => "SwitchboardAlert",
+				"Alert" => 'reloadContacts',
+				"AccountID" => $userId,
+				"ActionID" => $userId . time()
+				));
+	debug_log("UserEvent response ". json_encode($res) . "\n");
+	return true;
+}
+
+function debug_log($str) {
+	global $logfd;
+	fwrite($logfd, date('d/m/Y H:i:s') ." ". $str ."\n"); 
+}
+
+function update_config_file($extNumber) {
+	global $freepbx;
+	$db = null;
+	//generate contact file of the user
+	debug_log(" - Generating contact file for the user " . $extNumber . "\n");
+	$freepbx->Endpoint->rebuildUpdateExt($extNumber);
+	return true;
+}
+
+?>
