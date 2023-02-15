@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>16.0.18.19</version>
+	<version>16.0.19</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*16.0.19*    FREEI-5625 
 		*16.0.18.19* FREEI-5515 
 		*16.0.18.18* FREEI-5019 
 		*16.0.18.17* FREEPBX-23875 
