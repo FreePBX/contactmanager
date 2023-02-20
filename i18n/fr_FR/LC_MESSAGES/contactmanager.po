@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-04 12:09+0000\n"
+"POT-Creation-Date: 2023-02-20 03:29+0000\n"
 "PO-Revision-Date: 2017-12-11 23:27+0200\n"
 "Last-Translator: JCattan <jeremie@famillecattan.com>\n"
 "Language-Team: French <http://weblate.freepbx.org/projects/freepbx/"
@@ -96,7 +96,7 @@ msgstr ""
 msgid "Add XMPP"
 msgstr ""
 
-#: Contactmanager.class.php:3272 views/entry.php:211 views/entry.php:223
+#: Contactmanager.class.php:3276 views/entry.php:211 views/entry.php:223
 msgid "Address"
 msgstr ""
 
@@ -104,11 +104,11 @@ msgstr ""
 msgid "Admin"
 msgstr "Admin"
 
-#: Contactmanager.class.php:3133
+#: Contactmanager.class.php:3137
 msgid "All Internal Groups"
 msgstr ""
 
-#: Contactmanager.class.php:3145
+#: Contactmanager.class.php:3149
 msgid "All Public Groups"
 msgstr ""
 
@@ -138,7 +138,7 @@ msgstr ""
 msgid "Are you sure you wish to delete these %s?"
 msgstr ""
 
-#: Contactmanager.class.php:3561
+#: Contactmanager.class.php:3567
 msgid "Automatically Determine"
 msgstr ""
 
@@ -155,8 +155,8 @@ msgstr ""
 msgid "Can Not Find Uploaded Files"
 msgstr "Impossible de trouver les fichiers téléchargés"
 
-#: Contactmanager.class.php:1027 Contactmanager.class.php:3284
-#: Contactmanager.class.php:3298 Contactmanager.class.php:3312
+#: Contactmanager.class.php:1027 Contactmanager.class.php:3288
+#: Contactmanager.class.php:3302 Contactmanager.class.php:3316
 #: ucp/views/contact.php:62 ucp/views/contact.php:115
 #: ucp/views/contactEdit.php:59 ucp/views/contactEdit.php:96
 #: views/group.php:105
@@ -168,14 +168,14 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: Contactmanager.class.php:3289 Contactmanager.class.php:3303
-#: Contactmanager.class.php:3317
+#: Contactmanager.class.php:3293 Contactmanager.class.php:3307
+#: Contactmanager.class.php:3321
 msgid ""
 "Comma-delimited list of flags.  (Example: sms,fax)  External contacts only."
 msgstr ""
 
 #: Contactmanager.class.php:51 Contactmanager.class.php:60
-#: Contactmanager.class.php:3271 ucp/views/contact.php:22
+#: Contactmanager.class.php:3275 ucp/views/contact.php:22
 #: ucp/views/contactEdit.php:22 ucp/views/widget.php:56 views/entry.php:191
 #: views/group.php:92
 msgid "Company"
@@ -200,8 +200,8 @@ msgid ""
 msgstr ""
 
 #: Console/Contactmanager.class.php:14 Contactmanager.class.php:153
-#: Contactmanager.class.php:3169 Contactmanager.class.php:3184
-#: Contactmanager.class.php:3199 Contactmanager.class.php:3223
+#: Contactmanager.class.php:3173 Contactmanager.class.php:3188
+#: Contactmanager.class.php:3203 Contactmanager.class.php:3227
 #: contactmanager.i18n.php:4 contactmanager.i18n.php:10 views/grid.php:1
 msgid "Contact Manager"
 msgstr ""
@@ -219,18 +219,18 @@ msgstr ""
 msgid "Contact Manager: %s (Speed Dial: %s) [%s]"
 msgstr ""
 
-#: Contactmanager.class.php:3238 ucp/Contactmanager.class.php:24
+#: Contactmanager.class.php:3242 ucp/Contactmanager.class.php:24
 #: ucp/Contactmanager.class.php:36 ucp/Contactmanager.class.php:66
 #: ucp/Contactmanager.class.php:565
 msgid "Contacts"
 msgstr ""
 
-#: Contactmanager.class.php:3239
+#: Contactmanager.class.php:3243
 msgid "Contacts and internal/external groups from the Contact Manager module."
 msgstr ""
 
-#: Contactmanager.class.php:3291 Contactmanager.class.php:3305
-#: Contactmanager.class.php:3319
+#: Contactmanager.class.php:3295 Contactmanager.class.php:3309
+#: Contactmanager.class.php:3323
 msgid ""
 "Country Code  Or you can put AUTO , which will fill the Country code "
 "automatically. External contacts only. "
@@ -268,8 +268,8 @@ msgid "Dialing Locale"
 msgstr ""
 
 #: Contactmanager.class.php:40 Contactmanager.class.php:50
-#: Contactmanager.class.php:59 Contactmanager.class.php:3265
-#: Contactmanager.class.php:3266 ucp/views/contact.php:6
+#: Contactmanager.class.php:59 Contactmanager.class.php:3269
+#: Contactmanager.class.php:3270 ucp/views/contact.php:6
 #: ucp/views/contactEdit.php:6 ucp/views/widget.php:52 views/entry.php:68
 #: views/speeddial-grid.php:13
 msgid "Display Name"
@@ -288,8 +288,8 @@ msgstr "Déposer une nouvelle image ici"
 msgid "E-Mail address cannot be blank."
 msgstr ""
 
-#: Contactmanager.class.php:3320 Contactmanager.class.php:3321
-#: Contactmanager.class.php:3322
+#: Contactmanager.class.php:3324 Contactmanager.class.php:3325
+#: Contactmanager.class.php:3326
 msgid "E-mail address.  External contacts only."
 msgstr ""
 
@@ -332,12 +332,12 @@ msgstr ""
 msgid "Ext."
 msgstr ""
 
-#: Contactmanager.class.php:3288 Contactmanager.class.php:3302
-#: Contactmanager.class.php:3316
+#: Contactmanager.class.php:3292 Contactmanager.class.php:3306
+#: Contactmanager.class.php:3320
 msgid "Extension.  External contacts only."
 msgstr ""
 
-#: Contactmanager.class.php:48 Contactmanager.class.php:3259 views/group.php:45
+#: Contactmanager.class.php:48 Contactmanager.class.php:3263 views/group.php:45
 msgid "External"
 msgstr ""
 
@@ -357,7 +357,7 @@ msgstr ""
 msgid "Favorite Contact List"
 msgstr ""
 
-#: Contactmanager.class.php:3955
+#: Contactmanager.class.php:3961
 msgid "Favorite Contact List successfully deleted"
 msgstr ""
 
@@ -378,7 +378,7 @@ msgstr "Télécopieur"
 msgid "File upload failed"
 msgstr "Échec Envoi Fichier"
 
-#: Contactmanager.class.php:41 Contactmanager.class.php:3268
+#: Contactmanager.class.php:41 Contactmanager.class.php:3272
 #: ucp/views/contact.php:10 ucp/views/contactEdit.php:10
 #: ucp/views/widget.php:53 views/entry.php:88 views/speeddial-grid.php:14
 msgid "First Name"
@@ -401,11 +401,11 @@ msgstr ""
 msgid "Group '%s' does not exist"
 msgstr ""
 
-#: Contactmanager.class.php:3250 ucp/views/groupCreate.php:4
+#: Contactmanager.class.php:3254 ucp/views/groupCreate.php:4
 msgid "Group Name"
 msgstr "Nom du groupe"
 
-#: Contactmanager.class.php:3255
+#: Contactmanager.class.php:3259
 msgid "Group Type"
 msgstr ""
 
@@ -516,11 +516,11 @@ msgstr ""
 msgid "Group name can not be blank"
 msgstr ""
 
-#: Contactmanager.class.php:3339
+#: Contactmanager.class.php:3343
 msgid "Group name is required."
 msgstr ""
 
-#: Contactmanager.class.php:3373
+#: Contactmanager.class.php:3377
 msgid "Group not found and could not be created."
 msgstr ""
 
@@ -536,12 +536,12 @@ msgstr ""
 msgid "Group successfully updated"
 msgstr ""
 
-#: Contactmanager.class.php:3346
+#: Contactmanager.class.php:3350
 msgid "Group type is required."
 msgstr ""
 
-#: Contactmanager.class.php:1026 Contactmanager.class.php:3283
-#: Contactmanager.class.php:3297 Contactmanager.class.php:3311
+#: Contactmanager.class.php:1026 Contactmanager.class.php:3287
+#: Contactmanager.class.php:3301 Contactmanager.class.php:3315
 #: ucp/views/contact.php:61 ucp/views/contact.php:114
 #: ucp/views/contactEdit.php:58 ucp/views/contactEdit.php:95
 #: views/group.php:104
@@ -566,7 +566,7 @@ msgstr "Hérite"
 msgid "Initiate"
 msgstr ""
 
-#: Contactmanager.class.php:38 Contactmanager.class.php:3258 views/group.php:46
+#: Contactmanager.class.php:38 Contactmanager.class.php:3262 views/group.php:46
 msgid "Internal"
 msgstr ""
 
@@ -575,7 +575,7 @@ msgstr ""
 msgid "Invalid"
 msgstr "Invalide"
 
-#: Contactmanager.class.php:42 Contactmanager.class.php:3269
+#: Contactmanager.class.php:42 Contactmanager.class.php:3273
 #: ucp/views/contact.php:14 ucp/views/contactEdit.php:14
 #: ucp/views/widget.php:54 views/entry.php:108 views/speeddial-grid.php:15
 msgid "Last Name"
@@ -638,7 +638,7 @@ msgstr "Nom"
 msgid "Name of group"
 msgstr ""
 
-#: Contactmanager.class.php:3251
+#: Contactmanager.class.php:3255
 msgid ""
 "Name of group for contact.  If group does not exist, it will be created."
 msgstr ""
@@ -680,7 +680,7 @@ msgstr "Pas d'email défini"
 msgid "No file was uploaded"
 msgstr "Pas de fichier envoyé"
 
-#: Contactmanager.class.php:3139 Contactmanager.class.php:3151
+#: Contactmanager.class.php:3143 Contactmanager.class.php:3155
 msgid "None"
 msgstr "Aucun"
 
@@ -703,8 +703,8 @@ msgstr ""
 msgid "Numbers"
 msgstr ""
 
-#: Contactmanager.class.php:1028 Contactmanager.class.php:3285
-#: Contactmanager.class.php:3299 Contactmanager.class.php:3313
+#: Contactmanager.class.php:1028 Contactmanager.class.php:3289
+#: Contactmanager.class.php:3303 Contactmanager.class.php:3317
 #: ucp/views/contact.php:63 ucp/views/contact.php:116
 #: ucp/views/contactEdit.php:60 ucp/views/contactEdit.php:97
 #: views/group.php:106
@@ -727,8 +727,8 @@ msgstr ""
 msgid "Pelase include atleast one contact"
 msgstr ""
 
-#: Contactmanager.class.php:3276 Contactmanager.class.php:3292
-#: Contactmanager.class.php:3306
+#: Contactmanager.class.php:3280 Contactmanager.class.php:3296
+#: Contactmanager.class.php:3310
 msgid "Phone number.  External contacts only."
 msgstr ""
 
@@ -736,7 +736,7 @@ msgstr ""
 msgid "Please enter a valid email address"
 msgstr ""
 
-#: Contactmanager.class.php:57 Contactmanager.class.php:3260
+#: Contactmanager.class.php:57 Contactmanager.class.php:3264
 msgid "Private"
 msgstr ""
 
@@ -763,8 +763,8 @@ msgstr ""
 msgid "Show In Contact Manager Groups"
 msgstr ""
 
-#: Contactmanager.class.php:3290 Contactmanager.class.php:3304
-#: Contactmanager.class.php:3318 ucp/views/contact.php:75
+#: Contactmanager.class.php:3294 Contactmanager.class.php:3308
+#: Contactmanager.class.php:3322 ucp/views/contact.php:75
 #: ucp/views/contact.php:130 ucp/views/contactEdit.php:74
 #: ucp/views/contactEdit.php:109 views/entry.php:269
 #: assets/js/contactmanager.js:211
@@ -854,7 +854,7 @@ msgstr ""
 msgid "This speed dial id conflicts with another speed dial on this page"
 msgstr ""
 
-#: Contactmanager.class.php:3270 ucp/views/contact.php:18
+#: Contactmanager.class.php:3274 ucp/views/contact.php:18
 #: ucp/views/contactEdit.php:18 ucp/views/widget.php:55 views/entry.php:128
 msgid "Title"
 msgstr "Titre"
@@ -871,12 +871,12 @@ msgstr "Type"
 msgid "Type of group"
 msgstr ""
 
-#: Contactmanager.class.php:3256
+#: Contactmanager.class.php:3260
 msgid "Type of group for contact."
 msgstr ""
 
-#: Contactmanager.class.php:3280 Contactmanager.class.php:3294
-#: Contactmanager.class.php:3308
+#: Contactmanager.class.php:3284 Contactmanager.class.php:3298
+#: Contactmanager.class.php:3312
 msgid "Type of phone number.  External contacts only."
 msgstr ""
 
@@ -891,11 +891,11 @@ msgstr ""
 msgid "Unauthorized"
 msgstr ""
 
-#: Contactmanager.class.php:3562
+#: Contactmanager.class.php:3568
 msgid "Unknown"
 msgstr ""
 
-#: Contactmanager.class.php:3427
+#: Contactmanager.class.php:3431
 msgid "Unknown data type."
 msgstr ""
 
@@ -927,7 +927,7 @@ msgstr ""
 msgid "User Manager Group"
 msgstr ""
 
-#: Contactmanager.class.php:3273
+#: Contactmanager.class.php:3277
 msgid ""
 "User Manager username this contact should point to.  Internal contacts only."
 msgstr ""
@@ -953,8 +953,8 @@ msgstr ""
 msgid "What internal groups to show this user in"
 msgstr ""
 
-#: Contactmanager.class.php:1025 Contactmanager.class.php:3282
-#: Contactmanager.class.php:3296 Contactmanager.class.php:3310
+#: Contactmanager.class.php:1025 Contactmanager.class.php:3286
+#: Contactmanager.class.php:3300 Contactmanager.class.php:3314
 #: ucp/views/contact.php:60 ucp/views/contact.php:113
 #: ucp/views/contactEdit.php:57 ucp/views/contactEdit.php:94
 #: views/group.php:103
