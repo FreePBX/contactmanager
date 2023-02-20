@@ -2902,7 +2902,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		return $this->contactsCache;
 	}
 
-	public function lookupNumberByUserID($id, $number) {
+	public function lookupNumberByUserID($id, $number, $search_groups=null) {
 		$number = preg_replace("/[^0-9\*#]/","",$number);
 		$number = trim($number);
 		if($number == "") {
@@ -2911,7 +2911,11 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 		
 		if($id == -1) {
-			$groups = $this->getGroups();
+			if($search_groups!=null){
+				$groups = $search_groups;
+			}else{
+				$groups = $this->getGroups();
+			}
 		} else {
 			$groups = $this->getGroupsByOwner($id);
 		}
@@ -2925,7 +2929,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		//quickly look up the number in the database
 		foreach($groups as $group){
 			if($id === -1) {
-				$sql = "SELECT * FROM contactmanager_entry_numbers n, contactmanager_group_entries e, contactmanager_groups g WHERE g.owner = -1 AND g.id = :groupid AND n.entryid = e.id AND n.stripped AND ((n.stripped LIKE :strippedlike AND CHAR_LENGTH(n.stripped) >= :lookuplength) OR (n.stripped = :stripped))";
+				$sql = "SELECT * FROM contactmanager_entry_numbers n, contactmanager_group_entries e, contactmanager_groups g WHERE g.owner = -1 AND g.id = :groupid AND g.id = e.groupid AND n.entryid = e.id AND n.stripped AND ((n.stripped LIKE :strippedlike AND CHAR_LENGTH(n.stripped) >= :lookuplength) OR (n.stripped = :stripped) OR (n.number = :stripped) )";
 				$sth = $this->freepbx->Database->prepare($sql);
 				$sth->execute(array(
 					":groupid" => $group["id"],
@@ -2934,7 +2938,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					":lookuplength" => $lookuplen
 				));
 			} else {
-				$sql = "SELECT * FROM contactmanager_entry_numbers n, contactmanager_group_entries e, contactmanager_groups g WHERE (g.owner = -1 OR g.owner = :id) AND g.id = :groupid AND n.entryid = e.id AND ((n.stripped LIKE :strippedlike AND CHAR_LENGTH(n.stripped) >= :lookuplength) OR (n.stripped = :stripped))";
+				$sql = "SELECT * FROM contactmanager_entry_numbers n, contactmanager_group_entries e, contactmanager_groups g WHERE (g.owner = -1 OR g.owner = :id) AND g.id = :groupid AND g.id = e.groupid AND n.entryid = e.id AND ((n.stripped LIKE :strippedlike AND CHAR_LENGTH(n.stripped) >= :lookuplength) OR (n.stripped = :stripped) OR (n.number = :stripped) )";
 				$sth = $this->freepbx->Database->prepare($sql);
 				$sth->execute(array(
 					":groupid" => $group["id"],
@@ -3547,13 +3551,15 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	}
 
 	public function getNamebyNumber($number, $group = array()){
-		$result = $this->lookupNumberByUserID(-1, $number);
-		if($result && !empty($group)){
-			if(!in_array($result['groupid'], $group)){
-				$result = array();
+		if(!empty($group)){
+			foreach($group as $value){
+				$result = $this->lookupNumberByUserID(-1, $number, array(array('id'=>$value)));
+				if($result && array_key_exists('groupid',$result) && in_array($result['groupid'], $group) ){
+					return $result;
+				}
 			}
 		}
-		return $result;
+		return array();
 	}
 
 	public function getRegionList() {
