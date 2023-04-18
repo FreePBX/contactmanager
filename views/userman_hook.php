@@ -46,7 +46,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<span id="contactmanager_groups-help" class="help-block fpbx-help-block"><?php echo _("These are the viewable contact manager groups which will show up for this user in UCP and RestApps (If purchased)")?></span>
+			<span id="contactmanager_groups-help" class="help-block fpbx-help-block"><?php echo _("These are the viewable contact manager groups which will show up for this user in UCP and Phone Apps.")?></span>
 		</div>
 	</div>
 </div>
