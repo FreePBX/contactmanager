@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-04 12:13+0000\n"
+"POT-Creation-Date: 2023-04-18 04:13+0000\n"
 "PO-Revision-Date: 2018-09-05 12:00+0000\n"
 "Last-Translator: Petr Varvarovsky <petrv@atlantis.cz>\n"
 "Language-Team: Czech <http://*/projects/freepbx/contactmanager/cs/>\n"
@@ -839,7 +839,7 @@ msgstr ""
 #: views/userman_hook.php:49
 msgid ""
 "These are the viewable contact manager groups which will show up for this "
-"user in UCP and RestApps (If purchased)"
+"user in UCP and Phone Apps."
 msgstr ""
 
 #: Contactmanager.class.php:1557
