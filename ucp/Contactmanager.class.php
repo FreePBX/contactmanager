@@ -275,10 +275,11 @@ class Contactmanager extends Modules{
 				return array("status" => false, "message" => _("Can Not Find Uploaded Files"));
 			break;
 			case 'grid':
-				$group = $_REQUEST['group'];
-				$order = $_REQUEST['order'];
-				$orderby = !empty($_REQUEST['sort']) ? $_REQUEST['sort'] : "displayname";
-				$search = !empty($_REQUEST['search']) ? $_REQUEST['search'] : "";
+				$request = freepbxGetSanitizedRequest(FILTER_SANITIZE_STRING, true);
+				$group = $request['group'];
+				$order = $request['order'];
+				$orderby = !empty($request['sort']) ? $request['sort'] : "displayname";
+				$search = !empty($request['search']) ? $request['search'] : "";
 				if(empty($group)) {
 					$groups = $this->cm->getGroupsByOwner($this->user['id']);
 					$allContacts = array();
@@ -309,7 +310,8 @@ class Contactmanager extends Modules{
 				return $contacts;
 			break;
 			case 'updatecontact':
-				$contact = $_REQUEST['contact'];
+				$request = freepbxGetSanitizedRequest(FILTER_SANITIZE_STRING, true);
+				$contact = $request['contact'];
 				if(!$this->editEntry($contact['id'])) {
 					$return = array("status" => false, "message" => _("Unauthorized"));
 				}
@@ -340,7 +342,7 @@ class Contactmanager extends Modules{
 				$return = array("status" => false, "message" => _("Unauthorized"));
 			break;
 			case 'addcontact':
-				$data = $_POST;
+				$data = freepbxGetSanitizedRequest(FILTER_SANITIZE_STRING, true);
 				$g = $this->cm->getGroupByID($data['group']);
 				if($g['owner'] == $this->user['id']) {
 					$contact = $data['contact'];
