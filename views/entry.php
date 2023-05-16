@@ -68,7 +68,7 @@ foreach ($users as $u) {
 									<label class="control-label" for="displayname"><?php echo _('Display Name')?></label>
 									<i class="fa fa-question-circle fpbx-help-icon" data-for="displayname"></i>
 								</div>
-								<div class="col-md-9"><input class="form-control" id="displayname" name="displayname" value="<?php echo $entry['displayname']?>" <?php echo !empty($user) ? 'placeholder="' . $user['displayname'] . '"' : ''?>></div>
+								<div class="col-md-9"><input class="form-control" id="displayname" name="displayname" value="<?php echo $entry['displayname'] ?? ""?>" <?php echo !empty($user) ? 'placeholder="' . $user['displayname'] . '"' : ''?>></div>
 							</div>
 						</div>
 					</div>
@@ -88,7 +88,7 @@ foreach ($users as $u) {
 									<label class="control-label" for="fname"><?php echo _('First Name')?></label>
 									<i class="fa fa-question-circle fpbx-help-icon" data-for="fname"></i>
 								</div>
-								<div class="col-md-9"><input class="form-control" id="fname" name="fname" value="<?php echo $entry['fname']?>" <?php echo !empty($user) ? 'placeholder="' . $user['fname'] . '"' : ''?>></div>
+								<div class="col-md-9"><input class="form-control" id="fname" name="fname" value="<?php echo $entry['fname'] ?? ""?>" <?php echo !empty($user) ? 'placeholder="' . $user['fname'] . '"' : ''?>></div>
 							</div>
 						</div>
 					</div>
@@ -108,7 +108,7 @@ foreach ($users as $u) {
 									<label class="control-label" for="lname"><?php echo _('Last Name')?></label>
 									<i class="fa fa-question-circle fpbx-help-icon" data-for="lname"></i>
 								</div>
-								<div class="col-md-9"><input class="form-control" id="lname" name="lname" value="<?php echo $entry['lname']?>" <?php echo !empty($user) ? 'placeholder="' . $user['lname'] . '"' : ''?>></div>
+								<div class="col-md-9"><input class="form-control" id="lname" name="lname" value="<?php echo $entry['lname'] ?? ""?>" <?php echo !empty($user) ? 'placeholder="' . $user['lname'] . '"' : ''?>></div>
 							</div>
 						</div>
 					</div>
@@ -128,7 +128,7 @@ foreach ($users as $u) {
 									<label class="control-label" for="title"><?php echo _('Title')?></label>
 									<i class="fa fa-question-circle fpbx-help-icon" data-for="title"></i>
 								</div>
-								<div class="col-md-9"><input class="form-control" id="title" name="title" value="<?php echo $entry['title']?>" <?php echo !empty($user) ? 'placeholder="' . $user['title'] . '"' : ''?>></div>
+								<div class="col-md-9"><input class="form-control" id="title" name="title" value="<?php echo $entry['title'] ?? ""?>" <?php echo !empty($user) ? 'placeholder="' . $user['title'] . '"' : ''?>></div>
 							</div>
 						</div>
 					</div>
@@ -191,7 +191,7 @@ foreach ($users as $u) {
 									<label class="control-label" for="company"><?php echo _('Company')?></label>
 									<i class="fa fa-question-circle fpbx-help-icon" data-for="company"></i>
 								</div>
-								<div class="col-md-9"><input class="form-control" id="company" name="company" value="<?php echo $entry['company']?>" <?php echo !empty($user) ? 'placeholder="' . $user['company'] . '"' : ''?>></div>
+								<div class="col-md-9"><input class="form-control" id="company" name="company" value="<?php echo $entry['company'] ?? ""?>" <?php echo !empty($user) ? 'placeholder="' . $user['company'] . '"' : ''?>></div>
 							</div>
 						</div>
 					</div>

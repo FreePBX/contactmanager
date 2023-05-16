@@ -10,6 +10,7 @@ class Backup Extends Base\BackupBase{
 		$sth = $db->prepare($sql);
 		$sth->execute();
 		$res = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$contactmanager_group_entries = array();
 		foreach($res as $dat) {
 			$contactmanager_group_entries[] = $dat;
 		}
@@ -18,6 +19,7 @@ class Backup Extends Base\BackupBase{
 		$sth = $db->prepare($sql);
 		$sth->execute();
 		$res = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$contactmanager_groups = array();
 		foreach($res as $data) {
 			$contactmanager_groups[] = $data;
 		}
@@ -26,7 +28,7 @@ class Backup Extends Base\BackupBase{
 			'kvstore' => $this->dumpKVStore(),
 			'features' => $this->dumpFeatureCodes(),
 			'settings' => $this->dumpAdvancedSettings(),
-			'contactmanager_group_entries'=> $contactmanager_group_entries,
+			'contactmanager_group_entries' => $contactmanager_group_entries,
 			'contactmanager_groups' => $contactmanager_groups
 		]);
 	}

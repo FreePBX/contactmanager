@@ -12,7 +12,7 @@ class PrefixTimeZonesMap
     protected final PhonePrefixMap phonePrefixMap = new PhonePrefixMap();
     protected static final String RAW_STRING_TIMEZONES_SEPARATOR = "&";
     */
-    const RAW_STRING_TIMEZONES_SEPARATOR = "&";
+    const RAW_STRING_TIMEZONES_SEPARATOR = '&';
     protected $phonePrefixMap;
 
     public function __construct($map)
@@ -30,8 +30,8 @@ class PrefixTimeZonesMap
     public function lookupTimeZonesForNumber(PhoneNumber $number)
     {
         $phonePrefix = $number->getCountryCode() . PhoneNumberUtil::getInstance()->getNationalSignificantNumber(
-                $number
-            );
+            $number
+        );
 
         return $this->lookupTimeZonesForNumberKey($phonePrefix);
     }

@@ -11,7 +11,6 @@
  */
 
 return array (
-  2405 => 'Orange GQ',
-  2406 => 'Orange GQ',
-  2407 => 'Orange GQ',
+  2402 => 'GETESA',
+  2405 => 'Muni',
 );

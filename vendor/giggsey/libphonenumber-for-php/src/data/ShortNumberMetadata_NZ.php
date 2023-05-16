@@ -14,7 +14,7 @@
 return array (
   'generalDesc' => 
   array (
-    'NationalNumberPattern' => '[14]\\d{2,3}',
+    'NationalNumberPattern' => '\\d{3,4}',
     'PossibleLength' => 
     array (
       0 => 3,
@@ -26,9 +26,11 @@ return array (
   ),
   'tollFree' => 
   array (
+    'NationalNumberPattern' => '111',
+    'ExampleNumber' => '111',
     'PossibleLength' => 
     array (
-      0 => -1,
+      0 => 3,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -36,9 +38,11 @@ return array (
   ),
   'premiumRate' => 
   array (
+    'NationalNumberPattern' => '018',
+    'ExampleNumber' => '018',
     'PossibleLength' => 
     array (
-      0 => -1,
+      0 => 3,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -58,8 +62,8 @@ return array (
   ),
   'shortCode' => 
   array (
-    'NationalNumberPattern' => '111|4098',
-    'ExampleNumber' => '111',
+    'NationalNumberPattern' => '018|1(?:(?:1|37)1|(?:23|94)4|7[03]7)|[2-57-9]\\d{2,3}|6(?:161|26[0-3]|742)',
+    'ExampleNumber' => '018',
     'PossibleLength' => 
     array (
     ),
@@ -89,11 +93,10 @@ return array (
   ),
   'smsServices' => 
   array (
-    'NationalNumberPattern' => '4098',
-    'ExampleNumber' => '4098',
+    'NationalNumberPattern' => '018|(?:1(?:23|37|7[03]|94)|6(?:[12]6|74))\\d|[2-57-9]\\d{2,3}',
+    'ExampleNumber' => '018',
     'PossibleLength' => 
     array (
-      0 => 4,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -110,6 +113,5 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

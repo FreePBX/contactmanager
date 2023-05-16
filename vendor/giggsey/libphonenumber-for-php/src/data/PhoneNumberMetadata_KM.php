@@ -21,6 +21,7 @@ return array (
     ),
     'PossibleLengthLocalOnly' => 
     array (
+      0 => 4,
     ),
   ),
   'fixedLine' => 
@@ -32,6 +33,7 @@ return array (
     ),
     'PossibleLengthLocalOnly' => 
     array (
+      0 => 4,
     ),
   ),
   'mobile' => 
@@ -148,6 +150,7 @@ return array (
       'format' => '$1 $2 $3',
       'leadingDigitsPatterns' => 
       array (
+        0 => '[3478]',
       ),
       'nationalPrefixFormattingRule' => '',
       'domesticCarrierCodeFormattingRule' => '',
@@ -158,6 +161,5 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

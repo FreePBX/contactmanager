@@ -14,7 +14,7 @@
 return array (
   'generalDesc' => 
   array (
-    'NationalNumberPattern' => '1\\d{2,5}|75[12]\\d{2}',
+    'NationalNumberPattern' => '[17]\\d\\d(?:\\d{2,3})?',
     'PossibleLength' => 
     array (
       0 => 3,
@@ -27,11 +27,12 @@ return array (
   ),
   'tollFree' => 
   array (
-    'NationalNumberPattern' => '116111',
-    'ExampleNumber' => '116111',
+    'NationalNumberPattern' => '11(?:2|6\\d{3})',
+    'ExampleNumber' => '112',
     'PossibleLength' => 
     array (
-      0 => 6,
+      0 => 3,
+      1 => 6,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -61,7 +62,7 @@ return array (
   ),
   'shortCode' => 
   array (
-    'NationalNumberPattern' => '11(?:2|6111)|75[12]\\d{2}',
+    'NationalNumberPattern' => '11(?:2|6(?:00[06]|1(?:1[17]|23)))|75[12]\\d\\d',
     'ExampleNumber' => '112',
     'PossibleLength' => 
     array (
@@ -111,6 +112,5 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

@@ -11,10 +11,14 @@
  */
 
 return array (
-  599318 => 'St. Eustatius',
-  599416 => 'Saba',
-  599715 => 'Bonaire',
-  599717 => 'Bonaire',
-  599718 => 'Bonaire',
-  599750 => 'Bonaire',
+  5993180 => 'St. Eustatius',
+  5993182 => 'St. Eustatius',
+  5993183 => 'St. Eustatius',
+  5994160 => 'Saba',
+  5994162 => 'Saba',
+  5994163 => 'Saba',
+  599417 => 'Saba',
+  59971 => 'Bonaire',
+  59972 => 'Bonaire',
+  59975 => 'Bonaire',
 );

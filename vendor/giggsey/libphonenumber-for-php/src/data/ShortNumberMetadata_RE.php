@@ -14,7 +14,7 @@
 return array (
   'generalDesc' => 
   array (
-    'NationalNumberPattern' => '1\\d{1,2}',
+    'NationalNumberPattern' => '1\\d\\d?',
     'PossibleLength' => 
     array (
       0 => 2,
@@ -26,9 +26,10 @@ return array (
   ),
   'tollFree' => 
   array (
+    'NationalNumberPattern' => '1(?:12|[578])',
+    'ExampleNumber' => '15',
     'PossibleLength' => 
     array (
-      0 => -1,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -107,6 +108,5 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

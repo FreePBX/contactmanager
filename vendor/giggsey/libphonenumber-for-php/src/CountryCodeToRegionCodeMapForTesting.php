@@ -27,13 +27,13 @@ class CountryCodeToRegionCodeMapForTesting {
     2 => 'BS',
     3 => 'CA',
   ),
+  7 => 
+  array (
+    0 => 'RU',
+  ),
   33 => 
   array (
     0 => 'FR',
-  ),
-  36 => 
-  array (
-    0 => 'HU',
   ),
   39 => 
   array (
@@ -67,6 +67,10 @@ class CountryCodeToRegionCodeMapForTesting {
   55 => 
   array (
     0 => 'BR',
+  ),
+  57 => 
+  array (
+    0 => 'CO',
   ),
   61 => 
   array (

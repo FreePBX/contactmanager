@@ -14,7 +14,7 @@
 return array (
   'generalDesc' => 
   array (
-    'NationalNumberPattern' => '[027-9]\\d{7,8}',
+    'NationalNumberPattern' => '(?:06|[27]\\d\\d|[89]00)\\d{6}',
     'PossibleLength' => 
     array (
       0 => 8,
@@ -26,7 +26,7 @@ return array (
   ),
   'fixedLine' => 
   array (
-    'NationalNumberPattern' => '2[258]\\d{7}|06\\d{6}',
+    'NationalNumberPattern' => '(?:06|2[23568]\\d)\\d{6}',
     'ExampleNumber' => '250123456',
     'PossibleLength' => 
     array (
@@ -37,7 +37,7 @@ return array (
   ),
   'mobile' => 
   array (
-    'NationalNumberPattern' => '7[238]\\d{7}',
+    'NationalNumberPattern' => '7[2389]\\d{7}',
     'ExampleNumber' => '720123456',
     'PossibleLength' => 
     array (
@@ -151,11 +151,11 @@ return array (
   array (
     0 => 
     array (
-      'pattern' => '(2\\d{2})(\\d{3})(\\d{3})',
-      'format' => '$1 $2 $3',
+      'pattern' => '(\\d{2})(\\d{2})(\\d{2})(\\d{2})',
+      'format' => '$1 $2 $3 $4',
       'leadingDigitsPatterns' => 
       array (
-        0 => '2',
+        0 => '0',
       ),
       'nationalPrefixFormattingRule' => '',
       'domesticCarrierCodeFormattingRule' => '',
@@ -163,7 +163,7 @@ return array (
     ),
     1 => 
     array (
-      'pattern' => '([7-9]\\d{2})(\\d{3})(\\d{3})',
+      'pattern' => '(\\d{3})(\\d{3})(\\d{3})',
       'format' => '$1 $2 $3',
       'leadingDigitsPatterns' => 
       array (
@@ -175,11 +175,11 @@ return array (
     ),
     2 => 
     array (
-      'pattern' => '(0\\d)(\\d{2})(\\d{2})(\\d{2})',
-      'format' => '$1 $2 $3 $4',
+      'pattern' => '(\\d{3})(\\d{3})(\\d{3})',
+      'format' => '$1 $2 $3',
       'leadingDigitsPatterns' => 
       array (
-        0 => '0',
+        0 => '2',
       ),
       'nationalPrefixFormattingRule' => '',
       'domesticCarrierCodeFormattingRule' => '',
@@ -190,6 +190,5 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

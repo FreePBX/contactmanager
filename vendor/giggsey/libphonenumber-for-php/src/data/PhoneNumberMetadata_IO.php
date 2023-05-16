@@ -147,6 +147,7 @@ return array (
       'format' => '$1 $2',
       'leadingDigitsPatterns' => 
       array (
+        0 => '3',
       ),
       'nationalPrefixFormattingRule' => '',
       'domesticCarrierCodeFormattingRule' => '',
@@ -157,6 +158,5 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

@@ -14,7 +14,7 @@
 return array (
   'generalDesc' => 
   array (
-    'NationalNumberPattern' => '0\\d{2}|1\\d{2,6}',
+    'NationalNumberPattern' => '[01]\\d{2,6}',
     'PossibleLength' => 
     array (
       0 => 3,
@@ -29,9 +29,11 @@ return array (
   ),
   'tollFree' => 
   array (
+    'NationalNumberPattern' => '000|11[01]',
+    'ExampleNumber' => '000',
     'PossibleLength' => 
     array (
-      0 => -1,
+      0 => 3,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -61,7 +63,7 @@ return array (
   ),
   'shortCode' => 
   array (
-    'NationalNumberPattern' => '000|1(?:1[01]|5\\d{2}|6\\d{2,5})',
+    'NationalNumberPattern' => '000|1(?:1[01]|5\\d\\d|6\\d{2,5})',
     'ExampleNumber' => '000',
     'PossibleLength' => 
     array (
@@ -93,7 +95,7 @@ return array (
   'smsServices' => 
   array (
     'NationalNumberPattern' => '16\\d{2,5}',
-    'ExampleNumber' => '1612',
+    'ExampleNumber' => '1600',
     'PossibleLength' => 
     array (
       0 => 4,
@@ -116,6 +118,5 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

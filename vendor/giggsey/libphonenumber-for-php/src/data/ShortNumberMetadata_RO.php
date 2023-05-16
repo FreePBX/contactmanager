@@ -19,7 +19,8 @@ return array (
     array (
       0 => 3,
       1 => 4,
-      2 => 6,
+      2 => 5,
+      3 => 6,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -27,11 +28,12 @@ return array (
   ),
   'tollFree' => 
   array (
-    'NationalNumberPattern' => '116(?:000|111)',
-    'ExampleNumber' => '116000',
+    'NationalNumberPattern' => '11(?:2|6\\d{3})',
+    'ExampleNumber' => '112',
     'PossibleLength' => 
     array (
-      0 => 6,
+      0 => 3,
+      1 => 6,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -39,8 +41,8 @@ return array (
   ),
   'premiumRate' => 
   array (
-    'NationalNumberPattern' => '(?:1(?:18(?:300|932)|[24]\\d{2})|8[48]\\d{2})',
-    'ExampleNumber' => '8844',
+    'NationalNumberPattern' => '(?:1(?:18[39]|[24])|8[48])\\d\\d',
+    'ExampleNumber' => '1200',
     'PossibleLength' => 
     array (
       0 => 4,
@@ -64,7 +66,7 @@ return array (
   ),
   'shortCode' => 
   array (
-    'NationalNumberPattern' => '1(?:1(?:2|6(?:000|111)|8(?:300|932))|[24]\\d{2}|9(?:21|3[02]|5[178]))|8[48]\\d{2}',
+    'NationalNumberPattern' => '1(?:1(?:2|6(?:000|1(?:11|23))|8(?:(?:01|8[18])1|119|[23]00|932))|[24]\\d\\d|9(?:0(?:00|19)|1[19]|21|3[02]|5[178]))|8[48]\\d\\d',
     'ExampleNumber' => '112',
     'PossibleLength' => 
     array (
@@ -95,8 +97,8 @@ return array (
   ),
   'smsServices' => 
   array (
-    'NationalNumberPattern' => '(?:1[24]|8[48])\\d{2}',
-    'ExampleNumber' => '8844',
+    'NationalNumberPattern' => '(?:1[24]|8[48])\\d\\d',
+    'ExampleNumber' => '1200',
     'PossibleLength' => 
     array (
       0 => 4,
@@ -116,6 +118,5 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

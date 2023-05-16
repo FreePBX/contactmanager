@@ -14,7 +14,7 @@
 return array (
   'generalDesc' => 
   array (
-    'NationalNumberPattern' => '[19]\\d{2,4}',
+    'NationalNumberPattern' => '[19]\\d\\d(?:\\d{2})?',
     'PossibleLength' => 
     array (
       0 => 3,
@@ -26,9 +26,11 @@ return array (
   ),
   'tollFree' => 
   array (
+    'NationalNumberPattern' => '1(?:0[235]|1[2-6]|9[127])|911',
+    'ExampleNumber' => '102',
     'PossibleLength' => 
     array (
-      0 => -1,
+      0 => 3,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -36,9 +38,11 @@ return array (
   ),
   'premiumRate' => 
   array (
+    'NationalNumberPattern' => '9[0-4689]\\d{3}',
+    'ExampleNumber' => '90000',
     'PossibleLength' => 
     array (
-      0 => -1,
+      0 => 5,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -58,8 +62,8 @@ return array (
   ),
   'shortCode' => 
   array (
-    'NationalNumberPattern' => '1(?:09|1[0-2]|9[0-24-79])|9(?:0903|11|8788)',
-    'ExampleNumber' => '111',
+    'NationalNumberPattern' => '1(?:0[2359]|1[0-68]|9[0-24-79])|9[0-4689]\\d{3}|911',
+    'ExampleNumber' => '102',
     'PossibleLength' => 
     array (
     ),
@@ -79,8 +83,8 @@ return array (
   ),
   'carrierSpecific' => 
   array (
-    'NationalNumberPattern' => '9(?:0903|8788)',
-    'ExampleNumber' => '90903',
+    'NationalNumberPattern' => '9[0-4689]\\d{3}',
+    'ExampleNumber' => '90000',
     'PossibleLength' => 
     array (
       0 => 5,
@@ -91,8 +95,8 @@ return array (
   ),
   'smsServices' => 
   array (
-    'NationalNumberPattern' => '9(?:0903|8788)',
-    'ExampleNumber' => '90903',
+    'NationalNumberPattern' => '9[0-4689]\\d{3}',
+    'ExampleNumber' => '90000',
     'PossibleLength' => 
     array (
       0 => 5,
@@ -112,6 +116,5 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

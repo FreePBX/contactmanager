@@ -14,7 +14,7 @@
 return array (
   'generalDesc' => 
   array (
-    'NationalNumberPattern' => '[5789]\\d{2}',
+    'NationalNumberPattern' => '[57-9]\\d\\d',
     'PossibleLength' => 
     array (
       0 => 3,
@@ -25,9 +25,10 @@ return array (
   ),
   'tollFree' => 
   array (
+    'NationalNumberPattern' => '555|888|999',
+    'ExampleNumber' => '555',
     'PossibleLength' => 
     array (
-      0 => -1,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -57,7 +58,7 @@ return array (
   'shortCode' => 
   array (
     'NationalNumberPattern' => '555|777|888|999',
-    'ExampleNumber' => '777',
+    'ExampleNumber' => '555',
     'PossibleLength' => 
     array (
     ),
@@ -106,6 +107,5 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

@@ -14,7 +14,7 @@
 return array (
   'generalDesc' => 
   array (
-    'NationalNumberPattern' => '[2-578]\\d{4,9}|6[1-9]\\d{3}',
+    'NationalNumberPattern' => '(?:[2-6]|8\\d{5})\\d{4}|[78]\\d{6}|[68]\\d{5}',
     'PossibleLength' => 
     array (
       0 => 5,
@@ -28,11 +28,12 @@ return array (
   ),
   'fixedLine' => 
   array (
-    'NationalNumberPattern' => '(?:[2-5]\\d|6[1-9])\\d{3}',
+    'NationalNumberPattern' => '6[1-9]\\d{3}|(?:[2-5]|60)\\d{4}',
     'ExampleNumber' => '22123',
     'PossibleLength' => 
     array (
       0 => 5,
+      1 => 6,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -40,7 +41,7 @@ return array (
   ),
   'mobile' => 
   array (
-    'NationalNumberPattern' => '(?:7[25-7]|8(?:[3-7]|9\\d{3}))\\d{5}',
+    'NationalNumberPattern' => '(?:7[1-35-7]|8(?:[3-7]|9\\d{3}))\\d{5}',
     'ExampleNumber' => '7212345',
     'PossibleLength' => 
     array (
@@ -151,11 +152,11 @@ return array (
   array (
     0 => 
     array (
-      'pattern' => '(8\\d{2})(\\d{3,7})',
-      'format' => '$1 $2',
+      'pattern' => '(\\d{5})',
+      'format' => '$1',
       'leadingDigitsPatterns' => 
       array (
-        0 => '8',
+        0 => '[2-5]|6[1-9]',
       ),
       'nationalPrefixFormattingRule' => '',
       'domesticCarrierCodeFormattingRule' => '',
@@ -163,11 +164,11 @@ return array (
     ),
     1 => 
     array (
-      'pattern' => '(7\\d)(\\d{5})',
+      'pattern' => '(\\d{3})(\\d{3,7})',
       'format' => '$1 $2',
       'leadingDigitsPatterns' => 
       array (
-        0 => '7',
+        0 => '[68]',
       ),
       'nationalPrefixFormattingRule' => '',
       'domesticCarrierCodeFormattingRule' => '',
@@ -175,11 +176,11 @@ return array (
     ),
     2 => 
     array (
-      'pattern' => '(\\d{5})',
-      'format' => '$1',
+      'pattern' => '(\\d{2})(\\d{5})',
+      'format' => '$1 $2',
       'leadingDigitsPatterns' => 
       array (
-        0 => '[2-6]',
+        0 => '7',
       ),
       'nationalPrefixFormattingRule' => '',
       'domesticCarrierCodeFormattingRule' => '',
@@ -190,6 +191,5 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

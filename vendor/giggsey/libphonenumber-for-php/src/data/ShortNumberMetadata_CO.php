@@ -14,11 +14,12 @@
 return array (
   'generalDesc' => 
   array (
-    'NationalNumberPattern' => '[148]\\d{2,4}',
+    'NationalNumberPattern' => '[1-589]\\d\\d(?:\\d{2,3})?',
     'PossibleLength' => 
     array (
       0 => 3,
       1 => 5,
+      2 => 6,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -26,9 +27,11 @@ return array (
   ),
   'tollFree' => 
   array (
+    'NationalNumberPattern' => '1(?:1[29]|23|32|56)',
+    'ExampleNumber' => '112',
     'PossibleLength' => 
     array (
-      0 => -1,
+      0 => 3,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -58,8 +61,8 @@ return array (
   ),
   'shortCode' => 
   array (
-    'NationalNumberPattern' => '1(?:06|1[2569]|2[357]|3[27]|4[467]|5[36]|6[45]|95)|40404|85432',
-    'ExampleNumber' => '112',
+    'NationalNumberPattern' => '1(?:06|1[2-9]|2[35-7]|3[27]|4[467]|5[36]|6[4-7]|95)|(?:29002|39003)9|40404|5930\\d\\d|85432|(?:[2359][57]|8(?:7|9\\d))\\d{3}',
+    'ExampleNumber' => '106',
     'PossibleLength' => 
     array (
     ),
@@ -79,8 +82,8 @@ return array (
   ),
   'carrierSpecific' => 
   array (
-    'NationalNumberPattern' => '40404|85432',
-    'ExampleNumber' => '40404',
+    'NationalNumberPattern' => '(?:40|85)4\\d\\d',
+    'ExampleNumber' => '40400',
     'PossibleLength' => 
     array (
       0 => 5,
@@ -91,8 +94,8 @@ return array (
   ),
   'smsServices' => 
   array (
-    'NationalNumberPattern' => '40404|85432',
-    'ExampleNumber' => '40404',
+    'NationalNumberPattern' => '(?:40|85)4\\d\\d',
+    'ExampleNumber' => '40400',
     'PossibleLength' => 
     array (
       0 => 5,
@@ -112,6 +115,5 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

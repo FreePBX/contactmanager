@@ -11,7 +11,14 @@
  */
 
 return array (
-  431 => 'Vienna',
+  4312 => 'Vienna',
+  4313 => 'Vienna',
+  4314 => 'Vienna',
+  4315 => 'Vienna',
+  4316 => 'Vienna',
+  4317 => 'Vienna',
+  4318 => 'Vienna',
+  4319 => 'Vienna',
   432142 => 'Gattendorf',
   432143 => 'Kittsee',
   432144 => 'Deutsch Jahrndorf',
@@ -239,6 +246,8 @@ return array (
   432841 => 'Vitis',
   432842 => 'Waidhofen an der Thaya',
   432843 => 'Dobersberg',
+  432844 => 'Karlstein an der Thaya',
+  432845 => 'Weikertschlag an der Thaya',
   432846 => 'Raabs an der Thaya',
   432847 => 'Gross-Siegharts',
   432848 => 'Pfaffenschlag bei Waidhofen',
@@ -560,7 +569,7 @@ return array (
   434357 => 'St. Paul im Lavanttal',
   434358 => 'St. Andrä',
   434359 => 'Reichenfels',
-  43463 => 'Klagenfurt',
+  4346 => 'Klagenfurt',
   434710 => 'Oberdrauburg',
   434712 => 'Greifenburg',
   434713 => 'Techendorf',
