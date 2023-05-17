@@ -14,7 +14,7 @@
 return array (
   'generalDesc' => 
   array (
-    'NationalNumberPattern' => '[149]\\d{2,4}',
+    'NationalNumberPattern' => '[149]\\d\\d(?:\\d{2})?',
     'PossibleLength' => 
     array (
       0 => 3,
@@ -26,9 +26,11 @@ return array (
   ),
   'tollFree' => 
   array (
+    'NationalNumberPattern' => '1(?:1[0-79]|9[09])|999',
+    'ExampleNumber' => '110',
     'PossibleLength' => 
     array (
-      0 => -1,
+      0 => 3,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -46,8 +48,8 @@ return array (
   ),
   'emergency' => 
   array (
-    'NationalNumberPattern' => '11[12]|999',
-    'ExampleNumber' => '111',
+    'NationalNumberPattern' => '11[0-245]|999',
+    'ExampleNumber' => '110',
     'PossibleLength' => 
     array (
       0 => 3,
@@ -58,8 +60,8 @@ return array (
   ),
   'shortCode' => 
   array (
-    'NationalNumberPattern' => '11[12]|46400|999',
-    'ExampleNumber' => '111',
+    'NationalNumberPattern' => '1(?:1\\d|9[09])|46400|999',
+    'ExampleNumber' => '110',
     'PossibleLength' => 
     array (
     ),
@@ -79,7 +81,7 @@ return array (
   ),
   'carrierSpecific' => 
   array (
-    'NationalNumberPattern' => '46400',
+    'NationalNumberPattern' => '464\\d\\d',
     'ExampleNumber' => '46400',
     'PossibleLength' => 
     array (
@@ -91,7 +93,7 @@ return array (
   ),
   'smsServices' => 
   array (
-    'NationalNumberPattern' => '46400',
+    'NationalNumberPattern' => '464\\d\\d',
     'ExampleNumber' => '46400',
     'PossibleLength' => 
     array (
@@ -112,6 +114,5 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

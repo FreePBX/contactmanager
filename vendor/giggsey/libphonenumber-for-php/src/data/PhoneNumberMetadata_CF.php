@@ -14,7 +14,7 @@
 return array (
   'generalDesc' => 
   array (
-    'NationalNumberPattern' => '[278]\\d{7}',
+    'NationalNumberPattern' => '(?:[27]\\d{3}|8776)\\d{4}',
     'PossibleLength' => 
     array (
       0 => 8,
@@ -36,7 +36,7 @@ return array (
   ),
   'mobile' => 
   array (
-    'NationalNumberPattern' => '7[0257]\\d{6}',
+    'NationalNumberPattern' => '7[024-7]\\d{6}',
     'ExampleNumber' => '70012345',
     'PossibleLength' => 
     array (
@@ -148,6 +148,7 @@ return array (
       'format' => '$1 $2 $3 $4',
       'leadingDigitsPatterns' => 
       array (
+        0 => '[278]',
       ),
       'nationalPrefixFormattingRule' => '',
       'domesticCarrierCodeFormattingRule' => '',
@@ -158,6 +159,5 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

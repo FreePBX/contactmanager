@@ -17,7 +17,7 @@ class ShortNumberInfo
     /**
      * @var ShortNumberInfo
      */
-    protected static $instance = null;
+    protected static $instance;
     /**
      * @var MatcherAPIInterface
      */
@@ -92,9 +92,13 @@ class ShortNumberInfo
      */
     protected function regionDialingFromMatchesNumber(PhoneNumber $number, $regionDialingFrom)
     {
+        if ($regionDialingFrom === null || $regionDialingFrom === '') {
+            return false;
+        }
+
         $regionCodes = $this->getRegionCodesForCountryCode($number->getCountryCode());
 
-        return in_array($regionDialingFrom, $regionCodes);
+        return in_array(strtoupper($regionDialingFrom), $regionCodes);
     }
 
     public function getSupportedRegions()
@@ -113,7 +117,7 @@ class ShortNumberInfo
     {
         $phoneMetadata = $this->getMetadataForRegion($regionCode);
         if ($phoneMetadata === null) {
-            return "";
+            return '';
         }
 
         /** @var PhoneNumberDesc $desc */
@@ -121,7 +125,7 @@ class ShortNumberInfo
         if ($desc !== null && $desc->hasExampleNumber()) {
             return $desc->getExampleNumber();
         }
-        return "";
+        return '';
     }
 
     /**
@@ -130,6 +134,8 @@ class ShortNumberInfo
      */
     public function getMetadataForRegion($regionCode)
     {
+        $regionCode = strtoupper((string)$regionCode);
+
         if (!in_array($regionCode, ShortNumbersRegionCodeSet::$shortNumbersRegionCodeSet)) {
             return null;
         }
@@ -175,7 +181,7 @@ class ShortNumberInfo
     {
         $phoneMetadata = $this->getMetadataForRegion($regionCode);
         if ($phoneMetadata === null) {
-            return "";
+            return '';
         }
 
         /** @var PhoneNumberDesc $desc */
@@ -199,7 +205,7 @@ class ShortNumberInfo
             return $desc->getExampleNumber();
         }
 
-        return "";
+        return '';
     }
 
     /**
@@ -246,8 +252,9 @@ class ShortNumberInfo
         $normalizedNumber = PhoneNumberUtil::normalizeDigitsOnly($number);
         $emergencyDesc = $metadata->getEmergency();
 
-        $allowPrefixMatchForRegion = ($allowPrefixMatch
-            && !in_array($regionCode, static::$regionsWhereEmergencyNumbersMustBeExact)
+        $allowPrefixMatchForRegion = (
+            $allowPrefixMatch
+            && !in_array(strtoupper($regionCode), static::$regionsWhereEmergencyNumbersMustBeExact)
         );
 
         return $this->matcherAPI->matchNationalNumber($normalizedNumber, $emergencyDesc, $allowPrefixMatchForRegion);
@@ -271,10 +278,10 @@ class ShortNumberInfo
         $nationalNumber = $this->getNationalSignificantNumber($number);
         $phoneMetadata = $this->getMetadataForRegion($regionCode);
 
-        return ($phoneMetadata !== null) && ($this->matchesPossibleNumberAndNationalNumber(
+        return ($phoneMetadata !== null) && $this->matchesPossibleNumberAndNationalNumber(
             $nationalNumber,
             $phoneMetadata->getCarrierSpecific()
-        ));
+        );
     }
 
     /**
@@ -299,7 +306,7 @@ class ShortNumberInfo
         $phoneMetadata = $this->getMetadataForRegion($regionDialingFrom);
 
         return ($phoneMetadata !== null)
-            && ($this->matchesPossibleNumberAndNationalNumber($nationalNumber, $phoneMetadata->getCarrierSpecific()));
+            && $this->matchesPossibleNumberAndNationalNumber($nationalNumber, $phoneMetadata->getCarrierSpecific());
     }
 
     /**
@@ -343,7 +350,9 @@ class ShortNumberInfo
     {
         if (count($regionCodes) == 0) {
             return null;
-        } elseif (count($regionCodes) == 1) {
+        }
+
+        if (count($regionCodes) == 1) {
             return $regionCodes[0];
         }
 

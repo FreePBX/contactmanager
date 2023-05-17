@@ -30,7 +30,7 @@ class RegexBasedMatcher implements MatcherAPIInterface
         // We don't want to consider it a prefix match when matching non-empty input against an empty
         // pattern
 
-        if (strlen($nationalNumberPattern) === 0) {
+        if (\strlen($nationalNumberPattern) === 0) {
             return false;
         }
 
@@ -49,8 +49,8 @@ class RegexBasedMatcher implements MatcherAPIInterface
 
         if (!$matcher->lookingAt()) {
             return false;
-        } else {
-            return ($matcher->matches()) ? true : $allowPrefixMatch;
         }
+
+        return $matcher->matches() ? true : $allowPrefixMatch;
     }
 }

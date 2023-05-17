@@ -14,11 +14,12 @@
 return array (
   'generalDesc' => 
   array (
-    'NationalNumberPattern' => '[17]\\d{1,2}',
+    'NationalNumberPattern' => '[17]\\d{1,3}',
     'PossibleLength' => 
     array (
       0 => 2,
       1 => 3,
+      2 => 4,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -26,9 +27,10 @@ return array (
   ),
   'tollFree' => 
   array (
+    'NationalNumberPattern' => '1(?:12|[47]|54\\d)',
+    'ExampleNumber' => '14',
     'PossibleLength' => 
     array (
-      0 => -1,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -46,11 +48,12 @@ return array (
   ),
   'emergency' => 
   array (
-    'NationalNumberPattern' => '1[47]',
-    'ExampleNumber' => '17',
+    'NationalNumberPattern' => '1(?:12|[47])',
+    'ExampleNumber' => '14',
     'PossibleLength' => 
     array (
       0 => 2,
+      1 => 3,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -58,8 +61,8 @@ return array (
   ),
   'shortCode' => 
   array (
-    'NationalNumberPattern' => '1[47]|730',
-    'ExampleNumber' => '17',
+    'NationalNumberPattern' => '1(?:055|12|[47]|548)|730',
+    'ExampleNumber' => '14',
     'PossibleLength' => 
     array (
     ),
@@ -112,6 +115,5 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

@@ -11,10 +11,9 @@
  */
 
 return array (
+  68045 => 'PMCI',
+  68046 => 'PMCI',
   68077 => 'PalauCel',
-  680880 => 'PalauTel',
-  680881 => 'PalauTel',
-  680882 => 'PalauTel',
-  680883 => 'PalauTel',
-  680884 => 'PalauTel',
+  68083 => 'PMCI',
+  68088 => 'PalauTel',
 );

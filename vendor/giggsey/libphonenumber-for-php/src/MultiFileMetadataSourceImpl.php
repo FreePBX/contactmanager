@@ -59,6 +59,8 @@ class MultiFileMetadataSourceImpl implements MetadataSourceInterface
      */
     public function getMetadataForRegion($regionCode)
     {
+        $regionCode = strtoupper($regionCode);
+
         if (!array_key_exists($regionCode, $this->regionToMetadataMap)) {
             // The regionCode here will be valid and won't be '001', so we don't need to worry about
             // what to pass in for the country calling code.
@@ -89,19 +91,21 @@ class MultiFileMetadataSourceImpl implements MetadataSourceInterface
      */
     public function loadMetadataFromFile($filePrefix, $regionCode, $countryCallingCode, MetadataLoaderInterface $metadataLoader)
     {
+        $regionCode = strtoupper($regionCode);
+
         $isNonGeoRegion = PhoneNumberUtil::REGION_CODE_FOR_NON_GEO_ENTITY === $regionCode;
         $fileName = $filePrefix . '_' . ($isNonGeoRegion ? $countryCallingCode : $regionCode) . '.php';
         if (!is_readable($fileName)) {
             throw new \RuntimeException('missing metadata: ' . $fileName);
+        }
+
+        $data = $metadataLoader->loadMetadata($fileName);
+        $metadata = new PhoneMetadata();
+        $metadata->fromArray($data);
+        if ($isNonGeoRegion) {
+            $this->countryCodeToNonGeographicalMetadataMap[$countryCallingCode] = $metadata;
         } else {
-            $data = $metadataLoader->loadMetadata($fileName);
-            $metadata = new PhoneMetadata();
-            $metadata->fromArray($data);
-            if ($isNonGeoRegion) {
-                $this->countryCodeToNonGeographicalMetadataMap[$countryCallingCode] = $metadata;
-            } else {
-                $this->regionToMetadataMap[$regionCode] = $metadata;
-            }
+            $this->regionToMetadataMap[$regionCode] = $metadata;
         }
     }
 }

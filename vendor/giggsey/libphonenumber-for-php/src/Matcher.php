@@ -21,7 +21,7 @@ class Matcher
     /**
      * @var string
      */
-    protected $subject;
+    protected $subject = '';
 
     /**
      * @var array
@@ -36,8 +36,8 @@ class Matcher
      */
     public function __construct($pattern, $subject)
     {
-        $this->pattern = str_replace('/', '\/', $pattern);
-        $this->subject = $subject;
+        $this->pattern = str_replace('/', '\/', (string)$pattern);
+        $this->subject = (string)$subject;
     }
 
     protected function doMatch($type = 'find', $offset = 0)
@@ -69,7 +69,7 @@ class Matcher
             foreach ($groups as $group) {
                 $positions[] = array(
                     $group[0],
-                    $offset + mb_strlen(mb_strcut($search, 0, $group[1]))
+                    $offset + mb_strlen(substr($search, 0, $group[1]))
                 );
             }
 
@@ -116,9 +116,9 @@ class Matcher
     {
         if (empty($this->groups)) {
             return null;
-        } else {
-            return count($this->groups) - 1;
         }
+
+        return count($this->groups) - 1;
     }
 
     /**
@@ -127,10 +127,10 @@ class Matcher
      */
     public function group($group = null)
     {
-        if (!isset($group) || $group === null) {
+        if ($group === null) {
             $group = 0;
         }
-        return (isset($this->groups[$group][0])) ? $this->groups[$group][0] : null;
+        return isset($this->groups[$group][0]) ? $this->groups[$group][0] : null;
     }
 
     /**
@@ -139,7 +139,7 @@ class Matcher
      */
     public function end($group = null)
     {
-        if (!isset($group) || $group === null) {
+        if ($group === null) {
             $group = 0;
         }
         if (!isset($this->groups[$group])) {
@@ -150,7 +150,7 @@ class Matcher
 
     public function start($group = null)
     {
-        if (!isset($group) || $group === null) {
+        if ($group === null) {
             $group = 0;
         }
         if (!isset($this->groups[$group])) {
@@ -182,7 +182,7 @@ class Matcher
      * @param string $input
      * @return Matcher
      */
-    public function reset($input = "")
+    public function reset($input = '')
     {
         $this->subject = $input;
 

@@ -839,7 +839,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				return true;
 			}
 		}
-		$_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+		$_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 		if (isset($_POST['group'])) {
 
 			$group = !empty($_POST['group']) ? $_POST['group'] : '';
@@ -874,6 +874,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				$image = !empty($_POST['image']) ? $_POST['image'] : '';
 				$gravatar = !empty($_POST['gravatar']) && $_POST['gravatar'] == 'on' ? true : false;
 				$numbers = array();
+				$websites = array();
 				if(!empty($_POST['number']) && is_array($_POST['number'])) {
 					foreach ($_POST['number'] as $index => $number) {
 						if (!$number) {
@@ -883,10 +884,10 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 						$numbers[$index]['extension'] = $_POST['extension'][$index];
 						$numbers[$index]['type'] = $_POST['numbertype'][$index];
 						$numbers[$index]['locale'] = $_POST['numberlocale'][$index];
-						if ($_POST['sms'][$index]) {
+						if (!empty($_POST['sms'][$index])) {
 							$numbers[$index]['flags'][] = 'sms';
 						}
-						if ($_POST['fax'][$index]) {
+						if (!empty($_POST['fax'][$index])) {
 							$numbers[$index]['flags'][] = 'fax';
 						}
 						$numbers[$index]['speeddial'] = isset($_POST['numbersde'][$index]) ? $_POST['numbersd'][$index] : "";
@@ -1029,7 +1030,8 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		);
 
 		$content = '';
-
+		$group = '';
+		$entries = '';
 		switch($action) {
 			case "speeddials":
 				$speeddialcode = $this->getFeatureCodeStatus();

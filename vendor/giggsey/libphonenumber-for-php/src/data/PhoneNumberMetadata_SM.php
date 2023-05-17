@@ -14,7 +14,7 @@
 return array (
   'generalDesc' => 
   array (
-    'NationalNumberPattern' => '[05-7]\\d{7,9}',
+    'NationalNumberPattern' => '(?:0549|[5-7]\\d)\\d{6}',
     'PossibleLength' => 
     array (
       0 => 8,
@@ -147,12 +147,24 @@ return array (
   'id' => 'SM',
   'countryCode' => 378,
   'internationalPrefix' => '00',
-  'nationalPrefixForParsing' => '([89]\\d{5})',
+  'nationalPrefixForParsing' => '([89]\\d{5})$',
   'nationalPrefixTransformRule' => '0549$1',
   'sameMobileAndFixedLinePattern' => false,
   'numberFormat' => 
   array (
     0 => 
+    array (
+      'pattern' => '(\\d{6})',
+      'format' => '$1',
+      'leadingDigitsPatterns' => 
+      array (
+        0 => '[89]',
+      ),
+      'nationalPrefixFormattingRule' => '',
+      'domesticCarrierCodeFormattingRule' => '',
+      'nationalPrefixOptionalWhenFormatting' => false,
+    ),
+    1 => 
     array (
       'pattern' => '(\\d{2})(\\d{2})(\\d{2})(\\d{2})',
       'format' => '$1 $2 $3 $4',
@@ -164,26 +176,13 @@ return array (
       'domesticCarrierCodeFormattingRule' => '',
       'nationalPrefixOptionalWhenFormatting' => false,
     ),
-    1 => 
+    2 => 
     array (
-      'pattern' => '(0549)(\\d{6})',
+      'pattern' => '(\\d{4})(\\d{6})',
       'format' => '$1 $2',
       'leadingDigitsPatterns' => 
       array (
-        0 => '054',
-        1 => '0549',
-      ),
-      'nationalPrefixFormattingRule' => '',
-      'domesticCarrierCodeFormattingRule' => '',
-      'nationalPrefixOptionalWhenFormatting' => false,
-    ),
-    2 => 
-    array (
-      'pattern' => '(\\d{6})',
-      'format' => '0549 $1',
-      'leadingDigitsPatterns' => 
-      array (
-        0 => '[89]',
+        0 => '0',
       ),
       'nationalPrefixFormattingRule' => '',
       'domesticCarrierCodeFormattingRule' => '',
@@ -206,24 +205,11 @@ return array (
     ),
     1 => 
     array (
-      'pattern' => '(0549)(\\d{6})',
-      'format' => '($1) $2',
+      'pattern' => '(\\d{4})(\\d{6})',
+      'format' => '$1 $2',
       'leadingDigitsPatterns' => 
       array (
-        0 => '054',
-        1 => '0549',
-      ),
-      'nationalPrefixFormattingRule' => '',
-      'domesticCarrierCodeFormattingRule' => '',
-      'nationalPrefixOptionalWhenFormatting' => false,
-    ),
-    2 => 
-    array (
-      'pattern' => '(\\d{6})',
-      'format' => '(0549) $1',
-      'leadingDigitsPatterns' => 
-      array (
-        0 => '[89]',
+        0 => '0',
       ),
       'nationalPrefixFormattingRule' => '',
       'domesticCarrierCodeFormattingRule' => '',
@@ -231,6 +217,5 @@ return array (
     ),
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

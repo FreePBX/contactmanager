@@ -14,7 +14,7 @@
 return array (
   'generalDesc' => 
   array (
-    'NationalNumberPattern' => '3\\d{5}|9\\d{2}',
+    'NationalNumberPattern' => '[39]\\d\\d(?:\\d{3})?',
     'PossibleLength' => 
     array (
       0 => 3,
@@ -26,9 +26,10 @@ return array (
   ),
   'tollFree' => 
   array (
+    'NationalNumberPattern' => '320\\d{3}|911',
+    'ExampleNumber' => '911',
     'PossibleLength' => 
     array (
-      0 => -1,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -46,7 +47,7 @@ return array (
   ),
   'emergency' => 
   array (
-    'NationalNumberPattern' => '320221|911',
+    'NationalNumberPattern' => '(?:32022|91)1',
     'ExampleNumber' => '911',
     'PossibleLength' => 
     array (
@@ -57,7 +58,7 @@ return array (
   ),
   'shortCode' => 
   array (
-    'NationalNumberPattern' => '320221|911',
+    'NationalNumberPattern' => '(?:32022|91)1',
     'ExampleNumber' => '911',
     'PossibleLength' => 
     array (
@@ -107,6 +108,5 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

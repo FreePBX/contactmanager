@@ -18,8 +18,9 @@ return array (
     'PossibleLength' => 
     array (
       0 => 3,
-      1 => 5,
-      2 => 6,
+      1 => 4,
+      2 => 5,
+      3 => 6,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -27,9 +28,12 @@ return array (
   ),
   'tollFree' => 
   array (
+    'NationalNumberPattern' => '1(?:1(?:2|6[01]\\d\\d)|2[7-9]|3[15]|41)',
+    'ExampleNumber' => '112',
     'PossibleLength' => 
     array (
-      0 => -1,
+      0 => 3,
+      1 => 6,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -37,9 +41,11 @@ return array (
   ),
   'premiumRate' => 
   array (
+    'NationalNumberPattern' => '5\\d{4}',
+    'ExampleNumber' => '50000',
     'PossibleLength' => 
     array (
-      0 => -1,
+      0 => 5,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -47,8 +53,8 @@ return array (
   ),
   'emergency' => 
   array (
-    'NationalNumberPattern' => '1(?:12|2[789])',
-    'ExampleNumber' => '129',
+    'NationalNumberPattern' => '1(?:12|2[7-9])',
+    'ExampleNumber' => '112',
     'PossibleLength' => 
     array (
       0 => 3,
@@ -59,8 +65,8 @@ return array (
   ),
   'shortCode' => 
   array (
-    'NationalNumberPattern' => '1(?:1(?:2|6(?:000|1(?:06|11|23)))|2[5-9])|5\\d{4}',
-    'ExampleNumber' => '129',
+    'NationalNumberPattern' => '1(?:1(?:6(?:000|1(?:06|11|23))|8\\d\\d)|65\\d|89[12])|5\\d{4}|1(?:[1349]\\d|2[2-9])',
+    'ExampleNumber' => '110',
     'PossibleLength' => 
     array (
     ),
@@ -80,9 +86,11 @@ return array (
   ),
   'carrierSpecific' => 
   array (
+    'NationalNumberPattern' => '123',
+    'ExampleNumber' => '123',
     'PossibleLength' => 
     array (
-      0 => -1,
+      0 => 3,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -90,11 +98,12 @@ return array (
   ),
   'smsServices' => 
   array (
-    'NationalNumberPattern' => '5\\d{4}',
-    'ExampleNumber' => '51234',
+    'NationalNumberPattern' => '131|5\\d{4}',
+    'ExampleNumber' => '131',
     'PossibleLength' => 
     array (
-      0 => 5,
+      0 => 3,
+      1 => 5,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -111,6 +120,5 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

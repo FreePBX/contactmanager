@@ -14,7 +14,7 @@
 return array (
   'generalDesc' => 
   array (
-    'NationalNumberPattern' => '[135789]\\d{6,9}',
+    'NationalNumberPattern' => '1624\\d{6}|(?:[3578]\\d|90)\\d{8}',
     'PossibleLength' => 
     array (
       0 => 10,
@@ -26,7 +26,7 @@ return array (
   ),
   'fixedLine' => 
   array (
-    'NationalNumberPattern' => '1624[5-8]\\d{5}',
+    'NationalNumberPattern' => '1624(?:230|[5-8]\\d\\d)\\d{3}',
     'ExampleNumber' => '1624756789',
     'PossibleLength' => 
     array (
@@ -38,7 +38,7 @@ return array (
   ),
   'mobile' => 
   array (
-    'NationalNumberPattern' => '7(?:4576|[59]24\\d|624[0-4689])\\d{5}',
+    'NationalNumberPattern' => '76245[06]\\d{4}|7(?:4576|[59]24\\d|624[0-4689])\\d{5}',
     'ExampleNumber' => '7924123456',
     'PossibleLength' => 
     array (
@@ -60,7 +60,7 @@ return array (
   ),
   'premiumRate' => 
   array (
-    'NationalNumberPattern' => '(?:872299|90[0167]624)\\d{4}',
+    'NationalNumberPattern' => '8(?:440[49]06|72299\\d)\\d{3}|(?:8(?:45|70)|90[0167])624\\d{4}',
     'ExampleNumber' => '9016247890',
     'PossibleLength' => 
     array (
@@ -71,10 +71,9 @@ return array (
   ),
   'sharedCost' => 
   array (
-    'NationalNumberPattern' => '8(?:4(?:40[49]06|5624\\d)|70624\\d)\\d{3}',
-    'ExampleNumber' => '8456247890',
     'PossibleLength' => 
     array (
+      0 => -1,
     ),
     'PossibleLengthLocalOnly' => 
     array (
@@ -114,7 +113,7 @@ return array (
   ),
   'uan' => 
   array (
-    'NationalNumberPattern' => '3(?:08162\\d|3\\d{5}|4(?:40[49]06|5624\\d)|7(?:0624\\d|2299\\d))\\d{3}|55\\d{8}',
+    'NationalNumberPattern' => '3440[49]06\\d{3}|(?:3(?:08162|3\\d{4}|45624|7(?:0624|2299))|55\\d{4})\\d{4}',
     'ExampleNumber' => '5512345678',
     'PossibleLength' => 
     array (
@@ -147,7 +146,8 @@ return array (
   'countryCode' => 44,
   'internationalPrefix' => '00',
   'nationalPrefix' => '0',
-  'nationalPrefixForParsing' => '0',
+  'nationalPrefixForParsing' => '([25-8]\\d{5})$|0',
+  'nationalPrefixTransformRule' => '1624$1',
   'sameMobileAndFixedLinePattern' => false,
   'numberFormat' => 
   array (
@@ -156,6 +156,6 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
+  'leadingDigits' => '74576|(?:16|7[56])24',
   'mobileNumberPortableRegion' => false,
 );

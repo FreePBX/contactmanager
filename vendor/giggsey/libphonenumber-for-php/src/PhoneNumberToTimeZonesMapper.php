@@ -14,11 +14,11 @@ class PhoneNumberToTimeZonesMapper
 {
     const UNKNOWN_TIMEZONE = 'Etc/Unknown';
     const MAPPING_DATA_DIRECTORY = '/timezone/data/';
-    const MAPPING_DATA_FILE_NAME = "map_data.php";
+    const MAPPING_DATA_FILE_NAME = 'map_data.php';
     /**
      * @var PhoneNumberToTimeZonesMapper
      */
-    protected static $instance = null;
+    protected static $instance;
     protected $unknownTimeZoneList = array();
     /**
      * @var PhoneNumberUtil
@@ -29,7 +29,7 @@ class PhoneNumberToTimeZonesMapper
     protected function __construct($phonePrefixDataDirectory)
     {
         $this->prefixTimeZonesMap = static::loadPrefixTimeZonesMapFromFile(
-            dirname(__FILE__) . $phonePrefixDataDirectory . DIRECTORY_SEPARATOR . static::MAPPING_DATA_FILE_NAME
+            \dirname(__FILE__) . $phonePrefixDataDirectory . DIRECTORY_SEPARATOR . static::MAPPING_DATA_FILE_NAME
         );
         $this->phoneUtil = PhoneNumberUtil::getInstance();
 
@@ -38,8 +38,8 @@ class PhoneNumberToTimeZonesMapper
 
     protected static function loadPrefixTimeZonesMapFromFile($path)
     {
-        if (!is_readable($path)) {
-            throw new \InvalidArgumentException("Mapping file can not be found");
+        if (!\is_readable($path)) {
+            throw new \InvalidArgumentException('Mapping file can not be found');
         }
 
         $data = require $path;
@@ -90,7 +90,9 @@ class PhoneNumberToTimeZonesMapper
 
         if ($numberType === PhoneNumberType::UNKNOWN) {
             return $this->unknownTimeZoneList;
-        } elseif (!PhoneNumberUtil::getInstance()->isNumberGeographical($numberType, $number->getCountryCode())) {
+        }
+
+        if (!PhoneNumberUtil::getInstance()->isNumberGeographical($numberType, $number->getCountryCode())) {
             return $this->getCountryLevelTimeZonesforNumber($number);
         }
 
@@ -107,7 +109,7 @@ class PhoneNumberToTimeZonesMapper
     protected function getCountryLevelTimeZonesforNumber(PhoneNumber $number)
     {
         $timezones = $this->prefixTimeZonesMap->lookupCountryLevelTimeZonesForNumber($number);
-        return (count($timezones) == 0) ? $this->unknownTimeZoneList : $timezones;
+        return (\count($timezones) == 0) ? $this->unknownTimeZoneList : $timezones;
     }
 
     /**
@@ -136,6 +138,6 @@ class PhoneNumberToTimeZonesMapper
     protected function getTimeZonesForGeocodableNumber(PhoneNumber $number)
     {
         $timezones = $this->prefixTimeZonesMap->lookupTimeZonesForNumber($number);
-        return (count($timezones) == 0) ? $this->unknownTimeZoneList : $timezones;
+        return (\count($timezones) == 0) ? $this->unknownTimeZoneList : $timezones;
     }
 }

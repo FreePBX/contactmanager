@@ -14,7 +14,7 @@
 return array (
   'generalDesc' => 
   array (
-    'NationalNumberPattern' => '[2-7]\\d{7}|1[89]\\d{9}',
+    'NationalNumberPattern' => '(?:1\\d{3}|[2-7])\\d{7}',
     'PossibleLength' => 
     array (
       0 => 8,
@@ -38,7 +38,7 @@ return array (
   ),
   'mobile' => 
   array (
-    'NationalNumberPattern' => '[345]\\d{7}',
+    'NationalNumberPattern' => '[3-5]\\d{7}',
     'ExampleNumber' => '51234567',
     'PossibleLength' => 
     array (
@@ -177,6 +177,5 @@ return array (
   array (
   ),
   'mainCountryForCode' => false,
-  'leadingZeroPossible' => false,
   'mobileNumberPortableRegion' => false,
 );

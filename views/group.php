@@ -19,7 +19,7 @@
 									<label class="control-label" for="groupname"><?php echo _('Name')?></label>
 									<i class="fa fa-question-circle fpbx-help-icon" data-for="groupname"></i>
 								</div>
-								<div class="col-md-9"><input id="groupname" name="groupname" class="form-control" value="<?php echo htmlentities($group['name'])?>"></div>
+								<div class="col-md-9"><input id="groupname" name="groupname" class="form-control" value="<?php echo htmlentities((is_array($group) && !empty($group['name'])) ? $group['name'] : "")?>"></div>
 							</div>
 						</div>
 					</div>

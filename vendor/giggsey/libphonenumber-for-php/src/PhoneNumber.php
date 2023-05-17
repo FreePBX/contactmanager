@@ -10,7 +10,7 @@ class PhoneNumber implements \Serializable
      *
      * @var int|null
      */
-    protected $countryCode = null;
+    protected $countryCode;
     /**
      * National (significant) Number is defined in International Telecommunication Union (ITU)
      * Recommendation E.164. It is a language/country-neutral representation of a phone number at a
@@ -22,7 +22,7 @@ class PhoneNumber implements \Serializable
      *
      * @var string|null
      */
-    protected $nationalNumber = null;
+    protected $nationalNumber;
     /**
      * Extension is not standardized in ITU recommendations, except for being defined as a series of
      * numbers with a maximum length of 40 digits. It is defined as a string here to accommodate for the
@@ -31,7 +31,7 @@ class PhoneNumber implements \Serializable
      *
      * @var string|null
      */
-    protected $extension = null;
+    protected $extension;
     /**
      * In some countries, the national (significant) number starts with one or more "0"s without this
      * being a national prefix or trunk code of some kind. For example, the leading zero in the national
@@ -49,7 +49,7 @@ class PhoneNumber implements \Serializable
      *
      * @var bool|null
      */
-    protected $italianLeadingZero = null;
+    protected $italianLeadingZero;
     /**
      * This field is used to store the raw input string containing phone numbers before it was
      * canonicalized by the library. For example, it could be used to store alphanumerical numbers
@@ -57,7 +57,7 @@ class PhoneNumber implements \Serializable
      *
      * @var string|null
      */
-    protected $rawInput = null;
+    protected $rawInput;
     /**
      * The source from which the country_code is derived. This is not set in the general parsing method,
      * but in the method that parses and keeps raw_input. New fields could be added upon request.
@@ -79,7 +79,7 @@ class PhoneNumber implements \Serializable
      *
      * @var string|null
      */
-    protected $preferredDomesticCarrierCode = null;
+    protected $preferredDomesticCarrierCode;
     /**
      * Whether this phone number has a number of leading zeros set.
      *
@@ -245,7 +245,7 @@ class PhoneNumber implements \Serializable
      */
     public function hasCountryCode()
     {
-        return isset($this->countryCode);
+        return $this->countryCode !== null;
     }
 
     /**
@@ -278,7 +278,7 @@ class PhoneNumber implements \Serializable
      */
     public function hasNationalNumber()
     {
-        return isset($this->nationalNumber);
+        return $this->nationalNumber !== null;
     }
 
     /**
@@ -311,7 +311,7 @@ class PhoneNumber implements \Serializable
      */
     public function hasExtension()
     {
-        return isset($this->extension);
+        return $this->extension !== null;
     }
 
     /**
@@ -344,7 +344,7 @@ class PhoneNumber implements \Serializable
      */
     public function hasItalianLeadingZero()
     {
-        return isset($this->italianLeadingZero);
+        return $this->italianLeadingZero !== null;
     }
 
     /**
@@ -411,7 +411,7 @@ class PhoneNumber implements \Serializable
      */
     public function hasRawInput()
     {
-        return isset($this->rawInput);
+        return $this->rawInput !== null;
     }
 
     /**
@@ -477,7 +477,7 @@ class PhoneNumber implements \Serializable
      */
     public function hasPreferredDomesticCarrierCode()
     {
-        return isset($this->preferredDomesticCarrierCode);
+        return $this->preferredDomesticCarrierCode !== null;
     }
 
     /**
@@ -512,24 +512,18 @@ class PhoneNumber implements \Serializable
      */
     public function equals(PhoneNumber $other)
     {
-        $sameType = get_class($other) == get_class($this);
-        $sameCountry = $this->hasCountryCode() == $other->hasCountryCode() &&
-            (!$this->hasCountryCode() || $this->getCountryCode() == $other->getCountryCode());
-        $sameNational = $this->hasNationalNumber() == $other->hasNationalNumber() &&
-            (!$this->hasNationalNumber() || $this->getNationalNumber() == $other->getNationalNumber());
-        $sameExt = $this->hasExtension() == $other->hasExtension() &&
-            (!$this->hasExtension() || $this->hasExtension() == $other->hasExtension());
-        $sameLead = $this->hasItalianLeadingZero() == $other->hasItalianLeadingZero() &&
-            (!$this->hasItalianLeadingZero() || $this->isItalianLeadingZero() == $other->isItalianLeadingZero());
-        $sameZeros = $this->getNumberOfLeadingZeros() == $other->getNumberOfLeadingZeros();
-        $sameRaw = $this->hasRawInput() == $other->hasRawInput() &&
-            (!$this->hasRawInput() || $this->getRawInput() == $other->getRawInput());
-        $sameCountrySource = $this->hasCountryCodeSource() == $other->hasCountryCodeSource() &&
-            (!$this->hasCountryCodeSource() || $this->getCountryCodeSource() == $other->getCountryCodeSource());
-        $samePrefCar = $this->hasPreferredDomesticCarrierCode() == $other->hasPreferredDomesticCarrierCode() &&
-            (!$this->hasPreferredDomesticCarrierCode() || $this->getPreferredDomesticCarrierCode(
-                ) == $other->getPreferredDomesticCarrierCode());
-        return $sameType && $sameCountry && $sameNational && $sameExt && $sameLead && $sameZeros && $sameRaw && $sameCountrySource && $samePrefCar;
+        if ($this === $other) {
+            return true;
+        }
+
+        return $this->countryCode === $other->countryCode
+            && $this->nationalNumber === $other->nationalNumber
+            && $this->extension === $other->extension
+            && $this->italianLeadingZero === $other->italianLeadingZero
+            && $this->numberOfLeadingZeros === $other->numberOfLeadingZeros
+            && $this->rawInput === $other->rawInput
+            && $this->countryCodeSource === $other->countryCodeSource
+            && $this->preferredDomesticCarrierCode === $other->preferredDomesticCarrierCode;
     }
 
     /**
@@ -565,17 +559,20 @@ class PhoneNumber implements \Serializable
      */
     public function serialize()
     {
-        return serialize(
-            array(
-                $this->countryCode,
-                $this->nationalNumber,
-                $this->extension,
-                $this->italianLeadingZero,
-                $this->numberOfLeadingZeros,
-                $this->rawInput,
-                $this->countryCodeSource,
-                $this->preferredDomesticCarrierCode
-            )
+        return serialize($this->__serialize());
+    }
+
+    public function __serialize()
+    {
+        return array(
+            $this->countryCode,
+            $this->nationalNumber,
+            $this->extension,
+            $this->italianLeadingZero,
+            $this->numberOfLeadingZeros,
+            $this->rawInput,
+            $this->countryCodeSource,
+            $this->preferredDomesticCarrierCode
         );
     }
 
@@ -584,8 +581,11 @@ class PhoneNumber implements \Serializable
      */
     public function unserialize($serialized)
     {
-        $data = unserialize($serialized);
+        $this->__unserialize(unserialize($serialized));
+    }
 
+    public function __unserialize($data)
+    {
         list(
             $this->countryCode,
             $this->nationalNumber,

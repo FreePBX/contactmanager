@@ -4,12 +4,20 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf4e2b4a968b0921eae7d92cc3fe7de15
+class ComposerStaticInitd4866eca09bfd5623c835b12f601b3f5
 {
+    public static $files = array (
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'l' => 
         array (
             'libphonenumber\\' => 15,
+        ),
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
         ),
         'G' => 
         array (
@@ -22,6 +30,10 @@ class ComposerStaticInitf4e2b4a968b0921eae7d92cc3fe7de15
         array (
             0 => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src',
         ),
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
         'Giggsey\\Locale\\' => 
         array (
             0 => __DIR__ . '/..' . '/giggsey/locale/src',
@@ -29,7 +41,9 @@ class ComposerStaticInitf4e2b4a968b0921eae7d92cc3fe7de15
     );
 
     public static $classMap = array (
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Giggsey\\Locale\\Locale' => __DIR__ . '/..' . '/giggsey/locale/src/Locale.php',
+        'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'libphonenumber\\AlternateFormatsCountryCodeSet' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/AlternateFormatsCountryCodeSet.php',
         'libphonenumber\\AsYouTypeFormatter' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/AsYouTypeFormatter.php',
         'libphonenumber\\CountryCodeSource' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/CountryCodeSource.php',
@@ -76,9 +90,9 @@ class ComposerStaticInitf4e2b4a968b0921eae7d92cc3fe7de15
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf4e2b4a968b0921eae7d92cc3fe7de15::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf4e2b4a968b0921eae7d92cc3fe7de15::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitf4e2b4a968b0921eae7d92cc3fe7de15::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd4866eca09bfd5623c835b12f601b3f5::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd4866eca09bfd5623c835b12f601b3f5::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitd4866eca09bfd5623c835b12f601b3f5::$classMap;
 
         }, null, ClassLoader::class);
     }

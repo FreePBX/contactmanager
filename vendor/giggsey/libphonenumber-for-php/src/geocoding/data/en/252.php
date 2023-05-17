@@ -14,6 +14,4 @@ return array (
   2521 => 'Mogadishu',
   2523 => 'Hargeisa',
   2524 => 'Garowe',
-  25251 => 'Mangauno',
-  25261 => 'Mogadishu',
 );

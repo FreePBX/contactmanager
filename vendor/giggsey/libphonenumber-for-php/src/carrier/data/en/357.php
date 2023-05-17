@@ -11,7 +11,7 @@
  */
 
 return array (
-  357123 => 'Cytamobile-Vodafone',
+  35791 => 'Cytamobile-Vodafone',
   35794 => 'Lemontel',
   35795 => 'PrimeTel',
   35796 => 'MTN',

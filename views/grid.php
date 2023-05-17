@@ -35,7 +35,7 @@
 						<?php foreach($groups[$type] as $k => $group) { 
 									$_Owner 	= FreePBX::Userman()->getUserByID($group["owner"]);
 									$_Group 	= FreePBX::Userman()->getGroupsByID($group["owner"]);
-									$_Gowner 	= FreePBX::Userman()->getGroupByGID($_Group[0]);
+									$_Gowner 	= FreePBX::Userman()->getGroupByGID($_Group[0] ?? "");
 									$owner 		= "";
 									if(!empty($_Owner)){
 										$owner 	=	'<div class="alert alert-info" role="alert"><strong>'._("Group").'</strong> > '.$_Gowner["groupname"]."<br><strong>"._("Owner").'</strong> > '.$_Owner["username"].' - '.$_Owner["default_extension"].'</div>';
