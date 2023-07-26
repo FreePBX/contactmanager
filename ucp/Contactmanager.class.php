@@ -10,11 +10,14 @@ use \UCP\Modules as Modules;
 class Contactmanager extends Modules{
 	protected $module = 'Contactmanager';
 	private $ext = 0;
+	private $user = null;
+	private $userId = false;
 
 	public function __construct($Modules) {
 		$this->Modules = $Modules;
 		$this->cm = $this->UCP->FreePBX->Contactmanager;
 		$this->user = $this->UCP->User->getUser();
+		$this->userId = $this->user ? $this->user["id"] : false;
 	}
 
 	public function getWidgetList() {
@@ -41,7 +44,7 @@ class Contactmanager extends Modules{
 
 	public function getWidgetDisplay($id) {
 		$displayvars = array();
-		$displayvars['groups'] = $this->cm->getGroupsByOwner($this->user['id']);
+		$displayvars['groups'] = $this->cm->getGroupsByOwner($this->userId);
 		$displayvars['total'] = 0;
 
 		foreach($displayvars['groups'] as &$group) {
@@ -57,7 +60,7 @@ class Contactmanager extends Modules{
 
 		$displayvars['favoriteContactsEnabled'] = $this->cm->getEnableFavoriteContacts();
 		if($displayvars['favoriteContactsEnabled']) {
-			$list = $this->cm->getUserFavoriteContacts($this->user['id']);
+			$list = $this->cm->getUserFavoriteContacts($this->userId);
 			$contactIdArray = json_decode($list['contact_ids']) ? json_decode($list['contact_ids']) : [];
 			$displayvars['favoriteContactsCount'] = count($contactIdArray);
 		}
@@ -115,7 +118,7 @@ class Contactmanager extends Modules{
 					$id = $_REQUEST['entryid'];
 				} else {
 					$type = 'internal';
-					$id = $this->user['id'];
+					$id = $this->userId;
 				}
 
 				$this->cm->displayContactImage($id,$type);
@@ -125,8 +128,8 @@ class Contactmanager extends Modules{
 	}
 
 	public function userDetails() {
-		$data = $this->UCP->FreePBX->Userman->getUserByID($this->user['id']);
-		$image = $this->cm->getImageByID($this->user['id'],$data['email'],'internal');
+		$data = $this->UCP->FreePBX->Userman->getUserByID($this->userId);
+		$image = $this->cm->getImageByID($this->userId,$data['email'],'internal');
 		$data['image'] = $image;
 		return $data;
 	}
@@ -151,7 +154,7 @@ class Contactmanager extends Modules{
 			break;
 			case 'getgravatar':
 				$type = !empty($_POST['grouptype']) ? $_POST['grouptype'] : "";
-				$id = $this->user['id'];
+				$id = $this->userId;
 				switch($type) {
 					case "external":
 						$email = !empty($_POST['email']) ? $_POST['email'] : '';
@@ -183,7 +186,7 @@ class Contactmanager extends Modules{
 							$url = "?quietmode=1&module=Contactmanager&command=limage&temporary=1&name=".$dname.".png";
 						}
 					} elseif(empty($_POST['type'])) {
-						$this->cm->updateImageByID($this->user['id'], $this->cm->tmp."/".$dname.".png", true, 'internal');
+						$this->cm->updateImageByID($this->userId, $this->cm->tmp."/".$dname.".png", true, 'internal');
 						$url = "?quietmode=1&module=Contactmanager&command=limage&time=".time();
 					}
 					return array("status" => true, "name" => $dname, "filename" => $dname.".png", "url" => $url);
@@ -203,7 +206,7 @@ class Contactmanager extends Modules{
 					unlink($this->cm->tmp."/".$_POST['image'].".png");
 					return array("status" => true);
 				} else {
-					$this->cm->delImageByID($this->user['id'], 'internal');
+					$this->cm->delImageByID($this->userId, 'internal');
 					return array("status" => true);
 				}
 				return array("status" => false, "message" => _("Invalid"));
@@ -240,7 +243,7 @@ class Contactmanager extends Modules{
 										$url = "?quietmode=1&module=Contactmanager&command=limage&temporary=1&name=".$dname.".png";
 									}
 								} elseif(empty($_POST['type'])) {
-									$this->cm->updateImageByID($this->user['id'], $this->cm->tmp."/".$dname.".png", false, 'internal');
+									$this->cm->updateImageByID($this->userId, $this->cm->tmp."/".$dname.".png", false, 'internal');
 									$url = "?quietmode=1&module=Contactmanager&command=limage&time=".time();
 								}
 								return array("status" => true, "name" => $dname, "filename" => $dname.".png", "url" => $url);
@@ -281,7 +284,7 @@ class Contactmanager extends Modules{
 				$orderby = !empty($request['sort']) ? $request['sort'] : "displayname";
 				$search = !empty($request['search']) ? $request['search'] : "";
 				if(empty($group)) {
-					$groups = $this->cm->getGroupsByOwner($this->user['id']);
+					$groups = $this->cm->getGroupsByOwner($this->userId);
 					$allContacts = array();
 					foreach($groups as $group) {
 						$contacts = $this->cm->getEntriesByGroupID($group['id']);
@@ -334,7 +337,7 @@ class Contactmanager extends Modules{
 				$entry = $this->cm->getEntryByID($_REQUEST['id']);
 				if(!empty($entry)) {
 					$g = $this->cm->getGroupByID($entry['groupid']);
-					if($g['owner'] == $this->user['id']) {
+					if($g['owner'] == $this->userId) {
 						$return = $this->cm->deleteEntryByID($_REQUEST['id']);
 						break;
 					}
@@ -344,7 +347,7 @@ class Contactmanager extends Modules{
 			case 'addcontact':
 				$data = freepbxGetSanitizedRequest(FILTER_SANITIZE_STRING, true);
 				$g = $this->cm->getGroupByID($data['group']);
-				if($g['owner'] == $this->user['id']) {
+				if($g['owner'] == $this->userId) {
 					$contact = $data['contact'];
 					$contact['user'] = -1;
 					$return = $this->cm->addEntryByGroupID($data['group'], $contact);
@@ -363,7 +366,7 @@ class Contactmanager extends Modules{
 				$locale = !empty($locale[1]) ? $locale[1] : 'US';
 				$displayvars['defaultlocale'] = $locale;
 				$displayvars['regionlist'] = $this->cm->getRegionList();
-				$displayvars['speeddialmodifications'] = $this->UCP->getCombinedSettingByID($this->user['id'],$this->module,'speeddial');
+				$displayvars['speeddialmodifications'] = $this->UCP->getCombinedSettingByID($this->userId,$this->module,'speeddial');
 				$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 				$return = $this->load_view(__DIR__.'/views/contactEdit.php',$displayvars);
 			break;
@@ -373,7 +376,7 @@ class Contactmanager extends Modules{
 				$locale = !empty($locale[1]) ? $locale[1] : 'US';
 				$displayvars['defaultlocale'] = $locale;
 				$displayvars['regionlist'] = $this->cm->getRegionList();
-				$displayvars['speeddialmodifications'] = $this->UCP->getCombinedSettingByID($this->user['id'],$this->module,'speeddial');
+				$displayvars['speeddialmodifications'] = $this->UCP->getCombinedSettingByID($this->userId,$this->module,'speeddial');
 				$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 				$return = $this->load_view(__DIR__.'/views/contactEdit.php',$displayvars);
 			break;
@@ -407,7 +410,7 @@ class Contactmanager extends Modules{
 			break;
 			case 'deletegroup':
 				$g = $this->cm->getGroupByID($_REQUEST['id']);
-				if($g['owner'] == $this->user['id']) {
+				if($g['owner'] == $this->userId) {
 					$return = $this->cm->deleteGroupByID($_REQUEST['id']);
 					$return['name'] = $g['name'];
 				} else {
@@ -415,20 +418,20 @@ class Contactmanager extends Modules{
 				}
 			break;
 			case 'addgroup':
-				$return = $this->cm->addGroup($_POST['groupname'], 'external', $this->user['id']);
+				$return = $this->cm->addGroup($_POST['groupname'], 'external', $this->userId);
 			break;
 			case "addgroupmodal":
 				$return = $this->load_view(__DIR__.'/views/groupCreate.php',$displayvars);
 			break;
 			case "favorite_contacts":
 				$allContacts = [];
-				$groups = $this->cm->getGroupsByOwner($this->user['id']);
+				$groups = $this->cm->getGroupsByOwner($this->userId);
 				foreach ($groups as $group) {
 					$contacts = $this->cm->getEntriesByGroupID($group['id']);
 					$allContacts = array_merge($allContacts,$contacts);
 				}
 				$contacts = array_values($allContacts);
-				$list = $this->cm->getUserFavoriteContacts($this->user['id']);
+				$list = $this->cm->getUserFavoriteContacts($this->userId);
 				$contactIdArray = json_decode($list['contact_ids']) ? json_decode($list['contact_ids']) : [];
 				$res = $this->cm->processContacts($contacts, $contactIdArray);
 
@@ -441,9 +444,9 @@ class Contactmanager extends Modules{
 			case "update_favorite_contacts":
 				
 				$includedContacts = $_POST['included_contacts'];
-				$contacts = $this->cm->updateUserFavoriteContacts($this->user['id'], $includedContacts);
+				$contacts = $this->cm->updateUserFavoriteContacts($this->userId, $includedContacts);
 				
-				$list = $this->cm->getUserFavoriteContacts($this->user['id']);
+				$list = $this->cm->getUserFavoriteContacts($this->userId);
 				$contactIdArray = json_decode($list['contact_ids']) ? json_decode($list['contact_ids']) : [];
 
 				$return = array("status" => true, "favoriteContactsCount" => count($contactIdArray), "message" => _("Favorite Contact List successfully updated."));
@@ -475,7 +478,7 @@ class Contactmanager extends Modules{
 		$view = !empty($_REQUEST['view']) ? $_REQUEST['view'] : '';
 
 		$displayvars = array();
-		$displayvars['groups'] = $this->cm->getGroupsByOwner($this->user['id']);
+		$displayvars['groups'] = $this->cm->getGroupsByOwner($this->userId);
 		$displayvars['activeList'] = "mycontacts";
 		$displayvars['total'] = 0;
 		$c = 1;
@@ -499,7 +502,7 @@ class Contactmanager extends Modules{
 				if(!empty($g)) {
 					if($g['owner'] != -1) {
 						$displayvars['regionlist'] = $this->cm->getRegionList();
-						$displayvars['speeddialmodifications'] = $this->UCP->getCombinedSettingByID($this->user['id'],$this->module,'speeddial');
+						$displayvars['speeddialmodifications'] = $this->UCP->getCombinedSettingByID($this->userId,$this->module,'speeddial');
 						$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 						$displayvars['activeList'] = $g['name'];
 						$displayvars['add'] = true;
@@ -517,7 +520,7 @@ class Contactmanager extends Modules{
 			case "contact":
 				$g = $this->cm->getGroupByID($_REQUEST['group']);
 				if(!empty($g)) {
-					$displayvars['speeddialmodifications'] = $this->UCP->getCombinedSettingByID($this->user['id'],$this->module,'speeddial');
+					$displayvars['speeddialmodifications'] = $this->UCP->getCombinedSettingByID($this->userId,$this->module,'speeddial');
 					$displayvars['speeddialmodifications'] = false;
 					$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 					$displayvars['contact'] = $this->cm->getEntryByID($_REQUEST['id']);
@@ -547,12 +550,12 @@ class Contactmanager extends Modules{
 	}
 
 	public function lookupMultiple($search) {
-		$entry = $this->cm->lookupMultipleByUserID($this->user['id'],$search);
+		$entry = $this->cm->lookupMultipleByUserID($this->userId,$search);
 		return $entry;
 	}
 
 	public function lookup($search) {
-		$entry = $this->cm->lookupByUserID($this->user['id'],$search);
+		$entry = $this->cm->lookupByUserID($this->userId,$search);
 		return $entry;
 	}
 
@@ -568,7 +571,7 @@ class Contactmanager extends Modules{
 	}
 
 	public function poll() {
-		$contacts = $this->cm->getContactsByUserID($this->user['id']);
+		$contacts = $this->cm->getContactsByUserID($this->userId);
 		if(!empty($contacts)) {
 			return array(
 				'enabled' => true,
@@ -583,7 +586,7 @@ class Contactmanager extends Modules{
 	* Send settings to UCP upon initalization
 	*/
 	public function getStaticSettings() {
-		$contacts = $this->cm->getContactsByUserID($this->user['id']);
+		$contacts = $this->cm->getContactsByUserID($this->userId);
 		if(!empty($contacts)) {
 			return array(
 				'enabled' => true,
@@ -595,7 +598,7 @@ class Contactmanager extends Modules{
 	}
 
 	public function editEntry($id) {
-		$contacts = $this->cm->getContactsByUserID($this->user['id']);
+		$contacts = $this->cm->getContactsByUserID($this->userId);
 		foreach($contacts as $contact) {
 			if($contact['uid'] == $id) {
 				return true;
