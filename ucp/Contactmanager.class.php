@@ -142,6 +142,7 @@ class Contactmanager extends Modules{
 	* @return mixed Output if success, otherwise false will generate a 500 error serverside
 	*/
 	function ajaxHandler() {
+		$displayvars??=[];
 		$return = array("status" => false, "message" => "");
 		switch($_REQUEST['command']) {
 			case 'checksd':
@@ -278,9 +279,9 @@ class Contactmanager extends Modules{
 				return array("status" => false, "message" => _("Can Not Find Uploaded Files"));
 			break;
 			case 'grid':
-				$request = freepbxGetSanitizedRequest(FILTER_SANITIZE_STRING, true);
-				$group = $request['group'];
-				$order = $request['order'];
+				$request = freepbxGetSanitizedRequest(FILTER_SANITIZE_FULL_SPECIAL_CHARS, true);
+				$group = $request['group']??'';
+				$order = $request['order']??'';
 				$orderby = !empty($request['sort']) ? $request['sort'] : "displayname";
 				$search = !empty($request['search']) ? $request['search'] : "";
 				if(empty($group)) {
@@ -313,7 +314,7 @@ class Contactmanager extends Modules{
 				return $contacts;
 			break;
 			case 'updatecontact':
-				$request = freepbxGetSanitizedRequest(FILTER_SANITIZE_STRING, true);
+				$request = freepbxGetSanitizedRequest(FILTER_SANITIZE_FULL_SPECIAL_CHARS, true);
 				$contact = $request['contact'];
 				if(!$this->editEntry($contact['id'])) {
 					$return = array("status" => false, "message" => _("Unauthorized"));
@@ -345,7 +346,7 @@ class Contactmanager extends Modules{
 				$return = array("status" => false, "message" => _("Unauthorized"));
 			break;
 			case 'addcontact':
-				$data = freepbxGetSanitizedRequest(FILTER_SANITIZE_STRING, true);
+				$data = freepbxGetSanitizedRequest(FILTER_SANITIZE_FULL_SPECIAL_CHARS, true);
 				$g = $this->cm->getGroupByID($data['group']);
 				if($g['owner'] == $this->userId) {
 					$contact = $data['contact'];

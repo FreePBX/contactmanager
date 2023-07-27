@@ -1323,7 +1323,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','groups',null);
 			}
 			if(isset($_POST['contactmanager_image'])) {
-				$this->updateImageByID($id, $_POST['contactmanager_image'], ($_POST['contactmanager_gravatar'] == "on" ? 1 : 0), 'internal');
+				$this->updateImageByID($id, $_POST['contactmanager_image'], (($_POST['contactmanager_gravatar']??'') == "on" ? 1 : 0), 'internal');
 			}
 			$this->setConfig('userLocale', $_POST['contactmanager_dialinglocale'], $id);
 
@@ -1816,7 +1816,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			}
 		}
 
-		switch($group['type']) {
+		switch($group['type']??'') {
 			case "internal":
 				$images = $this->getImagesByGroupID($groupid,'internal');
 				$hasImages = array();

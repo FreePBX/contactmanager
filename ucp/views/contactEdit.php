@@ -1,53 +1,53 @@
 <div class="col-md-12">
 	<div class="contact-container">
 		<form role="form" id="contact-form">
-			<input type="hidden" id="id" name="id" value="<?php echo $contact['id']?>">
+			<input type="hidden" id="id" name="id" value="<?php $contact??=[]; echo $contact['id']??'' ?>">
 			<div class="form-group">
 				<label for="displayname"><?php echo _('Display Name')?></label>
-				<input type="text" class="form-control" id="displayname" placeholder="Display Name" name="displayname" value="<?php echo $contact['displayname']?>">
+				<input type="text" class="form-control" id="displayname" placeholder="Display Name" name="displayname" value="<?php echo $contact['displayname']??'' ?>">
 			</div>
 			<div class="form-group">
 				<label for="fname"><?php echo _('First Name')?></label>
-				<input type="text" class="form-control" id="fname" placeholder="First Name" name="fname" value="<?php echo $contact['fname']?>">
+				<input type="text" class="form-control" id="fname" placeholder="First Name" name="fname" value="<?php echo $contact['fname']??'' ?>">
 			</div>
 			<div class="form-group">
 				<label for="lastname"><?php echo _('Last Name')?></label>
-				<input type="text" class="form-control" id="lname" placeholder="Last Name" name="lname" value="<?php echo $contact['lname']?>">
+				<input type="text" class="form-control" id="lname" placeholder="Last Name" name="lname" value="<?php echo $contact['lname']??'' ?>">
 			</div>
 			<div class="form-group">
 				<label for="title"><?php echo _('Title')?></label>
-				<input type="text" class="form-control" id="title" placeholder="Title" name="title" value="<?php echo $contact['title']?>">
+				<input type="text" class="form-control" id="title" placeholder="Title" name="title" value="<?php echo $contact['title']??'' ?>">
 			</div>
 			<div class="form-group">
 				<label for="company"><?php echo _('Company')?></label>
-				<input type="text" class="form-control" id="company" placeholder="Company" name="company" value="<?php echo $contact['company']?>">
+				<input type="text" class="form-control" id="company" placeholder="Company" name="company" value="<?php echo $contact['company']??'' ?>">
 			</div>
 			<div class="row">
 				<div class="col-md-3">
 					<div id="contactmanager_dropzone" class="image">
 						<div class="message"><?php echo _("Drop a new image here");?></div>
-						<img class="<?php echo (!empty($contact) && !empty($contact['image'])) ? '' : 'hidden'?>" src="<?php echo (!empty($contact) && !empty($contact['image'])) ? '?quietmode=1&module=Contactmanager&command=limage&entryid='.$contact['id'].'&time='.time() : ''?>">
+						<img class="<?php echo (!empty($contact) && !empty($contact['image'])) ? '' : 'hidden'?>" src="<?php echo (!empty($contact) && !empty($contact['image'])) ? '?quietmode=1&module=Contactmanager&command=limage&entryid='.$contact['id']??''.'&time='.time() : ''?>">
 					</div>
-					<button id="contactmanager_del-image" data-entryid="<?php echo !empty($contact) ? $contact['id'] : ''?>" class="btn btn-danger btn-sm <?php echo (!empty($contact) && !empty($contact['image'])) ? '' : 'hidden'?>"><?php echo _("Delete Image")?></button>
+					<button id="contactmanager_del-image" data-entryid="<?php echo !empty($contact) ? ($contact['id']??'') : ''?>" class="btn btn-danger btn-sm <?php echo (!empty($contact) && !empty($contact['image'])) ? '' : 'hidden'?>"><?php echo _("Delete Image")?></button>
 				</div>
 				<div class="col-md-9">
 					<input type="hidden" class="special" name="contactmanager_image" id="contactmanager_image">
 					<span class="btn btn-default btn-file">
 						<?php echo _("Browse")?>
-						<input id="contactmanager_imageupload" type="file" class="skip form-control" name="files[]" data-url="ajax.php?&amp;module=Contactmanager&amp;command=uploadimage&amp;type=contact&amp;id=<?php echo $contact['id']?>" class="form-control" multiple>
+						<input id="contactmanager_imageupload" type="file" class="skip form-control" name="files[]" data-url="ajax.php?&amp;module=Contactmanager&amp;command=uploadimage&amp;type=contact&amp;id=<?php echo $contact['id']??'' ?>" class="form-control" multiple>
 					</span>
 					<span class="filename"></span>
 					<div id="contactmanager_upload-progress" class="progress">
 						<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
 					</div>
 					<div class="radioset">
-						<input name="contactmanager_gravatar" id="contactmanager_gravatar" data-toggle="toggle" data-on="Enable" data-off="Disable" class="skip" data-entryid="<?php echo !empty($contact) ? $contact['id'] : ''?>" type="checkbox" value="on" <?php echo (!empty($contact) && !empty($contact['image'])) && !empty($contact['image']['gravatar']) ? 'checked' : ''?>>
+						<input name="contactmanager_gravatar" id="contactmanager_gravatar" data-toggle="toggle" data-on="Enable" data-off="Disable" class="skip" data-entryid="<?php echo !empty($contact) ? ($contact['id']??'') : ''?>" type="checkbox" value="on" <?php echo (!empty($contact) && !empty($contact['image'])) && !empty($contact['image']['gravatar']) ? 'checked' : ''?>>
 						<label for="contactmanager_gravatar"><?php echo _("Use Gravatar")?></label>
 					</div>
 				</div>
 			</div>
 			<label><?php echo _('Numbers')?></label>
-			<?php $contact['numbers'] = is_array($contact['numbers']) ? $contact['numbers'] : array(); ?>
+			<?php $contact['numbers'] = is_array($contact['numbers']??'') ? $contact['numbers'] : array(); ?>
 			<?php foreach($contact['numbers'] as $c => $number) {?>
 				<div class="form-inline item-container item-container-number row">
 					<div class="col-md-7">
@@ -60,9 +60,9 @@
 							<option value="other" <?php echo ($number['type'] == "other") ? 'selected' : ''?>><?php echo _('Other')?></option>
 						</select>
 						<label style="margin-left: 21px;">Dialing Country</label>
-						<select class="form-control number locale-template" data-name="locale" data-locale="<?php echo $number['locale']?>">
+						<select class="form-control number locale-template" data-name="locale" data-locale="<?php echo $number['locale']??'' ?>">
 							<?php foreach($regionlist as $key => $val) {
-								$selected = ($number['locale'] == $key)?'SELECTED':'';
+								$selected = (($number['locale']??'') == $key)?'SELECTED':'';
 							?>
 								<option value="<?php echo $key?>" <?php echo $selected?>><?php echo $val?></option>
 							<?php } ?>
@@ -74,15 +74,15 @@
 							<label><?php echo _('Speed Dial')?>:</label>
 							<div class="input-group">
 								<span class="input-group-addon" style="padding: 4px;"><?php echo $featurecode['code']?></span>
-								<input type="number" class="form-control number-sd skip" data-orig="<?php echo $number['speeddial']?>" value="<?php echo $number['speeddial']?>" style="width: 50px;padding: 3px;" min="0" data-name="numbersd" <?php echo trim($number['speeddial']) != "" ? '' : 'disabled' ?>>
+								<input type="number" class="form-control number-sd skip" data-orig="<?php echo $number['speeddial']??'' ?>" value="<?php echo $number['speeddial']??'' ?>" style="width: 50px;padding: 3px;" min="0" data-name="numbersd" <?php echo trim($number['speeddial']??'') != "" ? '' : 'disabled' ?>>
 								<span class="input-group-addon">
-									<input type="checkbox" style="margin-bottom: 0px;" class="enable-sd skip" data-name="numbersde" <?php echo trim($number['speeddial']) != "" ? 'checked' : '' ?>><?php echo _("Enable")?></label>
+									<input type="checkbox" style="margin-bottom: 0px;" class="enable-sd skip" data-name="numbersde" <?php echo trim($number['speeddial']??'') != "" ? 'checked' : '' ?>><?php echo _("Enable")?></label>
 								</span>
 							</div>
 						<?php } ?>
 						</div>
-						<label><?php echo _('SMS')?>:</label> <input type="checkbox" data-name="smsflag" data-toggle="toggle" data-size="small" data-on="<?php echo  _('Yes')?>" data-off="<?php echo  _('No')?>" <?php echo in_array("sms",$number['flags']) ? 'checked' : ''?>>
-						<label><?php echo _('Fax')?>:</label> <input type="checkbox" data-name="faxflag" data-toggle="toggle" data-size="small" data-on="<?php echo  _('Yes')?>" data-off="<?php echo  _('No')?>" <?php echo in_array("fax",$number['flags']) ? 'checked' : ''?>>
+						<label><?php echo _('SMS')?>:</label> <input type="checkbox" data-name="smsflag" data-toggle="toggle" data-size="small" data-on="<?php echo  _('Yes')?>" data-off="<?php echo  _('No')?>" <?php echo in_array("sms",($number['flags']??'')) ? 'checked' : ''?>>
+						<label><?php echo _('Fax')?>:</label> <input type="checkbox" data-name="faxflag" data-toggle="toggle" data-size="small" data-on="<?php echo  _('Yes')?>" data-off="<?php echo  _('No')?>" <?php echo in_array("fax",$number['flags']??'') ? 'checked' : ''?>>
 					</div>
 				</div>
 			<?php } ?>
@@ -198,7 +198,7 @@
 			<input type="hidden" id="mode" name="mode" value="<?php echo isset($add) && ($add) ? 'add' : 'edit'?>">
 			<?php if(isset($add) && $add) {?>
 			<?php } else { ?>
-				<input type="hidden" id="id" name="id" value="<?php echo $contact['id']?>">
+				<input type="hidden" id="id" name="id" value="<?php echo $contact['id']??'' ?>">
 
 			<?php } ?>
 		-->
