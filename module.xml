@@ -7,7 +7,7 @@
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
-		*17.0.1alpha* 17.0.1 alpha release
+		*17.0.1* 17.0.1 alpha release
 	</changelog>
 	<category>Admin</category>
 	<description>
@@ -75,7 +75,7 @@
             </key>
 	    </table>
 		<table name="contactmanager_entry_speeddials">
-			<field name="id" type="integer" primaryKey="true"/>
+			<field name="id" type="string" length="5" primaryKey="true"/>
 			<field name="entryid" type="integer"/>
 			<field name="numberid" type="integer"/>
 		</table>
