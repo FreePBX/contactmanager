@@ -1278,7 +1278,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				$this->freepbx->Userman->setModuleSettingByID($id,'contactmanager','groups',null);
 			}
 			if(isset($_POST['contactmanager_image'])) {
-				$this->updateImageByID($id, $_POST['contactmanager_image'], ($_POST['contactmanager_gravatar'] == "on" ? 1 : 0), 'internal');
+				$this->updateImageByID($id, $_POST['contactmanager_image'] ?? '', ((isset($_POST['contactmanager_gravatar']) && $_POST['contactmanager_gravatar'] == "on") ? 1 : 0), 'internal');
 			}
 			$this->setConfig('userLocale', $_POST['contactmanager_dialinglocale'], $id);
 
@@ -3115,9 +3115,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	}
 
 	public function usermanUserDetails($user) {
-		$image = $this->getImageByID($user['id'], $user['email'], 'internal');
+		$image = $this->getImageByID($user['id'] ?? '', $user['email'] ?? '', 'internal');
 		$user['image'] = $image;
-		return array(load_view(dirname(__FILE__).'/views/user_details_hook.php',array("dialinglocale" => $this->getConfig('userLocale',$user['id']), "cmdata" => $user, "regionlist" => $this->getRegionList())));
+		return array(load_view(dirname(__FILE__).'/views/user_details_hook.php',array("dialinglocale" => $this->getConfig('userLocale',$user['id'] ?? ''), "cmdata" => $user, "regionlist" => $this->getRegionList())));
 	}
 
 	/**

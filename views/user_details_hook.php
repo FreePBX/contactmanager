@@ -41,7 +41,7 @@
 								<div class="message"><?php echo _("Drop a new image here");?></div>
 								<img class="<?php echo (!empty($cmdata) && !empty($cmdata['image'])) ? '' : 'hidden'?>" src="<?php echo (!empty($cmdata) && !empty($cmdata['image'])) ? 'ajax.php?module=contactmanager&amp;command=limage&amp;type=internal&amp;entryid='.$cmdata['id'] : ''?>">
 							</div>
-							<button id="contactmanager_del-image" data-entryid="<?php echo !empty($cmdata) ? $cmdata['id'] : ''?>" class="btn btn-danger btn-sm <?php echo (!empty($cmdata) && !empty($cmdata['image'])) ? '' : 'hidden'?>"><?php echo _("Delete Image")?></button>
+							<button id="contactmanager_del-image" data-entryid="<?php echo !empty($cmdata) ? ($cmdata['id'] ?? '') : ''?>" class="btn btn-danger btn-sm <?php echo (!empty($cmdata) && !empty($cmdata['image'])) ? '' : 'hidden'?>"><?php echo _("Delete Image")?></button>
 						</div>
 						<div class="col-md-8">
 							<input type="hidden" name="contactmanager_image" id="contactmanager_image">
@@ -54,7 +54,7 @@
 								<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
 							</div>
 							<div class="radioset">
-								<input name="contactmanager_gravatar" id="contactmanager_gravatar" data-entryid="<?php echo !empty($cmdata) ? $cmdata['id'] : ''?>" type="checkbox" value="on" <?php echo (!empty($cmdata) && !empty($cmdata['image'])) && !empty($cmdata['image']['gravatar']) ? 'checked' : ''?>>
+								<input name="contactmanager_gravatar" id="contactmanager_gravatar" data-entryid="<?php echo !empty($cmdata) ? ($cmdata['id'] ?? '') : ''?>" type="checkbox" value="on" <?php echo (!empty($cmdata) && !empty($cmdata['image'])) && !empty($cmdata['image']['gravatar']) ? 'checked' : ''?>>
 								<label for="contactmanager_gravatar"><?php echo _("Use Gravatar")?></label>
 							</div>
 						</div>
