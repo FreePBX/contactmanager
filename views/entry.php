@@ -1,7 +1,7 @@
 <?php
 $userlist[''] = '';
 foreach ($users as $u) {
-	if ($entry['user'] == $u['id']) {
+	if (isset($entry['user']) && $entry['user'] == $u['id']) {
 		$user = $u;
 	}
 
@@ -270,9 +270,9 @@ foreach ($users as $u) {
 																	<label><?php echo _("Speed Dial")?></label>
 																	<div class="input-group mx-sm-2">
 																		<span class="input-group-addon"><?php echo $speeddialcode['code']?></span>
-																		<input type="number" class="form-control number-sd" name="numbersd[<?php echo $numcount?>]" min="0" data-id="<?php echo $numcount?>" <?php echo (trim($number['speeddial']) == "") ? "disabled" : ""?> value="<?php echo $number['speeddial']?>">
+																		<input type="number" class="form-control number-sd" name="numbersd[<?php echo $numcount?>]" min="0" data-id="<?php echo $numcount?>" <?php echo (trim((string) $number['speeddial']) == "") ? "disabled" : ""?> value="<?php echo $number['speeddial']?>">
 																		<span class="input-group-addon">
-																			<input type="checkbox" name="numbersde[<?php echo $numcount?>]" id="numbersde[<?php echo $numcount?>]" data-id="<?php echo $numcount?>" class="enable-sd" <?php echo (trim($number['speeddial']) == "") ? "" : "checked"?>><label for="numbersde[<?php echo $numcount?>]" style="margin-bottom: 0px;"><?php echo _("Enable")?></label>
+																			<input type="checkbox" name="numbersde[<?php echo $numcount?>]" id="numbersde[<?php echo $numcount?>]" data-id="<?php echo $numcount?>" class="enable-sd" <?php echo (trim((string) $number['speeddial']) == "") ? "" : "checked"?>><label for="numbersde[<?php echo $numcount?>]" style="margin-bottom: 0px;"><?php echo _("Enable")?></label>
 																		</span>
 																	</div>
 																	</div>
