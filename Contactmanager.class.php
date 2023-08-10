@@ -777,12 +777,14 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		}
 		$thumb = imagecreatetruecolor( $thumb_width, $thumb_height );
 		// Resize and crop
+		$horizontalOffset = round(0 - ($new_width - $thumb_width) / 2);
+		$verticalOffset = round(0 - ($new_height - $thumb_height) / 2);
 		imagecopyresampled($thumb,
 		$image,
-		0 - ($new_width - $thumb_width) / 2, // Center the image horizontally
-		0 - ($new_height - $thumb_height) / 2, // Center the image vertically
+		$horizontalOffset, // Center the image horizontally
+		$verticalOffset, // Center the image vertically
 		0, 0,
-		$new_width, $new_height,
+		round($new_width), round($new_height),
 		$width, $height);
 		imagepng($thumb, $filename, 9);
 		return basename($filename);
