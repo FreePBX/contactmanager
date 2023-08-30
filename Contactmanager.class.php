@@ -2839,6 +2839,12 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$umentries = $this->freepbx->Userman->getAllContactInfo();
 		if($id == -1) {
 			$groups = $this->getGroups();
+			// remove private groups
+			foreach( $groups as $key => $grp) {
+				if($grp['owner'] != -1) {
+					unset($groups[$key]);
+				}
+			}
 		} else {
 			$groups = $this->getGroupsByOwner($id);
 		}
