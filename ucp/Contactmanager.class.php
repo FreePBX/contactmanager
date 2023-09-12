@@ -6,7 +6,7 @@
  */
 namespace UCP\Modules;
 use \UCP\Modules as Modules;
-
+#[\AllowDynamicProperties]
 class Contactmanager extends Modules{
 	protected $module = 'Contactmanager';
 	private $ext = 0;
