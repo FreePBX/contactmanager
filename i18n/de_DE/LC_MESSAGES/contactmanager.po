@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-10 10:02+0000\n"
+"POT-Creation-Date: 2023-09-13 06:33+0000\n"
 "PO-Revision-Date: 2018-10-19 13:00+0000\n"
 "Last-Translator: Bastian Mertgen <b.mertgen@bastian-mertgen.de>\n"
 "Language-Team: German <http://*/projects/freepbx/contactmanager/de/>\n"
@@ -98,10 +98,6 @@ msgstr "XMPP hinzufügen"
 #: Contactmanager.class.php:3280 views/entry.php:211 views/entry.php:223
 msgid "Address"
 msgstr "Adresse"
-
-#: contactmanager.i18n.php:6
-msgid "Admin"
-msgstr "Administrator"
 
 #: Contactmanager.class.php:3141
 msgid "All Internal Groups"
@@ -207,18 +203,9 @@ msgstr ""
 
 #: Console/Contactmanager.class.php:14 Contactmanager.class.php:153
 #: Contactmanager.class.php:3177 Contactmanager.class.php:3192
-#: Contactmanager.class.php:3207 Contactmanager.class.php:3231
-#: contactmanager.i18n.php:4 contactmanager.i18n.php:10 views/grid.php:1
+#: Contactmanager.class.php:3207 Contactmanager.class.php:3231 views/grid.php:1
 msgid "Contact Manager"
 msgstr "Kontaktverwaltung"
-
-#: contactmanager.i18n.php:14
-msgid "Contact Manager Module"
-msgstr "Kontaktverwaltungsmodul"
-
-#: contactmanager.i18n.php:18
-msgid "Contact Manager Speed Dials"
-msgstr "Kontaktverwaltung-Kurzwahlen"
 
 #: functions.inc.php:27 functions.inc.php:30
 #, php-format
@@ -555,14 +542,6 @@ msgstr "Gruppentyp ist erforderlich."
 msgid "Home"
 msgstr "Privat"
 
-#: contactmanager.i18n.php:16
-msgid ""
-"How many digits should a number be before a partial match is used when "
-"looking up a contact"
-msgstr ""
-"Wieviele Ziffern muss eine Nummer haben, bevor eine teilweise "
-"Übereinstimmung verwendet wird, um einen Kontakt zu suchen"
-
 #: views/favorite_view.php:19
 msgid "Include"
 msgstr ""
@@ -731,10 +710,6 @@ msgstr "Eigentümer"
 msgid "PBX Contacts"
 msgstr "PBX-Kontakte"
 
-#: contactmanager.i18n.php:12
-msgid "Partial Match Length"
-msgstr "Länge der teilweisen Übereinstimmung"
-
 #: Contactmanager.class.php:986
 msgid "Pelase include atleast one contact"
 msgstr ""
@@ -804,10 +779,6 @@ msgstr "Absenden"
 
 #: views/favorite_view.php:6
 msgid "Swap items"
-msgstr ""
-
-#: contactmanager.i18n.php:8
-msgid "The Contact Manager module lets you add contacts to groups."
 msgstr ""
 
 #: views/userman_hook.php:81
@@ -993,6 +964,25 @@ msgstr "XMPP Adresse darf nicht leer sein."
 #: views/ucp_config.php:12
 msgid "Yes"
 msgstr "Ja"
+
+#~ msgid "Admin"
+#~ msgstr "Administrator"
+
+#~ msgid "Contact Manager Module"
+#~ msgstr "Kontaktverwaltungsmodul"
+
+#~ msgid "Contact Manager Speed Dials"
+#~ msgstr "Kontaktverwaltung-Kurzwahlen"
+
+#~ msgid ""
+#~ "How many digits should a number be before a partial match is used when "
+#~ "looking up a contact"
+#~ msgstr ""
+#~ "Wieviele Ziffern muss eine Nummer haben, bevor eine teilweise "
+#~ "Übereinstimmung verwendet wird, um einen Kontakt zu suchen"
+
+#~ msgid "Partial Match Length"
+#~ msgstr "Länge der teilweisen Übereinstimmung"
 
 #~ msgid ""
 #~ "These are the viewable contact manager groups which will show up for this "

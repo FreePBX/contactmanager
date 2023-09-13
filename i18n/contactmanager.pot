@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-10 10:02+0000\n"
+"POT-Creation-Date: 2023-09-13 06:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -111,10 +111,6 @@ msgstr ""
 #: views/entry.php:211
 #: views/entry.php:223
 msgid "Address"
-msgstr ""
-
-#: contactmanager.i18n.php:6
-msgid "Admin"
 msgstr ""
 
 #: Contactmanager.class.php:3141
@@ -233,18 +229,8 @@ msgstr ""
 #: Contactmanager.class.php:3192
 #: Contactmanager.class.php:3207
 #: Contactmanager.class.php:3231
-#: contactmanager.i18n.php:4
-#: contactmanager.i18n.php:10
 #: views/grid.php:1
 msgid "Contact Manager"
-msgstr ""
-
-#: contactmanager.i18n.php:14
-msgid "Contact Manager Module"
-msgstr ""
-
-#: contactmanager.i18n.php:18
-msgid "Contact Manager Speed Dials"
 msgstr ""
 
 #: functions.inc.php:27
@@ -637,12 +623,6 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: contactmanager.i18n.php:16
-msgid ""
-"How many digits should a number be before a partial match is used when "
-"looking up a contact"
-msgstr ""
-
 #: views/favorite_view.php:19
 msgid "Include"
 msgstr ""
@@ -831,10 +811,6 @@ msgstr ""
 msgid "PBX Contacts"
 msgstr ""
 
-#: contactmanager.i18n.php:12
-msgid "Partial Match Length"
-msgstr ""
-
 #: Contactmanager.class.php:986
 msgid "Pelase include atleast one contact"
 msgstr ""
@@ -913,10 +889,6 @@ msgstr ""
 
 #: views/favorite_view.php:6
 msgid "Swap items"
-msgstr ""
-
-#: contactmanager.i18n.php:8
-msgid "The Contact Manager module lets you add contacts to groups."
 msgstr ""
 
 #: views/userman_hook.php:81

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-10 10:02+0000\n"
+"POT-Creation-Date: 2023-09-13 06:33+0000\n"
 "PO-Revision-Date: 2017-08-08 16:34+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese <http://weblate.freepbx.org/projects/freepbx/"
@@ -99,10 +99,6 @@ msgstr "Thêm XMPP"
 #: Contactmanager.class.php:3280 views/entry.php:211 views/entry.php:223
 msgid "Address"
 msgstr "Địa chỉ"
-
-#: contactmanager.i18n.php:6
-msgid "Admin"
-msgstr "Quản trị viên"
 
 #: Contactmanager.class.php:3141
 msgid "All Internal Groups"
@@ -207,18 +203,9 @@ msgstr ""
 
 #: Console/Contactmanager.class.php:14 Contactmanager.class.php:153
 #: Contactmanager.class.php:3177 Contactmanager.class.php:3192
-#: Contactmanager.class.php:3207 Contactmanager.class.php:3231
-#: contactmanager.i18n.php:4 contactmanager.i18n.php:10 views/grid.php:1
+#: Contactmanager.class.php:3207 Contactmanager.class.php:3231 views/grid.php:1
 msgid "Contact Manager"
 msgstr "Trình quản lý liên lạc"
-
-#: contactmanager.i18n.php:14
-msgid "Contact Manager Module"
-msgstr "Mô đun trình quản lý liên lạc"
-
-#: contactmanager.i18n.php:18
-msgid "Contact Manager Speed Dials"
-msgstr "Trình quản lý liên lạc quay số nhanh"
 
 #: functions.inc.php:27 functions.inc.php:30
 #, php-format
@@ -555,14 +542,6 @@ msgstr "Yêu cầu phải Kiểu nhóm."
 msgid "Home"
 msgstr "Trang chủ"
 
-#: contactmanager.i18n.php:16
-msgid ""
-"How many digits should a number be before a partial match is used when "
-"looking up a contact"
-msgstr ""
-"Một số cần có bao nhiêu chữ số trước khi so khớp từng phần được sử dụng để "
-"tra cứu một liên lạc"
-
 #: views/favorite_view.php:19
 msgid "Include"
 msgstr ""
@@ -729,10 +708,6 @@ msgstr ""
 msgid "PBX Contacts"
 msgstr ""
 
-#: contactmanager.i18n.php:12
-msgid "Partial Match Length"
-msgstr "Độ dài so khớp từng phần"
-
 #: Contactmanager.class.php:986
 msgid "Pelase include atleast one contact"
 msgstr ""
@@ -800,10 +775,6 @@ msgstr "Gửi đi"
 
 #: views/favorite_view.php:6
 msgid "Swap items"
-msgstr ""
-
-#: contactmanager.i18n.php:8
-msgid "The Contact Manager module lets you add contacts to groups."
 msgstr ""
 
 #: views/userman_hook.php:81
@@ -986,6 +957,25 @@ msgstr "Địa chỉ XMPP không thể để trống."
 #: views/ucp_config.php:12
 msgid "Yes"
 msgstr ""
+
+#~ msgid "Admin"
+#~ msgstr "Quản trị viên"
+
+#~ msgid "Contact Manager Module"
+#~ msgstr "Mô đun trình quản lý liên lạc"
+
+#~ msgid "Contact Manager Speed Dials"
+#~ msgstr "Trình quản lý liên lạc quay số nhanh"
+
+#~ msgid ""
+#~ "How many digits should a number be before a partial match is used when "
+#~ "looking up a contact"
+#~ msgstr ""
+#~ "Một số cần có bao nhiêu chữ số trước khi so khớp từng phần được sử dụng "
+#~ "để tra cứu một liên lạc"
+
+#~ msgid "Partial Match Length"
+#~ msgstr "Độ dài so khớp từng phần"
 
 #~ msgid ""
 #~ "These are the viewable contact manager groups which will show up for this "
