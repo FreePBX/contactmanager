@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>17.0.5</version>
+	<version>17.0.5.1</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*17.0.5.1 Packaging of ver 17.0.5.1
 		*17.0.5* Packaging of ver 17.0.5
 		*17.0.4* Packaging of ver 17.0.4
 		*17.0.3* Packaging of ver 17.0.3
