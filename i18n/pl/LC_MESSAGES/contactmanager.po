@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2023-11-11 16:00+0000\n"
+"PO-Revision-Date: 2023-11-14 09:00+0000\n"
 "Last-Translator: Szymon Wysokinski <szymon.wysokinski@sqspolska.pl>\n"
 "Language-Team: Polish <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/pl/>\n"
@@ -698,7 +698,7 @@ msgstr ""
 #: ucp/views/contactEdit.php:85
 #: views/ucp_config.php:14
 msgid "No"
-msgstr ""
+msgstr "Nie"
 
 #: Contactmanager.class.php:2538
 msgid "No E-Mails to add"
