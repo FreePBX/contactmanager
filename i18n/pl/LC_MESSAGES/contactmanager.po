@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2023-11-14 09:00+0000\n"
+"PO-Revision-Date: 2023-11-16 22:00+0000\n"
 "Last-Translator: Szymon Wysokinski <szymon.wysokinski@sqspolska.pl>\n"
 "Language-Team: Polish <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/pl/>\n"
@@ -617,7 +617,7 @@ msgstr ""
 
 #: views/ucp_config.php:17
 msgid "Inherit"
-msgstr ""
+msgstr "Dziedzicz"
 
 #: ucp/assets/js/global.js:261
 msgid "Initiate"
@@ -949,7 +949,7 @@ msgstr ""
 
 #: Contactmanager.class.php:3336
 msgid "Unknown"
-msgstr ""
+msgstr "Nieznany"
 
 #: Contactmanager.class.php:3215
 msgid "Unknown data type."
@@ -1040,4 +1040,4 @@ msgstr ""
 #: ucp/views/contactEdit.php:85
 #: views/ucp_config.php:12
 msgid "Yes"
-msgstr ""
+msgstr "Tak"
