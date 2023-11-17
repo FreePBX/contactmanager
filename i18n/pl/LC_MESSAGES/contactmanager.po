@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2023-11-16 22:00+0000\n"
+"PO-Revision-Date: 2023-11-18 17:00+0000\n"
 "Last-Translator: Szymon Wysokinski <szymon.wysokinski@sqspolska.pl>\n"
 "Language-Team: Polish <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/pl/>\n"
@@ -49,7 +49,7 @@ msgstr ""
 
 #: views/speeddial-grid.php:16
 msgid "Action"
-msgstr ""
+msgstr "Działanie"
 
 #: Contactmanager.class.php:37
 #: Contactmanager.class.php:46
@@ -152,7 +152,7 @@ msgstr ""
 #: views/entry.php:162
 #: views/user_details_hook.php:49
 msgid "Browse"
-msgstr ""
+msgstr "Przeglądaj"
 
 #: ucp/assets/js/global.js:204
 msgid "Call To"
@@ -404,7 +404,7 @@ msgstr ""
 #: Contactmanager.class.php:666
 #: ucp/Contactmanager.class.php:263
 msgid "Failed to write file to disk"
-msgstr ""
+msgstr "Niepowodzenie podczas zapisu na dysku"
 
 #: ucp/views/contact.php:94
 #: ucp/views/contact.php:149
@@ -660,7 +660,7 @@ msgstr ""
 
 #: ucp/assets/js/global.js:533
 msgid "Loading..."
-msgstr ""
+msgstr "Ładowanie..."
 
 #: Console/Contactmanager.class.php:17
 msgid "Lookup backed on User Manager Users View"
@@ -673,7 +673,7 @@ msgstr ""
 #: Contactmanager.class.php:663
 #: ucp/Contactmanager.class.php:260
 msgid "Missing a temporary folder"
-msgstr ""
+msgstr "Brakuje folderu tymczasowego"
 
 #: ucp/views/widget.php:6
 msgid "My Contacts"
@@ -683,7 +683,7 @@ msgstr ""
 #: views/group.php:86
 #: views/group.php:91
 msgid "Name"
-msgstr ""
+msgstr "Nazwa"
 
 #: views/group.php:29
 msgid "Name of group"
@@ -727,7 +727,7 @@ msgstr ""
 #: Contactmanager.class.php:660
 #: ucp/Contactmanager.class.php:257
 msgid "No file was uploaded"
-msgstr ""
+msgstr "Żaden plik nie został wysłany na serwer"
 
 #: Contactmanager.class.php:2946
 #: Contactmanager.class.php:2958
@@ -800,7 +800,7 @@ msgstr ""
 #: Contactmanager.class.php:1028
 #: Contactmanager.class.php:1047
 msgid "Reset"
-msgstr ""
+msgstr "Zresetuj"
 
 #: ucp/views/contact.php:86
 #: ucp/views/contact.php:141
@@ -851,7 +851,7 @@ msgstr ""
 #: Contactmanager.class.php:1033
 #: Contactmanager.class.php:1052
 msgid "Submit"
-msgstr ""
+msgstr "Wyślij"
 
 #: contactmanager.i18n.php:8
 msgid "The Contact Manager module lets you add contacts to groups."
@@ -863,16 +863,20 @@ msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
 msgstr ""
+"Wysłany plik przekracza rozmiarem dyrektywę MAX_FILE_SIZE skonfigurowaną dla "
+"ustawień HTML"
 
 #: Contactmanager.class.php:651
 #: ucp/Contactmanager.class.php:248
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr ""
+"Wysłany plik przekracza rozmiarem dyrektywę upload_max_filesize "
+"skonfigurowaną w php.ini"
 
 #: Contactmanager.class.php:657
 #: ucp/Contactmanager.class.php:254
 msgid "The uploaded file was only partially uploaded"
-msgstr ""
+msgstr "Wysłany plik został przesłany tylko częściowo"
 
 #: ucp/assets/js/global.js:253
 msgid "There are no actions for this type"
@@ -958,11 +962,11 @@ msgstr ""
 #: Contactmanager.class.php:646
 #: ucp/Contactmanager.class.php:243
 msgid "Unsupported file format"
-msgstr ""
+msgstr "Niewspierany format plików"
 
 #: assets/js/contactmanager.js:287
 msgid "Unsupported file type"
-msgstr ""
+msgstr "Niewspierany typ plików"
 
 #: ucp/views/contact.php:45
 #: ucp/views/contactEdit.php:45
