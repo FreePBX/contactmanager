@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2023-11-20 15:00+0000\n"
+"PO-Revision-Date: 2023-11-29 02:01+0000\n"
 "Last-Translator: Szymon Wysokinski <szymon.wysokinski@sqspolska.pl>\n"
 "Language-Team: Polish <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/pl/>\n"
@@ -334,7 +334,7 @@ msgstr ""
 
 #: ucp/Contactmanager.class.php:391
 msgid "Edit"
-msgstr ""
+msgstr "Edytuj"
 
 #: ucp/assets/js/global.js:92
 msgid "Edit Contact"
@@ -851,7 +851,7 @@ msgstr ""
 #: Contactmanager.class.php:1033
 #: Contactmanager.class.php:1052
 msgid "Submit"
-msgstr "Wyślij"
+msgstr "Zatwierdź"
 
 #: contactmanager.i18n.php:8
 msgid "The Contact Manager module lets you add contacts to groups."
