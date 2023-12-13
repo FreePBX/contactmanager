@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2023-12-13 00:56+0000\n"
+"PO-Revision-Date: 2023-12-14 08:20+0000\n"
 "Last-Translator: Szymon Wysokinski <szymon.wysokinski@sqspolska.pl>\n"
 "Language-Team: Polish <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/pl/>\n"
@@ -163,7 +163,7 @@ msgstr "Zadzwoń do"
 #: Contactmanager.class.php:673
 #: ucp/Contactmanager.class.php:270
 msgid "Can Not Find Uploaded Files"
-msgstr "Nie znaleziono przesłanych plików"
+msgstr "Nie można znaleźć przesłanych plików"
 
 #: Contactmanager.class.php:964
 #: Contactmanager.class.php:3074
@@ -629,7 +629,7 @@ msgstr ""
 
 #: views/ucp_config.php:17
 msgid "Inherit"
-msgstr "Odziedzicz"
+msgstr "Dziedzicz"
 
 #: ucp/assets/js/global.js:261
 msgid "Initiate"
@@ -812,7 +812,7 @@ msgstr "Prywatne"
 #: Contactmanager.class.php:1028
 #: Contactmanager.class.php:1047
 msgid "Reset"
-msgstr "Reset"
+msgstr "Zresetuj"
 
 #: ucp/views/contact.php:86
 #: ucp/views/contact.php:141
@@ -877,17 +877,19 @@ msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
 msgstr ""
-"Przesłany plik przekracza parametr MAX_FILE_SIZE określony w formularzu HTML"
+"Wgrany plik przekracza rozmiar MAX_FILE_SIZE który został podany w "
+"formularzu HTML"
 
 #: Contactmanager.class.php:651
 #: ucp/Contactmanager.class.php:248
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
-msgstr "Przesłany plik przekracza parametr upload_max_filesize w php.ini"
+msgstr ""
+"Wgrany plik przekracza wartość upload_max_fileseze zdefiniowaną w php.ini"
 
 #: Contactmanager.class.php:657
 #: ucp/Contactmanager.class.php:254
 msgid "The uploaded file was only partially uploaded"
-msgstr "Plik został załadowany tylko częściowo"
+msgstr "Przesłany plik został przesłany tylko częściowo"
 
 #: ucp/assets/js/global.js:253
 msgid "There are no actions for this type"
@@ -981,7 +983,7 @@ msgstr "Nieobsługiwany format pliku"
 
 #: assets/js/contactmanager.js:287
 msgid "Unsupported file type"
-msgstr "Niewspierany typ pliku"
+msgstr "Niewspierany typ plików"
 
 #: ucp/views/contact.php:45
 #: ucp/views/contactEdit.php:45
