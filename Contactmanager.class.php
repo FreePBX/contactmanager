@@ -279,6 +279,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			set_time_limit(0);
 			$users = $this->userman->getAllUsers();
 			$groups = $this->getGroups();
+			$groupIds = [];
 			foreach($users as $user) {
 				$showingroups = $this->freepbx->Userman->getCombinedModuleSettingByID($user['id'],'contactmanager','showingroups');
 				$showingroups = is_array($showingroups) ? $showingroups : array();
@@ -286,10 +287,11 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					if ($group['type'] != 'internal') {
 						continue;
 					}
+					$groupIds[] = $group['id'];
 					if (in_array($group['id'],$showingroups) || in_array("*",$showingroups)) {
 						$user['extraData'] = $user;
 						$user['user'] = $user['id'];
-						$this->updateUsermanEntryByGroupID($group['id'], $this->transformUsermanDataToEntry($user));
+						$this->updateUsermanEntryByGroupID($group['id'], $this->transformUsermanDataToEntry($user), false);
 					} else {
 						$entries = $this->getEntriesByGroupID($group['id']);
 						foreach ($entries as $entryid => $entry) {
@@ -300,6 +302,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					}
 				}
 			}
+			$this->updateContactUpdatedDetails(-1, array_unique($groupIds));
 
 			$groups = $this->getGroups();
 			$phoneUtil = PhoneNumberUtil::getInstance();
@@ -1161,11 +1164,12 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 						$data = $this->userman->getUserByID($user);
 						$data['extraData'] = $data;
 						$data['user'] = $user;
-						$this->updateUsermanEntryByGroupID($group['id'], $this->transformUsermanDataToEntry($data));
+						$this->updateUsermanEntryByGroupID($group['id'], $this->transformUsermanDataToEntry($data), false);
 					}
 				}
 			}
 		}
+		$this->updateContactUpdatedDetails('-1', [$id]);
 	}
 
 	public function usermanAddGroup($id, $display, $data) {
@@ -1209,7 +1213,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					$data = $this->userman->getUserByID($user);
 					$data['extraData'] = $data;
 					$data['user'] = $user;
-					$this->updateUsermanEntryByGroupID($group['id'], $this->transformUsermanDataToEntry($data),false);
+					$this->updateUsermanEntryByGroupID($group['id'], $this->transformUsermanDataToEntry($data), false);
 				} else {
 					$entries = $this->getEntriesByGroupID($group['id']);
 					foreach ($entries as $entryid => $entry) {
@@ -1222,7 +1226,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		}
 		//call update contact hook
 		//  -1 groups which are not private
-		$this->updateContactUpdatedDetails('-1');
+		$this->updateContactUpdatedDetails('-1', [$id]);
 	}
 
 	/**
@@ -1240,10 +1244,12 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		else
 		{
 			$groups = $this->getGroups();
+			$groupIds = [];
 			foreach ($groups as $group) {
 				if ($group['owner'] == $id) {
 					/* Remove groups owned by user. */
-					$this->deleteGroupByID($group['id']);
+					$this->deleteGroupByID($group['id'], false);
+					$groupIds[] = $group['id'];
 					continue;
 				}
 
@@ -1251,10 +1257,12 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				$entries = $this->getEntriesByGroupID($group['id']);
 				foreach ($entries as $entryid => $entry) {
 					if ($entry['user'] == $id) {
-						$this->deleteEntryByID($entryid);
+						$groupIds[] = $entry['groupid'];
+						$this->deleteEntryByID($entryid, false);
 					}
 				}
 			}
+			$this->updateContactUpdatedDetails(-1, array_unique($groupIds));
 		}
 	}
 
@@ -1290,6 +1298,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 
 		$showingroups = $this->freepbx->Userman->getCombinedModuleSettingByID($id,'contactmanager','showingroups');
+		$groupIds = [];
 		if(!empty($showingroups)) {
 			$groups = $this->getGroups();
 			foreach ($groups as $group) {
@@ -1297,10 +1306,12 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					continue;
 				}
 				if (in_array($group['id'],$showingroups) || in_array("*",$showingroups)) {
+					$groupIds[] = $group['id'];
 					$data['user'] = $id;
-					$out = $this->updateUsermanEntryByGroupID($group['id'], $this->transformUsermanDataToEntry($data));
+					$out = $this->updateUsermanEntryByGroupID($group['id'], $this->transformUsermanDataToEntry($data), false);
 				}
 			}
+			$this->updateContactUpdatedDetails(-1, array_unique($groupIds));
 		}
 	}
 
@@ -1336,13 +1347,15 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$showingroups = $this->freepbx->Userman->getCombinedModuleSettingByID($id,'contactmanager','showingroups');
 		$showingroups = is_array($showingroups) ? $showingroups : array();
 		$groups = $this->getGroups();
+		$groupIds = [];
 		foreach ($groups as $group) {
 			if ($group['type'] != 'internal') {
 				continue;
 			}
+			$groupIds[] = $group['id'];
 			if (in_array($group['id'],$showingroups) || in_array("*",$showingroups)) {
 				$data['user'] = $id;
-				$out = $this->updateUsermanEntryByGroupID($group['id'], $this->transformUsermanDataToEntry($data));
+				$out = $this->updateUsermanEntryByGroupID($group['id'], $this->transformUsermanDataToEntry($data), false);
 			} else {
 				$entries = $this->getEntriesByGroupID($group['id']);
 				foreach ($entries as $entryid => $entry) {
@@ -1352,6 +1365,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				}
 			}
 		}
+		$this->updateContactUpdatedDetails(-1, array_unique($groupIds));
 	}
 
 	private function transformUsermanDataToEntry($data) {
@@ -1521,7 +1535,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 * Delete Group by ID
 	 * @param {int} $id The group ID
 	 */
-	public function deleteGroupByID($id) {
+	public function deleteGroupByID($id, $contactupdate = true) {
 		$group = $this->getGroupByID($id);
 		if (!$group) {
 			return array("status" => false, "type" => "danger", "message" => _("Group does not exist"));
@@ -1538,7 +1552,9 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 		$this->groupCache[$id] = null;
 		$this->groupsCache = null;
-		$this->updateContactUpdatedDetails($group['owner']);
+		if ($contactupdate) {
+			$this->updateContactUpdatedDetails($group['owner'], [$group['id']]);
+		}
 		return array("status" => true, "type" => "success", "message" => _("Group successfully deleted"));
 	}
 
@@ -1576,14 +1592,14 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					foreach ($users as $user) {
 						if(in_array($user['id'],$group['users'])) {
 							$user['user'] = $id;
-							$this->addEntryByGroupID($id, $this->transformUsermanDataToEntry($user));
+							$this->addEntryByGroupID($id, $this->transformUsermanDataToEntry($user), false);
 						}
 					}
 				}
 			}
 		}
 		if($updateContactFile) {
-			$this->updateContactUpdatedDetails($owner);
+			$this->updateContactUpdatedDetails($owner, [$id]);
 		}
 		$this->freepbx->Hooks->processHooks($id);
 
@@ -1614,7 +1630,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 		$this->groupCache[$id] = null;
 		$this->groupsCache = null;
-		$this->updateContactUpdatedDetails($owner);
+		$this->updateContactUpdatedDetails($owner, [$id]);
 		$this->freepbx->Hooks->processHooks($id);
 
 		return array("status" => true, "type" => "success", "message" => _("Group successfully updated"), "id" => $id);
@@ -1900,7 +1916,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $id));
 		if($updateContactFile) {
-			$this->updateContactUpdatedDetails($group['owner']);
+			$this->updateContactUpdatedDetails($group['owner'], [$group['id']]);
 		}
 		$this->freepbx->Hooks->processHooks($id);
 
@@ -2002,7 +2018,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 		$this->addWebsitesByEntryID($data['id'], !empty($entry['websites']) ? $entry['websites'] : '');
 		if($contactupdate){
-			$this->updateContactUpdatedDetails($group['owner']);
+			$this->updateContactUpdatedDetails($group['owner'], [$group['id']]);
 		}
 		$this->freepbx->Hooks->processHooks($data['id'], $entry);
 		
@@ -2063,7 +2079,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 
 		$this->addWebsitesByEntryID($id, !empty($entry['websites']) ? $entry['websites'] : '');
 		if($updateContactFile) {
-			$this->updateContactUpdatedDetails($group['owner'], $timeDelay);
+			$this->updateContactUpdatedDetails($group['owner'], [$group['id']], '1', $timeDelay);
 		}
 		$this->freepbx->Hooks->processHooks($id, $entry);
 
@@ -2144,7 +2160,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$ret = $this->deleteWebsitesByEntryID($id);
 		$this->addWebsitesByEntryID($id, $entry['websites']);
 		if($updateContactFile) {
-			$this->updateContactUpdatedDetails($group['owner']);
+			$this->updateContactUpdatedDetails($group['owner'], [$group['id']]);
 		}
 		$this->freepbx->Hooks->processHooks($id, $entry);
 		
@@ -2838,7 +2854,6 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		if(!empty($this->contactsCache)) {
 			return $this->contactsCache;
 		}
-		$umentries = $this->freepbx->Userman->getAllContactInfo();
 		if($id == -1) {
 			$groups = $this->getGroups();
 			// remove private groups
@@ -2851,60 +2866,69 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			$groups = $this->getGroupsByOwner($id);
 		}
 		$contacts = array();
-		$entries = array();
 
 		foreach($groups as $group) {
 			switch($group['type']) {
 				case "internal":
 				case "private" :
 				case "external":
-					$entries = $this->getEntriesByGroupID($group['id']);
-					if(!empty($entries) && is_array($entries)) {
-						$final = array();
-						foreach($entries as $id => $entry) {
-							$numbers = array();
-							$numbers_info = array();
-							if(!empty($entry['numbers']) && is_array($entry['numbers'])) {
-								$numbers_info = $entry['numbers'];
-								foreach($entry['numbers'] as $number) {
-									//TODO: this is terrible. Multiple numbers are allowed in the GUI but dont display right
-									//TODO: To conform for OLD hooks we need to be a string... sigh
-									if(isset($numbers[$number['type']])) {
-										if(!is_array($numbers[$number['type']])) {
-											$numbers[$number['type']] = array($numbers[$number['type']]);
-										}
-										$numbers[$number['type']][] = preg_replace("/[^0-9\*#]/","",$number['number']);
-									} else {
-										$numbers[$number['type']] = preg_replace("/[^0-9\*#]/","",$number['number']);
-									}
-								}
-							}
-							$xmpps = array();
-							if(!empty($entry['xmpps'])) {
-								foreach($entry['xmpps'] as $xmpp) {
-									$xmpps[] = $xmpp['xmpp'];
-								}
-							}
-							unset($entry['emails']);
-							unset($entry['websites']);
-							unset($entry['numbers']);
-							unset($entry['xmpps']);
-							$entry['xmpps'] = $xmpps;
-							$entry['numbers'] = $numbers;
-							$entry['numbers_info'] = $numbers_info;
-							$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
-							$entry['type'] = $group['type'];
-							$entry['groupid'] = $group['id'];
-							$entry['groupname'] = $group['name'];
-							$entry['id'] = $entry['uid'];
-							$contacts[] = $entry;
-						}
-					}
+					$contacts = array_merge($contacts, $this->fetchContactsByGroup($group));
 				break;
 			}
 		}
 		$this->contactsCache = $contacts;
 		return $this->contactsCache;
+	}
+
+	/**
+	 * get all contacts for a group
+	 * @param {array} $group group data
+	 */
+	public function fetchContactsByGroup($group) {
+		$contacts = [];
+		$entries = $this->getEntriesByGroupID($group['id']);
+		if(!empty($entries) && is_array($entries)) {
+			foreach($entries as $id => $entry) {
+				$numbers = array();
+				$numbers_info = array();
+				if(!empty($entry['numbers']) && is_array($entry['numbers'])) {
+					$numbers_info = $entry['numbers'];
+					foreach($entry['numbers'] as $number) {
+						//TODO: this is terrible. Multiple numbers are allowed in the GUI but dont display right
+						//TODO: To conform for OLD hooks we need to be a string... sigh
+						if(isset($numbers[$number['type']])) {
+							if(!is_array($numbers[$number['type']])) {
+								$numbers[$number['type']] = array($numbers[$number['type']]);
+							}
+							$numbers[$number['type']][] = preg_replace("/[^0-9\*#]/","",$number['number']);
+						} else {
+							$numbers[$number['type']] = preg_replace("/[^0-9\*#]/","",$number['number']);
+						}
+					}
+				}
+				$xmpps = array();
+				if(!empty($entry['xmpps'])) {
+					foreach($entry['xmpps'] as $xmpp) {
+						$xmpps[] = $xmpp['xmpp'];
+					}
+				}
+				unset($entry['emails']);
+				unset($entry['websites']);
+				unset($entry['numbers']);
+				unset($entry['xmpps']);
+				$entry['xmpps'] = $xmpps;
+				$entry['numbers'] = $numbers;
+				$entry['numbers_info'] = $numbers_info;
+				$entry['displayname'] = !empty($entry['displayname']) ? $entry['displayname'] : $entry['fname'] . " " . $entry['lname'];
+				$entry['type'] = $group['type'];
+				$entry['groupid'] = $group['id'];
+				$entry['groupname'] = $group['name'];
+				$entry['id'] = $entry['uid'];
+				$contacts[] = $entry;
+			}
+		}
+
+		return $contacts;
 	}
 
 	public function lookupNumberByUserID($id, $number) {
@@ -3445,6 +3469,12 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 						$this->setConfig("USER_IDS",$userIdArray);
 					}
 				}
+
+				$groupIdArray = $this->getConfig("GROUP_IDS") ? $this->getConfig("GROUP_IDS") : [];
+				if (!in_array($group['id'], $groupIdArray)) {
+					$groupIdArray[] = $group['id'];
+					$this->setConfig("GROUP_IDS", $groupIdArray);
+				}
 				
 				if($replaceExisting){
 					$entityid = $this->getDuplicateContactId($group['id'], $contact);
@@ -3843,8 +3873,8 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 * @param  {string} $userId
 	 * @return void
 	 */
-	public function updateContactUpdatedDetails($userId, $timeDelay = 0) {
-		$this->freepbx->Hooks->processHooks($userId, $timeDelay);
+	public function updateContactUpdatedDetails($userId, $groupIds, $regenerateGroupContacts = '1', $timeDelay = 0) {
+		$this->freepbx->Hooks->processHooks($userId, $groupIds, $regenerateGroupContacts, $timeDelay);
 	}
 	
 	/**
@@ -3917,7 +3947,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				"list_name" => $listName,
 				"contact_ids" => json_encode($includedContacts)
 			));
-			$this->updateContactUpdatedDetails(-1);
+			$this->updateContactUpdatedDetails(-1, [], '0');
 		} catch(Exception $e) {}
 	}
 	
@@ -3937,7 +3967,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				"contact_ids" => json_encode($includedContacts),
 				"id" => $id,
 			));
-			$this->updateContactUpdatedDetails(-1);
+			$this->updateContactUpdatedDetails(-1, [], '0');
 		} catch(Exception $e) {}
 
 	}
@@ -3953,6 +3983,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$sql = "DELETE FROM contactmanager_general_favorites WHERE id = :id";
 		$sth = $this->db->prepare($sql);
 		$sth->execute(array(':id' => $id));
+		$this->updateContactUpdatedDetails(-1, [], '0');
 
 		return array("status" => true, "type" => "success", "message" => _("Favorite Contact List successfully deleted"));;
 	}
@@ -4007,7 +4038,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		} catch(Exception $e) {}
 
 		if ($runHook) {
-			$this->updateContactUpdatedDetails($uid);
+			$this->updateContactUpdatedDetails($uid, [], '0');
 		}
 	}
 
