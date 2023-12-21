@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-02 05:21+0000\n"
-"PO-Revision-Date: 2023-12-14 08:20+0000\n"
+"PO-Revision-Date: 2023-12-22 02:00+0000\n"
 "Last-Translator: Szymon Wysokinski <szymon.wysokinski@sqspolska.pl>\n"
 "Language-Team: Polish <http://weblate.freepbx.org/projects/freepbx/"
 "contactmanager/pl/>\n"
@@ -163,7 +163,7 @@ msgstr "Zadzwoń do"
 #: Contactmanager.class.php:673
 #: ucp/Contactmanager.class.php:270
 msgid "Can Not Find Uploaded Files"
-msgstr "Nie można znaleźć przesłanych plików"
+msgstr "Nie znaleziono przesłanych plików"
 
 #: Contactmanager.class.php:964
 #: Contactmanager.class.php:3074
