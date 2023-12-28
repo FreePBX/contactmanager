@@ -3103,7 +3103,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				continue;
 			}
 			$value = !empty($regexp) ? preg_replace($regexp,'',$value) : $value;
-			$value = trim($value);
+			$value = !empty($value) ? trim($value) : '';
 			$k = $iterator->getSubIterator(0)->key();
 			if(empty($value)) {
 				continue;
