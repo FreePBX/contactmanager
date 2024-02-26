@@ -61,7 +61,7 @@ class Contactmanager extends Modules{
 		$displayvars['favoriteContactsEnabled'] = $this->cm->getEnableFavoriteContacts();
 		if($displayvars['favoriteContactsEnabled']) {
 			$list = $this->cm->getUserFavoriteContacts($this->userId);
-			$contactIdArray = json_decode($list['contact_ids']) ? json_decode($list['contact_ids']) : [];
+			$contactIdArray = json_decode($list['contact_ids'] ?? '') ? json_decode($list['contact_ids'] ?? '') : [];
 			$displayvars['favoriteContactsCount'] = count($contactIdArray);
 		}
 
