@@ -16,7 +16,7 @@
 									<label class="control-label" for="list_name"><?php echo _('Name')?></label>
 									<i class="fa fa-question-circle fpbx-help-icon" data-for="list_name"></i>
 								</div>
-								<div class="col-md-9"><input id="list_name" name="list_name" class="form-control" data-invalid="<?php echo _("List Name is required.") ?>" value="<?php echo ($list['list_name'] ? htmlentities($list['list_name']) : '')?>"></div>
+								<div class="col-md-9"><input id="list_name" name="list_name" class="form-control" data-invalid="<?php echo _("List Name is required.") ?>" value="<?php echo (isset($list['list_name']) ? htmlentities($list['list_name']) : '')?>"></div>
 							</div>
 						</div>
 					</div>
