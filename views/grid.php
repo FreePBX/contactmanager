@@ -38,7 +38,7 @@
 									$_Gowner 	= FreePBX::Userman()->getGroupByGID($_Group[0] ?? "");
 									$owner 		= "";
 									if(!empty($_Owner)){
-										$owner 	=	'<div class="alert alert-info" role="alert"><strong>'._("Group").'</strong> > '.$_Gowner["groupname"]."<br><strong>"._("Owner").'</strong> > '.$_Owner["username"].' - '.$_Owner["default_extension"].'</div>';
+										$owner 	=	'<div class="alert alert-info" role="alert"><strong>'._("Group").'</strong> > '.(isset($_Gowner["groupname"]) ? $_Gowner["groupname"] : "")."<br><strong>"._("Owner").'</strong> > '.(isset($_Owner["username"]) ? $_Owner["username"] : "") .' - '.(isset($_Owner["default_extension"]) ? $_Owner["default_extension"] : "").'</div>';
 									}						
 						?>
 							<div id="<?php echo $type?>-<?php echo $group['id']?>" class="tab-pane <?php echo $k== 0 ? "active" : ""?>">
