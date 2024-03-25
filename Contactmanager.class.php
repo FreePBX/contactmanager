@@ -1290,7 +1290,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			if(isset($_POST['contactmanager_image'])) {
 				$this->updateImageByID($id, $_POST['contactmanager_image'] ?? '', ((isset($_POST['contactmanager_gravatar']) && $_POST['contactmanager_gravatar'] == "on") ? 1 : 0), 'internal');
 			}
-			$this->setConfig('userLocale', $_POST['contactmanager_dialinglocale'], $id);
+			$this->setConfig('userLocale', ($_POST['contactmanager_dialinglocale'] ?? ''), $id);
 
 			$enableFavoriteContacts = $this->getEnableFavoriteContacts();
 			$favoriteContactListId = '';
@@ -1338,7 +1338,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 			if(isset($_POST['contactmanager_image'])) {
 				$this->updateImageByID($id, $_POST['contactmanager_image'], (($_POST['contactmanager_gravatar']??'') == "on" ? 1 : 0), 'internal');
 			}
-			$this->setConfig('userLocale', $_POST['contactmanager_dialinglocale'], $id);
+			$this->setConfig('userLocale', ($_POST['contactmanager_dialinglocale'] ?? ''), $id);
 
 			$enableFavoriteContacts = $this->getEnableFavoriteContacts();
 			$favoriteContactListId = '';
