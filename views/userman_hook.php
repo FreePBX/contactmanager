@@ -78,7 +78,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<span id="favorite_contact-help" class="help-block fpbx-help-block"><?php echo _("The contacts in the selected Favorite Contact List will be shown under the Favorites section of the Contacts widget in UCP, and Sangoma Phone desktop clients.")?></span>
+			<span id="favorite_contact-help" class="help-block fpbx-help-block"><?php echo _("The contacts in the selected Favorite Contact List is used as the default favorite list for the userman users. If the user don't have a favorite contact list, this list will be shown as the default favorite list under the 'Favorites' tab of the 'Contacts' widget in UCP and under the 'My Favorites' drop down of the 'Contacts' tab in Sangoma Phone Desktop Client. If a contact is added or removed from the shown favorite list from UCP or Sangoma Phone Desktop Client, a new list will be created specific to the logged in user.")?></span>
 		</div>
 	</div>
 </div>
