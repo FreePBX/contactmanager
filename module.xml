@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>16.0.26.2</version>
+	<version>16.0.26.3</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*16.0.26.3* FREEI-1619 Sangoma Desktop Softphone Contacts not being Displayed 
 		*16.0.26.2* Packaging of ver 16.0.26.2
 		*16.0.26.1* Changed help text for the Favorite Contact List option 
 		*16.0.26* Packaging of ver 16.0.26

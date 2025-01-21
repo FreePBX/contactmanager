@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-24 05:05+0000\n"
+"POT-Creation-Date: 2025-01-21 10:48+0000\n"
 "PO-Revision-Date: 2018-09-22 10:00+0000\n"
 "Last-Translator: james zhu <zhulizhong@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <http://*/projects/freepbx/"
@@ -99,6 +99,10 @@ msgstr ""
 #: Contactmanager.class.php:3306 views/entry.php:211 views/entry.php:223
 msgid "Address"
 msgstr ""
+
+#: contactmanager.i18n.php:6
+msgid "Admin"
+msgstr "管理员"
 
 #: Contactmanager.class.php:3167
 msgid "All Internal Groups"
@@ -197,8 +201,17 @@ msgstr ""
 
 #: Console/Contactmanager.class.php:14 Contactmanager.class.php:153
 #: Contactmanager.class.php:3203 Contactmanager.class.php:3218
-#: Contactmanager.class.php:3233 Contactmanager.class.php:3257 views/grid.php:1
+#: Contactmanager.class.php:3233 Contactmanager.class.php:3257
+#: contactmanager.i18n.php:4 contactmanager.i18n.php:10 views/grid.php:1
 msgid "Contact Manager"
+msgstr ""
+
+#: contactmanager.i18n.php:14
+msgid "Contact Manager Module"
+msgstr ""
+
+#: contactmanager.i18n.php:18
+msgid "Contact Manager Speed Dials"
 msgstr ""
 
 #: functions.inc.php:27 functions.inc.php:30
@@ -535,6 +548,12 @@ msgstr ""
 msgid "Home"
 msgstr "主页"
 
+#: contactmanager.i18n.php:16
+msgid ""
+"How many digits should a number be before a partial match is used when "
+"looking up a contact"
+msgstr ""
+
 #: views/favorite_view.php:19
 msgid "Include"
 msgstr ""
@@ -700,6 +719,10 @@ msgstr ""
 msgid "PBX Contacts"
 msgstr ""
 
+#: contactmanager.i18n.php:12
+msgid "Partial Match Length"
+msgstr ""
+
 #: Contactmanager.class.php:986
 msgid "Pelase include atleast one contact"
 msgstr ""
@@ -767,6 +790,10 @@ msgstr "提交"
 
 #: views/favorite_view.php:6
 msgid "Swap items"
+msgstr ""
+
+#: contactmanager.i18n.php:8
+msgid "The Contact Manager module lets you add contacts to groups."
 msgstr ""
 
 #: views/userman_hook.php:81
@@ -948,9 +975,6 @@ msgstr ""
 #: views/ucp_config.php:12
 msgid "Yes"
 msgstr "是"
-
-#~ msgid "Admin"
-#~ msgstr "管理员"
 
 #~ msgid "OK"
 #~ msgstr "正常"

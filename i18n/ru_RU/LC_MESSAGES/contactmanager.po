@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-24 05:05+0000\n"
+"POT-Creation-Date: 2025-01-21 10:48+0000\n"
 "PO-Revision-Date: 2022-07-28 08:01+0000\n"
 "Last-Translator: Dmitriy Q <krotesk@ya.ru>\n"
 "Language-Team: Russian <http://weblate.freepbx.org/projects/freepbx/"
@@ -100,6 +100,10 @@ msgstr "Добавить XMPP"
 #: Contactmanager.class.php:3306 views/entry.php:211 views/entry.php:223
 msgid "Address"
 msgstr "Адрес"
+
+#: contactmanager.i18n.php:6
+msgid "Admin"
+msgstr "Администратор"
 
 #: Contactmanager.class.php:3167
 msgid "All Internal Groups"
@@ -200,9 +204,18 @@ msgstr ""
 
 #: Console/Contactmanager.class.php:14 Contactmanager.class.php:153
 #: Contactmanager.class.php:3203 Contactmanager.class.php:3218
-#: Contactmanager.class.php:3233 Contactmanager.class.php:3257 views/grid.php:1
+#: Contactmanager.class.php:3233 Contactmanager.class.php:3257
+#: contactmanager.i18n.php:4 contactmanager.i18n.php:10 views/grid.php:1
 msgid "Contact Manager"
 msgstr "Управление контактами"
+
+#: contactmanager.i18n.php:14
+msgid "Contact Manager Module"
+msgstr "Модуль управления контактами"
+
+#: contactmanager.i18n.php:18
+msgid "Contact Manager Speed Dials"
+msgstr ""
 
 #: functions.inc.php:27 functions.inc.php:30
 #, php-format
@@ -538,6 +551,12 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
+#: contactmanager.i18n.php:16
+msgid ""
+"How many digits should a number be before a partial match is used when "
+"looking up a contact"
+msgstr ""
+
 #: views/favorite_view.php:19
 msgid "Include"
 msgstr ""
@@ -704,6 +723,10 @@ msgstr ""
 msgid "PBX Contacts"
 msgstr ""
 
+#: contactmanager.i18n.php:12
+msgid "Partial Match Length"
+msgstr ""
+
 #: Contactmanager.class.php:986
 msgid "Pelase include atleast one contact"
 msgstr ""
@@ -771,6 +794,10 @@ msgstr "Принять"
 
 #: views/favorite_view.php:6
 msgid "Swap items"
+msgstr ""
+
+#: contactmanager.i18n.php:8
+msgid "The Contact Manager module lets you add contacts to groups."
 msgstr ""
 
 #: views/userman_hook.php:81
@@ -956,14 +983,8 @@ msgstr ""
 msgid "Yes"
 msgstr "Да"
 
-#~ msgid "Admin"
-#~ msgstr "Администратор"
-
 #~ msgid "Are you sure you want to delete this group and all of it's contacts?"
 #~ msgstr "Вы уверены, что хотите удалить эту группу и все ее контакты?"
-
-#~ msgid "Contact Manager Module"
-#~ msgstr "Модуль управления контактами"
 
 #~ msgid "An entry must have a user."
 #~ msgstr "Запись должна содержать пользователя."
