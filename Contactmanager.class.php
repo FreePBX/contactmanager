@@ -4014,6 +4014,10 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 		$favoriteList = $sth->fetch(PDO::FETCH_ASSOC);
 		if (empty($favoriteList)) {
 			$favoriteContactListId = $this->freepbx->Userman->getCombinedModuleSettingByID($uid,"contactmanager",'favorite_contact_list_id');
+			if($favoriteContactListId == null || $favoriteContactListId == false) {
+				$ret = ['contact_ids'=> json_encode([])];
+				return $ret;
+			}
 			$favoriteList = $this->getFavoriteContactListByID($favoriteContactListId);
 		}
 
