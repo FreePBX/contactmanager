@@ -440,7 +440,7 @@ class Contactmanager extends Modules{
 			break;
 			case "update_favorite_contacts":
 				
-				$includedContacts = $_POST['included_contacts'];
+				$includedContacts = isset($_POST['included_contacts'])?$_POST['included_contacts']:[];
 				$contacts = $this->cm->updateUserFavoriteContacts($this->user['id'], $includedContacts);
 				
 				$list = $this->cm->getUserFavoriteContacts($this->user['id']);
