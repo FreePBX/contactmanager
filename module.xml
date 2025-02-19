@@ -117,7 +117,7 @@
 		<table name="contactmanager_entry_emails">
 			<field name="id" type="integer" primaryKey="true" autoincrement="true"/>
 			<field name="entryid" type="integer"/>
-			<field name="email" type="string" length="100" notnull="false"/>
+			<field name="email" type="string" length="500" notnull="false"/>
 		</table>
 		<table name="contactmanager_entry_websites">
 			<field name="id" type="integer" primaryKey="true" autoincrement="true"/>
