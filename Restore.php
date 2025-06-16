@@ -32,6 +32,13 @@ class Restore Extends Base\RestoreBase{
 				$this->FreePBX->Contactmanager->usermanUpdateGroup($group['id'],'',$group);
 			}
 		}
+		//add faviortes
+		if(array_key_exists('favorite', $configs) && isset($configs['favorite'])){
+			foreach($configs['favorite'] as $entry){
+				$this->FreePBX->Contactmanager->addFavoriteContactList($entry['list_name'],$entry['contact_ids']);
+			}
+		}
+		
 		$this->FreePBX->Contactmanager->bulkhandlerImport('contacts', $configs['data'], true);
 		$this->importFeatureCodes($configs['features']);
 		$this->importAdvancedSettings($configs['settings']);
