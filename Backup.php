@@ -23,13 +23,19 @@ class Backup Extends Base\BackupBase{
 		foreach($res as $data) {
 			$contactmanager_groups[] = $data;
 		}
+		//add favorites
+		$getFavList  = $this->FreePBX->Contactmanager->getFavoriteContactList();
+		foreach($getFavList as $data) {
+			$favoriteList[] = $data;
+		}
 		$this->addConfigs([
 			'data' => $this->FreePBX->Contactmanager->bulkHandlerExport('contacts'),
 			'kvstore' => $this->dumpKVStore(),
 			'features' => $this->dumpFeatureCodes(),
 			'settings' => $this->dumpAdvancedSettings(),
-			'contactmanager_group_entries' => $contactmanager_group_entries,
-			'contactmanager_groups' => $contactmanager_groups
+			'contactmanager_group_entries'=> $contactmanager_group_entries,
+			'contactmanager_groups' => $contactmanager_groups,
+			'favorite'	=> 	$favoriteList
 		]);
 	}
 }
