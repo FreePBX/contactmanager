@@ -23,6 +23,7 @@ class Backup Extends Base\BackupBase{
 		foreach($res as $data) {
 			$contactmanager_groups[] = $data;
 		}
+		$favoriteList = [];
 		//add favorites
 		$getFavList  = $this->FreePBX->Contactmanager->getFavoriteContactList();
 		foreach($getFavList as $data) {
