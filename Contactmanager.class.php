@@ -1566,9 +1566,21 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 * @param {boolean} $updateContactFile   Flag for regenerating user contact file
 	 */
 	public function addGroup($name, $type='internal', $owner = -1, $updateContactFile = true) {
+		$name = trim($name);
 		if (!$name || empty($name)) {
 			return array("status" => false, "type" => "danger", "message" => _("Group name can not be blank"));
 		}
+
+		// Sanitize: reject if contains HTML tags or dangerous content
+		if ($name !== strip_tags($name)) {
+			return array("status" => false, "type" => "danger", "message" => _("Group name contains invalid characters."));
+		}
+
+		// Optionally restrict allowed characters (e.g., letters, numbers, spaces, dashes, underscores)
+		if (!preg_match('/^[a-zA-Z0-9 _-]+$/', $name)) {
+			return array("status" => false, "type" => "danger", "message" => _("Group name contains unsupported characters."));
+		}
+
 		if ($name == 'PBX_RAPID_DIAL') {
 			return array("status" => false, "type" => "danger", "message" => _("This group name is reserved. Please choose a different name."));
 		}
