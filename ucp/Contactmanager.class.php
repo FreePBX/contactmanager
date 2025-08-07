@@ -415,7 +415,8 @@ class Contactmanager extends Modules{
 				}
 			break;
 			case 'addgroup':
-				$return = $this->cm->addGroup($_POST['groupname'], 'external', $this->user['id']);
+				$request = freepbxGetSanitizedRequest(FILTER_SANITIZE_STRING, true);
+				$return = $this->cm->addGroup($request['groupname'], 'external', $this->user['id']);
 			break;
 			case "addgroupmodal":
 				$return = $this->load_view(__DIR__.'/views/groupCreate.php',$displayvars);
