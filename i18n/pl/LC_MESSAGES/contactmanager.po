@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-18 11:36+0000\n"
+"POT-Creation-Date: 2025-08-29 03:17+0000\n"
 "PO-Revision-Date: 2023-12-14 08:20+0000\n"
 "Last-Translator: Szymon Wysokinski <szymon.wysokinski@sqspolska.pl>\n"
 "Language-Team: Polish <http://weblate.freepbx.org/projects/freepbx/"
@@ -229,7 +229,7 @@ msgstr "Menedżer kontaktów: %s (Szybkie wybieranie: %s) [%s]"
 
 #: Contactmanager.class.php:3267 ucp/Contactmanager.class.php:24
 #: ucp/Contactmanager.class.php:36 ucp/Contactmanager.class.php:66
-#: ucp/Contactmanager.class.php:565
+#: ucp/Contactmanager.class.php:576
 msgid "Contacts"
 msgstr "Kontakty"
 
@@ -376,7 +376,7 @@ msgstr ""
 msgid "Favorite Contact List successfully deleted"
 msgstr ""
 
-#: ucp/Contactmanager.class.php:449
+#: ucp/Contactmanager.class.php:460
 msgid "Favorite Contact List successfully updated."
 msgstr ""
 
@@ -526,10 +526,17 @@ msgstr "Usunięto wpis z grupy"
 msgid "Group entry successfully updated"
 msgstr "Wpis grupy został pomyślnie zaktualizowany"
 
-#: Contactmanager.class.php:870 Contactmanager.class.php:1570
-#: Contactmanager.class.php:1621
+#: Contactmanager.class.php:870 Contactmanager.class.php:1621
 msgid "Group name can not be blank"
 msgstr "Nazwa grupy nie może być pusta"
+
+#: Contactmanager.class.php:1570
+msgid "Group name is required and must not contain special characters."
+msgstr ""
+
+#: ucp/Contactmanager.class.php:428
+msgid "Group name is required, must not contain special characters."
+msgstr ""
 
 #: Contactmanager.class.php:3368
 msgid "Group name is required."
@@ -701,8 +708,8 @@ msgstr "Nie przesłano pliku"
 msgid "None"
 msgstr "Żaden"
 
-#: ucp/Contactmanager.class.php:404 ucp/Contactmanager.class.php:511
-#: ucp/Contactmanager.class.php:536
+#: ucp/Contactmanager.class.php:404 ucp/Contactmanager.class.php:522
+#: ucp/Contactmanager.class.php:547
 msgid "Not Authorized"
 msgstr "Nieautoryzowany"
 
@@ -817,9 +824,14 @@ msgstr "Menadżer kontaktów umożliwia dodawanie kontaktów do grup."
 
 #: views/userman_hook.php:81
 msgid ""
-"The contacts in the selected Favorite Contact List will be shown under the "
-"Favorites section of the Contacts widget in UCP, and Sangoma Phone desktop "
-"clients."
+"The contacts in the selected Favorite Contact List is used as the default "
+"favorite list for the userman users. If the user don't have a favorite "
+"contact list, this list will be shown as the default favorite list under the "
+"'Favorites' tab of the 'Contacts' widget in UCP and under the 'My Favorites' "
+"drop down of the 'Contacts' tab in Sangoma Phone Desktop Client. If a "
+"contact is added or removed from the shown favorite list from UCP or Sangoma "
+"Phone Desktop Client, a new list will be created specific to the logged in "
+"user."
 msgstr ""
 
 #: Contactmanager.class.php:686 ucp/Contactmanager.class.php:256
