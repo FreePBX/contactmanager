@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-11 09:22-0500\n"
+"POT-Creation-Date: 2025-08-28 23:20-0400\n"
 "PO-Revision-Date: 2019-08-13 11:59+0000\n"
 "Last-Translator: Media Mousavi <mousavi.media@gmail.com>\n"
 "Language-Team: Persian <http://*/projects/freepbx/contactmanager/fa/>\n"
@@ -224,7 +224,7 @@ msgstr "Contact Manager: %s1 (Speed Dial: %s2) [%s3]"
 
 #: Contactmanager.class.php:3276 ucp/Contactmanager.class.php:26
 #: ucp/Contactmanager.class.php:38 ucp/Contactmanager.class.php:89
-#: ucp/Contactmanager.class.php:589
+#: ucp/Contactmanager.class.php:597
 msgid "Contacts"
 msgstr "مخاطبین"
 
@@ -370,7 +370,7 @@ msgstr ""
 msgid "Favorite Contact List successfully deleted"
 msgstr ""
 
-#: ucp/Contactmanager.class.php:473
+#: ucp/Contactmanager.class.php:481
 msgid "Favorite Contact List successfully updated."
 msgstr ""
 
@@ -520,10 +520,13 @@ msgstr "ورودی گروه با موفقیت حذف شد"
 msgid "Group entry successfully updated"
 msgstr "ورودی گروه با موفقیت به روز شد"
 
-#: Contactmanager.class.php:872 Contactmanager.class.php:1574
-#: Contactmanager.class.php:1625
+#: Contactmanager.class.php:872 Contactmanager.class.php:1625
 msgid "Group name can not be blank"
 msgstr "نام گروه نمیتواند خالی باشد"
+
+#: Contactmanager.class.php:1574 ucp/Contactmanager.class.php:449
+msgid "Group name is required, must not contain special characters."
+msgstr ""
 
 #: Contactmanager.class.php:3377
 msgid "Group name is required."
@@ -695,8 +698,8 @@ msgstr "فایلی بارگذاری نشد"
 msgid "None"
 msgstr "هیچکدام"
 
-#: ucp/Contactmanager.class.php:428 ucp/Contactmanager.class.php:535
-#: ucp/Contactmanager.class.php:560
+#: ucp/Contactmanager.class.php:428 ucp/Contactmanager.class.php:543
+#: ucp/Contactmanager.class.php:568
 msgid "Not Authorized"
 msgstr "شناخته نشده"
 

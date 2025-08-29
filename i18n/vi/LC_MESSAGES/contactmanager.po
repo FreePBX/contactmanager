@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-11 09:22-0500\n"
+"POT-Creation-Date: 2025-08-28 23:20-0400\n"
 "PO-Revision-Date: 2017-08-08 16:34+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese <http://weblate.freepbx.org/projects/freepbx/"
@@ -227,7 +227,7 @@ msgstr ""
 
 #: Contactmanager.class.php:3276 ucp/Contactmanager.class.php:26
 #: ucp/Contactmanager.class.php:38 ucp/Contactmanager.class.php:89
-#: ucp/Contactmanager.class.php:589
+#: ucp/Contactmanager.class.php:597
 msgid "Contacts"
 msgstr "Các liên lạc"
 
@@ -372,7 +372,7 @@ msgstr ""
 msgid "Favorite Contact List successfully deleted"
 msgstr ""
 
-#: ucp/Contactmanager.class.php:473
+#: ucp/Contactmanager.class.php:481
 msgid "Favorite Contact List successfully updated."
 msgstr ""
 
@@ -522,10 +522,13 @@ msgstr "Mục nhập nhóm đã được xóa thành công"
 msgid "Group entry successfully updated"
 msgstr "Mục nhập nhóm đã được cập nhật thành công"
 
-#: Contactmanager.class.php:872 Contactmanager.class.php:1574
-#: Contactmanager.class.php:1625
+#: Contactmanager.class.php:872 Contactmanager.class.php:1625
 msgid "Group name can not be blank"
 msgstr "Tên nhóm không thể để trống"
+
+#: Contactmanager.class.php:1574 ucp/Contactmanager.class.php:449
+msgid "Group name is required, must not contain special characters."
+msgstr ""
 
 #: Contactmanager.class.php:3377
 msgid "Group name is required."
@@ -698,8 +701,8 @@ msgstr "Không có tệp nào được tải lên"
 msgid "None"
 msgstr ""
 
-#: ucp/Contactmanager.class.php:428 ucp/Contactmanager.class.php:535
-#: ucp/Contactmanager.class.php:560
+#: ucp/Contactmanager.class.php:428 ucp/Contactmanager.class.php:543
+#: ucp/Contactmanager.class.php:568
 msgid "Not Authorized"
 msgstr "Không được cho phép"
 
