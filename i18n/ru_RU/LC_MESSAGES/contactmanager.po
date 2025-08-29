@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-21 10:48+0000\n"
+"POT-Creation-Date: 2025-08-29 03:13+0000\n"
 "PO-Revision-Date: 2022-07-28 08:01+0000\n"
 "Last-Translator: Dmitriy Q <krotesk@ya.ru>\n"
 "Language-Team: Russian <http://weblate.freepbx.org/projects/freepbx/"
@@ -224,7 +224,7 @@ msgstr ""
 
 #: Contactmanager.class.php:3272 ucp/Contactmanager.class.php:24
 #: ucp/Contactmanager.class.php:36 ucp/Contactmanager.class.php:66
-#: ucp/Contactmanager.class.php:565
+#: ucp/Contactmanager.class.php:576
 msgid "Contacts"
 msgstr "Контакты"
 
@@ -364,7 +364,7 @@ msgstr ""
 msgid "Favorite Contact List successfully deleted"
 msgstr ""
 
-#: ucp/Contactmanager.class.php:449
+#: ucp/Contactmanager.class.php:460
 msgid "Favorite Contact List successfully updated."
 msgstr ""
 
@@ -514,9 +514,12 @@ msgstr ""
 msgid "Group entry successfully updated"
 msgstr ""
 
-#: Contactmanager.class.php:870 Contactmanager.class.php:1570
-#: Contactmanager.class.php:1621
+#: Contactmanager.class.php:870 Contactmanager.class.php:1621
 msgid "Group name can not be blank"
+msgstr ""
+
+#: Contactmanager.class.php:1570 ucp/Contactmanager.class.php:428
+msgid "Group name is required, must not contain special characters."
 msgstr ""
 
 #: Contactmanager.class.php:3373
@@ -688,8 +691,8 @@ msgstr "Файл не загружен"
 msgid "None"
 msgstr "Нет"
 
-#: ucp/Contactmanager.class.php:404 ucp/Contactmanager.class.php:511
-#: ucp/Contactmanager.class.php:536
+#: ucp/Contactmanager.class.php:404 ucp/Contactmanager.class.php:522
+#: ucp/Contactmanager.class.php:547
 msgid "Not Authorized"
 msgstr ""
 
