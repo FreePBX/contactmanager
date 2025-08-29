@@ -1567,7 +1567,7 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 */
 	public function addGroup($name, $type='internal', $owner = -1, $updateContactFile = true) {
 		if (!$name || empty($name)) {
-			return array("status" => false, "type" => "danger", "message" => _("Group name can not be blank"));
+			return array("status" => false, "type" => "danger", "message" => _("Group name is required and must not contain special characters."));
 		}
 		if ($name == 'PBX_RAPID_DIAL') {
 			return array("status" => false, "type" => "danger", "message" => _("This group name is reserved. Please choose a different name."));
