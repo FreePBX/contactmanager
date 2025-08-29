@@ -439,7 +439,15 @@ class Contactmanager extends Modules{
 				}
 			break;
 			case 'addgroup':
-				$return = $this->cm->addGroup($_POST['groupname'], 'external', $this->userId);
+				 // freepbxGetSanitizedRequest currently allows any value (including special characters), 
+				// so we perform additional validation here to ensure the group name meets requirements.
+				$request = freepbxGetSanitizedRequest();
+				$groupname = trim($request['groupname']);
+				if(preg_match('/^[a-zA-Z0-9\s]*$/', $groupname)){
+					$return = $this->cm->addGroup($groupname, 'external', $this->user['id']);
+				}else{
+					return array("status" => false, "type" => "danger", "message" => _("Group name is required, must not contain special characters."));
+				}
 			break;
 			case "addgroupmodal":
 				$return = $this->load_view(__DIR__.'/views/groupCreate.php',$displayvars);
