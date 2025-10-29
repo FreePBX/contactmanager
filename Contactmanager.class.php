@@ -844,7 +844,6 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				return true;
 			}
 		}
-		$_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 		if (isset($_POST['group'])) {
 
 			$group = !empty($_POST['group']) ? $_POST['group'] : '';
@@ -946,7 +945,6 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 					'image' => $image,
 					'gravatar' => $gravatar
 				);
-
 				switch ($grouptype) {
 					case "internal":
 						throw new UnexpectedValueException("Cant add users this way");
