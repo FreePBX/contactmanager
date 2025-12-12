@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>17.0.6.1</version>
+	<version>17.0.6.2</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*17.0.6.2* FREEI-2619 Unable to create Favorites contacts 
 		*17.0.6.1* issue-674 special characters allowed for contact creation 
 		*17.0.6*   FREEI-2061 - Fixing XSS issue in UCP Group 
 		*17.0.5.17* FREEI-2118 undefined variable favoriteList 
