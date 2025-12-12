@@ -1069,7 +1069,8 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 				$contacts = $this->getAllInternalAndExternalContacts();
 				if ($action == "edit_list" && !empty($_REQUEST['list_id'])) {
 					$list = $this->getFavoriteContactListByID((int) $_REQUEST['list_id']);
-					$contactIdArray = json_decode($list['contact_ids']) ? json_decode($list['contact_ids']) : [];
+					$decoded = json_decode($list['contact_ids'], true);
+					$contactIdArray = is_array($decoded) ? $decoded : [];
 				}
 				$res = $this->processContacts($contacts, $contactIdArray);
 				$subContent = load_view(dirname(__FILE__).'/views/favorite_view.php', array("includedContacts" => $res['includedContacts'], "excludedContacts" => $res['excludedContacts']));
@@ -4066,6 +4067,10 @@ class Contactmanager extends FreePBX_Helpers implements BMO {
 	 * @return {array} included and excluded contact list
 	 */
 	public function processContacts($contacts, $contactIdArray) {
+		// Ensure $contactIdArray is always an array
+		if (!is_array($contactIdArray)) {
+			$contactIdArray = [];
+		}
 		
 		$includedContacts = $excludedContacts = $userIdArray = [];
 		foreach ($contacts as $contact) {
