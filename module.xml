@@ -2,21 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>17.0.6.2</version>
+	<version>18.0.1</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
-		*17.0.6.2* FREEI-2619 Unable to create Favorites contacts 
-		*17.0.6.1* issue-674 special characters allowed for contact creation 
-		*17.0.6*   FREEI-2061 - Fixing XSS issue in UCP Group 
-		*17.0.5.17* FREEI-2118 undefined variable favoriteList 
-		*17.0.5.16 FREEI-2080 Favorite contacts restore issue 
-		*17.0.5.15 #656 Increasing email field length 
-		*17.0.5.14 bump 
-		*17.0.5.13* FREEI-1619 Sangoma Desktop Softphone Contacts not being Displayed 
-		*17.0.5.11 bump 
-		*17.0.1* 17.0.1 alpha release
+		*18.0.1* initial release
 	</changelog>
 	<category>Admin</category>
 	<description>
@@ -27,11 +18,11 @@
 		<contactmanager needsenginedb="yes">Contact Manager</contactmanager>
 	</menuitems>
 	<depends>
-		<version>17.0.1</version>
-		<module>userman ge 17.0.1</module>
+		<version>18.0</version>
+		<module>userman ge 18.0.1</module>
 	</depends>
 	<supported>
-		<version>17.0</version>
+		<version>18.0</version>
 	</supported>
 	<hooks>
 		<bulkhandler class="Bulkhandler" namespace="FreePBX\modules">
