@@ -11,30 +11,30 @@ class ComposerStaticInitd4866eca09bfd5623c835b12f601b3f5
     );
 
     public static $prefixLengthsPsr4 = array (
-        'l' => 
+        'l' =>
         array (
             'libphonenumber\\' => 15,
         ),
-        'S' => 
+        'S' =>
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
         ),
-        'G' => 
+        'G' =>
         array (
             'Giggsey\\Locale\\' => 15,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'libphonenumber\\' => 
+        'libphonenumber\\' =>
         array (
             0 => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src',
         ),
-        'Symfony\\Polyfill\\Mbstring\\' => 
+        'Symfony\\Polyfill\\Mbstring\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
-        'Giggsey\\Locale\\' => 
+        'Giggsey\\Locale\\' =>
         array (
             0 => __DIR__ . '/..' . '/giggsey/locale/src',
         ),
@@ -48,7 +48,6 @@ class ComposerStaticInitd4866eca09bfd5623c835b12f601b3f5
         'libphonenumber\\AsYouTypeFormatter' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/AsYouTypeFormatter.php',
         'libphonenumber\\CountryCodeSource' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/CountryCodeSource.php',
         'libphonenumber\\CountryCodeToRegionCodeMap' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/CountryCodeToRegionCodeMap.php',
-        'libphonenumber\\CountryCodeToRegionCodeMapForTesting' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/CountryCodeToRegionCodeMapForTesting.php',
         'libphonenumber\\DefaultMetadataLoader' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/DefaultMetadataLoader.php',
         'libphonenumber\\Leniency' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/Leniency.php',
         'libphonenumber\\Leniency\\AbstractLeniency' => __DIR__ . '/..' . '/giggsey/libphonenumber-for-php/src/Leniency/AbstractLeniency.php',

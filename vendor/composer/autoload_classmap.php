@@ -13,7 +13,6 @@ return array(
     'libphonenumber\\AsYouTypeFormatter' => $vendorDir . '/giggsey/libphonenumber-for-php/src/AsYouTypeFormatter.php',
     'libphonenumber\\CountryCodeSource' => $vendorDir . '/giggsey/libphonenumber-for-php/src/CountryCodeSource.php',
     'libphonenumber\\CountryCodeToRegionCodeMap' => $vendorDir . '/giggsey/libphonenumber-for-php/src/CountryCodeToRegionCodeMap.php',
-    'libphonenumber\\CountryCodeToRegionCodeMapForTesting' => $vendorDir . '/giggsey/libphonenumber-for-php/src/CountryCodeToRegionCodeMapForTesting.php',
     'libphonenumber\\DefaultMetadataLoader' => $vendorDir . '/giggsey/libphonenumber-for-php/src/DefaultMetadataLoader.php',
     'libphonenumber\\Leniency' => $vendorDir . '/giggsey/libphonenumber-for-php/src/Leniency.php',
     'libphonenumber\\Leniency\\AbstractLeniency' => $vendorDir . '/giggsey/libphonenumber-for-php/src/Leniency/AbstractLeniency.php',

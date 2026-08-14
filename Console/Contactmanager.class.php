@@ -18,14 +18,14 @@ class Contactmanager extends Command {
 		));
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output){
+	protected function execute(InputInterface $input, OutputInterface $output): int {
 		if($input->getOption('lookup')){
 				$id = $input->getOption('uid') ? $input->getOption('uid') : -1;
 				$info = \FreePBX::Contactmanager()->lookupNumberByUserID($id, $input->getOption('lookup'));
 				$output->writeln(print_r($info,true));
-			return;
+			return 0;
 		}
-		$this->outputHelp($input,$output);
+		return $this->outputHelp($input,$output);
 	}
 
 	/**
