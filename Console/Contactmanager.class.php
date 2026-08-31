@@ -9,7 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use Symfony\Component\Console\Command\HelpCommand;
 class Contactmanager extends Command {
-	protected function configure(){
+	protected function configure(): void{
 		$this->setName('contactmanager')
 		->setDescription(_('Contact Manager'))
 		->setDefinition(array(

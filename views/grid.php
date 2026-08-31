@@ -2,10 +2,10 @@
 <div class="fpbx-container">
 	<ul class="nav nav-tabs" role="tablist">
 		<?php foreach($types as $type => $data) { ?>
-			<li data-name="<?php echo $type?>" class="change-tab <?php echo $type == "internal" ? "active" : ""?>"><a href="#<?php echo $type?>" aria-controls="<?php echo $type?>" role="tab" data-toggle="tab"><?php echo $data['name']?></a></li>
+			<li data-name="<?php echo $type?>" class="nav-item change-tab <?php echo $type == "internal" ? "active" : ""?>"><a class="nav-link<?php echo $type == "internal" ? " active" : ""?>" href="#<?php echo $type?>" aria-controls="<?php echo $type?>" role="tab" data-bs-toggle="tab"><?php echo $data['name']?></a></li>
 		<?php } ?>
 		<?php if ($enableFavoriteContacts) { ?>
-			<li data-name="favorites" class="change-tab"><a href="#favorites" aria-controls="favorites" role="tab" data-toggle="tab">Favorites</a></li>
+			<li data-name="favorites" class="nav-item change-tab"><a class="nav-link" href="#favorites" aria-controls="favorites" role="tab" data-bs-toggle="tab">Favorites</a></li>
 		<?php } ?>
 	</ul>
 	<div class="tab-content display">
@@ -17,7 +17,7 @@
 						<div class="scroller scroller-left"><i class="fa fa-chevron-left"></i></div>
 						<div class="scroller scroller-right"><i class="fa fa-chevron-right"></i></div>
 						<div class="wrapper">
-							<ul class="nav nav-tabs list" role="tablist" style="min-width: 10000px;">
+							<ul class="nav nav-tabs list" role="tablist">
 							<?php foreach($groups[$type] as $k => $group) { 
 									$_Owner 	= FreePBX::Userman()->getUserByID($group["owner"]);
 									$owner 		= '<i class="fa fa-users" ></i>';
@@ -26,7 +26,7 @@
 									}
 							?>
 								
-								<li data-name="<?php echo $type?>-<?php echo $group['id']?>" class="change-tab <?php echo $k== 0 ? "active" : ""?>"><a href="#<?php echo $type?>-<?php echo $group['id']?>" aria-controls="<?php echo $type?>-<?php echo $group['id']?>" role="tab" data-toggle="tab"><?php echo htmlentities($group['name'])?> <?php echo $owner?></a></li>
+								<li data-name="<?php echo $type?>-<?php echo $group['id']?>" class="nav-item change-tab <?php echo $k== 0 ? "active" : ""?>"><a class="nav-link<?php echo $k== 0 ? " active" : ""?>" href="#<?php echo $type?>-<?php echo $group['id']?>" aria-controls="<?php echo $type?>-<?php echo $group['id']?>" role="tab" data-bs-toggle="tab"><?php echo htmlentities($group['name'])?> <?php echo $owner?></a></li>
 							<?php } ?>
 							</ul>
 						</div>
