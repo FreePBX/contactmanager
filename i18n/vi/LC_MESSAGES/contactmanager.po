@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-29 03:13+0000\n"
+"POT-Creation-Date: 2026-09-02 10:40+0000\n"
 "PO-Revision-Date: 2017-08-08 16:34+0200\n"
 "Last-Translator: PETER <ftek@ymail.com>\n"
 "Language-Team: Vietnamese <http://weblate.freepbx.org/projects/freepbx/"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 2.4\n"
 
-#: Contactmanager.class.php:696 ucp/Contactmanager.class.php:271
+#: Contactmanager.class.php:696 ucp/Contactmanager.class.php:272
 msgid "A PHP extension stopped the file upload"
 msgstr "Một máy nhánh PHP vừa dừng việc tải tệp lên"
 
@@ -151,7 +151,7 @@ msgstr "Trình duyệt"
 msgid "Call To"
 msgstr "Gọi tới"
 
-#: Contactmanager.class.php:699 ucp/Contactmanager.class.php:275
+#: Contactmanager.class.php:699 ucp/Contactmanager.class.php:276
 msgid "Can Not Find Uploaded Files"
 msgstr "Không tìm thấy các tệp đã tải lên"
 
@@ -163,7 +163,7 @@ msgstr "Không tìm thấy các tệp đã tải lên"
 msgid "Cell"
 msgstr "Vùng phủ sóng"
 
-#: ucp/Contactmanager.class.php:391 ucp/Contactmanager.class.php:398
+#: ucp/Contactmanager.class.php:405 ucp/Contactmanager.class.php:412
 #: ucp/assets/js/global.js:176 ucp/assets/js/global.js:227
 msgid "Close"
 msgstr ""
@@ -227,7 +227,7 @@ msgstr ""
 
 #: Contactmanager.class.php:3272 ucp/Contactmanager.class.php:24
 #: ucp/Contactmanager.class.php:36 ucp/Contactmanager.class.php:66
-#: ucp/Contactmanager.class.php:576
+#: ucp/Contactmanager.class.php:585
 msgid "Contacts"
 msgstr "Các liên lạc"
 
@@ -249,7 +249,7 @@ msgstr ""
 msgid "Delete"
 msgstr "Xóa"
 
-#: ucp/Contactmanager.class.php:398 ucp/views/contact.php:250
+#: ucp/Contactmanager.class.php:412 ucp/views/contact.php:250
 msgid "Delete Contact"
 msgstr "Xóa liên lạc"
 
@@ -300,7 +300,7 @@ msgstr "Không thể để trống địa chỉ Email."
 msgid "E-mail address.  External contacts only."
 msgstr "Địa chỉ E-mail. Chỉ các liên lạc bên ngoài."
 
-#: ucp/Contactmanager.class.php:398
+#: ucp/Contactmanager.class.php:412
 msgid "Edit"
 msgstr ""
 
@@ -356,7 +356,7 @@ msgstr "máy FAX"
 msgid "Facetime"
 msgstr "Ứng dụng gọi video miễn phí facetime"
 
-#: Contactmanager.class.php:694 ucp/Contactmanager.class.php:268
+#: Contactmanager.class.php:694 ucp/Contactmanager.class.php:269
 msgid "Failed to write file to disk"
 msgstr "Ghi tệp vào đĩa không thành công"
 
@@ -368,7 +368,7 @@ msgstr ""
 msgid "Favorite Contact List successfully deleted"
 msgstr ""
 
-#: ucp/Contactmanager.class.php:460
+#: ucp/Contactmanager.class.php:469
 msgid "Favorite Contact List successfully updated."
 msgstr ""
 
@@ -381,7 +381,7 @@ msgstr ""
 msgid "Fax"
 msgstr "Fax"
 
-#: Contactmanager.class.php:663 ucp/Contactmanager.class.php:221
+#: Contactmanager.class.php:663 ucp/Contactmanager.class.php:222
 msgid "File upload failed"
 msgstr "Tải tệp lên không thành công"
 
@@ -522,7 +522,7 @@ msgstr "Mục nhập nhóm đã được cập nhật thành công"
 msgid "Group name can not be blank"
 msgstr "Tên nhóm không thể để trống"
 
-#: Contactmanager.class.php:1570 ucp/Contactmanager.class.php:428
+#: Contactmanager.class.php:1570 ucp/Contactmanager.class.php:437
 msgid "Group name is required, must not contain special characters."
 msgstr ""
 
@@ -583,7 +583,7 @@ msgid "Internal"
 msgstr "Nội bộ"
 
 #: Contactmanager.class.php:651 ucp/Contactmanager.class.php:178
-#: ucp/Contactmanager.class.php:198 ucp/Contactmanager.class.php:209
+#: ucp/Contactmanager.class.php:198 ucp/Contactmanager.class.php:210
 msgid "Invalid"
 msgstr "Không hợp lệ"
 
@@ -625,7 +625,7 @@ msgstr ""
 msgid "Lookup number and get a contact back as a result"
 msgstr ""
 
-#: Contactmanager.class.php:692 ucp/Contactmanager.class.php:265
+#: Contactmanager.class.php:692 ucp/Contactmanager.class.php:266
 msgid "Missing a temporary folder"
 msgstr "Thiếu một tệp tạm thời"
 
@@ -689,7 +689,7 @@ msgstr "Không có XMPP nào để thêm"
 msgid "No email defined"
 msgstr "Không có email được xác định"
 
-#: Contactmanager.class.php:690 ucp/Contactmanager.class.php:262
+#: Contactmanager.class.php:690 ucp/Contactmanager.class.php:263
 msgid "No file was uploaded"
 msgstr "Không có tệp nào được tải lên"
 
@@ -697,8 +697,7 @@ msgstr "Không có tệp nào được tải lên"
 msgid "None"
 msgstr ""
 
-#: ucp/Contactmanager.class.php:404 ucp/Contactmanager.class.php:522
-#: ucp/Contactmanager.class.php:547
+#: ucp/Contactmanager.class.php:531 ucp/Contactmanager.class.php:556
 msgid "Not Authorized"
 msgstr "Không được cho phép"
 
@@ -821,19 +820,19 @@ msgid ""
 "user."
 msgstr ""
 
-#: Contactmanager.class.php:686 ucp/Contactmanager.class.php:256
+#: Contactmanager.class.php:686 ucp/Contactmanager.class.php:257
 msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
 msgstr ""
 "Tệp được tải lên quá dung lượng tệp tối đa được quy định trong mẫu HTML"
 
-#: Contactmanager.class.php:684 ucp/Contactmanager.class.php:253
+#: Contactmanager.class.php:684 ucp/Contactmanager.class.php:254
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr ""
 "Tệp được tải lên vượt quá dung lượng tệp tối đa đã quy định trong php.ini"
 
-#: Contactmanager.class.php:688 ucp/Contactmanager.class.php:259
+#: Contactmanager.class.php:688 ucp/Contactmanager.class.php:260
 msgid "The uploaded file was only partially uploaded"
 msgstr "Tệp đã tải lên chỉ được tải lên từng phần"
 
@@ -904,9 +903,10 @@ msgstr ""
 "Không thể tìm thấy gravatar (ảnh đại diện được nhận dạng trên toàn cầu) cho "
 "%s"
 
-#: ucp/Contactmanager.class.php:316 ucp/Contactmanager.class.php:328
-#: ucp/Contactmanager.class.php:332 ucp/Contactmanager.class.php:342
-#: ucp/Contactmanager.class.php:352 ucp/Contactmanager.class.php:414
+#: ucp/Contactmanager.class.php:317 ucp/Contactmanager.class.php:330
+#: ucp/Contactmanager.class.php:334 ucp/Contactmanager.class.php:344
+#: ucp/Contactmanager.class.php:354 ucp/Contactmanager.class.php:396
+#: ucp/Contactmanager.class.php:423
 msgid "Unauthorized"
 msgstr "Không được phép"
 
@@ -918,7 +918,7 @@ msgstr ""
 msgid "Unknown data type."
 msgstr "Kiểu dữ liệu không xác định."
 
-#: Contactmanager.class.php:680 ucp/Contactmanager.class.php:248
+#: Contactmanager.class.php:680 ucp/Contactmanager.class.php:249
 msgid "Unsupported file format"
 msgstr "Định dạng tệp không được hỗ trợ"
 
@@ -953,7 +953,7 @@ msgstr ""
 "Tên người dùng của trình quản lý người dùng mà liên lạc hướng đến. Chỉ các "
 "liên lạc nội bộ."
 
-#: ucp/Contactmanager.class.php:389 ucp/Contactmanager.class.php:396
+#: ucp/Contactmanager.class.php:403 ucp/Contactmanager.class.php:410
 msgid "View Contact"
 msgstr ""
 

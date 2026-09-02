@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-29 03:13+0000\n"
+"POT-Creation-Date: 2026-09-02 10:40+0000\n"
 "PO-Revision-Date: 2023-01-14 18:01+0000\n"
 "Last-Translator:  peyre <contact@provya.fr>\n"
 "Language-Team: French <http://weblate.freepbx.org/projects/freepbx/"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 3.0.1\n"
 
-#: Contactmanager.class.php:696 ucp/Contactmanager.class.php:271
+#: Contactmanager.class.php:696 ucp/Contactmanager.class.php:272
 msgid "A PHP extension stopped the file upload"
 msgstr "Une extension PHP a arrêté le téléchargement du fichier"
 
@@ -154,7 +154,7 @@ msgstr "Naviguer"
 msgid "Call To"
 msgstr "Appeler à"
 
-#: Contactmanager.class.php:699 ucp/Contactmanager.class.php:275
+#: Contactmanager.class.php:699 ucp/Contactmanager.class.php:276
 msgid "Can Not Find Uploaded Files"
 msgstr "Impossible de trouver les fichiers téléchargés"
 
@@ -166,7 +166,7 @@ msgstr "Impossible de trouver les fichiers téléchargés"
 msgid "Cell"
 msgstr "Portable"
 
-#: ucp/Contactmanager.class.php:391 ucp/Contactmanager.class.php:398
+#: ucp/Contactmanager.class.php:405 ucp/Contactmanager.class.php:412
 #: ucp/assets/js/global.js:176 ucp/assets/js/global.js:227
 msgid "Close"
 msgstr "Fermer"
@@ -229,7 +229,7 @@ msgstr "Gestionnaire de contacts : %s (numéro abrégé : %s) [%s]"
 
 #: Contactmanager.class.php:3272 ucp/Contactmanager.class.php:24
 #: ucp/Contactmanager.class.php:36 ucp/Contactmanager.class.php:66
-#: ucp/Contactmanager.class.php:576
+#: ucp/Contactmanager.class.php:585
 msgid "Contacts"
 msgstr "Contacts"
 
@@ -253,7 +253,7 @@ msgstr ""
 msgid "Delete"
 msgstr "Supprimer"
 
-#: ucp/Contactmanager.class.php:398 ucp/views/contact.php:250
+#: ucp/Contactmanager.class.php:412 ucp/views/contact.php:250
 msgid "Delete Contact"
 msgstr "Supprimer contact"
 
@@ -307,7 +307,7 @@ msgstr "L'adresse e-mail ne peut pas être vide."
 msgid "E-mail address.  External contacts only."
 msgstr "Adresse e-mail. Contacts externes uniquement."
 
-#: ucp/Contactmanager.class.php:398
+#: ucp/Contactmanager.class.php:412
 msgid "Edit"
 msgstr "Modifier"
 
@@ -363,7 +363,7 @@ msgstr "FAX"
 msgid "Facetime"
 msgstr "Facetime"
 
-#: Contactmanager.class.php:694 ucp/Contactmanager.class.php:268
+#: Contactmanager.class.php:694 ucp/Contactmanager.class.php:269
 msgid "Failed to write file to disk"
 msgstr "Impossible d'écrire le fichier sur le disque"
 
@@ -375,7 +375,7 @@ msgstr ""
 msgid "Favorite Contact List successfully deleted"
 msgstr ""
 
-#: ucp/Contactmanager.class.php:460
+#: ucp/Contactmanager.class.php:469
 msgid "Favorite Contact List successfully updated."
 msgstr ""
 
@@ -388,7 +388,7 @@ msgstr ""
 msgid "Fax"
 msgstr "Télécopieur"
 
-#: Contactmanager.class.php:663 ucp/Contactmanager.class.php:221
+#: Contactmanager.class.php:663 ucp/Contactmanager.class.php:222
 msgid "File upload failed"
 msgstr "Échec Envoi Fichier"
 
@@ -529,7 +529,7 @@ msgstr "Entrée de groupe mise à jour avec succès"
 msgid "Group name can not be blank"
 msgstr "Le nom du groupe ne peut pas être vide"
 
-#: Contactmanager.class.php:1570 ucp/Contactmanager.class.php:428
+#: Contactmanager.class.php:1570 ucp/Contactmanager.class.php:437
 msgid "Group name is required, must not contain special characters."
 msgstr ""
 
@@ -590,7 +590,7 @@ msgid "Internal"
 msgstr "Interne"
 
 #: Contactmanager.class.php:651 ucp/Contactmanager.class.php:178
-#: ucp/Contactmanager.class.php:198 ucp/Contactmanager.class.php:209
+#: ucp/Contactmanager.class.php:198 ucp/Contactmanager.class.php:210
 msgid "Invalid"
 msgstr "Invalide"
 
@@ -632,7 +632,7 @@ msgstr "Recherche basée sur la Vue Utilisateur du Gestionnaire d'utilisateurs"
 msgid "Lookup number and get a contact back as a result"
 msgstr "Rechercher un numéro et récupérer un contact en conséquence"
 
-#: Contactmanager.class.php:692 ucp/Contactmanager.class.php:265
+#: Contactmanager.class.php:692 ucp/Contactmanager.class.php:266
 msgid "Missing a temporary folder"
 msgstr "Un répertoire temporaire est absent"
 
@@ -696,7 +696,7 @@ msgstr "Aucun XMPP à ajouter"
 msgid "No email defined"
 msgstr "Pas d'email défini"
 
-#: Contactmanager.class.php:690 ucp/Contactmanager.class.php:262
+#: Contactmanager.class.php:690 ucp/Contactmanager.class.php:263
 msgid "No file was uploaded"
 msgstr "Pas de fichier envoyé"
 
@@ -704,8 +704,7 @@ msgstr "Pas de fichier envoyé"
 msgid "None"
 msgstr "Aucun"
 
-#: ucp/Contactmanager.class.php:404 ucp/Contactmanager.class.php:522
-#: ucp/Contactmanager.class.php:547
+#: ucp/Contactmanager.class.php:531 ucp/Contactmanager.class.php:556
 msgid "Not Authorized"
 msgstr "Pas autorisé"
 
@@ -833,7 +832,7 @@ msgid ""
 "user."
 msgstr ""
 
-#: Contactmanager.class.php:686 ucp/Contactmanager.class.php:256
+#: Contactmanager.class.php:686 ucp/Contactmanager.class.php:257
 msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
@@ -841,12 +840,12 @@ msgstr ""
 "Le fichier téléchargé dépasse la directive MAX_FILE_SIZE spécifiée dans le "
 "formulaire HTML"
 
-#: Contactmanager.class.php:684 ucp/Contactmanager.class.php:253
+#: Contactmanager.class.php:684 ucp/Contactmanager.class.php:254
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr ""
 "Le fichier téléchargé dépasse la directive upload_max_filesize dans php.ini"
 
-#: Contactmanager.class.php:688 ucp/Contactmanager.class.php:259
+#: Contactmanager.class.php:688 ucp/Contactmanager.class.php:260
 msgid "The uploaded file was only partially uploaded"
 msgstr "Le fichier téléchargé n'a été que partiellement téléchargé"
 
@@ -918,9 +917,10 @@ msgstr "Type de numéro de téléphone.  Contacts externes uniquement."
 msgid "Unable to find gravatar for %s"
 msgstr "Impossible de trouver le gravatar pour %s"
 
-#: ucp/Contactmanager.class.php:316 ucp/Contactmanager.class.php:328
-#: ucp/Contactmanager.class.php:332 ucp/Contactmanager.class.php:342
-#: ucp/Contactmanager.class.php:352 ucp/Contactmanager.class.php:414
+#: ucp/Contactmanager.class.php:317 ucp/Contactmanager.class.php:330
+#: ucp/Contactmanager.class.php:334 ucp/Contactmanager.class.php:344
+#: ucp/Contactmanager.class.php:354 ucp/Contactmanager.class.php:396
+#: ucp/Contactmanager.class.php:423
 msgid "Unauthorized"
 msgstr "Non autorisé"
 
@@ -932,7 +932,7 @@ msgstr "Inconnu"
 msgid "Unknown data type."
 msgstr "Type de données inconnu."
 
-#: Contactmanager.class.php:680 ucp/Contactmanager.class.php:248
+#: Contactmanager.class.php:680 ucp/Contactmanager.class.php:249
 msgid "Unsupported file format"
 msgstr "Format de fichier non supporté"
 
@@ -970,7 +970,7 @@ msgstr ""
 "Nom d'utilisateur du Gestionnaire d'utilisateurs vers lequel ce contact doit "
 "pointer.  Contacts internes uniquement."
 
-#: ucp/Contactmanager.class.php:389 ucp/Contactmanager.class.php:396
+#: ucp/Contactmanager.class.php:403 ucp/Contactmanager.class.php:410
 #, fuzzy
 msgid "View Contact"
 msgstr "Voir contact"
