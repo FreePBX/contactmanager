@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-02 10:40+0000\n"
+"POT-Creation-Date: 2026-09-07 10:21+0000\n"
 "PO-Revision-Date: 2019-08-13 11:59+0000\n"
 "Last-Translator: Media Mousavi <mousavi.media@gmail.com>\n"
 "Language-Team: Persian <http://*/projects/freepbx/contactmanager/fa/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 3.0.1\n"
 
-#: Contactmanager.class.php:696 ucp/Contactmanager.class.php:272
+#: Contactmanager.class.php:696 ucp/Contactmanager.class.php:275
 msgid "A PHP extension stopped the file upload"
 msgstr "بارگذاری فایل توسط PHP متوقف شد"
 
@@ -152,7 +152,7 @@ msgstr "مسیر"
 msgid "Call To"
 msgstr "تماس به"
 
-#: Contactmanager.class.php:699 ucp/Contactmanager.class.php:276
+#: Contactmanager.class.php:699 ucp/Contactmanager.class.php:279
 msgid "Can Not Find Uploaded Files"
 msgstr "فایلهای بارگذاری شده پیدا نشد"
 
@@ -164,7 +164,7 @@ msgstr "فایلهای بارگذاری شده پیدا نشد"
 msgid "Cell"
 msgstr "موبایل"
 
-#: ucp/Contactmanager.class.php:405 ucp/Contactmanager.class.php:412
+#: ucp/Contactmanager.class.php:412 ucp/Contactmanager.class.php:419
 #: ucp/assets/js/global.js:176 ucp/assets/js/global.js:227
 msgid "Close"
 msgstr "بستن"
@@ -224,7 +224,7 @@ msgstr "Contact Manager: %s1 (Speed Dial: %s2) [%s3]"
 
 #: Contactmanager.class.php:3272 ucp/Contactmanager.class.php:24
 #: ucp/Contactmanager.class.php:36 ucp/Contactmanager.class.php:66
-#: ucp/Contactmanager.class.php:585
+#: ucp/Contactmanager.class.php:592
 msgid "Contacts"
 msgstr "مخاطبین"
 
@@ -247,7 +247,7 @@ msgstr ""
 msgid "Delete"
 msgstr "حذف"
 
-#: ucp/Contactmanager.class.php:412 ucp/views/contact.php:250
+#: ucp/Contactmanager.class.php:419 ucp/views/contact.php:250
 msgid "Delete Contact"
 msgstr "حذف مخاطب"
 
@@ -298,7 +298,7 @@ msgstr "آدرس ایمیل نمیتواند خالی باشد."
 msgid "E-mail address.  External contacts only."
 msgstr "آدرس ایمیل. تنها مخاطبین خارجی."
 
-#: ucp/Contactmanager.class.php:412
+#: ucp/Contactmanager.class.php:419
 msgid "Edit"
 msgstr "ویرایش"
 
@@ -354,7 +354,7 @@ msgstr "دورنگار"
 msgid "Facetime"
 msgstr "زمان رویارویی"
 
-#: Contactmanager.class.php:694 ucp/Contactmanager.class.php:269
+#: Contactmanager.class.php:694 ucp/Contactmanager.class.php:272
 msgid "Failed to write file to disk"
 msgstr "بروز خطا در هنگام نوشتن فایل به روی دیسک"
 
@@ -366,7 +366,7 @@ msgstr ""
 msgid "Favorite Contact List successfully deleted"
 msgstr ""
 
-#: ucp/Contactmanager.class.php:469
+#: ucp/Contactmanager.class.php:476
 msgid "Favorite Contact List successfully updated."
 msgstr ""
 
@@ -379,7 +379,7 @@ msgstr ""
 msgid "Fax"
 msgstr "فکس"
 
-#: Contactmanager.class.php:663 ucp/Contactmanager.class.php:222
+#: Contactmanager.class.php:663 ucp/Contactmanager.class.php:225
 msgid "File upload failed"
 msgstr "بارگذاری فایل با خطا روبرو شد"
 
@@ -520,7 +520,7 @@ msgstr "ورودی گروه با موفقیت به روز شد"
 msgid "Group name can not be blank"
 msgstr "نام گروه نمیتواند خالی باشد"
 
-#: Contactmanager.class.php:1570 ucp/Contactmanager.class.php:437
+#: Contactmanager.class.php:1570 ucp/Contactmanager.class.php:444
 msgid "Group name is required, must not contain special characters."
 msgstr ""
 
@@ -581,7 +581,7 @@ msgid "Internal"
 msgstr "داخلی"
 
 #: Contactmanager.class.php:651 ucp/Contactmanager.class.php:178
-#: ucp/Contactmanager.class.php:198 ucp/Contactmanager.class.php:210
+#: ucp/Contactmanager.class.php:213
 msgid "Invalid"
 msgstr "نا معتبر"
 
@@ -623,7 +623,7 @@ msgstr "نگاهی به پشتیبانی کاربر در مدیریت کاربر
 msgid "Lookup number and get a contact back as a result"
 msgstr "مشاهده شماره و به عنوان یک نتیجه تماس بگیرید"
 
-#: Contactmanager.class.php:692 ucp/Contactmanager.class.php:266
+#: Contactmanager.class.php:692 ucp/Contactmanager.class.php:269
 msgid "Missing a temporary folder"
 msgstr "فولدر موقت پیدا نشد"
 
@@ -686,7 +686,7 @@ msgstr "XMPP برای افزودن وجود ندارد"
 msgid "No email defined"
 msgstr "ایمیلی تغریف نشده است"
 
-#: Contactmanager.class.php:690 ucp/Contactmanager.class.php:263
+#: Contactmanager.class.php:690 ucp/Contactmanager.class.php:266
 msgid "No file was uploaded"
 msgstr "فایلی بارگذاری نشد"
 
@@ -694,7 +694,7 @@ msgstr "فایلی بارگذاری نشد"
 msgid "None"
 msgstr "هیچکدام"
 
-#: ucp/Contactmanager.class.php:531 ucp/Contactmanager.class.php:556
+#: ucp/Contactmanager.class.php:538 ucp/Contactmanager.class.php:563
 msgid "Not Authorized"
 msgstr "شناخته نشده"
 
@@ -817,18 +817,18 @@ msgid ""
 "user."
 msgstr ""
 
-#: Contactmanager.class.php:686 ucp/Contactmanager.class.php:257
+#: Contactmanager.class.php:686 ucp/Contactmanager.class.php:260
 msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
 msgstr ""
 "حجم فایل بارگذاری شده از حداکثر حجم مجاز تعیین شده در فرم HTML بیشتر است"
 
-#: Contactmanager.class.php:684 ucp/Contactmanager.class.php:254
+#: Contactmanager.class.php:684 ucp/Contactmanager.class.php:257
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
 msgstr "حجم فایل بارگذاری شده بیشتر از حد تعیین شده در  php.ini  میباشد"
 
-#: Contactmanager.class.php:688 ucp/Contactmanager.class.php:260
+#: Contactmanager.class.php:688 ucp/Contactmanager.class.php:263
 msgid "The uploaded file was only partially uploaded"
 msgstr "بخشی از فایل بارگذاری شده"
 
@@ -897,10 +897,10 @@ msgstr "نوع شماره تلفن. تنها مخاطبین خارجی."
 msgid "Unable to find gravatar for %s"
 msgstr "آواتاری برای %s یافت نشد"
 
-#: ucp/Contactmanager.class.php:317 ucp/Contactmanager.class.php:330
-#: ucp/Contactmanager.class.php:334 ucp/Contactmanager.class.php:344
-#: ucp/Contactmanager.class.php:354 ucp/Contactmanager.class.php:396
-#: ucp/Contactmanager.class.php:423
+#: ucp/Contactmanager.class.php:202 ucp/Contactmanager.class.php:324
+#: ucp/Contactmanager.class.php:337 ucp/Contactmanager.class.php:341
+#: ucp/Contactmanager.class.php:351 ucp/Contactmanager.class.php:361
+#: ucp/Contactmanager.class.php:403 ucp/Contactmanager.class.php:430
 msgid "Unauthorized"
 msgstr "ناشناخته"
 
@@ -912,7 +912,7 @@ msgstr "ناشنلس"
 msgid "Unknown data type."
 msgstr "نوع دیتا نامشخص."
 
-#: Contactmanager.class.php:680 ucp/Contactmanager.class.php:249
+#: Contactmanager.class.php:680 ucp/Contactmanager.class.php:252
 msgid "Unsupported file format"
 msgstr "فرمت فایل پشتیبانی نمیشود"
 
@@ -947,7 +947,7 @@ msgid ""
 "User Manager username this contact should point to.  Internal contacts only."
 msgstr "نام کاربری که مخاطب باید به آن اشاره کند. تنها مخاطبین داخلی."
 
-#: ucp/Contactmanager.class.php:403 ucp/Contactmanager.class.php:410
+#: ucp/Contactmanager.class.php:410 ucp/Contactmanager.class.php:417
 msgid "View Contact"
 msgstr "مشاهده تماس"
 
