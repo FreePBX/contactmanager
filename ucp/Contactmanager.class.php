@@ -194,9 +194,12 @@ class Contactmanager extends Modules{
 			break;
 			case "delimage":
 				if(!empty($_POST['id'])) {
-					if(!$this->editEntry($_POST['id'])) {
-						return array("status" => false, "message" => _("Invalid"));
-						break;
+					$entry = $this->cm->getEntryByID($_POST['id']);
+					$g = !empty($entry) ? $this->cm->getGroupByID($entry['groupid']) : null;
+					// Only owner of the group can delete contact image
+					$userId = is_array($this->user) ? $this->user['id'] : null;
+					if (empty($entry) || empty($g) || $userId === null || $g['owner'] != $userId) {
+						return array("status" => false, "message" => _("Unauthorized"));
 					}
 					$this->cm->delImageByID($_POST['id'], 'external');
 					return array("status" => true);
@@ -313,7 +316,11 @@ class Contactmanager extends Modules{
 			case 'updatecontact':
 				$request = freepbxGetSanitizedRequest(FILTER_SANITIZE_STRING, true);
 				$contact = $request['contact'];
-				if(!$this->editEntry($contact['id'])) {
+				$entry = !empty($contact['id']) ? $this->cm->getEntryByID($contact['id']) : null;
+				$g = !empty($entry) ? $this->cm->getGroupByID($entry['groupid']) : null;
+				$userId= is_array($this->user) ? $this->user['id'] : null;
+				// Only owner of the group can edit (shared/system groups have owner -1)
+				if (empty($entry) || empty($contact) || empty($g) || $userId === null|| $g['owner'] != $userId) {
 					$return = array("status" => false, "message" => _("Unauthorized"));
 					break;
 				}
