@@ -2,11 +2,12 @@
 	<rawname>contactmanager</rawname>
 	<repo>standard</repo>
 	<name>Contact Manager</name>
-	<version>17.0.7</version>
+	<version>17.0.8</version>
 	<publisher>Sangoma Technologies Corporation</publisher>
 	<license>GPLv3+</license>
 	<licenselink>http://www.gnu.org/licenses/gpl-3.0.txt</licenselink>
 	<changelog>
+		*17.0.8* FREEI-3078-Security - Authenticated low-privilege UCP user can modify contacts of other users 
 		*17.0.7* FREEI-3078 Authenticated low-privilege UCP user can modify contacts of other users
 		*17.0.6.2* FREEI-2619 Unable to create Favorites contacts 
 		*17.0.6.1* issue-674 special characters allowed for contact creation 
