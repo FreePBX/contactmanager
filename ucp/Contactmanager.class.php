@@ -228,7 +228,7 @@ class Contactmanager extends Modules{
 					$this->cm->delImageByID($_POST['id'], 'external');
 					return array("status" => true);
 				} elseif(!empty($_POST['image'])) {
-					unlink($this->cm->tmp."/".$_POST['image'].".png");
+					unlink($this->cm->tmp."/".basename($_POST['image']).".png");
 					return array("status" => true);
 				} else {
 					$this->cm->delImageByID($this->userId, 'internal');
@@ -411,10 +411,22 @@ class Contactmanager extends Modules{
 			break;
 			case "showcontact":
 				$g = $this->cm->getGroupByID($_REQUEST['group']);
+				$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : '';
+				$entry = $this->cm->getEntryByID($id);
 				$displayvars = array();
 				$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
-				if(!empty($g)) {
-					$displayvars['contact'] = $this->cm->getEntryByID($_REQUEST['id']);
+				if (
+					empty($g) ||
+					empty($entry) ||
+					(string)$entry['groupid'] !== (string)$_REQUEST['group'] ||
+					!$this->editEntry($id)
+				) {
+					$return = array(
+						"status" => false,
+						"message" => _("Unauthorized")
+					);
+				} else {
+					$displayvars['contact'] = $entry;
 					if($g['owner'] == -1) {
 						$return = array(
 							"status" => true,
@@ -430,11 +442,6 @@ class Contactmanager extends Modules{
 							"footer" => '<button id="deletecontact" class="btn btn-danger">'._('Delete Contact').'</button><button type="button" class="btn btn-secondary" data-dismiss="modal">'._("Close").'</button><button type="button" class="btn btn-primary" id="editcontact">'._("Edit").'</button>'
 						);
 					}
-				} else {
-					$return = array(
-						"status" => true,
-						"message" => _("Not Authorized")
-					);
 				}
 			break;
 			case 'deletegroup':
