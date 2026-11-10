@@ -134,8 +134,18 @@ class Contactmanager extends Modules{
 				$type = !empty($_REQUEST['type']) ? $_REQUEST['type'] : null;
 				if(!empty($_REQUEST['temporary'])) {
 					$id = null;
+					if (!$this->canReadTemporaryImage($_REQUEST['name'] ?? '')) {
+						header('HTTP/1.0 403 Forbidden');
+						echo json_encode(array("status" => false, "message" => _("Unauthorized")));
+						return true;
+					}
 				} elseif(!empty($_REQUEST['entryid'])) {
 					$id = $_REQUEST['entryid'];
+					if (!$this->editEntry($id)) {
+						header('HTTP/1.0 403 Forbidden');
+						echo json_encode(array("status" => false, "message" => _("Unauthorized")));
+						return true;
+					}
 				} else {
 					$type = 'internal';
 					$id = $this->userId;
@@ -204,6 +214,7 @@ class Contactmanager extends Modules{
 							$this->cm->updateImageByID($_REQUEST['id'], $this->cm->tmp."/".$dname.".png", true, 'external');
 							$url = "?quietmode=1&module=Contactmanager&command=limage&entryid=".$_REQUEST['id']."&time=".time();
 						} else {
+							$this->rememberTemporaryImage($dname.".png");
 							$url = "?quietmode=1&module=Contactmanager&command=limage&temporary=1&name=".$dname.".png";
 						}
 					} elseif(empty($_POST['type'])) {
@@ -262,9 +273,16 @@ class Contactmanager extends Modules{
 								$this->cm->resizeImage(file_get_contents($tmp_name),$dname);
 								if(!empty($_REQUEST['type']) && $_REQUEST['type'] == 'contact') {
 									if(!empty($_REQUEST['id'])) {
+										$entry = $this->cm->getEntryByID($_REQUEST['id']);
+										$g = !empty($entry) ? $this->cm->getGroupByID($entry['groupid']) : null;
+										$userId = is_array($this->user) ? $this->user['id'] : null;
+										if (empty($entry) || empty($g) || $userId === null || $g['owner'] != $userId) {
+											return array("status" => false, "message" => _("Unauthorized"));
+										}
 										$this->cm->updateImageByID($_REQUEST['id'], $this->cm->tmp."/".$dname.".png", false, 'external');
 										$url = "?quietmode=1&module=Contactmanager&command=limage&entryid=".$_REQUEST['id']."&time=".time();
 									} else {
+										$this->rememberTemporaryImage($dname.".png");
 										$url = "?quietmode=1&module=Contactmanager&command=limage&temporary=1&name=".$dname.".png";
 									}
 								} elseif(empty($_POST['type'])) {
@@ -320,6 +338,16 @@ class Contactmanager extends Modules{
 					});
 					$contacts = array_values($allContacts);
 				} else {
+					$allowed = false;
+					foreach ($this->cm->getGroupsByOwner($this->userId) as $allowedGroup) {
+						if ((string)$allowedGroup['id'] === (string)$group) {
+							$allowed = true;
+							break;
+						}
+					}
+					if (!$allowed) {
+						return array("status" => false, "message" => _("Unauthorized"));
+					}
 					$contacts = $this->cm->getEntriesByGroupID($group);
 					$contacts = array_values($contacts);
 				}
@@ -387,10 +415,14 @@ class Contactmanager extends Modules{
 			break;
 			case "editcontactmodal":
 				$g = $this->cm->getGroupByID($_REQUEST['group']);
-				$displayvars = array();
-				if(!empty($g)) {
-					$displayvars['contact'] = $this->cm->getEntryByID($_REQUEST['id']);
+				$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : '';
+				$entry = $this->cm->getEntryByID($id);
+				if (empty($g) || empty($entry) || (string)$entry['groupid'] !== (string)$_REQUEST['group'] || !$this->editEntry($id)) {
+					$return = array("status" => false, "message" => _("Unauthorized"));
+					break;
 				}
+				$displayvars = array();
+				$displayvars['contact'] = $entry;
 				$currentLocal = setlocale(LC_ALL, 0);
 				$locale = preg_split("/[_|\.]/", $currentLocal);
 				$locale = !empty($locale[1]) ? $locale[1] : 'US';
@@ -564,11 +596,16 @@ class Contactmanager extends Modules{
 			break;
 			case "contact":
 				$g = $this->cm->getGroupByID($_REQUEST['group']);
-				if(!empty($g)) {
+				$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : '';
+				$entry = $this->cm->getEntryByID($id);
+				if ( empty($g) || empty($entry) || (string)$entry['groupid'] !== (string)$_REQUEST['group'] || !$this->editEntry($id)) {
+					$mainDisplay = _("Not Authorized");
+					break;
+				}
 					$displayvars['speeddialmodifications'] = $this->UCP->getCombinedSettingByID($this->userId,$this->module,'speeddial');
 					$displayvars['speeddialmodifications'] = false;
 					$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
-					$displayvars['contact'] = $this->cm->getEntryByID($_REQUEST['id']);
+					$displayvars['contact'] = $entry;
 					if($g['owner'] == -1) {
 						$mainDisplay = $this->load_view(__DIR__.'/views/contactro.php',$displayvars);
 					} else {
@@ -580,9 +617,6 @@ class Contactmanager extends Modules{
 							$mainDisplay = $this->load_view(__DIR__.'/views/contactro.php',$displayvars);
 						}
 					}
-				} else {
-					$mainDisplay = _("Not Authorized");
-				}
 			break;
 			default:
 				$mainDisplay = $this->load_view(__DIR__.'/views/contacts.php',$displayvars);
@@ -650,5 +684,37 @@ class Contactmanager extends Modules{
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * Remember a temporary image created by this logged-in user.
+	 */
+	private function rememberTemporaryImage($filename) {
+		$name = basename((string)$filename);
+		if ($name === '' || $name === '.' || $name === '..') {
+			return;
+		}
+		$allowed = $this->UCP->Session->cmTempImages;
+		if (!is_array($allowed)) {
+			$allowed = array();
+		}
+		$allowed[] = $name;
+		$allowed = array_values(array_unique($allowed));
+		if (count($allowed) > 20) {
+			$allowed = array_slice($allowed, -20);
+		}
+		$this->UCP->Session->cmTempImages = $allowed;
+	}
+
+	/**
+	 * A temporary image may be read only by the user who created it.
+	 */
+	private function canReadTemporaryImage($filename) {
+		$name = basename((string)$filename);
+		$allowed = $this->UCP->Session->cmTempImages;
+		if (!is_array($allowed) || $name === '') {
+			return false;
+		}
+		return in_array($name, $allowed, true);
 	}
 }
