@@ -315,7 +315,7 @@ class Contactmanager extends Modules{
 					$contacts = array_values($allContacts);
 				} else {
 					$allowed = false;
-					foreach ($this->cm->getGroupsByOwner($this->userId) as $allowedGroup) {
+					foreach ($this->cm->getGroupsByOwner($this->user['id']) as $allowedGroup) {
 						if ((string)$allowedGroup['id'] === (string)$group) {
 							$allowed = true;
 							break;
@@ -581,7 +581,7 @@ class Contactmanager extends Modules{
 					$mainDisplay = _("Not Authorized");
 					break;
 				}
-					$displayvars['speeddialmodifications'] = $this->UCP->getCombinedSettingByID($this->userId,$this->module,'speeddial');
+					$displayvars['speeddialmodifications'] = $this->UCP->getCombinedSettingByID($this->user['id'],$this->module,'speeddial');
 					$displayvars['speeddialmodifications'] = false;
 					$displayvars['featurecode'] = $this->cm->getFeatureCodeStatus();
 					$displayvars['contact'] = $entry;
